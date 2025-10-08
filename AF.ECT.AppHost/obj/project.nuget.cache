@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "L9tqZWSuDuk=",
+  "dgSpecHash": "T6ri4WDPCMU=",
   "success": true,
-  "projectFilePath": "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHost\\AF.ECT.AppHost.csproj",
+  "projectFilePath": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHost\\AF.ECT.AppHost.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DonellMcCoy\\.nuget\\packages\\aspire.dashboard.sdk.win-x64\\9.3.1\\aspire.dashboard.sdk.win-x64.9.3.1.nupkg.sha512",
     "C:\\Users\\DonellMcCoy\\.nuget\\packages\\aspire.hosting\\9.3.1\\aspire.hosting.9.3.1.nupkg.sha512",

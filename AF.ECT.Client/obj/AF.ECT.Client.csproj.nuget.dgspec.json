@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\AF.ECT.Client.csproj": {}
+    "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\AF.ECT.Client.csproj": {}
   },
   "projects": {
-    "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\AF.ECT.Client.csproj": {
+    "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\AF.ECT.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\AF.ECT.Client.csproj",
+        "projectUniqueName": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\AF.ECT.Client.csproj",
         "projectName": "AF.ECT.Client",
-        "projectPath": "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\AF.ECT.Client.csproj",
+        "projectPath": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\AF.ECT.Client.csproj",
         "packagesPath": "C:\\Users\\DonellMcCoy\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\obj\\",
+        "outputPath": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -35,8 +35,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Shared\\AF.ECT.Shared.csproj": {
-                "projectPath": "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Shared\\AF.ECT.Shared.csproj"
+              "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Shared\\AF.ECT.Shared.csproj": {
+                "projectPath": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Shared\\AF.ECT.Shared.csproj"
               }
             }
           }
@@ -108,14 +108,14 @@
         }
       }
     },
-    "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Shared\\AF.ECT.Shared.csproj": {
+    "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Shared\\AF.ECT.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Shared\\AF.ECT.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Shared\\AF.ECT.Shared.csproj",
         "projectName": "AF.ECT.Shared",
-        "projectPath": "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Shared\\AF.ECT.Shared.csproj",
+        "projectPath": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Shared\\AF.ECT.Shared.csproj",
         "packagesPath": "C:\\Users\\DonellMcCoy\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Shared\\obj\\",
+        "outputPath": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

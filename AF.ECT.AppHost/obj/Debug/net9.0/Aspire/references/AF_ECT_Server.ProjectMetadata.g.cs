@@ -7,5 +7,5 @@ namespace Projects;
 [global::System.Diagnostics.DebuggerDisplay("Type = {GetType().Name,nq}, ProjectPath = {ProjectPath}")]
 public class AF_ECT_Server : global::Aspire.Hosting.IProjectMetadata
 {
-    public string ProjectPath => """c:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.Server\AF.ECT.Server.csproj""";
+    public string ProjectPath => """C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.Server\AF.ECT.Server.csproj""";
 }

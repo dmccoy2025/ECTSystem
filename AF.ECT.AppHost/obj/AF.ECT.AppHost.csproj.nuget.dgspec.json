@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHost\\AF.ECT.AppHost.csproj": {}
+    "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHost\\AF.ECT.AppHost.csproj": {}
   },
   "projects": {
-    "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHost\\AF.ECT.AppHost.csproj": {
+    "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHost\\AF.ECT.AppHost.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHost\\AF.ECT.AppHost.csproj",
+        "projectUniqueName": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHost\\AF.ECT.AppHost.csproj",
         "projectName": "AF.ECT.AppHost",
-        "projectPath": "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHost\\AF.ECT.AppHost.csproj",
+        "projectPath": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHost\\AF.ECT.AppHost.csproj",
         "packagesPath": "C:\\Users\\DonellMcCoy\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHost\\obj\\",
+        "outputPath": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHost\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
