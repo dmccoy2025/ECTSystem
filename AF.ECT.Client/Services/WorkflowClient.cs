@@ -117,19 +117,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetReinvestigationRequestsResponse> GetReinvestigationRequestsAsync(int? userId = null, bool? sarc = null)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetReinvestigationRequestsAsync(new GetReinvestigationRequestsRequest
         {
-            var request = new GetReinvestigationRequestsRequest
-            {
-                UserId = userId ?? 0,
-                Sarc = sarc ?? false
-            };
-            return await _client.GetReinvestigationRequestsAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve reinvestigation requests: {ex.Status.Detail}", ex);
-        }
+            UserId = userId ?? 0,
+            Sarc = sarc ?? false
+        }));
     }
 
     /// <summary>
@@ -165,21 +157,13 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetMailingListForLODResponse> GetMailingListForLODAsync(int refId, int groupId, int status, string callingService)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetMailingListForLODAsync(new GetMailingListForLODRequest
         {
-            var request = new GetMailingListForLODRequest
-            {
-                RefId = refId,
-                GroupId = groupId,
-                Status = status,
-                CallingService = callingService
-            };
-            return await _client.GetMailingListForLODAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve mailing list: {ex.Status.Detail}", ex);
-        }
+            RefId = refId,
+            GroupId = groupId,
+            Status = status,
+            CallingService = callingService
+        }));
     }
 
     /// <summary>
@@ -222,24 +206,16 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetManagedUsersResponse> GetManagedUsersAsync(int? userid, string ssn, string name, int? status, int? role, int? srchUnit, bool? showAllUsers)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetManagedUsersAsync(new GetManagedUsersRequest
         {
-            var request = new GetManagedUsersRequest
-            {
-                Userid = userid ?? 0,
-                Ssn = ssn ?? string.Empty,
-                Name = name ?? string.Empty,
-                Status = status ?? 0,
-                Role = role ?? 0,
-                SrchUnit = srchUnit ?? 0,
-                ShowAllUsers = showAllUsers ?? false
-            };
-            return await _client.GetManagedUsersAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve managed users: {ex.Status.Detail}", ex);
-        }
+            Userid = userid ?? 0,
+            Ssn = ssn ?? string.Empty,
+            Name = name ?? string.Empty,
+            Status = status ?? 0,
+            Role = role ?? 0,
+            SrchUnit = srchUnit ?? 0,
+            ShowAllUsers = showAllUsers ?? false
+        }));
     }
 
     /// <summary>
@@ -256,7 +232,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<ManagedUserItem> GetManagedUsersStreamAsync(int? userid, string ssn, string name, int? status, int? role, int? srchUnit, bool? showAllUsers)
     {
-        var request = new GetManagedUsersRequest
+        using var call = _client.GetManagedUsersStream(new GetManagedUsersRequest
         {
             Userid = userid ?? 0,
             Ssn = ssn ?? string.Empty,
@@ -265,9 +241,7 @@ public class WorkflowClient : IWorkflowClient
             Role = role ?? 0,
             SrchUnit = srchUnit ?? 0,
             ShowAllUsers = showAllUsers ?? false
-        };
-
-        using var call = _client.GetManagedUsersStream(request);
+        });
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -282,15 +256,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetMembersUserIdResponse> GetMembersUserIdAsync(string memberSsn)
     {
-        try
-        {
-            var request = new GetMembersUserIdRequest { MemberSsn = memberSsn };
-            return await _client.GetMembersUserIdAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve member user ID: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetMembersUserIdAsync(new GetMembersUserIdRequest { MemberSsn = memberSsn }));
     }
 
     /// <summary>
@@ -302,19 +268,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetUserAltTitleResponse> GetUserAltTitleAsync(int userId, int groupId)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetUserAltTitleAsync(new GetUserAltTitleRequest
         {
-            var request = new GetUserAltTitleRequest
-            {
-                UserId = userId,
-                GroupId = groupId
-            };
-            return await _client.GetUserAltTitleAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve user alternate titles: {ex.Status.Detail}", ex);
-        }
+            UserId = userId,
+            GroupId = groupId
+        }));
     }
 
     /// <summary>
@@ -326,13 +284,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<UserAltTitleItem> GetUserAltTitleStreamAsync(int userId, int groupId)
     {
-        var request = new GetUserAltTitleRequest
+        using var call = _client.GetUserAltTitleStream(new GetUserAltTitleRequest
         {
             UserId = userId,
             GroupId = groupId
-        };
-
-        using var call = _client.GetUserAltTitleStream(request);
+        });
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -348,19 +304,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetUserAltTitleByGroupCompoResponse> GetUserAltTitleByGroupCompoAsync(int groupId, int workCompo)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetUserAltTitleByGroupCompoAsync(new GetUserAltTitleByGroupCompoRequest
         {
-            var request = new GetUserAltTitleByGroupCompoRequest
-            {
-                GroupId = groupId,
-                WorkCompo = workCompo
-            };
-            return await _client.GetUserAltTitleByGroupCompoAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve user alternate titles by group component: {ex.Status.Detail}", ex);
-        }
+            GroupId = groupId,
+            WorkCompo = workCompo
+        }));
     }
 
     /// <summary>
@@ -372,13 +320,12 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<UserAltTitleByGroupCompoItem> GetUserAltTitleByGroupCompoStreamAsync(int groupId, int workCompo)
     {
-        var request = new GetUserAltTitleByGroupCompoRequest
+        using var call = _client.GetUserAltTitleByGroupCompoStream(new GetUserAltTitleByGroupCompoRequest
         {
             GroupId = groupId,
             WorkCompo = workCompo
-        };
-
-        using var call = _client.GetUserAltTitleByGroupCompoStream(request);
+        });
+        
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -394,19 +341,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetUserNameResponse> GetUserNameAsync(string first, string last)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetUserNameAsync(new GetUserNameRequest
         {
-            var request = new GetUserNameRequest
-            {
-                First = first,
-                Last = last
-            };
-            return await _client.GetUserNameAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve user names: {ex.Status.Detail}", ex);
-        }
+            First = first,
+            Last = last
+        }));
     }
 
     /// <summary>
@@ -418,13 +357,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<UserNameItem> GetUserNameStreamAsync(string first, string last)
     {
-        var request = new GetUserNameRequest
+        using var call = _client.GetUserNameStream(new GetUserNameRequest
         {
             First = first,
             Last = last
-        };
-
-        using var call = _client.GetUserNameStream(request);
+        });
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -439,15 +376,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetUsersAltTitleByGroupResponse> GetUsersAltTitleByGroupAsync(int groupId)
     {
-        try
-        {
-            var request = new GetUsersAltTitleByGroupRequest { GroupId = groupId };
-            return await _client.GetUsersAltTitleByGroupAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve users alternate titles by group: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetUsersAltTitleByGroupAsync(new GetUsersAltTitleByGroupRequest { GroupId = groupId }));
     }
 
     /// <summary>
@@ -458,9 +387,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<UsersAltTitleByGroupItem> GetUsersAltTitleByGroupStreamAsync(int groupId)
     {
-        var request = new GetUsersAltTitleByGroupRequest { GroupId = groupId };
-
-        using var call = _client.GetUsersAltTitleByGroupStream(request);
+        using var call = _client.GetUsersAltTitleByGroupStream(new GetUsersAltTitleByGroupRequest { GroupId = groupId });
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -474,15 +401,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetUsersOnlineResponse> GetUsersOnlineAsync()
     {
-        try
-        {
-            var request = new EmptyRequest();
-            return await _client.GetUsersOnlineAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve users online: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetUsersOnlineAsync(new EmptyRequest()));
     }
 
     /// <summary>
@@ -492,9 +411,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<UserOnlineItem> GetUsersOnlineStreamAsync()
     {
-        var request = new EmptyRequest();
-
-        using var call = _client.GetUsersOnlineStream(request);
+        using var call = _client.GetUsersOnlineStream(new EmptyRequest());
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -509,15 +426,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWhoisResponse> GetWhoisAsync(int userId)
     {
-        try
-        {
-            var request = new GetWhoisRequest { UserId = userId };
-            return await _client.GetWhoisAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve WHOIS information: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWhoisAsync(new GetWhoisRequest { UserId = userId }));
     }
 
     /// <summary>
@@ -529,19 +438,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<HasHQTechAccountResponse> HasHQTechAccountAsync(int originUserId, string userEdipin)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.HasHQTechAccountAsync(new HasHQTechAccountRequest
         {
-            var request = new HasHQTechAccountRequest
-            {
-                OriginUserId = originUserId,
-                UserEdipin = userEdipin
-            };
-            return await _client.HasHQTechAccountAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to check HQ tech account: {ex.Status.Detail}", ex);
-        }
+            OriginUserId = originUserId,
+            UserEdipin = userEdipin
+        }));
     }
 
     /// <summary>
@@ -552,15 +453,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<IsFinalStatusCodeResponse> IsFinalStatusCodeAsync(int statusId)
     {
-        try
-        {
-            var request = new IsFinalStatusCodeRequest { StatusId = statusId };
-            return await _client.IsFinalStatusCodeAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to check final status code: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.IsFinalStatusCodeAsync(new IsFinalStatusCodeRequest { StatusId = statusId }));
     }
 
     /// <summary>
@@ -571,15 +464,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<LogoutResponse> LogoutAsync(int userId)
     {
-        try
-        {
-            var request = new LogoutRequest { UserId = userId };
-            return await _client.LogoutAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to logout user: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.LogoutAsync(new LogoutRequest { UserId = userId }));
     }
 
     /// <summary>
@@ -595,23 +480,15 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<RegisterUserResponse> RegisterUserAsync(int userId, string workCompo, bool receiveEmail, int groupId, int accountStatus, string expirationDate)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.RegisterUserAsync(new RegisterUserRequest
         {
-            var request = new RegisterUserRequest
-            {
-                UserId = userId,
-                WorkCompo = workCompo,
-                ReceiveEmail = receiveEmail,
-                GroupId = groupId,
-                AccountStatus = accountStatus,
-                ExpirationDate = expirationDate ?? string.Empty
-            };
-            return await _client.RegisterUserAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to register user: {ex.Status.Detail}", ex);
-        }
+            UserId = userId,
+            WorkCompo = workCompo,
+            ReceiveEmail = receiveEmail,
+            GroupId = groupId,
+            AccountStatus = accountStatus,
+            ExpirationDate = expirationDate ?? string.Empty
+        }));
     }
 
     /// <summary>
@@ -624,20 +501,12 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<RegisterUserRoleResponse> RegisterUserRoleAsync(int userId, int groupId, int status)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.RegisterUserRoleAsync(new RegisterUserRoleRequest
         {
-            var request = new RegisterUserRoleRequest
-            {
-                UserId = userId,
-                GroupId = groupId,
-                Status = status
-            };
-            return await _client.RegisterUserRoleAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to register user role: {ex.Status.Detail}", ex);
-        }
+            UserId = userId,
+            GroupId = groupId,
+            Status = status
+        }));
     }
 
     /// <summary>
@@ -654,24 +523,16 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<SearchMemberDataResponse> SearchMemberDataAsync(int userId, string ssn, string lastName, string firstName, string middleName, int srchUnit, int rptView)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.SearchMemberDataAsync(new SearchMemberDataRequest
         {
-            var request = new SearchMemberDataRequest
-            {
-                UserId = userId,
-                Ssn = ssn,
-                LastName = lastName,
-                FirstName = firstName,
-                MiddleName = middleName,
-                SrchUnit = srchUnit,
-                RptView = rptView
-            };
-            return await _client.SearchMemberDataAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to search member data: {ex.Status.Detail}", ex);
-        }
+            UserId = userId,
+            Ssn = ssn,
+            LastName = lastName,
+            FirstName = firstName,
+            MiddleName = middleName,
+            SrchUnit = srchUnit,
+            RptView = rptView
+        }));
     }
 
     /// <summary>
@@ -688,7 +549,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<MemberDataItem> SearchMemberDataStreamAsync(int userId, string ssn, string lastName, string firstName, string middleName, int srchUnit, int rptView)
     {
-        var request = new SearchMemberDataRequest
+        using var call = _client.SearchMemberDataStream(new SearchMemberDataRequest
         {
             UserId = userId,
             Ssn = ssn,
@@ -697,9 +558,7 @@ public class WorkflowClient : IWorkflowClient
             MiddleName = middleName,
             SrchUnit = srchUnit,
             RptView = rptView
-        };
-
-        using var call = _client.SearchMemberDataStream(request);
+        });
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -718,22 +577,14 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<SearchMemberDataTestResponse> SearchMemberDataTestAsync(int userId, string ssn, string name, int srchUnit, int rptView)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.SearchMemberDataTestAsync(new SearchMemberDataTestRequest
         {
-            var request = new SearchMemberDataTestRequest
-            {
-                UserId = userId,
-                Ssn = ssn,
-                Name = name,
-                SrchUnit = srchUnit,
-                RptView = rptView
-            };
-            return await _client.SearchMemberDataTestAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to search member data (test): {ex.Status.Detail}", ex);
-        }
+            UserId = userId,
+            Ssn = ssn,
+            Name = name,
+            SrchUnit = srchUnit,
+            RptView = rptView
+        }));
     }
 
     /// <summary>
@@ -748,16 +599,14 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<MemberDataTestItem> SearchMemberDataTestStreamAsync(int userId, string ssn, string name, int srchUnit, int rptView)
     {
-        var request = new SearchMemberDataTestRequest
+        using var call = _client.SearchMemberDataTestStream(new SearchMemberDataTestRequest
         {
             UserId = userId,
             Ssn = ssn,
             Name = name,
             SrchUnit = srchUnit,
             RptView = rptView
-        };
-
-        using var call = _client.SearchMemberDataTestStream(request);
+        });
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -775,21 +624,13 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<UpdateAccountStatusResponse> UpdateAccountStatusAsync(int userId, int accountStatus, string expirationDate, string comment)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.UpdateAccountStatusAsync(new UpdateAccountStatusRequest
         {
-            var request = new UpdateAccountStatusRequest
-            {
-                UserId = userId,
-                AccountStatus = accountStatus,
-                ExpirationDate = expirationDate ?? string.Empty,
-                Comment = comment
-            };
-            return await _client.UpdateAccountStatusAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to update account status: {ex.Status.Detail}", ex);
-        }
+            UserId = userId,
+            AccountStatus = accountStatus,
+            ExpirationDate = expirationDate ?? string.Empty,
+            Comment = comment
+        }));
     }
 
     /// <summary>
@@ -802,20 +643,12 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<UpdateLoginResponse> UpdateLoginAsync(int userId, string sessionId, string remoteAddr)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.UpdateLoginAsync(new UpdateLoginRequest
         {
-            var request = new UpdateLoginRequest
-            {
-                UserId = userId,
-                SessionId = sessionId,
-                RemoteAddr = remoteAddr
-            };
-            return await _client.UpdateLoginAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to update login: {ex.Status.Detail}", ex);
-        }
+            UserId = userId,
+            SessionId = sessionId,
+            RemoteAddr = remoteAddr
+        }));
     }
 
     /// <summary>
@@ -832,24 +665,16 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<UpdateManagedSettingsResponse> UpdateManagedSettingsAsync(int userId, string compo, int roleId, int groupId, string comment, bool receiveEmail, string expirationDate)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.UpdateManagedSettingsAsync(new UpdateManagedSettingsRequest
         {
-            var request = new UpdateManagedSettingsRequest
-            {
-                UserId = userId,
-                Compo = compo,
-                RoleId = roleId,
-                GroupId = groupId,
-                Comment = comment,
-                ReceiveEmail = receiveEmail,
-                ExpirationDate = expirationDate ?? string.Empty
-            };
-            return await _client.UpdateManagedSettingsAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to update managed settings: {ex.Status.Detail}", ex);
-        }
+            UserId = userId,
+            Compo = compo,
+            RoleId = roleId,
+            GroupId = groupId,
+            Comment = comment,
+            ReceiveEmail = receiveEmail,
+            ExpirationDate = expirationDate ?? string.Empty
+        }));
     }
 
     /// <summary>
@@ -862,23 +687,15 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<UpdateUserAltTitleResponse> UpdateUserAltTitleAsync(int userId, int groupId, string newTitle)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.UpdateUserAltTitleAsync(new UpdateUserAltTitleRequest
         {
-            var request = new UpdateUserAltTitleRequest
-            {
-                UserId = userId,
-                GroupId = groupId,
-                NewTitle = newTitle
-            };
-            return await _client.UpdateUserAltTitleAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to update user alternate title: {ex.Status.Detail}", ex);
-        }
+            UserId = userId,
+            GroupId = groupId,
+            NewTitle = newTitle
+        }));
     }
 
-#endregion
+    #endregion
 
     #region Core Workflow Methods
 
@@ -896,24 +713,16 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<AddSignatureResponse> AddSignatureAsync(int refId, int moduleType, int userId, int actionId, int groupId, int statusIn, int statusOut)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.AddSignatureAsync(new AddSignatureRequest
         {
-            var request = new AddSignatureRequest
-            {
-                RefId = refId,
-                ModuleType = moduleType,
-                UserId = userId,
-                ActionId = actionId,
-                GroupId = groupId,
-                StatusIn = statusIn,
-                StatusOut = statusOut
-            };
-            return await _client.AddSignatureAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to add signature: {ex.Status.Detail}", ex);
-        }
+            RefId = refId,
+            ModuleType = moduleType,
+            UserId = userId,
+            ActionId = actionId,
+            GroupId = groupId,
+            StatusIn = statusIn,
+            StatusOut = statusOut
+        }));
     }
 
     /// <summary>
@@ -925,19 +734,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<CopyActionsResponse> CopyActionsAsync(int destWsoid, int srcWsoid)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.CopyActionsAsync(new CopyActionsRequest
         {
-            var request = new CopyActionsRequest
-            {
-                DestWsoid = destWsoid,
-                SrcWsoid = srcWsoid
-            };
-            return await _client.CopyActionsAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to copy actions: {ex.Status.Detail}", ex);
-        }
+            DestWsoid = destWsoid,
+            SrcWsoid = srcWsoid
+        }));
     }
 
     /// <summary>
@@ -949,19 +750,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<CopyRulesResponse> CopyRulesAsync(int destWsoid, int srcWsoid)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.CopyRulesAsync(new CopyRulesRequest
         {
-            var request = new CopyRulesRequest
-            {
-                DestWsoid = destWsoid,
-                SrcWsoid = srcWsoid
-            };
-            return await _client.CopyRulesAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to copy rules: {ex.Status.Detail}", ex);
-        }
+            DestWsoid = destWsoid,
+            SrcWsoid = srcWsoid
+        }));
     }
 
     /// <summary>
@@ -973,19 +766,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<CopyWorkflowResponse> CopyWorkflowAsync(int fromId, int toId)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.CopyWorkflowAsync(new CopyWorkflowRequest
         {
-            var request = new CopyWorkflowRequest
-            {
-                FromId = fromId,
-                ToId = toId
-            };
-            return await _client.CopyWorkflowAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to copy workflow: {ex.Status.Detail}", ex);
-        }
+            FromId = fromId,
+            ToId = toId
+        }));
     }
 
     /// <summary>
@@ -996,15 +781,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<DeleteStatusCodeResponse> DeleteStatusCodeAsync(int statusId)
     {
-        try
-        {
-            var request = new DeleteStatusCodeRequest { StatusId = statusId };
-            return await _client.DeleteStatusCodeAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to delete status code: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.DeleteStatusCodeAsync(new DeleteStatusCodeRequest { StatusId = statusId }));
     }
 
     /// <summary>
@@ -1015,15 +792,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetActionsByStepResponse> GetActionsByStepAsync(int stepId)
     {
-        try
-        {
-            var request = new GetActionsByStepRequest { StepId = stepId };
-            return await _client.GetActionsByStepAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve actions by step: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetActionsByStepAsync(new GetActionsByStepRequest { StepId = stepId }));
     }
 
     /// <summary>
@@ -1035,19 +804,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetActiveCasesResponse> GetActiveCasesAsync(int refId, int groupId)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetActiveCasesAsync(new GetActiveCasesRequest
         {
-            var request = new GetActiveCasesRequest
-            {
-                RefId = refId,
-                GroupId = groupId
-            };
-            return await _client.GetActiveCasesAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve active cases: {ex.Status.Detail}", ex);
-        }
+            RefId = refId,
+            GroupId = groupId
+        }));
     }
 
     /// <summary>
@@ -1057,15 +818,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetAllFindingByReasonOfResponse> GetAllFindingByReasonOfAsync()
     {
-        try
-        {
-            var request = new EmptyRequest();
-            return await _client.GetAllFindingByReasonOfAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve all findings by reason of: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetAllFindingByReasonOfAsync(new EmptyRequest()));
     }
 
     /// <summary>
@@ -1075,15 +828,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetAllLocksResponse> GetAllLocksAsync()
     {
-        try
-        {
-            var request = new EmptyRequest();
-            return await _client.GetAllLocksAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve all locks: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetAllLocksAsync(new EmptyRequest()));
     }
 
     /// <summary>
@@ -1095,19 +840,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetCancelReasonsResponse> GetCancelReasonsAsync(int workflowId, bool isFormal)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetCancelReasonsAsync(new GetCancelReasonsRequest
         {
-            var request = new GetCancelReasonsRequest
-            {
-                WorkflowId = workflowId,
-                IsFormal = isFormal
-            };
-            return await _client.GetCancelReasonsAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve cancel reasons: {ex.Status.Detail}", ex);
-        }
+            WorkflowId = workflowId,
+            IsFormal = isFormal
+        }));
     }
 
     /// <summary>
@@ -1120,20 +857,12 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetCreatableByGroupResponse> GetCreatableByGroupAsync(string compo, int module, int groupId)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetCreatableByGroupAsync(new GetCreatableByGroupRequest
         {
-            var request = new GetCreatableByGroupRequest
-            {
-                Compo = compo,
-                Module = module,
-                GroupId = groupId
-            };
-            return await _client.GetCreatableByGroupAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve creatable by group: {ex.Status.Detail}", ex);
-        }
+            Compo = compo,
+            Module = module,
+            GroupId = groupId
+        }));
     }
 
     /// <summary>
@@ -1144,15 +873,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetFindingByReasonOfByIdResponse> GetFindingByReasonOfByIdAsync(int id)
     {
-        try
-        {
-            var request = new GetFindingByReasonOfByIdRequest { Id = id };
-            return await _client.GetFindingByReasonOfByIdAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve finding by reason of by ID: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetFindingByReasonOfByIdAsync(new GetFindingByReasonOfByIdRequest { Id = id }));
     }
 
     /// <summary>
@@ -1164,19 +885,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetFindingsResponse> GetFindingsAsync(int workflowId, int groupId)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetFindingsAsync(new GetFindingsRequest
         {
-            var request = new GetFindingsRequest
-            {
-                WorkflowId = workflowId,
-                GroupId = groupId
-            };
-            return await _client.GetFindingsAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve findings: {ex.Status.Detail}", ex);
-        }
+            WorkflowId = workflowId,
+            GroupId = groupId
+        }));
     }
 
     /// <summary>
@@ -1187,15 +900,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetModuleFromWorkflowResponse> GetModuleFromWorkflowAsync(int workflowId)
     {
-        try
-        {
-            var request = new GetModuleFromWorkflowRequest { WorkflowId = workflowId };
-            return await _client.GetModuleFromWorkflowAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve module from workflow: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetModuleFromWorkflowAsync(new GetModuleFromWorkflowRequest { WorkflowId = workflowId }));
     }
 
     /// <summary>
@@ -1208,20 +913,12 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetPageAccessByGroupResponse> GetPageAccessByGroupAsync(int workflow, int status, int group)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetPageAccessByGroupAsync(new GetPageAccessByGroupRequest
         {
-            var request = new GetPageAccessByGroupRequest
-            {
-                Workflow = workflow,
-                Status = status,
-                Group = group
-            };
-            return await _client.GetPageAccessByGroupAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve page access by group: {ex.Status.Detail}", ex);
-        }
+            Workflow = workflow,
+            Status = status,
+            Group = group
+        }));
     }
 
     /// <summary>
@@ -1234,20 +931,12 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetPageAccessByWorkflowViewResponse> GetPageAccessByWorkflowViewAsync(string compo, int workflow, int status)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetPageAccessByWorkflowViewAsync(new GetPageAccessByWorkflowViewRequest
         {
-            var request = new GetPageAccessByWorkflowViewRequest
-            {
-                Compo = compo,
-                Workflow = workflow,
-                Status = status
-            };
-            return await _client.GetPageAccessByWorkflowViewAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve page access by workflow view: {ex.Status.Detail}", ex);
-        }
+            Compo = compo,
+            Workflow = workflow,
+            Status = status
+        }));
     }
 
     /// <summary>
@@ -1258,15 +947,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetPagesByWorkflowIdResponse> GetPagesByWorkflowIdAsync(int workflowId)
     {
-        try
-        {
-            var request = new GetPagesByWorkflowIdRequest { WorkflowId = workflowId };
-            return await _client.GetPagesByWorkflowIdAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve pages by workflow ID: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetPagesByWorkflowIdAsync(new GetPagesByWorkflowIdRequest { WorkflowId = workflowId }));
     }
 
     /// <summary>
@@ -1277,15 +958,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetPermissionsResponse> GetPermissionsAsync(int workflowId)
     {
-        try
-        {
-            var request = new GetPermissionsRequest { WorkflowId = workflowId };
-            return await _client.GetPermissionsAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve permissions: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetPermissionsAsync(new GetPermissionsRequest { WorkflowId = workflowId }));
     }
 
     /// <summary>
@@ -1297,19 +970,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetPermissionsByCompoResponse> GetPermissionsByCompoAsync(int workflowId, string compo)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetPermissionsByCompoAsync(new GetPermissionsByCompoRequest
         {
-            var request = new GetPermissionsByCompoRequest
-            {
-                WorkflowId = workflowId,
-                Compo = compo
-            };
-            return await _client.GetPermissionsByCompoAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve permissions by component: {ex.Status.Detail}", ex);
-        }
+            WorkflowId = workflowId,
+            Compo = compo
+        }));
     }
 
     /// <summary>
@@ -1320,15 +985,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetReturnReasonsResponse> GetReturnReasonsAsync(int workflowId)
     {
-        try
-        {
-            var request = new GetReturnReasonsRequest { WorkflowId = workflowId };
-            return await _client.GetReturnReasonsAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve return reasons: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetReturnReasonsAsync(new GetReturnReasonsRequest { WorkflowId = workflowId }));
     }
 
     /// <summary>
@@ -1339,15 +996,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetRwoaReasonsResponse> GetRwoaReasonsAsync(int workflowId)
     {
-        try
-        {
-            var request = new GetRwoaReasonsRequest { WorkflowId = workflowId };
-            return await _client.GetRwoaReasonsAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve RWOA reasons: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetRwoaReasonsAsync(new GetRwoaReasonsRequest { WorkflowId = workflowId }));
     }
 
     /// <summary>
@@ -1358,15 +1007,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStatusCodesByCompoResponse> GetStatusCodesByCompoAsync(string compo)
     {
-        try
-        {
-            var request = new GetStatusCodesByCompoRequest { Compo = compo };
-            return await _client.GetStatusCodesByCompoAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve status codes by component: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByCompoAsync(new GetStatusCodesByCompoRequest { Compo = compo }));
     }
 
     /// <summary>
@@ -1378,19 +1019,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStatusCodesByCompoAndModuleResponse> GetStatusCodesByCompoAndModuleAsync(string compo, int module)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByCompoAndModuleAsync(new GetStatusCodesByCompoAndModuleRequest
         {
-            var request = new GetStatusCodesByCompoAndModuleRequest
-            {
-                Compo = compo,
-                Module = module
-            };
-            return await _client.GetStatusCodesByCompoAndModuleAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve status codes by component and module: {ex.Status.Detail}", ex);
-        }
+            Compo = compo,
+            Module = module
+        }));
     }
 
     /// <summary>
@@ -1402,19 +1035,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStatusCodesBySignCodeResponse> GetStatusCodesBySignCodeAsync(int groupId, int module)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesBySignCodeAsync(new GetStatusCodesBySignCodeRequest
         {
-            var request = new GetStatusCodesBySignCodeRequest
-            {
-                GroupId = groupId,
-                Module = module
-            };
-            return await _client.GetStatusCodesBySignCodeAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve status codes by sign code: {ex.Status.Detail}", ex);
-        }
+            GroupId = groupId,
+            Module = module
+        }));
     }
 
     /// <summary>
@@ -1425,15 +1050,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStatusCodesByWorkflowResponse> GetStatusCodesByWorkflowAsync(int workflowId)
     {
-        try
-        {
-            var request = new GetStatusCodesByWorkflowRequest { WorkflowId = workflowId };
-            return await _client.GetStatusCodesByWorkflowAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve status codes by workflow: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByWorkflowAsync(new GetStatusCodesByWorkflowRequest { WorkflowId = workflowId }));
     }
 
     /// <summary>
@@ -1445,19 +1062,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStatusCodesByWorkflowAndAccessScopeResponse> GetStatusCodesByWorkflowAndAccessScopeAsync(int workflowId, int accessScope)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByWorkflowAndAccessScopeAsync(new GetStatusCodesByWorkflowAndAccessScopeRequest
         {
-            var request = new GetStatusCodesByWorkflowAndAccessScopeRequest
-            {
-                WorkflowId = workflowId,
-                AccessScope = accessScope
-            };
-            return await _client.GetStatusCodesByWorkflowAndAccessScopeAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve status codes by workflow and access scope: {ex.Status.Detail}", ex);
-        }
+            WorkflowId = workflowId,
+            AccessScope = accessScope
+        }));
     }
 
     /// <summary>
@@ -1468,15 +1077,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStatusCodeScopeResponse> GetStatusCodeScopeAsync(int statusId)
     {
-        try
-        {
-            var request = new GetStatusCodeScopeRequest { StatusId = statusId };
-            return await _client.GetStatusCodeScopeAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve status code scope: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodeScopeAsync(new GetStatusCodeScopeRequest { StatusId = statusId }));
     }
 
     /// <summary>
@@ -1487,15 +1088,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStepsByWorkflowResponse> GetStepsByWorkflowAsync(int workflow)
     {
-        try
-        {
-            var request = new GetStepsByWorkflowRequest { Workflow = workflow };
-            return await _client.GetStepsByWorkflowAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve steps by workflow: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStepsByWorkflowAsync(new GetStepsByWorkflowRequest { Workflow = workflow }));
     }
 
     /// <summary>
@@ -1508,20 +1101,12 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStepsByWorkflowAndStatusResponse> GetStepsByWorkflowAndStatusAsync(int workflow, int status, string deathStatus)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStepsByWorkflowAndStatusAsync(new GetStepsByWorkflowAndStatusRequest
         {
-            var request = new GetStepsByWorkflowAndStatusRequest
-            {
-                Workflow = workflow,
-                Status = status,
-                DeathStatus = deathStatus
-            };
-            return await _client.GetStepsByWorkflowAndStatusAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve steps by workflow and status: {ex.Status.Detail}", ex);
-        }
+            Workflow = workflow,
+            Status = status,
+            DeathStatus = deathStatus
+        }));
     }
 
     /// <summary>
@@ -1533,19 +1118,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetViewableByGroupResponse> GetViewableByGroupAsync(int groupId, int module)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetViewableByGroupAsync(new GetViewableByGroupRequest
         {
-            var request = new GetViewableByGroupRequest
-            {
-                GroupId = groupId,
-                Module = module
-            };
-            return await _client.GetViewableByGroupAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve viewable by group: {ex.Status.Detail}", ex);
-        }
+            GroupId = groupId,
+            Module = module
+        }));
     }
 
     /// <summary>
@@ -1557,19 +1134,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowByCompoResponse> GetWorkflowByCompoAsync(string compo, int userId)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowByCompoAsync(new GetWorkflowByCompoRequest
         {
-            var request = new GetWorkflowByCompoRequest
-            {
-                Compo = compo,
-                UserId = userId
-            };
-            return await _client.GetWorkflowByCompoAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve workflow by component: {ex.Status.Detail}", ex);
-        }
+            Compo = compo,
+            UserId = userId
+        }));
     }
 
     /// <summary>
@@ -1580,15 +1149,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowFromModuleResponse> GetWorkflowFromModuleAsync(int moduleId)
     {
-        try
-        {
-            var request = new GetWorkflowFromModuleRequest { ModuleId = moduleId };
-            return await _client.GetWorkflowFromModuleAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve workflow from module: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowFromModuleAsync(new GetWorkflowFromModuleRequest { ModuleId = moduleId }));
     }
 
     /// <summary>
@@ -1601,20 +1162,12 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowInitialStatusCodeResponse> GetWorkflowInitialStatusCodeAsync(int compo, int module, int workflowId)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowInitialStatusCodeAsync(new GetWorkflowInitialStatusCodeRequest
         {
-            var request = new GetWorkflowInitialStatusCodeRequest
-            {
-                Compo = compo,
-                Module = module,
-                WorkflowId = workflowId
-            };
-            return await _client.GetWorkflowInitialStatusCodeAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve workflow initial status code: {ex.Status.Detail}", ex);
-        }
+            Compo = compo,
+            Module = module,
+            WorkflowId = workflowId
+        }));
     }
 
     /// <summary>
@@ -1626,19 +1179,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowTitleResponse> GetWorkflowTitleAsync(int moduleId, int subCase)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowTitleAsync(new GetWorkflowTitleRequest
         {
-            var request = new GetWorkflowTitleRequest
-            {
-                ModuleId = moduleId,
-                SubCase = subCase
-            };
-            return await _client.GetWorkflowTitleAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve workflow title: {ex.Status.Detail}", ex);
-        }
+            ModuleId = moduleId,
+            SubCase = subCase
+        }));
     }
 
     /// <summary>
@@ -1650,19 +1195,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowTitleByWorkStatusIdResponse> GetWorkflowTitleByWorkStatusIdAsync(int workflowId, int subCase)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowTitleByWorkStatusIdAsync(new GetWorkflowTitleByWorkStatusIdRequest
         {
-            var request = new GetWorkflowTitleByWorkStatusIdRequest
-            {
-                WorkflowId = workflowId,
-                SubCase = subCase
-            };
-            return await _client.GetWorkflowTitleByWorkStatusIdAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve workflow title by work status ID: {ex.Status.Detail}", ex);
-        }
+            WorkflowId = workflowId,
+            SubCase = subCase
+        }));
     }
 
     /// <summary>
@@ -1676,21 +1213,13 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<InsertActionResponse> InsertActionAsync(int type, int stepId, int target, int data)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.InsertActionAsync(new InsertActionRequest
         {
-            var request = new InsertActionRequest
-            {
-                Type = type,
-                StepId = stepId,
-                Target = target,
-                Data = data
-            };
-            return await _client.InsertActionAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to insert action: {ex.Status.Detail}", ex);
-        }
+            Type = type,
+            StepId = stepId,
+            Target = target,
+            Data = data
+        }));
     }
 
     /// <summary>
@@ -1704,21 +1233,13 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<InsertOptionActionResponse> InsertOptionActionAsync(int type, int wsoid, int target, int data)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.InsertOptionActionAsync(new InsertOptionActionRequest
         {
-            var request = new InsertOptionActionRequest
-            {
-                Type = type,
-                Wsoid = wsoid,
-                Target = target,
-                Data = data
-            };
-            return await _client.InsertOptionActionAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to insert option action: {ex.Status.Detail}", ex);
-        }
+            Type = type,
+            Wsoid = wsoid,
+            Target = target,
+            Data = data
+        }));
     }
 
     #endregion
@@ -1733,15 +1254,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<DeleteLogByIdResponse> DeleteLogByIdAsync(int logId)
     {
-        try
-        {
-            var request = new DeleteLogByIdRequest { LogId = logId };
-            return await _client.DeleteLogByIdAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to delete log by ID: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.DeleteLogByIdAsync(new DeleteLogByIdRequest { LogId = logId }));
     }
 
     /// <summary>
@@ -1752,15 +1265,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<FindProcessLastExecutionDateResponse> FindProcessLastExecutionDateAsync(string processName)
     {
-        try
-        {
-            var request = new FindProcessLastExecutionDateRequest { ProcessName = processName };
-            return await _client.FindProcessLastExecutionDateAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to find process last execution date: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.FindProcessLastExecutionDateAsync(new FindProcessLastExecutionDateRequest { ProcessName = processName }));
     }
 
     /// <summary>
@@ -1771,9 +1276,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<ProcessLastExecutionDateItem> FindProcessLastExecutionDateStreamAsync(string processName)
     {
-        var request = new FindProcessLastExecutionDateRequest { ProcessName = processName };
-
-        using var call = _client.FindProcessLastExecutionDateStream(request);
+        using var call = _client.FindProcessLastExecutionDateStream(new FindProcessLastExecutionDateRequest { ProcessName = processName });
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -1787,15 +1290,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetAllLogsResponse> GetAllLogsAsync()
     {
-        try
-        {
-            var request = new EmptyRequest();
-            return await _client.GetAllLogsAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve all logs: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetAllLogsAsync(new EmptyRequest()));
     }
 
     /// <summary>
@@ -1805,9 +1300,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<LogItem> GetAllLogsStreamAsync()
     {
-        var request = new EmptyRequest();
-
-        using var call = _client.GetAllLogsStream(request);
+        using var call = _client.GetAllLogsStream(new EmptyRequest());
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -1824,20 +1317,12 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<InsertLogResponse> InsertLogAsync(string processName, string executionDate, string message)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.InsertLogAsync(new InsertLogRequest
         {
-            var request = new InsertLogRequest
-            {
-                ProcessName = processName,
-                ExecutionDate = executionDate,
-                Message = message
-            };
-            return await _client.InsertLogAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to insert log: {ex.Status.Detail}", ex);
-        }
+            ProcessName = processName,
+            ExecutionDate = executionDate,
+            Message = message
+        }));
     }
 
     /// <summary>
@@ -1848,15 +1333,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<IsProcessActiveResponse> IsProcessActiveAsync(string processName)
     {
-        try
-        {
-            var request = new IsProcessActiveRequest { ProcessName = processName };
-            return await _client.IsProcessActiveAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to check if process is active: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.IsProcessActiveAsync(new IsProcessActiveRequest { ProcessName = processName }));
     }
 
     /// <summary>
@@ -1867,9 +1344,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<ProcessActiveItem> IsProcessActiveStreamAsync(string processName)
     {
-        var request = new IsProcessActiveRequest { ProcessName = processName };
-
-        using var call = _client.IsProcessActiveStream(request);
+        using var call = _client.IsProcessActiveStream(new IsProcessActiveRequest { ProcessName = processName });
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -1888,15 +1363,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowByIdResponse> GetWorkflowByIdAsync(int workflowId)
     {
-        try
-        {
-            var request = new GetWorkflowByIdRequest { WorkflowId = workflowId };
-            return await _client.GetWorkflowByIdAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve workflow by ID: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowByIdAsync(new GetWorkflowByIdRequest { WorkflowId = workflowId }));
     }
 
     /// <summary>
@@ -1907,9 +1374,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<WorkflowByIdItem> GetWorkflowByIdStreamAsync(int workflowId)
     {
-        var request = new GetWorkflowByIdRequest { WorkflowId = workflowId };
-
-        using var call = _client.GetWorkflowByIdStream(request);
+        using var call = _client.GetWorkflowByIdStream(new GetWorkflowByIdRequest { WorkflowId = workflowId });
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -1925,19 +1390,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowsByRefIdResponse> GetWorkflowsByRefIdAsync(int refId, int module)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowsByRefIdAsync(new GetWorkflowsByRefIdRequest
         {
-            var request = new GetWorkflowsByRefIdRequest
-            {
-                RefId = refId,
-                Module = module
-            };
-            return await _client.GetWorkflowsByRefIdAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve workflows by ref ID: {ex.Status.Detail}", ex);
-        }
+            RefId = refId,
+            Module = module
+        }));
     }
 
     /// <summary>
@@ -1949,13 +1406,12 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<WorkflowByRefIdItem> GetWorkflowsByRefIdStreamAsync(int refId, int module)
     {
-        var request = new GetWorkflowsByRefIdRequest
+        using var call = _client.GetWorkflowsByRefIdStream(new GetWorkflowsByRefIdRequest
         {
             RefId = refId,
             Module = module
-        };
+        });
 
-        using var call = _client.GetWorkflowsByRefIdStream(request);
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -1972,20 +1428,12 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowsByRefIdAndTypeResponse> GetWorkflowsByRefIdAndTypeAsync(int refId, int module, int workflowType)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowsByRefIdAndTypeAsync(new GetWorkflowsByRefIdAndTypeRequest
         {
-            var request = new GetWorkflowsByRefIdAndTypeRequest
-            {
-                RefId = refId,
-                Module = module,
-                WorkflowType = workflowType
-            };
-            return await _client.GetWorkflowsByRefIdAndTypeAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve workflows by ref ID and type: {ex.Status.Detail}", ex);
-        }
+            RefId = refId,
+            Module = module,
+            WorkflowType = workflowType
+        }));
     }
 
     /// <summary>
@@ -1998,14 +1446,13 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<WorkflowByRefIdAndTypeItem> GetWorkflowsByRefIdAndTypeStreamAsync(int refId, int module, int workflowType)
     {
-        var request = new GetWorkflowsByRefIdAndTypeRequest
+        using var call = _client.GetWorkflowsByRefIdAndTypeStream(new GetWorkflowsByRefIdAndTypeRequest
         {
             RefId = refId,
             Module = module,
             WorkflowType = workflowType
-        };
+        });
 
-        using var call = _client.GetWorkflowsByRefIdAndTypeStream(request);
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -2019,15 +1466,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowTypesResponse> GetWorkflowTypesAsync()
     {
-        try
-        {
-            var request = new EmptyRequest();
-            return await _client.GetWorkflowTypesAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve workflow types: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowTypesAsync(new EmptyRequest()));
     }
 
     /// <summary>
@@ -2037,9 +1476,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<WorkflowTypeItem> GetWorkflowTypesStreamAsync()
     {
-        var request = new EmptyRequest();
-
-        using var call = _client.GetWorkflowTypesStream(request);
+        using var call = _client.GetWorkflowTypesStream(new EmptyRequest());
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -2058,22 +1495,14 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<InsertWorkflowResponse> InsertWorkflowAsync(int refId, int module, int workflowType, string workflowText, int userId)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.InsertWorkflowAsync(new InsertWorkflowRequest
         {
-            var request = new InsertWorkflowRequest
-            {
-                RefId = refId,
-                Module = module,
-                WorkflowType = workflowType,
-                WorkflowText = workflowText,
-                UserId = userId
-            };
-            return await _client.InsertWorkflowAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to insert workflow: {ex.Status.Detail}", ex);
-        }
+            RefId = refId,
+            Module = module,
+            WorkflowType = workflowType,
+            WorkflowText = workflowText,
+            UserId = userId
+        }));
     }
 
     /// <summary>
@@ -2086,20 +1515,12 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<UpdateWorkflowResponse> UpdateWorkflowAsync(int workflowId, string workflowText, int userId)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.UpdateWorkflowAsync(new UpdateWorkflowRequest
         {
-            var request = new UpdateWorkflowRequest
-            {
-                WorkflowId = workflowId,
-                WorkflowText = workflowText,
-                UserId = userId
-            };
-            return await _client.UpdateWorkflowAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to update workflow: {ex.Status.Detail}", ex);
-        }
+            WorkflowId = workflowId,
+            WorkflowText = workflowText,
+            UserId = userId
+        }));
     }
 
     #endregion
@@ -2114,15 +1535,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkstatusByIdResponse> GetWorkstatusByIdAsync(int workstatusId)
     {
-        try
-        {
-            var request = new GetWorkstatusByIdRequest { WorkstatusId = workstatusId };
-            return await _client.GetWorkstatusByIdAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve workstatus by ID: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkstatusByIdAsync(new GetWorkstatusByIdRequest { WorkstatusId = workstatusId }));
     }
 
     /// <summary>
@@ -2133,9 +1546,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<WorkstatusByIdItem> GetWorkstatusByIdStreamAsync(int workstatusId)
     {
-        var request = new GetWorkstatusByIdRequest { WorkstatusId = workstatusId };
-
-        using var call = _client.GetWorkstatusByIdStream(request);
+        using var call = _client.GetWorkstatusByIdStream(new GetWorkstatusByIdRequest { WorkstatusId = workstatusId });
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -2151,19 +1562,11 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkstatusesByRefIdResponse> GetWorkstatusesByRefIdAsync(int refId, int module)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkstatusesByRefIdAsync(new GetWorkstatusesByRefIdRequest
         {
-            var request = new GetWorkstatusesByRefIdRequest
-            {
-                RefId = refId,
-                Module = module
-            };
-            return await _client.GetWorkstatusesByRefIdAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve workstatuses by ref ID: {ex.Status.Detail}", ex);
-        }
+            RefId = refId,
+            Module = module
+        }));
     }
 
     /// <summary>
@@ -2175,13 +1578,12 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<WorkstatusByRefIdItem> GetWorkstatusesByRefIdStreamAsync(int refId, int module)
     {
-        var request = new GetWorkstatusesByRefIdRequest
+        using var call = _client.GetWorkstatusesByRefIdStream(new GetWorkstatusesByRefIdRequest
         {
             RefId = refId,
             Module = module
-        };
+        });
 
-        using var call = _client.GetWorkstatusesByRefIdStream(request);
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -2198,20 +1600,12 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkstatusesByRefIdAndTypeResponse> GetWorkstatusesByRefIdAndTypeAsync(int refId, int module, int workstatusType)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkstatusesByRefIdAndTypeAsync(new GetWorkstatusesByRefIdAndTypeRequest
         {
-            var request = new GetWorkstatusesByRefIdAndTypeRequest
-            {
-                RefId = refId,
-                Module = module,
-                WorkstatusType = workstatusType
-            };
-            return await _client.GetWorkstatusesByRefIdAndTypeAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve workstatuses by ref ID and type: {ex.Status.Detail}", ex);
-        }
+            RefId = refId,
+            Module = module,
+            WorkstatusType = workstatusType
+        }));
     }
 
     /// <summary>
@@ -2224,14 +1618,13 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<WorkstatusByRefIdAndTypeItem> GetWorkstatusesByRefIdAndTypeStreamAsync(int refId, int module, int workstatusType)
     {
-        var request = new GetWorkstatusesByRefIdAndTypeRequest
+        using var call = _client.GetWorkstatusesByRefIdAndTypeStream(new GetWorkstatusesByRefIdAndTypeRequest
         {
             RefId = refId,
             Module = module,
             WorkstatusType = workstatusType
-        };
+        });
 
-        using var call = _client.GetWorkstatusesByRefIdAndTypeStream(request);
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -2245,15 +1638,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkstatusTypesResponse> GetWorkstatusTypesAsync()
     {
-        try
-        {
-            var request = new EmptyRequest();
-            return await _client.GetWorkstatusTypesAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to retrieve workstatus types: {ex.Status.Detail}", ex);
-        }
+        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkstatusTypesAsync(new EmptyRequest()));
     }
 
     /// <summary>
@@ -2263,9 +1648,7 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<WorkstatusTypeItem> GetWorkstatusTypesStreamAsync()
     {
-        var request = new EmptyRequest();
-
-        using var call = _client.GetWorkstatusTypesStream(request);
+        using var call = _client.GetWorkstatusTypesStream(new EmptyRequest());
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -2284,22 +1667,14 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<InsertWorkstatusResponse> InsertWorkstatusAsync(int refId, int module, int workstatusType, string workstatusText, int userId)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.InsertWorkstatusAsync(new InsertWorkstatusRequest
         {
-            var request = new InsertWorkstatusRequest
-            {
-                RefId = refId,
-                Module = module,
-                WorkstatusType = workstatusType,
-                WorkstatusText = workstatusText,
-                UserId = userId
-            };
-            return await _client.InsertWorkstatusAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to insert workstatus: {ex.Status.Detail}", ex);
-        }
+            RefId = refId,
+            Module = module,
+            WorkstatusType = workstatusType,
+            WorkstatusText = workstatusText,
+            UserId = userId
+        }));
     }
 
     /// <summary>
@@ -2312,20 +1687,12 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<UpdateWorkstatusResponse> UpdateWorkstatusAsync(int workstatusId, string workstatusText, int userId)
     {
-        try
+        return await _retryPolicy.ExecuteAsync(async () => await _client.UpdateWorkstatusAsync(new UpdateWorkstatusRequest
         {
-            var request = new UpdateWorkstatusRequest
-            {
-                WorkstatusId = workstatusId,
-                WorkstatusText = workstatusText,
-                UserId = userId
-            };
-            return await _client.UpdateWorkstatusAsync(request);
-        }
-        catch (Grpc.Core.RpcException ex)
-        {
-            throw new Exception($"Failed to update workstatus: {ex.Status.Detail}", ex);
-        }
+            WorkstatusId = workstatusId,
+            WorkstatusText = workstatusText,
+            UserId = userId
+        }));
     }
 
     #endregion
