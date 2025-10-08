@@ -328,3 +328,4 @@ C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.Serve
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.Server\bin\Debug\net9.0\Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore.dll
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.Server\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Abstractions.dll
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.Server\bin\Debug\net9.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.Server\obj\Debug\net9.0\AF.ECT.Server.sourcelink.json

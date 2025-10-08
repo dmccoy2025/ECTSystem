@@ -27,7 +27,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AF.ECT.AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dcab991b8d21472ed633220a76b7e8680f9906a2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c38c46da00998f27b51b88c9089441196b291f98")]
 [assembly: System.Reflection.AssemblyProductAttribute("AF.ECT.AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AF.ECT.AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

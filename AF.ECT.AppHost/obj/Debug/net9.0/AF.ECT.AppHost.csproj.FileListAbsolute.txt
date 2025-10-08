@@ -129,3 +129,4 @@ C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHo
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost\obj\Debug\net9.0\AF.ECT.AppHost.pdb
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost\obj\Debug\net9.0\AF.ECT.AppHost.genruntimeconfig.cache
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost\obj\Debug\net9.0\ref\AF.ECT.AppHost.dll
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost\obj\Debug\net9.0\AF.ECT.AppHost.sourcelink.json

@@ -10,3 +10,4 @@ C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.Servi
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.ServiceDefaults\obj\Debug\net9.0\refint\AF.ECT.ServiceDefaults.dll
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.ServiceDefaults\obj\Debug\net9.0\AF.ECT.ServiceDefaults.pdb
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.ServiceDefaults\obj\Debug\net9.0\ref\AF.ECT.ServiceDefaults.dll
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.ServiceDefaults\obj\Debug\net9.0\AF.ECT.ServiceDefaults.sourcelink.json

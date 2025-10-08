@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "W1oYxanswk4=",
+  "dgSpecHash": "VUbawoUUM7g=",
   "success": true,
   "projectFilePath": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\AF.ECT.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DonellMcCoy\\.nuget\\packages\\grpc.core.api\\2.66.0\\grpc.core.api.2.66.0.nupkg.sha512",
     "C:\\Users\\DonellMcCoy\\.nuget\\packages\\grpc.net.client\\2.66.0\\grpc.net.client.2.66.0.nupkg.sha512",
+    "C:\\Users\\DonellMcCoy\\.nuget\\packages\\grpc.net.client.web\\2.60.0\\grpc.net.client.web.2.60.0.nupkg.sha512",
     "C:\\Users\\DonellMcCoy\\.nuget\\packages\\grpc.net.common\\2.66.0\\grpc.net.common.2.66.0.nupkg.sha512",
     "C:\\Users\\DonellMcCoy\\.nuget\\packages\\microsoft.aspnetcore.authorization\\9.0.9\\microsoft.aspnetcore.authorization.9.0.9.nupkg.sha512",
     "C:\\Users\\DonellMcCoy\\.nuget\\packages\\microsoft.aspnetcore.components\\9.0.9\\microsoft.aspnetcore.components.9.0.9.nupkg.sha512",
@@ -33,6 +34,8 @@
     "C:\\Users\\DonellMcCoy\\.nuget\\packages\\microsoft.jsinterop.webassembly\\9.0.9\\microsoft.jsinterop.webassembly.9.0.9.nupkg.sha512",
     "C:\\Users\\DonellMcCoy\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.9\\microsoft.net.illink.tasks.9.0.9.nupkg.sha512",
     "C:\\Users\\DonellMcCoy\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\9.0.9\\microsoft.net.sdk.webassembly.pack.9.0.9.nupkg.sha512",
+    "C:\\Users\\DonellMcCoy\\.nuget\\packages\\polly\\8.3.1\\polly.8.3.1.nupkg.sha512",
+    "C:\\Users\\DonellMcCoy\\.nuget\\packages\\polly.core\\8.3.1\\polly.core.8.3.1.nupkg.sha512",
     "C:\\Users\\DonellMcCoy\\.nuget\\packages\\radzen.blazor\\8.0.3\\radzen.blazor.8.0.3.nupkg.sha512"
   ],
   "logs": []

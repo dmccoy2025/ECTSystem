@@ -25,3 +25,4 @@ C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.Share
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.Shared\obj\Debug\net9.0\refint\AF.ECT.Shared.dll
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.Shared\obj\Debug\net9.0\AF.ECT.Shared.pdb
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.Shared\obj\Debug\net9.0\ref\AF.ECT.Shared.dll
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.Shared\obj\Debug\net9.0\AF.ECT.Shared.sourcelink.json
