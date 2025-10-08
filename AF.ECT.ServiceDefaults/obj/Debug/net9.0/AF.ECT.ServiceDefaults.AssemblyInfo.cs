@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AF.ECT.ServiceDefaults")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+97253254e6ed86a5fba63202b49f5610304a0f6e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f568ebaf23f7836f2401dae310f2318d6adb4b26")]
 [assembly: System.Reflection.AssemblyProductAttribute("AF.ECT.ServiceDefaults")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AF.ECT.ServiceDefaults")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
