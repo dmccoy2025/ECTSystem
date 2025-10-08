@@ -1,0 +1,114 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BFAC16AC-C393-8C6C-EC0E-44861D7F6619}|AF.ECT.Client\\AF.ECT.Client.csproj|c:\\users\\donellmccoy\\source\\repos2\\electroniccasetracking\\ectsystem\\af.ect.client\\layout\\mainlayout.razor||{93FA4DC3-61EC-47AF-B0BA-50CAD3CAF049}",
+      "RelativeMoniker": "D:0:0:{BFAC16AC-C393-8C6C-EC0E-44861D7F6619}|AF.ECT.Client\\AF.ECT.Client.csproj|solutionrelative:af.ect.client\\layout\\mainlayout.razor||{93FA4DC3-61EC-47AF-B0BA-50CAD3CAF049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFAC16AC-C393-8C6C-EC0E-44861D7F6619}|AF.ECT.Client\\AF.ECT.Client.csproj|c:\\users\\donellmccoy\\source\\repos2\\electroniccasetracking\\ectsystem\\af.ect.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFAC16AC-C393-8C6C-EC0E-44861D7F6619}|AF.ECT.Client\\AF.ECT.Client.csproj|solutionrelative:af.ect.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFAC16AC-C393-8C6C-EC0E-44861D7F6619}|AF.ECT.Client\\AF.ECT.Client.csproj|c:\\users\\donellmccoy\\source\\repos2\\electroniccasetracking\\ectsystem\\af.ect.client\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BFAC16AC-C393-8C6C-EC0E-44861D7F6619}|AF.ECT.Client\\AF.ECT.Client.csproj|solutionrelative:af.ect.client\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFAC16AC-C393-8C6C-EC0E-44861D7F6619}|AF.ECT.Client\\AF.ECT.Client.csproj|c:\\users\\donellmccoy\\source\\repos2\\electroniccasetracking\\ectsystem\\af.ect.client\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BFAC16AC-C393-8C6C-EC0E-44861D7F6619}|AF.ECT.Client\\AF.ECT.Client.csproj|solutionrelative:af.ect.client\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\Program.cs",
+              "RelativeDocumentMoniker": "AF.ECT.Client\\Program.cs",
+              "ToolTip": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\Program.cs",
+              "RelativeToolTip": "AF.ECT.Client\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T23:55:58.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "AF.ECT.Client\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "AF.ECT.Client\\Layout\\MainLayout.razor",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-07T23:55:44.883Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "AF.ECT.Client\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\Properties\\launchSettings.json",
+              "RelativeToolTip": "AF.ECT.Client\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-07T23:51:16.131Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "AF.ECT.Client\\wwwroot\\index.html",
+              "ToolTip": "C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Client\\wwwroot\\index.html",
+              "RelativeToolTip": "AF.ECT.Client\\wwwroot\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-10-07T23:50:10.853Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

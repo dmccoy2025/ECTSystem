@@ -1,0 +1,2 @@
+C:\Users\DonellMcCoy\source\repos\ElectronicCaseTracking\ECTSystem\AF.ECT.Client\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\DonellMcCoy\source\repos\ElectronicCaseTracking\ECTSystem\AF.ECT.Client\obj\Debug\net9.0\staticwebassets.build.json

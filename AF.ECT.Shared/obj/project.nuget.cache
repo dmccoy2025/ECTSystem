@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "p/KSOkyYGfk=",
+  "success": true,
+  "projectFilePath": "c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.Shared\\AF.ECT.Shared.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\DonellMcCoy\\.nuget\\packages\\google.api.commonprotos\\2.16.0\\google.api.commonprotos.2.16.0.nupkg.sha512",
+    "C:\\Users\\DonellMcCoy\\.nuget\\packages\\google.protobuf\\3.28.2\\google.protobuf.3.28.2.nupkg.sha512",
+    "C:\\Users\\DonellMcCoy\\.nuget\\packages\\grpc.core.api\\2.66.0\\grpc.core.api.2.66.0.nupkg.sha512",
+    "C:\\Users\\DonellMcCoy\\.nuget\\packages\\grpc.net.client\\2.66.0\\grpc.net.client.2.66.0.nupkg.sha512",
+    "C:\\Users\\DonellMcCoy\\.nuget\\packages\\grpc.net.common\\2.66.0\\grpc.net.common.2.66.0.nupkg.sha512",
+    "C:\\Users\\DonellMcCoy\\.nuget\\packages\\grpc.tools\\2.66.0\\grpc.tools.2.66.0.nupkg.sha512",
+    "C:\\Users\\DonellMcCoy\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

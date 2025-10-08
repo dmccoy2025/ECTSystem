@@ -1,0 +1,18 @@
+﻿@inherits LayoutComponentBase
+<RadzenComponents />
+<RadzenLayout>
+<RadzenHeader>
+    <RadzenText Text="Electronic Case Tracking System" />
+</RadzenHeader>
+    <RadzenSidebar>
+        <RadzenPanelMenu>
+            <RadzenPanelMenuItem Text="Home" Icon="home" Path="/" />
+            <RadzenPanelMenuItem Text="Cases" Icon="folder" Path="/cases" />
+            <RadzenPanelMenuItem Text="Reports" Icon="report" Path="/reports" />
+            <RadzenPanelMenuItem Text="Settings" Icon="settings" Path="/settings" />
+        </RadzenPanelMenu>
+    </RadzenSidebar>
+    <RadzenBody>
+        @Body
+    </RadzenBody>
+</RadzenLayout>

@@ -1,0 +1,2398 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AF.ECT.Client</name>
+    </assembly>
+    <members>
+        <member name="T:AF.ECT.Client.Layout.MainLayout">
+            <summary>
+            Main layout component for the Radzen Blazor application.
+            </summary>
+            <remarks>
+            This component provides the overall page structure including navigation,
+            sidebar, and common UI elements. It manages the sidebar expansion state
+            and provides access to various Radzen services.
+            </remarks>
+        </member>
+        <member name="P:AF.ECT.Client.Layout.MainLayout.JSRuntime">
+            <summary>
+            Gets or sets the JavaScript runtime for client-side interop operations.
+            </summary>
+            <value>The JSRuntime instance for executing JavaScript code.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Layout.MainLayout.NavigationManager">
+            <summary>
+            Gets or sets the navigation manager for handling page navigation.
+            </summary>
+            <value>The NavigationManager instance for URI navigation and location services.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Layout.MainLayout.DialogService">
+            <summary>
+            Gets or sets the dialog service for displaying modal dialogs.
+            </summary>
+            <value>The DialogService instance for showing dialogs and modals.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Layout.MainLayout.TooltipService">
+            <summary>
+            Gets or sets the tooltip service for displaying tooltips.
+            </summary>
+            <value>The TooltipService instance for managing tooltip display.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Layout.MainLayout.ContextMenuService">
+            <summary>
+            Gets or sets the context menu service for displaying context menus.
+            </summary>
+            <value>The ContextMenuService instance for managing context menu display.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Layout.MainLayout.NotificationService">
+            <summary>
+            Gets or sets the notification service for displaying notifications.
+            </summary>
+            <value>The NotificationService instance for showing user notifications.</value>
+        </member>
+        <member name="F:AF.ECT.Client.Layout.MainLayout.sidebarExpanded">
+            <summary>
+            Gets or sets whether the sidebar is currently expanded.
+            </summary>
+            <value>true if the sidebar is expanded; otherwise, false.</value>
+        </member>
+        <member name="M:AF.ECT.Client.Layout.MainLayout.SidebarToggleClick">
+            <summary>
+            Toggles the sidebar expansion state.
+            </summary>
+            <remarks>
+            This method is called when the user clicks the sidebar toggle button.
+            It switches the sidebar between expanded and collapsed states.
+            </remarks>
+        </member>
+        <member name="T:AF.ECT.Client.Pages.Administration.UserAccounts">
+            <summary>
+            Component for managing user accounts in the administration section.
+            </summary>
+            <remarks>
+            This component provides functionality for viewing, creating, editing, and
+            managing user accounts within the application. It includes user listing,
+            account creation, role management, and account status controls.
+            </remarks>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Administration.UserAccounts.JSRuntime">
+            <summary>
+            Gets or sets the JavaScript runtime for client-side interop operations.
+            </summary>
+            <value>The JSRuntime instance for executing JavaScript code.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Administration.UserAccounts.NavigationManager">
+            <summary>
+            Gets or sets the navigation manager for handling page navigation.
+            </summary>
+            <value>The NavigationManager instance for URI navigation and location services.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Administration.UserAccounts.DialogService">
+            <summary>
+            Gets or sets the dialog service for displaying modal dialogs.
+            </summary>
+            <value>The DialogService instance for showing dialogs and modals.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Administration.UserAccounts.TooltipService">
+            <summary>
+            Gets or sets the tooltip service for displaying tooltips.
+            </summary>
+            <value>The TooltipService instance for managing tooltip display.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Administration.UserAccounts.ContextMenuService">
+            <summary>
+            Gets or sets the context menu service for displaying context menus.
+            </summary>
+            <value>The ContextMenuService instance for managing context menu display.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Administration.UserAccounts.NotificationService">
+            <summary>
+            Gets or sets the notification service for displaying notifications.
+            </summary>
+            <value>The NotificationService instance for showing user notifications.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Administration.UserAccounts.WorkflowClient">
+            <summary>
+            Gets or sets the injected WorkflowClient instance, which provides access to workflow-related operations and services.
+            </summary>
+        </member>
+        <member name="T:AF.ECT.Client.Pages.Audits.AuditSearch">
+            <summary>
+            Component for searching and displaying audit records.
+            Provides functionality to search, filter, and view audit logs and system activity records.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Audits.AuditSearch.JSRuntime">
+            <summary>
+            Gets or sets the JavaScript runtime instance for client-side JavaScript interop operations.
+            Used for executing JavaScript functions and accessing browser APIs from the component.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Audits.AuditSearch.NavigationManager">
+            <summary>
+            Gets or sets the navigation manager for handling URI navigation and query string operations.
+            Enables programmatic navigation between pages and manipulation of the browser's URL.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Audits.AuditSearch.DialogService">
+            <summary>
+            Gets or sets the dialog service for displaying modal dialogs and confirmation messages.
+            Used for showing popups, alerts, and interactive dialog components within the application.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Audits.AuditSearch.TooltipService">
+            <summary>
+            Gets or sets the tooltip service for displaying contextual help and information tooltips.
+            Provides hover-based information display for UI elements and form controls.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Audits.AuditSearch.ContextMenuService">
+            <summary>
+            Gets or sets the context menu service for displaying right-click context menus.
+            Enables context-sensitive menu options based on user interactions and component state.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Audits.AuditSearch.NotificationService">
+            <summary>
+            Gets or sets the notification service for displaying toast notifications and status messages.
+            Used for showing success, error, warning, and information messages to the user.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Audits.AuditSearch.WorkflowClient">
+            <summary>
+            Gets or sets the injected WorkflowClient instance, which provides access to workflow-related operations and services.
+            </summary>
+        </member>
+        <member name="T:AF.ECT.Client.Pages.Audits.MyAudits">
+            <summary>
+            Component for displaying and managing the current user's audit records.
+            Provides personalized view of audit logs and system activities associated with the logged-in user.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Audits.MyAudits.JSRuntime">
+            <summary>
+            Gets or sets the JavaScript runtime instance for client-side JavaScript interop operations.
+            Used for executing JavaScript functions and accessing browser APIs from the component.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Audits.MyAudits.NavigationManager">
+            <summary>
+            Gets or sets the navigation manager for handling URI navigation and query string operations.
+            Enables programmatic navigation between pages and manipulation of the browser's URL.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Audits.MyAudits.DialogService">
+            <summary>
+            Gets or sets the dialog service for displaying modal dialogs and confirmation messages.
+            Used for showing popups, alerts, and interactive dialog components within the application.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Audits.MyAudits.TooltipService">
+            <summary>
+            Gets or sets the tooltip service for displaying contextual help and information tooltips.
+            Provides hover-based information display for UI elements and form controls.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Audits.MyAudits.ContextMenuService">
+            <summary>
+            Gets or sets the context menu service for displaying right-click context menus.
+            Enables context-sensitive menu options based on user interactions and component state.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Audits.MyAudits.NotificationService">
+            <summary>
+            Gets or sets the notification service for displaying toast notifications and status messages.
+            Used for showing success, error, warning, and information messages to the user.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Audits.MyAudits.WorkflowClient">
+            <summary>
+            Gets or sets the injected WorkflowClient instance, which provides access to workflow-related operations and services.
+            </summary>
+        </member>
+        <member name="T:AF.ECT.Client.Pages.Cases.CaseSearch">
+            <summary>
+            Component for searching and displaying case records.
+            Provides functionality to search, filter, and manage case information within the application.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Cases.CaseSearch.JSRuntime">
+            <summary>
+            Gets or sets the JavaScript runtime instance for client-side JavaScript interop operations.
+            Used for executing JavaScript functions and accessing browser APIs from the component.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Cases.CaseSearch.NavigationManager">
+            <summary>
+            Gets or sets the navigation manager for handling URI navigation and query string operations.
+            Enables programmatic navigation between pages and manipulation of the browser's URL.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Cases.CaseSearch.DialogService">
+            <summary>
+            Gets or sets the dialog service for displaying modal dialogs and confirmation messages.
+            Used for showing popups, alerts, and interactive dialog components within the application.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Cases.CaseSearch.TooltipService">
+            <summary>
+            Gets or sets the tooltip service for displaying contextual help and information tooltips.
+            Provides hover-based information display for UI elements and form controls.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Cases.CaseSearch.ContextMenuService">
+            <summary>
+            Gets or sets the context menu service for displaying right-click context menus.
+            Enables context-sensitive menu options based on user interactions and component state.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Cases.CaseSearch.NotificationService">
+            <summary>
+            Gets or sets the notification service for displaying toast notifications and status messages.
+            Used for showing success, error, warning, and information messages to the user.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Cases.CaseSearch.WorkflowClient">
+            <summary>
+            Gets or sets the injected WorkflowClient instance, which provides access to workflow-related operations and services.
+            </summary>
+        </member>
+        <member name="T:AF.ECT.Client.Pages.Cases.MyCases">
+            <summary>
+            Component for displaying and managing the current user's case records.
+            Provides personalized view of cases assigned to or owned by the logged-in user.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Cases.MyCases.JSRuntime">
+            <summary>
+            Gets or sets the JavaScript runtime instance for client-side JavaScript interop operations.
+            Used for executing JavaScript functions and accessing browser APIs from the component.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Cases.MyCases.NavigationManager">
+            <summary>
+            Gets or sets the navigation manager for handling URI navigation and query string operations.
+            Enables programmatic navigation between pages and manipulation of the browser's URL.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Cases.MyCases.DialogService">
+            <summary>
+            Gets or sets the dialog service for displaying modal dialogs and confirmation messages.
+            Used for showing popups, alerts, and interactive dialog components within the application.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Cases.MyCases.TooltipService">
+            <summary>
+            Gets or sets the tooltip service for displaying contextual help and information tooltips.
+            Provides hover-based information display for UI elements and form controls.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Cases.MyCases.ContextMenuService">
+            <summary>
+            Gets or sets the context menu service for displaying right-click context menus.
+            Enables context-sensitive menu options based on user interactions and component state.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Cases.MyCases.NotificationService">
+            <summary>
+            Gets or sets the notification service for displaying toast notifications and status messages.
+            Used for showing success, error, warning, and information messages to the user.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Cases.MyCases.WorkflowClient">
+            <summary>
+            Gets or sets the injected WorkflowClient instance, which provides access to workflow-related operations and services.
+            </summary>
+        </member>
+        <member name="T:AF.ECT.Client.Pages.Consultations.ConsultationSearch">
+            <summary>
+            Component for searching and displaying consultation records.
+            Provides functionality to search, filter, and manage consultation requests within the application.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Consultations.ConsultationSearch.JSRuntime">
+            <summary>
+            Gets or sets the JavaScript runtime instance for client-side JavaScript interop operations.
+            Used for executing JavaScript functions and accessing browser APIs from the component.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Consultations.ConsultationSearch.NavigationManager">
+            <summary>
+            Gets or sets the navigation manager for handling URI navigation and query string operations.
+            Enables programmatic navigation between pages and manipulation of the browser's URL.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Consultations.ConsultationSearch.DialogService">
+            <summary>
+            Gets or sets the dialog service for displaying modal dialogs and confirmation messages.
+            Used for showing popups, alerts, and interactive dialog components within the application.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Consultations.ConsultationSearch.TooltipService">
+            <summary>
+            Gets or sets the tooltip service for displaying contextual help and information tooltips.
+            Provides hover-based information display for UI elements and form controls.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Consultations.ConsultationSearch.ContextMenuService">
+            <summary>
+            Gets or sets the context menu service for displaying right-click context menus.
+            Enables context-sensitive menu options based on user interactions and component state.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Consultations.ConsultationSearch.NotificationService">
+            <summary>
+            Gets or sets the notification service for displaying toast notifications and status messages.
+            Used for showing success, error, warning, and information messages to the user.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Consultations.ConsultationSearch.WorkflowClient">
+            <summary>
+            Gets or sets the injected WorkflowClient instance, which provides access to workflow-related operations and services.
+            </summary>
+        </member>
+        <member name="T:AF.ECT.Client.Pages.Consultations.MyConsultations">
+            <summary>
+            Component for displaying and managing the current user's consultation records.
+            Provides personalized view of consultations assigned to or owned by the logged-in user.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Consultations.MyConsultations.JSRuntime">
+            <summary>
+            Gets or sets the JavaScript runtime instance for client-side JavaScript interop operations.
+            Used for executing JavaScript functions and accessing browser APIs from the component.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Consultations.MyConsultations.NavigationManager">
+            <summary>
+            Gets or sets the navigation manager for handling URI navigation and query string operations.
+            Enables programmatic navigation between pages and manipulation of the browser's URL.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Consultations.MyConsultations.DialogService">
+            <summary>
+            Gets or sets the dialog service for displaying modal dialogs and confirmation messages.
+            Used for showing popups, alerts, and interactive dialog components within the application.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Consultations.MyConsultations.TooltipService">
+            <summary>
+            Gets or sets the tooltip service for displaying contextual help and information tooltips.
+            Provides hover-based information display for UI elements and form controls.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Consultations.MyConsultations.ContextMenuService">
+            <summary>
+            Gets or sets the context menu service for displaying right-click context menus.
+            Enables context-sensitive menu options based on user interactions and component state.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Consultations.MyConsultations.NotificationService">
+            <summary>
+            Gets or sets the notification service for displaying toast notifications and status messages.
+            Used for showing success, error, warning, and information messages to the user.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Consultations.MyConsultations.WorkflowClient">
+            <summary>
+            Gets or sets the injected WorkflowClient instance, which provides access to workflow-related operations and services.
+            </summary>
+        </member>
+        <member name="T:AF.ECT.Client.Pages.Health">
+            <summary>
+            Component for displaying and monitoring application health status.
+            </summary>
+            <remarks>
+            This component provides real-time health monitoring by calling the server's
+            health check endpoints and displaying the results in a user-friendly interface.
+            It shows overall health status and individual service health checks.
+            </remarks>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Health.Http">
+            <summary>
+            Gets or sets the HTTP client for making requests to health check endpoints.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Health.WorkflowClient">
+            <summary>
+            Gets or sets the injected WorkflowClient instance, which provides access to workflow-related operations and services.
+            </summary>
+        </member>
+        <member name="M:AF.ECT.Client.Pages.Health.OnInitializedAsync">
+            <summary>
+            Initializes the component and performs the initial health check.
+            </summary>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Pages.Health.CheckHealth">
+            <summary>
+            Performs a health check by calling the server's health endpoint.
+            </summary>
+            <returns>A task representing the asynchronous operation.</returns>
+            <remarks>
+            This method updates the overall status, last checked time, and health check items
+            based on the response from the health check endpoint.
+            </remarks>
+        </member>
+        <member name="M:AF.ECT.Client.Pages.Health.GetBadgeStyle(System.String)">
+            <summary>
+            Gets the appropriate badge style for a health status.
+            </summary>
+            <param name="status">The health status string.</param>
+            <returns>The corresponding BadgeStyle for the status.</returns>
+        </member>
+        <member name="T:AF.ECT.Client.Pages.Health.HealthCheckItem">
+            <summary>
+            Represents an individual health check item for display.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Health.HealthCheckItem.Name">
+            <summary>
+            Gets or sets the name of the health check.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Health.HealthCheckItem.Status">
+            <summary>
+            Gets or sets the status of the health check.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Health.HealthCheckItem.Description">
+            <summary>
+            Gets or sets the description of the health check result.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Health.HealthCheckItem.Duration">
+            <summary>
+            Gets or sets the duration of the health check execution.
+            </summary>
+        </member>
+        <member name="T:AF.ECT.Client.Pages.Health.HealthCheckResponse">
+            <summary>
+            Represents the response from the health check endpoint.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Health.HealthCheckResponse.Status">
+            <summary>
+            Gets or sets the overall health status.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Health.HealthCheckResponse.Entries">
+            <summary>
+            Gets or sets the individual health check entries.
+            </summary>
+        </member>
+        <member name="T:AF.ECT.Client.Pages.Health.HealthCheckEntry">
+            <summary>
+            Represents an individual health check entry from the server response.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Health.HealthCheckEntry.Status">
+            <summary>
+            Gets or sets the status of this health check entry.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Health.HealthCheckEntry.Description">
+            <summary>
+            Gets or sets the description of this health check entry.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Health.HealthCheckEntry.Duration">
+            <summary>
+            Gets or sets the duration of this health check execution.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Help.Documentation.WorkflowClient">
+            <summary>
+            Gets or sets the injected WorkflowClient instance, which provides access to workflow-related operations and services.
+            </summary>
+        </member>
+        <member name="T:AF.ECT.Client.Pages.Index">
+            <summary>
+            Code-behind class for the Index page component.
+            </summary>
+            <remarks>
+            This component serves as the main landing page for the Radzen Blazor application
+            and provides access to various application features and services.
+            </remarks>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Index.JSRuntime">
+            <summary>
+            Gets or sets the JavaScript runtime for client-side interop operations.
+            </summary>
+            <value>The JSRuntime instance for executing JavaScript code.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Index.NavigationManager">
+            <summary>
+            Gets or sets the navigation manager for handling page navigation.
+            </summary>
+            <value>The NavigationManager instance for URI navigation and location services.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Index.DialogService">
+            <summary>
+            Gets or sets the dialog service for displaying modal dialogs.
+            </summary>
+            <value>The DialogService instance for showing dialogs and modals.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Index.TooltipService">
+            <summary>
+            Gets or sets the tooltip service for displaying tooltips.
+            </summary>
+            <value>The TooltipService instance for managing tooltip display.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Index.ContextMenuService">
+            <summary>
+            Gets or sets the context menu service for displaying context menus.
+            </summary>
+            <value>The ContextMenuService instance for managing context menu display.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Index.NotificationService">
+            <summary>
+            Gets or sets the notification service for displaying notifications.
+            </summary>
+            <value>The NotificationService instance for showing user notifications.</value>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Index.WorkflowClient">
+            <summary>
+            Gets or sets the injected WorkflowClient instance, which provides access to workflow-related operations and services.
+            </summary>
+        </member>
+        <member name="T:AF.ECT.Client.Pages.Reports.AdHocReports">
+            <summary>
+            Component for generating and displaying ad-hoc reports.
+            Provides functionality to create custom reports on-demand with configurable parameters and filters.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Reports.AdHocReports.JSRuntime">
+            <summary>
+            Gets or sets the JavaScript runtime instance for client-side JavaScript interop operations.
+            Used for executing JavaScript functions and accessing browser APIs from the component.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Reports.AdHocReports.NavigationManager">
+            <summary>
+            Gets or sets the navigation manager for handling URI navigation and query string operations.
+            Enables programmatic navigation between pages and manipulation of the browser's URL.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Reports.AdHocReports.DialogService">
+            <summary>
+            Gets or sets the dialog service for displaying modal dialogs and confirmation messages.
+            Used for showing popups, alerts, and interactive dialog components within the application.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Reports.AdHocReports.TooltipService">
+            <summary>
+            Gets or sets the tooltip service for displaying contextual help and information tooltips.
+            Provides hover-based information display for UI elements and form controls.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Reports.AdHocReports.ContextMenuService">
+            <summary>
+            Gets or sets the context menu service for displaying right-click context menus.
+            Enables context-sensitive menu options based on user interactions and component state.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Reports.AdHocReports.NotificationService">
+            <summary>
+            Gets or sets the notification service for displaying toast notifications and status messages.
+            Used for showing success, error, warning, and information messages to the user.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Reports.AdHocReports.WorkflowClient">
+            <summary>
+            Gets or sets the injected WorkflowClient instance, which provides access to workflow-related operations and services.
+            </summary>
+        </member>
+        <member name="T:AF.ECT.Client.Pages.Search.AppealRequestsSearch">
+            <summary>
+            Component for searching and displaying appeal requests.
+            Provides functionality to search, filter, and manage appeal requests within the application.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Search.AppealRequestsSearch.JSRuntime">
+            <summary>
+            Gets or sets the JavaScript runtime instance for client-side JavaScript interop operations.
+            Used for executing JavaScript functions and accessing browser APIs from the component.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Search.AppealRequestsSearch.NavigationManager">
+            <summary>
+            Gets or sets the navigation manager for handling URI navigation and query string operations.
+            Enables programmatic navigation between pages and manipulation of the browser's URL.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Search.AppealRequestsSearch.DialogService">
+            <summary>
+            Gets or sets the dialog service for displaying modal dialogs and confirmation messages.
+            Used for showing popups, alerts, and interactive dialog components within the application.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Search.AppealRequestsSearch.TooltipService">
+            <summary>
+            Gets or sets the tooltip service for displaying contextual help and information tooltips.
+            Provides hover-based information display for UI elements and form controls.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Search.AppealRequestsSearch.ContextMenuService">
+            <summary>
+            Gets or sets the context menu service for displaying right-click context menus.
+            Enables context-sensitive menu options based on user interactions and component state.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Search.AppealRequestsSearch.NotificationService">
+            <summary>
+            Gets or sets the notification service for displaying toast notifications and status messages.
+            Used for showing success, error, warning, and information messages to the user.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Search.AppealRequestsSearch.WorkflowClient">
+            <summary>
+            Gets or sets the injected WorkflowClient instance, which provides access to workflow-related operations and services.
+            </summary>
+        </member>
+        <member name="T:AF.ECT.Client.Pages.Search.ReinvestigationRequestsSearch">
+            <summary>
+            Component for searching and displaying reinvestigation requests.
+            Provides functionality to search, filter, and manage reinvestigation requests within the application.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Search.ReinvestigationRequestsSearch.JSRuntime">
+            <summary>
+            Gets or sets the JavaScript runtime instance for client-side JavaScript interop operations.
+            Used for executing JavaScript functions and accessing browser APIs from the component.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Search.ReinvestigationRequestsSearch.NavigationManager">
+            <summary>
+            Gets or sets the navigation manager for handling URI navigation and query string operations.
+            Enables programmatic navigation between pages and manipulation of the browser's URL.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Search.ReinvestigationRequestsSearch.DialogService">
+            <summary>
+            Gets or sets the dialog service for displaying modal dialogs and confirmation messages.
+            Used for showing popups, alerts, and interactive dialog components within the application.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Search.ReinvestigationRequestsSearch.TooltipService">
+            <summary>
+            Gets or sets the tooltip service for displaying contextual help and information tooltips.
+            Provides hover-based information display for UI elements and form controls.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Search.ReinvestigationRequestsSearch.ContextMenuService">
+            <summary>
+            Gets or sets the context menu service for displaying right-click context menus.
+            Enables context-sensitive menu options based on user interactions and component state.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Search.ReinvestigationRequestsSearch.NotificationService">
+            <summary>
+            Gets or sets the notification service for displaying toast notifications and status messages.
+            Used for showing success, error, warning, and information messages to the user.
+            </summary>
+        </member>
+        <member name="P:AF.ECT.Client.Pages.Search.ReinvestigationRequestsSearch.WorkflowClient">
+            <summary>
+            Gets or sets the injected WorkflowClient instance, which provides access to workflow-related operations and services.
+            </summary>
+        </member>
+        <member name="T:AF.ECT.Client.Services.IWorkflowClient">
+            <summary>
+            Interface for the GreeterClient service that provides gRPC communication with the server.
+            </summary>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetReinvestigationRequestsAsync(System.Nullable{System.Int32},System.Nullable{System.Boolean})">
+            <summary>
+            Retrieves reinvestigation requests with optional filtering.
+            </summary>
+            <param name="userId">Optional user ID filter.</param>
+            <param name="sarc">Optional SARC flag filter.</param>
+            <returns>A task representing the asynchronous operation, containing the reinvestigation requests response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetMailingListForLODAsync(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Retrieves mailing list for LOD with specified parameters.
+            </summary>
+            <param name="refId">The reference ID for the mailing list.</param>
+            <param name="groupId">The group ID for filtering.</param>
+            <param name="status">The status for filtering.</param>
+            <param name="callingService">The calling service identifier.</param>
+            <returns>A task representing the asynchronous operation, containing the mailing list response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetManagedUsersAsync(System.Nullable{System.Int32},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})">
+            <summary>
+            Retrieves managed users with specified filters.
+            </summary>
+            <param name="userid">The user ID filter.</param>
+            <param name="ssn">The SSN filter.</param>
+            <param name="name">The name filter.</param>
+            <param name="status">The status filter.</param>
+            <param name="role">The role filter.</param>
+            <param name="srchUnit">The search unit filter.</param>
+            <param name="showAllUsers">Whether to show all users.</param>
+            <returns>A task representing the asynchronous operation, containing the managed users response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetMembersUserIdAsync(System.String)">
+            <summary>
+            Retrieves the user ID for a member by their SSN.
+            </summary>
+            <param name="memberSsn">The member's SSN.</param>
+            <returns>A task representing the asynchronous operation, containing the member user ID response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetUserAltTitleAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves user alternate titles with specified parameters.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="groupId">The group ID.</param>
+            <returns>A task representing the asynchronous operation, containing the user alternate titles response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetUserAltTitleByGroupCompoAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves user alternate titles by group component.
+            </summary>
+            <param name="groupId">The group ID.</param>
+            <param name="workCompo">The work component.</param>
+            <returns>A task representing the asynchronous operation, containing the user alternate titles by group component response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetUserNameAsync(System.String,System.String)">
+            <summary>
+            Retrieves user names with specified filters.
+            </summary>
+            <param name="first">The first name filter.</param>
+            <param name="last">The last name filter.</param>
+            <returns>A task representing the asynchronous operation, containing the user names response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetUsersAltTitleByGroupAsync(System.Int32)">
+            <summary>
+            Retrieves users alternate titles by group.
+            </summary>
+            <param name="groupId">The group ID.</param>
+            <returns>A task representing the asynchronous operation, containing the users alternate titles by group response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetUsersOnlineAsync">
+            <summary>
+            Retrieves users who are currently online.
+            </summary>
+            <returns>A task representing the asynchronous operation, containing the users online response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetReinvestigationRequestsStreamAsync(System.Nullable{System.Int32},System.Nullable{System.Boolean})">
+            <summary>
+            Retrieves reinvestigation requests as a stream with optional filtering.
+            </summary>
+            <param name="userId">Optional user ID filter.</param>
+            <param name="sarc">Optional SARC flag filter.</param>
+            <returns>An asynchronous enumerable of reinvestigation request items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetMailingListForLODStreamAsync(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Retrieves mailing list for LOD as a stream with specified parameters.
+            </summary>
+            <param name="refId">The reference ID for the mailing list.</param>
+            <param name="groupId">The group ID for filtering.</param>
+            <param name="status">The status for filtering.</param>
+            <param name="callingService">The calling service identifier.</param>
+            <returns>An asynchronous enumerable of mailing list items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetManagedUsersStreamAsync(System.Nullable{System.Int32},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})">
+            <summary>
+            Retrieves managed users as a stream with specified filters.
+            </summary>
+            <param name="userid">The user ID filter.</param>
+            <param name="ssn">The SSN filter.</param>
+            <param name="name">The name filter.</param>
+            <param name="status">The status filter.</param>
+            <param name="role">The role filter.</param>
+            <param name="srchUnit">The search unit filter.</param>
+            <param name="showAllUsers">Whether to show all users.</param>
+            <returns>An asynchronous enumerable of managed user items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetUserAltTitleStreamAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves user alternate titles as a stream with specified parameters.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="groupId">The group ID.</param>
+            <returns>An asynchronous enumerable of user alternate title items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetUserAltTitleByGroupCompoStreamAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves user alternate titles by group component as a stream.
+            </summary>
+            <param name="groupId">The group ID.</param>
+            <param name="workCompo">The work component.</param>
+            <returns>An asynchronous enumerable of user alternate titles by group component items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetUserNameStreamAsync(System.String,System.String)">
+            <summary>
+            Retrieves user names as a stream with specified filters.
+            </summary>
+            <param name="first">The first name filter.</param>
+            <param name="last">The last name filter.</param>
+            <returns>An asynchronous enumerable of user name items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetUsersAltTitleByGroupStreamAsync(System.Int32)">
+            <summary>
+            Retrieves users alternate titles by group as a stream.
+            </summary>
+            <param name="groupId">The group ID.</param>
+            <returns>An asynchronous enumerable of users alternate titles by group items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetUsersOnlineStreamAsync">
+            <summary>
+            Retrieves users who are currently online as a stream.
+            </summary>
+            <returns>An asynchronous enumerable of users online items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWhoisAsync(System.Int32)">
+            <summary>
+            Retrieves WHOIS information for a user.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <returns>A task representing the asynchronous operation, containing the WHOIS response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.HasHQTechAccountAsync(System.Int32,System.String)">
+            <summary>
+            Checks if a user has HQ tech account.
+            </summary>
+            <param name="originUserId">The origin user ID.</param>
+            <param name="userEdipin">The user EDIPIN.</param>
+            <returns>A task representing the asynchronous operation, containing the HQ tech account response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.IsFinalStatusCodeAsync(System.Int32)">
+            <summary>
+            Checks if a status code is final.
+            </summary>
+            <param name="statusId">The status ID to check.</param>
+            <returns>A task representing the asynchronous operation, containing the final status code response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.LogoutAsync(System.Int32)">
+            <summary>
+            Logs out a user.
+            </summary>
+            <param name="userId">The user ID to logout.</param>
+            <returns>A task representing the asynchronous operation, containing the logout response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.RegisterUserAsync(System.Int32,System.String,System.Boolean,System.Int32,System.Int32,System.String)">
+            <summary>
+            Registers a new user.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="workCompo">The work component.</param>
+            <param name="receiveEmail">Whether to receive email.</param>
+            <param name="groupId">The group ID.</param>
+            <param name="accountStatus">The account status.</param>
+            <param name="expirationDate">The expiration date.</param>
+            <returns>A task representing the asynchronous operation, containing the user registration response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.RegisterUserRoleAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Registers a user role.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="groupId">The group ID.</param>
+            <param name="status">The status.</param>
+            <returns>A task representing the asynchronous operation, containing the user role registration response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.SearchMemberDataAsync(System.Int32,System.String,System.String,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Searches member data with specified parameters.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="ssn">The SSN.</param>
+            <param name="lastName">The last name.</param>
+            <param name="firstName">The first name.</param>
+            <param name="middleName">The middle name.</param>
+            <param name="srchUnit">The search unit.</param>
+            <param name="rptView">The report view.</param>
+            <returns>A task representing the asynchronous operation, containing the member data search response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.SearchMemberDataTestAsync(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Searches member data (test version) with specified parameters.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="ssn">The SSN.</param>
+            <param name="name">The name.</param>
+            <param name="srchUnit">The search unit.</param>
+            <param name="rptView">The report view.</param>
+            <returns>A task representing the asynchronous operation, containing the member data test search response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.UpdateAccountStatusAsync(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Updates account status for a user.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="accountStatus">The account status.</param>
+            <param name="expirationDate">The expiration date.</param>
+            <param name="comment">The comment.</param>
+            <returns>A task representing the asynchronous operation, containing the account status update response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.UpdateLoginAsync(System.Int32,System.String,System.String)">
+            <summary>
+            Updates login information for a user.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="sessionId">The session ID.</param>
+            <param name="remoteAddr">The remote address.</param>
+            <returns>A task representing the asynchronous operation, containing the login update response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.UpdateManagedSettingsAsync(System.Int32,System.String,System.Int32,System.Int32,System.String,System.Boolean,System.String)">
+            <summary>
+            Updates managed settings for a user.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="compo">The component.</param>
+            <param name="roleId">The role ID.</param>
+            <param name="groupId">The group ID.</param>
+            <param name="comment">The comment.</param>
+            <param name="receiveEmail">Whether to receive email.</param>
+            <param name="expirationDate">The expiration date.</param>
+            <returns>A task representing the asynchronous operation, containing the managed settings update response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.UpdateUserAltTitleAsync(System.Int32,System.Int32,System.String)">
+            <summary>
+            Updates user alternate title.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="groupId">The group ID.</param>
+            <param name="newTitle">The new title.</param>
+            <returns>A task representing the asynchronous operation, containing the user alternate title update response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.AddSignatureAsync(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Adds a signature to a workflow.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="moduleType">The module type.</param>
+            <param name="userId">The user ID.</param>
+            <param name="actionId">The action ID.</param>
+            <param name="groupId">The group ID.</param>
+            <param name="statusIn">The status in.</param>
+            <param name="statusOut">The status out.</param>
+            <returns>A task representing the asynchronous operation, containing the signature addition response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.CopyActionsAsync(System.Int32,System.Int32)">
+            <summary>
+            Copies actions from one workflow to another.
+            </summary>
+            <param name="destWsoid">The destination WSOID.</param>
+            <param name="srcWsoid">The source WSOID.</param>
+            <returns>A task representing the asynchronous operation, containing the action copy response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.CopyRulesAsync(System.Int32,System.Int32)">
+            <summary>
+            Copies rules from one workflow to another.
+            </summary>
+            <param name="destWsoid">The destination WSOID.</param>
+            <param name="srcWsoid">The source WSOID.</param>
+            <returns>A task representing the asynchronous operation, containing the rule copy response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.CopyWorkflowAsync(System.Int32,System.Int32)">
+            <summary>
+            Copies a workflow from one ID to another.
+            </summary>
+            <param name="fromId">The source workflow ID.</param>
+            <param name="toId">The destination workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow copy response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.DeleteStatusCodeAsync(System.Int32)">
+            <summary>
+            Deletes a status code.
+            </summary>
+            <param name="statusId">The status ID to delete.</param>
+            <returns>A task representing the asynchronous operation, containing the status code deletion response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetActionsByStepAsync(System.Int32)">
+            <summary>
+            Retrieves actions by step.
+            </summary>
+            <param name="stepId">The step ID.</param>
+            <returns>A task representing the asynchronous operation, containing the actions by step response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetActiveCasesAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves active cases with specified parameters.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="groupId">The group ID.</param>
+            <returns>A task representing the asynchronous operation, containing the active cases response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetAllFindingByReasonOfAsync">
+            <summary>
+            Retrieves all findings by reason of.
+            </summary>
+            <returns>A task representing the asynchronous operation, containing the all findings by reason of response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetAllLocksAsync">
+            <summary>
+            Retrieves all locks.
+            </summary>
+            <returns>A task representing the asynchronous operation, containing the all locks response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetCancelReasonsAsync(System.Int32,System.Boolean)">
+            <summary>
+            Retrieves cancel reasons for a workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <param name="isFormal">Whether it's formal.</param>
+            <returns>A task representing the asynchronous operation, containing the cancel reasons response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetCreatableByGroupAsync(System.String,System.Int32,System.Int32)">
+            <summary>
+            Retrieves creatable workflows by group.
+            </summary>
+            <param name="compo">The component.</param>
+            <param name="module">The module.</param>
+            <param name="groupId">The group ID.</param>
+            <returns>A task representing the asynchronous operation, containing the creatable by group response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetFindingByReasonOfByIdAsync(System.Int32)">
+            <summary>
+            Retrieves finding by reason of by ID.
+            </summary>
+            <param name="id">The ID.</param>
+            <returns>A task representing the asynchronous operation, containing the finding by reason of by ID response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetFindingsAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves findings for a workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <param name="groupId">The group ID.</param>
+            <returns>A task representing the asynchronous operation, containing the findings response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetModuleFromWorkflowAsync(System.Int32)">
+            <summary>
+            Retrieves module from workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the module from workflow response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetPageAccessByGroupAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Retrieves page access by group.
+            </summary>
+            <param name="workflow">The workflow.</param>
+            <param name="status">The status.</param>
+            <param name="group">The group.</param>
+            <returns>A task representing the asynchronous operation, containing the page access by group response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetPageAccessByWorkflowViewAsync(System.String,System.Int32,System.Int32)">
+            <summary>
+            Retrieves page access by workflow view.
+            </summary>
+            <param name="compo">The component.</param>
+            <param name="workflow">The workflow.</param>
+            <param name="status">The status.</param>
+            <returns>A task representing the asynchronous operation, containing the page access by workflow view response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetPagesByWorkflowIdAsync(System.Int32)">
+            <summary>
+            Retrieves pages by workflow ID.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the pages by workflow ID response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetPermissionsAsync(System.Int32)">
+            <summary>
+            Retrieves permissions for a workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the permissions response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetPermissionsByCompoAsync(System.Int32,System.String)">
+            <summary>
+            Retrieves permissions by component.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <param name="compo">The component.</param>
+            <returns>A task representing the asynchronous operation, containing the permissions by component response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetReturnReasonsAsync(System.Int32)">
+            <summary>
+            Retrieves return reasons for a workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the return reasons response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetRwoaReasonsAsync(System.Int32)">
+            <summary>
+            Retrieves RWOA reasons for a workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the RWOA reasons response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetStatusCodesByCompoAsync(System.String)">
+            <summary>
+            Retrieves status codes by component.
+            </summary>
+            <param name="compo">The component.</param>
+            <returns>A task representing the asynchronous operation, containing the status codes by component response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetStatusCodesByCompoAndModuleAsync(System.String,System.Int32)">
+            <summary>
+            Retrieves status codes by component and module.
+            </summary>
+            <param name="compo">The component.</param>
+            <param name="module">The module.</param>
+            <returns>A task representing the asynchronous operation, containing the status codes by component and module response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetStatusCodesBySignCodeAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves status codes by sign code.
+            </summary>
+            <param name="groupId">The group ID.</param>
+            <param name="module">The module.</param>
+            <returns>A task representing the asynchronous operation, containing the status codes by sign code response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetStatusCodesByWorkflowAsync(System.Int32)">
+            <summary>
+            Retrieves status codes by workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the status codes by workflow response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetStatusCodesByWorkflowAndAccessScopeAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves status codes by workflow and access scope.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <param name="accessScope">The access scope.</param>
+            <returns>A task representing the asynchronous operation, containing the status codes by workflow and access scope response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetStatusCodeScopeAsync(System.Int32)">
+            <summary>
+            Retrieves status code scope.
+            </summary>
+            <param name="statusId">The status ID.</param>
+            <returns>A task representing the asynchronous operation, containing the status code scope response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetStepsByWorkflowAsync(System.Int32)">
+            <summary>
+            Retrieves steps by workflow.
+            </summary>
+            <param name="workflow">The workflow.</param>
+            <returns>A task representing the asynchronous operation, containing the steps by workflow response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetStepsByWorkflowAndStatusAsync(System.Int32,System.Int32,System.String)">
+            <summary>
+            Retrieves steps by workflow and status.
+            </summary>
+            <param name="workflow">The workflow.</param>
+            <param name="status">The status.</param>
+            <param name="deathStatus">The death status.</param>
+            <returns>A task representing the asynchronous operation, containing the steps by workflow and status response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetViewableByGroupAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves viewable workflows by group.
+            </summary>
+            <param name="groupId">The group ID.</param>
+            <param name="module">The module.</param>
+            <returns>A task representing the asynchronous operation, containing the viewable by group response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkflowByCompoAsync(System.String,System.Int32)">
+            <summary>
+            Retrieves workflow by component.
+            </summary>
+            <param name="compo">The component.</param>
+            <param name="userId">The user ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow by component response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkflowFromModuleAsync(System.Int32)">
+            <summary>
+            Retrieves workflow from module.
+            </summary>
+            <param name="moduleId">The module ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow from module response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkflowInitialStatusCodeAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Retrieves workflow initial status code.
+            </summary>
+            <param name="compo">The component.</param>
+            <param name="module">The module.</param>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow initial status code response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkflowTitleAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves workflow title.
+            </summary>
+            <param name="moduleId">The module ID.</param>
+            <param name="subCase">The sub case.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow title response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkflowTitleByWorkStatusIdAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves workflow title by work status ID.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <param name="subCase">The sub case.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow title by work status ID response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.InsertActionAsync(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts an action.
+            </summary>
+            <param name="type">The action type.</param>
+            <param name="stepId">The step ID.</param>
+            <param name="target">The target.</param>
+            <param name="data">The data.</param>
+            <returns>A task representing the asynchronous operation, containing the action insertion response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.InsertOptionActionAsync(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts an option action.
+            </summary>
+            <param name="type">The action type.</param>
+            <param name="wsoid">The WSOID.</param>
+            <param name="target">The target.</param>
+            <param name="data">The data.</param>
+            <returns>A task representing the asynchronous operation, containing the option action insertion response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.DeleteLogByIdAsync(System.Int32)">
+            <summary>
+            Deletes a log by ID.
+            </summary>
+            <param name="logId">The log ID to delete.</param>
+            <returns>A task representing the asynchronous operation, containing the log deletion response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.FindProcessLastExecutionDateAsync(System.String)">
+            <summary>
+            Finds the last execution date of a process.
+            </summary>
+            <param name="processName">The name of the process.</param>
+            <returns>A task representing the asynchronous operation, containing the process last execution date response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.FindProcessLastExecutionDateStreamAsync(System.String)">
+            <summary>
+            Finds the last execution date of a process as a streaming response.
+            </summary>
+            <param name="processName">The name of the process.</param>
+            <returns>An asynchronous enumerable of process last execution date items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetAllLogsAsync">
+            <summary>
+            Retrieves all logs.
+            </summary>
+            <returns>A task representing the asynchronous operation, containing the all logs response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetAllLogsStreamAsync">
+            <summary>
+            Retrieves all logs as a streaming response.
+            </summary>
+            <returns>An asynchronous enumerable of log items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.InsertLogAsync(System.String,System.String,System.String)">
+            <summary>
+            Inserts a log entry.
+            </summary>
+            <param name="processName">The name of the process.</param>
+            <param name="executionDate">The execution date.</param>
+            <param name="message">The log message.</param>
+            <returns>A task representing the asynchronous operation, containing the log insertion response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.IsProcessActiveAsync(System.String)">
+            <summary>
+            Checks if a process is active.
+            </summary>
+            <param name="processName">The name of the process.</param>
+            <returns>A task representing the asynchronous operation, containing the process active response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.IsProcessActiveStreamAsync(System.String)">
+            <summary>
+            Checks if a process is active as a streaming response.
+            </summary>
+            <param name="processName">The name of the process.</param>
+            <returns>An asynchronous enumerable of process active items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkflowByIdAsync(System.Int32)">
+            <summary>
+            Retrieves a workflow by ID.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow by ID response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkflowByIdStreamAsync(System.Int32)">
+            <summary>
+            Retrieves a workflow by ID as a streaming response.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>An asynchronous enumerable of workflow by ID items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkflowsByRefIdAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves workflows by reference ID.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <returns>A task representing the asynchronous operation, containing the workflows by ref ID response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkflowsByRefIdStreamAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves workflows by reference ID as a streaming response.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <returns>An asynchronous enumerable of workflow by ref ID items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkflowsByRefIdAndTypeAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Retrieves workflows by reference ID and type.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <param name="workflowType">The workflow type.</param>
+            <returns>A task representing the asynchronous operation, containing the workflows by ref ID and type response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkflowsByRefIdAndTypeStreamAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Retrieves workflows by reference ID and type as a streaming response.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <param name="workflowType">The workflow type.</param>
+            <returns>An asynchronous enumerable of workflow by ref ID and type items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkflowTypesAsync">
+            <summary>
+            Retrieves workflow types.
+            </summary>
+            <returns>A task representing the asynchronous operation, containing the workflow types response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkflowTypesStreamAsync">
+            <summary>
+            Retrieves workflow types as a streaming response.
+            </summary>
+            <returns>An asynchronous enumerable of workflow type items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.InsertWorkflowAsync(System.Int32,System.Int32,System.Int32,System.String,System.Int32)">
+            <summary>
+            Inserts a new workflow.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <param name="workflowType">The workflow type.</param>
+            <param name="workflowText">The workflow text.</param>
+            <param name="userId">The user ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow insertion response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.UpdateWorkflowAsync(System.Int32,System.String,System.Int32)">
+            <summary>
+            Updates a workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <param name="workflowText">The workflow text.</param>
+            <param name="userId">The user ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow update response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkstatusByIdAsync(System.Int32)">
+            <summary>
+            Retrieves a workstatus by ID.
+            </summary>
+            <param name="workstatusId">The workstatus ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workstatus by ID response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkstatusByIdStreamAsync(System.Int32)">
+            <summary>
+            Retrieves a workstatus by ID as a streaming response.
+            </summary>
+            <param name="workstatusId">The workstatus ID.</param>
+            <returns>An asynchronous enumerable of workstatus by ID items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkstatusesByRefIdAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves workstatuses by reference ID.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <returns>A task representing the asynchronous operation, containing the workstatuses by ref ID response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkstatusesByRefIdStreamAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves workstatuses by reference ID as a streaming response.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <returns>An asynchronous enumerable of workstatus by ref ID items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkstatusesByRefIdAndTypeAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Retrieves workstatuses by reference ID and type.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <param name="workstatusType">The workstatus type.</param>
+            <returns>A task representing the asynchronous operation, containing the workstatuses by ref ID and type response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkstatusesByRefIdAndTypeStreamAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Retrieves workstatuses by reference ID and type as a streaming response.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <param name="workstatusType">The workstatus type.</param>
+            <returns>An asynchronous enumerable of workstatus by ref ID and type items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkstatusTypesAsync">
+            <summary>
+            Retrieves workstatus types.
+            </summary>
+            <returns>A task representing the asynchronous operation, containing the workstatus types response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.GetWorkstatusTypesStreamAsync">
+            <summary>
+            Retrieves workstatus types as a streaming response.
+            </summary>
+            <returns>An asynchronous enumerable of workstatus type items.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.InsertWorkstatusAsync(System.Int32,System.Int32,System.Int32,System.String,System.Int32)">
+            <summary>
+            Inserts a new workstatus.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <param name="workstatusType">The workstatus type.</param>
+            <param name="workstatusText">The workstatus text.</param>
+            <param name="userId">The user ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workstatus insertion response.</returns>
+        </member>
+        <member name="M:AF.ECT.Client.Services.IWorkflowClient.UpdateWorkstatusAsync(System.Int32,System.String,System.Int32)">
+            <summary>
+            Updates a workstatus.
+            </summary>
+            <param name="workstatusId">The workstatus ID.</param>
+            <param name="workstatusText">The workstatus text.</param>
+            <param name="userId">The user ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workstatus update response.</returns>
+        </member>
+        <member name="T:AF.ECT.Client.Services.WorkflowClient">
+            <summary>
+            Provides gRPC client services for communicating with the WorkflowManagementService.
+            </summary>
+            <remarks>
+            This client handles all gRPC communication with the server-side WorkflowManagementService,
+            including basic greeting operations and comprehensive data access methods.
+            It uses gRPC-Web for browser compatibility and provides both synchronous
+            and asynchronous method calls.
+            
+            Performance Optimizations:
+            - Connection pooling with HttpClientHandler
+            - Retry policy for transient failures
+            - Performance logging for monitoring
+            - Configurable timeouts
+            - Channel reuse for efficiency
+            </remarks>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.#ctor(AF.ECT.Shared.WorkflowService.WorkflowServiceClient)">
+            <summary>
+            Initializes a new instance of the GreeterClient with a gRPC client (for testing).
+            </summary>
+            <param name="grpcClient">The gRPC client to use for communication.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when grpcClient is null.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.#ctor(System.Net.Http.HttpClient,Microsoft.Extensions.Logging.ILogger{AF.ECT.Client.Services.WorkflowClient})">
+            <summary>
+            Initializes a new instance of the GreeterClient.
+            </summary>
+            <param name="httpClient">The HTTP client for making web requests.</param>
+            <param name="logger">The logger for performance monitoring.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when httpClient is null.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetReinvestigationRequestsAsync(System.Nullable{System.Int32},System.Nullable{System.Boolean})">
+            <summary>
+            Retrieves reinvestigation requests with optional filtering.
+            </summary>
+            <param name="userId">Optional user ID filter.</param>
+            <param name="sarc">Optional SARC flag filter.</param>
+            <returns>A task representing the asynchronous operation, containing the reinvestigation requests response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetReinvestigationRequestsStreamAsync(System.Nullable{System.Int32},System.Nullable{System.Boolean})">
+            <summary>
+            Retrieves reinvestigation requests as a streaming response with optional filtering.
+            </summary>
+            <param name="userId">Optional user ID filter.</param>
+            <param name="sarc">Optional SARC flag filter.</param>
+            <returns>An asynchronous enumerable of reinvestigation request items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetMailingListForLODAsync(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Retrieves mailing list for LOD with specified parameters.
+            </summary>
+            <param name="refId">The reference ID for the mailing list.</param>
+            <param name="groupId">The group ID for filtering.</param>
+            <param name="status">The status for filtering.</param>
+            <param name="callingService">The calling service identifier.</param>
+            <returns>A task representing the asynchronous operation, containing the mailing list response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetMailingListForLODStreamAsync(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Retrieves mailing list for LOD as a streaming response with specified parameters.
+            </summary>
+            <param name="refId">The reference ID for the mailing list.</param>
+            <param name="groupId">The group ID for filtering.</param>
+            <param name="status">The status for filtering.</param>
+            <param name="callingService">The calling service identifier.</param>
+            <returns>An asynchronous enumerable of mailing list items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetManagedUsersAsync(System.Nullable{System.Int32},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})">
+            <summary>
+            Retrieves managed users with specified filters.
+            </summary>
+            <param name="userid">The user ID filter.</param>
+            <param name="ssn">The SSN filter.</param>
+            <param name="name">The name filter.</param>
+            <param name="status">The status filter.</param>
+            <param name="role">The role filter.</param>
+            <param name="srchUnit">The search unit filter.</param>
+            <param name="showAllUsers">Whether to show all users.</param>
+            <returns>A task representing the asynchronous operation, containing the managed users response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetManagedUsersStreamAsync(System.Nullable{System.Int32},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean})">
+            <summary>
+            Retrieves managed users as a streaming response with specified filters.
+            </summary>
+            <param name="userid">The user ID filter.</param>
+            <param name="ssn">The SSN filter.</param>
+            <param name="name">The name filter.</param>
+            <param name="status">The status filter.</param>
+            <param name="role">The role filter.</param>
+            <param name="srchUnit">The search unit filter.</param>
+            <param name="showAllUsers">Whether to show all users.</param>
+            <returns>An asynchronous enumerable of managed user items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetMembersUserIdAsync(System.String)">
+            <summary>
+            Retrieves the user ID for a member by their SSN.
+            </summary>
+            <param name="memberSsn">The member's SSN.</param>
+            <returns>A task representing the asynchronous operation, containing the member user ID response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetUserAltTitleAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves user alternate titles with specified parameters.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="groupId">The group ID.</param>
+            <returns>A task representing the asynchronous operation, containing the user alternate titles response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetUserAltTitleStreamAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves user alternate titles as a streaming response with specified parameters.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="groupId">The group ID.</param>
+            <returns>An asynchronous enumerable of user alt title items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetUserAltTitleByGroupCompoAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves user alternate titles by group component.
+            </summary>
+            <param name="groupId">The group ID.</param>
+            <param name="workCompo">The work component.</param>
+            <returns>A task representing the asynchronous operation, containing the user alternate titles by group component response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetUserAltTitleByGroupCompoStreamAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves user alternate titles by group component as a streaming response.
+            </summary>
+            <param name="groupId">The group ID.</param>
+            <param name="workCompo">The work component.</param>
+            <returns>An asynchronous enumerable of user alt title by group compo items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetUserNameAsync(System.String,System.String)">
+            <summary>
+            Retrieves user names with specified filters.
+            </summary>
+            <param name="first">The first name filter.</param>
+            <param name="last">The last name filter.</param>
+            <returns>A task representing the asynchronous operation, containing the user names response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetUserNameStreamAsync(System.String,System.String)">
+            <summary>
+            Retrieves user names as a streaming response with specified filters.
+            </summary>
+            <param name="first">The first name filter.</param>
+            <param name="last">The last name filter.</param>
+            <returns>An asynchronous enumerable of user name items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetUsersAltTitleByGroupAsync(System.Int32)">
+            <summary>
+            Retrieves users alternate titles by group.
+            </summary>
+            <param name="groupId">The group ID.</param>
+            <returns>A task representing the asynchronous operation, containing the users alternate titles by group response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetUsersAltTitleByGroupStreamAsync(System.Int32)">
+            <summary>
+            Retrieves users alternate titles by group as a streaming response.
+            </summary>
+            <param name="groupId">The group ID.</param>
+            <returns>An asynchronous enumerable of users alt title by group items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetUsersOnlineAsync">
+            <summary>
+            Retrieves users who are currently online.
+            </summary>
+            <returns>A task representing the asynchronous operation, containing the users online response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetUsersOnlineStreamAsync">
+            <summary>
+            Retrieves users who are currently online as a streaming response.
+            </summary>
+            <returns>An asynchronous enumerable of user online items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWhoisAsync(System.Int32)">
+            <summary>
+            Retrieves WHOIS information for a user.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <returns>A task representing the asynchronous operation, containing the WHOIS response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.HasHQTechAccountAsync(System.Int32,System.String)">
+            <summary>
+            Checks if a user has HQ tech account.
+            </summary>
+            <param name="originUserId">The origin user ID.</param>
+            <param name="userEdipin">The user EDIPIN.</param>
+            <returns>A task representing the asynchronous operation, containing the HQ tech account response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.IsFinalStatusCodeAsync(System.Int32)">
+            <summary>
+            Checks if a status code is final.
+            </summary>
+            <param name="statusId">The status ID to check.</param>
+            <returns>A task representing the asynchronous operation, containing the final status code response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.LogoutAsync(System.Int32)">
+            <summary>
+            Logs out a user.
+            </summary>
+            <param name="userId">The user ID to logout.</param>
+            <returns>A task representing the asynchronous operation, containing the logout response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.RegisterUserAsync(System.Int32,System.String,System.Boolean,System.Int32,System.Int32,System.String)">
+            <summary>
+            Registers a new user.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="workCompo">The work component.</param>
+            <param name="receiveEmail">Whether to receive email.</param>
+            <param name="groupId">The group ID.</param>
+            <param name="accountStatus">The account status.</param>
+            <param name="expirationDate">The expiration date.</param>
+            <returns>A task representing the asynchronous operation, containing the user registration response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.RegisterUserRoleAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Registers a user role.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="groupId">The group ID.</param>
+            <param name="status">The status.</param>
+            <returns>A task representing the asynchronous operation, containing the user role registration response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.SearchMemberDataAsync(System.Int32,System.String,System.String,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Searches member data with specified parameters.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="ssn">The SSN.</param>
+            <param name="lastName">The last name.</param>
+            <param name="firstName">The first name.</param>
+            <param name="middleName">The middle name.</param>
+            <param name="srchUnit">The search unit.</param>
+            <param name="rptView">The report view.</param>
+            <returns>A task representing the asynchronous operation, containing the member data search response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.SearchMemberDataStreamAsync(System.Int32,System.String,System.String,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Searches member data as a streaming response with specified parameters.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="ssn">The SSN.</param>
+            <param name="lastName">The last name.</param>
+            <param name="firstName">The first name.</param>
+            <param name="middleName">The middle name.</param>
+            <param name="srchUnit">The search unit.</param>
+            <param name="rptView">The report view.</param>
+            <returns>An asynchronous enumerable of member data items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.SearchMemberDataTestAsync(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Searches member data (test version) with specified parameters.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="ssn">The SSN.</param>
+            <param name="name">The name.</param>
+            <param name="srchUnit">The search unit.</param>
+            <param name="rptView">The report view.</param>
+            <returns>A task representing the asynchronous operation, containing the member data test search response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.SearchMemberDataTestStreamAsync(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Searches member data (test version) as a streaming response with specified parameters.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="ssn">The SSN.</param>
+            <param name="name">The name.</param>
+            <param name="srchUnit">The search unit.</param>
+            <param name="rptView">The report view.</param>
+            <returns>An asynchronous enumerable of member data test items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.UpdateAccountStatusAsync(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Updates account status for a user.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="accountStatus">The account status.</param>
+            <param name="expirationDate">The expiration date.</param>
+            <param name="comment">The comment.</param>
+            <returns>A task representing the asynchronous operation, containing the account status update response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.UpdateLoginAsync(System.Int32,System.String,System.String)">
+            <summary>
+            Updates login information for a user.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="sessionId">The session ID.</param>
+            <param name="remoteAddr">The remote address.</param>
+            <returns>A task representing the asynchronous operation, containing the login update response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.UpdateManagedSettingsAsync(System.Int32,System.String,System.Int32,System.Int32,System.String,System.Boolean,System.String)">
+            <summary>
+            Updates managed settings for a user.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="compo">The component.</param>
+            <param name="roleId">The role ID.</param>
+            <param name="groupId">The group ID.</param>
+            <param name="comment">The comment.</param>
+            <param name="receiveEmail">Whether to receive email.</param>
+            <param name="expirationDate">The expiration date.</param>
+            <returns>A task representing the asynchronous operation, containing the managed settings update response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.UpdateUserAltTitleAsync(System.Int32,System.Int32,System.String)">
+            <summary>
+            Updates user alternate title.
+            </summary>
+            <param name="userId">The user ID.</param>
+            <param name="groupId">The group ID.</param>
+            <param name="newTitle">The new title.</param>
+            <returns>A task representing the asynchronous operation, containing the user alternate title update response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.AddSignatureAsync(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Adds a signature to a workflow.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="moduleType">The module type.</param>
+            <param name="userId">The user ID.</param>
+            <param name="actionId">The action ID.</param>
+            <param name="groupId">The group ID.</param>
+            <param name="statusIn">The status in.</param>
+            <param name="statusOut">The status out.</param>
+            <returns>A task representing the asynchronous operation, containing the signature addition response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.CopyActionsAsync(System.Int32,System.Int32)">
+            <summary>
+            Copies actions from one workflow to another.
+            </summary>
+            <param name="destWsoid">The destination WSOID.</param>
+            <param name="srcWsoid">The source WSOID.</param>
+            <returns>A task representing the asynchronous operation, containing the action copy response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.CopyRulesAsync(System.Int32,System.Int32)">
+            <summary>
+            Copies rules from one workflow to another.
+            </summary>
+            <param name="destWsoid">The destination WSOID.</param>
+            <param name="srcWsoid">The source WSOID.</param>
+            <returns>A task representing the asynchronous operation, containing the rule copy response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.CopyWorkflowAsync(System.Int32,System.Int32)">
+            <summary>
+            Copies a workflow from one ID to another.
+            </summary>
+            <param name="fromId">The source workflow ID.</param>
+            <param name="toId">The destination workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow copy response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.DeleteStatusCodeAsync(System.Int32)">
+            <summary>
+            Deletes a status code.
+            </summary>
+            <param name="statusId">The status ID to delete.</param>
+            <returns>A task representing the asynchronous operation, containing the status code deletion response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetActionsByStepAsync(System.Int32)">
+            <summary>
+            Retrieves actions by step.
+            </summary>
+            <param name="stepId">The step ID.</param>
+            <returns>A task representing the asynchronous operation, containing the actions by step response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetActiveCasesAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves active cases with specified parameters.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="groupId">The group ID.</param>
+            <returns>A task representing the asynchronous operation, containing the active cases response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetAllFindingByReasonOfAsync">
+            <summary>
+            Retrieves all findings by reason of.
+            </summary>
+            <returns>A task representing the asynchronous operation, containing the all findings by reason of response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetAllLocksAsync">
+            <summary>
+            Retrieves all locks.
+            </summary>
+            <returns>A task representing the asynchronous operation, containing the all locks response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetCancelReasonsAsync(System.Int32,System.Boolean)">
+            <summary>
+            Retrieves cancel reasons for a workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <param name="isFormal">Whether it's formal.</param>
+            <returns>A task representing the asynchronous operation, containing the cancel reasons response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetCreatableByGroupAsync(System.String,System.Int32,System.Int32)">
+            <summary>
+            Retrieves creatable workflows by group.
+            </summary>
+            <param name="compo">The component.</param>
+            <param name="module">The module.</param>
+            <param name="groupId">The group ID.</param>
+            <returns>A task representing the asynchronous operation, containing the creatable by group response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetFindingByReasonOfByIdAsync(System.Int32)">
+            <summary>
+            Retrieves finding by reason of by ID.
+            </summary>
+            <param name="id">The ID.</param>
+            <returns>A task representing the asynchronous operation, containing the finding by reason of by ID response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetFindingsAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves findings for a workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <param name="groupId">The group ID.</param>
+            <returns>A task representing the asynchronous operation, containing the findings response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetModuleFromWorkflowAsync(System.Int32)">
+            <summary>
+            Retrieves module from workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the module from workflow response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetPageAccessByGroupAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Retrieves page access by group.
+            </summary>
+            <param name="workflow">The workflow.</param>
+            <param name="status">The status.</param>
+            <param name="group">The group.</param>
+            <returns>A task representing the asynchronous operation, containing the page access by group response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetPageAccessByWorkflowViewAsync(System.String,System.Int32,System.Int32)">
+            <summary>
+            Retrieves page access by workflow view.
+            </summary>
+            <param name="compo">The component.</param>
+            <param name="workflow">The workflow.</param>
+            <param name="status">The status.</param>
+            <returns>A task representing the asynchronous operation, containing the page access by workflow view response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetPagesByWorkflowIdAsync(System.Int32)">
+            <summary>
+            Retrieves pages by workflow ID.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the pages by workflow ID response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetPermissionsAsync(System.Int32)">
+            <summary>
+            Retrieves permissions for a workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the permissions response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetPermissionsByCompoAsync(System.Int32,System.String)">
+            <summary>
+            Retrieves permissions by component.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <param name="compo">The component.</param>
+            <returns>A task representing the asynchronous operation, containing the permissions by component response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetReturnReasonsAsync(System.Int32)">
+            <summary>
+            Retrieves return reasons for a workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the return reasons response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetRwoaReasonsAsync(System.Int32)">
+            <summary>
+            Retrieves RWOA reasons for a workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the RWOA reasons response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetStatusCodesByCompoAsync(System.String)">
+            <summary>
+            Retrieves status codes by component.
+            </summary>
+            <param name="compo">The component.</param>
+            <returns>A task representing the asynchronous operation, containing the status codes by component response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetStatusCodesByCompoAndModuleAsync(System.String,System.Int32)">
+            <summary>
+            Retrieves status codes by component and module.
+            </summary>
+            <param name="compo">The component.</param>
+            <param name="module">The module.</param>
+            <returns>A task representing the asynchronous operation, containing the status codes by component and module response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetStatusCodesBySignCodeAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves status codes by sign code.
+            </summary>
+            <param name="groupId">The group ID.</param>
+            <param name="module">The module.</param>
+            <returns>A task representing the asynchronous operation, containing the status codes by sign code response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetStatusCodesByWorkflowAsync(System.Int32)">
+            <summary>
+            Retrieves status codes by workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the status codes by workflow response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetStatusCodesByWorkflowAndAccessScopeAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves status codes by workflow and access scope.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <param name="accessScope">The access scope.</param>
+            <returns>A task representing the asynchronous operation, containing the status codes by workflow and access scope response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetStatusCodeScopeAsync(System.Int32)">
+            <summary>
+            Retrieves status code scope.
+            </summary>
+            <param name="statusId">The status ID.</param>
+            <returns>A task representing the asynchronous operation, containing the status code scope response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetStepsByWorkflowAsync(System.Int32)">
+            <summary>
+            Retrieves steps by workflow.
+            </summary>
+            <param name="workflow">The workflow.</param>
+            <returns>A task representing the asynchronous operation, containing the steps by workflow response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetStepsByWorkflowAndStatusAsync(System.Int32,System.Int32,System.String)">
+            <summary>
+            Retrieves steps by workflow and status.
+            </summary>
+            <param name="workflow">The workflow.</param>
+            <param name="status">The status.</param>
+            <param name="deathStatus">The death status.</param>
+            <returns>A task representing the asynchronous operation, containing the steps by workflow and status response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetViewableByGroupAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves viewable workflows by group.
+            </summary>
+            <param name="groupId">The group ID.</param>
+            <param name="module">The module.</param>
+            <returns>A task representing the asynchronous operation, containing the viewable by group response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkflowByCompoAsync(System.String,System.Int32)">
+            <summary>
+            Retrieves workflow by component.
+            </summary>
+            <param name="compo">The component.</param>
+            <param name="userId">The user ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow by component response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkflowFromModuleAsync(System.Int32)">
+            <summary>
+            Retrieves workflow from module.
+            </summary>
+            <param name="moduleId">The module ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow from module response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkflowInitialStatusCodeAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Retrieves workflow initial status code.
+            </summary>
+            <param name="compo">The component.</param>
+            <param name="module">The module.</param>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow initial status code response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkflowTitleAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves workflow title.
+            </summary>
+            <param name="moduleId">The module ID.</param>
+            <param name="subCase">The sub case.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow title response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkflowTitleByWorkStatusIdAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves workflow title by work status ID.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <param name="subCase">The sub case.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow title by work status ID response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.InsertActionAsync(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts an action.
+            </summary>
+            <param name="type">The action type.</param>
+            <param name="stepId">The step ID.</param>
+            <param name="target">The target.</param>
+            <param name="data">The data.</param>
+            <returns>A task representing the asynchronous operation, containing the action insertion response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.InsertOptionActionAsync(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Inserts an option action.
+            </summary>
+            <param name="type">The action type.</param>
+            <param name="wsoid">The WSOID.</param>
+            <param name="target">The target.</param>
+            <param name="data">The data.</param>
+            <returns>A task representing the asynchronous operation, containing the option action insertion response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.DeleteLogByIdAsync(System.Int32)">
+            <summary>
+            Deletes a log by ID.
+            </summary>
+            <param name="logId">The log ID to delete.</param>
+            <returns>A task representing the asynchronous operation, containing the log deletion response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.FindProcessLastExecutionDateAsync(System.String)">
+            <summary>
+            Finds the last execution date of a process.
+            </summary>
+            <param name="processName">The name of the process.</param>
+            <returns>A task representing the asynchronous operation, containing the process last execution date response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.FindProcessLastExecutionDateStreamAsync(System.String)">
+            <summary>
+            Finds the last execution date of a process as a streaming response.
+            </summary>
+            <param name="processName">The name of the process.</param>
+            <returns>An asynchronous enumerable of process last execution date items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetAllLogsAsync">
+            <summary>
+            Retrieves all logs.
+            </summary>
+            <returns>A task representing the asynchronous operation, containing the all logs response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetAllLogsStreamAsync">
+            <summary>
+            Retrieves all logs as a streaming response.
+            </summary>
+            <returns>An asynchronous enumerable of log items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.InsertLogAsync(System.String,System.String,System.String)">
+            <summary>
+            Inserts a log entry.
+            </summary>
+            <param name="processName">The name of the process.</param>
+            <param name="executionDate">The execution date.</param>
+            <param name="message">The log message.</param>
+            <returns>A task representing the asynchronous operation, containing the log insertion response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.IsProcessActiveAsync(System.String)">
+            <summary>
+            Checks if a process is active.
+            </summary>
+            <param name="processName">The name of the process.</param>
+            <returns>A task representing the asynchronous operation, containing the process active response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.IsProcessActiveStreamAsync(System.String)">
+            <summary>
+            Checks if a process is active as a streaming response.
+            </summary>
+            <param name="processName">The name of the process.</param>
+            <returns>An asynchronous enumerable of process active items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkflowByIdAsync(System.Int32)">
+            <summary>
+            Retrieves a workflow by ID.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow by ID response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkflowByIdStreamAsync(System.Int32)">
+            <summary>
+            Retrieves a workflow by ID as a streaming response.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <returns>An asynchronous enumerable of workflow by ID items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkflowsByRefIdAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves workflows by reference ID.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <returns>A task representing the asynchronous operation, containing the workflows by ref ID response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkflowsByRefIdStreamAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves workflows by reference ID as a streaming response.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <returns>An asynchronous enumerable of workflow by ref ID items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkflowsByRefIdAndTypeAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Retrieves workflows by reference ID and type.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <param name="workflowType">The workflow type.</param>
+            <returns>A task representing the asynchronous operation, containing the workflows by ref ID and type response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkflowsByRefIdAndTypeStreamAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Retrieves workflows by reference ID and type as a streaming response.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <param name="workflowType">The workflow type.</param>
+            <returns>An asynchronous enumerable of workflow by ref ID and type items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkflowTypesAsync">
+            <summary>
+            Retrieves workflow types.
+            </summary>
+            <returns>A task representing the asynchronous operation, containing the workflow types response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkflowTypesStreamAsync">
+            <summary>
+            Retrieves workflow types as a streaming response.
+            </summary>
+            <returns>An asynchronous enumerable of workflow type items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.InsertWorkflowAsync(System.Int32,System.Int32,System.Int32,System.String,System.Int32)">
+            <summary>
+            Inserts a new workflow.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <param name="workflowType">The workflow type.</param>
+            <param name="workflowText">The workflow text.</param>
+            <param name="userId">The user ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow insertion response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.UpdateWorkflowAsync(System.Int32,System.String,System.Int32)">
+            <summary>
+            Updates a workflow.
+            </summary>
+            <param name="workflowId">The workflow ID.</param>
+            <param name="workflowText">The workflow text.</param>
+            <param name="userId">The user ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workflow update response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkstatusByIdAsync(System.Int32)">
+            <summary>
+            Retrieves a workstatus by ID.
+            </summary>
+            <param name="workstatusId">The workstatus ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workstatus by ID response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkstatusByIdStreamAsync(System.Int32)">
+            <summary>
+            Retrieves a workstatus by ID as a streaming response.
+            </summary>
+            <param name="workstatusId">The workstatus ID.</param>
+            <returns>An asynchronous enumerable of workstatus by ID items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkstatusesByRefIdAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves workstatuses by reference ID.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <returns>A task representing the asynchronous operation, containing the workstatuses by ref ID response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkstatusesByRefIdStreamAsync(System.Int32,System.Int32)">
+            <summary>
+            Retrieves workstatuses by reference ID as a streaming response.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <returns>An asynchronous enumerable of workstatus by ref ID items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkstatusesByRefIdAndTypeAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Retrieves workstatuses by reference ID and type.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <param name="workstatusType">The workstatus type.</param>
+            <returns>A task representing the asynchronous operation, containing the workstatuses by ref ID and type response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkstatusesByRefIdAndTypeStreamAsync(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Retrieves workstatuses by reference ID and type as a streaming response.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <param name="workstatusType">The workstatus type.</param>
+            <returns>An asynchronous enumerable of workstatus by ref ID and type items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkstatusTypesAsync">
+            <summary>
+            Retrieves workstatus types.
+            </summary>
+            <returns>A task representing the asynchronous operation, containing the workstatus types response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.GetWorkstatusTypesStreamAsync">
+            <summary>
+            Retrieves workstatus types as a streaming response.
+            </summary>
+            <returns>An asynchronous enumerable of workstatus type items.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.InsertWorkstatusAsync(System.Int32,System.Int32,System.Int32,System.String,System.Int32)">
+            <summary>
+            Inserts a new workstatus.
+            </summary>
+            <param name="refId">The reference ID.</param>
+            <param name="module">The module.</param>
+            <param name="workstatusType">The workstatus type.</param>
+            <param name="workstatusText">The workstatus text.</param>
+            <param name="userId">The user ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workstatus insertion response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.UpdateWorkstatusAsync(System.Int32,System.String,System.Int32)">
+            <summary>
+            Updates a workstatus.
+            </summary>
+            <param name="workstatusId">The workstatus ID.</param>
+            <param name="workstatusText">The workstatus text.</param>
+            <param name="userId">The user ID.</param>
+            <returns>A task representing the asynchronous operation, containing the workstatus update response.</returns>
+            <exception cref="T:Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+        </member>
+        <member name="M:AF.ECT.Client.Services.WorkflowClient.Dispose">
+            <summary>
+            Disposes the gRPC channel and releases resources.
+            </summary>
+        </member>
+    </members>
+</doc>

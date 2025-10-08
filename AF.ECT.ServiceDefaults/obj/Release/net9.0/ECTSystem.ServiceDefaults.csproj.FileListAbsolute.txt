@@ -1,0 +1,12 @@
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\ECTSystem.ServiceDefaults\bin\Release\net9.0\ECTSystem.ServiceDefaults.deps.json
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\ECTSystem.ServiceDefaults\bin\Release\net9.0\ECTSystem.ServiceDefaults.dll
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\ECTSystem.ServiceDefaults\bin\Release\net9.0\ECTSystem.ServiceDefaults.pdb
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\ECTSystem.ServiceDefaults\obj\Release\net9.0\ECTSystem.ServiceDefaults.csproj.AssemblyReference.cache
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\ECTSystem.ServiceDefaults\obj\Release\net9.0\ECTSystem.ServiceDefaults.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\ECTSystem.ServiceDefaults\obj\Release\net9.0\ECTSystem.ServiceDefaults.AssemblyInfoInputs.cache
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\ECTSystem.ServiceDefaults\obj\Release\net9.0\ECTSystem.ServiceDefaults.AssemblyInfo.cs
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\ECTSystem.ServiceDefaults\obj\Release\net9.0\ECTSystem.ServiceDefaults.csproj.CoreCompileInputs.cache
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\ECTSystem.ServiceDefaults\obj\Release\net9.0\ECTSystem.ServiceDefaults.dll
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\ECTSystem.ServiceDefaults\obj\Release\net9.0\refint\ECTSystem.ServiceDefaults.dll
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\ECTSystem.ServiceDefaults\obj\Release\net9.0\ECTSystem.ServiceDefaults.pdb
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\ECTSystem.ServiceDefaults\obj\Release\net9.0\ref\ECTSystem.ServiceDefaults.dll

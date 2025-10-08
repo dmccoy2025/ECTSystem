@@ -1,0 +1,2103 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+
+option csharp_namespace = "AF.ECT.Shared";
+
+package workflow;
+
+// WorkflowService provides gRPC and REST endpoints for managing workflows, users, and related operations in the ALOD system.
+service WorkflowService {
+
+// Core User Methods
+  // Retrieves reinvestigation requests for a user, optionally filtered by SARC status.
+  rpc GetReinvestigationRequests (GetReinvestigationRequestsRequest) returns (GetReinvestigationRequestsResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/reinvestigation-requests"
+    };
+  }
+  // Retrieves reinvestigation requests for a user as a stream, optionally filtered by SARC status.
+  rpc GetReinvestigationRequestsStream (GetReinvestigationRequestsRequest) returns (stream ReinvestigationRequestItem) {
+    option (google.api.http) = {
+      get: "/v1/users/reinvestigation-requests/stream"
+    };
+  }
+  // Retrieves mailing list for LOD based on reference ID, group ID, and status.
+  rpc GetMailingListForLOD (GetMailingListForLODRequest) returns (GetMailingListForLODResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/mailing-list"
+    };
+  }
+  // Retrieves mailing list for LOD as a stream based on reference ID, group ID, and status.
+  rpc GetMailingListForLODStream (GetMailingListForLODRequest) returns (stream MailingListItem) {
+    option (google.api.http) = {
+      get: "/v1/users/mailing-list/stream"
+    };
+  }
+  // Retrieves managed users based on various filters like user ID, SSN, name, status, role, and unit.
+  // Caching hint: User data may be cached for short periods (5-15 minutes) depending on update frequency.
+  rpc GetManagedUsers (GetManagedUsersRequest) returns (GetManagedUsersResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/managed"
+    };
+  }
+  // Retrieves managed users as a stream based on various filters.
+  rpc GetManagedUsersStream (GetManagedUsersRequest) returns (stream ManagedUserItem) {
+    option (google.api.http) = {
+      get: "/v1/users/managed/stream"
+    };
+  }
+  // Retrieves user ID for a member based on SSN.
+  rpc GetMembersUserId (GetMembersUserIdRequest) returns (GetMembersUserIdResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/member-id"
+    };
+  }
+  // Retrieves alternative title for a user based on user ID and group ID.
+  rpc GetUserAltTitle (GetUserAltTitleRequest) returns (GetUserAltTitleResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/alt-title"
+    };
+  }
+  // Retrieves alternative title for a user as a stream based on user ID and group ID.
+  rpc GetUserAltTitleStream (GetUserAltTitleRequest) returns (stream UserAltTitleItem) {
+    option (google.api.http) = {
+      get: "/v1/users/alt-title/stream"
+    };
+  }
+  // Retrieves alternative title for a user by group component based on group ID and work component.
+  rpc GetUserAltTitleByGroupCompo (GetUserAltTitleByGroupCompoRequest) returns (GetUserAltTitleByGroupCompoResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/alt-title-by-group-compo"
+    };
+  }
+  // Retrieves alternative title for a user by group component as a stream.
+  rpc GetUserAltTitleByGroupCompoStream (GetUserAltTitleByGroupCompoRequest) returns (stream UserAltTitleByGroupCompoItem) {
+    option (google.api.http) = {
+      get: "/v1/users/alt-title-by-group-compo/stream"
+    };
+  }
+  // Retrieves user name based on first and last name.
+  rpc GetUserName (GetUserNameRequest) returns (GetUserNameResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/name"
+    };
+  }
+  // Retrieves user name as a stream based on first and last name.
+  rpc GetUserNameStream (GetUserNameRequest) returns (stream UserNameItem) {
+    option (google.api.http) = {
+      get: "/v1/users/name/stream"
+    };
+  }
+  // Retrieves alternative titles for users by group based on group ID.
+  rpc GetUsersAltTitleByGroup (GetUsersAltTitleByGroupRequest) returns (GetUsersAltTitleByGroupResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/alt-title-by-group"
+    };
+  }
+  // Retrieves alternative titles for users by group as a stream.
+  rpc GetUsersAltTitleByGroupStream (GetUsersAltTitleByGroupRequest) returns (stream UsersAltTitleByGroupItem) {
+    option (google.api.http) = {
+      get: "/v1/users/alt-title-by-group/stream"
+    };
+  }
+  // Retrieves users who are currently online.
+  // Caching hint: Online status changes frequently; use short cache duration (1-5 minutes) or real-time updates.
+  rpc GetUsersOnline (EmptyRequest) returns (GetUsersOnlineResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/online"
+    };
+  }
+  // Retrieves users who are currently online as a stream.
+  rpc GetUsersOnlineStream (EmptyRequest) returns (stream UserOnlineItem) {
+    option (google.api.http) = {
+      get: "/v1/users/online/stream"
+    };
+  }
+  // Retrieves whois information as a stream based on user ID.
+  rpc GetWhoisStream (GetWhoisRequest) returns (stream WhoisItem) {
+    option (google.api.http) = {
+      get: "/v1/users/whois/stream"
+    };
+  }
+  // Checks if a user has HQ tech account as a stream based on origin user ID and EDIPIN.
+  rpc HasHQTechAccountStream (HasHQTechAccountRequest) returns (stream HQTechAccountItem) {
+    option (google.api.http) = {
+      get: "/v1/users/hq-tech-account/stream"
+    };
+  }
+  // Checks if a status code is final as a stream based on status ID.
+  rpc IsFinalStatusCodeStream (IsFinalStatusCodeRequest) returns (stream FinalStatusCodeItem) {
+    option (google.api.http) = {
+      get: "/v1/status-codes/final/stream"
+    };
+  }
+  // Updates login information as a stream based on user ID, session ID, and remote address.
+  rpc UpdateLoginStream (UpdateLoginRequest) returns (stream LoginUpdateItem) {
+    option (google.api.http) = {
+      post: "/v1/users/login/stream"
+      body: "*"
+    };
+  }
+  // Retrieves whois information based on user ID.
+  // Caching hint: User session data; cache for short duration (5-10 minutes) to balance performance and accuracy.
+  rpc GetWhois (GetWhoisRequest) returns (GetWhoisResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/whois"
+    };
+  }
+  // Checks if a user has HQ tech account based on origin user ID and EDIPIN.
+  rpc HasHQTechAccount (HasHQTechAccountRequest) returns (HasHQTechAccountResponse) {
+    option (google.api.http) = {
+      get: "/v1/users/hq-tech-account"
+    };
+  }
+  // Checks if a status code is final based on status ID.
+  rpc IsFinalStatusCode (IsFinalStatusCodeRequest) returns (IsFinalStatusCodeResponse) {
+    option (google.api.http) = {
+      get: "/v1/status-codes/final"
+    };
+  }
+  // Logs out a user based on user ID.
+  rpc Logout (LogoutRequest) returns (LogoutResponse) {
+    option (google.api.http) = {
+      post: "/v1/users/logout"
+      body: "*"
+    };
+  }
+  // Registers a new user with details like user ID, work component, email preference, group ID, account status, and expiration date.
+  rpc RegisterUser (RegisterUserRequest) returns (RegisterUserResponse) {
+    option (google.api.http) = {
+      post: "/v1/users/register"
+      body: "*"
+    };
+  }
+  // Registers a user role with user ID, group ID, and status.
+  rpc RegisterUserRole (RegisterUserRoleRequest) returns (RegisterUserRoleResponse) {
+    option (google.api.http) = {
+      post: "/v1/users/register-role"
+      body: "*"
+    };
+  }
+  // Searches member data based on user ID, SSN, names, unit, and report view.
+  rpc SearchMemberData (SearchMemberDataRequest) returns (SearchMemberDataResponse) {
+    option (google.api.http) = {
+      get: "/v1/members/search"
+    };
+  }
+  // Searches member data as a stream based on user ID, SSN, names, unit, and report view.
+  rpc SearchMemberDataStream (SearchMemberDataRequest) returns (stream MemberDataItem) {
+    option (google.api.http) = {
+      get: "/v1/members/search/stream"
+    };
+  }
+  // Searches member data for testing based on user ID, SSN, name, unit, and report view.
+  rpc SearchMemberDataTest (SearchMemberDataTestRequest) returns (SearchMemberDataTestResponse) {
+    option (google.api.http) = {
+      get: "/v1/members/search-test"
+    };
+  }
+  // Searches member data for testing as a stream.
+  rpc SearchMemberDataTestStream (SearchMemberDataTestRequest) returns (stream MemberDataTestItem) {
+    option (google.api.http) = {
+      get: "/v1/members/search-test/stream"
+    };
+  }
+  // Updates account status for a user with status, expiration date, and comment.
+  rpc UpdateAccountStatus (UpdateAccountStatusRequest) returns (UpdateAccountStatusResponse) {
+    option (google.api.http) = {
+      put: "/v1/users/account-status"
+      body: "*"
+    };
+  }
+  // Updates login information based on user ID, session ID, and remote address.
+  rpc UpdateLogin (UpdateLoginRequest) returns (UpdateLoginResponse) {
+    option (google.api.http) = {
+      post: "/v1/users/login"
+      body: "*"
+    };
+  }
+  // Updates managed settings for a user with component, role ID, group ID, comment, email preference, and expiration date.
+  rpc UpdateManagedSettings (UpdateManagedSettingsRequest) returns (UpdateManagedSettingsResponse) {
+    option (google.api.http) = {
+      put: "/v1/users/managed-settings"
+      body: "*"
+    };
+  }
+  // Updates alternative title for a user based on user ID, group ID, and new title.
+  rpc UpdateUserAltTitle (UpdateUserAltTitleRequest) returns (UpdateUserAltTitleResponse) {
+    option (google.api.http) = {
+      put: "/v1/users/alt-title"
+      body: "*"
+    };
+  }
+
+  // Core Workflow Methods
+  // Adds a signature to a workflow with reference ID, module type, user ID, action ID, group ID, status in/out.
+  rpc AddSignature (AddSignatureRequest) returns (AddSignatureResponse) {
+    option (google.api.http) = {
+      post: "/v1/workflows/signature"
+      body: "*"
+    };
+  }
+  // Copies actions from one workflow step to another.
+  rpc CopyActions (CopyActionsRequest) returns (CopyActionsResponse) {
+    option (google.api.http) = {
+      post: "/v1/workflows/copy-actions"
+      body: "*"
+    };
+  }
+  // Copies rules from one workflow to another.
+  rpc CopyRules (CopyRulesRequest) returns (CopyRulesResponse) {
+    option (google.api.http) = {
+      post: "/v1/workflows/copy-rules"
+      body: "*"
+    };
+  }
+  // Copies a workflow from one ID to another.
+  rpc CopyWorkflow (CopyWorkflowRequest) returns (CopyWorkflowResponse) {
+    option (google.api.http) = {
+      post: "/v1/workflows/copy"
+      body: "*"
+    };
+  }
+  // Deletes a status code by its ID.
+  rpc DeleteStatusCode (DeleteStatusCodeRequest) returns (DeleteStatusCodeResponse) {
+    option (google.api.http) = {
+      delete: "/v1/status-codes/{status_id}"
+    };
+  }
+  // Retrieves actions by step ID.
+  rpc GetActionsByStep (GetActionsByStepRequest) returns (GetActionsByStepResponse) {
+    option (google.api.http) = {
+      get: "/v1/steps/{step_id}/actions"
+    };
+  }
+  // Retrieves active cases based on reference ID and group ID.
+  rpc GetActiveCases (GetActiveCasesRequest) returns (GetActiveCasesResponse) {
+    option (google.api.http) = {
+      get: "/v1/cases/active"
+    };
+  }
+  // Retrieves all findings by reason of.
+  rpc GetAllFindingByReasonOf (EmptyRequest) returns (GetAllFindingByReasonOfResponse) {
+    option (google.api.http) = {
+      get: "/v1/findings/reason-of"
+    };
+  }
+  // Retrieves all locks.
+  rpc GetAllLocks (EmptyRequest) returns (GetAllLocksResponse) {
+    option (google.api.http) = {
+      get: "/v1/locks"
+    };
+  }
+  // Retrieves cancel reasons for a workflow, optionally formal.
+  rpc GetCancelReasons (GetCancelReasonsRequest) returns (GetCancelReasonsResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/cancel-reasons"
+    };
+  }
+  // Retrieves creatable workflows by group based on component, module, and group ID.
+  // Caching hint: Creatable workflows by group; cache for 15-30 minutes depending on workflow creation frequency.
+  rpc GetCreatableByGroup (GetCreatableByGroupRequest) returns (GetCreatableByGroupResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/creatable"
+    };
+  }
+  // Retrieves finding by reason of by ID.
+  rpc GetFindingByReasonOfById (GetFindingByReasonOfByIdRequest) returns (GetFindingByReasonOfByIdResponse) {
+    option (google.api.http) = {
+      get: "/v1/findings/reason-of/{id}"
+    };
+  }
+  // Retrieves findings for a workflow based on workflow ID and group ID.
+  rpc GetFindings (GetFindingsRequest) returns (GetFindingsResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/findings"
+    };
+  }
+  // Retrieves module from workflow by workflow ID.
+  rpc GetModuleFromWorkflow (GetModuleFromWorkflowRequest) returns (GetModuleFromWorkflowResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/module"
+    };
+  }
+  // Retrieves page access by group based on workflow, status, and group.
+  rpc GetPageAccessByGroup (GetPageAccessByGroupRequest) returns (GetPageAccessByGroupResponse) {
+    option (google.api.http) = {
+      get: "/v1/pages/access-by-group"
+    };
+  }
+  // Retrieves page access by workflow view based on component, workflow, and status.
+  rpc GetPageAccessByWorkflowView (GetPageAccessByWorkflowViewRequest) returns (GetPageAccessByWorkflowViewResponse) {
+    option (google.api.http) = {
+      get: "/v1/pages/access-by-workflow-view"
+    };
+  }
+  // Retrieves pages by workflow ID.
+  rpc GetPagesByWorkflowId (GetPagesByWorkflowIdRequest) returns (GetPagesByWorkflowIdResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/pages"
+    };
+  }
+  // Retrieves permissions for a workflow.
+  // Caching hint: Permissions change infrequently per user/role; consider caching for 15-30 minutes.
+  rpc GetPermissions (GetPermissionsRequest) returns (GetPermissionsResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/permissions"
+    };
+  }
+  // Retrieves permissions by component for a workflow.
+  rpc GetPermissionsByCompo (GetPermissionsByCompoRequest) returns (GetPermissionsByCompoResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/permissions-by-compo"
+    };
+  }
+  // Retrieves return reasons for a workflow.
+  rpc GetReturnReasons (GetReturnReasonsRequest) returns (GetReturnReasonsResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/return-reasons"
+    };
+  }
+  // Retrieves RWoA reasons for a workflow.
+  rpc GetRwoaReasons (GetRwoaReasonsRequest) returns (GetRwoaReasonsResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/rwoa-reasons"
+    };
+  }
+  // Retrieves status codes by component.
+  // Caching hint: Status codes change infrequently; consider caching for 1 hour.
+  rpc GetStatusCodesByCompo (GetStatusCodesByCompoRequest) returns (GetStatusCodesByCompoResponse) {
+    option (google.api.http) = {
+      get: "/v1/status-codes/by-compo"
+    };
+  }
+  // Retrieves status codes by component and module.
+  rpc GetStatusCodesByCompoAndModule (GetStatusCodesByCompoAndModuleRequest) returns (GetStatusCodesByCompoAndModuleResponse) {
+    option (google.api.http) = {
+      get: "/v1/status-codes/by-compo-and-module"
+    };
+  }
+  // Retrieves status codes by sign code based on group ID and module.
+  rpc GetStatusCodesBySignCode (GetStatusCodesBySignCodeRequest) returns (GetStatusCodesBySignCodeResponse) {
+    option (google.api.http) = {
+      get: "/v1/status-codes/by-sign-code"
+    };
+  }
+  // Retrieves status codes by workflow.
+  // Caching hint: Status codes per workflow; cache for 30-60 minutes if status codes are stable.
+  rpc GetStatusCodesByWorkflow (GetStatusCodesByWorkflowRequest) returns (GetStatusCodesByWorkflowResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/status-codes"
+    };
+  }
+  // Retrieves status codes by workflow and access scope.
+  rpc GetStatusCodesByWorkflowAndAccessScope (GetStatusCodesByWorkflowAndAccessScopeRequest) returns (GetStatusCodesByWorkflowAndAccessScopeResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/status-codes-by-access-scope"
+    };
+  }
+  // Retrieves status code scope by status ID.
+  rpc GetStatusCodeScope (GetStatusCodeScopeRequest) returns (GetStatusCodeScopeResponse) {
+    option (google.api.http) = {
+      get: "/v1/status-codes/{status_id}/scope"
+    };
+  }
+  // Retrieves steps by workflow.
+  rpc GetStepsByWorkflow (GetStepsByWorkflowRequest) returns (GetStepsByWorkflowResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow}/steps"
+    };
+  }
+  // Retrieves steps by workflow and status, optionally with death status.
+  rpc GetStepsByWorkflowAndStatus (GetStepsByWorkflowAndStatusRequest) returns (GetStepsByWorkflowAndStatusResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow}/steps-by-status"
+    };
+  }
+  // Retrieves viewable workflows by group based on group ID and module.
+  // Caching hint: Viewable workflows by group; cache for 10-20 minutes if permissions change moderately.
+  rpc GetViewableByGroup (GetViewableByGroupRequest) returns (GetViewableByGroupResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/viewable"
+    };
+  }
+  // Retrieves workflows by component based on component and user ID.
+  // Caching hint: Workflow lists by component; cache for 10-15 minutes if workflows don't change often.
+  rpc GetWorkflowByCompo (GetWorkflowByCompoRequest) returns (GetWorkflowByCompoResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/by-compo"
+    };
+  }
+  // Retrieves workflows from module by module ID.
+  rpc GetWorkflowFromModule (GetWorkflowFromModuleRequest) returns (GetWorkflowFromModuleResponse) {
+    option (google.api.http) = {
+      get: "/v1/modules/{module_id}/workflows"
+    };
+  }
+  // Retrieves initial status code for a workflow based on component, module, and workflow ID.
+  rpc GetWorkflowInitialStatusCode (GetWorkflowInitialStatusCodeRequest) returns (GetWorkflowInitialStatusCodeResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/initial-status-code"
+    };
+  }
+  // Retrieves workflow title based on module ID and sub-case.
+  rpc GetWorkflowTitle (GetWorkflowTitleRequest) returns (GetWorkflowTitleResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/title"
+    };
+  }
+  // Retrieves workflow title by work status ID based on workflow ID and sub-case.
+  rpc GetWorkflowTitleByWorkStatusId (GetWorkflowTitleByWorkStatusIdRequest) returns (GetWorkflowTitleByWorkStatusIdResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/title-by-work-status"
+    };
+  }
+  // Inserts a new action with type, step ID, target, and data.
+  rpc InsertAction (InsertActionRequest) returns (InsertActionResponse) {
+    option (google.api.http) = {
+      post: "/v1/actions"
+      body: "*"
+    };
+  }
+  // Inserts an option action with type, WSOID, target, and data.
+  rpc InsertOptionAction (InsertOptionActionRequest) returns (InsertOptionActionResponse) {
+    option (google.api.http) = {
+      post: "/v1/actions/option"
+      body: "*"
+    };
+  }
+  // Adds a signature as a stream.
+  rpc AddSignatureStream (AddSignatureRequest) returns (stream SignatureItem) {
+    option (google.api.http) = {
+      post: "/v1/workflows/signature/stream"
+      body: "*"
+    };
+  }
+  // Copies a workflow as a stream.
+  rpc CopyWorkflowStream (CopyWorkflowRequest) returns (stream WorkflowCopyItem) {
+    option (google.api.http) = {
+      post: "/v1/workflows/copy/stream"
+      body: "*"
+    };
+  }
+  // Retrieves actions by step as a stream.
+  rpc GetActionsByStepStream (GetActionsByStepRequest) returns (stream ActionByStepItem) {
+    option (google.api.http) = {
+      get: "/v1/steps/{step_id}/actions/stream"
+    };
+  }
+  // Retrieves active cases as a stream.
+  rpc GetActiveCasesStream (GetActiveCasesRequest) returns (stream ActiveCaseItem) {
+    option (google.api.http) = {
+      get: "/v1/cases/active/stream"
+    };
+  }
+  // Retrieves all findings by reason of as a stream.
+  rpc GetAllFindingByReasonOfStream (EmptyRequest) returns (stream FindingByReasonOfItem) {
+    option (google.api.http) = {
+      get: "/v1/findings/reason-of/stream"
+    };
+  }
+  // Retrieves all locks as a stream.
+  rpc GetAllLocksStream (EmptyRequest) returns (stream LockItem) {
+    option (google.api.http) = {
+      get: "/v1/locks/stream"
+    };
+  }
+  // Retrieves cancel reasons as a stream.
+  rpc GetCancelReasonsStream (GetCancelReasonsRequest) returns (stream CancelReasonItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/cancel-reasons/stream"
+    };
+  }
+  // Retrieves creatable by group as a stream.
+  rpc GetCreatableByGroupStream (GetCreatableByGroupRequest) returns (stream CreatableByGroupItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/creatable/stream"
+    };
+  }
+  // Retrieves finding by reason of by ID as a stream.
+  rpc GetFindingByReasonOfByIdStream (GetFindingByReasonOfByIdRequest) returns (stream FindingByReasonOfByIdItem) {
+    option (google.api.http) = {
+      get: "/v1/findings/reason-of/{id}/stream"
+    };
+  }
+  // Retrieves findings as a stream.
+  rpc GetFindingsStream (GetFindingsRequest) returns (stream FindingItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/findings/stream"
+    };
+  }
+  // Retrieves module from workflow as a stream.
+  rpc GetModuleFromWorkflowStream (GetModuleFromWorkflowRequest) returns (stream ModuleFromWorkflowItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/module/stream"
+    };
+  }
+  // Retrieves page access by group as a stream.
+  rpc GetPageAccessByGroupStream (GetPageAccessByGroupRequest) returns (stream PageAccessByGroupItem) {
+    option (google.api.http) = {
+      get: "/v1/pages/access-by-group/stream"
+    };
+  }
+  // Retrieves page access by workflow view as a stream.
+  rpc GetPageAccessByWorkflowViewStream (GetPageAccessByWorkflowViewRequest) returns (stream PageAccessByWorkflowViewItem) {
+    option (google.api.http) = {
+      get: "/v1/pages/access-by-workflow-view/stream"
+    };
+  }
+  // Retrieves pages by workflow ID as a stream.
+  rpc GetPagesByWorkflowIdStream (GetPagesByWorkflowIdRequest) returns (stream PageByWorkflowItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/pages/stream"
+    };
+  }
+  // Retrieves permissions as a stream.
+  rpc GetPermissionsStream (GetPermissionsRequest) returns (stream PermissionItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/permissions/stream"
+    };
+  }
+  // Retrieves permissions by component as a stream.
+  rpc GetPermissionsByCompoStream (GetPermissionsByCompoRequest) returns (stream PermissionByCompoItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/permissions-by-compo/stream"
+    };
+  }
+  // Retrieves return reasons as a stream.
+  rpc GetReturnReasonsStream (GetReturnReasonsRequest) returns (stream ReturnReasonItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/return-reasons/stream"
+    };
+  }
+  // Retrieves RWoA reasons as a stream.
+  rpc GetRwoaReasonsStream (GetRwoaReasonsRequest) returns (stream RwoaReasonItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/rwoa-reasons/stream"
+    };
+  }
+  // Retrieves status codes by component as a stream.
+  rpc GetStatusCodesByCompoStream (GetStatusCodesByCompoRequest) returns (stream StatusCodeByCompoItem) {
+    option (google.api.http) = {
+      get: "/v1/status-codes/by-compo/stream"
+    };
+  }
+  // Retrieves status codes by component and module as a stream.
+  rpc GetStatusCodesByCompoAndModuleStream (GetStatusCodesByCompoAndModuleRequest) returns (stream StatusCodeByCompoAndModuleItem) {
+    option (google.api.http) = {
+      get: "/v1/status-codes/by-compo-and-module/stream"
+    };
+  }
+  // Retrieves status codes by sign code as a stream.
+  rpc GetStatusCodesBySignCodeStream (GetStatusCodesBySignCodeRequest) returns (stream StatusCodeBySignCodeItem) {
+    option (google.api.http) = {
+      get: "/v1/status-codes/by-sign-code/stream"
+    };
+  }
+  // Retrieves status codes by workflow as a stream.
+  rpc GetStatusCodesByWorkflowStream (GetStatusCodesByWorkflowRequest) returns (stream StatusCodeByWorkflowItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/status-codes/stream"
+    };
+  }
+  // Retrieves status codes by workflow and access scope as a stream.
+  rpc GetStatusCodesByWorkflowAndAccessScopeStream (GetStatusCodesByWorkflowAndAccessScopeRequest) returns (stream StatusCodeByWorkflowAndAccessScopeItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/status-codes-by-access-scope/stream"
+    };
+  }
+  // Retrieves status code scope as a stream.
+  rpc GetStatusCodeScopeStream (GetStatusCodeScopeRequest) returns (stream StatusCodeScopeItem) {
+    option (google.api.http) = {
+      get: "/v1/status-codes/{status_id}/scope/stream"
+    };
+  }
+  // Retrieves steps by workflow as a stream.
+  rpc GetStepsByWorkflowStream (GetStepsByWorkflowRequest) returns (stream StepByWorkflowItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow}/steps/stream"
+    };
+  }
+  // Retrieves steps by workflow and status as a stream.
+  rpc GetStepsByWorkflowAndStatusStream (GetStepsByWorkflowAndStatusRequest) returns (stream StepByWorkflowAndStatusItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow}/steps-by-status/stream"
+    };
+  }
+  // Retrieves viewable by group as a stream.
+  rpc GetViewableByGroupStream (GetViewableByGroupRequest) returns (stream ViewableByGroupItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/viewable/stream"
+    };
+  }
+  // Retrieves workflow by component as a stream.
+  rpc GetWorkflowByCompoStream (GetWorkflowByCompoRequest) returns (stream WorkflowByCompoItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/by-compo/stream"
+    };
+  }
+  // Retrieves workflow from module as a stream.
+  rpc GetWorkflowFromModuleStream (GetWorkflowFromModuleRequest) returns (stream WorkflowFromModuleItem) {
+    option (google.api.http) = {
+      get: "/v1/modules/{module_id}/workflows/stream"
+    };
+  }
+  // Retrieves workflow initial status code as a stream.
+  rpc GetWorkflowInitialStatusCodeStream (GetWorkflowInitialStatusCodeRequest) returns (stream WorkflowInitialStatusCodeItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/initial-status-code/stream"
+    };
+  }
+  // Retrieves workflow title as a stream.
+  rpc GetWorkflowTitleStream (GetWorkflowTitleRequest) returns (stream WorkflowTitleItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/title/stream"
+    };
+  }
+  // Retrieves workflow title by work status ID as a stream.
+  rpc GetWorkflowTitleByWorkStatusIdStream (GetWorkflowTitleByWorkStatusIdRequest) returns (stream WorkflowTitleByWorkStatusIdItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/title-by-work-status/stream"
+    };
+  }
+  // Inserts an action as a stream.
+  rpc InsertActionStream (InsertActionRequest) returns (stream InsertActionItem) {
+    option (google.api.http) = {
+      post: "/v1/actions/stream"
+      body: "*"
+    };
+  }
+  // Inserts an option action as a stream.
+  rpc InsertOptionActionStream (InsertOptionActionRequest) returns (stream InsertOptionActionItem) {
+    option (google.api.http) = {
+      post: "/v1/actions/option/stream"
+      body: "*"
+    };
+  }
+
+  // Application Warmup Process Methods
+  // Deletes a log entry by ID.
+  rpc DeleteLogById (DeleteLogByIdRequest) returns (DeleteLogByIdResponse) {
+    option (google.api.http) = {
+      delete: "/v1/logs/{log_id}"
+    };
+  }
+  // Finds the last execution date of a process.
+  rpc FindProcessLastExecutionDate (FindProcessLastExecutionDateRequest) returns (FindProcessLastExecutionDateResponse) {
+    option (google.api.http) = {
+      get: "/v1/processes/last-execution-date"
+    };
+  }
+  // Finds the last execution date of a process as a stream.
+  rpc FindProcessLastExecutionDateStream (FindProcessLastExecutionDateRequest) returns (stream ProcessLastExecutionDateItem) {
+    option (google.api.http) = {
+      get: "/v1/processes/last-execution-date/stream"
+    };
+  }
+  // Retrieves all log entries.
+  rpc GetAllLogs (EmptyRequest) returns (GetAllLogsResponse) {
+    option (google.api.http) = {
+      get: "/v1/logs"
+    };
+  }
+  // Retrieves all log entries as a stream.
+  rpc GetAllLogsStream (EmptyRequest) returns (stream LogItem) {
+    option (google.api.http) = {
+      get: "/v1/logs/stream"
+    };
+  }
+  // Inserts a new log entry with process name, execution date, and message.
+  rpc InsertLog (InsertLogRequest) returns (InsertLogResponse) {
+    option (google.api.http) = {
+      post: "/v1/logs"
+      body: "*"
+    };
+  }
+  // Checks if a process is active.
+  rpc IsProcessActive (IsProcessActiveRequest) returns (IsProcessActiveResponse) {
+    option (google.api.http) = {
+      get: "/v1/processes/active"
+    };
+  }
+  // Checks if a process is active as a stream.
+  rpc IsProcessActiveStream (IsProcessActiveRequest) returns (stream ProcessActiveItem) {
+    option (google.api.http) = {
+      get: "/v1/processes/active/stream"
+    };
+  }
+
+  // Workflow Methods
+  // Retrieves a workflow by its ID.
+  rpc GetWorkflowById (GetWorkflowByIdRequest) returns (GetWorkflowByIdResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}"
+    };
+  }
+  // Retrieves a workflow by its ID as a stream.
+  rpc GetWorkflowByIdStream (GetWorkflowByIdRequest) returns (stream WorkflowByIdItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/{workflow_id}/stream"
+    };
+  }
+  // Retrieves workflows by reference ID and optionally module.
+  rpc GetWorkflowsByRefId (GetWorkflowsByRefIdRequest) returns (GetWorkflowsByRefIdResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/by-ref-id"
+    };
+  }
+  // Retrieves workflows by reference ID as a stream.
+  rpc GetWorkflowsByRefIdStream (GetWorkflowsByRefIdRequest) returns (stream WorkflowByRefIdItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/by-ref-id/stream"
+    };
+  }
+  // Retrieves workflows by reference ID, module, and workflow type.
+  rpc GetWorkflowsByRefIdAndType (GetWorkflowsByRefIdAndTypeRequest) returns (GetWorkflowsByRefIdAndTypeResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflows/by-ref-id-and-type"
+    };
+  }
+  // Retrieves workflows by reference ID and type as a stream.
+  rpc GetWorkflowsByRefIdAndTypeStream (GetWorkflowsByRefIdAndTypeRequest) returns (stream WorkflowByRefIdAndTypeItem) {
+    option (google.api.http) = {
+      get: "/v1/workflows/by-ref-id-and-type/stream"
+    };
+  }
+  // Retrieves all workflow types.
+  // Caching hint: Workflow types are static reference data; cache for extended periods (1-24 hours).
+  rpc GetWorkflowTypes (EmptyRequest) returns (GetWorkflowTypesResponse) {
+    option (google.api.http) = {
+      get: "/v1/workflow-types"
+    };
+  }
+  // Retrieves all workflow types as a stream.
+  rpc GetWorkflowTypesStream (EmptyRequest) returns (stream WorkflowTypeItem) {
+    option (google.api.http) = {
+      get: "/v1/workflow-types/stream"
+    };
+  }
+  // Inserts a new workflow with reference ID, module, type, text, and user ID.
+  rpc InsertWorkflow (InsertWorkflowRequest) returns (InsertWorkflowResponse) {
+    option (google.api.http) = {
+      post: "/v1/workflows"
+      body: "*"
+    };
+  }
+  // Updates an existing workflow with new text and user ID.
+  rpc UpdateWorkflow (UpdateWorkflowRequest) returns (UpdateWorkflowResponse) {
+    option (google.api.http) = {
+      put: "/v1/workflows/{workflow_id}"
+      body: "*"
+    };
+  }
+
+  // Workstatus Methods
+  // Retrieves a workstatus by its ID.
+  rpc GetWorkstatusById (GetWorkstatusByIdRequest) returns (GetWorkstatusByIdResponse) {
+    option (google.api.http) = {
+      get: "/v1/workstatuses/{workstatus_id}"
+    };
+  }
+  // Retrieves a workstatus by its ID as a stream.
+  rpc GetWorkstatusByIdStream (GetWorkstatusByIdRequest) returns (stream WorkstatusByIdItem) {
+    option (google.api.http) = {
+      get: "/v1/workstatuses/{workstatus_id}/stream"
+    };
+  }
+  // Retrieves workstatuses by reference ID and optionally module.
+  rpc GetWorkstatusesByRefId (GetWorkstatusesByRefIdRequest) returns (GetWorkstatusesByRefIdResponse) {
+    option (google.api.http) = {
+      get: "/v1/workstatuses/by-ref-id"
+    };
+  }
+  // Retrieves workstatuses by reference ID as a stream.
+  rpc GetWorkstatusesByRefIdStream (GetWorkstatusesByRefIdRequest) returns (stream WorkstatusByRefIdItem) {
+    option (google.api.http) = {
+      get: "/v1/workstatuses/by-ref-id/stream"
+    };
+  }
+  // Retrieves workstatuses by reference ID, module, and workstatus type.
+  rpc GetWorkstatusesByRefIdAndType (GetWorkstatusesByRefIdAndTypeRequest) returns (GetWorkstatusesByRefIdAndTypeResponse) {
+    option (google.api.http) = {
+      get: "/v1/workstatuses/by-ref-id-and-type"
+    };
+  }
+  // Retrieves workstatuses by reference ID and type as a stream.
+  rpc GetWorkstatusesByRefIdAndTypeStream (GetWorkstatusesByRefIdAndTypeRequest) returns (stream WorkstatusByRefIdAndTypeItem) {
+    option (google.api.http) = {
+      get: "/v1/workstatuses/by-ref-id-and-type/stream"
+    };
+  }
+  // Retrieves all workstatus types.
+  // Caching hint: Workstatus types are static reference data; cache for extended periods (1-24 hours).
+  rpc GetWorkstatusTypes (EmptyRequest) returns (GetWorkstatusTypesResponse) {
+    option (google.api.http) = {
+      get: "/v1/workstatus-types"
+    };
+  }
+  // Retrieves all workstatus types as a stream.
+  rpc GetWorkstatusTypesStream (EmptyRequest) returns (stream WorkstatusTypeItem) {
+    option (google.api.http) = {
+      get: "/v1/workstatus-types/stream"
+    };
+  }
+  // Inserts a new workstatus with reference ID, module, type, text, and user ID.
+  rpc InsertWorkstatus (InsertWorkstatusRequest) returns (InsertWorkstatusResponse) {
+    option (google.api.http) = {
+      post: "/v1/workstatuses"
+      body: "*"
+    };
+  }
+  // Updates an existing workstatus with new text and user ID.
+  rpc UpdateWorkstatus (UpdateWorkstatusRequest) returns (UpdateWorkstatusResponse) {
+    option (google.api.http) = {
+      put: "/v1/workstatuses/{workstatus_id}"
+      body: "*"
+    };
+  }
+}
+
+// Empty request for methods that don't need parameters
+message EmptyRequest {}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+  optional int32 api_version = 999;
+}
+
+// The response message containing the greetings.
+message HelloResponse {
+  string message = 1;
+  optional int32 api_version = 999;
+}
+
+// User Management Messages
+// Core User Request/Response Messages
+// Request for retrieving reinvestigation requests, optionally filtered by SARC status.
+message GetReinvestigationRequestsRequest {
+  optional int32 user_id = 1;
+  optional bool sarc = 2;
+  optional int32 api_version = 999;
+}
+
+// Response containing a list of reinvestigation request items and count.
+message GetReinvestigationRequestsResponse {
+  repeated ReinvestigationRequestItem items = 1;
+  int32 count = 2;
+  optional int32 api_version = 999;
+}
+
+// Item representing a reinvestigation request with simplified fields.
+message ReinvestigationRequestItem {
+  // Simplified fields - would need to be expanded based on actual result type
+  int32 id = 1;
+  string description = 2;
+}
+
+// Request for retrieving mailing list for LOD based on reference ID, group ID, status, and calling service.
+message GetMailingListForLODRequest {
+  optional int32 ref_id = 1;
+  optional int32 group_id = 2;
+  optional int32 status = 3;
+  optional string calling_service = 4;
+  optional int32 api_version = 999;
+}
+
+// Response containing mailing list items.
+message GetMailingListForLODResponse {
+  repeated MailingListItem items = 1;
+  optional int32 api_version = 999;
+}
+
+// Item representing a mailing list entry with ID, email, and name.
+message MailingListItem {
+  int32 id = 1;
+  string email = 2;
+  string name = 3;
+}
+
+message GetManagedUsersRequest {
+  optional int32 userid = 1;
+  optional string ssn = 2;
+  optional string name = 3;
+  optional int32 status = 4;
+  optional int32 role = 5;
+  optional int32 srch_unit = 6;
+  optional bool show_all_users = 7;
+  optional int32 api_version = 999;
+}
+
+message GetManagedUsersResponse {
+  repeated ManagedUserItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message ManagedUserItem {
+  int32 user_id = 1;
+  string user_name = 2;
+  string email = 3;
+  int32 status = 4;
+}
+
+message GetMembersUserIdRequest {
+  optional string member_ssn = 1;
+  optional int32 api_version = 999;
+}
+
+message GetMembersUserIdResponse {
+  int32 user_id = 1;
+  optional int32 api_version = 999;
+}
+
+message GetUserAltTitleRequest {
+  optional int32 user_id = 1;
+  optional int32 group_id = 2;
+  optional int32 api_version = 999;
+}
+
+message GetUserAltTitleResponse {
+  repeated UserAltTitleItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message UserAltTitleItem {
+  int32 user_id = 1;
+  string title = 2;
+  int32 group_id = 3;
+}
+
+message GetUserAltTitleByGroupCompoRequest {
+  optional int32 group_id = 1;
+  optional int32 work_compo = 2;
+  optional int32 api_version = 999;
+}
+
+message GetUserAltTitleByGroupCompoResponse {
+  repeated UserAltTitleByGroupCompoItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message UserAltTitleByGroupCompoItem {
+  int32 user_id = 1;
+  string title = 2;
+  string component = 3;
+}
+
+message GetUserNameRequest {
+  optional string first = 1;
+  optional string last = 2;
+  optional int32 api_version = 999;
+}
+
+message GetUserNameResponse {
+  repeated UserNameItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message UserNameItem {
+  int32 user_id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string full_name = 4;
+}
+
+message GetUsersAltTitleByGroupRequest {
+  optional int32 group_id = 1;
+  optional int32 api_version = 999;
+}
+
+message GetUsersAltTitleByGroupResponse {
+  repeated UsersAltTitleByGroupItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message UsersAltTitleByGroupItem {
+  int32 user_id = 1;
+  string title = 2;
+  int32 group_id = 3;
+}
+
+message GetUsersOnlineResponse {
+  repeated UserOnlineItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message UserOnlineItem {
+  int32 user_id = 1;
+  string user_name = 2;
+  string last_activity = 3;
+}
+
+message GetWhoisRequest {
+  optional int32 user_id = 1;
+  optional int32 api_version = 999;
+}
+
+message GetWhoisResponse {
+  repeated WhoisItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message WhoisItem {
+  int32 user_id = 1;
+  string user_name = 2;
+  string ip_address = 3;
+  string last_login = 4;
+}
+
+message HasHQTechAccountRequest {
+  optional int32 origin_user_id = 1;
+  optional string user_edipin = 2;
+  optional int32 api_version = 999;
+}
+
+message HasHQTechAccountResponse {
+  repeated HQTechAccountItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message HQTechAccountItem {
+  int32 user_id = 1;
+  bool has_account = 2;
+  string account_type = 3;
+}
+
+message IsFinalStatusCodeRequest {
+  optional int32 status_id = 1;
+  optional int32 api_version = 999;
+}
+
+message IsFinalStatusCodeResponse {
+  repeated FinalStatusCodeItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message FinalStatusCodeItem {
+  int32 status_id = 1;
+  bool is_final = 2;
+  string description = 3;
+}
+
+message LogoutRequest {
+  optional int32 user_id = 1;
+  optional int32 api_version = 999;
+}
+
+message LogoutResponse {
+  int32 result = 1;
+  optional int32 api_version = 999;
+}
+
+message RegisterUserRequest {
+  optional int32 user_id = 1;
+  optional string work_compo = 2;
+  optional bool receive_email = 3;
+  optional int32 group_id = 4;
+  optional int32 account_status = 5;
+  optional string expiration_date = 6;
+  optional int32 api_version = 999;
+}
+
+message RegisterUserResponse {
+  int32 result = 1;
+  optional int32 api_version = 999;
+}
+
+message RegisterUserRoleRequest {
+  optional int32 user_id = 1;
+  optional int32 group_id = 2;
+  optional int32 status = 3;
+  optional int32 api_version = 999;
+}
+
+message RegisterUserRoleResponse {
+  int32 user_role_id = 1;
+  optional int32 api_version = 999;
+}
+
+message SearchMemberDataRequest {
+  optional int32 user_id = 1;
+  optional string ssn = 2;
+  optional string last_name = 3;
+  optional string first_name = 4;
+  optional string middle_name = 5;
+  optional int32 srch_unit = 6;
+  optional int32 rpt_view = 7;
+  optional int32 api_version = 999;
+}
+
+message SearchMemberDataResponse {
+  repeated MemberDataItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message MemberDataItem {
+  int32 member_id = 1;
+  string ssn = 2;
+  string first_name = 3;
+  string last_name = 4;
+  string middle_name = 5;
+}
+
+message SearchMemberDataTestRequest {
+  optional int32 user_id = 1;
+  optional string ssn = 2;
+  optional string name = 3;
+  optional int32 srch_unit = 4;
+  optional int32 rpt_view = 5;
+  optional int32 api_version = 999;
+}
+
+message SearchMemberDataTestResponse {
+  repeated MemberDataTestItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message MemberDataTestItem {
+  int32 member_id = 1;
+  string ssn = 2;
+  string name = 3;
+}
+
+message UpdateAccountStatusRequest {
+  optional int32 user_id = 1;
+  optional int32 account_status = 2;
+  optional string expiration_date = 3;
+  optional string comment = 4;
+  optional int32 api_version = 999;
+}
+
+message UpdateAccountStatusResponse {
+  int32 result = 1;
+  optional int32 api_version = 999;
+}
+
+message UpdateLoginRequest {
+  optional int32 user_id = 1;
+  optional string session_id = 2;
+  optional string remote_addr = 3;
+  optional int32 api_version = 999;
+}
+
+message UpdateLoginResponse {
+  repeated LoginUpdateItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message LoginUpdateItem {
+  int32 user_id = 1;
+  string session_id = 2;
+  string login_time = 3;
+}
+
+message UpdateManagedSettingsRequest {
+  optional int32 user_id = 1;
+  optional string compo = 2;
+  optional int32 role_id = 3;
+  optional int32 group_id = 4;
+  optional string comment = 5;
+  optional bool receive_email = 6;
+  optional string expiration_date = 7;
+  optional int32 api_version = 999;
+}
+
+message UpdateManagedSettingsResponse {
+  int32 result = 1;
+  optional int32 api_version = 999;
+}
+
+message UpdateUserAltTitleRequest {
+  optional int32 user_id = 1;
+  optional int32 group_id = 2;
+  optional string new_title = 3;
+  optional int32 api_version = 999;
+}
+
+message UpdateUserAltTitleResponse {
+  int32 result = 1;
+  optional int32 api_version = 999;
+}
+
+// Workflow Management Messages
+// Core Workflow Request/Response Messages
+// Request for adding a signature to a workflow.
+message AddSignatureRequest {
+  optional int32 ref_id = 1;
+  optional int32 module_type = 2;
+  optional int32 user_id = 3;
+  optional int32 action_id = 4;
+  optional int32 group_id = 5;
+  optional int32 status_in = 6;
+  optional int32 status_out = 7;
+  optional int32 api_version = 999;
+}
+
+// Response for adding a signature.
+message AddSignatureResponse {
+  repeated SignatureItem items = 1;
+  optional int32 api_version = 999;
+}
+
+// Item representing a signature with ID, reference ID, user ID, and date.
+message SignatureItem {
+  int32 signature_id = 1;
+  int32 ref_id = 2;
+  int32 user_id = 3;
+  string signature_date = 4;
+}
+
+// Request for copying actions from one workflow step to another.
+message CopyActionsRequest {
+  optional int32 dest_wsoid = 1;
+  optional int32 src_wsoid = 2;
+  optional int32 api_version = 999;
+}
+
+// Response for copying actions.
+message CopyActionsResponse {
+  int32 result = 1;
+  optional int32 api_version = 999;
+}
+
+// Request for copying rules from one workflow to another.
+message CopyRulesRequest {
+  optional int32 dest_wsoid = 1;
+  optional int32 src_wsoid = 2;
+  optional int32 api_version = 999;
+}
+
+// Response for copying rules.
+message CopyRulesResponse {
+  int32 result = 1;
+  optional int32 api_version = 999;
+}
+
+// Request for copying a workflow from one ID to another.
+message CopyWorkflowRequest {
+  optional int32 from_id = 1;
+  optional int32 to_id = 2;
+  optional int32 api_version = 999;
+}
+
+// Response for copying a workflow.
+message CopyWorkflowResponse {
+  repeated WorkflowCopyItem items = 1;
+  optional int32 api_version = 999;
+}
+
+// Item representing a workflow copy result with ID, name, and success flag.
+message WorkflowCopyItem {
+  int32 workflow_id = 1;
+  string workflow_name = 2;
+  bool copy_success = 3;
+}
+
+// Request for deleting a status code by its ID.
+message DeleteStatusCodeRequest {
+  optional int32 status_id = 1;
+  optional int32 api_version = 999;
+}
+
+// Response for deleting a status code.
+message DeleteStatusCodeResponse {
+  int32 result = 1;
+  optional int32 api_version = 999;
+}
+
+message GetActionsByStepRequest {
+  optional int32 step_id = 1;
+  optional int32 api_version = 999;
+}
+
+message GetActionsByStepResponse {
+  repeated ActionByStepItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message ActionByStepItem {
+  int32 action_id = 1;
+  int32 step_id = 2;
+  string action_type = 3;
+  string action_description = 4;
+}
+
+message GetActiveCasesRequest {
+  optional int32 ref_id = 1;
+  optional int32 group_id = 2;
+  optional int32 api_version = 999;
+}
+
+message GetActiveCasesResponse {
+  repeated ActiveCaseItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message ActiveCaseItem {
+  int32 case_id = 1;
+  int32 ref_id = 2;
+  int32 group_id = 3;
+  string status = 4;
+}
+
+message GetAllFindingByReasonOfResponse {
+  repeated FindingByReasonOfItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message FindingByReasonOfItem {
+  int32 finding_id = 1;
+  string reason = 2;
+  string description = 3;
+}
+
+message GetAllLocksResponse {
+  repeated LockItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message LockItem {
+  int32 lock_id = 1;
+  int32 user_id = 2;
+  string lock_type = 3;
+  string lock_time = 4;
+}
+
+message GetCancelReasonsRequest {
+  optional int32 workflow_id = 1;
+  optional bool is_formal = 2;
+  optional int32 api_version = 999;
+}
+
+message GetCancelReasonsResponse {
+  repeated CancelReasonItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message CancelReasonItem {
+  int32 reason_id = 1;
+  string reason_text = 2;
+  bool is_formal = 3;
+}
+
+message GetCreatableByGroupRequest {
+  optional string compo = 1;
+  optional int32 module = 2;
+  optional int32 group_id = 3;
+  optional int32 api_version = 999;
+}
+
+message GetCreatableByGroupResponse {
+  repeated CreatableByGroupItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message CreatableByGroupItem {
+  int32 workflow_id = 1;
+  string workflow_name = 2;
+  int32 group_id = 3;
+}
+
+message GetFindingByReasonOfByIdRequest {
+  optional int32 id = 1;
+  optional int32 api_version = 999;
+}
+
+message GetFindingByReasonOfByIdResponse {
+  repeated FindingByReasonOfByIdItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message FindingByReasonOfByIdItem {
+  int32 finding_id = 1;
+  string reason = 2;
+  string description = 3;
+  int32 id = 4;
+}
+
+message GetFindingsRequest {
+  optional int32 workflow_id = 1;
+  optional int32 group_id = 2;
+  optional int32 api_version = 999;
+}
+
+message GetFindingsResponse {
+  repeated FindingItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message FindingItem {
+  int32 finding_id = 1;
+  int32 workflow_id = 2;
+  int32 group_id = 3;
+  string finding_text = 4;
+}
+
+message GetModuleFromWorkflowRequest {
+  optional int32 workflow_id = 1;
+  optional int32 api_version = 999;
+}
+
+message GetModuleFromWorkflowResponse {
+  repeated ModuleFromWorkflowItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message ModuleFromWorkflowItem {
+  int32 module_id = 1;
+  string module_name = 2;
+  int32 workflow_id = 3;
+}
+
+message GetPageAccessByGroupRequest {
+  optional int32 workflow = 1;
+  optional int32 status = 2;
+  optional int32 group = 3;
+  optional int32 api_version = 999;
+}
+
+message GetPageAccessByGroupResponse {
+  repeated PageAccessByGroupItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message PageAccessByGroupItem {
+  int32 page_id = 1;
+  string page_name = 2;
+  bool has_access = 3;
+  int32 group_id = 4;
+}
+
+message GetPageAccessByWorkflowViewRequest {
+  optional string compo = 1;
+  optional int32 workflow = 2;
+  optional int32 status = 3;
+  optional int32 api_version = 999;
+}
+
+message GetPageAccessByWorkflowViewResponse {
+  repeated PageAccessByWorkflowViewItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message PageAccessByWorkflowViewItem {
+  int32 page_id = 1;
+  string page_name = 2;
+  bool has_access = 3;
+  string component = 4;
+}
+
+message GetPagesByWorkflowIdRequest {
+  optional int32 workflow_id = 1;
+  optional int32 api_version = 999;
+}
+
+message GetPagesByWorkflowIdResponse {
+  repeated PageByWorkflowItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message PageByWorkflowItem {
+  int32 page_id = 1;
+  string page_name = 2;
+  int32 workflow_id = 3;
+  string page_url = 4;
+}
+
+message GetPermissionsRequest {
+  optional int32 workflow_id = 1;
+  optional int32 api_version = 999;
+}
+
+message GetPermissionsResponse {
+  repeated PermissionItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message PermissionItem {
+  int32 permission_id = 1;
+  string permission_name = 2;
+  int32 workflow_id = 3;
+  bool is_granted = 4;
+}
+
+message GetPermissionsByCompoRequest {
+  optional int32 workflow_id = 1;
+  optional string compo = 2;
+  optional int32 api_version = 999;
+}
+
+message GetPermissionsByCompoResponse {
+  repeated PermissionByCompoItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message PermissionByCompoItem {
+  int32 permission_id = 1;
+  string permission_name = 2;
+  string component = 3;
+  bool is_granted = 4;
+}
+
+message GetReturnReasonsRequest {
+  optional int32 workflow_id = 1;
+  optional int32 api_version = 999;
+}
+
+message GetReturnReasonsResponse {
+  repeated ReturnReasonItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message ReturnReasonItem {
+  int32 reason_id = 1;
+  string reason_text = 2;
+  int32 workflow_id = 3;
+}
+
+message GetRwoaReasonsRequest {
+  optional int32 workflow_id = 1;
+  optional int32 api_version = 999;
+}
+
+message GetRwoaReasonsResponse {
+  repeated RwoaReasonItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message RwoaReasonItem {
+  int32 reason_id = 1;
+  string reason_text = 2;
+  int32 workflow_id = 3;
+}
+
+message GetStatusCodesByCompoRequest {
+  optional string compo = 1;
+  optional int32 api_version = 999;
+}
+
+message GetStatusCodesByCompoResponse {
+  repeated StatusCodeByCompoItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message StatusCodeByCompoItem {
+  int32 status_id = 1;
+  string status_name = 2;
+  string component = 3;
+}
+
+message GetStatusCodesByCompoAndModuleRequest {
+  optional string compo = 1;
+  optional int32 module = 2;
+  optional int32 api_version = 999;
+}
+
+message GetStatusCodesByCompoAndModuleResponse {
+  repeated StatusCodeByCompoAndModuleItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message StatusCodeByCompoAndModuleItem {
+  int32 status_id = 1;
+  string status_name = 2;
+  string component = 3;
+  int32 module_id = 4;
+}
+
+message GetStatusCodesBySignCodeRequest {
+  optional int32 group_id = 1;
+  optional int32 module = 2;
+  optional int32 api_version = 999;
+}
+
+message GetStatusCodesBySignCodeResponse {
+  repeated StatusCodeBySignCodeItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message StatusCodeBySignCodeItem {
+  int32 status_id = 1;
+  string status_name = 2;
+  int32 group_id = 3;
+  int32 module_id = 4;
+}
+
+message GetStatusCodesByWorkflowRequest {
+  optional int32 workflow_id = 1;
+  optional int32 api_version = 999;
+}
+
+message GetStatusCodesByWorkflowResponse {
+  repeated StatusCodeByWorkflowItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message StatusCodeByWorkflowItem {
+  int32 status_id = 1;
+  string status_name = 2;
+  int32 workflow_id = 3;
+}
+
+message GetStatusCodesByWorkflowAndAccessScopeRequest {
+  optional int32 workflow_id = 1;
+  optional int32 access_scope = 2;
+  optional int32 api_version = 999;
+}
+
+message GetStatusCodesByWorkflowAndAccessScopeResponse {
+  repeated StatusCodeByWorkflowAndAccessScopeItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message StatusCodeByWorkflowAndAccessScopeItem {
+  int32 status_id = 1;
+  string status_name = 2;
+  int32 workflow_id = 3;
+  int32 access_scope = 4;
+}
+
+message GetStatusCodeScopeRequest {
+  optional int32 status_id = 1;
+  optional int32 api_version = 999;
+}
+
+message GetStatusCodeScopeResponse {
+  repeated StatusCodeScopeItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message StatusCodeScopeItem {
+  int32 status_id = 1;
+  string scope_name = 2;
+  string description = 3;
+}
+
+message GetStepsByWorkflowRequest {
+  optional int32 workflow = 1;
+  optional int32 api_version = 999;
+}
+
+message GetStepsByWorkflowResponse {
+  repeated StepByWorkflowItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message StepByWorkflowItem {
+  int32 step_id = 1;
+  string step_name = 2;
+  int32 workflow_id = 3;
+  int32 step_order = 4;
+}
+
+message GetStepsByWorkflowAndStatusRequest {
+  optional int32 workflow = 1;
+  optional int32 status = 2;
+  optional string death_status = 3;
+  optional int32 api_version = 999;
+}
+
+message GetStepsByWorkflowAndStatusResponse {
+  repeated StepByWorkflowAndStatusItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message StepByWorkflowAndStatusItem {
+  int32 step_id = 1;
+  string step_name = 2;
+  int32 workflow_id = 3;
+  int32 status_id = 4;
+  string death_status = 5;
+}
+
+message GetViewableByGroupRequest {
+  optional int32 group_id = 1;
+  optional int32 module = 2;
+  optional int32 api_version = 999;
+}
+
+message GetViewableByGroupResponse {
+  repeated ViewableByGroupItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message ViewableByGroupItem {
+  int32 workflow_id = 1;
+  string workflow_name = 2;
+  int32 group_id = 3;
+  bool is_viewable = 4;
+}
+
+message GetWorkflowByCompoRequest {
+  optional string compo = 1;
+  optional int32 user_id = 2;
+  optional int32 api_version = 999;
+}
+
+message GetWorkflowByCompoResponse {
+  repeated WorkflowByCompoItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message WorkflowByCompoItem {
+  int32 workflow_id = 1;
+  string workflow_name = 2;
+  string component = 3;
+  int32 user_id = 4;
+}
+
+message GetWorkflowFromModuleRequest {
+  optional int32 module_id = 1;
+  optional int32 api_version = 999;
+}
+
+message GetWorkflowFromModuleResponse {
+  repeated WorkflowFromModuleItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message WorkflowFromModuleItem {
+  int32 workflow_id = 1;
+  string workflow_name = 2;
+  int32 module_id = 3;
+}
+
+message GetWorkflowInitialStatusCodeRequest {
+  optional int32 compo = 1;
+  optional int32 module = 2;
+  optional int32 workflow_id = 3;
+  optional int32 api_version = 999;
+}
+
+message GetWorkflowInitialStatusCodeResponse {
+  repeated WorkflowInitialStatusCodeItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message WorkflowInitialStatusCodeItem {
+  int32 workflow_id = 1;
+  int32 initial_status_id = 2;
+  string status_name = 3;
+}
+
+message GetWorkflowTitleRequest {
+  optional int32 module_id = 1;
+  optional int32 sub_case = 2;
+  optional int32 api_version = 999;
+}
+
+message GetWorkflowTitleResponse {
+  repeated WorkflowTitleItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message WorkflowTitleItem {
+  int32 workflow_id = 1;
+  string title = 2;
+  int32 module_id = 3;
+  int32 sub_case = 4;
+}
+
+message GetWorkflowTitleByWorkStatusIdRequest {
+  optional int32 workflow_id = 1;
+  optional int32 sub_case = 2;
+  optional int32 api_version = 999;
+}
+
+message GetWorkflowTitleByWorkStatusIdResponse {
+  repeated WorkflowTitleByWorkStatusIdItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message WorkflowTitleByWorkStatusIdItem {
+  int32 workflow_id = 1;
+  string title = 2;
+  int32 work_status_id = 3;
+  int32 sub_case = 4;
+}
+
+message InsertActionRequest {
+  optional int32 type = 1;
+  optional int32 step_id = 2;
+  optional int32 target = 3;
+  optional int32 data = 4;
+  optional int32 api_version = 999;
+}
+
+message InsertActionResponse {
+  repeated InsertActionItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message InsertActionItem {
+  int32 action_id = 1;
+  int32 type = 2;
+  int32 step_id = 3;
+  string result_message = 4;
+}
+
+message InsertOptionActionRequest {
+  optional int32 type = 1;
+  optional int32 wsoid = 2;
+  optional int32 target = 3;
+  optional int32 data = 4;
+  optional int32 api_version = 999;
+}
+
+message InsertOptionActionResponse {
+  repeated InsertOptionActionItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message InsertOptionActionItem {
+  int32 action_id = 1;
+  int32 type = 2;
+  int32 wsoid = 3;
+  string result_message = 4;
+}
+
+// Application Process Messages
+// Application Warmup Process Request/Response Messages
+message DeleteLogByIdRequest {
+  optional int32 log_id = 1;
+  optional int32 api_version = 999;
+}
+
+message DeleteLogByIdResponse {
+  int32 result = 1;
+  optional int32 api_version = 999;
+}
+
+message FindProcessLastExecutionDateRequest {
+  optional string process_name = 1;
+  optional int32 api_version = 999;
+}
+
+message FindProcessLastExecutionDateResponse {
+  repeated ProcessLastExecutionDateItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message ProcessLastExecutionDateItem {
+  string process_name = 1;
+  string last_execution_date = 2;
+  string message = 3;
+}
+
+message GetAllLogsResponse {
+  repeated LogItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message LogItem {
+  int32 log_id = 1;
+  string process_name = 2;
+  string execution_date = 3;
+  string message = 4;
+}
+
+message InsertLogRequest {
+  optional string process_name = 1;
+  optional string execution_date = 2;
+  optional string message = 3;
+  optional int32 api_version = 999;
+}
+
+message InsertLogResponse {
+  int32 result = 1;
+  optional int32 api_version = 999;
+}
+
+message IsProcessActiveRequest {
+  optional string process_name = 1;
+  optional int32 api_version = 999;
+}
+
+message IsProcessActiveResponse {
+  repeated ProcessActiveItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message ProcessActiveItem {
+  string process_name = 1;
+  bool is_active = 2;
+}
+
+// Workflow Entity Messages
+// Workflow Methods Request/Response Messages
+message GetWorkflowByIdRequest {
+  optional int32 workflow_id = 1;
+  optional int32 api_version = 999;
+}
+
+message GetWorkflowByIdResponse {
+  repeated WorkflowByIdItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message WorkflowByIdItem {
+  optional int32 workflow_id = 1;
+  optional string workflow_text = 2;
+}
+
+message GetWorkflowsByRefIdRequest {
+  optional int32 ref_id = 1;
+  optional int32 module = 2;
+  optional int32 api_version = 999;
+}
+
+message GetWorkflowsByRefIdResponse {
+  repeated WorkflowByRefIdItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message WorkflowByRefIdItem {
+  optional int32 workflow_id = 1;
+  optional int32 ref_id = 2;
+  optional int32 module = 3;
+}
+
+message GetWorkflowsByRefIdAndTypeRequest {
+  optional int32 ref_id = 1;
+  optional int32 module = 2;
+  optional int32 workflow_type = 3;
+  optional int32 api_version = 999;
+}
+
+message GetWorkflowsByRefIdAndTypeResponse {
+  repeated WorkflowByRefIdAndTypeItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message WorkflowByRefIdAndTypeItem {
+  optional int32 workflow_id = 1;
+  optional int32 ref_id = 2;
+  optional int32 module = 3;
+  optional int32 workflow_type = 4;
+}
+
+message GetWorkflowTypesResponse {
+  repeated WorkflowTypeItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message WorkflowTypeItem {
+  optional int32 workflow_type_id = 1;
+  optional string type_name = 2;
+}
+
+message InsertWorkflowRequest {
+  optional int32 ref_id = 1;
+  optional int32 module = 2;
+  optional int32 workflow_type = 3;
+  optional string workflow_text = 4;
+  optional int32 user_id = 5;
+  optional int32 api_version = 999;
+}
+
+message InsertWorkflowResponse {
+  int32 result = 1;
+  optional int32 api_version = 999;
+}
+
+message UpdateWorkflowRequest {
+  optional int32 workflow_id = 1;
+  optional string workflow_text = 2;
+  optional int32 user_id = 3;
+  optional int32 api_version = 999;
+}
+
+message UpdateWorkflowResponse {
+  int32 result = 1;
+  optional int32 api_version = 999;
+}
+
+// Workstatus Entity Messages
+// Workstatus Methods Request/Response Messages
+message GetWorkstatusByIdRequest {
+  optional int32 workstatus_id = 1;
+  optional int32 api_version = 999;
+}
+
+message GetWorkstatusByIdResponse {
+  repeated WorkstatusByIdItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message WorkstatusByIdItem {
+  optional int32 workstatus_id = 1;
+  optional string workstatus_text = 2;
+}
+
+message GetWorkstatusesByRefIdRequest {
+  optional int32 ref_id = 1;
+  optional int32 module = 2;
+  optional int32 api_version = 999;
+}
+
+message GetWorkstatusesByRefIdResponse {
+  repeated WorkstatusByRefIdItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message WorkstatusByRefIdItem {
+  optional int32 workstatus_id = 1;
+  optional int32 ref_id = 2;
+  optional int32 module = 3;
+}
+
+message GetWorkstatusesByRefIdAndTypeRequest {
+  optional int32 ref_id = 1;
+  optional int32 module = 2;
+  optional int32 workstatus_type = 3;
+  optional int32 api_version = 999;
+}
+
+message GetWorkstatusesByRefIdAndTypeResponse {
+  repeated WorkstatusByRefIdAndTypeItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message WorkstatusByRefIdAndTypeItem {
+  optional int32 workstatus_id = 1;
+  optional int32 ref_id = 2;
+  optional int32 module = 3;
+  optional int32 workstatus_type = 4;
+}
+
+message GetWorkstatusTypesResponse {
+  repeated WorkstatusTypeItem items = 1;
+  optional int32 api_version = 999;
+}
+
+message WorkstatusTypeItem {
+  optional int32 workstatus_type_id = 1;
+  optional string type_name = 2;
+}
+
+message InsertWorkstatusRequest {
+  optional int32 ref_id = 1;
+  optional int32 module = 2;
+  optional int32 workstatus_type = 3;
+  optional string workstatus_text = 4;
+  optional int32 user_id = 5;
+  optional int32 api_version = 999;
+}
+
+message InsertWorkstatusResponse {
+  int32 result = 1;
+  optional int32 api_version = 999;
+}
+
+message UpdateWorkstatusRequest {
+  optional int32 workstatus_id = 1;
+  optional string workstatus_text = 2;
+  optional int32 user_id = 3;
+  optional int32 api_version = 999;
+}
+
+message UpdateWorkstatusResponse {
+  int32 result = 1;
+  optional int32 api_version = 999;
+}
