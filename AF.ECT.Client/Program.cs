@@ -10,6 +10,15 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 builder.Services.AddRadzenComponents();
 
+// Configure WorkflowClient options with default values
+builder.Services.Configure<WorkflowClientOptions>(options =>
+{
+    options.MaxRetryAttempts = 3;
+    options.InitialRetryDelayMs = 100;
+    options.MaxRetryDelayMs = 1000;
+    options.RequestTimeoutSeconds = 30;
+});
+
 // Register WorkflowClient for gRPC communication
 builder.Services.AddScoped<IWorkflowClient, WorkflowClient>();
 

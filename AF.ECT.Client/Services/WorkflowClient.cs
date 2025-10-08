@@ -4,6 +4,7 @@ using AF.ECT.Shared;
 using System.Diagnostics;
 using Polly;
 using Polly.Retry;
+using Microsoft.Extensions.Options;
 
 namespace AF.ECT.Client.Services;
 
@@ -32,12 +33,7 @@ public class WorkflowClient : IWorkflowClient
     private readonly ILogger<WorkflowClient>? _logger;
     private readonly AsyncRetryPolicy _retryPolicy;
     private readonly Stopwatch _stopwatch = new();
-
-    // Performance configuration constants
-    private const int MaxRetryAttempts = 3;
-    private const int InitialRetryDelayMs = 100;
-    private const int MaxRetryDelayMs = 1000;
-    private const int RequestTimeoutSeconds = 30;
+    private readonly WorkflowClientOptions _options;
 
     #endregion
 
@@ -53,8 +49,12 @@ public class WorkflowClient : IWorkflowClient
         _client = grpcClient ?? throw new ArgumentNullException(nameof(grpcClient));
         _channel = null; // No channel when using injected client
         _logger = null; // No logger in test mode
+        _options = new WorkflowClientOptions(); // Use default options for testing
         _retryPolicy = Policy.Handle<Grpc.Core.RpcException>()
-            .WaitAndRetryAsync(MaxRetryAttempts, attempt => TimeSpan.FromMilliseconds(Math.Min(InitialRetryDelayMs * Math.Pow(2, attempt), MaxRetryDelayMs)));
+            .WaitAndRetryAsync(_options.MaxRetryAttempts, attempt =>
+            {
+                return TimeSpan.FromMilliseconds(Math.Min(_options.InitialRetryDelayMs * Math.Pow(2, attempt), _options.MaxRetryDelayMs));
+            });
     }
 
     /// <summary>
@@ -62,8 +62,9 @@ public class WorkflowClient : IWorkflowClient
     /// </summary>
     /// <param name="httpClient">The HTTP client for making web requests.</param>
     /// <param name="logger">The logger for performance monitoring.</param>
+    /// <param name="options">The configuration options for the workflow client.</param>
     /// <exception cref="ArgumentNullException">Thrown when httpClient is null.</exception>
-    public WorkflowClient(HttpClient httpClient, ILogger<WorkflowClient>? logger = null)
+    public WorkflowClient(HttpClient httpClient, ILogger<WorkflowClient>? logger = null, IOptions<WorkflowClientOptions>? options = null)
     {
         if (httpClient == null)
         {
@@ -71,6 +72,7 @@ public class WorkflowClient : IWorkflowClient
         }
 
         _logger = logger;
+        _options = options?.Value ?? new WorkflowClientOptions();
 
         // Create optimized HttpClientHandler for connection pooling
         var httpClientHandler = new HttpClientHandler();
@@ -95,12 +97,12 @@ public class WorkflowClient : IWorkflowClient
                 ex.StatusCode == Grpc.Core.StatusCode.Unavailable ||
                 ex.StatusCode == Grpc.Core.StatusCode.DeadlineExceeded ||
                 ex.StatusCode == Grpc.Core.StatusCode.Internal)
-            .WaitAndRetryAsync(MaxRetryAttempts,
-                attempt => TimeSpan.FromMilliseconds(Math.Min(InitialRetryDelayMs * Math.Pow(2, attempt), MaxRetryDelayMs)),
+            .WaitAndRetryAsync(_options.MaxRetryAttempts,
+                attempt => TimeSpan.FromMilliseconds(Math.Min(_options.InitialRetryDelayMs * Math.Pow(2, attempt), _options.MaxRetryDelayMs)),
                 (exception, timeSpan, retryCount, context) =>
                 {
                     _logger?.LogWarning(exception, "gRPC call failed, retrying in {Delay}ms (attempt {Attempt}/{MaxAttempts})",
-                        timeSpan.TotalMilliseconds, retryCount, MaxRetryAttempts);
+                        timeSpan.TotalMilliseconds, retryCount, _options.MaxRetryAttempts);
                 });
     }
 
