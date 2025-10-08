@@ -1,5 +1,0 @@
-obj\Debug\net9.0/Workflow.cs \
-obj\Debug\net9.0/WorkflowGrpc.cs: C:/Users/DonellMcCoy/.nuget/packages/google.api.commonprotos/2.17.0/content/protos/google/api/http.proto\
- C:/Users/DonellMcCoy/.nuget/packages/grpc.tools/2.72.0/build/native/include/google/protobuf/descriptor.proto\
- C:/Users/DonellMcCoy/.nuget/packages/google.api.commonprotos/2.17.0/content/protos/google/api/annotations.proto\
- Protos/workflow.proto
