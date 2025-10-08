@@ -1,6 +1,5 @@
 #nullable enable
 
-using AF.ECT.Server.Models;
 using AF.ECT.Shared;
 
 namespace AF.ECT.Server.Services.Interfaces;

@@ -8,5 +8,5 @@ namespace Projects;
 public class AF_ECT_AppHost
 {
     private AF_ECT_AppHost() { }
-    public static string ProjectPath => """c:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost""";
+    public static string ProjectPath => """C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost""";
 }

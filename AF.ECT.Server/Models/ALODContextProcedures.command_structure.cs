@@ -1,7 +1,6 @@
 #nullable enable
 #pragma warning disable CS8604 // Possible null reference argument
 using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
 using AF.ECT.Server.Models.Extensions;
 using AF.ECT.Server.Models.ResultTypes;
 using AF.ECT.Server.Models.Interfaces;

@@ -1,6 +1,3 @@
-
-using AF.ECT.Server.Models.Interfaces;
-
 namespace AF.ECT.Server.Models;
 
 public partial class ALODContext

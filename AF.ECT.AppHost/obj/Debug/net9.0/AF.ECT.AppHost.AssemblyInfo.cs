@@ -17,17 +17,17 @@ using System.Reflection;
     "ools\\ext\\"))]
 [assembly: System.Reflection.AssemblyMetadata("dcpbinpath", ("C:\\Users\\DonellMcCoy\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.3.1\\t" +
     "ools\\ext\\bin\\"))]
-[assembly: System.Reflection.AssemblyMetadata("apphostprojectpath", ("c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHos" +
+[assembly: System.Reflection.AssemblyMetadata("apphostprojectpath", ("C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHos" +
     "t"))]
 [assembly: System.Reflection.AssemblyMetadata("apphostprojectname", "AF.ECT.AppHost.csproj")]
 [assembly: System.Reflection.AssemblyMetadata("aspiredashboardpath", ("C:\\Users\\DonellMcCoy\\.nuget\\packages\\aspire.dashboard.sdk.win-x64\\9.3.1\\tools\\Asp" +
     "ire.Dashboard.exe"))]
-[assembly: System.Reflection.AssemblyMetadataAttribute("apphostprojectbaseintermediateoutputpath", ("c:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHos" +
+[assembly: System.Reflection.AssemblyMetadataAttribute("apphostprojectbaseintermediateoutputpath", ("C:\\Users\\DonellMcCoy\\source\\repos2\\ElectronicCaseTracking\\ECTSystem\\AF.ECT.AppHos" +
     "t\\obj\\"))]
 [assembly: System.Reflection.AssemblyCompanyAttribute("AF.ECT.AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+78a85158e412d76e6c191a0cd3679c0e82a4c684")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dcab991b8d21472ed633220a76b7e8680f9906a2")]
 [assembly: System.Reflection.AssemblyProductAttribute("AF.ECT.AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AF.ECT.AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
