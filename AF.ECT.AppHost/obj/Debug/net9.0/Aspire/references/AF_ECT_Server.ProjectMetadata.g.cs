@@ -2,10 +2,18 @@
 
 namespace Projects;
 
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+/// <summary>
+/// Metadata for the AF_ECT_Server project.
+/// </summary>
 [global::System.CodeDom.Compiler.GeneratedCode("Aspire.Hosting", null)]
 [global::System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage(Justification = "Generated code.")]
 [global::System.Diagnostics.DebuggerDisplay("Type = {GetType().Name,nq}, ProjectPath = {ProjectPath}")]
 public class AF_ECT_Server : global::Aspire.Hosting.IProjectMetadata
+#pragma warning restore CS8981
 {
+    /// <summary>
+    /// The path to the AF_ECT_Server project.
+    /// </summary>
     public string ProjectPath => """C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.Server\AF.ECT.Server.csproj""";
 }

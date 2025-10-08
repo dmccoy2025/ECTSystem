@@ -21,7 +21,6 @@ C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHo
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost\bin\Debug\net9.0\KubernetesClient.dll
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost\bin\Debug\net9.0\MessagePack.dll
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost\bin\Debug\net9.0\MessagePack.Annotations.dll
-C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost\bin\Debug\net9.0\Microsoft.Extensions.Configuration.dll
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Binder.dll
@@ -130,3 +129,4 @@ C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHo
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost\obj\Debug\net9.0\AF.ECT.AppHost.genruntimeconfig.cache
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost\obj\Debug\net9.0\ref\AF.ECT.AppHost.dll
 C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost\obj\Debug\net9.0\AF.ECT.AppHost.sourcelink.json
+C:\Users\DonellMcCoy\source\repos2\ElectronicCaseTracking\ECTSystem\AF.ECT.AppHost\bin\Debug\net9.0\Semver.dll

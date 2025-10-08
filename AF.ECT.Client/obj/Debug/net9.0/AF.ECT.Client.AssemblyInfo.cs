@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AF.ECT.Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1be8ee5576d5793fcf3b829e8f8278da6ad7047f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c582ea75de091b616125f636b813bcef8539fb1")]
 [assembly: System.Reflection.AssemblyProductAttribute("AF.ECT.Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AF.ECT.Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

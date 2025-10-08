@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net9.0": {
-      "Grpc.Core.Api/2.66.0": {
+      "Grpc.Core.Api/2.71.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/Grpc.Core.Api.dll": {
@@ -15,10 +15,10 @@
           }
         }
       },
-      "Grpc.Net.Client/2.66.0": {
+      "Grpc.Net.Client/2.71.0": {
         "type": "package",
         "dependencies": {
-          "Grpc.Net.Common": "2.66.0",
+          "Grpc.Net.Common": "2.71.0",
           "Microsoft.Extensions.Logging.Abstractions": "6.0.0"
         },
         "compile": {
@@ -32,7 +32,7 @@
           }
         }
       },
-      "Grpc.Net.Client.Web/2.60.0": {
+      "Grpc.Net.Client.Web/2.71.0": {
         "type": "package",
         "compile": {
           "lib/net8.0/Grpc.Net.Client.Web.dll": {
@@ -45,10 +45,10 @@
           }
         }
       },
-      "Grpc.Net.Common/2.66.0": {
+      "Grpc.Net.Common/2.71.0": {
         "type": "package",
         "dependencies": {
-          "Grpc.Core.Api": "2.66.0"
+          "Grpc.Core.Api": "2.71.0"
         },
         "compile": {
           "lib/net8.0/Grpc.Net.Common.dll": {
@@ -492,10 +492,10 @@
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.targets": {}
         }
       },
-      "Polly/8.3.1": {
+      "Polly/8.6.4": {
         "type": "package",
         "dependencies": {
-          "Polly.Core": "8.3.1"
+          "Polly.Core": "8.6.4"
         },
         "compile": {
           "lib/net6.0/Polly.dll": {
@@ -508,7 +508,7 @@
           }
         }
       },
-      "Polly.Core/8.3.1": {
+      "Polly.Core/8.6.4": {
         "type": "package",
         "compile": {
           "lib/net8.0/Polly.Core.dll": {
@@ -521,7 +521,7 @@
           }
         }
       },
-      "Radzen.Blazor/8.0.3": {
+      "Radzen.Blazor/8.0.4": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components": "9.0.9",
@@ -548,7 +548,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
-          "Grpc.Net.Client": "2.66.0"
+          "Grpc.Net.Client": "2.71.0"
         },
         "compile": {
           "bin/placeholder/AF.ECT.Shared.dll": {}
@@ -559,7 +559,7 @@
       }
     },
     "net9.0/browser-wasm": {
-      "Grpc.Core.Api/2.66.0": {
+      "Grpc.Core.Api/2.71.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/Grpc.Core.Api.dll": {
@@ -572,10 +572,10 @@
           }
         }
       },
-      "Grpc.Net.Client/2.66.0": {
+      "Grpc.Net.Client/2.71.0": {
         "type": "package",
         "dependencies": {
-          "Grpc.Net.Common": "2.66.0",
+          "Grpc.Net.Common": "2.71.0",
           "Microsoft.Extensions.Logging.Abstractions": "6.0.0"
         },
         "compile": {
@@ -589,7 +589,7 @@
           }
         }
       },
-      "Grpc.Net.Client.Web/2.60.0": {
+      "Grpc.Net.Client.Web/2.71.0": {
         "type": "package",
         "compile": {
           "lib/net8.0/Grpc.Net.Client.Web.dll": {
@@ -602,10 +602,10 @@
           }
         }
       },
-      "Grpc.Net.Common/2.66.0": {
+      "Grpc.Net.Common/2.71.0": {
         "type": "package",
         "dependencies": {
-          "Grpc.Core.Api": "2.66.0"
+          "Grpc.Core.Api": "2.71.0"
         },
         "compile": {
           "lib/net8.0/Grpc.Net.Common.dll": {
@@ -1049,10 +1049,10 @@
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.targets": {}
         }
       },
-      "Polly/8.3.1": {
+      "Polly/8.6.4": {
         "type": "package",
         "dependencies": {
-          "Polly.Core": "8.3.1"
+          "Polly.Core": "8.6.4"
         },
         "compile": {
           "lib/net6.0/Polly.dll": {
@@ -1065,7 +1065,7 @@
           }
         }
       },
-      "Polly.Core/8.3.1": {
+      "Polly.Core/8.6.4": {
         "type": "package",
         "compile": {
           "lib/net8.0/Polly.Core.dll": {
@@ -1078,7 +1078,7 @@
           }
         }
       },
-      "Radzen.Blazor/8.0.3": {
+      "Radzen.Blazor/8.0.4": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components": "9.0.9",
@@ -1105,7 +1105,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
-          "Grpc.Net.Client": "2.66.0"
+          "Grpc.Net.Client": "2.71.0"
         },
         "compile": {
           "bin/placeholder/AF.ECT.Shared.dll": {}
@@ -1117,15 +1117,15 @@
     }
   },
   "libraries": {
-    "Grpc.Core.Api/2.66.0": {
-      "sha512": "HsjsQVAHe4hqP4t4rpUnmq+MZvPdyrlPsWF4T5fbMvyP3o/lMV+KVJfDlaNH8+v0aGQTVT3EsDFufbhaWb52cw==",
+    "Grpc.Core.Api/2.71.0": {
+      "sha512": "QquqUC37yxsDzd1QaDRsH2+uuznWPTS8CVE2Yzwl3CvU4geTNkolQXoVN812M2IwT6zpv3jsZRc9ExJFNFslTg==",
       "type": "package",
-      "path": "grpc.core.api/2.66.0",
+      "path": "grpc.core.api/2.71.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "grpc.core.api.2.66.0.nupkg.sha512",
+        "grpc.core.api.2.71.0.nupkg.sha512",
         "grpc.core.api.nuspec",
         "lib/net462/Grpc.Core.Api.dll",
         "lib/net462/Grpc.Core.Api.pdb",
@@ -1139,15 +1139,15 @@
         "packageIcon.png"
       ]
     },
-    "Grpc.Net.Client/2.66.0": {
-      "sha512": "GwkSsssXFgN9+M2U+UQWdErf61sn1iqgP+2NRBlDXATcP9vlxda0wySxd/eIL8U522+SnyFNUXlvQ5tAzGk9cA==",
+    "Grpc.Net.Client/2.71.0": {
+      "sha512": "U1vr20r5ngoT9nlb7wejF28EKN+taMhJsV9XtK9MkiepTZwnKxxiarriiMfCHuDAfPUm9XUjFMn/RIuJ4YY61w==",
       "type": "package",
-      "path": "grpc.net.client/2.66.0",
+      "path": "grpc.net.client/2.71.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "grpc.net.client.2.66.0.nupkg.sha512",
+        "grpc.net.client.2.71.0.nupkg.sha512",
         "grpc.net.client.nuspec",
         "lib/net462/Grpc.Net.Client.dll",
         "lib/net462/Grpc.Net.Client.pdb",
@@ -1170,15 +1170,15 @@
         "packageIcon.png"
       ]
     },
-    "Grpc.Net.Client.Web/2.60.0": {
-      "sha512": "qECg3puccOeVE/KIpWfQGmj8N5vVELE63h2jzdsooY5rYIHDczMZaNRqWNSVhwhLyO/tes0TjNzzH1n4Uo0fSQ==",
+    "Grpc.Net.Client.Web/2.71.0": {
+      "sha512": "I+S8YkAhSwXyg2fwyHC4Bhf6QR1XFTzqsMPr6KsgsI23r/J87zLUuhv1Y93nt2Vl6b3j0mZlhknmN4fMnfvGdw==",
       "type": "package",
-      "path": "grpc.net.client.web/2.60.0",
+      "path": "grpc.net.client.web/2.71.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "grpc.net.client.web.2.60.0.nupkg.sha512",
+        "grpc.net.client.web.2.71.0.nupkg.sha512",
         "grpc.net.client.web.nuspec",
         "lib/net6.0/Grpc.Net.Client.Web.dll",
         "lib/net6.0/Grpc.Net.Client.Web.pdb",
@@ -1198,14 +1198,14 @@
         "packageIcon.png"
       ]
     },
-    "Grpc.Net.Common/2.66.0": {
-      "sha512": "YJpQpIvpo0HKlsG6SHwaieyji08qfv0DdEDIewCAA0egQY08637sHOj1netLGUhzBEsCqlGC3e92TZ2uqhxnvw==",
+    "Grpc.Net.Common/2.71.0": {
+      "sha512": "v0c8R97TwRYwNXlC8GyRXwYTCNufpDfUtj9la+wUrZFzVWkFJuNAltU+c0yI3zu0jl54k7en6u2WKgZgd57r2Q==",
       "type": "package",
-      "path": "grpc.net.common/2.66.0",
+      "path": "grpc.net.common/2.71.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "grpc.net.common.2.66.0.nupkg.sha512",
+        "grpc.net.common.2.71.0.nupkg.sha512",
         "grpc.net.common.nuspec",
         "lib/net6.0/Grpc.Net.Common.dll",
         "lib/net6.0/Grpc.Net.Common.pdb",
@@ -2103,13 +2103,14 @@
         "tools/net9.0/Microsoft.NET.WebAssembly.Webcil.dll"
       ]
     },
-    "Polly/8.3.1": {
-      "sha512": "xN9AxOudus8u4a//Tfu6Wxd5Oj7S4pjh/651S6FfIiVrbxQ8TeM+ieZC8c0y7Qto70zKBM5g8rBTqbAJnbetOA==",
+    "Polly/8.6.4": {
+      "sha512": "uuBsDoBw0oYrMe3uTWRjkT2sIkKh+ZZnnDrLb4Z+QANfeA4+7FJacx6E8CY5GAxXRoSgFrvUADEAQ7DPF6fGiw==",
       "type": "package",
-      "path": "polly/8.3.1",
+      "path": "polly/8.6.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "LICENSE",
         "lib/net462/Polly.dll",
         "lib/net462/Polly.pdb",
         "lib/net462/Polly.xml",
@@ -2124,17 +2125,18 @@
         "lib/netstandard2.0/Polly.xml",
         "package-icon.png",
         "package-readme.md",
-        "polly.8.3.1.nupkg.sha512",
+        "polly.8.6.4.nupkg.sha512",
         "polly.nuspec"
       ]
     },
-    "Polly.Core/8.3.1": {
-      "sha512": "b9mMAjqXuCXFCtf/RtRPwFUkAm/sz37s7G+taDvS5EqfkJsLiWfO2xO2cSISjIgIY+88oIZTGguP6UrRGRlqzg==",
+    "Polly.Core/8.6.4": {
+      "sha512": "4AWqYnQ2TME0E+Mzovt1Uu+VyvpR84ymUldMcPw7Mbj799Phaag14CKrMtlJGx5jsvYP+S3oR1QmysgmXoD5cw==",
       "type": "package",
-      "path": "polly.core/8.3.1",
+      "path": "polly.core/8.6.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "LICENSE",
         "lib/net462/Polly.Core.dll",
         "lib/net462/Polly.Core.pdb",
         "lib/net462/Polly.Core.xml",
@@ -2152,14 +2154,14 @@
         "lib/netstandard2.0/Polly.Core.xml",
         "package-icon.png",
         "package-readme.md",
-        "polly.core.8.3.1.nupkg.sha512",
+        "polly.core.8.6.4.nupkg.sha512",
         "polly.core.nuspec"
       ]
     },
-    "Radzen.Blazor/8.0.3": {
-      "sha512": "HBjiR3z5T4Od7zXeqXsvcdHUKlhCOYTuAmTgYzXnTGyAJ0AnR+QqXtcuXHHuZb0sm3757n+RJUErUrlUWuaBNg==",
+    "Radzen.Blazor/8.0.4": {
+      "sha512": "1F2j5lDSwJbclC89yeyNt7TrSAb08GbyiJack/ZueTvD7fmntL+5bPq5xvHzQbREGX+dWPVh3iYEFRQeaiojlA==",
       "type": "package",
-      "path": "radzen.blazor/8.0.3",
+      "path": "radzen.blazor/8.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2179,7 +2181,7 @@
         "lib/net8.0/Radzen.Blazor.xml",
         "lib/net9.0/Radzen.Blazor.dll",
         "lib/net9.0/Radzen.Blazor.xml",
-        "radzen.blazor.8.0.3.nupkg.sha512",
+        "radzen.blazor.8.0.4.nupkg.sha512",
         "radzen.blazor.nuspec",
         "staticwebassets/Radzen.Blazor.js",
         "staticwebassets/Radzen.Blazor.min.js",
@@ -2189,10 +2191,6 @@
         "staticwebassets/css/default-base.css",
         "staticwebassets/css/default-wcag.css",
         "staticwebassets/css/default.css",
-        "staticwebassets/css/fluent-base.css",
-        "staticwebassets/css/fluent-dark-base.css",
-        "staticwebassets/css/fluent-dark.css",
-        "staticwebassets/css/fluent.css",
         "staticwebassets/css/humanistic-base.css",
         "staticwebassets/css/humanistic-dark-base.css",
         "staticwebassets/css/humanistic-dark-wcag.css",
@@ -2205,10 +2203,7 @@
         "staticwebassets/css/material-dark.css",
         "staticwebassets/css/material-wcag.css",
         "staticwebassets/css/material.css",
-        "staticwebassets/css/material3-base.css",
-        "staticwebassets/css/material3-dark-base.css",
-        "staticwebassets/css/material3-dark.css",
-        "staticwebassets/css/material3.css",
+        "staticwebassets/css/math.css",
         "staticwebassets/css/software-base.css",
         "staticwebassets/css/software-dark-base.css",
         "staticwebassets/css/software-dark-wcag.css",
@@ -2236,13 +2231,13 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "AF.ECT.Shared >= 1.0.0",
-      "Grpc.Net.Client.Web >= 2.60.0",
+      "Grpc.Net.Client.Web >= 2.71.0",
       "Microsoft.AspNetCore.Components.WebAssembly >= 9.0.9",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 9.0.9",
       "Microsoft.NET.ILLink.Tasks >= 9.0.9",
       "Microsoft.NET.Sdk.WebAssembly.Pack >= 9.0.9",
-      "Polly >= 8.3.1",
-      "Radzen.Blazor >= 8.0.3"
+      "Polly >= 8.6.4",
+      "Radzen.Blazor >= 8.0.4"
     ]
   },
   "packageFolders": {
@@ -2305,7 +2300,7 @@
         "dependencies": {
           "Grpc.Net.Client.Web": {
             "target": "Package",
-            "version": "[2.60.0, )"
+            "version": "[2.71.0, )"
           },
           "Microsoft.AspNetCore.Components.WebAssembly": {
             "target": "Package",
@@ -2330,11 +2325,11 @@
           },
           "Polly": {
             "target": "Package",
-            "version": "[8.3.1, )"
+            "version": "[8.6.4, )"
           },
           "Radzen.Blazor": {
             "target": "Package",
-            "version": "[8.0.3, )"
+            "version": "[8.0.4, )"
           }
         },
         "imports": [

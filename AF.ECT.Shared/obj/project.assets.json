@@ -2,10 +2,10 @@
   "version": 3,
   "targets": {
     "net9.0": {
-      "Google.Api.CommonProtos/2.16.0": {
+      "Google.Api.CommonProtos/2.17.0": {
         "type": "package",
         "dependencies": {
-          "Google.Protobuf": "[3.28.2, 4.0.0)"
+          "Google.Protobuf": "[3.31.1, 4.0.0]"
         },
         "compile": {
           "lib/netstandard2.0/Google.Api.CommonProtos.dll": {
@@ -21,7 +21,7 @@
           "build/Google.Api.CommonProtos.targets": {}
         }
       },
-      "Google.Protobuf/3.28.2": {
+      "Google.Protobuf/3.31.1": {
         "type": "package",
         "compile": {
           "lib/net5.0/Google.Protobuf.dll": {
@@ -34,7 +34,7 @@
           }
         }
       },
-      "Grpc.Core.Api/2.66.0": {
+      "Grpc.Core.Api/2.71.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/Grpc.Core.Api.dll": {
@@ -47,10 +47,10 @@
           }
         }
       },
-      "Grpc.Net.Client/2.66.0": {
+      "Grpc.Net.Client/2.71.0": {
         "type": "package",
         "dependencies": {
-          "Grpc.Net.Common": "2.66.0",
+          "Grpc.Net.Common": "2.71.0",
           "Microsoft.Extensions.Logging.Abstractions": "6.0.0"
         },
         "compile": {
@@ -64,10 +64,10 @@
           }
         }
       },
-      "Grpc.Net.Common/2.66.0": {
+      "Grpc.Net.Common/2.71.0": {
         "type": "package",
         "dependencies": {
-          "Grpc.Core.Api": "2.66.0"
+          "Grpc.Core.Api": "2.71.0"
         },
         "compile": {
           "lib/net8.0/Grpc.Net.Common.dll": {
@@ -80,7 +80,7 @@
           }
         }
       },
-      "Grpc.Tools/2.66.0": {
+      "Grpc.Tools/2.72.0": {
         "type": "package",
         "build": {
           "build/Grpc.Tools.props": {},
@@ -106,10 +106,10 @@
     }
   },
   "libraries": {
-    "Google.Api.CommonProtos/2.16.0": {
-      "sha512": "37MuZrE9AAqHAdYgFLoTHydAiXDRriQZGVKEg6fr6ASnrY5GtauYXnQrGk5x2K3NmYzEXe+wkpaPVmxjb3NKjg==",
+    "Google.Api.CommonProtos/2.17.0": {
+      "sha512": "elfQPknFr495hm7vdy6ZlgyQh6yzZq9TU7sS35L/Fj/fqjM/mUGau9gVJLhvQEtUlPjtR80hpn/m9HvBMyCXIw==",
       "type": "package",
-      "path": "google.api.commonprotos/2.16.0",
+      "path": "google.api.commonprotos/2.17.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -172,7 +172,7 @@
         "content/protos/google/type/postal_address.proto",
         "content/protos/google/type/quaternion.proto",
         "content/protos/google/type/timeofday.proto",
-        "google.api.commonprotos.2.16.0.nupkg.sha512",
+        "google.api.commonprotos.2.17.0.nupkg.sha512",
         "google.api.commonprotos.nuspec",
         "lib/net461/Google.Api.CommonProtos.dll",
         "lib/net461/Google.Api.CommonProtos.pdb",
@@ -182,14 +182,14 @@
         "lib/netstandard2.0/Google.Api.CommonProtos.xml"
       ]
     },
-    "Google.Protobuf/3.28.2": {
-      "sha512": "Z86ZKAB+v1B/m0LTM+EVamvZlYw/g3VND3/Gs4M/+aDIxa2JE9YPKjDxTpf0gv2sh26hrve3eI03brxBmzn92g==",
+    "Google.Protobuf/3.31.1": {
+      "sha512": "gSnJbUmGiOTdWddPhqzrEscHq9Ls6sqRDPB9WptckyjTUyx70JOOAaDLkFff8gManZNN3hllQ4aQInnQyq/Z/A==",
       "type": "package",
-      "path": "google.protobuf/3.28.2",
+      "path": "google.protobuf/3.31.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "google.protobuf.3.28.2.nupkg.sha512",
+        "google.protobuf.3.31.1.nupkg.sha512",
         "google.protobuf.nuspec",
         "lib/net45/Google.Protobuf.dll",
         "lib/net45/Google.Protobuf.pdb",
@@ -205,15 +205,15 @@
         "lib/netstandard2.0/Google.Protobuf.xml"
       ]
     },
-    "Grpc.Core.Api/2.66.0": {
-      "sha512": "HsjsQVAHe4hqP4t4rpUnmq+MZvPdyrlPsWF4T5fbMvyP3o/lMV+KVJfDlaNH8+v0aGQTVT3EsDFufbhaWb52cw==",
+    "Grpc.Core.Api/2.71.0": {
+      "sha512": "QquqUC37yxsDzd1QaDRsH2+uuznWPTS8CVE2Yzwl3CvU4geTNkolQXoVN812M2IwT6zpv3jsZRc9ExJFNFslTg==",
       "type": "package",
-      "path": "grpc.core.api/2.66.0",
+      "path": "grpc.core.api/2.71.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "grpc.core.api.2.66.0.nupkg.sha512",
+        "grpc.core.api.2.71.0.nupkg.sha512",
         "grpc.core.api.nuspec",
         "lib/net462/Grpc.Core.Api.dll",
         "lib/net462/Grpc.Core.Api.pdb",
@@ -227,15 +227,15 @@
         "packageIcon.png"
       ]
     },
-    "Grpc.Net.Client/2.66.0": {
-      "sha512": "GwkSsssXFgN9+M2U+UQWdErf61sn1iqgP+2NRBlDXATcP9vlxda0wySxd/eIL8U522+SnyFNUXlvQ5tAzGk9cA==",
+    "Grpc.Net.Client/2.71.0": {
+      "sha512": "U1vr20r5ngoT9nlb7wejF28EKN+taMhJsV9XtK9MkiepTZwnKxxiarriiMfCHuDAfPUm9XUjFMn/RIuJ4YY61w==",
       "type": "package",
-      "path": "grpc.net.client/2.66.0",
+      "path": "grpc.net.client/2.71.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "grpc.net.client.2.66.0.nupkg.sha512",
+        "grpc.net.client.2.71.0.nupkg.sha512",
         "grpc.net.client.nuspec",
         "lib/net462/Grpc.Net.Client.dll",
         "lib/net462/Grpc.Net.Client.pdb",
@@ -258,14 +258,14 @@
         "packageIcon.png"
       ]
     },
-    "Grpc.Net.Common/2.66.0": {
-      "sha512": "YJpQpIvpo0HKlsG6SHwaieyji08qfv0DdEDIewCAA0egQY08637sHOj1netLGUhzBEsCqlGC3e92TZ2uqhxnvw==",
+    "Grpc.Net.Common/2.71.0": {
+      "sha512": "v0c8R97TwRYwNXlC8GyRXwYTCNufpDfUtj9la+wUrZFzVWkFJuNAltU+c0yI3zu0jl54k7en6u2WKgZgd57r2Q==",
       "type": "package",
-      "path": "grpc.net.common/2.66.0",
+      "path": "grpc.net.common/2.71.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "grpc.net.common.2.66.0.nupkg.sha512",
+        "grpc.net.common.2.71.0.nupkg.sha512",
         "grpc.net.common.nuspec",
         "lib/net6.0/Grpc.Net.Common.dll",
         "lib/net6.0/Grpc.Net.Common.pdb",
@@ -285,10 +285,10 @@
         "packageIcon.png"
       ]
     },
-    "Grpc.Tools/2.66.0": {
-      "sha512": "URTltx2E0aTGQqVW+H09AZiGR/qyQ3naHPymSG1/Ytgm8bPdjSltnsIFanbxb7rXxdYwGzLFGy82R82M1UktXg==",
+    "Grpc.Tools/2.72.0": {
+      "sha512": "BCiuQ03EYjLHCo9hqZmY5barsz5vvcz/+/ICt5wCbukaePHZmMPDGelKlkxWx3q+f5xOMNHa9zXQ2N6rQZ4B+w==",
       "type": "package",
-      "path": "grpc.tools/2.66.0",
+      "path": "grpc.tools/2.72.0",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -317,7 +317,7 @@
         "build/native/include/google/protobuf/timestamp.proto",
         "build/native/include/google/protobuf/type.proto",
         "build/native/include/google/protobuf/wrappers.proto",
-        "grpc.tools.2.66.0.nupkg.sha512",
+        "grpc.tools.2.72.0.nupkg.sha512",
         "grpc.tools.nuspec",
         "packageIcon.png",
         "tools/linux_arm64/grpc_csharp_plugin",
@@ -389,9 +389,9 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "Google.Api.CommonProtos >= 2.16.0",
-      "Grpc.Net.Client >= 2.66.0",
-      "Grpc.Tools >= 2.66.0"
+      "Google.Api.CommonProtos >= 2.17.0",
+      "Grpc.Net.Client >= 2.71.0",
+      "Grpc.Tools >= 2.72.0"
     ]
   },
   "packageFolders": {
@@ -451,16 +451,16 @@
           "Google.Api.CommonProtos": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.16.0, )"
+            "version": "[2.17.0, )"
           },
           "Grpc.Net.Client": {
             "target": "Package",
-            "version": "[2.66.0, )"
+            "version": "[2.71.0, )"
           },
           "Grpc.Tools": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.66.0, )"
+            "version": "[2.72.0, )"
           }
         },
         "imports": [

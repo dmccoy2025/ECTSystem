@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "AF.ECT.Client",
   "resources": {
-    "hash": "sha256-AvHzdmvLMYyVEFWHHD6K1ioDufDw0Fa38gdJhccWYhM=",
+    "hash": "sha256-ei1z7KcEJEiIcLM6+Se/TwnVKT+hxvfNWZnb64GFI6I=",
     "fingerprinting": {
       "Grpc.Core.Api.e9l9iepcpa.wasm": "Grpc.Core.Api.wasm",
       "Grpc.Net.Client.b4nwhfsyxq.wasm": "Grpc.Net.Client.wasm",
@@ -208,10 +208,10 @@
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-      "AF.ECT.Shared.g2ktn0fxnw.wasm": "AF.ECT.Shared.wasm",
-      "AF.ECT.Shared.r48denvc1n.pdb": "AF.ECT.Shared.pdb",
-      "AF.ECT.Client.2afdu2t3rr.wasm": "AF.ECT.Client.wasm",
-      "AF.ECT.Client.mjqk39e39q.pdb": "AF.ECT.Client.pdb"
+      "AF.ECT.Shared.3b0kglpak2.wasm": "AF.ECT.Shared.wasm",
+      "AF.ECT.Shared.zsptgxa3vr.pdb": "AF.ECT.Shared.pdb",
+      "AF.ECT.Client.pmwiw51fh2.wasm": "AF.ECT.Client.wasm",
+      "AF.ECT.Client.8017b3hu78.pdb": "AF.ECT.Client.pdb"
     },
     "jsModuleNative": {
       "dotnet.native.9ih887ebfz.js": "sha256-oS7IRiQoVt9ThQ7Y2UM3XoeY0JqPD02cg9IvRdufn2w="
@@ -428,12 +428,12 @@
       "WindowsBase.vy2l5u79y6.wasm": "sha256-ufB9Mo5joMyUs3DzXWWBFFIZNEVrt6h9N5stYB6Oln4=",
       "mscorlib.xd6mv31d55.wasm": "sha256-1YSLR2eZt3ceALFV//vZUF2AloxVil3VlrW1zZYPSEI=",
       "netstandard.kaml52uspo.wasm": "sha256-HLEwBpLfzKw2/zGSVzHzFJxznCkt/WIjahrziiMrOpA=",
-      "AF.ECT.Shared.g2ktn0fxnw.wasm": "sha256-2LFRkouYob0/TDcil0XOc4jZaxYupA6GOy83yIuB1FQ=",
-      "AF.ECT.Client.2afdu2t3rr.wasm": "sha256-mkRWjb6dm3A35jh1pd/O1cwzkgI5kD6gicAAxmq0yfo="
+      "AF.ECT.Shared.3b0kglpak2.wasm": "sha256-cS3Vqr1SbceB/XlLdcMa4CmdIjGzPGSHwPCgsgkrAWQ=",
+      "AF.ECT.Client.pmwiw51fh2.wasm": "sha256-T2Zr5yhBfXm36df/5MuCb5h9RUxXeJAm1/7UDwundAE="
     },
     "pdb": {
-      "AF.ECT.Shared.r48denvc1n.pdb": "sha256-a+SPbfcFN91z5rLVOAeNjmUOyjY9+TvSwv/JRkFhTRg=",
-      "AF.ECT.Client.mjqk39e39q.pdb": "sha256-nvW13LIoFm25xOI/uqu5Ou/pIyniX01fbzg3PpA8OlI="
+      "AF.ECT.Shared.zsptgxa3vr.pdb": "sha256-47vq2rlv/Z1fBvVY+QCgWTQ8XiahyaS6LYM0k8nC1QQ=",
+      "AF.ECT.Client.8017b3hu78.pdb": "sha256-KJi+fcrTbdT2FM8b9n0On3yS+mUMN8WIHvLj7DAmFIY="
     }
   },
   "cacheBootResources": true,
