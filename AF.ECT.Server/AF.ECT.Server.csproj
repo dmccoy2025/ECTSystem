@@ -20,6 +20,7 @@
     <PackageReference Include="AspNetCoreRateLimit" Version="5.0.0" />
     <PackageReference Include="Polly" Version="8.6.4" />
     <PackageReference Include="Radzen.Blazor" Version="8.0.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
     <ProjectReference Include="..\AF.ECT.Shared\AF.ECT.Shared.csproj" />
     <ProjectReference Include="..\AF.ECT.Data\AF.ECT.Data.csproj" />
   </ItemGroup>
