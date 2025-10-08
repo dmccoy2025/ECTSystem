@@ -1,5 +1,6 @@
 #nullable enable
 
+using AF.ECT.Data.ResultTypes;
 using AF.ECT.Shared;
 
 namespace AF.ECT.Data.Interfaces;
@@ -18,14 +19,14 @@ public interface IDataService
     /// <param name="sarc">The optional SARC flag to filter requests. Pass null to ignore this filter.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of reinvestigation request results.</returns>
-    Task<List<ResultTypes.core_lod_sp_GetReinvestigationRequestsResult>> GetReinvestigationRequestsAsync(int? userId, bool? sarc, CancellationToken cancellationToken = default);
+    Task<List<core_lod_sp_GetReinvestigationRequestsResult>> GetReinvestigationRequestsAsync(int? userId, bool? sarc, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves special cases.
     /// </summary>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of special cases results.</returns>
-    Task<List<ResultTypes.core_lod_sp_GetSpecialCasesResult>> GetSpecialCasesAsync(CancellationToken cancellationToken = default);
+    Task<List<core_lod_sp_GetSpecialCasesResult>> GetSpecialCasesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves mailing list for LOD based on reference ID, group ID, status, and calling service.
@@ -33,7 +34,7 @@ public interface IDataService
     /// <param name="request">The request containing the parameters for the mailing list retrieval.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of mailing list results.</returns>
-    Task<List<ResultTypes.core_user_sp_GetMailingListForLODResult>> GetMailingListForLODAsync(GetMailingListForLODRequest request, CancellationToken cancellationToken = default);
+    Task<List<core_user_sp_GetMailingListForLODResult>> GetMailingListForLODAsync(GetMailingListForLODRequest request, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves managed users based on various criteria.
@@ -41,7 +42,7 @@ public interface IDataService
     /// <param name="request">The request containing the search criteria.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of managed users.</returns>
-    Task<List<ResultTypes.core_user_sp_GetManagedUsersResult>> GetManagedUsersAsync(GetManagedUsersRequest request, CancellationToken cancellationToken = default);
+    Task<List<core_user_sp_GetManagedUsersResult>> GetManagedUsersAsync(GetManagedUsersRequest request, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves user ID for a member SSN.
@@ -58,7 +59,7 @@ public interface IDataService
     /// <param name="groupId">The group identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of user alternate titles.</returns>
-    Task<List<ResultTypes.core_user_sp_GetUserAltTitleResult>> GetUserAltTitleAsync(int? userId, int? groupId, CancellationToken cancellationToken = default);
+    Task<List<core_user_sp_GetUserAltTitleResult>> GetUserAltTitleAsync(int? userId, int? groupId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves user alternate title by group component.
@@ -67,7 +68,7 @@ public interface IDataService
     /// <param name="workCompo">The work component identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of user alternate titles by group component.</returns>
-    Task<List<ResultTypes.core_user_sp_GetUserAltTitleByGroupCompoResult>> GetUserAltTitleByGroupCompoAsync(int? groupId, int? workCompo, CancellationToken cancellationToken = default);
+    Task<List<core_user_sp_GetUserAltTitleByGroupCompoResult>> GetUserAltTitleByGroupCompoAsync(int? groupId, int? workCompo, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves user name by first and last name.
@@ -76,7 +77,7 @@ public interface IDataService
     /// <param name="last">The last name.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of user names.</returns>
-    Task<List<ResultTypes.core_user_sp_GetUserNameResult>> GetUserNameAsync(string? first, string? last, CancellationToken cancellationToken = default);
+    Task<List<core_user_sp_GetUserNameResult>> GetUserNameAsync(string? first, string? last, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves users alternate title by group.
@@ -84,14 +85,14 @@ public interface IDataService
     /// <param name="groupId">The group identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of users alternate titles by group.</returns>
-    Task<List<ResultTypes.core_user_sp_GetUsersAltTitleByGroupResult>> GetUsersAltTitleByGroupAsync(int? groupId, CancellationToken cancellationToken = default);
+    Task<List<core_user_sp_GetUsersAltTitleByGroupResult>> GetUsersAltTitleByGroupAsync(int? groupId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves users who are currently online.
     /// </summary>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of online users.</returns>
-    Task<List<ResultTypes.core_user_sp_GetUsersOnlineResult>> GetUsersOnlineAsync(CancellationToken cancellationToken = default);
+    Task<List<core_user_sp_GetUsersOnlineResult>> GetUsersOnlineAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves WHOIS information for a user.
@@ -99,7 +100,7 @@ public interface IDataService
     /// <param name="userId">The user identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of WHOIS results.</returns>
-    Task<List<ResultTypes.core_user_sp_GetWhoisResult>> GetWhoisAsync(int? userId, CancellationToken cancellationToken = default);
+    Task<List<core_user_sp_GetWhoisResult>> GetWhoisAsync(int? userId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously checks if user has HQ tech account.
@@ -108,7 +109,7 @@ public interface IDataService
     /// <param name="userEDIPIN">The user EDIPIN.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of HQ tech account results.</returns>
-    Task<List<ResultTypes.core_user_sp_HasHQTechAccountResult>> HasHQTechAccountAsync(int? originUserId, string? userEDIPIN, CancellationToken cancellationToken = default);
+    Task<List<core_user_sp_HasHQTechAccountResult>> HasHQTechAccountAsync(int? originUserId, string? userEDIPIN, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously checks if status code is final.
@@ -116,7 +117,7 @@ public interface IDataService
     /// <param name="statusId">The status identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of final status code results.</returns>
-    Task<List<ResultTypes.core_user_sp_IsFinalStatusCodeResult>> IsFinalStatusCodeAsync(byte? statusId, CancellationToken cancellationToken = default);
+    Task<List<core_user_sp_IsFinalStatusCodeResult>> IsFinalStatusCodeAsync(byte? statusId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously logs out a user.
@@ -150,7 +151,7 @@ public interface IDataService
     /// <param name="request">The search member data request containing search criteria.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of member data search results.</returns>
-    Task<List<ResultTypes.core_user_sp_SearchMemberDataResult>> SearchMemberDataAsync(SearchMemberDataRequest request, CancellationToken cancellationToken = default);
+    Task<List<core_user_sp_SearchMemberDataResult>> SearchMemberDataAsync(SearchMemberDataRequest request, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously searches member data (test version).
@@ -158,7 +159,7 @@ public interface IDataService
     /// <param name="request">The search member data test request containing search criteria.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of member data search test results.</returns>
-    Task<List<ResultTypes.core_user_sp_SearchMemberData_TestResult>> SearchMemberDataTestAsync(SearchMemberDataTestRequest request, CancellationToken cancellationToken = default);
+    Task<List<core_user_sp_SearchMemberData_TestResult>> SearchMemberDataTestAsync(SearchMemberDataTestRequest request, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously updates account status.
@@ -176,7 +177,7 @@ public interface IDataService
     /// <param name="remoteAddr">The remote address.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of login update results.</returns>
-    Task<List<ResultTypes.core_user_sp_UpdateLoginResult>> UpdateLoginAsync(int? userId, string? sessionId, string? remoteAddr, CancellationToken cancellationToken = default);
+    Task<List<core_user_sp_UpdateLoginResult>> UpdateLoginAsync(int? userId, string? sessionId, string? remoteAddr, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously updates managed user settings.
@@ -206,7 +207,7 @@ public interface IDataService
     /// <param name="request">The add signature request containing signature details.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of signature results.</returns>
-    Task<List<ResultTypes.core_workflow_sp_AddSignatureResult>> AddSignatureAsync(AddSignatureRequest request, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_AddSignatureResult>> AddSignatureAsync(AddSignatureRequest request, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously copies actions from one workflow step to another.
@@ -233,7 +234,7 @@ public interface IDataService
     /// <param name="toId">The destination workflow identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of workflow copy results.</returns>
-    Task<List<ResultTypes.core_workflow_sp_CopyWorkflowResult>> CopyWorkflowAsync(int? fromId, int? toId, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_CopyWorkflowResult>> CopyWorkflowAsync(int? fromId, int? toId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously deletes a status code.
@@ -249,7 +250,7 @@ public interface IDataService
     /// <param name="stepId">The step identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of actions by step.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetActionsByStepResult>> GetActionsByStepAsync(int? stepId, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetActionsByStepResult>> GetActionsByStepAsync(int? stepId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves active cases for a reference and group.
@@ -258,21 +259,21 @@ public interface IDataService
     /// <param name="groupId">The group identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of active cases.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetActiveCasesResult>> GetActiveCasesAsync(int? refId, short? groupId, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetActiveCasesResult>> GetActiveCasesAsync(int? refId, short? groupId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves all findings by reason of.
     /// </summary>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of all findings by reason of.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetAllFindingByReasonOfResult>> GetAllFindingByReasonOfAsync(CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetAllFindingByReasonOfResult>> GetAllFindingByReasonOfAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves all locks.
     /// </summary>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of all locks.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetAllLocksResult>> GetAllLocksAsync(CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetAllLocksResult>> GetAllLocksAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves cancel reasons for a workflow.
@@ -281,7 +282,7 @@ public interface IDataService
     /// <param name="isFormal">Whether the workflow is formal.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of cancel reasons.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetCancelReasonsResult>> GetCancelReasonsAsync(byte? workflowId, bool? isFormal, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetCancelReasonsResult>> GetCancelReasonsAsync(byte? workflowId, bool? isFormal, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves creatable workflows by group.
@@ -291,7 +292,7 @@ public interface IDataService
     /// <param name="groupId">The group identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of creatable workflows by group.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetCreatableByGroupResult>> GetCreatableByGroupAsync(string? compo, byte? module, byte? groupId, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetCreatableByGroupResult>> GetCreatableByGroupAsync(string? compo, byte? module, byte? groupId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves finding by reason of by identifier.
@@ -299,7 +300,7 @@ public interface IDataService
     /// <param name="id">The identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of findings by reason of.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetFindingByReasonOfByIdResult>> GetFindingByReasonOfByIdAsync(int? id, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetFindingByReasonOfByIdResult>> GetFindingByReasonOfByIdAsync(int? id, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves findings for a workflow and group.
@@ -308,7 +309,7 @@ public interface IDataService
     /// <param name="groupId">The group identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of findings.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetFindingsResult>> GetFindingsAsync(byte? workflowId, int? groupId, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetFindingsResult>> GetFindingsAsync(byte? workflowId, int? groupId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves module from workflow identifier.
@@ -316,7 +317,7 @@ public interface IDataService
     /// <param name="workflowId">The workflow identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of modules from workflow.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetModuleFromWorkflowResult>> GetModuleFromWorkflowAsync(int? workflowId, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetModuleFromWorkflowResult>> GetModuleFromWorkflowAsync(int? workflowId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves page access by group.
@@ -326,7 +327,7 @@ public interface IDataService
     /// <param name="group">The group.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of page access by group.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetPageAccessByGroupResult>> GetPageAccessByGroupAsync(byte? workflow, int? status, byte? group, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetPageAccessByGroupResult>> GetPageAccessByGroupAsync(byte? workflow, int? status, byte? group, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves page access by workflow view.
@@ -336,7 +337,7 @@ public interface IDataService
     /// <param name="status">The status.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of page access by workflow view.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetPageAccessByWorkflowViewResult>> GetPageAccessByWorkflowViewAsync(string? compo, byte? workflow, int? status, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetPageAccessByWorkflowViewResult>> GetPageAccessByWorkflowViewAsync(string? compo, byte? workflow, int? status, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves pages by workflow identifier.
@@ -344,7 +345,7 @@ public interface IDataService
     /// <param name="workflowId">The workflow identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of pages by workflow.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetPagesByWorkflowIdResult>> GetPagesByWorkflowIdAsync(int? workflowId, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetPagesByWorkflowIdResult>> GetPagesByWorkflowIdAsync(int? workflowId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves permissions for a workflow.
@@ -352,7 +353,7 @@ public interface IDataService
     /// <param name="workflowId">The workflow identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of permissions.</returns>
-    Task<List<ResultTypes.core_Workflow_sp_GetPermissionsResult>> GetPermissionsAsync(byte? workflowId, CancellationToken cancellationToken = default);
+    Task<List<core_Workflow_sp_GetPermissionsResult>> GetPermissionsAsync(byte? workflowId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves permissions by component for a workflow.
@@ -361,7 +362,7 @@ public interface IDataService
     /// <param name="compo">The component.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of permissions by component.</returns>
-    Task<List<ResultTypes.core_Workflow_sp_GetPermissionsByCompoResult>> GetPermissionsByCompoAsync(byte? workflowId, string? compo, CancellationToken cancellationToken = default);
+    Task<List<core_Workflow_sp_GetPermissionsByCompoResult>> GetPermissionsByCompoAsync(byte? workflowId, string? compo, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves return reasons for a workflow.
@@ -369,7 +370,7 @@ public interface IDataService
     /// <param name="workflowId">The workflow identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of return reasons.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetReturnReasonsResult>> GetReturnReasonsAsync(byte? workflowId, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetReturnReasonsResult>> GetReturnReasonsAsync(byte? workflowId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves RWOA reasons for a workflow.
@@ -377,7 +378,7 @@ public interface IDataService
     /// <param name="workflowId">The workflow identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of RWOA reasons.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetRwoaReasonsResult>> GetRwoaReasonsAsync(byte? workflowId, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetRwoaReasonsResult>> GetRwoaReasonsAsync(byte? workflowId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves status codes by component.
@@ -385,7 +386,7 @@ public interface IDataService
     /// <param name="compo">The component.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of status codes by component.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetStatusCodesByCompoResult>> GetStatusCodesByCompoAsync(string? compo, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetStatusCodesByCompoResult>> GetStatusCodesByCompoAsync(string? compo, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves status codes by component and module.
@@ -394,7 +395,7 @@ public interface IDataService
     /// <param name="module">The module.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of status codes by component and module.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetStatusCodesByCompoAndModuleResult>> GetStatusCodesByCompoAndModuleAsync(string? compo, byte? module, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetStatusCodesByCompoAndModuleResult>> GetStatusCodesByCompoAndModuleAsync(string? compo, byte? module, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves status codes by sign code.
@@ -403,7 +404,7 @@ public interface IDataService
     /// <param name="module">The module.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of status codes by sign code.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetStatusCodesBySignCodeResult>> GetStatusCodesBySignCodeAsync(short? groupId, byte? module, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetStatusCodesBySignCodeResult>> GetStatusCodesBySignCodeAsync(short? groupId, byte? module, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves status codes by workflow.
@@ -411,7 +412,7 @@ public interface IDataService
     /// <param name="workflowId">The workflow identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of status codes by workflow.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetStatusCodesByWorkflowResult>> GetStatusCodesByWorkflowAsync(byte? workflowId, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetStatusCodesByWorkflowResult>> GetStatusCodesByWorkflowAsync(byte? workflowId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves status codes by workflow and access scope.
@@ -420,7 +421,7 @@ public interface IDataService
     /// <param name="accessScope">The access scope.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of status codes by workflow and access scope.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetStatusCodesByWorkflowAndAccessScopeResult>> GetStatusCodesByWorkflowAndAccessScopeAsync(byte? workflowId, byte? accessScope, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetStatusCodesByWorkflowAndAccessScopeResult>> GetStatusCodesByWorkflowAndAccessScopeAsync(byte? workflowId, byte? accessScope, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves status code scope.
@@ -428,7 +429,7 @@ public interface IDataService
     /// <param name="statusID">The status identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of status code scopes.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetStatusCodeScopeResult>> GetStatusCodeScopeAsync(byte? statusID, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetStatusCodeScopeResult>> GetStatusCodeScopeAsync(byte? statusID, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves steps by workflow.
@@ -436,7 +437,7 @@ public interface IDataService
     /// <param name="workflow">The workflow.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of steps by workflow.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetStepsByWorkflowResult>> GetStepsByWorkflowAsync(byte? workflow, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetStepsByWorkflowResult>> GetStepsByWorkflowAsync(byte? workflow, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves steps by workflow and status.
@@ -446,7 +447,7 @@ public interface IDataService
     /// <param name="deathStatus">The death status.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of steps by workflow and status.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetStepsByWorkflowAndStatusResult>> GetStepsByWorkflowAndStatusAsync(byte? workflow, byte? status, string? deathStatus, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetStepsByWorkflowAndStatusResult>> GetStepsByWorkflowAndStatusAsync(byte? workflow, byte? status, string? deathStatus, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves viewable workflows by group.
@@ -455,7 +456,7 @@ public interface IDataService
     /// <param name="module">The module.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of viewable workflows by group.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetViewableByGroupResult>> GetViewableByGroupAsync(byte? groupId, byte? module, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetViewableByGroupResult>> GetViewableByGroupAsync(byte? groupId, byte? module, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves workflow by component.
@@ -464,7 +465,7 @@ public interface IDataService
     /// <param name="userId">The user identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of workflows by component.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetWorkflowByCompoResult>> GetWorkflowByCompoAsync(string? compo, int? userId, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetWorkflowByCompoResult>> GetWorkflowByCompoAsync(string? compo, int? userId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves workflow from module.
@@ -472,7 +473,7 @@ public interface IDataService
     /// <param name="moduleId">The module identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of workflows from module.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetWorkflowFromModuleResult>> GetWorkflowFromModuleAsync(int? moduleId, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetWorkflowFromModuleResult>> GetWorkflowFromModuleAsync(int? moduleId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves workflow initial status code.
@@ -482,7 +483,7 @@ public interface IDataService
     /// <param name="workflowId">The workflow identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of workflow initial status codes.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetWorkflowInitialStatusCodeResult>> GetWorkflowInitialStatusCodeAsync(int? compo, int? module, int? workflowId, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetWorkflowInitialStatusCodeResult>> GetWorkflowInitialStatusCodeAsync(int? compo, int? module, int? workflowId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves workflow title.
@@ -491,7 +492,7 @@ public interface IDataService
     /// <param name="subCase">The sub case.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of workflow titles.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetWorkflowTitleResult>> GetWorkflowTitleAsync(int? moduleId, int? subCase, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetWorkflowTitleResult>> GetWorkflowTitleAsync(int? moduleId, int? subCase, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves workflow title by work status identifier.
@@ -500,7 +501,7 @@ public interface IDataService
     /// <param name="subCase">The sub case.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of workflow titles by work status.</returns>
-    Task<List<ResultTypes.core_workflow_sp_GetWorkflowTitleByWorkStatusIdResult>> GetWorkflowTitleByWorkStatusIdAsync(int? workflowId, int? subCase, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_GetWorkflowTitleByWorkStatusIdResult>> GetWorkflowTitleByWorkStatusIdAsync(int? workflowId, int? subCase, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously inserts an action.
@@ -508,7 +509,7 @@ public interface IDataService
     /// <param name="request">The insert action request containing action details.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of insert action results.</returns>
-    Task<List<ResultTypes.core_workflow_sp_InsertActionResult>> InsertActionAsync(InsertActionRequest request, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_InsertActionResult>> InsertActionAsync(InsertActionRequest request, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously inserts an option action.
@@ -516,7 +517,7 @@ public interface IDataService
     /// <param name="request">The insert option action request containing action details.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of insert option action results.</returns>
-    Task<List<ResultTypes.core_workflow_sp_InsertOptionActionResult>> InsertOptionActionAsync(InsertOptionActionRequest request, CancellationToken cancellationToken = default);
+    Task<List<core_workflow_sp_InsertOptionActionResult>> InsertOptionActionAsync(InsertOptionActionRequest request, CancellationToken cancellationToken = default);
 
     #endregion
 
@@ -536,14 +537,14 @@ public interface IDataService
     /// <param name="processName">The process name.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of process last execution dates.</returns>
-    Task<List<ResultTypes.ApplicationWarmupProcess_sp_FindProcessLastExecutionDateResult>> FindProcessLastExecutionDateAsync(string? processName, CancellationToken cancellationToken = default);
+    Task<List<ApplicationWarmupProcess_sp_FindProcessLastExecutionDateResult>> FindProcessLastExecutionDateAsync(string? processName, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves all logs.
     /// </summary>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of all logs.</returns>
-    Task<List<ResultTypes.ApplicationWarmupProcess_sp_GetAllLogsResult>> GetAllLogsAsync(CancellationToken cancellationToken = default);
+    Task<List<ApplicationWarmupProcess_sp_GetAllLogsResult>> GetAllLogsAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously inserts a log entry.
@@ -561,7 +562,7 @@ public interface IDataService
     /// <param name="processName">The process name.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of process active results.</returns>
-    Task<List<ResultTypes.ApplicationWarmupProcess_sp_IsProcessActiveResult>> IsProcessActiveAsync(string? processName, CancellationToken cancellationToken = default);
+    Task<List<ApplicationWarmupProcess_sp_IsProcessActiveResult>> IsProcessActiveAsync(string? processName, CancellationToken cancellationToken = default);
 
     #endregion
 
@@ -573,7 +574,7 @@ public interface IDataService
     /// <param name="workflowId">The workflow identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of workflow results.</returns>
-    Task<List<ResultTypes.workflow_sp_GetWorkflowByIdResult>> GetWorkflowByIdAsync(int? workflowId, CancellationToken cancellationToken = default);
+    Task<List<workflow_sp_GetWorkflowByIdResult>> GetWorkflowByIdAsync(int? workflowId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves workflows by reference identifier.
@@ -582,7 +583,7 @@ public interface IDataService
     /// <param name="module">The module.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of workflows by reference.</returns>
-    Task<List<ResultTypes.workflow_sp_GetWorkflowsByRefIdResult>> GetWorkflowsByRefIdAsync(int? refId, byte? module, CancellationToken cancellationToken = default);
+    Task<List<workflow_sp_GetWorkflowsByRefIdResult>> GetWorkflowsByRefIdAsync(int? refId, byte? module, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves workflows by reference identifier and type.
@@ -592,14 +593,14 @@ public interface IDataService
     /// <param name="workflowType">The workflow type.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of workflows by reference and type.</returns>
-    Task<List<ResultTypes.workflow_sp_GetWorkflowsByRefIdAndTypeResult>> GetWorkflowsByRefIdAndTypeAsync(int? refId, byte? module, int? workflowType, CancellationToken cancellationToken = default);
+    Task<List<workflow_sp_GetWorkflowsByRefIdAndTypeResult>> GetWorkflowsByRefIdAndTypeAsync(int? refId, byte? module, int? workflowType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves workflow types.
     /// </summary>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of workflow types.</returns>
-    Task<List<ResultTypes.workflow_sp_GetWorkflowTypesResult>> GetWorkflowTypesAsync(CancellationToken cancellationToken = default);
+    Task<List<workflow_sp_GetWorkflowTypesResult>> GetWorkflowTypesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously inserts a workflow.
@@ -633,7 +634,7 @@ public interface IDataService
     /// <param name="workstatusId">The workstatus identifier.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of workstatus results.</returns>
-    Task<List<ResultTypes.workstatus_sp_GetWorkstatusByIdResult>> GetWorkstatusByIdAsync(int? workstatusId, CancellationToken cancellationToken = default);
+    Task<List<workstatus_sp_GetWorkstatusByIdResult>> GetWorkstatusByIdAsync(int? workstatusId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves workstatuses by reference identifier.
@@ -642,7 +643,7 @@ public interface IDataService
     /// <param name="module">The module.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of workstatuses by reference.</returns>
-    Task<List<ResultTypes.workstatus_sp_GetWorkstatusesByRefIdResult>> GetWorkstatusesByRefIdAsync(int? refId, byte? module, CancellationToken cancellationToken = default);
+    Task<List<workstatus_sp_GetWorkstatusesByRefIdResult>> GetWorkstatusesByRefIdAsync(int? refId, byte? module, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves workstatuses by reference identifier and type.
@@ -652,14 +653,14 @@ public interface IDataService
     /// <param name="workstatusType">The workstatus type.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of workstatuses by reference and type.</returns>
-    Task<List<ResultTypes.workstatus_sp_GetWorkstatusesByRefIdAndTypeResult>> GetWorkstatusesByRefIdAndTypeAsync(int? refId, byte? module, int? workstatusType, CancellationToken cancellationToken = default);
+    Task<List<workstatus_sp_GetWorkstatusesByRefIdAndTypeResult>> GetWorkstatusesByRefIdAndTypeAsync(int? refId, byte? module, int? workstatusType, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously retrieves workstatus types.
     /// </summary>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A task representing the asynchronous operation, containing a list of workstatus types.</returns>
-    Task<List<ResultTypes.workstatus_sp_GetWorkstatusTypesResult>> GetWorkstatusTypesAsync(CancellationToken cancellationToken = default);
+    Task<List<workstatus_sp_GetWorkstatusTypesResult>> GetWorkstatusTypesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously inserts a workstatus.
