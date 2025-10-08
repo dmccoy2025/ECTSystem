@@ -1,0 +1,6 @@
+
+
+public partial interface IALODContextFunctions
+{
+
+}

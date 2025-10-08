@@ -1,12 +1,13 @@
 using System.Data.Common;
+using AF.ECT.Data.Interfaces;
+using AF.ECT.Data.Models;
+using AF.ECT.Data.ResultTypes;
 using Grpc.Net.Client;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
-using AF.ECT.Server.Models;
-using AF.ECT.Server.Services.Interfaces;
 using Moq;
 
 namespace AF.ECT.Tests.Infrastructure;
@@ -78,11 +79,11 @@ public class DatabaseIntegrationTestBase : WebApplicationFactory<TestProgram>, I
             // This allows testing the gRPC layer without database complications
             var mockDataService = new Mock<IDataService>();
             mockDataService.Setup(x => x.GetReinvestigationRequestsAsync(It.IsAny<int?>(), It.IsAny<bool?>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new List<Server.Models.ResultTypes.core_lod_sp_GetReinvestigationRequestsResult>());
+                .ReturnsAsync(new List<core_lod_sp_GetReinvestigationRequestsResult>());
             mockDataService.Setup(x => x.GetUserNameAsync(It.IsAny<string?>(), It.IsAny<string?>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new List<Server.Models.ResultTypes.core_user_sp_GetUserNameResult>());
+                .ReturnsAsync(new List<core_user_sp_GetUserNameResult>());
             mockDataService.Setup(x => x.GetWorkflowTitleAsync(It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetWorkflowTitleResult>());
+                .ReturnsAsync(new List<core_workflow_sp_GetWorkflowTitleResult>());
 
             services.AddSingleton(mockDataService.Object);
         });

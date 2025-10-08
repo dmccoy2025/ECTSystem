@@ -2,9 +2,10 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using AF.ECT.Server.Services;
 using AF.ECT.Server.Services.Interfaces;
-using AF.ECT.Server.Models;
 using AF.ECT.Shared;
 using static AF.ECT.Tests.Data.WorkflowServiceTestData;
+using AF.ECT.Data.Interfaces;
+using AF.ECT.Data.ResultTypes;
 
 namespace AF.ECT.Tests;
 
@@ -54,10 +55,10 @@ public class WorkflowServiceTests
     /// <param name="requestCount">The number of mock requests to return.</param>
     private void SetupDataServiceWithRequests(int requestCount)
     {
-        var mockRequests = new List<Server.Models.ResultTypes.core_lod_sp_GetReinvestigationRequestsResult>();
+        var mockRequests = new List<core_lod_sp_GetReinvestigationRequestsResult>();
         for (var i = 0; i < requestCount; i++)
         {
-            mockRequests.Add(new Server.Models.ResultTypes.core_lod_sp_GetReinvestigationRequestsResult());
+            mockRequests.Add(new core_lod_sp_GetReinvestigationRequestsResult());
         }
 
         _mockDataService.Setup(ds => ds.GetReinvestigationRequestsAsync(It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<CancellationToken>()))
@@ -116,7 +117,7 @@ public class WorkflowServiceTests
         var request = new GetReinvestigationRequestsRequest { UserId = 123, Sarc = false };
 
         _mockDataService.Setup(ds => ds.GetReinvestigationRequestsAsync(request.UserId, request.Sarc, It.IsAny<CancellationToken>()))
-            .Returns(Task.FromResult<List<Server.Models.ResultTypes.core_lod_sp_GetReinvestigationRequestsResult>>(null!));
+            .Returns(Task.FromResult<List<core_lod_sp_GetReinvestigationRequestsResult>>(null!));
 
         var service = CreateWorkflowManagementService();
 
@@ -137,7 +138,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetReinvestigationRequestsRequest { UserId = 123, Sarc = true };
-        var mockResults = new List<Server.Models.ResultTypes.core_lod_sp_GetReinvestigationRequestsResult>();
+        var mockResults = new List<core_lod_sp_GetReinvestigationRequestsResult>();
 
         _mockDataService.Setup(ds => ds.GetReinvestigationRequestsAsync(request.UserId, request.Sarc, It.IsAny<CancellationToken>()))
             .ReturnsAsync(mockResults);
@@ -164,7 +165,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetReinvestigationRequestsRequest { UserId = 123, Sarc = true };
-        var mockResults = new List<Server.Models.ResultTypes.core_lod_sp_GetReinvestigationRequestsResult>
+        var mockResults = new List<core_lod_sp_GetReinvestigationRequestsResult>
         {
             new() { request_id = 1, Member_Name = name, Case_Id = "CASE001", Status = "Active" }
         };
@@ -220,7 +221,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetMailingListForLODRequest { RefId = 123, GroupId = 456, Status = 1, CallingService = "TestService" };
-        var mockResults = new List<Server.Models.ResultTypes.core_user_sp_GetMailingListForLODResult>
+        var mockResults = new List<core_user_sp_GetMailingListForLODResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -249,7 +250,7 @@ public class WorkflowServiceTests
         var request = new GetMailingListForLODRequest { RefId = 123, GroupId = 456, Status = 1, CallingService = "TestService" };
 
         _mockDataService.Setup(ds => ds.GetMailingListForLODAsync(request, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_user_sp_GetMailingListForLODResult>());
+            .ReturnsAsync(new List<core_user_sp_GetMailingListForLODResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -293,7 +294,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetManagedUsersRequest { Userid = 123, Ssn = "123-45-6789", Name = "John Doe", Status = 1, Role = 2, SrchUnit = 3, ShowAllUsers = true };
-        var mockResults = new List<Server.Models.ResultTypes.core_user_sp_GetManagedUsersResult>
+        var mockResults = new List<core_user_sp_GetManagedUsersResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -322,7 +323,7 @@ public class WorkflowServiceTests
         var request = new GetManagedUsersRequest { Userid = 123, Ssn = "123-45-6789", Name = "John Doe", Status = 1, Role = 2, SrchUnit = 3, ShowAllUsers = false };
 
         _mockDataService.Setup(ds => ds.GetManagedUsersAsync(request, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_user_sp_GetManagedUsersResult>());
+            .ReturnsAsync(new List<core_user_sp_GetManagedUsersResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -413,7 +414,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetUserAltTitleRequest { UserId = 123, GroupId = 456 };
-        var mockResults = new List<Server.Models.ResultTypes.core_user_sp_GetUserAltTitleResult>
+        var mockResults = new List<core_user_sp_GetUserAltTitleResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -442,7 +443,7 @@ public class WorkflowServiceTests
         var request = new GetUserAltTitleRequest { UserId = 123, GroupId = 456 };
 
         _mockDataService.Setup(ds => ds.GetUserAltTitleAsync(request.UserId, request.GroupId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_user_sp_GetUserAltTitleResult>());
+            .ReturnsAsync(new List<core_user_sp_GetUserAltTitleResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -486,7 +487,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetUserAltTitleByGroupCompoRequest { GroupId = 123, WorkCompo = 456 };
-        var mockResults = new List<Server.Models.ResultTypes.core_user_sp_GetUserAltTitleByGroupCompoResult>
+        var mockResults = new List<core_user_sp_GetUserAltTitleByGroupCompoResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -515,7 +516,7 @@ public class WorkflowServiceTests
         var request = new GetUserAltTitleByGroupCompoRequest { GroupId = 123, WorkCompo = 456 };
 
         _mockDataService.Setup(ds => ds.GetUserAltTitleByGroupCompoAsync(request.GroupId, request.WorkCompo, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_user_sp_GetUserAltTitleByGroupCompoResult>());
+            .ReturnsAsync(new List<core_user_sp_GetUserAltTitleByGroupCompoResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -559,7 +560,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetUserNameRequest { First = "John", Last = "Doe" };
-        var mockResults = new List<Server.Models.ResultTypes.core_user_sp_GetUserNameResult>
+        var mockResults = new List<core_user_sp_GetUserNameResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -588,7 +589,7 @@ public class WorkflowServiceTests
         var request = new GetUserNameRequest { First = "John", Last = "Doe" };
 
         _mockDataService.Setup(ds => ds.GetUserNameAsync(request.First, request.Last, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_user_sp_GetUserNameResult>());
+            .ReturnsAsync(new List<core_user_sp_GetUserNameResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -632,7 +633,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetUsersAltTitleByGroupRequest { GroupId = 123 };
-        var mockResults = new List<Server.Models.ResultTypes.core_user_sp_GetUsersAltTitleByGroupResult>
+        var mockResults = new List<core_user_sp_GetUsersAltTitleByGroupResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -661,7 +662,7 @@ public class WorkflowServiceTests
         var request = new GetUsersAltTitleByGroupRequest { GroupId = 123 };
 
         _mockDataService.Setup(ds => ds.GetUsersAltTitleByGroupAsync(request.GroupId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_user_sp_GetUsersAltTitleByGroupResult>());
+            .ReturnsAsync(new List<core_user_sp_GetUsersAltTitleByGroupResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -705,7 +706,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new EmptyRequest();
-        var mockResults = new List<Server.Models.ResultTypes.core_user_sp_GetUsersOnlineResult>
+        var mockResults = new List<core_user_sp_GetUsersOnlineResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -734,7 +735,7 @@ public class WorkflowServiceTests
         var request = new EmptyRequest();
 
         _mockDataService.Setup(ds => ds.GetUsersOnlineAsync(It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_user_sp_GetUsersOnlineResult>());
+            .ReturnsAsync(new List<core_user_sp_GetUsersOnlineResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -778,7 +779,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetWhoisRequest { UserId = 123 };
-        var mockResults = new List<Server.Models.ResultTypes.core_user_sp_GetWhoisResult>
+        var mockResults = new List<core_user_sp_GetWhoisResult>
         {
             new() { UserId = 456, FirstName = "John", LastName = "Doe", Role = "Admin" },
             new() { UserId = 789, FirstName = "Jane", LastName = "Smith", Role = "User" }
@@ -815,7 +816,7 @@ public class WorkflowServiceTests
         var request = new GetWhoisRequest { UserId = 123 };
 
         _mockDataService.Setup(ds => ds.GetWhoisAsync(request.UserId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_user_sp_GetWhoisResult>());
+            .ReturnsAsync(new List<core_user_sp_GetWhoisResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -859,7 +860,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new HasHQTechAccountRequest { OriginUserId = 123, UserEdipin = "ABC123" };
-        var mockResults = new List<Server.Models.ResultTypes.core_user_sp_HasHQTechAccountResult>
+        var mockResults = new List<core_user_sp_HasHQTechAccountResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -888,7 +889,7 @@ public class WorkflowServiceTests
         var request = new HasHQTechAccountRequest { OriginUserId = 123, UserEdipin = "ABC123" };
 
         _mockDataService.Setup(ds => ds.HasHQTechAccountAsync(request.OriginUserId, request.UserEdipin, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_user_sp_HasHQTechAccountResult>());
+            .ReturnsAsync(new List<core_user_sp_HasHQTechAccountResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -932,7 +933,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new IsFinalStatusCodeRequest { StatusId = 1 };
-        var mockResults = new List<Server.Models.ResultTypes.core_user_sp_IsFinalStatusCodeResult>
+        var mockResults = new List<core_user_sp_IsFinalStatusCodeResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -961,7 +962,7 @@ public class WorkflowServiceTests
         var request = new IsFinalStatusCodeRequest { StatusId = 1 };
 
         _mockDataService.Setup(ds => ds.IsFinalStatusCodeAsync((byte?)request.StatusId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_user_sp_IsFinalStatusCodeResult>());
+            .ReturnsAsync(new List<core_user_sp_IsFinalStatusCodeResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -1146,7 +1147,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new SearchMemberDataRequest { UserId = 123, Ssn = "123-45-6789", LastName = "Doe", FirstName = "John", MiddleName = "A", SrchUnit = 456, RptView = 1 };
-        var mockResults = new List<Server.Models.ResultTypes.core_user_sp_SearchMemberDataResult>
+        var mockResults = new List<core_user_sp_SearchMemberDataResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -1175,7 +1176,7 @@ public class WorkflowServiceTests
         var request = new SearchMemberDataRequest { UserId = 123, Ssn = "123-45-6789", LastName = "Doe", FirstName = "John", MiddleName = "A", SrchUnit = 456, RptView = 1 };
 
         _mockDataService.Setup(ds => ds.SearchMemberDataAsync(request, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_user_sp_SearchMemberDataResult>());
+            .ReturnsAsync(new List<core_user_sp_SearchMemberDataResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -1219,7 +1220,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new SearchMemberDataTestRequest { UserId = 123, Ssn = "123-45-6789", Name = "John Doe", SrchUnit = 456, RptView = 1 };
-        var mockResults = new List<Server.Models.ResultTypes.core_user_sp_SearchMemberData_TestResult>
+        var mockResults = new List<core_user_sp_SearchMemberData_TestResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -1248,7 +1249,7 @@ public class WorkflowServiceTests
         var request = new SearchMemberDataTestRequest { UserId = 123, Ssn = "123-45-6789", Name = "John Doe", SrchUnit = 456, RptView = 1 };
 
         _mockDataService.Setup(ds => ds.SearchMemberDataTestAsync(request, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_user_sp_SearchMemberData_TestResult>());
+            .ReturnsAsync(new List<core_user_sp_SearchMemberData_TestResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -1339,7 +1340,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new UpdateLoginRequest { UserId = 123, SessionId = "session123", RemoteAddr = "127.0.0.1" };
-        var mockResults = new List<Server.Models.ResultTypes.core_user_sp_UpdateLoginResult>
+        var mockResults = new List<core_user_sp_UpdateLoginResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -1368,7 +1369,7 @@ public class WorkflowServiceTests
         var request = new UpdateLoginRequest { UserId = 123, SessionId = "session123", RemoteAddr = "127.0.0.1" };
 
         _mockDataService.Setup(ds => ds.UpdateLoginAsync(request.UserId, request.SessionId, request.RemoteAddr, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_user_sp_UpdateLoginResult>());
+            .ReturnsAsync(new List<core_user_sp_UpdateLoginResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -1510,7 +1511,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new AddSignatureRequest { RefId = 123, ModuleType = 1, UserId = 456, ActionId = 789, GroupId = 1, StatusIn = 2, StatusOut = 3 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_AddSignatureResult>
+        var mockResults = new List<core_workflow_sp_AddSignatureResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -1539,7 +1540,7 @@ public class WorkflowServiceTests
         var request = new AddSignatureRequest { RefId = 123, ModuleType = 1, UserId = 456, ActionId = 789, GroupId = 1, StatusIn = 2, StatusOut = 3 };
 
         _mockDataService.Setup(ds => ds.AddSignatureAsync(request, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_AddSignatureResult>());
+            .ReturnsAsync(new List<core_workflow_sp_AddSignatureResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -1677,7 +1678,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new CopyWorkflowRequest { FromId = 123, ToId = 456 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_CopyWorkflowResult>
+        var mockResults = new List<core_workflow_sp_CopyWorkflowResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -1706,7 +1707,7 @@ public class WorkflowServiceTests
         var request = new CopyWorkflowRequest { FromId = 123, ToId = 456 };
 
         _mockDataService.Setup(ds => ds.CopyWorkflowAsync(request.FromId, request.ToId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_CopyWorkflowResult>());
+            .ReturnsAsync(new List<core_workflow_sp_CopyWorkflowResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -1797,7 +1798,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetActionsByStepRequest { StepId = 123 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetActionsByStepResult>
+        var mockResults = new List<core_workflow_sp_GetActionsByStepResult>
         {
             new() { wso_id = 123, wsa_id = 456, actionType = 1, target = 789, data = 101, text = "Test Action" },
             new() { wso_id = 123, wsa_id = 457, actionType = 2, target = 790, data = null, text = "Another Action" }
@@ -1834,7 +1835,7 @@ public class WorkflowServiceTests
         var request = new GetActionsByStepRequest { StepId = 123 };
 
         _mockDataService.Setup(ds => ds.GetActionsByStepAsync(request.StepId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetActionsByStepResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetActionsByStepResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -1878,7 +1879,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetActiveCasesRequest { RefId = 123, GroupId = 456 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetActiveCasesResult>
+        var mockResults = new List<core_workflow_sp_GetActiveCasesResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -1907,7 +1908,7 @@ public class WorkflowServiceTests
         var request = new GetActiveCasesRequest { RefId = 123, GroupId = 456 };
 
         _mockDataService.Setup(ds => ds.GetActiveCasesAsync(request.RefId, (short?)request.GroupId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetActiveCasesResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetActiveCasesResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -1951,7 +1952,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new EmptyRequest();
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetAllFindingByReasonOfResult>
+        var mockResults = new List<core_workflow_sp_GetAllFindingByReasonOfResult>
         {
             new() { Id = 1, Description = "Finding One" },
             new() { Id = 2, Description = "Finding Two" }
@@ -1984,7 +1985,7 @@ public class WorkflowServiceTests
         var request = new EmptyRequest();
 
         _mockDataService.Setup(ds => ds.GetAllFindingByReasonOfAsync(It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetAllFindingByReasonOfResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetAllFindingByReasonOfResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -2028,7 +2029,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new EmptyRequest();
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetAllLocksResult>
+        var mockResults = new List<core_workflow_sp_GetAllLocksResult>
         {
             new() { lockId = 1, userId = 100, moduleName = "ModuleA", lockTime = new DateTime(2023, 10, 1) },
             new() { lockId = 2, userId = 200, moduleName = "ModuleB", lockTime = new DateTime(2023, 10, 2) }
@@ -2065,7 +2066,7 @@ public class WorkflowServiceTests
         var request = new EmptyRequest();
 
         _mockDataService.Setup(ds => ds.GetAllLocksAsync(It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetAllLocksResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetAllLocksResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -2109,7 +2110,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetCancelReasonsRequest { WorkflowId = 123, IsFormal = true };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetCancelReasonsResult>
+        var mockResults = new List<core_workflow_sp_GetCancelReasonsResult>
         {
             new() { Id = 1, Description = "Cancel Reason One" },
             new() { Id = 2, Description = "Cancel Reason Two" }
@@ -2142,7 +2143,7 @@ public class WorkflowServiceTests
         var request = new GetCancelReasonsRequest { WorkflowId = 123, IsFormal = true };
 
         _mockDataService.Setup(ds => ds.GetCancelReasonsAsync((byte?)request.WorkflowId, request.IsFormal, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetCancelReasonsResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetCancelReasonsResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -2186,7 +2187,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetCreatableByGroupRequest { Compo = "Component1", Module = 1, GroupId = 456 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetCreatableByGroupResult>
+        var mockResults = new List<core_workflow_sp_GetCreatableByGroupResult>
         {
             new() { workFlowId = 1, compo = "Component1", title = "Workflow One", formal = true, moduleId = 1, active = true, initialStatus = 100, description = "Description One" },
             new() { workFlowId = 2, compo = "Component1", title = "Workflow Two", formal = false, moduleId = 1, active = true, initialStatus = 200, description = "Description Two" }
@@ -2221,7 +2222,7 @@ public class WorkflowServiceTests
         var request = new GetCreatableByGroupRequest { Compo = "Component1", Module = 1, GroupId = 456 };
 
         _mockDataService.Setup(ds => ds.GetCreatableByGroupAsync(request.Compo, (byte?)request.Module, (byte?)request.GroupId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetCreatableByGroupResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetCreatableByGroupResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -2265,7 +2266,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetFindingByReasonOfByIdRequest { Id = 123 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetFindingByReasonOfByIdResult>
+        var mockResults = new List<core_workflow_sp_GetFindingByReasonOfByIdResult>
         {
             new() { Id = 1, Description = "Finding Description One" },
             new() { Id = 2, Description = "Finding Description Two" }
@@ -2300,7 +2301,7 @@ public class WorkflowServiceTests
         var request = new GetFindingByReasonOfByIdRequest { Id = 123 };
 
         _mockDataService.Setup(ds => ds.GetFindingByReasonOfByIdAsync(request.Id, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetFindingByReasonOfByIdResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetFindingByReasonOfByIdResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -2344,7 +2345,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetFindingsRequest { WorkflowId = 123, GroupId = 456 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetFindingsResult>
+        var mockResults = new List<core_workflow_sp_GetFindingsResult>
         {
             new() { Id = 1, FindingType = "Type1", Description = "Finding Description One" },
             new() { Id = 2, FindingType = "Type2", Description = "Finding Description Two" }
@@ -2381,7 +2382,7 @@ public class WorkflowServiceTests
         var request = new GetFindingsRequest { WorkflowId = 123, GroupId = 456 };
 
         _mockDataService.Setup(ds => ds.GetFindingsAsync((byte?)request.WorkflowId, request.GroupId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetFindingsResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetFindingsResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -2425,7 +2426,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetModuleFromWorkflowRequest { WorkflowId = 123 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetModuleFromWorkflowResult>
+        var mockResults = new List<core_workflow_sp_GetModuleFromWorkflowResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -2454,7 +2455,7 @@ public class WorkflowServiceTests
         var request = new GetModuleFromWorkflowRequest { WorkflowId = 123 };
 
         _mockDataService.Setup(ds => ds.GetModuleFromWorkflowAsync(request.WorkflowId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetModuleFromWorkflowResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetModuleFromWorkflowResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -2498,7 +2499,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetPageAccessByGroupRequest { Workflow = 123, Status = 1, Group = 456 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetPageAccessByGroupResult>
+        var mockResults = new List<core_workflow_sp_GetPageAccessByGroupResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -2527,7 +2528,7 @@ public class WorkflowServiceTests
         var request = new GetPageAccessByGroupRequest { Workflow = 123, Status = 1, Group = 456 };
 
         _mockDataService.Setup(ds => ds.GetPageAccessByGroupAsync((byte?)request.Workflow, request.Status, (byte?)request.Group, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetPageAccessByGroupResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetPageAccessByGroupResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -2571,7 +2572,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetPageAccessByWorkflowViewRequest { Compo = "Component1", Workflow = 123, Status = 1 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetPageAccessByWorkflowViewResult>
+        var mockResults = new List<core_workflow_sp_GetPageAccessByWorkflowViewResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -2600,7 +2601,7 @@ public class WorkflowServiceTests
         var request = new GetPageAccessByWorkflowViewRequest { Compo = "Component1", Workflow = 123, Status = 1 };
 
         _mockDataService.Setup(ds => ds.GetPageAccessByWorkflowViewAsync(request.Compo, (byte?)request.Workflow, request.Status, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetPageAccessByWorkflowViewResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetPageAccessByWorkflowViewResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -2644,7 +2645,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetPagesByWorkflowIdRequest { WorkflowId = 123 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetPagesByWorkflowIdResult>
+        var mockResults = new List<core_workflow_sp_GetPagesByWorkflowIdResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -2673,7 +2674,7 @@ public class WorkflowServiceTests
         var request = new GetPagesByWorkflowIdRequest { WorkflowId = 123 };
 
         _mockDataService.Setup(ds => ds.GetPagesByWorkflowIdAsync(request.WorkflowId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetPagesByWorkflowIdResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetPagesByWorkflowIdResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -2717,7 +2718,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetPermissionsRequest { WorkflowId = 123 };
-        var mockResults = new List<Server.Models.ResultTypes.core_Workflow_sp_GetPermissionsResult>
+        var mockResults = new List<core_Workflow_sp_GetPermissionsResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -2746,7 +2747,7 @@ public class WorkflowServiceTests
         var request = new GetPermissionsRequest { WorkflowId = 123 };
 
         _mockDataService.Setup(ds => ds.GetPermissionsAsync((byte?)request.WorkflowId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_Workflow_sp_GetPermissionsResult>());
+            .ReturnsAsync(new List<core_Workflow_sp_GetPermissionsResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -2790,7 +2791,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetPermissionsByCompoRequest { WorkflowId = 123, Compo = "Component1" };
-        var mockResults = new List<Server.Models.ResultTypes.core_Workflow_sp_GetPermissionsByCompoResult>
+        var mockResults = new List<core_Workflow_sp_GetPermissionsByCompoResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -2819,7 +2820,7 @@ public class WorkflowServiceTests
         var request = new GetPermissionsByCompoRequest { WorkflowId = 123, Compo = "Component1" };
 
         _mockDataService.Setup(ds => ds.GetPermissionsByCompoAsync((byte?)request.WorkflowId, request.Compo, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_Workflow_sp_GetPermissionsByCompoResult>());
+            .ReturnsAsync(new List<core_Workflow_sp_GetPermissionsByCompoResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -2863,7 +2864,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetReturnReasonsRequest { WorkflowId = 123 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetReturnReasonsResult>
+        var mockResults = new List<core_workflow_sp_GetReturnReasonsResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -2892,7 +2893,7 @@ public class WorkflowServiceTests
         var request = new GetReturnReasonsRequest { WorkflowId = 123 };
 
         _mockDataService.Setup(ds => ds.GetReturnReasonsAsync((byte?)request.WorkflowId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetReturnReasonsResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetReturnReasonsResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -2936,7 +2937,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetRwoaReasonsRequest { WorkflowId = 123 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetRwoaReasonsResult>
+        var mockResults = new List<core_workflow_sp_GetRwoaReasonsResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -2965,7 +2966,7 @@ public class WorkflowServiceTests
         var request = new GetRwoaReasonsRequest { WorkflowId = 123 };
 
         _mockDataService.Setup(ds => ds.GetRwoaReasonsAsync((byte?)request.WorkflowId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetRwoaReasonsResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetRwoaReasonsResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -3009,7 +3010,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetStatusCodesByCompoRequest { Compo = "Component1" };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetStatusCodesByCompoResult>
+        var mockResults = new List<core_workflow_sp_GetStatusCodesByCompoResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -3038,7 +3039,7 @@ public class WorkflowServiceTests
         var request = new GetStatusCodesByCompoRequest { Compo = "Component1" };
 
         _mockDataService.Setup(ds => ds.GetStatusCodesByCompoAsync(request.Compo, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetStatusCodesByCompoResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetStatusCodesByCompoResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -3082,7 +3083,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetStatusCodesByCompoAndModuleRequest { Compo = "Component1", Module = 1 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetStatusCodesByCompoAndModuleResult>
+        var mockResults = new List<core_workflow_sp_GetStatusCodesByCompoAndModuleResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -3111,7 +3112,7 @@ public class WorkflowServiceTests
         var request = new GetStatusCodesByCompoAndModuleRequest { Compo = "Component1", Module = 1 };
 
         _mockDataService.Setup(ds => ds.GetStatusCodesByCompoAndModuleAsync(request.Compo, (byte?)request.Module, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetStatusCodesByCompoAndModuleResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetStatusCodesByCompoAndModuleResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -3155,7 +3156,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetStatusCodesBySignCodeRequest { GroupId = 123, Module = 1 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetStatusCodesBySignCodeResult>
+        var mockResults = new List<core_workflow_sp_GetStatusCodesBySignCodeResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -3184,7 +3185,7 @@ public class WorkflowServiceTests
         var request = new GetStatusCodesBySignCodeRequest { GroupId = 123, Module = 1 };
 
         _mockDataService.Setup(ds => ds.GetStatusCodesBySignCodeAsync((short?)request.GroupId, (byte?)request.Module, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetStatusCodesBySignCodeResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetStatusCodesBySignCodeResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -3228,7 +3229,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetStatusCodesByWorkflowRequest { WorkflowId = 123 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetStatusCodesByWorkflowResult>
+        var mockResults = new List<core_workflow_sp_GetStatusCodesByWorkflowResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -3257,7 +3258,7 @@ public class WorkflowServiceTests
         var request = new GetStatusCodesByWorkflowRequest { WorkflowId = 123 };
 
         _mockDataService.Setup(ds => ds.GetStatusCodesByWorkflowAsync((byte?)request.WorkflowId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetStatusCodesByWorkflowResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetStatusCodesByWorkflowResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -3301,7 +3302,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetStatusCodesByWorkflowAndAccessScopeRequest { WorkflowId = 123, AccessScope = 1 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetStatusCodesByWorkflowAndAccessScopeResult>
+        var mockResults = new List<core_workflow_sp_GetStatusCodesByWorkflowAndAccessScopeResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -3330,7 +3331,7 @@ public class WorkflowServiceTests
         var request = new GetStatusCodesByWorkflowAndAccessScopeRequest { WorkflowId = 123, AccessScope = 1 };
 
         _mockDataService.Setup(ds => ds.GetStatusCodesByWorkflowAndAccessScopeAsync((byte?)request.WorkflowId, (byte?)request.AccessScope, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetStatusCodesByWorkflowAndAccessScopeResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetStatusCodesByWorkflowAndAccessScopeResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -3374,7 +3375,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetStatusCodeScopeRequest { StatusId = 123 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetStatusCodeScopeResult>
+        var mockResults = new List<core_workflow_sp_GetStatusCodeScopeResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -3403,7 +3404,7 @@ public class WorkflowServiceTests
         var request = new GetStatusCodeScopeRequest { StatusId = 123 };
 
         _mockDataService.Setup(ds => ds.GetStatusCodeScopeAsync((byte?)request.StatusId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetStatusCodeScopeResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetStatusCodeScopeResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -3447,7 +3448,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetStepsByWorkflowRequest { Workflow = 123 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetStepsByWorkflowResult>
+        var mockResults = new List<core_workflow_sp_GetStepsByWorkflowResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -3476,7 +3477,7 @@ public class WorkflowServiceTests
         var request = new GetStepsByWorkflowRequest { Workflow = 123 };
 
         _mockDataService.Setup(ds => ds.GetStepsByWorkflowAsync((byte?)request.Workflow, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetStepsByWorkflowResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetStepsByWorkflowResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -3520,7 +3521,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetStepsByWorkflowAndStatusRequest { Workflow = 123, Status = 1, DeathStatus = "Final" };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetStepsByWorkflowAndStatusResult>
+        var mockResults = new List<core_workflow_sp_GetStepsByWorkflowAndStatusResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -3549,7 +3550,7 @@ public class WorkflowServiceTests
         var request = new GetStepsByWorkflowAndStatusRequest { Workflow = 123, Status = 1, DeathStatus = "Final" };
 
         _mockDataService.Setup(ds => ds.GetStepsByWorkflowAndStatusAsync((byte?)request.Workflow, (byte?)request.Status, request.DeathStatus, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetStepsByWorkflowAndStatusResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetStepsByWorkflowAndStatusResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -3593,7 +3594,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetWorkflowInitialStatusCodeRequest { Compo = 1, Module = 1, WorkflowId = 123 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetWorkflowInitialStatusCodeResult>
+        var mockResults = new List<core_workflow_sp_GetWorkflowInitialStatusCodeResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -3622,7 +3623,7 @@ public class WorkflowServiceTests
         var request = new GetWorkflowInitialStatusCodeRequest { Compo = 1, Module = 1, WorkflowId = 123 };
 
         _mockDataService.Setup(ds => ds.GetWorkflowInitialStatusCodeAsync(request.Compo, request.Module, request.WorkflowId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetWorkflowInitialStatusCodeResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetWorkflowInitialStatusCodeResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -3666,7 +3667,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetWorkflowByCompoRequest { Compo = "TestCompo", UserId = 123 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetWorkflowByCompoResult>
+        var mockResults = new List<core_workflow_sp_GetWorkflowByCompoResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -3695,7 +3696,7 @@ public class WorkflowServiceTests
         var request = new GetWorkflowByCompoRequest { Compo = "TestCompo", UserId = 123 };
 
         _mockDataService.Setup(ds => ds.GetWorkflowByCompoAsync(request.Compo, request.UserId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetWorkflowByCompoResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetWorkflowByCompoResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -3739,7 +3740,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetWorkflowFromModuleRequest { ModuleId = 456 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetWorkflowFromModuleResult>
+        var mockResults = new List<core_workflow_sp_GetWorkflowFromModuleResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -3768,7 +3769,7 @@ public class WorkflowServiceTests
         var request = new GetWorkflowFromModuleRequest { ModuleId = 456 };
 
         _mockDataService.Setup(ds => ds.GetWorkflowFromModuleAsync(request.ModuleId, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetWorkflowFromModuleResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetWorkflowFromModuleResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -3812,7 +3813,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetWorkflowTitleRequest { ModuleId = 456, SubCase = 789 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetWorkflowTitleResult>
+        var mockResults = new List<core_workflow_sp_GetWorkflowTitleResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -3841,7 +3842,7 @@ public class WorkflowServiceTests
         var request = new GetWorkflowTitleRequest { ModuleId = 456, SubCase = 789 };
 
         _mockDataService.Setup(ds => ds.GetWorkflowTitleAsync(request.ModuleId, request.SubCase, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetWorkflowTitleResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetWorkflowTitleResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -3885,7 +3886,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new GetWorkflowTitleByWorkStatusIdRequest { WorkflowId = 123, SubCase = 789 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_GetWorkflowTitleByWorkStatusIdResult>
+        var mockResults = new List<core_workflow_sp_GetWorkflowTitleByWorkStatusIdResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -3914,7 +3915,7 @@ public class WorkflowServiceTests
         var request = new GetWorkflowTitleByWorkStatusIdRequest { WorkflowId = 123, SubCase = 789 };
 
         _mockDataService.Setup(ds => ds.GetWorkflowTitleByWorkStatusIdAsync(request.WorkflowId, request.SubCase, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_GetWorkflowTitleByWorkStatusIdResult>());
+            .ReturnsAsync(new List<core_workflow_sp_GetWorkflowTitleByWorkStatusIdResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -3958,7 +3959,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new InsertActionRequest { Type = 1, StepId = 123, Target = 456, Data = 789 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_InsertActionResult>
+        var mockResults = new List<core_workflow_sp_InsertActionResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -3987,7 +3988,7 @@ public class WorkflowServiceTests
         var request = new InsertActionRequest { Type = 1, StepId = 123, Target = 456, Data = 789 };
 
         _mockDataService.Setup(ds => ds.InsertActionAsync(request, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_InsertActionResult>());
+            .ReturnsAsync(new List<core_workflow_sp_InsertActionResult>());
 
         var service = CreateWorkflowManagementService();
 
@@ -4031,7 +4032,7 @@ public class WorkflowServiceTests
     {
         // Arrange
         var request = new InsertOptionActionRequest { Type = 1, Wsoid = 456, Target = 789, Data = 101 };
-        var mockResults = new List<Server.Models.ResultTypes.core_workflow_sp_InsertOptionActionResult>
+        var mockResults = new List<core_workflow_sp_InsertOptionActionResult>
         {
             new() { /* mock data */ },
             new() { /* mock data */ }
@@ -4060,7 +4061,7 @@ public class WorkflowServiceTests
         var request = new InsertOptionActionRequest { Type = 1, Wsoid = 456, Target = 789, Data = 101 };
 
         _mockDataService.Setup(ds => ds.InsertOptionActionAsync(request, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new List<Server.Models.ResultTypes.core_workflow_sp_InsertOptionActionResult>());
+            .ReturnsAsync(new List<core_workflow_sp_InsertOptionActionResult>());
 
         var service = CreateWorkflowManagementService();
 

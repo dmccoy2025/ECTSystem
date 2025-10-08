@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Moq;
-using AF.ECT.Server.Models;
-using AF.ECT.Server.Models.Interfaces;
-using AF.ECT.Server.Services;
 using System.Linq.Expressions;
 using Microsoft.Extensions.Logging;
+using AF.ECT.Data.Models;
+using AF.ECT.Data.Interfaces;
+using AF.ECT.Data.ResultTypes;
 
 namespace AF.ECT.Tests.Infrastructure;
 
@@ -42,7 +42,7 @@ public abstract class DataServiceTestBase
     /// Sets up the mock procedures to return the specified results for GetReinvestigationRequestsAsync.
     /// </summary>
     /// <param name="results">The results to return from the stored procedure.</param>
-    protected void SetupProceduresToReturn(List<Server.Models.ResultTypes.core_lod_sp_GetReinvestigationRequestsResult> results)
+    protected void SetupProceduresToReturn(List<core_lod_sp_GetReinvestigationRequestsResult> results)
     {
         MockProcedures.Setup(p => p.GetReinvestigationRequestsAsync(It.IsAny<int?>(), It.IsAny<bool?>(), null, It.IsAny<CancellationToken?>()))
             .Returns(Task.FromResult(results));

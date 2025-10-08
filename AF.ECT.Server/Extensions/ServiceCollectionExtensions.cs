@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using AF.ECT.Server.Models;
+using AF.ECT.Data.Models;
+using AF.ECT.Data.Interfaces;
 using AF.ECT.Server.Services;
 using AF.ECT.Server.Services.Interfaces;
 using Radzen;

@@ -1,7 +1,6 @@
-using AF.ECT.Server.Models;
-using AF.ECT.Server.Models.Extensions;
 using static AF.ECT.Tests.Data.DbContextExtensionsTestData;
 using AF.ECT.Tests.Infrastructure;
+using AF.ECT.Data.Extensions;
 
 namespace AF.ECT.Tests;
 

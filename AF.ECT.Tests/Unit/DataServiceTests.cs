@@ -1,11 +1,13 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Moq;
-using ServerModels = AF.ECT.Server.Models;
-using ServerExtensions = AF.ECT.Server.Models.Extensions;
 using SharedModels = AF.ECT.Shared;
-using AF.ECT.Server.Services;
 using static AF.ECT.Tests.Data.DataServiceTestData;
 using AF.ECT.Tests.Infrastructure;
+using AF.ECT.Data.Extensions;
+using AF.ECT.Data.Interfaces;
+using AF.ECT.Data.ResultTypes;
+using AF.ECT.Server.Extensions;
 
 namespace AF.ECT.Tests;
 
@@ -56,7 +58,7 @@ public class DataServiceTests : DataServiceTestBase
     {
         // Arrange
         var dataService = CreateDataService();
-        var expectedResults = new List<ServerModels.ResultTypes.core_lod_sp_GetReinvestigationRequestsResult>
+        var expectedResults = new List<core_lod_sp_GetReinvestigationRequestsResult>
         {
             new()
         };
@@ -79,7 +81,7 @@ public class DataServiceTests : DataServiceTestBase
     {
         // Arrange
         var dataService = CreateDataService();
-        var expectedResults = new List<ServerModels.ResultTypes.core_lod_sp_GetReinvestigationRequestsResult>();
+        var expectedResults = new List<core_lod_sp_GetReinvestigationRequestsResult>();
         SetupStoredProcedureToReturn(p => p.GetReinvestigationRequestsAsync(It.IsAny<int?>(), It.IsAny<bool?>(), null, It.IsAny<CancellationToken?>()), expectedResults);
 
         // Act
@@ -100,7 +102,7 @@ public class DataServiceTests : DataServiceTestBase
         // Arrange
         var dataService = CreateDataService();
         var cancellationToken = new CancellationToken(true);
-        var expectedResults = new List<ServerModels.ResultTypes.core_lod_sp_GetReinvestigationRequestsResult>();
+        var expectedResults = new List<core_lod_sp_GetReinvestigationRequestsResult>();
         SetupStoredProcedureToReturn(p => p.GetReinvestigationRequestsAsync(It.IsAny<int?>(), It.IsAny<bool?>(), null, It.IsAny<CancellationToken?>()), expectedResults);
 
         // Act
@@ -180,7 +182,7 @@ public class DataServiceTests : DataServiceTestBase
     {
         // Arrange
         var dataService = CreateDataService();
-        var expectedResults = new List<ServerModels.ResultTypes.core_lod_sp_GetReinvestigationRequestsResult>
+        var expectedResults = new List<core_lod_sp_GetReinvestigationRequestsResult>
         {
             new()
         };
@@ -203,7 +205,7 @@ public class DataServiceTests : DataServiceTestBase
     {
         // Arrange
         var dataService = CreateDataService();
-        var expectedResults = new List<ServerModels.ResultTypes.core_lod_sp_GetReinvestigationRequestsResult>();
+        var expectedResults = new List<core_lod_sp_GetReinvestigationRequestsResult>();
         SetupStoredProcedureToReturn(p => p.GetReinvestigationRequestsAsync(It.IsAny<int?>(), It.IsAny<bool?>(), null, It.IsAny<CancellationToken?>()), expectedResults);
 
         // Act
@@ -293,7 +295,7 @@ public class DataServiceTests : DataServiceTestBase
     {
         // Arrange
         var dataService = CreateDataService();
-        var expectedResults = new List<ServerModels.ResultTypes.core_user_sp_GetMailingListForLODResult>(); // Simplified for testing
+        var expectedResults = new List<core_user_sp_GetMailingListForLODResult>(); // Simplified for testing
         SetupStoredProcedureToReturn(p => p.core_user_sp_GetMailingListForLODAsync(It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<string?>(), null, It.IsAny<CancellationToken?>()), expectedResults);
 
         // Act
@@ -363,13 +365,13 @@ public class DataServiceTests : DataServiceTestBase
         // Arrange
         var dataService = CreateDataService();
         var expectedResult = 1;
-        MockProcedures.Setup(p => p.core_user_sp_RegisterUserRoleAsync(It.IsAny<int?>(), It.IsAny<short?>(), It.IsAny<byte?>(), It.IsAny<ServerExtensions.OutputParameter<int?>>(), It.IsAny<ServerExtensions.OutputParameter<int>?>(), It.IsAny<CancellationToken?>()))
-            .Callback<int?, short?, byte?, ServerExtensions.OutputParameter<int?>?, ServerExtensions.OutputParameter<int>?, CancellationToken?>((userID, groupID, status, userRoleID, returnValue, _) =>
+        MockProcedures.Setup(p => p.core_user_sp_RegisterUserRoleAsync(It.IsAny<int?>(), It.IsAny<short?>(), It.IsAny<byte?>(), It.IsAny<OutputParameter<int?>>(), It.IsAny<OutputParameter<int>?>(), It.IsAny<CancellationToken?>()))
+            .Callback<int?, short?, byte?, OutputParameter<int?>?, OutputParameter<int>?, CancellationToken?>((userID, groupID, status, userRoleID, returnValue, _) =>
             {
                 if (userRoleID != null)
                 {
                     // Use reflection to set the value since SetValue is internal
-                    var setValueMethod = typeof(ServerExtensions.OutputParameter<int?>).GetMethod("SetValue", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                    var setValueMethod = typeof(OutputParameter<int?>).GetMethod("SetValue", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                     setValueMethod?.Invoke(userRoleID, [expectedResult]);
                 }
             })
@@ -380,7 +382,7 @@ public class DataServiceTests : DataServiceTestBase
 
         // Assert
         Assert.Equal(expectedResult, result);
-        MockProcedures.Verify(p => p.core_user_sp_RegisterUserRoleAsync(1, (short)2, (byte)3, It.IsAny<ServerExtensions.OutputParameter<int?>>(), It.IsAny<ServerExtensions.OutputParameter<int>?>(), It.IsAny<CancellationToken?>()), Times.Once);
+        MockProcedures.Verify(p => p.core_user_sp_RegisterUserRoleAsync(1, (short)2, (byte)3, It.IsAny<OutputParameter<int?>>(), It.IsAny<OutputParameter<int>?>(), It.IsAny<CancellationToken?>()), Times.Once);
     }
 
     #endregion
@@ -399,7 +401,7 @@ public class DataServiceTests : DataServiceTestBase
     {
         // Arrange
         var dataService = CreateDataService();
-        var expectedResults = new List<ServerModels.ResultTypes.core_workflow_sp_AddSignatureResult>
+        var expectedResults = new List<core_workflow_sp_AddSignatureResult>
         {
             new()
         };
@@ -450,7 +452,7 @@ public class DataServiceTests : DataServiceTestBase
     {
         // Arrange
         var dataService = CreateDataService();
-        var expectedResults = new List<ServerModels.ResultTypes.core_workflow_sp_GetActionsByStepResult>
+        var expectedResults = new List<core_workflow_sp_GetActionsByStepResult>
         {
             new()
         };
@@ -478,7 +480,7 @@ public class DataServiceTests : DataServiceTestBase
     {
         // Arrange
         var dataService = CreateDataService();
-        var expectedResults = new List<ServerModels.ResultTypes.core_Workflow_sp_GetPermissionsResult>
+        var expectedResults = new List<core_Workflow_sp_GetPermissionsResult>
         {
             new()
         };
@@ -506,7 +508,7 @@ public class DataServiceTests : DataServiceTestBase
     {
         // Arrange
         var dataService = CreateDataService();
-        var expectedResults = new List<ServerModels.ResultTypes.core_workflow_sp_GetStatusCodesByWorkflowResult>
+        var expectedResults = new List<core_workflow_sp_GetStatusCodesByWorkflowResult>
         {
             new()
         };

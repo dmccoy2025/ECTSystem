@@ -1,6 +1,7 @@
 using Grpc.Core;
 using AF.ECT.Shared;
 using AF.ECT.Server.Services.Interfaces;
+using AF.ECT.Data.Interfaces;
 
 namespace AF.ECT.Server.Services;
 
