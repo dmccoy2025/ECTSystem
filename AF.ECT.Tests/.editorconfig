@@ -1,0 +1,10 @@
+# Test-specific .editorconfig
+# Inherits from root .editorconfig and adds test-specific suppressions
+
+# Suppress CS1998 warnings (async methods without await) in test files
+[*.cs]
+dotnet_diagnostic.CS1998.severity = none
+
+# Suppress additional test-specific warnings if needed
+dotnet_diagnostic.CA1707.severity = none  # Identifiers should not contain underscores (common in test method names)
+dotnet_diagnostic.CA1812.severity = none  # Avoid uninstantiated internal classes (test classes may not be instantiated directly)
