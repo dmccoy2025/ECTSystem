@@ -1,6 +1,7 @@
 #nullable enable
 #pragma warning disable CS8604 // Possible null reference argument
 using Microsoft.Data.SqlClient;
+using System.Data;
 using Microsoft.EntityFrameworkCore;
 using AF.ECT.Data.Extensions;
 using AF.ECT.Data.ResultTypes;
@@ -30,8 +31,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -41,40 +42,40 @@ public partial class ALODContextProcedures : IALODContextProcedures
                     ParameterName = "ediPIN",
                     Size = 100,
                     Value = ediPIN ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.VarChar,
+                    SqlDbType = SqlDbType.VarChar,
                 },
                 new SqlParameter
                 {
                     ParameterName = "lastName",
                     Size = 100,
                     Value = lastName ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.VarChar,
+                    SqlDbType = SqlDbType.VarChar,
                 },
                 new SqlParameter
                 {
                     ParameterName = "firstName",
                     Size = 100,
                     Value = firstName ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.VarChar,
+                    SqlDbType = SqlDbType.VarChar,
                 },
                 new SqlParameter
                 {
                     ParameterName = "middleNames",
                     Size = 100,
                     Value = middleNames ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.VarChar,
+                    SqlDbType = SqlDbType.VarChar,
                 },
                 new SqlParameter
                 {
                     ParameterName = "beginDate",
                     Value = beginDate ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.DateTime,
+                    SqlDbType = SqlDbType.DateTime,
                 },
                 new SqlParameter
                 {
                     ParameterName = "endDate",
                     Value = endDate ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.DateTime,
+                    SqlDbType = SqlDbType.DateTime,
                 },
                 parameterreturnValue,
             };
@@ -96,8 +97,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -124,8 +125,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -134,7 +135,7 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 {
                     ParameterName = "logId",
                     Value = logId ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 parameterreturnValue,
             };

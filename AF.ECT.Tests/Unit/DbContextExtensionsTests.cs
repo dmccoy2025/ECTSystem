@@ -1,6 +1,7 @@
 using static AF.ECT.Tests.Data.DbContextExtensionsTestData;
 using AF.ECT.Tests.Infrastructure;
 using AF.ECT.Data.Extensions;
+using Microsoft.Data.Sqlite;
 
 namespace AF.ECT.Tests;
 
@@ -63,7 +64,7 @@ public class DbContextExtensionsTests : DbContextExtensionsTestBase
         catch (Exception ex)
         {
             // Any exception thrown should be database-related, not our custom validation
-            Assert.True(ex is Microsoft.Data.Sqlite.SqliteException || 
+            Assert.True(ex is SqliteException || 
                        ex is InvalidOperationException ||
                        ex is ArgumentException, 
                        $"Unexpected exception type: {ex.GetType().Name}");

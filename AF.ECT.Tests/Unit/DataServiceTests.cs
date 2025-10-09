@@ -8,6 +8,7 @@ using AF.ECT.Data.Extensions;
 using AF.ECT.Data.Interfaces;
 using AF.ECT.Data.ResultTypes;
 using AF.ECT.Server.Extensions;
+using System.Reflection;
 
 namespace AF.ECT.Tests;
 
@@ -371,7 +372,7 @@ public class DataServiceTests : DataServiceTestBase
                 if (userRoleID != null)
                 {
                     // Use reflection to set the value since SetValue is internal
-                    var setValueMethod = typeof(OutputParameter<int?>).GetMethod("SetValue", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                    var setValueMethod = typeof(OutputParameter<int?>).GetMethod("SetValue", BindingFlags.NonPublic | BindingFlags.Instance);
                     setValueMethod?.Invoke(userRoleID, [expectedResult]);
                 }
             })

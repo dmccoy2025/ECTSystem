@@ -1,6 +1,7 @@
 #nullable enable
 #pragma warning disable CS8604 // Possible null reference argument
 using Microsoft.Data.SqlClient;
+using System.Data;
 using AF.ECT.Data.Extensions;
 using AF.ECT.Data.ResultTypes;
 using AF.ECT.Data.Interfaces;
@@ -26,8 +27,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -36,13 +37,13 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 {
                     ParameterName = "unitId",
                     Value = unitId ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 new SqlParameter
                 {
                     ParameterName = "rptView",
                     Value = rptView ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 parameterreturnValue,
             };
@@ -67,8 +68,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -77,13 +78,13 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 {
                     ParameterName = "unitId",
                     Value = unitId ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 new SqlParameter
                 {
                     ParameterName = "rptView",
                     Value = rptView ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 parameterreturnValue,
             };
@@ -106,8 +107,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -135,8 +136,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -146,14 +147,14 @@ public partial class ALODContextProcedures : IALODContextProcedures
                     ParameterName = "unitName",
                     Size = 100,
                     Value = unitName ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.VarChar,
+                    SqlDbType = SqlDbType.VarChar,
                 },
                 new SqlParameter
                 {
                     ParameterName = "pasCode",
                     Size = 10,
                     Value = pasCode ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.VarChar,
+                    SqlDbType = SqlDbType.VarChar,
                 },
                 parameterreturnValue,
             };
@@ -178,8 +179,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -188,14 +189,14 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 {
                     ParameterName = "unitId",
                     Value = unitId ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 new SqlParameter
                 {
                     ParameterName = "unitName",
                     Size = 100,
                     Value = unitName ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.VarChar,
+                    SqlDbType = SqlDbType.VarChar,
                 },
                 parameterreturnValue,
             };
@@ -218,8 +219,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -246,8 +247,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -256,7 +257,7 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 {
                     ParameterName = "cs_id",
                     Value = cs_id ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 parameterreturnValue,
             };
@@ -280,8 +281,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -290,7 +291,7 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 {
                     ParameterName = "viewType",
                     Value = viewType ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.TinyInt,
+                    SqlDbType = SqlDbType.TinyInt,
                 },
                 parameterreturnValue,
             };
@@ -315,8 +316,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -325,13 +326,13 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 {
                     ParameterName = "cs_id",
                     Value = cs_id ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 new SqlParameter
                 {
                     ParameterName = "viewType",
                     Value = viewType ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.TinyInt,
+                    SqlDbType = SqlDbType.TinyInt,
                 },
                 parameterreturnValue,
             };
@@ -356,8 +357,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -366,13 +367,13 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 {
                     ParameterName = "cs_id",
                     Value = cs_id ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 new SqlParameter
                 {
                     ParameterName = "userId",
                     Value = userId ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 parameterreturnValue,
             };
@@ -397,8 +398,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -408,13 +409,13 @@ public partial class ALODContextProcedures : IALODContextProcedures
                     ParameterName = "userPasCode",
                     Size = 10,
                     Value = userPasCode ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.VarChar,
+                    SqlDbType = SqlDbType.VarChar,
                 },
                 new SqlParameter
                 {
                     ParameterName = "viewType",
                     Value = viewType ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 parameterreturnValue,
             };
@@ -439,8 +440,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -449,13 +450,13 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 {
                     ParameterName = "cs_id",
                     Value = cs_id ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 new SqlParameter
                 {
                     ParameterName = "viewType",
                     Value = viewType ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 parameterreturnValue,
             };
@@ -480,8 +481,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -490,13 +491,13 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 {
                     ParameterName = "userId",
                     Value = userId ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 new SqlParameter
                 {
                     ParameterName = "viewType",
                     Value = viewType ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 parameterreturnValue,
             };

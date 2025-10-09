@@ -1,6 +1,7 @@
 #nullable enable
 #pragma warning disable CS8604 // Possible null reference argument
 using Microsoft.Data.SqlClient;
+using System.Data;
 using AF.ECT.Data.Extensions;
 using AF.ECT.Data.ResultTypes;
 using AF.ECT.Data.Interfaces;
@@ -24,8 +25,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -34,7 +35,7 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 {
                     ParameterName = "appealId",
                     Value = appealId ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 parameterreturnValue,
             };
@@ -58,8 +59,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
         var parameterreturnValue = new SqlParameter
         {
             ParameterName = "returnValue",
-            Direction = System.Data.ParameterDirection.Output,
-            SqlDbType = System.Data.SqlDbType.Int,
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
         };
 
         var sqlParameters = new[]
@@ -68,7 +69,7 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 {
                     ParameterName = "appealId",
                     Value = appealId ?? Convert.DBNull,
-                    SqlDbType = System.Data.SqlDbType.Int,
+                    SqlDbType = SqlDbType.Int,
                 },
                 parameterreturnValue,
             };

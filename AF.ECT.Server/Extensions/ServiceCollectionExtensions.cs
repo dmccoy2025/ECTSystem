@@ -6,6 +6,7 @@ using AF.ECT.Server.Services.Interfaces;
 using Radzen;
 using AspNetCoreRateLimit;
 using AF.ECT.Server.Interceptors;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace AF.ECT.Server.Extensions;
 
@@ -158,7 +159,7 @@ public static class ServiceCollectionExtensions
         // Add EF Core DbContext health check for SQL Server
         healthChecksBuilder.AddDbContextCheck<ALODContext>();
         
-        healthChecksBuilder.AddCheck("Self", () => Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult.Healthy());
+        healthChecksBuilder.AddCheck("Self", () => HealthCheckResult.Healthy());
 
         return services;
     }
