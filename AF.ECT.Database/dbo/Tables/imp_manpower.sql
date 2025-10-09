@@ -1,0 +1,10 @@
+CREATE TABLE [dbo].[imp_manpower] (
+    [POS_NBR]  VARCHAR (50) NULL,
+    [PAS_CODE] VARCHAR (50) NULL
+);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_POS_NBR]
+    ON [dbo].[imp_manpower]([POS_NBR] ASC) WITH (FILLFACTOR = 90);
+GO
+

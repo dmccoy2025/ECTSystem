@@ -1,0 +1,17 @@
+CREATE TABLE [DBSign].[DBS_LDAP_INFO] (
+    [SEARCH_PRIORITY]   INT           NOT NULL,
+    [FRIENDLY_NAME]     VARCHAR (80)  NOT NULL,
+    [HOST_ADDRESS]      VARCHAR (80)  NULL,
+    [HOST_PORT]         INT           NULL,
+    [AUTH_TYPE_CODE]    INT           NULL,
+    [SIZE_LIMIT]        INT           NULL,
+    [TIME_LIMIT]        INT           NULL,
+    [SEARCH_BASE]       VARCHAR (512) NULL,
+    [SEARCH_BASE_ATTRS] VARCHAR (128) NULL,
+    [CERT_FILTER_ATTRS] VARCHAR (128) NULL,
+    [CERT_ATTRS]        VARCHAR (128) NULL,
+    [CRL_ATTRS]         VARCHAR (128) NULL,
+    [CKL_ATTRS]         VARCHAR (128) NULL
+);
+GO
+

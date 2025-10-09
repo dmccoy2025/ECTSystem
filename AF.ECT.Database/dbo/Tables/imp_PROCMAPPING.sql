@@ -1,0 +1,7 @@
+CREATE TABLE [dbo].[imp_PROCMAPPING] (
+    [PVS_ID]          INT NOT NULL,
+    [PROC_ID]         INT NOT NULL,
+    [ALOD_WORKSTATUS] INT NULL
+);
+GO
+

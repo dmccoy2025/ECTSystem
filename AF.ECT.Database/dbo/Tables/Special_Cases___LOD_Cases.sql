@@ -1,0 +1,8 @@
+CREATE TABLE [dbo].[Special_Cases_&_LOD_Cases] (
+    [STATUS]        VARCHAR (50) NOT NULL,
+    [POSITION]      VARCHAR (50) NOT NULL,
+    [LOCATION]      VARCHAR (50) NOT NULL,
+    [POSITION_RANK] SMALLINT     NULL
+);
+GO
+

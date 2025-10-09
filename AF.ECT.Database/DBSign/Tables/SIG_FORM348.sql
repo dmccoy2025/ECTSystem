@@ -1,0 +1,9 @@
+CREATE TABLE [DBSign].[SIG_FORM348] (
+    [lodId]             INT      NOT NULL,
+    [DBS_CERT_ID]       INT      NOT NULL,
+    [DBS_SIGN_DATE]     DATETIME NOT NULL,
+    [DBS_SIGNATURE]     IMAGE    NOT NULL,
+    [DBS_SIGN_DATE_GMT] CHAR (1) NULL
+);
+GO
+

@@ -1,0 +1,31 @@
+CREATE TABLE [dbo].[imp_process] (
+    [PROC_ID]              NVARCHAR (50)   NULL,
+    [CS_ID]                NVARCHAR (50)   NULL,
+    [PROCESS_NAME]         NVARCHAR (4000) NULL,
+    [PROC_TYPE]            NVARCHAR (50)   NULL,
+    [PROC_CLASSIFICATION]  NVARCHAR (50)   NULL,
+    [PARENT_PROC_ID]       NVARCHAR (50)   NULL,
+    [VERSION]              NVARCHAR (50)   NULL,
+    [VERSION_DATE]         NVARCHAR (50)   NULL,
+    [ACTIVE_YN]            NVARCHAR (50)   NULL,
+    [MULT_RESP_ALLOWED_YN] NVARCHAR (50)   NULL,
+    [RESP_REQUIRED_YN]     NVARCHAR (50)   NULL,
+    [PAPER_FORM]           NVARCHAR (50)   NULL,
+    [MONTHS_VALID]         NVARCHAR (50)   NULL,
+    [PROCESS_HELP_YN]      NVARCHAR (50)   NULL,
+    [ROUTINE_TYPE]         NVARCHAR (50)   NULL,
+    [ROUTINE_NAME]         NVARCHAR (4000) NULL,
+    [DESCRIPTION]          NVARCHAR (4000) NULL,
+    [PROGRAM_CODE]         NVARCHAR (50)   NULL,
+    [WORKFLOW_MULTIPLE_YN] NVARCHAR (50)   NULL,
+    [CREATED_BY]           NVARCHAR (50)   NULL,
+    [CREATED_DATE]         NVARCHAR (50)   NULL,
+    [MODIFIED_BY]          NVARCHAR (50)   NULL,
+    [MODIFIED_DATE]        NVARCHAR (50)   NULL,
+    [NEW_WINDOW_YN]        NVARCHAR (50)   NULL,
+    [DEFAULT_RESULT]       NVARCHAR (50)   NULL,
+    [INBOX_PARAM]          NVARCHAR (50)   NULL,
+    [INBOX_VALUE]          NVARCHAR (50)   NULL
+);
+GO
+

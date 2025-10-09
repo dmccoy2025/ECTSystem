@@ -1,0 +1,4 @@
+CREATE SCHEMA [usp]
+    AUTHORIZATION [dbo];
+GO
+

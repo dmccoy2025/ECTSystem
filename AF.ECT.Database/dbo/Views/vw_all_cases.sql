@@ -1,0 +1,178 @@
+
+
+
+CREATE VIEW [dbo].[vw_all_cases]
+AS
+SELECT	lodId as refId, 
+		[Case Id], 
+		[Status], 
+		[Closed], 
+		[Date Of Status], 
+		[Days], 
+		[Days Open],
+		[Total Days],
+		[Member Name], 
+		[Member SSN], 
+		[Member Rank], 
+		[Member Grade], 
+		[Member Unit], 
+		[Member DOB], 
+		[Date Created], 
+		[Date Modified], 
+		[Created By], 
+		[Modified By], 
+		[Date Completed], 
+		[ws_id], 
+		[workflowId],
+		[isFinal], 
+		[created_by], 
+		[member_unit], 
+		[member_unit_id]
+FROM	vw_lod
+
+UNION ALL
+
+SELECT	SC_Id as refId, 
+		[Case Id], 
+		[Status], 
+		[Closed], 
+		[Date Of Status], 
+		[Days], 
+		[Days Open],
+		[Total Days],
+		[Member Name], 
+		[Member SSN], 
+		[Member Rank], 
+		[Member Grade], 
+		[Member Unit], 
+		[Member DOB], 
+		[Date Created], 
+		[Date Modified], 
+		[Created By], 
+		[Modified By], 
+		[Date Completed], 
+		[ws_id], 
+		[workflowId],
+		[isFinal], 
+		[created_by], 
+		[member_unit], 
+		[member_unit_id]
+FROM	vw_sc
+
+UNION ALL
+
+SELECT	request_id as refId, 
+		[Case Id], 
+		[Status], 
+		[Closed], 
+		[Date Of Status], 
+		[Days], 
+		[Days Open],
+		[Total Days],
+		[Member Name], 
+		[Member SSN], 
+		[Member Rank], 
+		[Member Grade], 
+		[Member Unit], 
+		[Member DOB], 
+		[Date Created], 
+		[Date Modified], 
+		[Created By], 
+		[Modified By], 
+		[Date Completed], 
+		[ws_id], 
+		[workflowId],
+		[isFinal], 
+		[created_by], 
+		[member_unit], 
+		[member_unit_id]
+FROM	vw_rr
+
+UNION ALL
+
+SELECT	sarc_id AS refId,
+		[Case Id],
+		[Status],
+		[Closed], 
+		[Date Of Status], 
+		[Days], 
+		[Days Open],
+		[Total Days],
+		[Member Name], 
+		[Member SSN], 
+		[Member Rank], 
+		[Member Grade], 
+		[Member Unit], 
+		[Member DOB], 
+		[Date Created], 
+		[Date Modified], 
+		[Created By], 
+		[Modified By], 
+		[Date Completed], 
+		[WorkStatusId] AS ws_id, 
+		[workflowId],
+		[isFinal], 
+		[created_by], 
+		[Member Unit] AS member_unit, 
+		[member_unit_id]
+FROM	vw_sarc
+
+UNION ALL
+
+SELECT	[Appeal Id] AS refId,
+		[Case Id], 
+		[Status], 
+		[Closed], 
+		[Date Of Status], 
+		[Days], 
+		[Days Open],
+		[Total Days],
+		[Member Name], 
+		[Member SSN], 
+		[Member Rank], 
+		[Member Grade], 
+		[Member Unit], 
+		[Member DOB], 
+		[Date Created], 
+		[Date Modified], 
+		[Created By], 
+		[Modified By], 
+		[Date Completed], 
+		[ws_id], 
+		[workflowId],
+		[isFinal], 
+		[created_by], 
+		[Member Unit] AS member_unit, 
+		[member_unit_id]
+FROM	vw_appeal
+
+UNION ALL
+
+SELECT	[Appeal Id] AS refId,
+		[Case Id], 
+		[Status], 
+		[Closed], 
+		[Date Of Status], 
+		[Days], 
+		[Days Open],
+		[Total Days],
+		[Member Name], 
+		[Member SSN], 
+		[Member Rank], 
+		[Member Grade], 
+		[Member Unit], 
+		[Member DOB], 
+		[Date Created], 
+		[Date Modified], 
+		[Created By], 
+		[Modified By], 
+		[Date Completed], 
+		[WorkStatusId], 
+		[workflowId],
+		[isFinal], 
+		[created_by], 
+		[Member Unit] AS member_unit, 
+		[member_unit_id]
+FROM	vw_appeal_sarc
+GO
+

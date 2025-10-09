@@ -1,0 +1,6 @@
+CREATE TABLE [DBSign].[DBS_LOG_TYPE_MSTR] (
+    [LOG_TYPE] INT           NOT NULL,
+    [LOG_DESC] VARCHAR (128) NOT NULL
+);
+GO
+

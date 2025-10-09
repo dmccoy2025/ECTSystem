@@ -1,0 +1,95 @@
+
+-- ============================================================================
+-- Author:		?
+-- Create date: ?
+-- Description:	Selects user emails for a SC case by work status Id.  
+-- ============================================================================
+-- Modified By:		Ken Barnett
+-- Modified Date:	11/21/2015	
+-- Description:		Modified so that the all of the roles a user has assigned
+--					to them are taken into account when selecting the email
+--					addresses.
+--					Also made it so that the user group to work status mappings
+--					in the core_StatusCodeSigners table are taken into account
+--					when selecting user email addresses. 
+-- ============================================================================
+CREATE PROCEDURE [dbo].[core_user_sp_GetMailingListByStatus_SC]
+	@refId INT,
+ 	@status SMALLINT
+AS
+BEGIN
+	DECLARE @MemberParentUnits TABLE 
+	(
+		cs_id INT
+	)
+	
+	DECLARE @AssociatedGroups TABLE
+	(
+		GroupId INT
+	) 
+
+	--Member unit falls in the user's hirerchy 
+	DECLARE @member_unit_id INT, @compo CHAR(1), @groupId INT, @view_type SMALLINT 
+
+	--get the viewtype from the status
+	--this is the group responsible for the status code
+	SELECT	@groupId = a.groupId, @view_type = g.reportView
+	FROM	vw_WorkStatus a 
+			JOIN core_UserGroups g on g.groupId = a.groupId
+	WHERE	a.ws_id = @status
+	
+	
+	IF (@groupId > 0)
+	BEGIN
+		INSERT INTO @AssociatedGroups ([GroupId])
+		VALUES (@groupId)
+	END
+	
+	-- Find other user groups associated with the passed in work status...
+	INSERT	INTO	@AssociatedGroups ([GroupId])
+			SELECT	scs.groupId
+			FROM	core_StatusCodeSigners scs
+			WHERE	scs.status = @status
+
+	--get the member's unit and info
+	SELECT 
+		@member_unit_id = SC.member_unit_id, @compo = SC.member_compo
+	FROM 
+		Form348_SC SC
+	WHERE SC.SC_Id = @refId;
+
+
+	--get the parent units for the member's unit
+	INSERT	INTO @MemberParentUnits (cs_id)
+			SELECT	DISTINCT parent_id  
+			FROM	Command_Struct_Tree 
+			WHERE	child_id=@member_unit_id 
+					AND view_type = @view_type;
+
+	WITH AllEmails(Email, Email2, Email3) AS
+	( 
+		SELECT	a.Email ,a.Email2,a.Email3  
+		FROM	vw_users a 
+				JOIN core_UserRoles ur ON a.userID = ur.userID
+		WHERE
+			ur.groupId IN (SELECT GroupId FROM @AssociatedGroups)
+		AND
+			a.accessStatus =  3
+		AND
+			a.receiveEmail = 1
+		AND  
+			a.compo = @compo 
+		--Scope filtering
+		AND 
+		(
+			a.unit_id in (SELECT cs_id FROM @MemberParentUnits)
+		)
+	)
+	SELECT  Email FROM AllEmails WHERE Email IS NOT NULL AND LEN(email) > 0 
+	UNION
+	SELECT	 Email2 FROM AllEmails WHERE Email2 IS NOT NULL AND LEN(email2) > 0 
+	UNION
+	SELECT	 Email3 FROM AllEmails WHERE Email3 IS NOT NULL AND LEN(email3) > 0
+END
+GO
+

@@ -1,0 +1,6 @@
+CREATE TABLE [DBSign].[DBS_LOG_DATA] (
+    [LOG_NO]    INT   NOT NULL,
+    [DATA_BLOB] IMAGE NULL
+);
+GO
+

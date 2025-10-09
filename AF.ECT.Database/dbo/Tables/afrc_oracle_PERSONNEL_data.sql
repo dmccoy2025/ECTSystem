@@ -1,0 +1,30 @@
+CREATE TABLE [dbo].[afrc_oracle_PERSONNEL_data] (
+    [PERS_ID]                  VARCHAR (50)   NULL,
+    [SSN]                      VARCHAR (50)   NULL,
+    [USERNAME]                 VARCHAR (50)   NULL,
+    [DUTY_SECTION]             VARCHAR (50)   NULL,
+    [SEX]                      VARCHAR (50)   NULL,
+    [E_MAIL_HOME]              VARCHAR (500)  NULL,
+    [E_MAIL_WORK]              VARCHAR (500)  NULL,
+    [E_MAIL_UNIT]              VARCHAR (500)  NULL,
+    [CONTACT_INFO]             VARCHAR (4000) NULL,
+    [RES_ADDRESS1]             VARCHAR (50)   NULL,
+    [RES_ADDRESS2]             VARCHAR (50)   NULL,
+    [RES_CITY]                 VARCHAR (50)   NULL,
+    [RES_POSTAL_CODE]          VARCHAR (50)   NULL,
+    [RES_COUNTRY]              VARCHAR (50)   NULL,
+    [RES_STATE]                VARCHAR (50)   NULL,
+    [CREATED_BY]               VARCHAR (50)   NULL,
+    [CREATED_DATE]             VARCHAR (50)   NULL,
+    [MODIFIED_BY]              VARCHAR (50)   NULL,
+    [MODIFIED_DATE]            VARCHAR (50)   NULL,
+    [ALT_DAV_CODE]             VARCHAR (50)   NULL,
+    [ALT_DAV_CODE_EXPIRE]      VARCHAR (50)   NULL,
+    [ALT_FLYER_ID]             VARCHAR (50)   NULL,
+    [ALT_FLYER_ID_EXPIRE]      VARCHAR (50)   NULL,
+    [ALT_PAS_ATCH_TRNG]        VARCHAR (50)   NULL,
+    [ALT_PAS_ATCH_TRNG_EXPIRE] VARCHAR (50)   NULL,
+    [SPCL_OPS_YN]              VARCHAR (50)   NULL
+);
+GO
+

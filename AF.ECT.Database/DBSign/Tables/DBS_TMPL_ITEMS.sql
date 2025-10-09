@@ -1,0 +1,13 @@
+CREATE TABLE [DBSign].[DBS_TMPL_ITEMS] (
+    [TEMPLATE_ID]       INT           NOT NULL,
+    [FIELD_POSITION_NO] INT           NOT NULL,
+    [ITEM_NAME]         VARCHAR (30)  NULL,
+    [ITEM_DESC]         VARCHAR (128) NULL,
+    [TABLE_OWNER]       VARCHAR (30)  NULL,
+    [TABLE_NAME]        VARCHAR (100) NULL,
+    [COLUMN_NAME]       VARCHAR (30)  NULL,
+    [FIELD_TYPE_CODE]   VARCHAR (1)   NULL,
+    [DATA_TYPE_CODE]    INT           NULL
+);
+GO
+

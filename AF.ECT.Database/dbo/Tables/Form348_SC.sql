@@ -1,0 +1,311 @@
+CREATE TABLE [dbo].[Form348_SC] (
+    [SC_Id]                                            INT             IDENTITY (1, 1) NOT NULL,
+    [Module_Id]                                        TINYINT         NOT NULL,
+    [Associated_LOD]                                   INT             NULL,
+    [case_id]                                          VARCHAR (50)    NOT NULL,
+    [created_by]                                       INT             NOT NULL,
+    [created_date]                                     DATETIME        NOT NULL,
+    [modified_by]                                      INT             NOT NULL,
+    [modified_date]                                    DATETIME        NOT NULL,
+    [workflow]                                         TINYINT         NOT NULL,
+    [status]                                           INT             NOT NULL,
+    [rwoa_reason]                                      TINYINT         NULL,
+    [rwoa_explantion]                                  VARCHAR (MAX)   NULL,
+    [rwoa_date]                                        DATETIME        NULL,
+    [sig_date_med_tech]                                DATETIME        NULL,
+    [sig_name_med_tech]                                VARCHAR (100)   NULL,
+    [sig_title_med_tech]                               VARCHAR (100)   NULL,
+    [sig_date_hqt]                                     DATETIME        NULL,
+    [sig_name_hqt]                                     VARCHAR (100)   NULL,
+    [sig_title_hqt]                                    VARCHAR (100)   NULL,
+    [sig_date_med_off]                                 DATETIME        NULL,
+    [sig_name_med_off]                                 VARCHAR (100)   NULL,
+    [sig_title_med_off]                                VARCHAR (100)   NULL,
+    [sig_date_hqt_final]                               DATETIME        NULL,
+    [sig_name_hqt_final]                               VARCHAR (100)   NULL,
+    [sig_title_hqt_final]                              VARCHAR (100)   NULL,
+    [med_tech_approved]                                INT             NULL,
+    [hqt_approval1]                                    INT             NULL,
+    [med_off_approved]                                 INT             NULL,
+    [hqt_approval2]                                    INT             NULL,
+    [med_tech_approval_comment]                        VARCHAR (500)   NULL,
+    [hqt_approval1_comment]                            VARCHAR (500)   NULL,
+    [med_off_approval_comment]                         NVARCHAR (2000) NULL,
+    [hqt_approval2_comment]                            VARCHAR (250)   NULL,
+    [Return_Comment]                                   VARCHAR (2000)  NULL,
+    [Member_ssn]                                       NVARCHAR (9)    NOT NULL,
+    [Member_name]                                      NVARCHAR (100)  NOT NULL,
+    [Member_Unit]                                      NVARCHAR (100)  NOT NULL,
+    [Doc_Group_Id]                                     INT             NULL,
+    [Approval_Date]                                    DATETIME        NULL,
+    [Expiration_Date]                                  DATETIME        NULL,
+    [Initial_SC]                                       INT             NULL,
+    [ALC_Letter_Type]                                  INT             NULL,
+    [Member_Compo]                                     INT             NOT NULL,
+    [Member_Unit_Id]                                   INT             NOT NULL,
+    [TMT_Number]                                       NVARCHAR (50)   NULL,
+    [TMT_Receive_Date]                                 DATETIME        NULL,
+    [Suspense_Date]                                    DATETIME        NULL,
+    [Date_In]                                          DATETIME        NULL,
+    [Date_Out]                                         DATETIME        NULL,
+    [Case_Comments]                                    NVARCHAR (1200) NULL,
+    [Member_Grade]                                     INT             NULL,
+    [Member_DOB]                                       DATETIME        NULL,
+    [POC_Unit]                                         NVARCHAR (50)   NULL,
+    [POC_Phone_DSN]                                    NVARCHAR (40)   NULL,
+    [POC_Email]                                        NVARCHAR (200)  NULL,
+    [IPEB_Election]                                    INT             NULL,
+    [MUQ_Request_Date]                                 DATETIME        NULL,
+    [IPEB_Signature_Date]                              DATETIME        NULL,
+    [Cover_Ltr_Inc_Member_Statement]                   INT             NULL,
+    [Cover_Ltr_Inc_Contact_Attempt_Details]            INT             NULL,
+    [Med_Eval_Fact_Sheet_Sign_Date]                    DATETIME        NULL,
+    [Med_Eval_FS_Waiver_Sign_Date]                     DATETIME        NULL,
+    [PS3811_Sign_Date]                                 DATETIME        NULL,
+    [First_Class_Mail_Date]                            DATETIME        NULL,
+    [HQTech_Disposition]                               INT             NULL,
+    [sig_date_poc]                                     DATETIME        NULL,
+    [sig_name_poc]                                     VARCHAR (100)   NULL,
+    [sig_title_poc]                                    VARCHAR (100)   NULL,
+    [PWaiver_Category]                                 INT             NULL,
+    [PWaiver_Category_Text]                            VARCHAR (50)    NULL,
+    [PWaiver_Length]                                   INT             NULL,
+    [Fast_Track_Type]                                  INT             NULL,
+    [Requires_Specialist_For_Mgmt]                     INT             NULL,
+    [Missed_Work_Days]                                 INT             NULL,
+    [Had_ER_Urgent_Care_Visits]                        INT             NULL,
+    [Hospitalization_List]                             NVARCHAR (MAX)  NULL,
+    [Risk_For_Sudden_Incapacitation]                   INT             NULL,
+    [sig_date_DAWG]                                    DATETIME        NULL,
+    [sig_name_DAWG]                                    NVARCHAR (100)  NULL,
+    [sig_title_DAWG]                                   NVARCHAR (100)  NULL,
+    [DAWG_Recommendation]                              INT             NULL,
+    [Years_Satisfactory_Service]                       INT             NULL,
+    [FT_Diagnosis]                                     NVARCHAR (MAX)  NULL,
+    [DX_Interferes_With_Duties]                        INT             NULL,
+    [FT_Prognosis]                                     NVARCHAR (MAX)  NULL,
+    [FT_Treatment]                                     NVARCHAR (MAX)  NULL,
+    [FT_Medications_And_Dosages]                       NVARCHAR (MAX)  NULL,
+    [Recommended_Follow_Up_Interval]                   INT             NULL,
+    [Daytime_Somnolence]                               INT             NULL,
+    [Day_Sleep_Description]                            NVARCHAR (MAX)  NULL,
+    [Has_Apnea_Episodes]                               INT             NULL,
+    [Apnea_Episode_Description]                        NVARCHAR (MAX)  NULL,
+    [Sleep_Study_Results]                              INT             NULL,
+    [Body_Mass_Index]                                  NUMERIC (18, 2) NULL,
+    [Oral_Devices_Used]                                INT             NULL,
+    [CPAP_Required]                                    INT             NULL,
+    [BIPAP_Required]                                   INT             NULL,
+    [Response_To_Devices]                              INT             NULL,
+    [Fasting_Blood_Sugar]                              NUMERIC (18, 2) NULL,
+    [HgbA1C]                                           NUMERIC (18, 2) NULL,
+    [Current_Optometry_Exam]                           INT             NULL,
+    [Has_Significant_Conditions]                       INT             NULL,
+    [Other_Significant_Conditions_List]                NVARCHAR (MAX)  NULL,
+    [Controlled_With_Oral_Agents]                      INT             NULL,
+    [Oral_Agents_List]                                 NVARCHAR (MAX)  NULL,
+    [Requires_Insulin]                                 INT             NULL,
+    [Insulin_Dosage_Regime]                            NVARCHAR (500)  NULL,
+    [Requires_Non_Insulin_Med]                         INT             NULL,
+    [Pulmonary_Function_Test]                          INT             NULL,
+    [Methacholine_Challenge]                           INT             NULL,
+    [Requires_Daily_Steroids]                          INT             NULL,
+    [Rescue_Inhaler_Usage_Frequency]                   INT             NULL,
+    [Symptoms_Exacerbated_By_Cold_or_Exercise]         INT             NULL,
+    [Exercise_Or_Cold_Exacerbated_Symptom_Description] NVARCHAR (MAX)  NULL,
+    [Normal_PFT_With_Treatment]                        INT             NULL,
+    [HO_Intubation]                                    INT             NULL,
+    [Daily_Steroids_Dosage]                            NUMERIC (18, 2) NULL,
+    [DAFSC]                                            NVARCHAR (50)   NULL,
+    [DAFSC_Is_Suitable]                                INT             NULL,
+    [ER_Urgent_Care_Visit_Details]                     NVARCHAR (MAX)  NULL,
+    [Had_Hospitalizations]                             INT             NULL,
+    [RMU_Initials]                                     NVARCHAR (5)    NULL,
+    [IPEB_Refusal]                                     INT             NULL,
+    [WWD_Docs_Attached]                                INT             NULL,
+    [Cover_Letter_Uploaded]                            INT             NULL,
+    [AF_Form469_Uploaded]                              INT             NULL,
+    [MUQ_Upload_Date]                                  DATETIME        NULL,
+    [Unit_Cmdr_Memo_Uploaded]                          INT             NULL,
+    [Private_Physician_Docs_Uploaded]                  INT             NULL,
+    [PS3811_Request_Date]                              DATETIME        NULL,
+    [PS3811_Uploaded]                                  INT             NULL,
+    [Member_Letter_Uploaded]                           INT             NULL,
+    [Narrative_Summary_Uploaded]                       INT             NULL,
+    [MUQ_Valid]                                        INT             NULL,
+    [Exacerbated_Symptoms_Req_Oral_Steroids]           INT             NULL,
+    [Exacerbated_Symptoms_Oral_Steroids_Dosage]        NVARCHAR (MAX)  NULL,
+    [icd9_Id]                                          INT             NULL,
+    [icd9_description]                                 NVARCHAR (MAX)  NULL,
+    [Return_To_Duty_Date]                              DATETIME        NULL,
+    [Med_Group_Name]                                   INT             NULL,
+    [RMU_Name]                                         INT             NULL,
+    [Member_Status_ID]                                 INT             NULL,
+    [Has_Admin_LOD]                                    INT             NULL,
+    [DQ_Paragraph]                                     NVARCHAR (500)  NULL,
+    [DQ_Completion_Date]                               DATETIME        NULL,
+    [Case_Cancel_Reason]                               INT             NULL,
+    [Case_Cancel_Explanation]                          NVARCHAR (MAX)  NULL,
+    [SAF_Letter_Upload_Date]                           DATETIME        NULL,
+    [ApprovingAuthorityType]                           INT             NULL,
+    [ForwardDate]                                      DATETIME        NULL,
+    [Notification_Date]                                DATETIME        NULL,
+    [Case_Cancel_Date]                                 DATETIME        NULL,
+    [return_to_group]                                  INT             NULL,
+    [return_by_group]                                  INT             NULL,
+    [med_off_concur]                                   INT             NULL,
+    [Member_Address_Street]                            NVARCHAR (400)  NULL,
+    [Member_Address_City]                              NVARCHAR (80)   NULL,
+    [Member_Address_State]                             NVARCHAR (2)    NULL,
+    [Member_Address_Zip]                               NVARCHAR (10)   NULL,
+    [Member_Home_Phone]                                NVARCHAR (20)   NULL,
+    [Member_Tricare_Region]                            INT             NULL,
+    [Follow_Up_Care]                                   NVARCHAR (2000) NULL,
+    [Medical_Provider]                                 NVARCHAR (200)  NULL,
+    [MTF_Suggested]                                    VARCHAR (400)   NULL,
+    [Military_Treatment_Facility_Initial]              NVARCHAR (400)  NULL,
+    [MTF_Initial_Treatment_Date]                       DATETIME        NULL,
+    [MTF_Suggested_Distance]                           INT             NULL,
+    [MTF_Suggested_Choice]                             INT             NULL,
+    [Unit_POC_name]                                    VARCHAR (200)   NULL,
+    [Unit_POC_rank]                                    INT             NULL,
+    [Unit_POC_title]                                   VARCHAR (200)   NULL,
+    [Unit_POC_Phone]                                   VARCHAR (100)   NULL,
+    [Medical_Profile_Info]                             NVARCHAR (1000) NULL,
+    [Injury_Illness_Date]                              DATETIME        NULL,
+    [DeciExpl]                                         NVARCHAR (250)  NULL,
+    [high_tenure_date]                                 DATETIME        NULL,
+    [memo_template_id]                                 INT             NULL,
+    [majcom]                                           INT             NULL,
+    [sim_deployment]                                   INT             NULL,
+    [deploy_start_date]                                DATETIME        NULL,
+    [deploy_end_date]                                  DATETIME        NULL,
+    [deploy_location]                                  VARCHAR (500)   NULL,
+    [line_number]                                      VARCHAR (50)    NULL,
+    [line_remarks]                                     VARCHAR (500)   NULL,
+    [Code37_Init_Date]                                 DATETIME        NULL,
+    [surgery_date]                                     DATETIME        NULL,
+    [associated_SC]                                    INT             NULL,
+    [case_type]                                        INT             NULL,
+    [justification]                                    VARCHAR (500)   NULL,
+    [pepp_type]                                        INT             NULL,
+    [rating]                                           INT             NULL,
+    [renewal]                                          INT             NULL,
+    [base_assign]                                      INT             NULL,
+    [completed_by_unit]                                INT             NULL,
+    [type_name]                                        VARCHAR (100)   NULL,
+    [rating_name]                                      VARCHAR (100)   NULL,
+    [date_received]                                    DATETIME        NULL,
+    [sub_workflow_type]                                INT             DEFAULT ((0)) NOT NULL,
+    [icd_7th_Char]                                     VARCHAR (7)     DEFAULT (NULL) NULL,
+    [waiver_required]                                  BIT             DEFAULT (NULL) NULL,
+    [waiver_expiration_date]                           DATETIME        DEFAULT (NULL) NULL,
+    [certification_date]                               DATETIME        DEFAULT (NULL) NULL,
+    [sub_case_type]                                    INT             DEFAULT (NULL) NULL,
+    [certification_stamp]                              INT             DEFAULT (NULL) NULL,
+    [free_text]                                        NVARCHAR (2000) DEFAULT (NULL) NULL,
+    [completed_by_unit_name]                           VARCHAR (100)   DEFAULT (NULL) NULL,
+    [case_type_name]                                   VARCHAR (100)   DEFAULT (NULL) NULL,
+    [sub_case_type_name]                               VARCHAR (100)   DEFAULT (NULL) NULL,
+    [stamped_doc_id]                                   BIGINT          DEFAULT (NULL) NULL,
+    [med_off_prev_disposition]                         INT             DEFAULT (NULL) NULL,
+    [alt_ALC_letter_type]                              INT             DEFAULT (NULL) NULL,
+    [sig_date_unit_ph]                                 DATETIME        DEFAULT (NULL) NULL,
+    [sig_name_unit_ph]                                 VARCHAR (100)   DEFAULT (NULL) NULL,
+    [sig_title_unit_ph]                                VARCHAR (100)   DEFAULT (NULL) NULL,
+    [sig_date_hq_dph]                                  DATETIME        DEFAULT (NULL) NULL,
+    [sig_name_hq_dph]                                  VARCHAR (100)   DEFAULT (NULL) NULL,
+    [sig_title_hq_dph]                                 VARCHAR (100)   DEFAULT (NULL) NULL,
+    [ph_wing_rmu_id]                                   INT             DEFAULT (NULL) NULL,
+    [ph_user_id]                                       INT             DEFAULT (NULL) NULL,
+    [is_delinquent]                                    BIT             DEFAULT (NULL) NULL,
+    [ph_reporting_period]                              DATETIME        DEFAULT (NULL) NULL,
+    [ph_last_modified]                                 DATETIME        DEFAULT (NULL) NULL,
+    [secondary_certification_stamp]                    INT             DEFAULT (NULL) NULL,
+    [secondary_free_text]                              NVARCHAR (2000) DEFAULT (NULL) NULL,
+    [process]                                          INT             NULL,
+    [renewal_date]                                     DATETIME        NULL,
+    [Has_Admin_SC]                                     INT             NULL,
+    [senior_medical_reviewer_concur]                   VARCHAR (1)     NULL,
+    [senior_medical_reviewer_approved]                 INT             NULL,
+    [senior_medical_reviewer_comment]                  NVARCHAR (2000) NULL,
+    [Alternate_ALC_Letter_Type]                        INT             NULL,
+    [Alternate_alt_ALC_letter_type]                    INT             NULL,
+    [Alternate_Approval_Date]                          DATETIME        NULL,
+    [Alternate_certification_date]                     DATETIME        NULL,
+    [Alternate_DQ_Completion_Date]                     DATETIME        NULL,
+    [Alternate_DQ_Paragraph]                           NVARCHAR (500)  NULL,
+    [Alternate_Expiration_Date]                        DATETIME        NULL,
+    [Alternate_med_off_concur]                         INT             NULL,
+    [Alternate_memo_template_id]                       INT             NULL,
+    [Alternate_process]                                INT             NULL,
+    [Alternate_PWaiver_Length]                         INT             NULL,
+    [Alternate_Return_To_Duty_Date]                    DATETIME        NULL,
+    [PHA_Date]                                         DATETIME        NULL,
+    [Initial_Tour]                                     INT             NULL,
+    [Follow_OnTour]                                    INT             NULL,
+    [POC_RankAndName]                                  VARCHAR (200)   NULL,
+    [Military_Treatment_Facility_City_State_Zip]       NVARCHAR (200)  NULL,
+    [member_status]                                    VARCHAR (50)    NULL,
+    [IAW_AFI]                                          BIT             NULL,
+    [member_category]                                  VARCHAR (100)   NULL,
+    [accident_or_history_details]                      NVARCHAR (1000) NULL
+);
+GO
+
+ALTER TABLE [dbo].[Form348_SC]
+    ADD CONSTRAINT [DF_Form348_SC_modified_date] DEFAULT (getdate()) FOR [modified_date];
+GO
+
+ALTER TABLE [dbo].[Form348_SC]
+    ADD CONSTRAINT [DF_Form348_SC_created_date] DEFAULT (getdate()) FOR [created_date];
+GO
+
+ALTER TABLE [dbo].[Form348_SC]
+    ADD CONSTRAINT [DF_Form348_SC_case_id] DEFAULT ('') FOR [case_id];
+GO
+
+ALTER TABLE [dbo].[Form348_SC]
+    ADD CONSTRAINT [FK_Form348_SC_Form348] FOREIGN KEY ([Associated_LOD]) REFERENCES [dbo].[Form348] ([lodId]);
+GO
+
+ALTER TABLE [dbo].[Form348_SC]
+    ADD CONSTRAINT [FK_Form348_SC_core_WorkStatus] FOREIGN KEY ([status]) REFERENCES [dbo].[core_WorkStatus] ([ws_id]);
+GO
+
+ALTER TABLE [dbo].[Form348_SC]
+    ADD CONSTRAINT [FK_Form348_SC_core_Workflow] FOREIGN KEY ([workflow]) REFERENCES [dbo].[core_Workflow] ([workflowId]);
+GO
+
+ALTER TABLE [dbo].[Form348_SC]
+    ADD CONSTRAINT [FK_Form348_SC_core_Users1] FOREIGN KEY ([modified_by]) REFERENCES [dbo].[core_Users] ([userID]);
+GO
+
+ALTER TABLE [dbo].[Form348_SC]
+    ADD CONSTRAINT [FK_Form348_SC_core_Users] FOREIGN KEY ([created_by]) REFERENCES [dbo].[core_Users] ([userID]);
+GO
+
+ALTER TABLE [dbo].[Form348_SC]
+    ADD CONSTRAINT [FK_Form348_SC_core_lkupRWOAReasons] FOREIGN KEY ([rwoa_reason]) REFERENCES [dbo].[core_lkupRWOAReasons] ([ID]);
+GO
+
+ALTER TABLE [dbo].[Form348_SC]
+    ADD CONSTRAINT [FK_Form348_SC_core_lkupModule] FOREIGN KEY ([Module_Id]) REFERENCES [dbo].[core_lkupModule] ([moduleId]);
+GO
+
+ALTER TABLE [dbo].[Form348_SC]
+    ADD CONSTRAINT [FK_Form348_SC_Form348_SC1] FOREIGN KEY ([SC_Id]) REFERENCES [dbo].[Form348_SC] ([SC_Id]);
+GO
+
+ALTER TABLE [dbo].[Form348_SC]
+    ADD CONSTRAINT [FK_Form348_SC_core_lkupICD9] FOREIGN KEY ([icd9_Id]) REFERENCES [dbo].[core_lkupICD9] ([ICD9_ID]);
+GO
+
+ALTER TABLE [dbo].[Form348_SC]
+    ADD CONSTRAINT [FK_Form348_SC_Form348_SC] FOREIGN KEY ([Initial_SC]) REFERENCES [dbo].[Form348_SC] ([SC_Id]);
+GO
+
+ALTER TABLE [dbo].[Form348_SC]
+    ADD CONSTRAINT [PK_Form348_SC] PRIMARY KEY CLUSTERED ([SC_Id] ASC) WITH (FILLFACTOR = 80);
+GO
+

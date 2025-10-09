@@ -1,0 +1,9 @@
+CREATE TABLE [DBSign].[SIG_MMSO_UNIT] (
+    [SC_Id]             INT      NOT NULL,
+    [DBS_CERT_ID]       INT      NOT NULL,
+    [DBS_SIGN_DATE]     DATETIME NOT NULL,
+    [DBS_SIGN_DATE_GMT] CHAR (1) NOT NULL,
+    [DBS_SIGNATURE]     IMAGE    NOT NULL
+);
+GO
+

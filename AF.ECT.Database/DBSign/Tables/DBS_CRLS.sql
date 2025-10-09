@@ -1,0 +1,12 @@
+CREATE TABLE [DBSign].[DBS_CRLS] (
+    [CRL_ID]          INT           NOT NULL,
+    [FINGERPRINT]     VARCHAR (40)  NOT NULL,
+    [ISSUER_DN]       VARCHAR (255) NOT NULL,
+    [LAST_UPDATE]     DATETIME      NOT NULL,
+    [NEXT_UPDATE]     DATETIME      NOT NULL,
+    [BINARY_CRL]      IMAGE         NOT NULL,
+    [LAST_UPDATE_GMT] CHAR (1)      NULL,
+    [NEXT_UPDATE_GMT] CHAR (1)      NULL
+);
+GO
+

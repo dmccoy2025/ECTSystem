@@ -1,0 +1,6 @@
+CREATE TABLE [DBSign].[DBS_TRUSTED_CERTS] (
+    [CERT_ID]     INT           NOT NULL,
+    [DESCRIPTION] VARCHAR (255) NULL
+);
+GO
+

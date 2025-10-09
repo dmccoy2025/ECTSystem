@@ -1,0 +1,12 @@
+CREATE TABLE [dbo].[tmp_command_struct_chain] (
+    [CSC_ID]         VARCHAR (4000) NULL,
+    [CS_ID]          VARCHAR (4000) NULL,
+    [CHAIN_TYPE]     VARCHAR (4000) NULL,
+    [CSC_ID_PARENT]  VARCHAR (4000) NULL,
+    [CREATED_BY]     VARCHAR (4000) NULL,
+    [CREATED_DATE]   VARCHAR (4000) NULL,
+    [MODIFIED_BY]    VARCHAR (4000) NULL,
+    [MODIFIED_DATE ] VARCHAR (4000) NULL
+);
+GO
+

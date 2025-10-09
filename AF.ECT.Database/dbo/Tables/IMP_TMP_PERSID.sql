@@ -1,0 +1,5 @@
+CREATE TABLE [dbo].[IMP_TMP_PERSID] (
+    [PERS_ID] VARCHAR (50) NULL
+);
+GO
+

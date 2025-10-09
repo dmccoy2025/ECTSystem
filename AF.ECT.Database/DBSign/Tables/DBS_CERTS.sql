@@ -1,0 +1,14 @@
+CREATE TABLE [DBSign].[DBS_CERTS] (
+    [CERT_ID]        INT            NOT NULL,
+    [FINGERPRINT]    CHAR (40)      NOT NULL,
+    [ISSUER_DN]      VARCHAR (8000) NOT NULL,
+    [SERIAL_NO]      VARCHAR (8000) NOT NULL,
+    [SUBJECT_DN]     VARCHAR (8000) NOT NULL,
+    [VALID_FROM]     DATETIME       NOT NULL,
+    [VALID_TO]       DATETIME       NOT NULL,
+    [BINARY_CERT]    IMAGE          NOT NULL,
+    [VALID_FROM_GMT] CHAR (1)       NULL,
+    [VALID_TO_GMT]   CHAR (1)       NULL
+);
+GO
+

@@ -1,0 +1,10 @@
+CREATE TABLE [DBSign].[DBS_USERS] (
+    [USER_ID]    INT          NOT NULL,
+    [SCOPE_ID]   INT          NOT NULL,
+    [USER_LNAME] VARCHAR (30) NULL,
+    [USER_FNAME] VARCHAR (30) NULL,
+    [USER_NAME]  VARCHAR (30) NULL,
+    [ACTIVE_FLG] CHAR (1)     NULL
+);
+GO
+

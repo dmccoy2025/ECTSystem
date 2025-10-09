@@ -1,0 +1,34 @@
+CREATE TABLE [dbo].[imp_PERSONNEL] (
+    [PERS_ID]                  NVARCHAR (50)   NULL,
+    [SSN]                      NVARCHAR (50)   NULL,
+    [USERNAME]                 NVARCHAR (20)   NULL,
+    [DUTY_SECTION]             NVARCHAR (50)   NULL,
+    [SEX]                      NVARCHAR (50)   NULL,
+    [E_MAIL_HOME]              NVARCHAR (4000) NULL,
+    [E_MAIL_WORK]              NVARCHAR (4000) NULL,
+    [E_MAIL_UNIT]              NVARCHAR (4000) NULL,
+    [CONTACT_INFO]             NVARCHAR (MAX)  NULL,
+    [RES_ADDRESS1]             NVARCHAR (4000) NULL,
+    [RES_ADDRESS2]             NVARCHAR (4000) NULL,
+    [RES_CITY]                 NVARCHAR (50)   NULL,
+    [RES_POSTAL_CODE]          NVARCHAR (50)   NULL,
+    [RES_COUNTRY]              NVARCHAR (50)   NULL,
+    [RES_STATE]                NVARCHAR (50)   NULL,
+    [CREATED_BY]               NVARCHAR (50)   NULL,
+    [CREATED_DATE]             NVARCHAR (50)   NULL,
+    [MODIFIED_BY]              NVARCHAR (50)   NULL,
+    [MODIFIED_DATE]            NVARCHAR (50)   NULL,
+    [ALT_DAV_CODE]             NVARCHAR (50)   NULL,
+    [ALT_DAV_CODE_EXPIRE]      NVARCHAR (50)   NULL,
+    [ALT_FLYER_ID]             NVARCHAR (50)   NULL,
+    [ALT_FLYER_ID_EXPIRE]      NVARCHAR (50)   NULL,
+    [ALT_PAS_ATCH_TRNG]        NVARCHAR (50)   NULL,
+    [ALT_PAS_ATCH_TRNG_EXPIRE] NVARCHAR (50)   NULL,
+    [SPCL_OPS_YN]              NVARCHAR (50)   NULL
+);
+GO
+
+CREATE NONCLUSTERED INDEX [IX_PK_USERNAME]
+    ON [dbo].[imp_PERSONNEL]([USERNAME] ASC) WITH (FILLFACTOR = 90);
+GO
+

@@ -1,0 +1,4 @@
+CREATE SCHEMA [DBSign]
+    AUTHORIZATION [dbo];
+GO
+
