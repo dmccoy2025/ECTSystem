@@ -1,0 +1,73 @@
+trigger: none
+pr: none
+
+stages:
+  - stage: Build
+    jobs:
+      - job: BuildAndTest
+        pool:
+          vmImage: 'windows-latest'
+        steps:
+          - task: UseDotNet@2
+            displayName: 'Use .NET 9.0'
+            inputs:
+              packageType: 'sdk'
+              version: '9.0.x'
+          - task: DotNetCoreCLI@2
+            displayName: 'Restore NuGet packages'
+            inputs:
+              command: 'restore'
+              projects: 'ElectronicCaseTracking.sln'
+          - task: DotNetCoreCLI@2
+            displayName: 'Build solution'
+            inputs:
+              command: 'build'
+              projects: 'ElectronicCaseTracking.sln'
+              arguments: '--configuration Release'
+          - task: DotNetCoreCLI@2
+            displayName: 'Publish AppHost'
+            inputs:
+              command: 'publish'
+              publishWebProjects: false
+              projects: 'AF.ECT.AppHost/AF.ECT.AppHost.csproj'
+              arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)/apphost'
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish artifacts'
+            inputs:
+              pathToPublish: '$(Build.ArtifactStagingDirectory)'
+              artifactName: 'drop'
+          - task: DotNetCoreCLI@2
+            displayName: 'Run tests'
+            inputs:
+              command: 'test'
+              projects: 'AF.ECT.Tests/AF.ECT.Tests.csproj'
+              arguments: '--configuration Release --collect "XPlat Code Coverage"'
+          - task: PublishTestResults@2
+            displayName: 'Publish test results'
+            inputs:
+              testResultsFiles: '**/*.trx'
+
+  - stage: Deploy
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - deployment: DeployToStaging
+        environment: 'staging'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: DownloadBuildArtifacts@0
+                  displayName: 'Download artifacts'
+                  inputs:
+                    downloadType: 'single'
+                    artifactName: 'drop'
+                    downloadPath: '$(System.ArtifactsDirectory)'
+                - task: AzureCLI@2
+                  displayName: 'Deploy with azd'
+                  inputs:
+                    azureSubscription: 'your-service-connection'
+                    scriptType: 'ps'
+                    scriptLocation: 'inlineScript'
+                    inlineScript: |
+                      azd login --use-device-code
+                      azd deploy --environment staging
