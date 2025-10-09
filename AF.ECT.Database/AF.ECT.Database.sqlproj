@@ -6,9 +6,35 @@
     <ProjectGuid>{4B1DF80C-1EF3-4257-90E0-56CDA405D48B}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <ModelCollation>1033, CI</ModelCollation>
+    <SuppressWarnings>71562;71502;71501</SuppressWarnings>
+    <NoWarn>$(NoWarn);MSB3277;MSB3276;SQL71562;SQL71502;SQL71501</NoWarn>
+    <SqlCodeAnalysisRules>-Microsoft.Rules.Data.*</SqlCodeAnalysisRules>
+    <SuppressTSqlWarnings>True</SuppressTSqlWarnings>
+    <WarningLevel>0</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <TreatTSqlWarningsAsErrors>false</TreatTSqlWarningsAsErrors>
+    <RunSqlCodeAnalysis>false</RunSqlCodeAnalysis>
+    <SuppressSqlErrors>71501</SuppressSqlErrors>
   </PropertyGroup>
   <ItemGroup>
+    <DatabaseReference Include="ALOD">
+      <DatabaseVariableLiteralValue>ALOD</DatabaseVariableLiteralValue>
+    </DatabaseReference>
+    <DatabaseReference Include="msdb">
+      <DatabaseVariableLiteralValue>msdb</DatabaseVariableLiteralValue>
+    </DatabaseReference>
+    <DatabaseReference Include="master">
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </DatabaseReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include=".vscode\tasks.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Remove="usp\StoredProcedures\GetCompletedECTCases_daily.sql" />
+    <Build Remove="usp\StoredProcedures\GetMovingECTCases.sql" />
+    <None Include="usp\StoredProcedures\GetCompletedECTCases_daily.sql" />
+    <None Include="usp\StoredProcedures\GetMovingECTCases.sql" />
   </ItemGroup>
   <Target Name="BeforeBuild">
     <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />

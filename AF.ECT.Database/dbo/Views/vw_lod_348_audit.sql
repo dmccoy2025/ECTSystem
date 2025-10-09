@@ -86,19 +86,17 @@ SELECT       DiSTINCT(a.lodId), a.case_id AS [Case Id], w.description AS Status,
 						,au.PCARS AS [Audit - A1 (PCARS not attached)]      ,au.EightYearRule AS [Audit - A1 (8-year rule)]      ,au.A1_Other AS [Audit - A1 (Other)],  CASE au.determination WHEN 0 THEN 'NO' WHEN 1 THEN 'YES' ELSE '' END AS [Audit - A1 (Correct Finding)], CASE au.A1_DeterminationNotCorrect WHEN 0 THEN
 						 'ILOD' WHEN 1 THEN 'NILOD' WHEN 2 THEN 'Direct Formal' ELSE '' END AS [Audit - A1 (Desired Finding)],     CASE au.LODInitiation WHEN 1 THEN 'Yes' WHEN 0 THEN 'No' ELSE '' END AS [Audit - SAF/MRR (Member Signed Initiation)]      ,CASE au.WrittenDiagnosis WHEN 1 THEN 'Yes' WHEN 0 THEN 'No' ELSE '' END  AS [Audit - SAF/MRR (Written DX)]
 						,CASE au.MemberRequest WHEN 1 THEN 'Yes' WHEN 0 THEN 'No' ELSE '' END AS [Audit - SAF/MRR (Request by 180 days)]      ,CASE au.IncurredOrAggravated WHEN 1 THEN 'Yes' WHEN 0 THEN 'No' ELSE '' END AS [Audit - SAF/MRR (Incurred or Aggravated)]      ,CASE au.IllnessOrDisease WHEN 1 THEN 'Yes' WHEN 0 THEN 'No' ELSE '' END AS [Audit - SAF/MRR (EPTS)]      ,CASE au.Activites WHEN 1 THEN 'Yes' WHEN 0 THEN 'No' ELSE 'N/A' END AS [Audit - SAF/MRR (EPTS Worsened)]
-						,au.A1_Comment AS [Audit - A1 (Comments)]      ,au.JA_Comment AS [Audit - JA (Comments)]      ,au.SG_Comment AS [Audit - SG (Comments)], wing_ja_sig.date AS [Wing JA Sign Date], wing_ja_sig.nameAndRank AS [Wing JA]
-						
-						--, jaCon.endDate AS [Wing JA Sign Date], jaCon.name AS [Wing JA]
-				
-				--Modified 08Nov2021 start		
+						,au.A1_Comment AS [Audit - A1 (Comments)]      ,au.JA_Comment AS [Audit - JA (Comments)]      ,au.SG_Comment AS [Audit - SG (Comments)]
+
+						--, jaCon.endDate AS [Wing JA Sign Date], jaCon.name AS [Wing JA]				--Modified 08Nov2021 start		
 						--,CASE cd.role WHEN 'Board Medical' Then cd.comments ELSE '' END  AS [CD - Board Medical (Comments)]		
 						--,CASE cd.role WHEN 'Board Medical' Then cd.created_date ELSE NULL END  AS [CD - Board Medical (Date)]		
 						--,CASE cd.role WHEN 'Board Legal' Then cd.comments ELSE '' END  AS [CD - Board Legal (Comments)]		
 						--,CASE cd.role WHEN 'Board Legal' Then cd.created_date ELSE NULL END  AS [CD - Board Legal (Date)]		
-						,ISNULL((Select comments from [ALOD].[dbo].[CaseDialogue_Comments] x where role = 'Board Medical' and x.lodid = cd.lodid), '') AS [CD - Board Medical (Comments)]
-						,ISNULL((Select created_date from [ALOD].[dbo].[CaseDialogue_Comments] x where role = 'Board Medical' and x.lodid = cd.lodid), '') AS [CD - Board Medical (Date)]
-						,ISNULL((Select comments from [ALOD].[dbo].[CaseDialogue_Comments] x where role = 'Board Legal' and x.lodid = cd.lodid), '') AS [CD - Board Legal (Comments)]
-						,ISNULL((Select created_date from [ALOD].[dbo].[CaseDialogue_Comments] x where role = 'Board Legal' and x.lodid = cd.lodid), '') AS [CD - Board Legal (Date)]
+						,ISNULL((Select comments from dbo.CaseDialogue_Comments x where role = 'Board Medical' and x.lodid = cd.lodid), '') AS [CD - Board Medical (Comments)]
+						,ISNULL((Select created_date from dbo.CaseDialogue_Comments x where role = 'Board Medical' and x.lodid = cd.lodid), '') AS [CD - Board Medical (Date)]
+						,ISNULL((Select comments from dbo.CaseDialogue_Comments x where role = 'Board Legal' and x.lodid = cd.lodid), '') AS [CD - Board Legal (Comments)]
+						,ISNULL((Select created_date from dbo.CaseDialogue_Comments x where role = 'Board Legal' and x.lodid = cd.lodid), '') AS [CD - Board Legal (Date)]
 				--Modified 08Nov2021 end
 		
 
