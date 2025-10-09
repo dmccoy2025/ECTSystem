@@ -10,6 +10,10 @@ namespace AF.ECT.Data.ResultTypes
 {
     public partial class core_user_sp_GetUserNameResult
     {
+        public int UserId { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? FullName { get; set; }
     }
 }
 

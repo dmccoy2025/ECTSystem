@@ -303,7 +303,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
 
         return new GetUserNameResponse
         {
-            Items = { results?.Select(r => new UserNameItem { UserId = 0, FirstName = "First", LastName = "Last", FullName = "Full Name" }) ?? [] }
+            Items = { results?.Select(r => new UserNameItem { UserId = r.UserId, FirstName = r.FirstName, LastName = r.LastName, FullName = r.FullName }) ?? [] }
         };
     }
 
