@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using AF.ECT.Client;
 using AF.ECT.Client.Services;
+using AF.ECT.Client.Options;
 using Radzen;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);

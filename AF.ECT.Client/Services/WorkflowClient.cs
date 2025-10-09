@@ -5,6 +5,7 @@ using System.Diagnostics;
 using Polly;
 using Polly.Retry;
 using Microsoft.Extensions.Options;
+using AF.ECT.Client.Options;
 
 namespace AF.ECT.Client.Services;
 
