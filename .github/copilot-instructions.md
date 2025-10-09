@@ -38,4 +38,10 @@ ECTSystem is an Electronic Case Tracking application for ALOD (Army Lodging) bui
 - `AF.ECT.Database/dbo/Tables/`: SQL schemas.
 - `Documentation/`: Architectural and REST guidelines.
 
+## Documentation
+- Use XML documentation comments for all methods, classes, properties and fields to enable IntelliSense and API documentation.
+- Format: `/// <summary>Description</summary>` for summaries, `<param name="param">Description</param>` for parameters, `<returns>Description</returns>` for return values, `<exception cref="ExceptionType">Description</exception>` for exceptions.
+- Enable XML documentation generation in project files: `<GenerateDocumentationFile>true</GenerateDocumentationFile>`.
+- Example: See `AF.ECT.Client/Services/WorkflowClient.cs` for extensive XML comments on gRPC client methods.
+
 Focus on gRPC-first design, Aspire for cloud readiness, and military-specific workflows. Avoid generic patterns; follow existing protobuf and EF conventions.
