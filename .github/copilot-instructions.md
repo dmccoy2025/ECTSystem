@@ -1,5 +1,13 @@
 # AI Coding Assistant Instructions for ECTSystem
 
+## CRITICAL: Build Verification Requirement
+**ALWAYS verify the solution builds successfully before responding to any code changes.**
+
+- After making ANY code modifications, run `dotnet build ElectronicCaseTracking.sln` and wait for completion
+- Only respond after confirming the build succeeds (exit code 0)
+- If build fails, fix errors before providing any analysis or next steps
+- Never assume builds will succeed - always verify explicitly
+
 ## Overview
 ECTSystem is an Electronic Case Tracking application for ALOD (Army Lodging) built with .NET 9.0, ASP.NET Core, Blazor WebAssembly, .NET Aspire orchestration, gRPC services, Entity Framework Core, and SQL Server. It manages case workflows, user management, and reporting in a distributed microservices architecture.
 
