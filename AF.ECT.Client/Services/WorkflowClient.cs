@@ -175,11 +175,32 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetReinvestigationRequestsResponse> GetReinvestigationRequestsAsync(int? userId = null, bool? sarc = null)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetReinvestigationRequestsAsync(new GetReinvestigationRequestsRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            UserId = userId ?? 0,
-            Sarc = sarc ?? false
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetReinvestigationRequestsAsync(new GetReinvestigationRequestsRequest
+                {
+                    UserId = userId ?? 0,
+                    Sarc = sarc ?? false
+                });
+            });
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetReinvestigationRequestsAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, Sarc = sarc });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetReinvestigationRequestsAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { UserId = userId, Sarc = sarc });
+            throw;
+        }
     }
 
     /// <summary>
@@ -215,13 +236,34 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetMailingListForLODResponse> GetMailingListForLODAsync(int refId, int groupId, int status, string callingService)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetMailingListForLODAsync(new GetMailingListForLODRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            RefId = refId,
-            GroupId = groupId,
-            Status = status,
-            CallingService = callingService
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetMailingListForLODAsync(new GetMailingListForLODRequest
+                {
+                    RefId = refId,
+                    GroupId = groupId,
+                    Status = status,
+                    CallingService = callingService
+                });
+            });
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetMailingListForLODAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { RefId = refId, GroupId = groupId, Status = status, CallingService = callingService });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetMailingListForLODAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { RefId = refId, GroupId = groupId, Status = status, CallingService = callingService });
+            throw;
+        }
     }
 
     /// <summary>
@@ -264,16 +306,37 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetManagedUsersResponse> GetManagedUsersAsync(int? userid, string ssn, string name, int? status, int? role, int? srchUnit, bool? showAllUsers)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetManagedUsersAsync(new GetManagedUsersRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            Userid = userid ?? 0,
-            Ssn = ssn ?? string.Empty,
-            Name = name ?? string.Empty,
-            Status = status ?? 0,
-            Role = role ?? 0,
-            SrchUnit = srchUnit ?? 0,
-            ShowAllUsers = showAllUsers ?? false
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetManagedUsersAsync(new GetManagedUsersRequest
+                {
+                    Userid = userid ?? 0,
+                    Ssn = ssn ?? string.Empty,
+                    Name = name ?? string.Empty,
+                    Status = status ?? 0,
+                    Role = role ?? 0,
+                    SrchUnit = srchUnit ?? 0,
+                    ShowAllUsers = showAllUsers ?? false
+                });
+            });
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetManagedUsersAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Userid = userid, Ssn = ssn, Name = name, Status = status, Role = role, SrchUnit = srchUnit, ShowAllUsers = showAllUsers });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetManagedUsersAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { Userid = userid, Ssn = ssn, Name = name, Status = status, Role = role, SrchUnit = srchUnit, ShowAllUsers = showAllUsers });
+            throw;
+        }
     }
 
     /// <summary>
@@ -314,7 +377,28 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetMembersUserIdResponse> GetMembersUserIdAsync(string memberSsn)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetMembersUserIdAsync(new GetMembersUserIdRequest { MemberSsn = memberSsn }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetMembersUserIdAsync(new GetMembersUserIdRequest { MemberSsn = memberSsn });
+            });
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetMembersUserIdAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { MemberSsn = memberSsn });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetMembersUserIdAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { MemberSsn = memberSsn });
+            throw;
+        }
     }
 
     /// <summary>
@@ -326,11 +410,32 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetUserAltTitleResponse> GetUserAltTitleAsync(int userId, int groupId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetUserAltTitleAsync(new GetUserAltTitleRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            UserId = userId,
-            GroupId = groupId
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetUserAltTitleAsync(new GetUserAltTitleRequest
+                {
+                    UserId = userId,
+                    GroupId = groupId
+                });
+            });
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetUserAltTitleAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, GroupId = groupId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetUserAltTitleAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { UserId = userId, GroupId = groupId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -362,11 +467,32 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetUserAltTitleByGroupCompoResponse> GetUserAltTitleByGroupCompoAsync(int groupId, int workCompo)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetUserAltTitleByGroupCompoAsync(new GetUserAltTitleByGroupCompoRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            GroupId = groupId,
-            WorkCompo = workCompo
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetUserAltTitleByGroupCompoAsync(new GetUserAltTitleByGroupCompoRequest
+                {
+                    GroupId = groupId,
+                    WorkCompo = workCompo
+                });
+            });
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetUserAltTitleByGroupCompoAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { GroupId = groupId, WorkCompo = workCompo });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetUserAltTitleByGroupCompoAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { GroupId = groupId, WorkCompo = workCompo });
+            throw;
+        }
     }
 
     /// <summary>
@@ -399,11 +525,32 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetUserNameResponse> GetUserNameAsync(string first, string last)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetUserNameAsync(new GetUserNameRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            First = first,
-            Last = last
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetUserNameAsync(new GetUserNameRequest
+                {
+                    First = first,
+                    Last = last
+                });
+            });
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetUserNameAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { First = first, Last = last });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetUserNameAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { First = first, Last = last });
+            throw;
+        }
     }
 
     /// <summary>
@@ -434,7 +581,28 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetUsersAltTitleByGroupResponse> GetUsersAltTitleByGroupAsync(int groupId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetUsersAltTitleByGroupAsync(new GetUsersAltTitleByGroupRequest { GroupId = groupId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetUsersAltTitleByGroupAsync(new GetUsersAltTitleByGroupRequest { GroupId = groupId });
+            });
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetUsersAltTitleByGroupAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { GroupId = groupId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetUsersAltTitleByGroupAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { GroupId = groupId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -508,7 +676,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWhoisAsync(new GetWhoisRequest { UserId = userId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetWhoisAsync(new GetWhoisRequest { UserId = userId });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetWhoisAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId });
@@ -538,11 +709,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.HasHQTechAccountAsync(new HasHQTechAccountRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                OriginUserId = originUserId,
-                UserEdipin = userEdipin
-            }));
+                return await _client.HasHQTechAccountAsync(new HasHQTechAccountRequest
+                {
+                    OriginUserId = originUserId,
+                    UserEdipin = userEdipin
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(HasHQTechAccountAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { OriginUserId = originUserId, UserEdipin = userEdipin });
@@ -571,7 +745,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.IsFinalStatusCodeAsync(new IsFinalStatusCodeRequest { StatusId = statusId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.IsFinalStatusCodeAsync(new IsFinalStatusCodeRequest { StatusId = statusId });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(IsFinalStatusCodeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { StatusId = statusId });
@@ -600,7 +777,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.LogoutAsync(new LogoutRequest { UserId = userId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.LogoutAsync(new LogoutRequest { UserId = userId });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(LogoutAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId });
@@ -634,15 +814,18 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.RegisterUserAsync(new RegisterUserRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                UserId = userId,
-                WorkCompo = workCompo,
-                ReceiveEmail = receiveEmail,
-                GroupId = groupId,
-                AccountStatus = accountStatus,
-                ExpirationDate = expirationDate ?? string.Empty
-            }));
+                return await _client.RegisterUserAsync(new RegisterUserRequest
+                {
+                    UserId = userId,
+                    WorkCompo = workCompo,
+                    ReceiveEmail = receiveEmail,
+                    GroupId = groupId,
+                    AccountStatus = accountStatus,
+                    ExpirationDate = expirationDate ?? string.Empty
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(RegisterUserAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, WorkCompo = workCompo, ReceiveEmail = receiveEmail, GroupId = groupId, AccountStatus = accountStatus, ExpirationDate = expirationDate });
@@ -673,12 +856,15 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.RegisterUserRoleAsync(new RegisterUserRoleRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                UserId = userId,
-                GroupId = groupId,
-                Status = status
-            }));
+                return await _client.RegisterUserRoleAsync(new RegisterUserRoleRequest
+                {
+                    UserId = userId,
+                    GroupId = groupId,
+                    Status = status
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(RegisterUserRoleAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, GroupId = groupId, Status = status });
@@ -713,16 +899,19 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.SearchMemberDataAsync(new SearchMemberDataRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                UserId = userId,
-                Ssn = ssn,
-                LastName = lastName,
-                FirstName = firstName,
-                MiddleName = middleName,
-                SrchUnit = srchUnit,
-                RptView = rptView
-            }));
+                return await _client.SearchMemberDataAsync(new SearchMemberDataRequest
+                {
+                    UserId = userId,
+                    Ssn = ssn,
+                    LastName = lastName,
+                    FirstName = firstName,
+                    MiddleName = middleName,
+                    SrchUnit = srchUnit,
+                    RptView = rptView
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(SearchMemberDataAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, Ssn = ssn, LastName = lastName, FirstName = firstName, MiddleName = middleName, SrchUnit = srchUnit, RptView = rptView });
@@ -785,14 +974,17 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.SearchMemberDataTestAsync(new SearchMemberDataTestRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                UserId = userId,
-                Ssn = ssn,
-                Name = name,
-                SrchUnit = srchUnit,
-                RptView = rptView
-            }));
+                return await _client.SearchMemberDataTestAsync(new SearchMemberDataTestRequest
+                {
+                    UserId = userId,
+                    Ssn = ssn,
+                    Name = name,
+                    SrchUnit = srchUnit,
+                    RptView = rptView
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(SearchMemberDataTestAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, Ssn = ssn, Name = name, SrchUnit = srchUnit, RptView = rptView });
@@ -850,13 +1042,16 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.UpdateAccountStatusAsync(new UpdateAccountStatusRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                UserId = userId,
-                AccountStatus = accountStatus,
-                ExpirationDate = expirationDate ?? string.Empty,
-                Comment = comment
-            }));
+                return await _client.UpdateAccountStatusAsync(new UpdateAccountStatusRequest
+                {
+                    UserId = userId,
+                    AccountStatus = accountStatus,
+                    ExpirationDate = expirationDate ?? string.Empty,
+                    Comment = comment
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(UpdateAccountStatusAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, AccountStatus = accountStatus, ExpirationDate = expirationDate, Comment = comment });
@@ -887,12 +1082,15 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.UpdateLoginAsync(new UpdateLoginRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                UserId = userId,
-                SessionId = sessionId,
-                RemoteAddr = remoteAddr
-            }));
+                return await _client.UpdateLoginAsync(new UpdateLoginRequest
+                {
+                    UserId = userId,
+                    SessionId = sessionId,
+                    RemoteAddr = remoteAddr
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(UpdateLoginAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, SessionId = sessionId, RemoteAddr = remoteAddr });
@@ -927,16 +1125,19 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.UpdateManagedSettingsAsync(new UpdateManagedSettingsRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                UserId = userId,
-                Compo = compo,
-                RoleId = roleId,
-                GroupId = groupId,
-                Comment = comment,
-                ReceiveEmail = receiveEmail,
-                ExpirationDate = expirationDate ?? string.Empty
-            }));
+                return await _client.UpdateManagedSettingsAsync(new UpdateManagedSettingsRequest
+                {
+                    UserId = userId,
+                    Compo = compo,
+                    RoleId = roleId,
+                    GroupId = groupId,
+                    Comment = comment,
+                    ReceiveEmail = receiveEmail,
+                    ExpirationDate = expirationDate ?? string.Empty
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(UpdateManagedSettingsAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, Compo = compo, RoleId = roleId, GroupId = groupId, Comment = comment, ReceiveEmail = receiveEmail, ExpirationDate = expirationDate });
@@ -967,12 +1168,15 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.UpdateUserAltTitleAsync(new UpdateUserAltTitleRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                UserId = userId,
-                GroupId = groupId,
-                NewTitle = newTitle
-            }));
+                return await _client.UpdateUserAltTitleAsync(new UpdateUserAltTitleRequest
+                {
+                    UserId = userId,
+                    GroupId = groupId,
+                    NewTitle = newTitle
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(UpdateUserAltTitleAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, GroupId = groupId, NewTitle = newTitle });
@@ -1011,16 +1215,19 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.AddSignatureAsync(new AddSignatureRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                RefId = refId,
-                ModuleType = moduleType,
-                UserId = userId,
-                ActionId = actionId,
-                GroupId = groupId,
-                StatusIn = statusIn,
-                StatusOut = statusOut
-            }));
+                return await _client.AddSignatureAsync(new AddSignatureRequest
+                {
+                    RefId = refId,
+                    ModuleType = moduleType,
+                    UserId = userId,
+                    ActionId = actionId,
+                    GroupId = groupId,
+                    StatusIn = statusIn,
+                    StatusOut = statusOut
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(AddSignatureAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { RefId = refId, ModuleType = moduleType, UserId = userId, ActionId = actionId, GroupId = groupId, StatusIn = statusIn, StatusOut = statusOut });
@@ -1050,11 +1257,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.CopyActionsAsync(new CopyActionsRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                DestWsoid = destWsoid,
-                SrcWsoid = srcWsoid
-            }));
+                return await _client.CopyActionsAsync(new CopyActionsRequest
+                {
+                    DestWsoid = destWsoid,
+                    SrcWsoid = srcWsoid
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(CopyActionsAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { DestWsoid = destWsoid, SrcWsoid = srcWsoid });
@@ -1084,11 +1294,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.CopyRulesAsync(new CopyRulesRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                DestWsoid = destWsoid,
-                SrcWsoid = srcWsoid
-            }));
+                return await _client.CopyRulesAsync(new CopyRulesRequest
+                {
+                    DestWsoid = destWsoid,
+                    SrcWsoid = srcWsoid
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(CopyRulesAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { DestWsoid = destWsoid, SrcWsoid = srcWsoid });
@@ -1118,11 +1331,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.CopyWorkflowAsync(new CopyWorkflowRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                FromId = fromId,
-                ToId = toId
-            }));
+                return await _client.CopyWorkflowAsync(new CopyWorkflowRequest
+                {
+                    FromId = fromId,
+                    ToId = toId
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(CopyWorkflowAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { FromId = fromId, ToId = toId });
@@ -1151,7 +1367,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.DeleteStatusCodeAsync(new DeleteStatusCodeRequest { StatusId = statusId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.DeleteStatusCodeAsync(new DeleteStatusCodeRequest { StatusId = statusId });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(DeleteStatusCodeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { StatusId = statusId });
@@ -1180,7 +1399,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetActionsByStepAsync(new GetActionsByStepRequest { StepId = stepId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetActionsByStepAsync(new GetActionsByStepRequest { StepId = stepId });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetActionsByStepAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { StepId = stepId });
@@ -1210,11 +1432,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetActiveCasesAsync(new GetActiveCasesRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                RefId = refId,
-                GroupId = groupId
-            }));
+                return await _client.GetActiveCasesAsync(new GetActiveCasesRequest
+                {
+                    RefId = refId,
+                    GroupId = groupId
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetActiveCasesAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { RefId = refId, GroupId = groupId });
@@ -1242,7 +1467,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetAllFindingByReasonOfAsync(new EmptyRequest()));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetAllFindingByReasonOfAsync(new EmptyRequest());
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetAllFindingByReasonOfAsync), correlationId, startTime, _stopwatch.Elapsed, true);
@@ -1270,7 +1498,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetAllLocksAsync(new EmptyRequest()));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetAllLocksAsync(new EmptyRequest());
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetAllLocksAsync), correlationId, startTime, _stopwatch.Elapsed, true);
@@ -1300,11 +1531,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetCancelReasonsAsync(new GetCancelReasonsRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                WorkflowId = workflowId,
-                IsFormal = isFormal
-            }));
+                return await _client.GetCancelReasonsAsync(new GetCancelReasonsRequest
+                {
+                    WorkflowId = workflowId,
+                    IsFormal = isFormal
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetCancelReasonsAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId, IsFormal = isFormal });
@@ -1335,12 +1569,15 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetCreatableByGroupAsync(new GetCreatableByGroupRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                Compo = compo,
-                Module = module,
-                GroupId = groupId
-            }));
+                return await _client.GetCreatableByGroupAsync(new GetCreatableByGroupRequest
+                {
+                    Compo = compo,
+                    Module = module,
+                    GroupId = groupId
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetCreatableByGroupAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Compo = compo, Module = module, GroupId = groupId });
@@ -1369,7 +1606,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetFindingByReasonOfByIdAsync(new GetFindingByReasonOfByIdRequest { Id = id }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetFindingByReasonOfByIdAsync(new GetFindingByReasonOfByIdRequest { Id = id });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetFindingByReasonOfByIdAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Id = id });
@@ -1399,11 +1639,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetFindingsAsync(new GetFindingsRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                WorkflowId = workflowId,
-                GroupId = groupId
-            }));
+                return await _client.GetFindingsAsync(new GetFindingsRequest
+                {
+                    WorkflowId = workflowId,
+                    GroupId = groupId
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetFindingsAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId, GroupId = groupId });
@@ -1432,7 +1675,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetModuleFromWorkflowAsync(new GetModuleFromWorkflowRequest { WorkflowId = workflowId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetModuleFromWorkflowAsync(new GetModuleFromWorkflowRequest { WorkflowId = workflowId });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetModuleFromWorkflowAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId });
@@ -1463,12 +1709,15 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetPageAccessByGroupAsync(new GetPageAccessByGroupRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                Workflow = workflow,
-                Status = status,
-                Group = group
-            }));
+                return await _client.GetPageAccessByGroupAsync(new GetPageAccessByGroupRequest
+                {
+                    Workflow = workflow,
+                    Status = status,
+                    Group = group
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetPageAccessByGroupAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Workflow = workflow, Status = status, Group = group });
@@ -1499,12 +1748,15 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetPageAccessByWorkflowViewAsync(new GetPageAccessByWorkflowViewRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                Compo = compo,
-                Workflow = workflow,
-                Status = status
-            }));
+                return await _client.GetPageAccessByWorkflowViewAsync(new GetPageAccessByWorkflowViewRequest
+                {
+                    Compo = compo,
+                    Workflow = workflow,
+                    Status = status
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetPageAccessByWorkflowViewAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Compo = compo, Workflow = workflow, Status = status });
@@ -1533,7 +1785,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetPagesByWorkflowIdAsync(new GetPagesByWorkflowIdRequest { WorkflowId = workflowId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetPagesByWorkflowIdAsync(new GetPagesByWorkflowIdRequest { WorkflowId = workflowId });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetPagesByWorkflowIdAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId });
@@ -1562,7 +1817,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetPermissionsAsync(new GetPermissionsRequest { WorkflowId = workflowId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetPermissionsAsync(new GetPermissionsRequest { WorkflowId = workflowId });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetPermissionsAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId });
@@ -1592,11 +1850,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetPermissionsByCompoAsync(new GetPermissionsByCompoRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                WorkflowId = workflowId,
-                Compo = compo
-            }));
+                return await _client.GetPermissionsByCompoAsync(new GetPermissionsByCompoRequest
+                {
+                    WorkflowId = workflowId,
+                    Compo = compo
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetPermissionsByCompoAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId, Compo = compo });
@@ -1625,7 +1886,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetReturnReasonsAsync(new GetReturnReasonsRequest { WorkflowId = workflowId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetReturnReasonsAsync(new GetReturnReasonsRequest { WorkflowId = workflowId });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetReturnReasonsAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId });
@@ -1654,7 +1918,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetRwoaReasonsAsync(new GetRwoaReasonsRequest { WorkflowId = workflowId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetRwoaReasonsAsync(new GetRwoaReasonsRequest { WorkflowId = workflowId });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetRwoaReasonsAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId });
@@ -1683,7 +1950,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByCompoAsync(new GetStatusCodesByCompoRequest { Compo = compo }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetStatusCodesByCompoAsync(new GetStatusCodesByCompoRequest { Compo = compo });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetStatusCodesByCompoAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Compo = compo });
@@ -1713,11 +1983,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByCompoAndModuleAsync(new GetStatusCodesByCompoAndModuleRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                Compo = compo,
-                Module = module
-            }));
+                return await _client.GetStatusCodesByCompoAndModuleAsync(new GetStatusCodesByCompoAndModuleRequest
+                {
+                    Compo = compo,
+                    Module = module
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetStatusCodesByCompoAndModuleAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Compo = compo, Module = module });
@@ -1747,11 +2020,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesBySignCodeAsync(new GetStatusCodesBySignCodeRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                GroupId = groupId,
-                Module = module
-            }));
+                return await _client.GetStatusCodesBySignCodeAsync(new GetStatusCodesBySignCodeRequest
+                {
+                    GroupId = groupId,
+                    Module = module
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetStatusCodesBySignCodeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { GroupId = groupId, Module = module });
@@ -1780,7 +2056,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByWorkflowAsync(new GetStatusCodesByWorkflowRequest { WorkflowId = workflowId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetStatusCodesByWorkflowAsync(new GetStatusCodesByWorkflowRequest { WorkflowId = workflowId });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetStatusCodesByWorkflowAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId });
@@ -1810,11 +2089,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByWorkflowAndAccessScopeAsync(new GetStatusCodesByWorkflowAndAccessScopeRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                WorkflowId = workflowId,
-                AccessScope = accessScope
-            }));
+                return await _client.GetStatusCodesByWorkflowAndAccessScopeAsync(new GetStatusCodesByWorkflowAndAccessScopeRequest
+                {
+                    WorkflowId = workflowId,
+                    AccessScope = accessScope
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetStatusCodesByWorkflowAndAccessScopeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId, AccessScope = accessScope });
@@ -1843,7 +2125,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodeScopeAsync(new GetStatusCodeScopeRequest { StatusId = statusId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetStatusCodeScopeAsync(new GetStatusCodeScopeRequest { StatusId = statusId });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetStatusCodeScopeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { StatusId = statusId });
@@ -1872,7 +2157,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStepsByWorkflowAsync(new GetStepsByWorkflowRequest { Workflow = workflow }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetStepsByWorkflowAsync(new GetStepsByWorkflowRequest { Workflow = workflow });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetStepsByWorkflowAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Workflow = workflow });
@@ -1903,12 +2191,15 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStepsByWorkflowAndStatusAsync(new GetStepsByWorkflowAndStatusRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                Workflow = workflow,
-                Status = status,
-                DeathStatus = deathStatus
-            }));
+                return await _client.GetStepsByWorkflowAndStatusAsync(new GetStepsByWorkflowAndStatusRequest
+                {
+                    Workflow = workflow,
+                    Status = status,
+                    DeathStatus = deathStatus
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetStepsByWorkflowAndStatusAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Workflow = workflow, Status = status, DeathStatus = deathStatus });
@@ -1938,11 +2229,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetViewableByGroupAsync(new GetViewableByGroupRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                GroupId = groupId,
-                Module = module
-            }));
+                return await _client.GetViewableByGroupAsync(new GetViewableByGroupRequest
+                {
+                    GroupId = groupId,
+                    Module = module
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetViewableByGroupAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { GroupId = groupId, Module = module });
@@ -1972,11 +2266,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowByCompoAsync(new GetWorkflowByCompoRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                Compo = compo,
-                UserId = userId
-            }));
+                return await _client.GetWorkflowByCompoAsync(new GetWorkflowByCompoRequest
+                {
+                    Compo = compo,
+                    UserId = userId
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetWorkflowByCompoAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Compo = compo, UserId = userId });
@@ -2005,7 +2302,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowFromModuleAsync(new GetWorkflowFromModuleRequest { ModuleId = moduleId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetWorkflowFromModuleAsync(new GetWorkflowFromModuleRequest { ModuleId = moduleId });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetWorkflowFromModuleAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { ModuleId = moduleId });
@@ -2036,12 +2336,15 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowInitialStatusCodeAsync(new GetWorkflowInitialStatusCodeRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                Compo = compo,
-                Module = module,
-                WorkflowId = workflowId
-            }));
+                return await _client.GetWorkflowInitialStatusCodeAsync(new GetWorkflowInitialStatusCodeRequest
+                {
+                    Compo = compo,
+                    Module = module,
+                    WorkflowId = workflowId
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetWorkflowInitialStatusCodeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Compo = compo, Module = module, WorkflowId = workflowId });
@@ -2071,11 +2374,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowTitleAsync(new GetWorkflowTitleRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                ModuleId = moduleId,
-                SubCase = subCase
-            }));
+                return await _client.GetWorkflowTitleAsync(new GetWorkflowTitleRequest
+                {
+                    ModuleId = moduleId,
+                    SubCase = subCase
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetWorkflowTitleAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { ModuleId = moduleId, SubCase = subCase });
@@ -2105,11 +2411,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowTitleByWorkStatusIdAsync(new GetWorkflowTitleByWorkStatusIdRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                WorkflowId = workflowId,
-                SubCase = subCase
-            }));
+                return await _client.GetWorkflowTitleByWorkStatusIdAsync(new GetWorkflowTitleByWorkStatusIdRequest
+                {
+                    WorkflowId = workflowId,
+                    SubCase = subCase
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetWorkflowTitleByWorkStatusIdAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId, SubCase = subCase });
@@ -2141,13 +2450,16 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.InsertActionAsync(new InsertActionRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                Type = type,
-                StepId = stepId,
-                Target = target,
-                Data = data
-            }));
+                return await _client.InsertActionAsync(new InsertActionRequest
+                {
+                    Type = type,
+                    StepId = stepId,
+                    Target = target,
+                    Data = data
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(InsertActionAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Type = type, StepId = stepId, Target = target, Data = data });
@@ -2179,13 +2491,16 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.InsertOptionActionAsync(new InsertOptionActionRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                Type = type,
-                Wsoid = wsoid,
-                Target = target,
-                Data = data
-            }));
+                return await _client.InsertOptionActionAsync(new InsertOptionActionRequest
+                {
+                    Type = type,
+                    Wsoid = wsoid,
+                    Target = target,
+                    Data = data
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(InsertOptionActionAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Type = type, Wsoid = wsoid, Target = target, Data = data });
@@ -2218,7 +2533,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.DeleteLogByIdAsync(new DeleteLogByIdRequest { LogId = logId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.DeleteLogByIdAsync(new DeleteLogByIdRequest { LogId = logId });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(DeleteLogByIdAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { LogId = logId });
@@ -2247,7 +2565,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.FindProcessLastExecutionDateAsync(new FindProcessLastExecutionDateRequest { ProcessName = processName }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.FindProcessLastExecutionDateAsync(new FindProcessLastExecutionDateRequest { ProcessName = processName });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(FindProcessLastExecutionDateAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { ProcessName = processName });
@@ -2290,7 +2611,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetAllLogsAsync(new EmptyRequest()));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetAllLogsAsync(new EmptyRequest());
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetAllLogsAsync), correlationId, startTime, _stopwatch.Elapsed, true);
@@ -2335,12 +2659,15 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.InsertLogAsync(new InsertLogRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                ProcessName = processName,
-                ExecutionDate = executionDate,
-                Message = message
-            }));
+                return await _client.InsertLogAsync(new InsertLogRequest
+                {
+                    ProcessName = processName,
+                    ExecutionDate = executionDate,
+                    Message = message
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(InsertLogAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { ProcessName = processName, ExecutionDate = executionDate, Message = message });
@@ -2369,7 +2696,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.IsProcessActiveAsync(new IsProcessActiveRequest { ProcessName = processName }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.IsProcessActiveAsync(new IsProcessActiveRequest { ProcessName = processName });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(IsProcessActiveAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { ProcessName = processName });
@@ -2416,7 +2746,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowByIdAsync(new GetWorkflowByIdRequest { WorkflowId = workflowId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetWorkflowByIdAsync(new GetWorkflowByIdRequest { WorkflowId = workflowId });
+            });
 
             var duration = DateTime.UtcNow - startTime;
             LogAuditEvent(nameof(GetWorkflowByIdAsync), correlationId, startTime, duration, true, additionalData: new { WorkflowId = workflowId });
@@ -2461,11 +2794,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowsByRefIdAsync(new GetWorkflowsByRefIdRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                RefId = refId,
-                Module = module
-            }));
+                return await _client.GetWorkflowsByRefIdAsync(new GetWorkflowsByRefIdRequest
+                {
+                    RefId = refId,
+                    Module = module
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetWorkflowsByRefIdAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { RefId = refId, Module = module });
@@ -2517,12 +2853,15 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowsByRefIdAndTypeAsync(new GetWorkflowsByRefIdAndTypeRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                RefId = refId,
-                Module = module,
-                WorkflowType = workflowType
-            }));
+                return await _client.GetWorkflowsByRefIdAndTypeAsync(new GetWorkflowsByRefIdAndTypeRequest
+                {
+                    RefId = refId,
+                    Module = module,
+                    WorkflowType = workflowType
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetWorkflowsByRefIdAndTypeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { RefId = refId, Module = module, WorkflowType = workflowType });
@@ -2573,7 +2912,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowTypesAsync(new EmptyRequest()));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetWorkflowTypesAsync(new EmptyRequest());
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetWorkflowTypesAsync), correlationId, startTime, _stopwatch.Elapsed, true);
@@ -2619,14 +2961,17 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.InsertWorkflowAsync(new InsertWorkflowRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                RefId = refId,
-                Module = module,
-                WorkflowType = workflowType,
-                WorkflowText = workflowText,
-                UserId = userId
-            }));
+                return await _client.InsertWorkflowAsync(new InsertWorkflowRequest
+                {
+                    RefId = refId,
+                    Module = module,
+                    WorkflowType = workflowType,
+                    WorkflowText = workflowText,
+                    UserId = userId
+                });
+            });
 
             var duration = DateTime.UtcNow - startTime;
             LogAuditEvent(nameof(InsertWorkflowAsync), correlationId, startTime, duration, true, additionalData: new { RefId = refId, Module = module, WorkflowType = workflowType, UserId = userId });
@@ -2657,12 +3002,15 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.UpdateWorkflowAsync(new UpdateWorkflowRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                WorkflowId = workflowId,
-                WorkflowText = workflowText,
-                UserId = userId
-            }));
+                return await _client.UpdateWorkflowAsync(new UpdateWorkflowRequest
+                {
+                    WorkflowId = workflowId,
+                    WorkflowText = workflowText,
+                    UserId = userId
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(UpdateWorkflowAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId, UserId = userId });
@@ -2695,7 +3043,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkstatusByIdAsync(new GetWorkstatusByIdRequest { WorkstatusId = workstatusId }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetWorkstatusByIdAsync(new GetWorkstatusByIdRequest { WorkstatusId = workstatusId });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetWorkstatusByIdAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkstatusId = workstatusId });
@@ -2740,11 +3091,14 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkstatusesByRefIdAsync(new GetWorkstatusesByRefIdRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                RefId = refId,
-                Module = module
-            }));
+                return await _client.GetWorkstatusesByRefIdAsync(new GetWorkstatusesByRefIdRequest
+                {
+                    RefId = refId,
+                    Module = module
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetWorkstatusesByRefIdAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { RefId = refId, Module = module });
@@ -2796,12 +3150,15 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkstatusesByRefIdAndTypeAsync(new GetWorkstatusesByRefIdAndTypeRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                RefId = refId,
-                Module = module,
-                WorkstatusType = workstatusType
-            }));
+                return await _client.GetWorkstatusesByRefIdAndTypeAsync(new GetWorkstatusesByRefIdAndTypeRequest
+                {
+                    RefId = refId,
+                    Module = module,
+                    WorkstatusType = workstatusType
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetWorkstatusesByRefIdAndTypeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { RefId = refId, Module = module, WorkstatusType = workstatusType });
@@ -2846,7 +3203,28 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkstatusTypesResponse> GetWorkstatusTypesAsync()
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkstatusTypesAsync(new EmptyRequest()));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetWorkstatusTypesAsync(new EmptyRequest());
+            });
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkstatusTypesAsync), correlationId, startTime, _stopwatch.Elapsed, true);
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkstatusTypesAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message);
+            throw;
+        }
     }
 
     /// <summary>
@@ -2875,14 +3253,35 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<InsertWorkstatusResponse> InsertWorkstatusAsync(int refId, int module, int workstatusType, string workstatusText, int userId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.InsertWorkstatusAsync(new InsertWorkstatusRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            RefId = refId,
-            Module = module,
-            WorkstatusType = workstatusType,
-            WorkstatusText = workstatusText,
-            UserId = userId
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.InsertWorkstatusAsync(new InsertWorkstatusRequest
+                {
+                    RefId = refId,
+                    Module = module,
+                    WorkstatusType = workstatusType,
+                    WorkstatusText = workstatusText,
+                    UserId = userId
+                });
+            });
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(InsertWorkstatusAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { RefId = refId, Module = module, WorkstatusType = workstatusType, UserId = userId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(InsertWorkstatusAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { RefId = refId, Module = module, WorkstatusType = workstatusType, UserId = userId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -2901,12 +3300,15 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.UpdateWorkstatusAsync(new UpdateWorkstatusRequest
+            var result = await _retryPolicy.ExecuteAsync(async () =>
             {
-                WorkstatusId = workstatusId,
-                WorkstatusText = workstatusText,
-                UserId = userId
-            }));
+                return await _client.UpdateWorkstatusAsync(new UpdateWorkstatusRequest
+                {
+                    WorkstatusId = workstatusId,
+                    WorkstatusText = workstatusText,
+                    UserId = userId
+                });
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(UpdateWorkstatusAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkstatusId = workstatusId, UserId = userId });
