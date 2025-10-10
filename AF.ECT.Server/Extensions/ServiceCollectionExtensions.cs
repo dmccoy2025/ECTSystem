@@ -136,6 +136,7 @@ public static class ServiceCollectionExtensions
             .AddGrpc(options =>
             {
                 options.Interceptors.Add<ExceptionInterceptor>();
+                options.Interceptors.Add<AuditInterceptor>();
                 options.EnableDetailedErrors = true;
             })
             .AddJsonTranscoding();
