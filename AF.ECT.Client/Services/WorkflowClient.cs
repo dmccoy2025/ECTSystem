@@ -277,15 +277,13 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async IAsyncEnumerable<MailingListItem> GetMailingListForLODStreamAsync(int refId, int groupId, int status, string callingService)
     {
-        var request = new GetMailingListForLODRequest
+        using var call = _client.GetMailingListForLODStream(new GetMailingListForLODRequest
         {
             RefId = refId,
             GroupId = groupId,
             Status = status,
             CallingService = callingService
-        };
-
-        using var call = _client.GetMailingListForLODStream(request);
+        });
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
@@ -633,7 +631,10 @@ public class WorkflowClient : IWorkflowClient
 
         try
         {
-            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetUsersOnlineAsync(new EmptyRequest()));
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                return await _client.GetUsersOnlineAsync(new EmptyRequest());
+            });
 
             _stopwatch.Stop();
             LogAuditEvent(nameof(GetUsersOnlineAsync), correlationId, startTime, _stopwatch.Elapsed, true);
