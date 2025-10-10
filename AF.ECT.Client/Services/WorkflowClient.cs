@@ -38,6 +38,60 @@ public class WorkflowClient : IWorkflowClient
 
     #endregion
 
+    #region Audit Logging Methods
+
+    /// <summary>
+    /// Logs audit information for gRPC calls with correlation ID and performance metrics.
+    /// </summary>
+    /// <param name="methodName">The name of the method being called.</param>
+    /// <param name="correlationId">The correlation ID for tracing.</param>
+    /// <param name="startTime">The start time of the operation.</param>
+    /// <param name="duration">The duration of the operation.</param>
+    /// <param name="success">Whether the operation was successful.</param>
+    /// <param name="errorMessage">The error message if the operation failed.</param>
+    /// <param name="additionalData">Additional audit data.</param>
+    private void LogAuditEvent(string methodName, string correlationId, DateTime startTime, TimeSpan duration, bool success, string? errorMessage = null, object? additionalData = null)
+    {
+        var auditEvent = new
+        {
+            Timestamp = startTime,
+            CorrelationId = correlationId,
+            MethodName = methodName,
+            DurationMs = duration.TotalMilliseconds,
+            Success = success,
+            ErrorMessage = errorMessage,
+            AdditionalData = additionalData,
+            ClientInfo = new
+            {
+                UserAgent = "ECTSystem-BlazorClient",
+                Version = "1.0.0",
+                Environment = "Production" // Could be made configurable
+            }
+        };
+
+        if (success)
+        {
+            _logger?.LogInformation("gRPC Audit: {MethodName} completed successfully. CorrelationId: {CorrelationId}, Duration: {DurationMs}ms",
+                methodName, correlationId, duration.TotalMilliseconds);
+        }
+        else
+        {
+            _logger?.LogError("gRPC Audit: {MethodName} failed. CorrelationId: {CorrelationId}, Duration: {DurationMs}ms, Error: {ErrorMessage}",
+                methodName, correlationId, duration.TotalMilliseconds, errorMessage);
+        }
+
+        // Structured logging for audit trail
+        _logger?.LogInformation("gRPC Audit Event: {@AuditEvent}", auditEvent);
+    }
+
+    /// <summary>
+    /// Generates a unique correlation ID for request tracing.
+    /// </summary>
+    /// <returns>A unique correlation ID.</returns>
+    private static string GenerateCorrelationId() => Guid.NewGuid().ToString();
+
+    #endregion
+
     #region Constructors
 
     /// <summary>
@@ -88,9 +142,10 @@ public class WorkflowClient : IWorkflowClient
                 HttpHandler = new GrpcWebHandler(httpClientHandler),
                 MaxReceiveMessageSize = 10 * 1024 * 1024, // 10MB max message size
                 MaxSendMessageSize = 10 * 1024 * 1024, // 10MB max message size
-                Credentials = Grpc.Core.ChannelCredentials.Insecure // For development
+                Credentials = Grpc.Core.ChannelCredentials.Insecure, // For development
             });
 
+        // Create client
         _client = new WorkflowService.WorkflowServiceClient(_channel);
 
         // Configure retry policy for transient failures
@@ -404,7 +459,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetUsersOnlineResponse> GetUsersOnlineAsync()
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetUsersOnlineAsync(new EmptyRequest()));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetUsersOnlineAsync(new EmptyRequest()));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetUsersOnlineAsync), correlationId, startTime, _stopwatch.Elapsed, true);
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetUsersOnlineAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message);
+            throw;
+        }
     }
 
     /// <summary>
@@ -429,7 +502,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWhoisResponse> GetWhoisAsync(int userId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWhoisAsync(new GetWhoisRequest { UserId = userId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWhoisAsync(new GetWhoisRequest { UserId = userId }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWhoisAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWhoisAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { UserId = userId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -441,11 +532,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<HasHQTechAccountResponse> HasHQTechAccountAsync(int originUserId, string userEdipin)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.HasHQTechAccountAsync(new HasHQTechAccountRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            OriginUserId = originUserId,
-            UserEdipin = userEdipin
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.HasHQTechAccountAsync(new HasHQTechAccountRequest
+            {
+                OriginUserId = originUserId,
+                UserEdipin = userEdipin
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(HasHQTechAccountAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { OriginUserId = originUserId, UserEdipin = userEdipin });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(HasHQTechAccountAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { OriginUserId = originUserId, UserEdipin = userEdipin });
+            throw;
+        }
     }
 
     /// <summary>
@@ -456,7 +565,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<IsFinalStatusCodeResponse> IsFinalStatusCodeAsync(int statusId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.IsFinalStatusCodeAsync(new IsFinalStatusCodeRequest { StatusId = statusId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.IsFinalStatusCodeAsync(new IsFinalStatusCodeRequest { StatusId = statusId }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(IsFinalStatusCodeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { StatusId = statusId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(IsFinalStatusCodeAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { StatusId = statusId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -467,7 +594,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<LogoutResponse> LogoutAsync(int userId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.LogoutAsync(new LogoutRequest { UserId = userId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.LogoutAsync(new LogoutRequest { UserId = userId }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(LogoutAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(LogoutAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { UserId = userId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -483,15 +628,33 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<RegisterUserResponse> RegisterUserAsync(int userId, string workCompo, bool receiveEmail, int groupId, int accountStatus, string expirationDate)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.RegisterUserAsync(new RegisterUserRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            UserId = userId,
-            WorkCompo = workCompo,
-            ReceiveEmail = receiveEmail,
-            GroupId = groupId,
-            AccountStatus = accountStatus,
-            ExpirationDate = expirationDate ?? string.Empty
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.RegisterUserAsync(new RegisterUserRequest
+            {
+                UserId = userId,
+                WorkCompo = workCompo,
+                ReceiveEmail = receiveEmail,
+                GroupId = groupId,
+                AccountStatus = accountStatus,
+                ExpirationDate = expirationDate ?? string.Empty
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(RegisterUserAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, WorkCompo = workCompo, ReceiveEmail = receiveEmail, GroupId = groupId, AccountStatus = accountStatus, ExpirationDate = expirationDate });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(RegisterUserAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { UserId = userId, WorkCompo = workCompo, ReceiveEmail = receiveEmail, GroupId = groupId, AccountStatus = accountStatus, ExpirationDate = expirationDate });
+            throw;
+        }
     }
 
     /// <summary>
@@ -504,12 +667,30 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<RegisterUserRoleResponse> RegisterUserRoleAsync(int userId, int groupId, int status)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.RegisterUserRoleAsync(new RegisterUserRoleRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            UserId = userId,
-            GroupId = groupId,
-            Status = status
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.RegisterUserRoleAsync(new RegisterUserRoleRequest
+            {
+                UserId = userId,
+                GroupId = groupId,
+                Status = status
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(RegisterUserRoleAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, GroupId = groupId, Status = status });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(RegisterUserRoleAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { UserId = userId, GroupId = groupId, Status = status });
+            throw;
+        }
     }
 
     /// <summary>
@@ -526,16 +707,34 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<SearchMemberDataResponse> SearchMemberDataAsync(int userId, string ssn, string lastName, string firstName, string middleName, int srchUnit, int rptView)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.SearchMemberDataAsync(new SearchMemberDataRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            UserId = userId,
-            Ssn = ssn,
-            LastName = lastName,
-            FirstName = firstName,
-            MiddleName = middleName,
-            SrchUnit = srchUnit,
-            RptView = rptView
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.SearchMemberDataAsync(new SearchMemberDataRequest
+            {
+                UserId = userId,
+                Ssn = ssn,
+                LastName = lastName,
+                FirstName = firstName,
+                MiddleName = middleName,
+                SrchUnit = srchUnit,
+                RptView = rptView
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(SearchMemberDataAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, Ssn = ssn, LastName = lastName, FirstName = firstName, MiddleName = middleName, SrchUnit = srchUnit, RptView = rptView });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(SearchMemberDataAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { UserId = userId, Ssn = ssn, LastName = lastName, FirstName = firstName, MiddleName = middleName, SrchUnit = srchUnit, RptView = rptView });
+            throw;
+        }
     }
 
     /// <summary>
@@ -580,14 +779,32 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<SearchMemberDataTestResponse> SearchMemberDataTestAsync(int userId, string ssn, string name, int srchUnit, int rptView)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.SearchMemberDataTestAsync(new SearchMemberDataTestRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            UserId = userId,
-            Ssn = ssn,
-            Name = name,
-            SrchUnit = srchUnit,
-            RptView = rptView
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.SearchMemberDataTestAsync(new SearchMemberDataTestRequest
+            {
+                UserId = userId,
+                Ssn = ssn,
+                Name = name,
+                SrchUnit = srchUnit,
+                RptView = rptView
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(SearchMemberDataTestAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, Ssn = ssn, Name = name, SrchUnit = srchUnit, RptView = rptView });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(SearchMemberDataTestAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { UserId = userId, Ssn = ssn, Name = name, SrchUnit = srchUnit, RptView = rptView });
+            throw;
+        }
     }
 
     /// <summary>
@@ -627,13 +844,31 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<UpdateAccountStatusResponse> UpdateAccountStatusAsync(int userId, int accountStatus, string expirationDate, string comment)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.UpdateAccountStatusAsync(new UpdateAccountStatusRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            UserId = userId,
-            AccountStatus = accountStatus,
-            ExpirationDate = expirationDate ?? string.Empty,
-            Comment = comment
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.UpdateAccountStatusAsync(new UpdateAccountStatusRequest
+            {
+                UserId = userId,
+                AccountStatus = accountStatus,
+                ExpirationDate = expirationDate ?? string.Empty,
+                Comment = comment
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(UpdateAccountStatusAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, AccountStatus = accountStatus, ExpirationDate = expirationDate, Comment = comment });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(UpdateAccountStatusAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { UserId = userId, AccountStatus = accountStatus, ExpirationDate = expirationDate, Comment = comment });
+            throw;
+        }
     }
 
     /// <summary>
@@ -646,12 +881,30 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<UpdateLoginResponse> UpdateLoginAsync(int userId, string sessionId, string remoteAddr)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.UpdateLoginAsync(new UpdateLoginRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            UserId = userId,
-            SessionId = sessionId,
-            RemoteAddr = remoteAddr
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.UpdateLoginAsync(new UpdateLoginRequest
+            {
+                UserId = userId,
+                SessionId = sessionId,
+                RemoteAddr = remoteAddr
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(UpdateLoginAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, SessionId = sessionId, RemoteAddr = remoteAddr });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(UpdateLoginAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { UserId = userId, SessionId = sessionId, RemoteAddr = remoteAddr });
+            throw;
+        }
     }
 
     /// <summary>
@@ -668,16 +921,34 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<UpdateManagedSettingsResponse> UpdateManagedSettingsAsync(int userId, string compo, int roleId, int groupId, string comment, bool receiveEmail, string expirationDate)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.UpdateManagedSettingsAsync(new UpdateManagedSettingsRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            UserId = userId,
-            Compo = compo,
-            RoleId = roleId,
-            GroupId = groupId,
-            Comment = comment,
-            ReceiveEmail = receiveEmail,
-            ExpirationDate = expirationDate ?? string.Empty
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.UpdateManagedSettingsAsync(new UpdateManagedSettingsRequest
+            {
+                UserId = userId,
+                Compo = compo,
+                RoleId = roleId,
+                GroupId = groupId,
+                Comment = comment,
+                ReceiveEmail = receiveEmail,
+                ExpirationDate = expirationDate ?? string.Empty
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(UpdateManagedSettingsAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, Compo = compo, RoleId = roleId, GroupId = groupId, Comment = comment, ReceiveEmail = receiveEmail, ExpirationDate = expirationDate });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(UpdateManagedSettingsAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { UserId = userId, Compo = compo, RoleId = roleId, GroupId = groupId, Comment = comment, ReceiveEmail = receiveEmail, ExpirationDate = expirationDate });
+            throw;
+        }
     }
 
     /// <summary>
@@ -690,12 +961,30 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<UpdateUserAltTitleResponse> UpdateUserAltTitleAsync(int userId, int groupId, string newTitle)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.UpdateUserAltTitleAsync(new UpdateUserAltTitleRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            UserId = userId,
-            GroupId = groupId,
-            NewTitle = newTitle
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.UpdateUserAltTitleAsync(new UpdateUserAltTitleRequest
+            {
+                UserId = userId,
+                GroupId = groupId,
+                NewTitle = newTitle
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(UpdateUserAltTitleAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { UserId = userId, GroupId = groupId, NewTitle = newTitle });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(UpdateUserAltTitleAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { UserId = userId, GroupId = groupId, NewTitle = newTitle });
+            throw;
+        }
     }
 
     #endregion
@@ -716,16 +1005,34 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<AddSignatureResponse> AddSignatureAsync(int refId, int moduleType, int userId, int actionId, int groupId, int statusIn, int statusOut)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.AddSignatureAsync(new AddSignatureRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            RefId = refId,
-            ModuleType = moduleType,
-            UserId = userId,
-            ActionId = actionId,
-            GroupId = groupId,
-            StatusIn = statusIn,
-            StatusOut = statusOut
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.AddSignatureAsync(new AddSignatureRequest
+            {
+                RefId = refId,
+                ModuleType = moduleType,
+                UserId = userId,
+                ActionId = actionId,
+                GroupId = groupId,
+                StatusIn = statusIn,
+                StatusOut = statusOut
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(AddSignatureAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { RefId = refId, ModuleType = moduleType, UserId = userId, ActionId = actionId, GroupId = groupId, StatusIn = statusIn, StatusOut = statusOut });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(AddSignatureAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { RefId = refId, ModuleType = moduleType, UserId = userId, ActionId = actionId, GroupId = groupId, StatusIn = statusIn, StatusOut = statusOut });
+            throw;
+        }
     }
 
     /// <summary>
@@ -737,11 +1044,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<CopyActionsResponse> CopyActionsAsync(int destWsoid, int srcWsoid)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.CopyActionsAsync(new CopyActionsRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            DestWsoid = destWsoid,
-            SrcWsoid = srcWsoid
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.CopyActionsAsync(new CopyActionsRequest
+            {
+                DestWsoid = destWsoid,
+                SrcWsoid = srcWsoid
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(CopyActionsAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { DestWsoid = destWsoid, SrcWsoid = srcWsoid });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(CopyActionsAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { DestWsoid = destWsoid, SrcWsoid = srcWsoid });
+            throw;
+        }
     }
 
     /// <summary>
@@ -753,11 +1078,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<CopyRulesResponse> CopyRulesAsync(int destWsoid, int srcWsoid)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.CopyRulesAsync(new CopyRulesRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            DestWsoid = destWsoid,
-            SrcWsoid = srcWsoid
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.CopyRulesAsync(new CopyRulesRequest
+            {
+                DestWsoid = destWsoid,
+                SrcWsoid = srcWsoid
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(CopyRulesAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { DestWsoid = destWsoid, SrcWsoid = srcWsoid });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(CopyRulesAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { DestWsoid = destWsoid, SrcWsoid = srcWsoid });
+            throw;
+        }
     }
 
     /// <summary>
@@ -769,11 +1112,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<CopyWorkflowResponse> CopyWorkflowAsync(int fromId, int toId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.CopyWorkflowAsync(new CopyWorkflowRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            FromId = fromId,
-            ToId = toId
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.CopyWorkflowAsync(new CopyWorkflowRequest
+            {
+                FromId = fromId,
+                ToId = toId
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(CopyWorkflowAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { FromId = fromId, ToId = toId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(CopyWorkflowAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { FromId = fromId, ToId = toId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -784,7 +1145,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<DeleteStatusCodeResponse> DeleteStatusCodeAsync(int statusId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.DeleteStatusCodeAsync(new DeleteStatusCodeRequest { StatusId = statusId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.DeleteStatusCodeAsync(new DeleteStatusCodeRequest { StatusId = statusId }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(DeleteStatusCodeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { StatusId = statusId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(DeleteStatusCodeAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { StatusId = statusId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -795,7 +1174,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetActionsByStepResponse> GetActionsByStepAsync(int stepId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetActionsByStepAsync(new GetActionsByStepRequest { StepId = stepId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetActionsByStepAsync(new GetActionsByStepRequest { StepId = stepId }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetActionsByStepAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { StepId = stepId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetActionsByStepAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { StepId = stepId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -807,11 +1204,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetActiveCasesResponse> GetActiveCasesAsync(int refId, int groupId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetActiveCasesAsync(new GetActiveCasesRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            RefId = refId,
-            GroupId = groupId
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetActiveCasesAsync(new GetActiveCasesRequest
+            {
+                RefId = refId,
+                GroupId = groupId
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetActiveCasesAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { RefId = refId, GroupId = groupId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetActiveCasesAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { RefId = refId, GroupId = groupId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -821,7 +1236,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetAllFindingByReasonOfResponse> GetAllFindingByReasonOfAsync()
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetAllFindingByReasonOfAsync(new EmptyRequest()));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetAllFindingByReasonOfAsync(new EmptyRequest()));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetAllFindingByReasonOfAsync), correlationId, startTime, _stopwatch.Elapsed, true);
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetAllFindingByReasonOfAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message);
+            throw;
+        }
     }
 
     /// <summary>
@@ -831,7 +1264,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetAllLocksResponse> GetAllLocksAsync()
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetAllLocksAsync(new EmptyRequest()));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetAllLocksAsync(new EmptyRequest()));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetAllLocksAsync), correlationId, startTime, _stopwatch.Elapsed, true);
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetAllLocksAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message);
+            throw;
+        }
     }
 
     /// <summary>
@@ -843,11 +1294,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetCancelReasonsResponse> GetCancelReasonsAsync(int workflowId, bool isFormal)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetCancelReasonsAsync(new GetCancelReasonsRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            WorkflowId = workflowId,
-            IsFormal = isFormal
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetCancelReasonsAsync(new GetCancelReasonsRequest
+            {
+                WorkflowId = workflowId,
+                IsFormal = isFormal
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetCancelReasonsAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId, IsFormal = isFormal });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetCancelReasonsAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { WorkflowId = workflowId, IsFormal = isFormal });
+            throw;
+        }
     }
 
     /// <summary>
@@ -860,12 +1329,30 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetCreatableByGroupResponse> GetCreatableByGroupAsync(string compo, int module, int groupId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetCreatableByGroupAsync(new GetCreatableByGroupRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            Compo = compo,
-            Module = module,
-            GroupId = groupId
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetCreatableByGroupAsync(new GetCreatableByGroupRequest
+            {
+                Compo = compo,
+                Module = module,
+                GroupId = groupId
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetCreatableByGroupAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Compo = compo, Module = module, GroupId = groupId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetCreatableByGroupAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { Compo = compo, Module = module, GroupId = groupId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -876,7 +1363,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetFindingByReasonOfByIdResponse> GetFindingByReasonOfByIdAsync(int id)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetFindingByReasonOfByIdAsync(new GetFindingByReasonOfByIdRequest { Id = id }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetFindingByReasonOfByIdAsync(new GetFindingByReasonOfByIdRequest { Id = id }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetFindingByReasonOfByIdAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Id = id });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetFindingByReasonOfByIdAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { Id = id });
+            throw;
+        }
     }
 
     /// <summary>
@@ -888,11 +1393,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetFindingsResponse> GetFindingsAsync(int workflowId, int groupId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetFindingsAsync(new GetFindingsRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            WorkflowId = workflowId,
-            GroupId = groupId
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetFindingsAsync(new GetFindingsRequest
+            {
+                WorkflowId = workflowId,
+                GroupId = groupId
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetFindingsAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId, GroupId = groupId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetFindingsAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { WorkflowId = workflowId, GroupId = groupId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -903,7 +1426,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetModuleFromWorkflowResponse> GetModuleFromWorkflowAsync(int workflowId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetModuleFromWorkflowAsync(new GetModuleFromWorkflowRequest { WorkflowId = workflowId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetModuleFromWorkflowAsync(new GetModuleFromWorkflowRequest { WorkflowId = workflowId }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetModuleFromWorkflowAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetModuleFromWorkflowAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { WorkflowId = workflowId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -916,12 +1457,30 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetPageAccessByGroupResponse> GetPageAccessByGroupAsync(int workflow, int status, int group)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetPageAccessByGroupAsync(new GetPageAccessByGroupRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            Workflow = workflow,
-            Status = status,
-            Group = group
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetPageAccessByGroupAsync(new GetPageAccessByGroupRequest
+            {
+                Workflow = workflow,
+                Status = status,
+                Group = group
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetPageAccessByGroupAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Workflow = workflow, Status = status, Group = group });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetPageAccessByGroupAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { Workflow = workflow, Status = status, Group = group });
+            throw;
+        }
     }
 
     /// <summary>
@@ -934,12 +1493,30 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetPageAccessByWorkflowViewResponse> GetPageAccessByWorkflowViewAsync(string compo, int workflow, int status)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetPageAccessByWorkflowViewAsync(new GetPageAccessByWorkflowViewRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            Compo = compo,
-            Workflow = workflow,
-            Status = status
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetPageAccessByWorkflowViewAsync(new GetPageAccessByWorkflowViewRequest
+            {
+                Compo = compo,
+                Workflow = workflow,
+                Status = status
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetPageAccessByWorkflowViewAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Compo = compo, Workflow = workflow, Status = status });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetPageAccessByWorkflowViewAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { Compo = compo, Workflow = workflow, Status = status });
+            throw;
+        }
     }
 
     /// <summary>
@@ -950,7 +1527,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetPagesByWorkflowIdResponse> GetPagesByWorkflowIdAsync(int workflowId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetPagesByWorkflowIdAsync(new GetPagesByWorkflowIdRequest { WorkflowId = workflowId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetPagesByWorkflowIdAsync(new GetPagesByWorkflowIdRequest { WorkflowId = workflowId }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetPagesByWorkflowIdAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetPagesByWorkflowIdAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { WorkflowId = workflowId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -961,7 +1556,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetPermissionsResponse> GetPermissionsAsync(int workflowId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetPermissionsAsync(new GetPermissionsRequest { WorkflowId = workflowId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetPermissionsAsync(new GetPermissionsRequest { WorkflowId = workflowId }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetPermissionsAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetPermissionsAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { WorkflowId = workflowId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -973,11 +1586,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetPermissionsByCompoResponse> GetPermissionsByCompoAsync(int workflowId, string compo)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetPermissionsByCompoAsync(new GetPermissionsByCompoRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            WorkflowId = workflowId,
-            Compo = compo
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetPermissionsByCompoAsync(new GetPermissionsByCompoRequest
+            {
+                WorkflowId = workflowId,
+                Compo = compo
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetPermissionsByCompoAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId, Compo = compo });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetPermissionsByCompoAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { WorkflowId = workflowId, Compo = compo });
+            throw;
+        }
     }
 
     /// <summary>
@@ -988,7 +1619,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetReturnReasonsResponse> GetReturnReasonsAsync(int workflowId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetReturnReasonsAsync(new GetReturnReasonsRequest { WorkflowId = workflowId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetReturnReasonsAsync(new GetReturnReasonsRequest { WorkflowId = workflowId }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetReturnReasonsAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetReturnReasonsAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { WorkflowId = workflowId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -999,7 +1648,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetRwoaReasonsResponse> GetRwoaReasonsAsync(int workflowId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetRwoaReasonsAsync(new GetRwoaReasonsRequest { WorkflowId = workflowId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetRwoaReasonsAsync(new GetRwoaReasonsRequest { WorkflowId = workflowId }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetRwoaReasonsAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetRwoaReasonsAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { WorkflowId = workflowId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1010,7 +1677,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStatusCodesByCompoResponse> GetStatusCodesByCompoAsync(string compo)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByCompoAsync(new GetStatusCodesByCompoRequest { Compo = compo }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByCompoAsync(new GetStatusCodesByCompoRequest { Compo = compo }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStatusCodesByCompoAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Compo = compo });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStatusCodesByCompoAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { Compo = compo });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1022,11 +1707,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStatusCodesByCompoAndModuleResponse> GetStatusCodesByCompoAndModuleAsync(string compo, int module)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByCompoAndModuleAsync(new GetStatusCodesByCompoAndModuleRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            Compo = compo,
-            Module = module
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByCompoAndModuleAsync(new GetStatusCodesByCompoAndModuleRequest
+            {
+                Compo = compo,
+                Module = module
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStatusCodesByCompoAndModuleAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Compo = compo, Module = module });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStatusCodesByCompoAndModuleAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { Compo = compo, Module = module });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1038,11 +1741,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStatusCodesBySignCodeResponse> GetStatusCodesBySignCodeAsync(int groupId, int module)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesBySignCodeAsync(new GetStatusCodesBySignCodeRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            GroupId = groupId,
-            Module = module
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesBySignCodeAsync(new GetStatusCodesBySignCodeRequest
+            {
+                GroupId = groupId,
+                Module = module
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStatusCodesBySignCodeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { GroupId = groupId, Module = module });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStatusCodesBySignCodeAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { GroupId = groupId, Module = module });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1053,7 +1774,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStatusCodesByWorkflowResponse> GetStatusCodesByWorkflowAsync(int workflowId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByWorkflowAsync(new GetStatusCodesByWorkflowRequest { WorkflowId = workflowId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByWorkflowAsync(new GetStatusCodesByWorkflowRequest { WorkflowId = workflowId }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStatusCodesByWorkflowAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStatusCodesByWorkflowAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { WorkflowId = workflowId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1065,11 +1804,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStatusCodesByWorkflowAndAccessScopeResponse> GetStatusCodesByWorkflowAndAccessScopeAsync(int workflowId, int accessScope)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByWorkflowAndAccessScopeAsync(new GetStatusCodesByWorkflowAndAccessScopeRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            WorkflowId = workflowId,
-            AccessScope = accessScope
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodesByWorkflowAndAccessScopeAsync(new GetStatusCodesByWorkflowAndAccessScopeRequest
+            {
+                WorkflowId = workflowId,
+                AccessScope = accessScope
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStatusCodesByWorkflowAndAccessScopeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId, AccessScope = accessScope });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStatusCodesByWorkflowAndAccessScopeAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { WorkflowId = workflowId, AccessScope = accessScope });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1080,7 +1837,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStatusCodeScopeResponse> GetStatusCodeScopeAsync(int statusId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodeScopeAsync(new GetStatusCodeScopeRequest { StatusId = statusId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStatusCodeScopeAsync(new GetStatusCodeScopeRequest { StatusId = statusId }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStatusCodeScopeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { StatusId = statusId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStatusCodeScopeAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { StatusId = statusId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1091,7 +1866,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStepsByWorkflowResponse> GetStepsByWorkflowAsync(int workflow)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStepsByWorkflowAsync(new GetStepsByWorkflowRequest { Workflow = workflow }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStepsByWorkflowAsync(new GetStepsByWorkflowRequest { Workflow = workflow }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStepsByWorkflowAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Workflow = workflow });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStepsByWorkflowAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { Workflow = workflow });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1104,12 +1897,30 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetStepsByWorkflowAndStatusResponse> GetStepsByWorkflowAndStatusAsync(int workflow, int status, string deathStatus)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetStepsByWorkflowAndStatusAsync(new GetStepsByWorkflowAndStatusRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            Workflow = workflow,
-            Status = status,
-            DeathStatus = deathStatus
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetStepsByWorkflowAndStatusAsync(new GetStepsByWorkflowAndStatusRequest
+            {
+                Workflow = workflow,
+                Status = status,
+                DeathStatus = deathStatus
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStepsByWorkflowAndStatusAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Workflow = workflow, Status = status, DeathStatus = deathStatus });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetStepsByWorkflowAndStatusAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { Workflow = workflow, Status = status, DeathStatus = deathStatus });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1121,11 +1932,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetViewableByGroupResponse> GetViewableByGroupAsync(int groupId, int module)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetViewableByGroupAsync(new GetViewableByGroupRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            GroupId = groupId,
-            Module = module
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetViewableByGroupAsync(new GetViewableByGroupRequest
+            {
+                GroupId = groupId,
+                Module = module
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetViewableByGroupAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { GroupId = groupId, Module = module });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetViewableByGroupAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { GroupId = groupId, Module = module });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1137,11 +1966,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowByCompoResponse> GetWorkflowByCompoAsync(string compo, int userId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowByCompoAsync(new GetWorkflowByCompoRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            Compo = compo,
-            UserId = userId
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowByCompoAsync(new GetWorkflowByCompoRequest
+            {
+                Compo = compo,
+                UserId = userId
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowByCompoAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Compo = compo, UserId = userId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowByCompoAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { Compo = compo, UserId = userId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1152,7 +1999,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowFromModuleResponse> GetWorkflowFromModuleAsync(int moduleId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowFromModuleAsync(new GetWorkflowFromModuleRequest { ModuleId = moduleId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowFromModuleAsync(new GetWorkflowFromModuleRequest { ModuleId = moduleId }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowFromModuleAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { ModuleId = moduleId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowFromModuleAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { ModuleId = moduleId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1165,12 +2030,30 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowInitialStatusCodeResponse> GetWorkflowInitialStatusCodeAsync(int compo, int module, int workflowId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowInitialStatusCodeAsync(new GetWorkflowInitialStatusCodeRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            Compo = compo,
-            Module = module,
-            WorkflowId = workflowId
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowInitialStatusCodeAsync(new GetWorkflowInitialStatusCodeRequest
+            {
+                Compo = compo,
+                Module = module,
+                WorkflowId = workflowId
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowInitialStatusCodeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Compo = compo, Module = module, WorkflowId = workflowId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowInitialStatusCodeAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { Compo = compo, Module = module, WorkflowId = workflowId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1182,11 +2065,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowTitleResponse> GetWorkflowTitleAsync(int moduleId, int subCase)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowTitleAsync(new GetWorkflowTitleRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            ModuleId = moduleId,
-            SubCase = subCase
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowTitleAsync(new GetWorkflowTitleRequest
+            {
+                ModuleId = moduleId,
+                SubCase = subCase
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowTitleAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { ModuleId = moduleId, SubCase = subCase });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowTitleAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { ModuleId = moduleId, SubCase = subCase });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1198,11 +2099,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowTitleByWorkStatusIdResponse> GetWorkflowTitleByWorkStatusIdAsync(int workflowId, int subCase)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowTitleByWorkStatusIdAsync(new GetWorkflowTitleByWorkStatusIdRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            WorkflowId = workflowId,
-            SubCase = subCase
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowTitleByWorkStatusIdAsync(new GetWorkflowTitleByWorkStatusIdRequest
+            {
+                WorkflowId = workflowId,
+                SubCase = subCase
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowTitleByWorkStatusIdAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId, SubCase = subCase });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowTitleByWorkStatusIdAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { WorkflowId = workflowId, SubCase = subCase });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1216,13 +2135,31 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<InsertActionResponse> InsertActionAsync(int type, int stepId, int target, int data)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.InsertActionAsync(new InsertActionRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            Type = type,
-            StepId = stepId,
-            Target = target,
-            Data = data
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.InsertActionAsync(new InsertActionRequest
+            {
+                Type = type,
+                StepId = stepId,
+                Target = target,
+                Data = data
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(InsertActionAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Type = type, StepId = stepId, Target = target, Data = data });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(InsertActionAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { Type = type, StepId = stepId, Target = target, Data = data });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1236,13 +2173,31 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<InsertOptionActionResponse> InsertOptionActionAsync(int type, int wsoid, int target, int data)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.InsertOptionActionAsync(new InsertOptionActionRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            Type = type,
-            Wsoid = wsoid,
-            Target = target,
-            Data = data
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.InsertOptionActionAsync(new InsertOptionActionRequest
+            {
+                Type = type,
+                Wsoid = wsoid,
+                Target = target,
+                Data = data
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(InsertOptionActionAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { Type = type, Wsoid = wsoid, Target = target, Data = data });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(InsertOptionActionAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { Type = type, Wsoid = wsoid, Target = target, Data = data });
+            throw;
+        }
     }
 
     #endregion
@@ -1257,7 +2212,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<DeleteLogByIdResponse> DeleteLogByIdAsync(int logId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.DeleteLogByIdAsync(new DeleteLogByIdRequest { LogId = logId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.DeleteLogByIdAsync(new DeleteLogByIdRequest { LogId = logId }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(DeleteLogByIdAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { LogId = logId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(DeleteLogByIdAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { LogId = logId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1268,7 +2241,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<FindProcessLastExecutionDateResponse> FindProcessLastExecutionDateAsync(string processName)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.FindProcessLastExecutionDateAsync(new FindProcessLastExecutionDateRequest { ProcessName = processName }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.FindProcessLastExecutionDateAsync(new FindProcessLastExecutionDateRequest { ProcessName = processName }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(FindProcessLastExecutionDateAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { ProcessName = processName });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(FindProcessLastExecutionDateAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { ProcessName = processName });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1293,7 +2284,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetAllLogsResponse> GetAllLogsAsync()
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetAllLogsAsync(new EmptyRequest()));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetAllLogsAsync(new EmptyRequest()));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetAllLogsAsync), correlationId, startTime, _stopwatch.Elapsed, true);
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetAllLogsAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message);
+            throw;
+        }
     }
 
     /// <summary>
@@ -1320,12 +2329,30 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<InsertLogResponse> InsertLogAsync(string processName, string executionDate, string message)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.InsertLogAsync(new InsertLogRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            ProcessName = processName,
-            ExecutionDate = executionDate,
-            Message = message
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.InsertLogAsync(new InsertLogRequest
+            {
+                ProcessName = processName,
+                ExecutionDate = executionDate,
+                Message = message
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(InsertLogAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { ProcessName = processName, ExecutionDate = executionDate, Message = message });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(InsertLogAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { ProcessName = processName, ExecutionDate = executionDate, Message = message });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1336,7 +2363,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<IsProcessActiveResponse> IsProcessActiveAsync(string processName)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.IsProcessActiveAsync(new IsProcessActiveRequest { ProcessName = processName }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.IsProcessActiveAsync(new IsProcessActiveRequest { ProcessName = processName }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(IsProcessActiveAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { ProcessName = processName });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(IsProcessActiveAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { ProcessName = processName });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1366,7 +2411,24 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowByIdResponse> GetWorkflowByIdAsync(int workflowId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowByIdAsync(new GetWorkflowByIdRequest { WorkflowId = workflowId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowByIdAsync(new GetWorkflowByIdRequest { WorkflowId = workflowId }));
+
+            var duration = DateTime.UtcNow - startTime;
+            LogAuditEvent(nameof(GetWorkflowByIdAsync), correlationId, startTime, duration, true, additionalData: new { WorkflowId = workflowId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            var duration = DateTime.UtcNow - startTime;
+            LogAuditEvent(nameof(GetWorkflowByIdAsync), correlationId, startTime, duration, false, ex.Message, new { WorkflowId = workflowId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1393,11 +2455,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowsByRefIdResponse> GetWorkflowsByRefIdAsync(int refId, int module)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowsByRefIdAsync(new GetWorkflowsByRefIdRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            RefId = refId,
-            Module = module
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowsByRefIdAsync(new GetWorkflowsByRefIdRequest
+            {
+                RefId = refId,
+                Module = module
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowsByRefIdAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { RefId = refId, Module = module });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowsByRefIdAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { RefId = refId, Module = module });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1431,12 +2511,30 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowsByRefIdAndTypeResponse> GetWorkflowsByRefIdAndTypeAsync(int refId, int module, int workflowType)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowsByRefIdAndTypeAsync(new GetWorkflowsByRefIdAndTypeRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            RefId = refId,
-            Module = module,
-            WorkflowType = workflowType
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowsByRefIdAndTypeAsync(new GetWorkflowsByRefIdAndTypeRequest
+            {
+                RefId = refId,
+                Module = module,
+                WorkflowType = workflowType
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowsByRefIdAndTypeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { RefId = refId, Module = module, WorkflowType = workflowType });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowsByRefIdAndTypeAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { RefId = refId, Module = module, WorkflowType = workflowType });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1469,7 +2567,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkflowTypesResponse> GetWorkflowTypesAsync()
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowTypesAsync(new EmptyRequest()));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkflowTypesAsync(new EmptyRequest()));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowTypesAsync), correlationId, startTime, _stopwatch.Elapsed, true);
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkflowTypesAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message);
+            throw;
+        }
     }
 
     /// <summary>
@@ -1498,14 +2614,31 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<InsertWorkflowResponse> InsertWorkflowAsync(int refId, int module, int workflowType, string workflowText, int userId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.InsertWorkflowAsync(new InsertWorkflowRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+
+        try
         {
-            RefId = refId,
-            Module = module,
-            WorkflowType = workflowType,
-            WorkflowText = workflowText,
-            UserId = userId
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.InsertWorkflowAsync(new InsertWorkflowRequest
+            {
+                RefId = refId,
+                Module = module,
+                WorkflowType = workflowType,
+                WorkflowText = workflowText,
+                UserId = userId
+            }));
+
+            var duration = DateTime.UtcNow - startTime;
+            LogAuditEvent(nameof(InsertWorkflowAsync), correlationId, startTime, duration, true, additionalData: new { RefId = refId, Module = module, WorkflowType = workflowType, UserId = userId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            var duration = DateTime.UtcNow - startTime;
+            LogAuditEvent(nameof(InsertWorkflowAsync), correlationId, startTime, duration, false, ex.Message, new { RefId = refId, Module = module, WorkflowType = workflowType, UserId = userId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1518,12 +2651,30 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<UpdateWorkflowResponse> UpdateWorkflowAsync(int workflowId, string workflowText, int userId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.UpdateWorkflowAsync(new UpdateWorkflowRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            WorkflowId = workflowId,
-            WorkflowText = workflowText,
-            UserId = userId
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.UpdateWorkflowAsync(new UpdateWorkflowRequest
+            {
+                WorkflowId = workflowId,
+                WorkflowText = workflowText,
+                UserId = userId
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(UpdateWorkflowAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkflowId = workflowId, UserId = userId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(UpdateWorkflowAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { WorkflowId = workflowId, UserId = userId });
+            throw;
+        }
     }
 
     #endregion
@@ -1538,7 +2689,25 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkstatusByIdResponse> GetWorkstatusByIdAsync(int workstatusId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkstatusByIdAsync(new GetWorkstatusByIdRequest { WorkstatusId = workstatusId }));
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkstatusByIdAsync(new GetWorkstatusByIdRequest { WorkstatusId = workstatusId }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkstatusByIdAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkstatusId = workstatusId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkstatusByIdAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { WorkstatusId = workstatusId });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1565,11 +2734,29 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkstatusesByRefIdResponse> GetWorkstatusesByRefIdAsync(int refId, int module)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkstatusesByRefIdAsync(new GetWorkstatusesByRefIdRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            RefId = refId,
-            Module = module
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkstatusesByRefIdAsync(new GetWorkstatusesByRefIdRequest
+            {
+                RefId = refId,
+                Module = module
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkstatusesByRefIdAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { RefId = refId, Module = module });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkstatusesByRefIdAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { RefId = refId, Module = module });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1603,12 +2790,30 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<GetWorkstatusesByRefIdAndTypeResponse> GetWorkstatusesByRefIdAndTypeAsync(int refId, int module, int workstatusType)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkstatusesByRefIdAndTypeAsync(new GetWorkstatusesByRefIdAndTypeRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            RefId = refId,
-            Module = module,
-            WorkstatusType = workstatusType
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.GetWorkstatusesByRefIdAndTypeAsync(new GetWorkstatusesByRefIdAndTypeRequest
+            {
+                RefId = refId,
+                Module = module,
+                WorkstatusType = workstatusType
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkstatusesByRefIdAndTypeAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { RefId = refId, Module = module, WorkstatusType = workstatusType });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetWorkstatusesByRefIdAndTypeAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { RefId = refId, Module = module, WorkstatusType = workstatusType });
+            throw;
+        }
     }
 
     /// <summary>
@@ -1690,12 +2895,30 @@ public class WorkflowClient : IWorkflowClient
     /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
     public async Task<UpdateWorkstatusResponse> UpdateWorkstatusAsync(int workstatusId, string workstatusText, int userId)
     {
-        return await _retryPolicy.ExecuteAsync(async () => await _client.UpdateWorkstatusAsync(new UpdateWorkstatusRequest
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
         {
-            WorkstatusId = workstatusId,
-            WorkstatusText = workstatusText,
-            UserId = userId
-        }));
+            var result = await _retryPolicy.ExecuteAsync(async () => await _client.UpdateWorkstatusAsync(new UpdateWorkstatusRequest
+            {
+                WorkstatusId = workstatusId,
+                WorkstatusText = workstatusText,
+                UserId = userId
+            }));
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(UpdateWorkstatusAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { WorkstatusId = workstatusId, UserId = userId });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(UpdateWorkstatusAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { WorkstatusId = workstatusId, UserId = userId });
+            throw;
+        }
     }
 
     #endregion
