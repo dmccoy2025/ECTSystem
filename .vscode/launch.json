@@ -42,6 +42,19 @@
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
             }
+        },
+        {
+            "name": ".NET Launch (WinUI App)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "dotnet",
+            "args": ["run", "--project", "${workspaceFolder}/AF.ECT.Windows/AF.ECT.Windows.csproj", "--launch-profile", "AF.ECT.Windows (Unpackaged)"],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
         }
     ]
 }
