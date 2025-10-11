@@ -48,7 +48,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing filter parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the reinvestigation requests Response.</returns>
-    public async override Task<GetReinvestigationRequestsResponse> GetReinvestigationRequests(GetReinvestigationRequestsRequest request, ServerCallContext context)
+    public async override Task<GetReinvestigationRequestsResponse> GetReinvestigationRequestsAsync(GetReinvestigationRequestsRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting reinvestigation requests");
 
@@ -71,7 +71,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetReinvestigationRequestsStream(GetReinvestigationRequestsRequest request, IServerStreamWriter<ReinvestigationRequestItem> responseStream, ServerCallContext context)
+    public async override Task GetReinvestigationRequestsStreamAsync(GetReinvestigationRequestsRequest request, IServerStreamWriter<ReinvestigationRequestItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming reinvestigation requests");
 
@@ -96,7 +96,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing mailing list parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the mailing list Response.</returns>
-    public async override Task<GetMailingListForLODResponse> GetMailingListForLOD(GetMailingListForLODRequest request, ServerCallContext context)
+    public async override Task<GetMailingListForLODResponse> GetMailingListForLODAsync(GetMailingListForLODRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting mailing list for LOD");
 
@@ -115,7 +115,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetMailingListForLODStream(GetMailingListForLODRequest request, IServerStreamWriter<MailingListItem> responseStream, ServerCallContext context)
+    public async override Task GetMailingListForLODStreamAsync(GetMailingListForLODRequest request, IServerStreamWriter<MailingListItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming mailing list for LOD");
 
@@ -141,7 +141,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing managed users parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the managed users Response.</returns>
-    public async override Task<GetManagedUsersResponse> GetManagedUsers(GetManagedUsersRequest request, ServerCallContext context)
+    public async override Task<GetManagedUsersResponse> GetManagedUsersAsync(GetManagedUsersRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting managed users");
         
@@ -160,7 +160,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetManagedUsersStream(GetManagedUsersRequest request, IServerStreamWriter<ManagedUserItem> responseStream, ServerCallContext context)
+    public async override Task GetManagedUsersStreamAsync(GetManagedUsersRequest request, IServerStreamWriter<ManagedUserItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming managed users");
 
@@ -187,7 +187,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing member SSN.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the member user ID Response.</returns>
-    public async override Task<GetMembersUserIdResponse> GetMembersUserId(GetMembersUserIdRequest request, ServerCallContext context)
+    public async override Task<GetMembersUserIdResponse> GetMembersUserIdAsync(GetMembersUserIdRequest request, ServerCallContext context)
     {
         _logger.LogInformation($"Getting member user ID for SSN: {request.MemberSsn}");
 
@@ -205,7 +205,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing user alternate title parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the user alternate title Response.</returns>
-    public async override Task<GetUserAltTitleResponse> GetUserAltTitle(GetUserAltTitleRequest request, ServerCallContext context)
+    public async override Task<GetUserAltTitleResponse> GetUserAltTitleAsync(GetUserAltTitleRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting user alternate title");
 
@@ -224,7 +224,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetUserAltTitleStream(GetUserAltTitleRequest request, IServerStreamWriter<UserAltTitleItem> responseStream, ServerCallContext context)
+    public async override Task GetUserAltTitleStreamAsync(GetUserAltTitleRequest request, IServerStreamWriter<UserAltTitleItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming user alternate title");
 
@@ -250,7 +250,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing user alternate title by group component parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the user alternate title by group component Response.</returns>
-    public async override Task<GetUserAltTitleByGroupCompoResponse> GetUserAltTitleByGroupCompo(GetUserAltTitleByGroupCompoRequest request, ServerCallContext context)
+    public async override Task<GetUserAltTitleByGroupCompoResponse> GetUserAltTitleByGroupCompoAsync(GetUserAltTitleByGroupCompoRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting user alternate title by group component");
 
@@ -269,7 +269,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetUserAltTitleByGroupCompoStream(GetUserAltTitleByGroupCompoRequest request, IServerStreamWriter<UserAltTitleByGroupCompoItem> responseStream, ServerCallContext context)
+    public async override Task GetUserAltTitleByGroupCompoStreamAsync(GetUserAltTitleByGroupCompoRequest request, IServerStreamWriter<UserAltTitleByGroupCompoItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming user alternate title by group component");
 
@@ -295,7 +295,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing user name parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the user name Response.</returns>
-    public async override Task<GetUserNameResponse> GetUserName(GetUserNameRequest request, ServerCallContext context)
+    public async override Task<GetUserNameResponse> GetUserNameAsync(GetUserNameRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting user name");
 
@@ -314,7 +314,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetUserNameStream(GetUserNameRequest request, IServerStreamWriter<UserNameItem> responseStream, ServerCallContext context)
+    public async override Task GetUserNameStreamAsync(GetUserNameRequest request, IServerStreamWriter<UserNameItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming user name");
 
@@ -341,7 +341,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing users alternate title by group parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the users alternate title by group Response.</returns>
-    public async override Task<GetUsersAltTitleByGroupResponse> GetUsersAltTitleByGroup(GetUsersAltTitleByGroupRequest request, ServerCallContext context)
+    public async override Task<GetUsersAltTitleByGroupResponse> GetUsersAltTitleByGroupAsync(GetUsersAltTitleByGroupRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting users alternate title by group");
 
@@ -360,7 +360,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetUsersAltTitleByGroupStream(GetUsersAltTitleByGroupRequest request, IServerStreamWriter<UsersAltTitleByGroupItem> responseStream, ServerCallContext context)
+    public async override Task GetUsersAltTitleByGroupStreamAsync(GetUsersAltTitleByGroupRequest request, IServerStreamWriter<UsersAltTitleByGroupItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming users alternate title by group");
 
@@ -386,7 +386,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The empty request.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the users online Response.</returns>
-    public async override Task<GetUsersOnlineResponse> GetUsersOnline(EmptyRequest request, ServerCallContext context)
+    public async override Task<GetUsersOnlineResponse> GetUsersOnlineAsync(EmptyRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting users online");
 
@@ -405,7 +405,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetUsersOnlineStream(EmptyRequest request, IServerStreamWriter<UserOnlineItem> responseStream, ServerCallContext context)
+    public async override Task GetUsersOnlineStreamAsync(EmptyRequest request, IServerStreamWriter<UserOnlineItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming users online");
 
@@ -432,7 +432,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetWhoisStream(GetWhoisRequest request, IServerStreamWriter<WhoisItem> responseStream, ServerCallContext context)
+    public async override Task GetWhoisStreamAsync(GetWhoisRequest request, IServerStreamWriter<WhoisItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming WHOIS information");
 
@@ -454,7 +454,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task HasHQTechAccountStream(HasHQTechAccountRequest request, IServerStreamWriter<HQTechAccountItem> responseStream, ServerCallContext context)
+    public async override Task HasHQTechAccountStreamAsync(HasHQTechAccountRequest request, IServerStreamWriter<HQTechAccountItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming HQ tech account check");
 
@@ -476,7 +476,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task IsFinalStatusCodeStream(IsFinalStatusCodeRequest request, IServerStreamWriter<FinalStatusCodeItem> responseStream, ServerCallContext context)
+    public async override Task IsFinalStatusCodeStreamAsync(IsFinalStatusCodeRequest request, IServerStreamWriter<FinalStatusCodeItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming final status code check");
 
@@ -498,7 +498,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task UpdateLoginStream(UpdateLoginRequest request, IServerStreamWriter<LoginUpdateItem> responseStream, ServerCallContext context)
+    public async override Task UpdateLoginStreamAsync(UpdateLoginRequest request, IServerStreamWriter<LoginUpdateItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming login update");
 
@@ -519,7 +519,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing WHOIS parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the WHOIS Response.</returns>
-    public async override Task<GetWhoisResponse> GetWhois(GetWhoisRequest request, ServerCallContext context)
+    public async override Task<GetWhoisResponse> GetWhoisAsync(GetWhoisRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting WHOIS information");
 
@@ -537,7 +537,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing HQ tech account parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the HQ tech account Response.</returns>
-    public async override Task<HasHQTechAccountResponse> HasHQTechAccount(HasHQTechAccountRequest request, ServerCallContext context)
+    public async override Task<HasHQTechAccountResponse> HasHQTechAccountAsync(HasHQTechAccountRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Checking HQ tech account");
 
@@ -555,7 +555,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing final status code parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the final status code Response.</returns>
-    public async override Task<IsFinalStatusCodeResponse> IsFinalStatusCode(IsFinalStatusCodeRequest request, ServerCallContext context)
+    public async override Task<IsFinalStatusCodeResponse> IsFinalStatusCodeAsync(IsFinalStatusCodeRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Checking if status code is final");
 
@@ -573,7 +573,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing logout parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the logout Response.</returns>
-    public async override Task<LogoutResponse> Logout(LogoutRequest request, ServerCallContext context)
+    public async override Task<LogoutResponse> LogoutAsync(LogoutRequest request, ServerCallContext context)
     {
         _logger.LogInformation($"Logging out user: {request.UserId}");
 
@@ -591,7 +591,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing user registration parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the user registration Response.</returns>
-    public async override Task<RegisterUserResponse> RegisterUser(RegisterUserRequest request, ServerCallContext context)
+    public async override Task<RegisterUserResponse> RegisterUserAsync(RegisterUserRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Registering user");
 
@@ -609,7 +609,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing user role registration parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the user role registration Response.</returns>
-    public async override Task<RegisterUserRoleResponse> RegisterUserRole(RegisterUserRoleRequest request, ServerCallContext context)
+    public async override Task<RegisterUserRoleResponse> RegisterUserRoleAsync(RegisterUserRoleRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Registering user role");
 
@@ -627,7 +627,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing member data search parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the member data search Response.</returns>
-    public async override Task<SearchMemberDataResponse> SearchMemberData(SearchMemberDataRequest request, ServerCallContext context)
+    public async override Task<SearchMemberDataResponse> SearchMemberDataAsync(SearchMemberDataRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Searching member data");
 
@@ -646,7 +646,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task SearchMemberDataStream(SearchMemberDataRequest request, IServerStreamWriter<MemberDataItem> responseStream, ServerCallContext context)
+    public async override Task SearchMemberDataStreamAsync(SearchMemberDataRequest request, IServerStreamWriter<MemberDataItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming member data search");
 
@@ -674,7 +674,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing member data test search parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the member data test search Response.</returns>
-    public async override Task<SearchMemberDataTestResponse> SearchMemberDataTest(SearchMemberDataTestRequest request, ServerCallContext context)
+    public async override Task<SearchMemberDataTestResponse> SearchMemberDataTestAsync(SearchMemberDataTestRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Searching member data (test version)");
 
@@ -693,7 +693,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task SearchMemberDataTestStream(SearchMemberDataTestRequest request, IServerStreamWriter<MemberDataTestItem> responseStream, ServerCallContext context)
+    public async override Task SearchMemberDataTestStreamAsync(SearchMemberDataTestRequest request, IServerStreamWriter<MemberDataTestItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming member data test search");
 
@@ -719,7 +719,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing account status update parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the account status update Response.</returns>
-    public async override Task<UpdateAccountStatusResponse> UpdateAccountStatus(UpdateAccountStatusRequest request, ServerCallContext context)
+    public async override Task<UpdateAccountStatusResponse> UpdateAccountStatusAsync(UpdateAccountStatusRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Updating account status");
 
@@ -737,7 +737,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing login update parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the login update Response.</returns>
-    public async override Task<UpdateLoginResponse> UpdateLogin(UpdateLoginRequest request, ServerCallContext context)
+    public async override Task<UpdateLoginResponse> UpdateLoginAsync(UpdateLoginRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Updating login information");
 
@@ -755,7 +755,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing managed settings update parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the managed settings update Response.</returns>
-    public async override Task<UpdateManagedSettingsResponse> UpdateManagedSettings(UpdateManagedSettingsRequest request, ServerCallContext context)
+    public async override Task<UpdateManagedSettingsResponse> UpdateManagedSettingsAsync(UpdateManagedSettingsRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Updating managed settings");
 
@@ -773,7 +773,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing user alternate title update parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the user alternate title update Response.</returns>
-    public async override Task<UpdateUserAltTitleResponse> UpdateUserAltTitle(UpdateUserAltTitleRequest request, ServerCallContext context)
+    public async override Task<UpdateUserAltTitleResponse> UpdateUserAltTitleAsync(UpdateUserAltTitleRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Updating user alternate title");
 
@@ -795,7 +795,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing signature addition parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the signature addition Response.</returns>
-    public async override Task<AddSignatureResponse> AddSignature(AddSignatureRequest request, ServerCallContext context)
+    public async override Task<AddSignatureResponse> AddSignatureAsync(AddSignatureRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Adding signature");
 
@@ -813,7 +813,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing action copy parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the action copy Response.</returns>
-    public async override Task<CopyActionsResponse> CopyActions(CopyActionsRequest request, ServerCallContext context)
+    public async override Task<CopyActionsResponse> CopyActionsAsync(CopyActionsRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Copying actions");
 
@@ -831,7 +831,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing rule copy parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the rule copy Response.</returns>
-    public async override Task<CopyRulesResponse> CopyRules(CopyRulesRequest request, ServerCallContext context)
+    public async override Task<CopyRulesResponse> CopyRulesAsync(CopyRulesRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Copying rules");
 
@@ -849,7 +849,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workflow copy parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workflow copy Response.</returns>
-    public async override Task<CopyWorkflowResponse> CopyWorkflow(CopyWorkflowRequest request, ServerCallContext context)
+    public async override Task<CopyWorkflowResponse> CopyWorkflowAsync(CopyWorkflowRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Copying workflow");
 
@@ -867,7 +867,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing status code deletion parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the status code deletion Response.</returns>
-    public async override Task<DeleteStatusCodeResponse> DeleteStatusCode(DeleteStatusCodeRequest request, ServerCallContext context)
+    public async override Task<DeleteStatusCodeResponse> DeleteStatusCodeAsync(DeleteStatusCodeRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Deleting status code");
 
@@ -885,7 +885,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing actions by step parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the actions by step Response.</returns>
-    public async override Task<GetActionsByStepResponse> GetActionsByStep(GetActionsByStepRequest request, ServerCallContext context)
+    public async override Task<GetActionsByStepResponse> GetActionsByStepAsync(GetActionsByStepRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting actions by step");
 
@@ -903,7 +903,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing active cases parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the active cases Response.</returns>
-    public async override Task<GetActiveCasesResponse> GetActiveCases(GetActiveCasesRequest request, ServerCallContext context)
+    public async override Task<GetActiveCasesResponse> GetActiveCasesAsync(GetActiveCasesRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting active cases");
 
@@ -921,7 +921,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The empty request.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the all findings by reason of Response.</returns>
-    public async override Task<GetAllFindingByReasonOfResponse> GetAllFindingByReasonOf(EmptyRequest request, ServerCallContext context)
+    public async override Task<GetAllFindingByReasonOfResponse> GetAllFindingByReasonOfAsync(EmptyRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting all findings by reason of");
 
@@ -939,7 +939,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The empty request.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the all locks Response.</returns>
-    public async override Task<GetAllLocksResponse> GetAllLocks(EmptyRequest request, ServerCallContext context)
+    public async override Task<GetAllLocksResponse> GetAllLocksAsync(EmptyRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting all locks");
 
@@ -957,7 +957,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing cancel reasons parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the cancel reasons Response.</returns>
-    public async override Task<GetCancelReasonsResponse> GetCancelReasons(GetCancelReasonsRequest request, ServerCallContext context)
+    public async override Task<GetCancelReasonsResponse> GetCancelReasonsAsync(GetCancelReasonsRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting cancel reasons");
 
@@ -975,7 +975,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing creatable by group parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the creatable by group Response.</returns>
-    public async override Task<GetCreatableByGroupResponse> GetCreatableByGroup(GetCreatableByGroupRequest request, ServerCallContext context)
+    public async override Task<GetCreatableByGroupResponse> GetCreatableByGroupAsync(GetCreatableByGroupRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting creatable by group");
 
@@ -993,7 +993,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing finding by reason of by ID parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the finding by reason of by ID Response.</returns>
-    public async override Task<GetFindingByReasonOfByIdResponse> GetFindingByReasonOfById(GetFindingByReasonOfByIdRequest request, ServerCallContext context)
+    public async override Task<GetFindingByReasonOfByIdResponse> GetFindingByReasonOfByIdAsync(GetFindingByReasonOfByIdRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting finding by reason of by ID");
 
@@ -1011,7 +1011,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing findings parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the findings Response.</returns>
-    public async override Task<GetFindingsResponse> GetFindings(GetFindingsRequest request, ServerCallContext context)
+    public async override Task<GetFindingsResponse> GetFindingsAsync(GetFindingsRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting findings");
 
@@ -1029,7 +1029,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing module from workflow parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the module from workflow Response.</returns>
-    public async override Task<GetModuleFromWorkflowResponse> GetModuleFromWorkflow(GetModuleFromWorkflowRequest request, ServerCallContext context)
+    public async override Task<GetModuleFromWorkflowResponse> GetModuleFromWorkflowAsync(GetModuleFromWorkflowRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting module from workflow");
 
@@ -1047,7 +1047,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing page access by group parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the page access by group Response.</returns>
-    public async override Task<GetPageAccessByGroupResponse> GetPageAccessByGroup(GetPageAccessByGroupRequest request, ServerCallContext context)
+    public async override Task<GetPageAccessByGroupResponse> GetPageAccessByGroupAsync(GetPageAccessByGroupRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting page access by group");
 
@@ -1065,7 +1065,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing page access by workflow view parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the page access by workflow view Response.</returns>
-    public async override Task<GetPageAccessByWorkflowViewResponse> GetPageAccessByWorkflowView(GetPageAccessByWorkflowViewRequest request, ServerCallContext context)
+    public async override Task<GetPageAccessByWorkflowViewResponse> GetPageAccessByWorkflowViewAsync(GetPageAccessByWorkflowViewRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting page access by workflow view");
 
@@ -1083,7 +1083,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing pages by workflow ID parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the pages by workflow ID Response.</returns>
-    public async override Task<GetPagesByWorkflowIdResponse> GetPagesByWorkflowId(GetPagesByWorkflowIdRequest request, ServerCallContext context)
+    public async override Task<GetPagesByWorkflowIdResponse> GetPagesByWorkflowIdAsync(GetPagesByWorkflowIdRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting pages by workflow ID");
 
@@ -1101,7 +1101,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing permissions parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the permissions Response.</returns>
-    public async override Task<GetPermissionsResponse> GetPermissions(GetPermissionsRequest request, ServerCallContext context)
+    public async override Task<GetPermissionsResponse> GetPermissionsAsync(GetPermissionsRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting permissions");
 
@@ -1119,7 +1119,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing permissions by component parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the permissions by component Response.</returns>
-    public async override Task<GetPermissionsByCompoResponse> GetPermissionsByCompo(GetPermissionsByCompoRequest request, ServerCallContext context)
+    public async override Task<GetPermissionsByCompoResponse> GetPermissionsByCompoAsync(GetPermissionsByCompoRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting permissions by component");
 
@@ -1137,7 +1137,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing return reasons parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the return reasons Response.</returns>
-    public async override Task<GetReturnReasonsResponse> GetReturnReasons(GetReturnReasonsRequest request, ServerCallContext context)
+    public async override Task<GetReturnReasonsResponse> GetReturnReasonsAsync(GetReturnReasonsRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting return reasons");
 
@@ -1155,7 +1155,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing RWOA reasons parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the RWOA reasons Response.</returns>
-    public async override Task<GetRwoaReasonsResponse> GetRwoaReasons(GetRwoaReasonsRequest request, ServerCallContext context)
+    public async override Task<GetRwoaReasonsResponse> GetRwoaReasonsAsync(GetRwoaReasonsRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting RWOA reasons");
 
@@ -1173,7 +1173,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing status codes by component parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the status codes by component Response.</returns>
-    public async override Task<GetStatusCodesByCompoResponse> GetStatusCodesByCompo(GetStatusCodesByCompoRequest request, ServerCallContext context)
+    public async override Task<GetStatusCodesByCompoResponse> GetStatusCodesByCompoAsync(GetStatusCodesByCompoRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting status codes by component");
 
@@ -1191,7 +1191,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing status codes by component and module parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the status codes by component and module Response.</returns>
-    public async override Task<GetStatusCodesByCompoAndModuleResponse> GetStatusCodesByCompoAndModule(GetStatusCodesByCompoAndModuleRequest request, ServerCallContext context)
+    public async override Task<GetStatusCodesByCompoAndModuleResponse> GetStatusCodesByCompoAndModuleAsync(GetStatusCodesByCompoAndModuleRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting status codes by component and module");
 
@@ -1209,7 +1209,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing status codes by sign code parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the status codes by sign code Response.</returns>
-    public async override Task<GetStatusCodesBySignCodeResponse> GetStatusCodesBySignCode(GetStatusCodesBySignCodeRequest request, ServerCallContext context)
+    public async override Task<GetStatusCodesBySignCodeResponse> GetStatusCodesBySignCodeAsync(GetStatusCodesBySignCodeRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting status codes by sign code");
 
@@ -1227,7 +1227,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing status codes by workflow parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the status codes by workflow Response.</returns>
-    public async override Task<GetStatusCodesByWorkflowResponse> GetStatusCodesByWorkflow(GetStatusCodesByWorkflowRequest request, ServerCallContext context)
+    public async override Task<GetStatusCodesByWorkflowResponse> GetStatusCodesByWorkflowAsync(GetStatusCodesByWorkflowRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting status codes by workflow");
 
@@ -1245,7 +1245,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing status codes by workflow and access scope parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the status codes by workflow and access scope Response.</returns>
-    public async override Task<GetStatusCodesByWorkflowAndAccessScopeResponse> GetStatusCodesByWorkflowAndAccessScope(GetStatusCodesByWorkflowAndAccessScopeRequest request, ServerCallContext context)
+    public async override Task<GetStatusCodesByWorkflowAndAccessScopeResponse> GetStatusCodesByWorkflowAndAccessScopeAsync(GetStatusCodesByWorkflowAndAccessScopeRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting status codes by workflow and access scope");
 
@@ -1263,7 +1263,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing status code scope parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the status code scope Response.</returns>
-    public async override Task<GetStatusCodeScopeResponse> GetStatusCodeScope(GetStatusCodeScopeRequest request, ServerCallContext context)
+    public async override Task<GetStatusCodeScopeResponse> GetStatusCodeScopeAsync(GetStatusCodeScopeRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting status code scope");
 
@@ -1281,7 +1281,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing steps by workflow parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the steps by workflow Response.</returns>
-    public async override Task<GetStepsByWorkflowResponse> GetStepsByWorkflow(GetStepsByWorkflowRequest request, ServerCallContext context)
+    public async override Task<GetStepsByWorkflowResponse> GetStepsByWorkflowAsync(GetStepsByWorkflowRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting steps by workflow");
 
@@ -1299,7 +1299,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing steps by workflow and status parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the steps by workflow and status Response.</returns>
-    public async override Task<GetStepsByWorkflowAndStatusResponse> GetStepsByWorkflowAndStatus(GetStepsByWorkflowAndStatusRequest request, ServerCallContext context)
+    public async override Task<GetStepsByWorkflowAndStatusResponse> GetStepsByWorkflowAndStatusAsync(GetStepsByWorkflowAndStatusRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting steps by workflow and status");
 
@@ -1317,7 +1317,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing viewable by group parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the viewable by group Response.</returns>
-    public async override Task<GetViewableByGroupResponse> GetViewableByGroup(GetViewableByGroupRequest request, ServerCallContext context)
+    public async override Task<GetViewableByGroupResponse> GetViewableByGroupAsync(GetViewableByGroupRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting viewable by group");
 
@@ -1335,7 +1335,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workflow by component parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workflow by component Response.</returns>
-    public async override Task<GetWorkflowByCompoResponse> GetWorkflowByCompo(GetWorkflowByCompoRequest request, ServerCallContext context)
+    public async override Task<GetWorkflowByCompoResponse> GetWorkflowByCompoAsync(GetWorkflowByCompoRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting workflow by component");
 
@@ -1353,7 +1353,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workflow from module parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workflow from module Response.</returns>
-    public async override Task<GetWorkflowFromModuleResponse> GetWorkflowFromModule(GetWorkflowFromModuleRequest request, ServerCallContext context)
+    public async override Task<GetWorkflowFromModuleResponse> GetWorkflowFromModuleAsync(GetWorkflowFromModuleRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting workflow from module");
 
@@ -1371,7 +1371,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workflow initial status code parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workflow initial status code Response.</returns>
-    public async override Task<GetWorkflowInitialStatusCodeResponse> GetWorkflowInitialStatusCode(GetWorkflowInitialStatusCodeRequest request, ServerCallContext context)
+    public async override Task<GetWorkflowInitialStatusCodeResponse> GetWorkflowInitialStatusCodeAsync(GetWorkflowInitialStatusCodeRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting workflow initial status code");
 
@@ -1389,7 +1389,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workflow title parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workflow title Response.</returns>
-    public async override Task<GetWorkflowTitleResponse> GetWorkflowTitle(GetWorkflowTitleRequest request, ServerCallContext context)
+    public async override Task<GetWorkflowTitleResponse> GetWorkflowTitleAsync(GetWorkflowTitleRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting workflow title");
 
@@ -1407,7 +1407,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workflow title by work status ID parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workflow title by work status ID Response.</returns>
-    public async override Task<GetWorkflowTitleByWorkStatusIdResponse> GetWorkflowTitleByWorkStatusId(GetWorkflowTitleByWorkStatusIdRequest request, ServerCallContext context)
+    public async override Task<GetWorkflowTitleByWorkStatusIdResponse> GetWorkflowTitleByWorkStatusIdAsync(GetWorkflowTitleByWorkStatusIdRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting workflow title by work status ID");
 
@@ -1425,7 +1425,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing action insertion parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the action insertion Response.</returns>
-    public async override Task<InsertActionResponse> InsertAction(InsertActionRequest request, ServerCallContext context)
+    public async override Task<InsertActionResponse> InsertActionAsync(InsertActionRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Inserting action");
 
@@ -1443,7 +1443,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing option action insertion parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the option action insertion Response.</returns>
-    public async override Task<InsertOptionActionResponse> InsertOptionAction(InsertOptionActionRequest request, ServerCallContext context)
+    public async override Task<InsertOptionActionResponse> InsertOptionActionAsync(InsertOptionActionRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Inserting option action");
 
@@ -1462,7 +1462,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task AddSignatureStream(AddSignatureRequest request, IServerStreamWriter<SignatureItem> responseStream, ServerCallContext context)
+    public async override Task AddSignatureStreamAsync(AddSignatureRequest request, IServerStreamWriter<SignatureItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming signature addition");
 
@@ -1484,7 +1484,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task CopyWorkflowStream(CopyWorkflowRequest request, IServerStreamWriter<WorkflowCopyItem> responseStream, ServerCallContext context)
+    public async override Task CopyWorkflowStreamAsync(CopyWorkflowRequest request, IServerStreamWriter<WorkflowCopyItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming workflow copy");
 
@@ -1506,7 +1506,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetActionsByStepStream(GetActionsByStepRequest request, IServerStreamWriter<ActionByStepItem> responseStream, ServerCallContext context)
+    public async override Task GetActionsByStepStreamAsync(GetActionsByStepRequest request, IServerStreamWriter<ActionByStepItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming actions by step");
 
@@ -1528,7 +1528,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetActiveCasesStream(GetActiveCasesRequest request, IServerStreamWriter<ActiveCaseItem> responseStream, ServerCallContext context)
+    public async override Task GetActiveCasesStreamAsync(GetActiveCasesRequest request, IServerStreamWriter<ActiveCaseItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming active cases");
 
@@ -1550,7 +1550,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetAllFindingByReasonOfStream(EmptyRequest request, IServerStreamWriter<FindingByReasonOfItem> responseStream, ServerCallContext context)
+    public async override Task GetAllFindingByReasonOfStreamAsync(EmptyRequest request, IServerStreamWriter<FindingByReasonOfItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming all findings by reason of");
 
@@ -1572,7 +1572,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetAllLocksStream(EmptyRequest request, IServerStreamWriter<LockItem> responseStream, ServerCallContext context)
+    public async override Task GetAllLocksStreamAsync(EmptyRequest request, IServerStreamWriter<LockItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming all locks");
 
@@ -1594,7 +1594,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetCancelReasonsStream(GetCancelReasonsRequest request, IServerStreamWriter<CancelReasonItem> responseStream, ServerCallContext context)
+    public async override Task GetCancelReasonsStreamAsync(GetCancelReasonsRequest request, IServerStreamWriter<CancelReasonItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming cancel reasons");
 
@@ -1616,7 +1616,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetCreatableByGroupStream(GetCreatableByGroupRequest request, IServerStreamWriter<CreatableByGroupItem> responseStream, ServerCallContext context)
+    public async override Task GetCreatableByGroupStreamAsync(GetCreatableByGroupRequest request, IServerStreamWriter<CreatableByGroupItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming creatable by group");
 
@@ -1638,7 +1638,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetFindingByReasonOfByIdStream(GetFindingByReasonOfByIdRequest request, IServerStreamWriter<FindingByReasonOfByIdItem> responseStream, ServerCallContext context)
+    public async override Task GetFindingByReasonOfByIdStreamAsync(GetFindingByReasonOfByIdRequest request, IServerStreamWriter<FindingByReasonOfByIdItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming finding by reason of by ID");
 
@@ -1660,7 +1660,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetFindingsStream(GetFindingsRequest request, IServerStreamWriter<FindingItem> responseStream, ServerCallContext context)
+    public async override Task GetFindingsStreamAsync(GetFindingsRequest request, IServerStreamWriter<FindingItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming findings");
 
@@ -1682,7 +1682,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetModuleFromWorkflowStream(GetModuleFromWorkflowRequest request, IServerStreamWriter<ModuleFromWorkflowItem> responseStream, ServerCallContext context)
+    public async override Task GetModuleFromWorkflowStreamAsync(GetModuleFromWorkflowRequest request, IServerStreamWriter<ModuleFromWorkflowItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming module from workflow");
 
@@ -1704,7 +1704,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetPageAccessByGroupStream(GetPageAccessByGroupRequest request, IServerStreamWriter<PageAccessByGroupItem> responseStream, ServerCallContext context)
+    public async override Task GetPageAccessByGroupStreamAsync(GetPageAccessByGroupRequest request, IServerStreamWriter<PageAccessByGroupItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming page access by group");
 
@@ -1726,7 +1726,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetPageAccessByWorkflowViewStream(GetPageAccessByWorkflowViewRequest request, IServerStreamWriter<PageAccessByWorkflowViewItem> responseStream, ServerCallContext context)
+    public async override Task GetPageAccessByWorkflowViewStreamAsync(GetPageAccessByWorkflowViewRequest request, IServerStreamWriter<PageAccessByWorkflowViewItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming page access by workflow view");
 
@@ -1748,7 +1748,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetPagesByWorkflowIdStream(GetPagesByWorkflowIdRequest request, IServerStreamWriter<PageByWorkflowItem> responseStream, ServerCallContext context)
+    public async override Task GetPagesByWorkflowIdStreamAsync(GetPagesByWorkflowIdRequest request, IServerStreamWriter<PageByWorkflowItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming pages by workflow ID");
 
@@ -1770,7 +1770,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetPermissionsStream(GetPermissionsRequest request, IServerStreamWriter<PermissionItem> responseStream, ServerCallContext context)
+    public async override Task GetPermissionsStreamAsync(GetPermissionsRequest request, IServerStreamWriter<PermissionItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming permissions");
 
@@ -1792,7 +1792,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetPermissionsByCompoStream(GetPermissionsByCompoRequest request, IServerStreamWriter<PermissionByCompoItem> responseStream, ServerCallContext context)
+    public async override Task GetPermissionsByCompoStreamAsync(GetPermissionsByCompoRequest request, IServerStreamWriter<PermissionByCompoItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming permissions by component");
 
@@ -1814,7 +1814,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetReturnReasonsStream(GetReturnReasonsRequest request, IServerStreamWriter<ReturnReasonItem> responseStream, ServerCallContext context)
+    public async override Task GetReturnReasonsStreamAsync(GetReturnReasonsRequest request, IServerStreamWriter<ReturnReasonItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming return reasons");
 
@@ -1836,7 +1836,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetRwoaReasonsStream(GetRwoaReasonsRequest request, IServerStreamWriter<RwoaReasonItem> responseStream, ServerCallContext context)
+    public async override Task GetRwoaReasonsStreamAsync(GetRwoaReasonsRequest request, IServerStreamWriter<RwoaReasonItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming RWOA reasons");
 
@@ -1858,7 +1858,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetStatusCodesByCompoStream(GetStatusCodesByCompoRequest request, IServerStreamWriter<StatusCodeByCompoItem> responseStream, ServerCallContext context)
+    public async override Task GetStatusCodesByCompoStreamAsync(GetStatusCodesByCompoRequest request, IServerStreamWriter<StatusCodeByCompoItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming status codes by component");
 
@@ -1880,7 +1880,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetStatusCodesByCompoAndModuleStream(GetStatusCodesByCompoAndModuleRequest request, IServerStreamWriter<StatusCodeByCompoAndModuleItem> responseStream, ServerCallContext context)
+    public async override Task GetStatusCodesByCompoAndModuleStreamAsync(GetStatusCodesByCompoAndModuleRequest request, IServerStreamWriter<StatusCodeByCompoAndModuleItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming status codes by component and module");
 
@@ -1902,7 +1902,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetStatusCodesBySignCodeStream(GetStatusCodesBySignCodeRequest request, IServerStreamWriter<StatusCodeBySignCodeItem> responseStream, ServerCallContext context)
+    public async override Task GetStatusCodesBySignCodeStreamAsync(GetStatusCodesBySignCodeRequest request, IServerStreamWriter<StatusCodeBySignCodeItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming status codes by sign code");
 
@@ -1924,7 +1924,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetStatusCodesByWorkflowStream(GetStatusCodesByWorkflowRequest request, IServerStreamWriter<StatusCodeByWorkflowItem> responseStream, ServerCallContext context)
+    public async override Task GetStatusCodesByWorkflowStreamAsync(GetStatusCodesByWorkflowRequest request, IServerStreamWriter<StatusCodeByWorkflowItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming status codes by workflow");
 
@@ -1946,7 +1946,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetStatusCodesByWorkflowAndAccessScopeStream(GetStatusCodesByWorkflowAndAccessScopeRequest request, IServerStreamWriter<StatusCodeByWorkflowAndAccessScopeItem> responseStream, ServerCallContext context)
+    public async override Task GetStatusCodesByWorkflowAndAccessScopeStreamAsync(GetStatusCodesByWorkflowAndAccessScopeRequest request, IServerStreamWriter<StatusCodeByWorkflowAndAccessScopeItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming status codes by workflow and access scope");
 
@@ -1968,7 +1968,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetStatusCodeScopeStream(GetStatusCodeScopeRequest request, IServerStreamWriter<StatusCodeScopeItem> responseStream, ServerCallContext context)
+    public async override Task GetStatusCodeScopeStreamAsync(GetStatusCodeScopeRequest request, IServerStreamWriter<StatusCodeScopeItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming status code scope");
 
@@ -1990,7 +1990,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetStepsByWorkflowStream(GetStepsByWorkflowRequest request, IServerStreamWriter<StepByWorkflowItem> responseStream, ServerCallContext context)
+    public async override Task GetStepsByWorkflowStreamAsync(GetStepsByWorkflowRequest request, IServerStreamWriter<StepByWorkflowItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming steps by workflow");
 
@@ -2012,7 +2012,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetStepsByWorkflowAndStatusStream(GetStepsByWorkflowAndStatusRequest request, IServerStreamWriter<StepByWorkflowAndStatusItem> responseStream, ServerCallContext context)
+    public async override Task GetStepsByWorkflowAndStatusStreamAsync(GetStepsByWorkflowAndStatusRequest request, IServerStreamWriter<StepByWorkflowAndStatusItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming steps by workflow and status");
 
@@ -2034,7 +2034,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetViewableByGroupStream(GetViewableByGroupRequest request, IServerStreamWriter<ViewableByGroupItem> responseStream, ServerCallContext context)
+    public async override Task GetViewableByGroupStreamAsync(GetViewableByGroupRequest request, IServerStreamWriter<ViewableByGroupItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming viewable by group");
 
@@ -2056,7 +2056,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetWorkflowByCompoStream(GetWorkflowByCompoRequest request, IServerStreamWriter<WorkflowByCompoItem> responseStream, ServerCallContext context)
+    public async override Task GetWorkflowByCompoStreamAsync(GetWorkflowByCompoRequest request, IServerStreamWriter<WorkflowByCompoItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming workflow by component");
 
@@ -2078,7 +2078,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetWorkflowFromModuleStream(GetWorkflowFromModuleRequest request, IServerStreamWriter<WorkflowFromModuleItem> responseStream, ServerCallContext context)
+    public async override Task GetWorkflowFromModuleStreamAsync(GetWorkflowFromModuleRequest request, IServerStreamWriter<WorkflowFromModuleItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming workflow from module");
 
@@ -2100,7 +2100,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetWorkflowInitialStatusCodeStream(GetWorkflowInitialStatusCodeRequest request, IServerStreamWriter<WorkflowInitialStatusCodeItem> responseStream, ServerCallContext context)
+    public async override Task GetWorkflowInitialStatusCodeStreamAsync(GetWorkflowInitialStatusCodeRequest request, IServerStreamWriter<WorkflowInitialStatusCodeItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming workflow initial status code");
 
@@ -2122,7 +2122,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetWorkflowTitleStream(GetWorkflowTitleRequest request, IServerStreamWriter<WorkflowTitleItem> responseStream, ServerCallContext context)
+    public async override Task GetWorkflowTitleStreamAsync(GetWorkflowTitleRequest request, IServerStreamWriter<WorkflowTitleItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming workflow title");
 
@@ -2144,7 +2144,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetWorkflowTitleByWorkStatusIdStream(GetWorkflowTitleByWorkStatusIdRequest request, IServerStreamWriter<WorkflowTitleByWorkStatusIdItem> responseStream, ServerCallContext context)
+    public async override Task GetWorkflowTitleByWorkStatusIdStreamAsync(GetWorkflowTitleByWorkStatusIdRequest request, IServerStreamWriter<WorkflowTitleByWorkStatusIdItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming workflow title by work status ID");
 
@@ -2166,7 +2166,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task InsertActionStream(InsertActionRequest request, IServerStreamWriter<InsertActionItem> responseStream, ServerCallContext context)
+    public async override Task InsertActionStreamAsync(InsertActionRequest request, IServerStreamWriter<InsertActionItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming action insertion");
 
@@ -2188,7 +2188,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task InsertOptionActionStream(InsertOptionActionRequest request, IServerStreamWriter<InsertOptionActionItem> responseStream, ServerCallContext context)
+    public async override Task InsertOptionActionStreamAsync(InsertOptionActionRequest request, IServerStreamWriter<InsertOptionActionItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming option action insertion");
 
@@ -2213,7 +2213,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing log deletion parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the log deletion Response.</returns>
-    public async override Task<DeleteLogByIdResponse> DeleteLogById(DeleteLogByIdRequest request, ServerCallContext context)
+    public async override Task<DeleteLogByIdResponse> DeleteLogByIdAsync(DeleteLogByIdRequest request, ServerCallContext context)
     {
         _logger.LogInformation($"Deleting log by ID: {request.LogId}");
 
@@ -2231,7 +2231,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing process last execution date parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the process last execution date Response.</returns>
-    public async override Task<FindProcessLastExecutionDateResponse> FindProcessLastExecutionDate(FindProcessLastExecutionDateRequest request, ServerCallContext context)
+    public async override Task<FindProcessLastExecutionDateResponse> FindProcessLastExecutionDateAsync(FindProcessLastExecutionDateRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Finding process last execution date");
 
@@ -2250,7 +2250,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task FindProcessLastExecutionDateStream(FindProcessLastExecutionDateRequest request, IServerStreamWriter<ProcessLastExecutionDateItem> responseStream, ServerCallContext context)
+    public async override Task FindProcessLastExecutionDateStreamAsync(FindProcessLastExecutionDateRequest request, IServerStreamWriter<ProcessLastExecutionDateItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming process last execution date");
 
@@ -2276,7 +2276,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The empty request.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the all logs Response.</returns>
-    public async override Task<GetAllLogsResponse> GetAllLogs(EmptyRequest request, ServerCallContext context)
+    public async override Task<GetAllLogsResponse> GetAllLogsAsync(EmptyRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting all logs");
 
@@ -2295,7 +2295,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetAllLogsStream(EmptyRequest request, IServerStreamWriter<LogItem> responseStream, ServerCallContext context)
+    public async override Task GetAllLogsStreamAsync(EmptyRequest request, IServerStreamWriter<LogItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming all logs");
 
@@ -2322,7 +2322,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing log insertion parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the log insertion Response.</returns>
-    public async override Task<InsertLogResponse> InsertLog(InsertLogRequest request, ServerCallContext context)
+    public async override Task<InsertLogResponse> InsertLogAsync(InsertLogRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Inserting log");
 
@@ -2340,7 +2340,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing process active check parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the process active Response.</returns>
-    public async override Task<IsProcessActiveResponse> IsProcessActive(IsProcessActiveRequest request, ServerCallContext context)
+    public async override Task<IsProcessActiveResponse> IsProcessActiveAsync(IsProcessActiveRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Checking if process is active");
 
@@ -2359,7 +2359,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task IsProcessActiveStream(IsProcessActiveRequest request, IServerStreamWriter<ProcessActiveItem> responseStream, ServerCallContext context)
+    public async override Task IsProcessActiveStreamAsync(IsProcessActiveRequest request, IServerStreamWriter<ProcessActiveItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming process active check");
 
@@ -2381,7 +2381,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing pagination, filtering, and sorting parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the paginated logs Response.</returns>
-    public async override Task<GetAllLogsPaginationResponse> GetAllLogsPagination(GetAllLogsPaginationRequest request, ServerCallContext context)
+    public async override Task<GetAllLogsPaginationResponse> GetAllLogsPaginationAsync(GetAllLogsPaginationRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting all logs with pagination, filtering, and sorting");
 
@@ -2415,7 +2415,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workflow ID parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workflow by ID Response.</returns>
-    public async override Task<GetWorkflowByIdResponse> GetWorkflowById(GetWorkflowByIdRequest request, ServerCallContext context)
+    public async override Task<GetWorkflowByIdResponse> GetWorkflowByIdAsync(GetWorkflowByIdRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting workflow by ID");
 
@@ -2434,7 +2434,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetWorkflowByIdStream(GetWorkflowByIdRequest request, IServerStreamWriter<WorkflowByIdItem> responseStream, ServerCallContext context)
+    public async override Task GetWorkflowByIdStreamAsync(GetWorkflowByIdRequest request, IServerStreamWriter<WorkflowByIdItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming workflow by ID");
 
@@ -2459,7 +2459,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workflows by ref ID parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workflows by ref ID Response.</returns>
-    public async override Task<GetWorkflowsByRefIdResponse> GetWorkflowsByRefId(GetWorkflowsByRefIdRequest request, ServerCallContext context)
+    public async override Task<GetWorkflowsByRefIdResponse> GetWorkflowsByRefIdAsync(GetWorkflowsByRefIdRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting workflows by ref ID");
 
@@ -2478,7 +2478,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetWorkflowsByRefIdStream(GetWorkflowsByRefIdRequest request, IServerStreamWriter<WorkflowByRefIdItem> responseStream, ServerCallContext context)
+    public async override Task GetWorkflowsByRefIdStreamAsync(GetWorkflowsByRefIdRequest request, IServerStreamWriter<WorkflowByRefIdItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming workflows by ref ID");
 
@@ -2504,7 +2504,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workflows by ref ID and type parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workflows by ref ID and type Response.</returns>
-    public async override Task<GetWorkflowsByRefIdAndTypeResponse> GetWorkflowsByRefIdAndType(GetWorkflowsByRefIdAndTypeRequest request, ServerCallContext context)
+    public async override Task<GetWorkflowsByRefIdAndTypeResponse> GetWorkflowsByRefIdAndTypeAsync(GetWorkflowsByRefIdAndTypeRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting workflows by ref ID and type");
 
@@ -2523,7 +2523,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetWorkflowsByRefIdAndTypeStream(GetWorkflowsByRefIdAndTypeRequest request, IServerStreamWriter<WorkflowByRefIdAndTypeItem> responseStream, ServerCallContext context)
+    public async override Task GetWorkflowsByRefIdAndTypeStreamAsync(GetWorkflowsByRefIdAndTypeRequest request, IServerStreamWriter<WorkflowByRefIdAndTypeItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming workflows by ref ID and type");
 
@@ -2550,7 +2550,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The empty request.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workflow types Response.</returns>
-    public async override Task<GetWorkflowTypesResponse> GetWorkflowTypes(EmptyRequest request, ServerCallContext context)
+    public async override Task<GetWorkflowTypesResponse> GetWorkflowTypesAsync(EmptyRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting workflow types");
 
@@ -2569,7 +2569,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetWorkflowTypesStream(EmptyRequest request, IServerStreamWriter<WorkflowTypeItem> responseStream, ServerCallContext context)
+    public async override Task GetWorkflowTypesStreamAsync(EmptyRequest request, IServerStreamWriter<WorkflowTypeItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming workflow types");
 
@@ -2594,7 +2594,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workflow insertion parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workflow insertion Response.</returns>
-    public async override Task<InsertWorkflowResponse> InsertWorkflow(InsertWorkflowRequest request, ServerCallContext context)
+    public async override Task<InsertWorkflowResponse> InsertWorkflowAsync(InsertWorkflowRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Inserting workflow");
 
@@ -2612,7 +2612,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workflow update parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workflow update Response.</returns>
-    public async override Task<UpdateWorkflowResponse> UpdateWorkflow(UpdateWorkflowRequest request, ServerCallContext context)
+    public async override Task<UpdateWorkflowResponse> UpdateWorkflowAsync(UpdateWorkflowRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Updating workflow");
 
@@ -2634,7 +2634,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workstatus ID parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workstatus by ID Response.</returns>
-    public async override Task<GetWorkstatusByIdResponse> GetWorkstatusById(GetWorkstatusByIdRequest request, ServerCallContext context)
+    public async override Task<GetWorkstatusByIdResponse> GetWorkstatusByIdAsync(GetWorkstatusByIdRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting workstatus by ID");
 
@@ -2653,7 +2653,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetWorkstatusByIdStream(GetWorkstatusByIdRequest request, IServerStreamWriter<WorkstatusByIdItem> responseStream, ServerCallContext context)
+    public async override Task GetWorkstatusByIdStreamAsync(GetWorkstatusByIdRequest request, IServerStreamWriter<WorkstatusByIdItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming workstatus by ID");
 
@@ -2678,7 +2678,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workstatuses by ref ID parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workstatuses by ref ID Response.</returns>
-    public async override Task<GetWorkstatusesByRefIdResponse> GetWorkstatusesByRefId(GetWorkstatusesByRefIdRequest request, ServerCallContext context)
+    public async override Task<GetWorkstatusesByRefIdResponse> GetWorkstatusesByRefIdAsync(GetWorkstatusesByRefIdRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting workstatuses by ref ID");
 
@@ -2697,7 +2697,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetWorkstatusesByRefIdStream(GetWorkstatusesByRefIdRequest request, IServerStreamWriter<WorkstatusByRefIdItem> responseStream, ServerCallContext context)
+    public async override Task GetWorkstatusesByRefIdStreamAsync(GetWorkstatusesByRefIdRequest request, IServerStreamWriter<WorkstatusByRefIdItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming workstatuses by ref ID");
 
@@ -2723,7 +2723,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workstatuses by ref ID and type parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workstatuses by ref ID and type Response.</returns>
-    public async override Task<GetWorkstatusesByRefIdAndTypeResponse> GetWorkstatusesByRefIdAndType(GetWorkstatusesByRefIdAndTypeRequest request, ServerCallContext context)
+    public async override Task<GetWorkstatusesByRefIdAndTypeResponse> GetWorkstatusesByRefIdAndTypeAsync(GetWorkstatusesByRefIdAndTypeRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting workstatuses by ref ID and type");
 
@@ -2742,7 +2742,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetWorkstatusesByRefIdAndTypeStream(GetWorkstatusesByRefIdAndTypeRequest request, IServerStreamWriter<WorkstatusByRefIdAndTypeItem> responseStream, ServerCallContext context)
+    public async override Task GetWorkstatusesByRefIdAndTypeStreamAsync(GetWorkstatusesByRefIdAndTypeRequest request, IServerStreamWriter<WorkstatusByRefIdAndTypeItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming workstatuses by ref ID and type");
 
@@ -2769,7 +2769,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The empty request.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workstatus types Response.</returns>
-    public async override Task<GetWorkstatusTypesResponse> GetWorkstatusTypes(EmptyRequest request, ServerCallContext context)
+    public async override Task<GetWorkstatusTypesResponse> GetWorkstatusTypesAsync(EmptyRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Getting workstatus types");
 
@@ -2788,7 +2788,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="responseStream">The server stream writer for sending items.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async override Task GetWorkstatusTypesStream(EmptyRequest request, IServerStreamWriter<WorkstatusTypeItem> responseStream, ServerCallContext context)
+    public async override Task GetWorkstatusTypesStreamAsync(EmptyRequest request, IServerStreamWriter<WorkstatusTypeItem> responseStream, ServerCallContext context)
     {
         _logger.LogInformation("Streaming workstatus types");
 
@@ -2813,7 +2813,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workstatus insertion parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workstatus insertion Response.</returns>
-    public async override Task<InsertWorkstatusResponse> InsertWorkstatus(InsertWorkstatusRequest request, ServerCallContext context)
+    public async override Task<InsertWorkstatusResponse> InsertWorkstatusAsync(InsertWorkstatusRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Inserting workstatus");
 
@@ -2831,7 +2831,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <param name="request">The request containing workstatus update parameters.</param>
     /// <param name="context">The server call context for the gRPC operation.</param>
     /// <returns>A task representing the asynchronous operation, containing the workstatus update Response.</returns>
-    public async override Task<UpdateWorkstatusResponse> UpdateWorkstatus(UpdateWorkstatusRequest request, ServerCallContext context)
+    public async override Task<UpdateWorkstatusResponse> UpdateWorkstatusAsync(UpdateWorkstatusRequest request, ServerCallContext context)
     {
         _logger.LogInformation("Updating workstatus");
 
@@ -2845,5 +2845,4 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
 
     #endregion
 }
-
 

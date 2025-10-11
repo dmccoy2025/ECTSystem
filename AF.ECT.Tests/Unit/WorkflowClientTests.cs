@@ -55,7 +55,7 @@ public class WorkflowClientTests : IDisposable
             () => new Metadata(),
             () => { });
         _mockGrpcClient
-            .Setup(x => x.GetReinvestigationRequestsAsyncAsync(It.IsAny<GetReinvestigationRequestsRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
+            .Setup(x => x.GetReinvestigationRequestsAsync(It.IsAny<GetReinvestigationRequestsRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
             .Returns(reinvestigationAsyncCall);
 
         // GetUserNameAsync mock
@@ -70,7 +70,7 @@ public class WorkflowClientTests : IDisposable
             () => new Metadata(),
             () => { });
         _mockGrpcClient
-            .Setup(x => x.GetUserNameAsyncAsync(It.IsAny<GetUserNameRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
+            .Setup(x => x.GetUserNameAsync(It.IsAny<GetUserNameRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
             .Returns(userNameAsyncCall);
 
         // GetManagedUsersAsync mock
@@ -85,7 +85,7 @@ public class WorkflowClientTests : IDisposable
             () => new Metadata(),
             () => { });
         _mockGrpcClient
-            .Setup(x => x.GetManagedUsersAsyncAsync(It.IsAny<GetManagedUsersRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
+            .Setup(x => x.GetManagedUsersAsync(It.IsAny<GetManagedUsersRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
             .Returns(managedUsersAsyncCall);
 
         // GetUserAltTitleAsync mock
@@ -100,7 +100,7 @@ public class WorkflowClientTests : IDisposable
             () => new Metadata(),
             () => { });
         _mockGrpcClient
-            .Setup(x => x.GetUserAltTitleAsyncAsync(It.IsAny<GetUserAltTitleRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
+            .Setup(x => x.GetUserAltTitleAsync(It.IsAny<GetUserAltTitleRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
             .Returns(userAltTitleAsyncCall);
 
         // GetPageAccessByGroupAsync mock
@@ -115,7 +115,7 @@ public class WorkflowClientTests : IDisposable
             () => new Metadata(),
             () => { });
         _mockGrpcClient
-            .Setup(x => x.GetPageAccessByGroupAsyncAsync(It.IsAny<GetPageAccessByGroupRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
+            .Setup(x => x.GetPageAccessByGroupAsync(It.IsAny<GetPageAccessByGroupRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
             .Returns(pageAccessAsyncCall);
 
         // RegisterUserAsync mock
@@ -127,7 +127,7 @@ public class WorkflowClientTests : IDisposable
             () => new Metadata(),
             () => { });
         _mockGrpcClient
-            .Setup(x => x.RegisterUserAsyncAsync(It.IsAny<RegisterUserRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
+            .Setup(x => x.RegisterUserAsync(It.IsAny<RegisterUserRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
             .Returns(registerUserAsyncCall);
 
         // GetWorkflowInitialStatusCodeAsync mock
@@ -142,7 +142,7 @@ public class WorkflowClientTests : IDisposable
             () => new Metadata(),
             () => { });
         _mockGrpcClient
-            .Setup(x => x.GetWorkflowInitialStatusCodeAsyncAsync(It.IsAny<GetWorkflowInitialStatusCodeRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
+            .Setup(x => x.GetWorkflowInitialStatusCodeAsync(It.IsAny<GetWorkflowInitialStatusCodeRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
             .Returns(workflowStatusAsyncCall);
 
         // GetWorkflowTitleAsync mock
@@ -157,7 +157,7 @@ public class WorkflowClientTests : IDisposable
             () => new Metadata(),
             () => { });
         _mockGrpcClient
-            .Setup(x => x.GetWorkflowTitleAsyncAsync(It.IsAny<GetWorkflowTitleRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
+            .Setup(x => x.GetWorkflowTitleAsync(It.IsAny<GetWorkflowTitleRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
             .Returns(workflowTitleAsyncCall);
 
         // GetWorkflowTitleByWorkStatusIdAsync mock
@@ -172,7 +172,7 @@ public class WorkflowClientTests : IDisposable
             () => new Metadata(),
             () => { });
         _mockGrpcClient
-            .Setup(x => x.GetWorkflowTitleByWorkStatusIdAsyncAsync(It.IsAny<GetWorkflowTitleByWorkStatusIdRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
+            .Setup(x => x.GetWorkflowTitleByWorkStatusIdAsync(It.IsAny<GetWorkflowTitleByWorkStatusIdRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
             .Returns(workflowTitleByStatusAsyncCall);
 
         // SearchMemberDataAsync mock
@@ -187,7 +187,7 @@ public class WorkflowClientTests : IDisposable
             () => new Metadata(),
             () => { });
         _mockGrpcClient
-            .Setup(x => x.SearchMemberDataAsyncAsync(It.IsAny<SearchMemberDataRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
+            .Setup(x => x.SearchMemberDataAsync(It.IsAny<SearchMemberDataRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
             .Returns(searchMemberAsyncCall);
 
         // SearchMemberDataTestAsync mock
@@ -202,7 +202,7 @@ public class WorkflowClientTests : IDisposable
             () => new Metadata(),
             () => { });
         _mockGrpcClient
-            .Setup(x => x.SearchMemberDataTestAsyncAsync(It.IsAny<SearchMemberDataTestRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
+            .Setup(x => x.SearchMemberDataTestAsync(It.IsAny<SearchMemberDataTestRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
             .Returns(searchMemberTestAsyncCall);
 
         // RegisterUserRoleAsync mock
@@ -214,7 +214,7 @@ public class WorkflowClientTests : IDisposable
             () => new Metadata(),
             () => { });
         _mockGrpcClient
-            .Setup(x => x.RegisterUserRoleAsyncAsync(It.IsAny<RegisterUserRoleRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
+            .Setup(x => x.RegisterUserRoleAsync(It.IsAny<RegisterUserRoleRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
             .Returns(registerUserRoleAsyncCall);
 
         // InsertActionAsync mock
@@ -229,7 +229,7 @@ public class WorkflowClientTests : IDisposable
             () => new Metadata(),
             () => { });
         _mockGrpcClient
-            .Setup(x => x.InsertActionAsyncAsync(It.IsAny<InsertActionRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
+            .Setup(x => x.InsertActionAsync(It.IsAny<InsertActionRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
             .Returns(insertActionAsyncCall);
     }
 
@@ -305,7 +305,7 @@ public class WorkflowClientTests : IDisposable
             () => { });
 
         _mockGrpcClient
-            .Setup(x => x.GetReinvestigationRequestsAsyncAsync(It.Is<GetReinvestigationRequestsRequest>(r => r.UserId == userId && r.Sarc == sarc), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
+            .Setup(x => x.GetReinvestigationRequestsAsync(It.Is<GetReinvestigationRequestsRequest>(r => r.UserId == userId && r.Sarc == sarc), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
             .Returns(mockAsyncCall);
 
         // Act
@@ -478,5 +478,6 @@ public class WorkflowClientTests : IDisposable
 
     #endregion
 }
+
 
 

@@ -29,7 +29,7 @@ public class DatabaseIntegrationTests : DatabaseIntegrationTestBase
         };
 
         // Act
-        var response = await client.GetReinvestigationRequestsAsyncAsync(request);
+        var response = await client.GetReinvestigationRequestsAsync(request);
 
         // Assert
         response.Should().NotBeNull();
@@ -57,7 +57,7 @@ public class DatabaseIntegrationTests : DatabaseIntegrationTestBase
         };
 
         // Act
-        var response = await client.GetUserNameAsyncAsync(request);
+        var response = await client.GetUserNameAsync(request);
 
         // Assert
         response.Should().NotBeNull();
@@ -84,7 +84,7 @@ public class DatabaseIntegrationTests : DatabaseIntegrationTestBase
         };
 
         // Act & Assert - Should not throw exception
-        var response = await client.GetUserNameAsyncAsync(request);
+        var response = await client.GetUserNameAsync(request);
         response.Should().NotBeNull();
     }
 
@@ -104,7 +104,7 @@ public class DatabaseIntegrationTests : DatabaseIntegrationTestBase
         };
 
         // Act
-        var response = await client.GetWorkflowTitleAsyncAsync(request);
+        var response = await client.GetWorkflowTitleAsync(request);
 
         // Assert
         response.Should().NotBeNull();
@@ -125,10 +125,10 @@ public class DatabaseIntegrationTests : DatabaseIntegrationTestBase
 
         // Act - Perform multiple operations
         var userRequest = new GetUserNameRequest { First = "Test", Last = "User" };
-        var userResponse = await client.GetUserNameAsyncAsync(userRequest);
+        var userResponse = await client.GetUserNameAsync(userRequest);
 
         var workflowRequest = new GetWorkflowTitleRequest { ModuleId = 1, SubCase = 0 };
-        var workflowResponse = await client.GetWorkflowTitleAsyncAsync(workflowRequest);
+        var workflowResponse = await client.GetWorkflowTitleAsync(workflowRequest);
 
         // Assert
         userResponse.Should().NotBeNull();

@@ -90,7 +90,7 @@ public interface IWorkflowClient : IDisposable
     /// <param name="userId">Optional user ID filter.</param>
     /// <param name="sarc">Optional SARC flag filter.</param>
     /// <returns>An asynchronous enumerable of reinvestigation request items.</returns>
-    IAsyncEnumerable<ReinvestigationRequestItem> GetReinvestigationRequestsStreamAsync(int? userId = null, bool? sarc = null);
+    IAsyncEnumerable<ReinvestigationRequestItem> GetReinvestigationRequestsStream(int? userId = null, bool? sarc = null);
 
     /// <summary>
     /// Retrieves mailing list for LOD as a stream with specified parameters.
@@ -100,7 +100,7 @@ public interface IWorkflowClient : IDisposable
     /// <param name="status">The status for filtering.</param>
     /// <param name="callingService">The calling service identifier.</param>
     /// <returns>An asynchronous enumerable of mailing list items.</returns>
-    IAsyncEnumerable<MailingListItem> GetMailingListForLODStreamAsync(int refId, int groupId, int status, string callingService);
+    IAsyncEnumerable<MailingListItem> GetMailingListForLODStream(int refId, int groupId, int status, string callingService);
 
     /// <summary>
     /// Retrieves managed users as a stream with specified filters.
@@ -113,7 +113,7 @@ public interface IWorkflowClient : IDisposable
     /// <param name="srchUnit">The search unit filter.</param>
     /// <param name="showAllUsers">Whether to show all users.</param>
     /// <returns>An asynchronous enumerable of managed user items.</returns>
-    IAsyncEnumerable<ManagedUserItem> GetManagedUsersStreamAsync(int? userid, string ssn, string name, int? status, int? role, int? srchUnit, bool? showAllUsers);
+    IAsyncEnumerable<ManagedUserItem> GetManagedUsersStream(int? userid, string ssn, string name, int? status, int? role, int? srchUnit, bool? showAllUsers);
 
     /// <summary>
     /// Retrieves user alternate titles as a stream with specified parameters.
@@ -121,7 +121,7 @@ public interface IWorkflowClient : IDisposable
     /// <param name="userId">The user ID.</param>
     /// <param name="groupId">The group ID.</param>
     /// <returns>An asynchronous enumerable of user alternate title items.</returns>
-    IAsyncEnumerable<UserAltTitleItem> GetUserAltTitleStreamAsync(int userId, int groupId);
+    IAsyncEnumerable<UserAltTitleItem> GetUserAltTitleStream(int userId, int groupId);
 
     /// <summary>
     /// Retrieves user alternate titles by group component as a stream.
@@ -129,7 +129,7 @@ public interface IWorkflowClient : IDisposable
     /// <param name="groupId">The group ID.</param>
     /// <param name="workCompo">The work component.</param>
     /// <returns>An asynchronous enumerable of user alternate titles by group component items.</returns>
-    IAsyncEnumerable<UserAltTitleByGroupCompoItem> GetUserAltTitleByGroupCompoStreamAsync(int groupId, int workCompo);
+    IAsyncEnumerable<UserAltTitleByGroupCompoItem> GetUserAltTitleByGroupCompoStream(int groupId, int workCompo);
 
     /// <summary>
     /// Retrieves user names as a stream with specified filters.
@@ -137,20 +137,20 @@ public interface IWorkflowClient : IDisposable
     /// <param name="first">The first name filter.</param>
     /// <param name="last">The last name filter.</param>
     /// <returns>An asynchronous enumerable of user name items.</returns>
-    IAsyncEnumerable<UserNameItem> GetUserNameStreamAsync(string first, string last);
+    IAsyncEnumerable<UserNameItem> GetUserNameStream(string first, string last);
 
     /// <summary>
     /// Retrieves users alternate titles by group as a stream.
     /// </summary>
     /// <param name="groupId">The group ID.</param>
     /// <returns>An asynchronous enumerable of users alternate titles by group items.</returns>
-    IAsyncEnumerable<UsersAltTitleByGroupItem> GetUsersAltTitleByGroupStreamAsync(int groupId);
+    IAsyncEnumerable<UsersAltTitleByGroupItem> GetUsersAltTitleByGroupStream(int groupId);
 
     /// <summary>
     /// Retrieves users who are currently online as a stream.
     /// </summary>
     /// <returns>An asynchronous enumerable of users online items.</returns>
-    IAsyncEnumerable<UserOnlineItem> GetUsersOnlineStreamAsync();
+    IAsyncEnumerable<UserOnlineItem> GetUsersOnlineStream();
 
     /// <summary>
     /// Retrieves WHOIS information for a user.
@@ -587,7 +587,7 @@ public interface IWorkflowClient : IDisposable
     /// </summary>
     /// <param name="processName">The name of the process.</param>
     /// <returns>An asynchronous enumerable of process last execution date items.</returns>
-    IAsyncEnumerable<ProcessLastExecutionDateItem> FindProcessLastExecutionDateStreamAsync(string processName);
+    IAsyncEnumerable<ProcessLastExecutionDateItem> FindProcessLastExecutionDateStream(string processName);
 
     /// <summary>
     /// Retrieves all logs.
@@ -599,7 +599,7 @@ public interface IWorkflowClient : IDisposable
     /// Retrieves all logs as a streaming response.
     /// </summary>
     /// <returns>An asynchronous enumerable of log items.</returns>
-    IAsyncEnumerable<LogItem> GetAllLogsStreamAsync();
+    IAsyncEnumerable<LogItem> GetAllLogsStream();
 
     /// <summary>
     /// Inserts a log entry.
@@ -622,7 +622,7 @@ public interface IWorkflowClient : IDisposable
     /// </summary>
     /// <param name="processName">The name of the process.</param>
     /// <returns>An asynchronous enumerable of process active items.</returns>
-    IAsyncEnumerable<ProcessActiveItem> IsProcessActiveStreamAsync(string processName);
+    IAsyncEnumerable<ProcessActiveItem> IsProcessActiveStream(string processName);
 
     #endregion
 
@@ -640,7 +640,7 @@ public interface IWorkflowClient : IDisposable
     /// </summary>
     /// <param name="workflowId">The workflow ID.</param>
     /// <returns>An asynchronous enumerable of workflow by ID items.</returns>
-    IAsyncEnumerable<WorkflowByIdItem> GetWorkflowByIdStreamAsync(int workflowId);
+    IAsyncEnumerable<WorkflowByIdItem> GetWorkflowByIdStream(int workflowId);
 
     /// <summary>
     /// Retrieves workflows by reference ID.
@@ -656,7 +656,7 @@ public interface IWorkflowClient : IDisposable
     /// <param name="refId">The reference ID.</param>
     /// <param name="module">The module.</param>
     /// <returns>An asynchronous enumerable of workflow by ref ID items.</returns>
-    IAsyncEnumerable<WorkflowByRefIdItem> GetWorkflowsByRefIdStreamAsync(int refId, int module);
+    IAsyncEnumerable<WorkflowByRefIdItem> GetWorkflowsByRefIdStream(int refId, int module);
 
     /// <summary>
     /// Retrieves workflows by reference ID and type.
@@ -674,7 +674,7 @@ public interface IWorkflowClient : IDisposable
     /// <param name="module">The module.</param>
     /// <param name="workflowType">The workflow type.</param>
     /// <returns>An asynchronous enumerable of workflow by ref ID and type items.</returns>
-    IAsyncEnumerable<WorkflowByRefIdAndTypeItem> GetWorkflowsByRefIdAndTypeStreamAsync(int refId, int module, int workflowType);
+    IAsyncEnumerable<WorkflowByRefIdAndTypeItem> GetWorkflowsByRefIdAndTypeStream(int refId, int module, int workflowType);
 
     /// <summary>
     /// Retrieves workflow types.
@@ -686,7 +686,7 @@ public interface IWorkflowClient : IDisposable
     /// Retrieves workflow types as a streaming response.
     /// </summary>
     /// <returns>An asynchronous enumerable of workflow type items.</returns>
-    IAsyncEnumerable<WorkflowTypeItem> GetWorkflowTypesStreamAsync();
+    IAsyncEnumerable<WorkflowTypeItem> GetWorkflowTypesStream();
 
     /// <summary>
     /// Inserts a new workflow.
@@ -724,7 +724,7 @@ public interface IWorkflowClient : IDisposable
     /// </summary>
     /// <param name="workstatusId">The workstatus ID.</param>
     /// <returns>An asynchronous enumerable of workstatus by ID items.</returns>
-    IAsyncEnumerable<WorkstatusByIdItem> GetWorkstatusByIdStreamAsync(int workstatusId);
+    IAsyncEnumerable<WorkstatusByIdItem> GetWorkstatusByIdStream(int workstatusId);
 
     /// <summary>
     /// Retrieves workstatuses by reference ID.
@@ -740,7 +740,7 @@ public interface IWorkflowClient : IDisposable
     /// <param name="refId">The reference ID.</param>
     /// <param name="module">The module.</param>
     /// <returns>An asynchronous enumerable of workstatus by ref ID items.</returns>
-    IAsyncEnumerable<WorkstatusByRefIdItem> GetWorkstatusesByRefIdStreamAsync(int refId, int module);
+    IAsyncEnumerable<WorkstatusByRefIdItem> GetWorkstatusesByRefIdStream(int refId, int module);
 
     /// <summary>
     /// Retrieves workstatuses by reference ID and type.
@@ -758,7 +758,7 @@ public interface IWorkflowClient : IDisposable
     /// <param name="module">The module.</param>
     /// <param name="workstatusType">The workstatus type.</param>
     /// <returns>An asynchronous enumerable of workstatus by ref ID and type items.</returns>
-    IAsyncEnumerable<WorkstatusByRefIdAndTypeItem> GetWorkstatusesByRefIdAndTypeStreamAsync(int refId, int module, int workstatusType);
+    IAsyncEnumerable<WorkstatusByRefIdAndTypeItem> GetWorkstatusesByRefIdAndTypeStream(int refId, int module, int workstatusType);
 
     /// <summary>
     /// Retrieves workstatus types.
@@ -770,7 +770,7 @@ public interface IWorkflowClient : IDisposable
     /// Retrieves workstatus types as a streaming response.
     /// </summary>
     /// <returns>An asynchronous enumerable of workstatus type items.</returns>
-    IAsyncEnumerable<WorkstatusTypeItem> GetWorkstatusTypesStreamAsync();
+    IAsyncEnumerable<WorkstatusTypeItem> GetWorkstatusTypesStream();
 
     /// <summary>
     /// Inserts a new workstatus.
@@ -794,3 +794,4 @@ public interface IWorkflowClient : IDisposable
 
     #endregion
 }
+
