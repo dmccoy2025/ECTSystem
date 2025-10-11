@@ -8,7 +8,7 @@ using AF.ECT.Data.Interfaces;
 using AF.ECT.Server.Services;
 using static AF.ECT.Tests.Data.ServiceCollectionExtensionsTestData;
 
-namespace AF.ECT.Tests;
+namespace AF.ECT.Tests.Unit;
 
 /// <summary>
 /// Contains unit tests for the <see cref="ServiceCollectionExtensions"/> class.
@@ -26,7 +26,7 @@ namespace AF.ECT.Tests;
 /// </list>
 /// </summary>
 [Collection("ServiceCollectionExtensions Tests")]
-[Trait("Category", "Integration")]
+[Trait("Category", "Unit")]
 [Trait("Component", "ServiceCollectionExtensions")]
 public class ServiceCollectionExtensionsTests
 {
