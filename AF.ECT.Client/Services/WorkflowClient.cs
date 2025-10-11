@@ -142,7 +142,7 @@ public class WorkflowClient : IWorkflowClient
                 HttpHandler = new GrpcWebHandler(httpClientHandler),
                 MaxReceiveMessageSize = 10 * 1024 * 1024, // 10MB max message size
                 MaxSendMessageSize = 10 * 1024 * 1024, // 10MB max message size
-                Credentials = Grpc.Core.ChannelCredentials.Insecure, // For development
+                Credentials = Grpc.Core.ChannelCredentials.SecureSsl, // Use secure credentials for HTTPS
             });
 
         // Create client
@@ -163,7 +163,7 @@ public class WorkflowClient : IWorkflowClient
     }
 
     #endregion
-    
+
     #region Core User Methods
 
     /// <summary>
@@ -507,7 +507,7 @@ public class WorkflowClient : IWorkflowClient
             GroupId = groupId,
             WorkCompo = workCompo
         });
-        
+
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
