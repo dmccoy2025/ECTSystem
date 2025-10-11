@@ -193,5 +193,45 @@ public partial class ALODContextProcedures : IALODContextProcedures
         return _;
     }
 
+    /// <summary>
+    /// Retrieves all logs from the Application Warmup Process with pagination.
+    /// </summary>
+    /// <param name="pageNumber">The page number to retrieve.</param>
+    /// <param name="pageSize">The number of items per page.</param>
+    /// <param name="returnValue">Output parameter containing the return value from the stored procedure.</param>
+    /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
+    /// <returns>A list of log entries for the specified page.</returns>
+    public async virtual Task<List<ApplicationWarmupProcess_sp_GetAllLogsResult>> ApplicationWarmupProcess_sp_GetAllLogs_paginationAsync(int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+    {
+        var parameterreturnValue = new SqlParameter
+        {
+            ParameterName = "returnValue",
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
+        };
+
+        var sqlParameters = new[]
+        {
+            new SqlParameter
+            {
+                ParameterName = "PageNumber",
+                Value = pageNumber ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            new SqlParameter
+            {
+                ParameterName = "PageSize",
+                Value = pageSize ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            parameterreturnValue,
+        };
+        var _ = await _context.SqlQueryToListAsync<ApplicationWarmupProcess_sp_GetAllLogsResult>("EXEC @returnValue = [dbo].[ApplicationWarmupProcess_sp_GetAllLogs_pagination] @PageNumber = @PageNumber, @PageSize = @PageSize", sqlParameters, cancellationToken);
+
+        returnValue?.SetValue(parameterreturnValue.Value);
+
+        return _;
+    }
+
     #endregion
 }

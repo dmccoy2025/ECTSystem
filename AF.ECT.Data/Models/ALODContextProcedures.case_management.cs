@@ -948,6 +948,46 @@ public partial class ALODContextProcedures : IALODContextProcedures
     }
 
     /// <summary>
+    /// Retrieves all case types with pagination.
+    /// </summary>
+    /// <param name="pageNumber">The page number to retrieve.</param>
+    /// <param name="pageSize">The number of items per page.</param>
+    /// <param name="returnValue">Output parameter containing the return value from the stored procedure.</param>
+    /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
+    /// <returns>A list of case types for the specified page.</returns>
+    public async virtual Task<List<core_CaseType_sp_GetAllResult>> core_CaseType_sp_GetAll_paginationAsync(int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+    {
+        var parameterreturnValue = new SqlParameter
+        {
+            ParameterName = "returnValue",
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
+        };
+
+        var sqlParameters = new[]
+        {
+            new SqlParameter
+            {
+                ParameterName = "PageNumber",
+                Value = pageNumber ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            new SqlParameter
+            {
+                ParameterName = "PageSize",
+                Value = pageSize ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            parameterreturnValue,
+        };
+        var _ = await _context.SqlQueryToListAsync<core_CaseType_sp_GetAllResult>("EXEC @returnValue = [dbo].[core_CaseType_sp_GetAll_pagination] @PageNumber = @PageNumber, @PageSize = @PageSize", sqlParameters, cancellationToken);
+
+        returnValue?.SetValue(parameterreturnValue.Value);
+
+        return _;
+    }
+
+    /// <summary>
     /// Retrieves all certification stamps.
     /// </summary>
     /// <param name="returnValue">Output parameter containing the return value from the stored procedure.</param>
@@ -1308,6 +1348,46 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 parameterreturnValue,
             };
         var _ = await _context.Database.ExecuteSqlRawAsync("EXEC @returnValue = [dbo].[core_CertificationStamp_sp_UpdateCertificationStampWorkflowMaps] @stampId = @stampId, @workflowIds = @workflowIds", sqlParameters, cancellationToken);
+
+        returnValue?.SetValue(parameterreturnValue.Value);
+
+        return _;
+    }
+
+    /// <summary>
+    /// Retrieves all certification stamps with pagination.
+    /// </summary>
+    /// <param name="pageNumber">The page number to retrieve.</param>
+    /// <param name="pageSize">The number of items per page.</param>
+    /// <param name="returnValue">Output parameter containing the return value from the stored procedure.</param>
+    /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
+    /// <returns>A list of certification stamps for the specified page.</returns>
+    public async virtual Task<List<core_CertificationStamp_sp_GetAllResult>> core_CertificationStamp_sp_GetAll_paginationAsync(int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+    {
+        var parameterreturnValue = new SqlParameter
+        {
+            ParameterName = "returnValue",
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
+        };
+
+        var sqlParameters = new[]
+        {
+            new SqlParameter
+            {
+                ParameterName = "PageNumber",
+                Value = pageNumber ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            new SqlParameter
+            {
+                ParameterName = "PageSize",
+                Value = pageSize ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            parameterreturnValue,
+        };
+        var _ = await _context.SqlQueryToListAsync<core_CertificationStamp_sp_GetAllResult>("EXEC @returnValue = [dbo].[core_CertificationStamp_sp_GetAll_pagination] @PageNumber = @PageNumber, @PageSize = @PageSize", sqlParameters, cancellationToken);
 
         returnValue?.SetValue(parameterreturnValue.Value);
 
@@ -1800,6 +1880,46 @@ public partial class ALODContextProcedures : IALODContextProcedures
     }
 
     /// <summary>
+    /// Retrieves all completed by groups with pagination.
+    /// </summary>
+    /// <param name="pageNumber">The page number to retrieve.</param>
+    /// <param name="pageSize">The number of items per page.</param>
+    /// <param name="returnValue">Output parameter containing the return value from the stored procedure.</param>
+    /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
+    /// <returns>A list of completed by groups for the specified page.</returns>
+    public async virtual Task<List<core_CompletedByGroup_sp_GetAllResult>> core_CompletedByGroup_sp_GetAll_paginationAsync(int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+    {
+        var parameterreturnValue = new SqlParameter
+        {
+            ParameterName = "returnValue",
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
+        };
+
+        var sqlParameters = new[]
+        {
+            new SqlParameter
+            {
+                ParameterName = "PageNumber",
+                Value = pageNumber ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            new SqlParameter
+            {
+                ParameterName = "PageSize",
+                Value = pageSize ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            parameterreturnValue,
+        };
+        var _ = await _context.SqlQueryToListAsync<core_CompletedByGroup_sp_GetAllResult>("EXEC @returnValue = [dbo].[core_CompletedByGroup_sp_GetAll_pagination] @PageNumber = @PageNumber, @PageSize = @PageSize", sqlParameters, cancellationToken);
+
+        returnValue?.SetValue(parameterreturnValue.Value);
+
+        return _;
+    }
+
+    /// <summary>
     /// Retrieves all email templates based on the component type.
     /// </summary>
     /// <param name="compo">The component type identifier.</param>
@@ -2076,6 +2196,111 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 parameterreturnValue,
             };
         var _ = await _context.Database.ExecuteSqlRawAsync("EXEC @returnValue = [dbo].[core_email_sp_UpdateEmailByID] @templateID = @templateID, @subject = @subject, @body = @body, @title = @title, @dataProc = @dataProc, @status = @status", sqlParameters, cancellationToken);
+
+        returnValue?.SetValue(parameterreturnValue.Value);
+
+        return _;
+    }
+
+    /// <summary>
+    /// Retrieves all email templates based on the component type with pagination.
+    /// </summary>
+    /// <param name="compo">The component type identifier.</param>
+    /// <param name="pageNumber">The page number to retrieve.</param>
+    /// <param name="pageSize">The number of items per page.</param>
+    /// <param name="returnValue">Output parameter containing the return value from the stored procedure.</param>
+    /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
+    /// <returns>A list of email templates for the specified component and page.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="compo"/> is null.</exception>
+    public async virtual Task<List<core_email_sp_GetAllResult>> core_email_sp_GetAll_paginationAsync(string? compo, int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+    {
+        var parameterreturnValue = new SqlParameter
+        {
+            ParameterName = "returnValue",
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
+        };
+
+        var sqlParameters = new[]
+        {
+            new SqlParameter
+            {
+                ParameterName = "compo",
+                Size = 1,
+                Value = compo ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Char,
+            },
+            new SqlParameter
+            {
+                ParameterName = "PageNumber",
+                Value = pageNumber ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            new SqlParameter
+            {
+                ParameterName = "PageSize",
+                Value = pageSize ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            parameterreturnValue,
+        };
+        var _ = await _context.SqlQueryToListAsync<core_email_sp_GetAllResult>("EXEC @returnValue = [dbo].[core_email_sp_GetAll_pagination] @compo = @compo, @PageNumber = @PageNumber, @PageSize = @PageSize", sqlParameters, cancellationToken);
+
+        returnValue?.SetValue(parameterreturnValue.Value);
+
+        return _;
+    }
+
+    /// <summary>
+    /// Retrieves all user PAS codes with pagination.
+    /// </summary>
+    /// <param name="chainType">The chain type.</param>
+    /// <param name="adminUserID">The admin user ID.</param>
+    /// <param name="pageNumber">The page number to retrieve.</param>
+    /// <param name="pageSize">The number of items per page.</param>
+    /// <param name="returnValue">Output parameter containing the return value from the stored procedure.</param>
+    /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
+    /// <returns>A list of user PAS codes for the specified page.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="chainType"/> or <paramref name="adminUserID"/> is null.</exception>
+    public async virtual Task<List<core_pascodes_GetAllUserPasCodesResult>> core_pascodes_GetAllUserPasCodes_paginationAsync(string? chainType, int? adminUserID, int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+    {
+        var parameterreturnValue = new SqlParameter
+        {
+            ParameterName = "returnValue",
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
+        };
+
+        var sqlParameters = new[]
+        {
+            new SqlParameter
+            {
+                ParameterName = "ChainType",
+                Size = 20,
+                Value = chainType ?? Convert.DBNull,
+                SqlDbType = SqlDbType.VarChar,
+            },
+            new SqlParameter
+            {
+                ParameterName = "adminUserID",
+                Value = adminUserID ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            new SqlParameter
+            {
+                ParameterName = "PageNumber",
+                Value = pageNumber ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            new SqlParameter
+            {
+                ParameterName = "PageSize",
+                Value = pageSize ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            parameterreturnValue,
+        };
+        var _ = await _context.SqlQueryToListAsync<core_pascodes_GetAllUserPasCodesResult>("EXEC @returnValue = [dbo].[core_pascodes_GetAllUserPasCodes_pagination] @ChainType = @ChainType, @adminUserID = @adminUserID, @PageNumber = @PageNumber, @PageSize = @PageSize", sqlParameters, cancellationToken);
 
         returnValue?.SetValue(parameterreturnValue.Value);
 
@@ -2886,6 +3111,54 @@ public partial class ALODContextProcedures : IALODContextProcedures
     }
 
     /// <summary>
+    /// Retrieves all groups based on the component type with pagination.
+    /// </summary>
+    /// <param name="compo">The component type to filter groups by.</param>
+    /// <param name="pageNumber">The page number to retrieve.</param>
+    /// <param name="pageSize">The number of items per page.</param>
+    /// <param name="returnValue">Output parameter containing the return value from the stored procedure.</param>
+    /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
+    /// <returns>A list of all groups matching the specified component type for the specified page.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="compo"/> is null.</exception>
+    public async virtual Task<List<core_group_sp_GetAllResult>> core_group_sp_GetAll_paginationAsync(int? compo, int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+    {
+        var parameterreturnValue = new SqlParameter
+        {
+            ParameterName = "returnValue",
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
+        };
+
+        var sqlParameters = new[]
+        {
+            new SqlParameter
+            {
+                ParameterName = "compo",
+                Value = compo ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            new SqlParameter
+            {
+                ParameterName = "PageNumber",
+                Value = pageNumber ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            new SqlParameter
+            {
+                ParameterName = "PageSize",
+                Value = pageSize ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            parameterreturnValue,
+        };
+        var _ = await _context.SqlQueryToListAsync<core_group_sp_GetAllResult>("EXEC @returnValue = [dbo].[core_group_sp_GetAll_pagination] @compo = @compo, @PageNumber = @PageNumber, @PageSize = @PageSize", sqlParameters, cancellationToken);
+
+        returnValue?.SetValue(parameterreturnValue.Value);
+
+        return _;
+    }
+
+    /// <summary>
     /// Finds the 7th characters for a specified ICD code.
     /// </summary>
     /// <param name="codeId">The ID of the ICD code to find 7th characters for.</param>
@@ -3481,6 +3754,46 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 parameterreturnValue,
             };
         var _ = await _context.Database.ExecuteSqlRawAsync("EXEC @returnValue = [dbo].[core_KeyVal_sp_UpdateKeyValueById] @id = @id, @newKeyId = @newKeyId, @newValueDescription = @newValueDescription, @newValue = @newValue", sqlParameters, cancellationToken);
+
+        returnValue?.SetValue(parameterreturnValue.Value);
+
+        return _;
+    }
+
+    /// <summary>
+    /// Gets all keys with pagination.
+    /// </summary>
+    /// <param name="pageNumber">The page number to retrieve.</param>
+    /// <param name="pageSize">The number of items per page.</param>
+    /// <param name="returnValue">Output parameter containing the return value from the stored procedure.</param>
+    /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
+    /// <returns>A list of all keys for the specified page.</returns>
+    public async virtual Task<List<core_KeyVale_sp_GetAllKeysResult>> core_KeyVale_sp_GetAllKeys_paginationAsync(int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+    {
+        var parameterreturnValue = new SqlParameter
+        {
+            ParameterName = "returnValue",
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
+        };
+
+        var sqlParameters = new[]
+        {
+            new SqlParameter
+            {
+                ParameterName = "PageNumber",
+                Value = pageNumber ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            new SqlParameter
+            {
+                ParameterName = "PageSize",
+                Value = pageSize ?? Convert.DBNull,
+                SqlDbType = SqlDbType.Int,
+            },
+            parameterreturnValue,
+        };
+        var _ = await _context.SqlQueryToListAsync<core_KeyVale_sp_GetAllKeysResult>("EXEC @returnValue = [dbo].[core_KeyVale_sp_GetAllKeys_pagination] @PageNumber = @PageNumber, @PageSize = @PageSize", sqlParameters, cancellationToken);
 
         returnValue?.SetValue(parameterreturnValue.Value);
 
@@ -13699,6 +14012,50 @@ public partial class ALODContextProcedures : IALODContextProcedures
         return _;
     }
 
+    public async virtual Task<List<core_user_sp_GetMailingListByGroup_SCResult>> core_user_sp_GetMailingListByGroup_SC_paginationAsync(int? refId, int? groupId, int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+    {
+        var parameterreturnValue = new SqlParameter
+        {
+            ParameterName = "returnValue",
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
+        };
+
+        var sqlParameters = new[]
+        {
+                new SqlParameter
+                {
+                    ParameterName = "refId",
+                    Value = refId ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "groupId",
+                    Value = groupId ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "PageNumber",
+                    Value = pageNumber ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "PageSize",
+                    Value = pageSize ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                parameterreturnValue,
+            };
+        var _ = await _context.SqlQueryToListAsync<core_user_sp_GetMailingListByGroup_SCResult>("EXEC @returnValue = [dbo].[core_user_sp_GetMailingListByGroup_SC_pagination] @refId = @refId, @groupId = @groupId, @PageNumber = @PageNumber, @PageSize = @PageSize", sqlParameters, cancellationToken);
+
+        returnValue?.SetValue(parameterreturnValue.Value);
+
+        return _;
+    }
+
     public async virtual Task<List<core_user_sp_GetMailingListByGroupIdResult>> core_user_sp_GetMailingListByGroupIdAsync(int? groupdId, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
     {
         var parameterreturnValue = new SqlParameter
@@ -13759,6 +14116,58 @@ public partial class ALODContextProcedures : IALODContextProcedures
                 parameterreturnValue,
             };
         var _ = await _context.SqlQueryToListAsync<core_user_sp_GetMailingListByRolesResult>("EXEC @returnValue = [dbo].[core_user_sp_GetMailingListByRoles] @compo = @compo, @unitId = @unitId, @roles = @roles", sqlParameters, cancellationToken);
+
+        returnValue?.SetValue(parameterreturnValue.Value);
+
+        return _;
+    }
+
+    public async virtual Task<List<core_user_sp_GetMailingListByRolesResult>> core_user_sp_GetMailingListByRoles_paginationAsync(string? compo, int? unitId, string? roles, int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+    {
+        var parameterreturnValue = new SqlParameter
+        {
+            ParameterName = "returnValue",
+            Direction = ParameterDirection.Output,
+            SqlDbType = SqlDbType.Int,
+        };
+
+        var sqlParameters = new[]
+        {
+                new SqlParameter
+                {
+                    ParameterName = "compo",
+                    Size = 10,
+                    Value = compo ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.VarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "unitId",
+                    Value = unitId ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "roles",
+                    Size = 100,
+                    Value = roles ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.VarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "PageNumber",
+                    Value = pageNumber ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "PageSize",
+                    Value = pageSize ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                parameterreturnValue,
+            };
+        var _ = await _context.SqlQueryToListAsync<core_user_sp_GetMailingListByRolesResult>("EXEC @returnValue = [dbo].[core_user_sp_GetMailingListByRoles_pagination] @compo = @compo, @unitId = @unitId, @roles = @roles, @PageNumber = @PageNumber, @PageSize = @PageSize", sqlParameters, cancellationToken);
 
         returnValue?.SetValue(parameterreturnValue.Value);
 

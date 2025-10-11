@@ -17131,6 +17131,181 @@ namespace AF.ECT.Data.Models
         }
 
         /// <summary>
+        /// Asynchronously executes the core_lookups_GetAllModules_pagination stored procedure.
+        /// </summary>
+        public virtual async Task<List<core_lookups_GetAllModulesResult>> core_lookups_GetAllModules_paginationAsync(int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = ParameterDirection.Output,
+                SqlDbType = SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "pageNumber",
+                    Value = pageNumber ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "pageSize",
+                    Value = pageSize ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryToListAsync<core_lookups_GetAllModulesResult>("EXEC @returnValue = [dbo].[core_lookups_GetAllModules_pagination] @pageNumber = @pageNumber, @pageSize = @pageSize", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
+        /// <summary>
+        /// Asynchronously executes the core_lookups_sp_GetAllRMUs_pagination stored procedure.
+        /// </summary>
+        public virtual async Task<List<core_lookups_sp_GetAllRMUsResult>> core_lookups_sp_GetAllRMUs_paginationAsync(int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = ParameterDirection.Output,
+                SqlDbType = SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "pageNumber",
+                    Value = pageNumber ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "pageSize",
+                    Value = pageSize ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryToListAsync<core_lookups_sp_GetAllRMUsResult>("EXEC @returnValue = [dbo].[core_lookups_sp_GetAllRMUs_pagination] @pageNumber = @pageNumber, @pageSize = @pageSize", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
+        /// <summary>
+        /// Asynchronously executes the core_lookUps_sp_GetAllSpecialistsRequiredForManagement_pagination stored procedure.
+        /// </summary>
+        public virtual async Task<List<core_lookUps_sp_GetAllSpecialistsRequiredForManagementResult>> core_lookUps_sp_GetAllSpecialistsRequiredForManagement_paginationAsync(int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = ParameterDirection.Output,
+                SqlDbType = SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "pageNumber",
+                    Value = pageNumber ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "pageSize",
+                    Value = pageSize ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryToListAsync<core_lookUps_sp_GetAllSpecialistsRequiredForManagementResult>("EXEC @returnValue = [dbo].[core_lookUps_sp_GetAllSpecialistsRequiredForManagement_pagination] @pageNumber = @pageNumber, @pageSize = @pageSize", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
+        /// <summary>
+        /// Asynchronously executes the core_lookUps_sp_GetAllSuddenIncapaciationRisks_pagination stored procedure.
+        /// </summary>
+        public virtual async Task<List<core_lookUps_sp_GetAllSuddenIncapaciationRisksResult>> core_lookUps_sp_GetAllSuddenIncapaciationRisks_paginationAsync(int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = ParameterDirection.Output,
+                SqlDbType = SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "pageNumber",
+                    Value = pageNumber ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "pageSize",
+                    Value = pageSize ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryToListAsync<core_lookUps_sp_GetAllSuddenIncapaciationRisksResult>("EXEC @returnValue = [dbo].[core_lookUps_sp_GetAllSuddenIncapaciationRisks_pagination] @pageNumber = @pageNumber, @pageSize = @pageSize", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
+        /// <summary>
+        /// Asynchronously executes the core_lookUps_sp_GetAllYearsSatisfactoryService_pagination stored procedure.
+        /// </summary>
+        public virtual async Task<List<core_lookUps_sp_GetAllYearsSatisfactoryServiceResult>> core_lookUps_sp_GetAllYearsSatisfactoryService_paginationAsync(int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = ParameterDirection.Output,
+                SqlDbType = SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "pageNumber",
+                    Value = pageNumber ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "pageSize",
+                    Value = pageSize ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryToListAsync<core_lookUps_sp_GetAllYearsSatisfactoryServiceResult>("EXEC @returnValue = [dbo].[core_lookUps_sp_GetAllYearsSatisfactoryService_pagination] @pageNumber = @pageNumber, @pageSize = @pageSize", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
+        /// <summary>
         /// Asynchronously executes the core_lookUps_sp_InsertCategory stored procedure.
         /// </summary>
         public virtual async Task<int> core_lookUps_sp_InsertCategoryAsync(string? category, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
@@ -17604,6 +17779,54 @@ namespace AF.ECT.Data.Models
         }
 
         /// <summary>
+        /// Asynchronously executes the core_messages_sp_GetAllMessages_pagination stored procedure.
+        /// </summary>
+        public virtual async Task<List<core_messages_sp_GetAllMessagesResult>> core_messages_sp_GetAllMessages_paginationAsync(string? compo, bool? isAdmin, int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = ParameterDirection.Output,
+                SqlDbType = SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "compo",
+                    Size = 1,
+                    Value = compo ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Char,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "isAdmin",
+                    Value = isAdmin ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Bit,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "pageNumber",
+                    Value = pageNumber ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "pageSize",
+                    Value = pageSize ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryToListAsync<core_messages_sp_GetAllMessagesResult>("EXEC @returnValue = [dbo].[core_messages_sp_GetAllMessages_pagination] @compo = @compo, @isAdmin = @isAdmin, @pageNumber = @pageNumber, @pageSize = @pageSize", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
+        /// <summary>
         /// Asynchronously executes the core_pageTitles_sp_GetAll stored procedure.
         /// </summary>
         public virtual async Task<List<core_pageTitles_sp_GetAllPagesResult>> core_pageTitles_sp_GetAllAsync(OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
@@ -17729,6 +17952,41 @@ namespace AF.ECT.Data.Models
                 parameterreturnValue,
             };
             var _ = await _context.Database.ExecuteSqlRawAsync("EXEC @returnValue = [dbo].[core_pageTitles_sp_Update] @id = @id, @title = @title, @description = @description", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
+        /// <summary>
+        /// Asynchronously executes the core_pageTitles_sp_GetAllPages_pagination stored procedure.
+        /// </summary>
+        public virtual async Task<List<core_pageTitles_sp_GetAllPagesResult>> core_pageTitles_sp_GetAllPages_paginationAsync(int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = ParameterDirection.Output,
+                SqlDbType = SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "pageNumber",
+                    Value = pageNumber ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "pageSize",
+                    Value = pageSize ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryToListAsync<core_pageTitles_sp_GetAllPagesResult>("EXEC @returnValue = [dbo].[core_pageTitles_sp_GetAllPages_pagination] @pageNumber = @pageNumber, @pageSize = @pageSize", sqlParameters, cancellationToken);
 
             returnValue?.SetValue(parameterreturnValue.Value);
 
@@ -18035,6 +18293,41 @@ namespace AF.ECT.Data.Models
         }
 
         /// <summary>
+        /// Asynchronously executes the core_permissions_sp_GetAll_pagination stored procedure.
+        /// </summary>
+        public virtual async Task<List<core_permissions_sp_GetAllResult>> core_permissions_sp_GetAll_paginationAsync(int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = ParameterDirection.Output,
+                SqlDbType = SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "pageNumber",
+                    Value = pageNumber ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "pageSize",
+                    Value = pageSize ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryToListAsync<core_permissions_sp_GetAllResult>("EXEC @returnValue = [dbo].[core_permissions_sp_GetAll_pagination] @pageNumber = @pageNumber, @pageSize = @pageSize", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
+        /// <summary>
         /// Asynchronously executes the core_role_sp_GetAll stored procedure.
         /// </summary>
         public virtual async Task<List<core_role_sp_GetAllResult>> core_role_sp_GetAllAsync(OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
@@ -18189,6 +18482,47 @@ namespace AF.ECT.Data.Models
                 parameterreturnValue,
             };
             var _ = await _context.Database.ExecuteSqlRawAsync("EXEC @returnValue = [dbo].[core_role_sp_Update] @id = @id, @role = @role, @description = @description", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
+        /// <summary>
+        /// Asynchronously executes the core_role_sp_GetAll_pagination stored procedure.
+        /// </summary>
+        public virtual async Task<List<core_role_sp_GetAllResult>> core_role_sp_GetAll_paginationAsync(int? userId, int? pageNumber = 1, int? pageSize = 10, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = ParameterDirection.Output,
+                SqlDbType = SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "userId",
+                    Value = userId ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "pageNumber",
+                    Value = pageNumber ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "pageSize",
+                    Value = pageSize ?? Convert.DBNull,
+                    SqlDbType = SqlDbType.Int,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryToListAsync<core_role_sp_GetAllResult>("EXEC @returnValue = [dbo].[core_role_sp_GetAll_pagination] @userId = @userId, @pageNumber = @pageNumber, @pageSize = @pageSize", sqlParameters, cancellationToken);
 
             returnValue?.SetValue(parameterreturnValue.Value);
 
