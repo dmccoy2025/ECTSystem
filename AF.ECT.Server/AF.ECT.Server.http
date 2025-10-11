@@ -1,6 +1,833 @@
-@AF.ECT.Server_HostAddress = http://localhost:5173
+@ServerHostAddress = http://localhost:5173
 
-GET {{AF.ECT.Server_HostAddress}}/weatherforecast/
+# User Management Endpoints
+
+GET {{ServerHostAddress}}/v1/users/reinvestigation-requests?user_id=1&sarc=true
 Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/reinvestigation-requests/stream?user_id=1&sarc=true
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/mailing-list?ref_id=1&group_id=1&status=1&calling_service=test
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/mailing-list/stream?ref_id=1&group_id=1&status=1&calling_service=test
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/managed?userid=1&ssn=123&name=John&status=1&role=1&srch_unit=1&show_all_users=true
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/managed/stream?userid=1&ssn=123&name=John&status=1&role=1&srch_unit=1&show_all_users=true
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/member-id?member_ssn=123
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/alt-title?user_id=1&group_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/alt-title/stream?user_id=1&group_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/alt-title-by-group-compo?group_id=1&work_compo=ARMY
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/alt-title-by-group-compo/stream?group_id=1&work_compo=ARMY
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/name?first=John&last=Doe
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/name/stream?first=John&last=Doe
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/alt-title-by-group?group_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/alt-title-by-group/stream?group_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/online
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/online/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/whois/stream?user_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/hq-tech-account/stream?origin_user_id=1&user_edipin=12345
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/status-codes/final/stream?status_id=1
+Accept: application/json
+
+###
+
+POST {{ServerHostAddress}}/v1/users/login/stream
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "session_id": "session123",
+  "remote_addr": "127.0.0.1"
+}
+
+###
+
+GET {{ServerHostAddress}}/v1/users/whois?user_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/users/hq-tech-account?origin_user_id=1&user_edipin=12345
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/status-codes/final?status_id=1
+Accept: application/json
+
+###
+
+POST {{ServerHostAddress}}/v1/users/logout
+Content-Type: application/json
+
+{
+  "user_id": 1
+}
+
+###
+
+POST {{ServerHostAddress}}/v1/users/register
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "work_compo": "ARMY",
+  "receive_email": true,
+  "group_id": 1,
+  "account_status": 1,
+  "expiration_date": "2025-12-31"
+}
+
+###
+
+POST {{ServerHostAddress}}/v1/users/register-role
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "group_id": 1,
+  "status": 1
+}
+
+###
+
+GET {{ServerHostAddress}}/v1/members/search?user_id=1&ssn=123&last_name=Doe&first_name=John&middle_name=A&srch_unit=1&rpt_view=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/members/search/stream?user_id=1&ssn=123&last_name=Doe&first_name=John&middle_name=A&srch_unit=1&rpt_view=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/members/search-test?user_id=1&ssn=123&name=John&srch_unit=1&rpt_view=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/members/search-test/stream?user_id=1&ssn=123&name=John&srch_unit=1&rpt_view=1
+Accept: application/json
+
+###
+
+PUT {{ServerHostAddress}}/v1/users/account-status
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "account_status": 1,
+  "expiration_date": "2025-12-31",
+  "comment": "Test"
+}
+
+###
+
+POST {{ServerHostAddress}}/v1/users/login
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "session_id": "session123",
+  "remote_addr": "127.0.0.1"
+}
+
+###
+
+PUT {{ServerHostAddress}}/v1/users/managed-settings
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "compo": "ARMY",
+  "role_id": 1,
+  "group_id": 1,
+  "comment": "Test",
+  "receive_email": true,
+  "expiration_date": "2025-12-31"
+}
+
+###
+
+PUT {{ServerHostAddress}}/v1/users/alt-title
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "group_id": 1,
+  "new_title": "New Title"
+}
+
+###
+
+# Workflow Management Endpoints
+
+POST {{ServerHostAddress}}/v1/workflows/signature
+Content-Type: application/json
+
+{
+  "ref_id": 1,
+  "module_type": 1,
+  "user_id": 1,
+  "action_id": 1,
+  "group_id": 1,
+  "status_in": 1,
+  "status_out": 2
+}
+
+###
+
+POST {{ServerHostAddress}}/v1/workflows/copy-actions
+Content-Type: application/json
+
+{
+  "dest_wsoid": 1,
+  "src_wsoid": 2
+}
+
+###
+
+POST {{ServerHostAddress}}/v1/workflows/copy-rules
+Content-Type: application/json
+
+{
+  "dest_wsoid": 1,
+  "src_wsoid": 2
+}
+
+###
+
+POST {{ServerHostAddress}}/v1/workflows/copy
+Content-Type: application/json
+
+{
+  "from_id": 1,
+  "to_id": 2
+}
+
+###
+
+DELETE {{ServerHostAddress}}/v1/status-codes/1
+
+###
+
+GET {{ServerHostAddress}}/v1/steps/1/actions
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/cases/active?ref_id=1&group_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/findings/reason-of
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/locks
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/cancel-reasons?is_formal=true
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/creatable?compo=ARMY&module=1&group_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/findings/reason-of/1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/findings?group_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/module
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/pages/access-by-group?workflow=1&status=1&group=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/pages/access-by-workflow-view?compo=ARMY&workflow=1&status=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/pages
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/permissions
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/permissions-by-compo?compo=ARMY
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/return-reasons
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/rwoa-reasons
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/status-codes/by-compo?compo=ARMY
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/status-codes/by-compo-and-module?compo=ARMY&module=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/status-codes/by-sign-code?group_id=1&module=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/status-codes
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/status-codes-by-access-scope?access_scope=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/status-codes/1/scope
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/steps
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/steps-by-status?status=1&death_status=active
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/viewable?group_id=1&module=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/by-compo?compo=ARMY&user_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/modules/1/workflows
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/initial-status-code?compo=ARMY&module=1&workflow_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/title?module_id=1&sub_case=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/title-by-work-status?sub_case=1
+Accept: application/json
+
+###
+
+POST {{ServerHostAddress}}/v1/actions
+Content-Type: application/json
+
+{
+  "type": 1,
+  "step_id": 1,
+  "target": 1,
+  "data": 1
+}
+
+###
+
+POST {{ServerHostAddress}}/v1/actions/option
+Content-Type: application/json
+
+{
+  "type": 1,
+  "wsoid": 1,
+  "target": 1,
+  "data": 1
+}
+
+###
+
+POST {{ServerHostAddress}}/v1/workflows/signature/stream
+Content-Type: application/json
+
+{
+  "ref_id": 1,
+  "module_type": 1,
+  "user_id": 1,
+  "action_id": 1,
+  "group_id": 1,
+  "status_in": 1,
+  "status_out": 2
+}
+
+###
+
+POST {{ServerHostAddress}}/v1/workflows/copy/stream
+Content-Type: application/json
+
+{
+  "from_id": 1,
+  "to_id": 2
+}
+
+###
+
+GET {{ServerHostAddress}}/v1/steps/1/actions/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/cases/active/stream?ref_id=1&group_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/findings/reason-of/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/locks/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/cancel-reasons/stream?is_formal=true
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/creatable/stream?compo=ARMY&module=1&group_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/findings/reason-of/1/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/findings/stream?group_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/module/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/pages/access-by-group/stream?workflow=1&status=1&group=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/pages/access-by-workflow-view/stream?compo=ARMY&workflow=1&status=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/pages/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/permissions/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/permissions-by-compo/stream?compo=ARMY
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/return-reasons/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/rwoa-reasons/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/status-codes/by-compo/stream?compo=ARMY
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/status-codes/by-compo-and-module/stream?compo=ARMY&module=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/status-codes/by-sign-code/stream?group_id=1&module=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/status-codes/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/status-codes-by-access-scope/stream?access_scope=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/status-codes/1/scope/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/steps/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/steps-by-status/stream?status=1&death_status=active
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/viewable/stream?group_id=1&module=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/by-compo/stream?compo=ARMY&user_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/modules/1/workflows/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/initial-status-code/stream?compo=ARMY&module=1&workflow_id=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/title/stream?module_id=1&sub_case=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/title-by-work-status/stream?sub_case=1
+Accept: application/json
+
+###
+
+POST {{ServerHostAddress}}/v1/actions/stream
+Content-Type: application/json
+
+{
+  "type": 1,
+  "step_id": 1,
+  "target": 1,
+  "data": 1
+}
+
+###
+
+POST {{ServerHostAddress}}/v1/actions/option/stream
+Content-Type: application/json
+
+{
+  "type": 1,
+  "wsoid": 1,
+  "target": 1,
+  "data": 1
+}
+
+###
+
+# Application Process Endpoints
+
+DELETE {{ServerHostAddress}}/v1/logs/1
+
+###
+
+GET {{ServerHostAddress}}/v1/processes/last-execution-date?process_name=test
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/processes/last-execution-date/stream?process_name=test
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/logs
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/logs/stream
+Accept: application/json
+
+###
+
+POST {{ServerHostAddress}}/v1/logs
+Content-Type: application/json
+
+{
+  "process_name": "test",
+  "execution_date": "2025-10-11",
+  "message": "Test message"
+}
+
+###
+
+GET {{ServerHostAddress}}/v1/processes/active?process_name=test
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/processes/active/stream?process_name=test
+Accept: application/json
+
+###
+
+# Workflow Entity Endpoints
+
+GET {{ServerHostAddress}}/v1/workflows/1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/1/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/by-ref-id?ref_id=1&module=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/by-ref-id/stream?ref_id=1&module=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/by-ref-id-and-type?ref_id=1&module=1&workflow_type=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflows/by-ref-id-and-type/stream?ref_id=1&module=1&workflow_type=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflow-types
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workflow-types/stream
+Accept: application/json
+
+###
+
+POST {{ServerHostAddress}}/v1/workflows
+Content-Type: application/json
+
+{
+  "ref_id": 1,
+  "module": 1,
+  "workflow_type": 1,
+  "workflow_text": "Test workflow",
+  "user_id": 1
+}
+
+###
+
+PUT {{ServerHostAddress}}/v1/workflows/1
+Content-Type: application/json
+
+{
+  "workflow_text": "Updated workflow",
+  "user_id": 1
+}
+
+###
+
+# Workstatus Endpoints
+
+GET {{ServerHostAddress}}/v1/workstatuses/1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workstatuses/1/stream
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workstatuses/by-ref-id?ref_id=1&module=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workstatuses/by-ref-id/stream?ref_id=1&module=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workstatuses/by-ref-id-and-type?ref_id=1&module=1&workstatus_type=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workstatuses/by-ref-id-and-type/stream?ref_id=1&module=1&workstatus_type=1
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workstatus-types
+Accept: application/json
+
+###
+
+GET {{ServerHostAddress}}/v1/workstatus-types/stream
+Accept: application/json
+
+###
+
+POST {{ServerHostAddress}}/v1/workstatuses
+Content-Type: application/json
+
+{
+  "ref_id": 1,
+  "module": 1,
+  "workstatus_type": 1,
+  "workstatus_text": "Test workstatus",
+  "user_id": 1
+}
+
+###
+
+PUT {{ServerHostAddress}}/v1/workstatuses/1
+Content-Type: application/json
+
+{
+  "workstatus_text": "Updated workstatus",
+  "user_id": 1
+}
 
 ###
