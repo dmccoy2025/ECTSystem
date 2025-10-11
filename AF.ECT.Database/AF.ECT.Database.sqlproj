@@ -6,8 +6,8 @@
     <ProjectGuid>{4B1DF80C-1EF3-4257-90E0-56CDA405D48B}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <ModelCollation>1033, CI</ModelCollation>
-    <SuppressWarnings>71562;71502;71501</SuppressWarnings>
-    <NoWarn>$(NoWarn);MSB3277;MSB3276;SQL71562;SQL71502;SQL71501</NoWarn>
+    <SuppressWarnings>71562;71502;71501;71558</SuppressWarnings>
+    <NoWarn>*</NoWarn>
     <SqlCodeAnalysisRules>-Microsoft.Rules.Data.*</SqlCodeAnalysisRules>
     <SuppressTSqlWarnings>True</SuppressTSqlWarnings>
     <WarningLevel>0</WarningLevel>
