@@ -12,6 +12,21 @@
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--no-hot-reload",
+                "--project",
+                "${workspaceFolder}/AF.ECT.AppHost"
+            ],
+            "isBackground": true,
+            "problemMatcher": "$msCompile",
+            "group": "build"
         }
     ]
 }
