@@ -116,6 +116,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		FileExplorer = Protos\
 		SolutionGuid = {3E2837D9-464A-4E20-BCE4-A360C7B87CB3}
 	EndGlobalSection
 EndGlobal

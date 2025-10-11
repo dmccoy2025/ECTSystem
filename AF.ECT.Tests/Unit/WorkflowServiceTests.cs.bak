@@ -99,7 +99,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetReinvestigationRequestsAsync(request, null!);
+        var response = await service.GetReinvestigationRequests(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -122,7 +122,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetReinvestigationRequestsAsync(request, null!);
+        var response = await service.GetReinvestigationRequests(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -146,7 +146,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetReinvestigationRequestsAsync(request, null!);
+        var response = await service.GetReinvestigationRequests(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -176,7 +176,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetReinvestigationRequestsAsync(request, null!);
+        var response = await service.GetReinvestigationRequests(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -203,7 +203,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var thrownException = await Assert.ThrowsAsync(exceptionType, () => service.GetReinvestigationRequestsAsync(request, null!));
+        var thrownException = await Assert.ThrowsAsync(exceptionType, () => service.GetReinvestigationRequests(request, null!));
         Assert.Equal(message, thrownException.Message);
     }
 
@@ -233,7 +233,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetMailingListForLODAsync(request, null!);
+        var response = await service.GetMailingListForLOD(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -255,7 +255,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetMailingListForLODAsync(request, null!);
+        var response = await service.GetMailingListForLOD(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -278,7 +278,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetMailingListForLODAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetMailingListForLOD(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -306,7 +306,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetManagedUsersAsync(request, null!);
+        var response = await service.GetManagedUsers(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -328,7 +328,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetManagedUsersAsync(request, null!);
+        var response = await service.GetManagedUsers(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -351,7 +351,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetManagedUsersAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetManagedUsers(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -375,7 +375,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetMembersUserIdAsync(request, null!);
+        var response = await service.GetMembersUserId(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -398,7 +398,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetMembersUserIdAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetMembersUserId(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -426,7 +426,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetUserAltTitleAsync(request, null!);
+        var response = await service.GetUserAltTitle(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -448,7 +448,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetUserAltTitleAsync(request, null!);
+        var response = await service.GetUserAltTitle(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -471,7 +471,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetUserAltTitleAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetUserAltTitle(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -499,7 +499,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetUserAltTitleByGroupCompoAsync(request, null!);
+        var response = await service.GetUserAltTitleByGroupCompo(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -521,7 +521,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetUserAltTitleByGroupCompoAsync(request, null!);
+        var response = await service.GetUserAltTitleByGroupCompo(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -544,7 +544,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetUserAltTitleByGroupCompoAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetUserAltTitleByGroupCompo(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -572,7 +572,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetUserNameAsync(request, null!);
+        var response = await service.GetUserName(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -594,7 +594,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetUserNameAsync(request, null!);
+        var response = await service.GetUserName(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -617,7 +617,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetUserNameAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetUserName(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -645,7 +645,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetUsersAltTitleByGroupAsync(request, null!);
+        var response = await service.GetUsersAltTitleByGroup(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -667,7 +667,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetUsersAltTitleByGroupAsync(request, null!);
+        var response = await service.GetUsersAltTitleByGroup(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -690,7 +690,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetUsersAltTitleByGroupAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetUsersAltTitleByGroup(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -718,7 +718,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetUsersOnlineAsync(request, null!);
+        var response = await service.GetUsersOnline(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -740,7 +740,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetUsersOnlineAsync(request, null!);
+        var response = await service.GetUsersOnline(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -763,7 +763,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetUsersOnlineAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetUsersOnline(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -791,7 +791,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetWhoisAsync(request, null!);
+        var response = await service.GetWhois(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -821,7 +821,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetWhoisAsync(request, null!);
+        var response = await service.GetWhois(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -844,7 +844,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWhoisAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWhois(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -872,7 +872,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.HasHQTechAccountAsync(request, null!);
+        var response = await service.HasHQTechAccount(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -894,7 +894,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.HasHQTechAccountAsync(request, null!);
+        var response = await service.HasHQTechAccount(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -917,7 +917,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.HasHQTechAccountAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.HasHQTechAccount(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -945,7 +945,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.IsFinalStatusCodeAsync(request, null!);
+        var response = await service.IsFinalStatusCode(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -967,7 +967,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.IsFinalStatusCodeAsync(request, null!);
+        var response = await service.IsFinalStatusCode(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -990,7 +990,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.IsFinalStatusCodeAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.IsFinalStatusCode(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1014,7 +1014,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.LogoutAsync(request, null!);
+        var response = await service.Logout(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1037,7 +1037,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.LogoutAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.Logout(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1061,7 +1061,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.RegisterUserAsync(request, null!);
+        var response = await service.RegisterUser(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1084,7 +1084,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.RegisterUserAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.RegisterUser(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1108,7 +1108,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.RegisterUserRoleAsync(request, null!);
+        var response = await service.RegisterUserRole(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1131,7 +1131,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.RegisterUserRoleAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.RegisterUserRole(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1159,7 +1159,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.SearchMemberDataAsync(request, null!);
+        var response = await service.SearchMemberData(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1181,7 +1181,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.SearchMemberDataAsync(request, null!);
+        var response = await service.SearchMemberData(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1204,7 +1204,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.SearchMemberDataAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.SearchMemberData(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1232,7 +1232,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.SearchMemberDataTestAsync(request, null!);
+        var response = await service.SearchMemberDataTest(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1254,7 +1254,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.SearchMemberDataTestAsync(request, null!);
+        var response = await service.SearchMemberDataTest(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1277,7 +1277,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.SearchMemberDataTestAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.SearchMemberDataTest(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1301,7 +1301,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.UpdateAccountStatusAsync(request, null!);
+        var response = await service.UpdateAccountStatus(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1324,7 +1324,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.UpdateAccountStatusAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.UpdateAccountStatus(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1352,7 +1352,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.UpdateLoginAsync(request, null!);
+        var response = await service.UpdateLogin(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1374,7 +1374,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.UpdateLoginAsync(request, null!);
+        var response = await service.UpdateLogin(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1397,7 +1397,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.UpdateLoginAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.UpdateLogin(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1421,7 +1421,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.UpdateManagedSettingsAsync(request, null!);
+        var response = await service.UpdateManagedSettings(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1444,7 +1444,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.UpdateManagedSettingsAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.UpdateManagedSettings(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1468,7 +1468,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.UpdateUserAltTitleAsync(request, null!);
+        var response = await service.UpdateUserAltTitle(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1491,7 +1491,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.UpdateUserAltTitleAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.UpdateUserAltTitle(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1523,7 +1523,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.AddSignatureAsync(request, null!);
+        var response = await service.AddSignature(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1545,7 +1545,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.AddSignatureAsync(request, null!);
+        var response = await service.AddSignature(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1568,7 +1568,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.AddSignatureAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.AddSignature(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1592,7 +1592,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.CopyActionsAsync(request, null!);
+        var response = await service.CopyActions(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1615,7 +1615,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.CopyActionsAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.CopyActions(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1639,7 +1639,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.CopyRulesAsync(request, null!);
+        var response = await service.CopyRules(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1662,7 +1662,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.CopyRulesAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.CopyRules(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1690,7 +1690,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.CopyWorkflowAsync(request, null!);
+        var response = await service.CopyWorkflow(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1712,7 +1712,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.CopyWorkflowAsync(request, null!);
+        var response = await service.CopyWorkflow(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1735,7 +1735,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.CopyWorkflowAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.CopyWorkflow(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1759,7 +1759,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.DeleteStatusCodeAsync(request, null!);
+        var response = await service.DeleteStatusCode(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1782,7 +1782,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.DeleteStatusCodeAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.DeleteStatusCode(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1810,7 +1810,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetActionsByStepAsync(request, null!);
+        var response = await service.GetActionsByStep(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1840,7 +1840,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetActionsByStepAsync(request, null!);
+        var response = await service.GetActionsByStep(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1863,7 +1863,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetActionsByStepAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetActionsByStep(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1891,7 +1891,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetActiveCasesAsync(request, null!);
+        var response = await service.GetActiveCases(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1913,7 +1913,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetActiveCasesAsync(request, null!);
+        var response = await service.GetActiveCases(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1936,7 +1936,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetActiveCasesAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetActiveCases(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -1964,7 +1964,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetAllFindingByReasonOfAsync(request, null!);
+        var response = await service.GetAllFindingByReasonOf(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -1990,7 +1990,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetAllFindingByReasonOfAsync(request, null!);
+        var response = await service.GetAllFindingByReasonOf(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2013,7 +2013,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetAllFindingByReasonOfAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetAllFindingByReasonOf(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -2041,7 +2041,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetAllLocksAsync(request, null!);
+        var response = await service.GetAllLocks(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2071,7 +2071,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetAllLocksAsync(request, null!);
+        var response = await service.GetAllLocks(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2094,7 +2094,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetAllLocksAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetAllLocks(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -2122,7 +2122,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetCancelReasonsAsync(request, null!);
+        var response = await service.GetCancelReasons(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2148,7 +2148,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetCancelReasonsAsync(request, null!);
+        var response = await service.GetCancelReasons(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2171,7 +2171,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetCancelReasonsAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetCancelReasons(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -2199,7 +2199,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetCreatableByGroupAsync(request, null!);
+        var response = await service.GetCreatableByGroup(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2227,7 +2227,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetCreatableByGroupAsync(request, null!);
+        var response = await service.GetCreatableByGroup(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2250,7 +2250,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetCreatableByGroupAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetCreatableByGroup(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -2278,7 +2278,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetFindingByReasonOfByIdAsync(request, null!);
+        var response = await service.GetFindingByReasonOfById(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2306,7 +2306,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetFindingByReasonOfByIdAsync(request, null!);
+        var response = await service.GetFindingByReasonOfById(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2329,7 +2329,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetFindingByReasonOfByIdAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetFindingByReasonOfById(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -2357,7 +2357,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetFindingsAsync(request, null!);
+        var response = await service.GetFindings(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2387,7 +2387,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetFindingsAsync(request, null!);
+        var response = await service.GetFindings(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2410,7 +2410,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetFindingsAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetFindings(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -2438,7 +2438,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetModuleFromWorkflowAsync(request, null!);
+        var response = await service.GetModuleFromWorkflow(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2460,7 +2460,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetModuleFromWorkflowAsync(request, null!);
+        var response = await service.GetModuleFromWorkflow(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2483,7 +2483,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetModuleFromWorkflowAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetModuleFromWorkflow(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -2511,7 +2511,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetPageAccessByGroupAsync(request, null!);
+        var response = await service.GetPageAccessByGroup(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2533,7 +2533,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetPageAccessByGroupAsync(request, null!);
+        var response = await service.GetPageAccessByGroup(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2556,7 +2556,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPageAccessByGroupAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPageAccessByGroup(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -2584,7 +2584,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetPageAccessByWorkflowViewAsync(request, null!);
+        var response = await service.GetPageAccessByWorkflowView(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2606,7 +2606,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetPageAccessByWorkflowViewAsync(request, null!);
+        var response = await service.GetPageAccessByWorkflowView(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2629,7 +2629,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPageAccessByWorkflowViewAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPageAccessByWorkflowView(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -2657,7 +2657,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetPagesByWorkflowIdAsync(request, null!);
+        var response = await service.GetPagesByWorkflowId(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2679,7 +2679,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetPagesByWorkflowIdAsync(request, null!);
+        var response = await service.GetPagesByWorkflowId(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2702,7 +2702,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPagesByWorkflowIdAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPagesByWorkflowId(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -2730,7 +2730,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetPermissionsAsync(request, null!);
+        var response = await service.GetPermissions(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2752,7 +2752,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetPermissionsAsync(request, null!);
+        var response = await service.GetPermissions(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2775,7 +2775,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPermissionsAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPermissions(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -2803,7 +2803,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetPermissionsByCompoAsync(request, null!);
+        var response = await service.GetPermissionsByCompo(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2825,7 +2825,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetPermissionsByCompoAsync(request, null!);
+        var response = await service.GetPermissionsByCompo(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2848,7 +2848,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPermissionsByCompoAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPermissionsByCompo(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -2876,7 +2876,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetReturnReasonsAsync(request, null!);
+        var response = await service.GetReturnReasons(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2898,7 +2898,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetReturnReasonsAsync(request, null!);
+        var response = await service.GetReturnReasons(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2921,7 +2921,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetReturnReasonsAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetReturnReasons(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -2949,7 +2949,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetRwoaReasonsAsync(request, null!);
+        var response = await service.GetRwoaReasons(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2971,7 +2971,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetRwoaReasonsAsync(request, null!);
+        var response = await service.GetRwoaReasons(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -2994,7 +2994,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetRwoaReasonsAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetRwoaReasons(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -3022,7 +3022,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStatusCodesByCompoAsync(request, null!);
+        var response = await service.GetStatusCodesByCompo(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3044,7 +3044,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStatusCodesByCompoAsync(request, null!);
+        var response = await service.GetStatusCodesByCompo(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3067,7 +3067,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByCompoAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByCompo(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -3095,7 +3095,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStatusCodesByCompoAndModuleAsync(request, null!);
+        var response = await service.GetStatusCodesByCompoAndModule(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3117,7 +3117,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStatusCodesByCompoAndModuleAsync(request, null!);
+        var response = await service.GetStatusCodesByCompoAndModule(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3140,7 +3140,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByCompoAndModuleAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByCompoAndModule(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -3168,7 +3168,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStatusCodesBySignCodeAsync(request, null!);
+        var response = await service.GetStatusCodesBySignCode(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3190,7 +3190,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStatusCodesBySignCodeAsync(request, null!);
+        var response = await service.GetStatusCodesBySignCode(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3213,7 +3213,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesBySignCodeAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesBySignCode(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -3241,7 +3241,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStatusCodesByWorkflowAsync(request, null!);
+        var response = await service.GetStatusCodesByWorkflow(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3263,7 +3263,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStatusCodesByWorkflowAsync(request, null!);
+        var response = await service.GetStatusCodesByWorkflow(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3286,7 +3286,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByWorkflowAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByWorkflow(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -3314,7 +3314,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStatusCodesByWorkflowAndAccessScopeAsync(request, null!);
+        var response = await service.GetStatusCodesByWorkflowAndAccessScope(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3336,7 +3336,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStatusCodesByWorkflowAndAccessScopeAsync(request, null!);
+        var response = await service.GetStatusCodesByWorkflowAndAccessScope(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3359,7 +3359,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByWorkflowAndAccessScopeAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByWorkflowAndAccessScope(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -3387,7 +3387,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStatusCodeScopeAsync(request, null!);
+        var response = await service.GetStatusCodeScope(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3409,7 +3409,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStatusCodeScopeAsync(request, null!);
+        var response = await service.GetStatusCodeScope(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3432,7 +3432,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodeScopeAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodeScope(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -3460,7 +3460,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStepsByWorkflowAsync(request, null!);
+        var response = await service.GetStepsByWorkflow(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3482,7 +3482,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStepsByWorkflowAsync(request, null!);
+        var response = await service.GetStepsByWorkflow(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3505,7 +3505,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStepsByWorkflowAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStepsByWorkflow(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -3533,7 +3533,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStepsByWorkflowAndStatusAsync(request, null!);
+        var response = await service.GetStepsByWorkflowAndStatus(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3555,7 +3555,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetStepsByWorkflowAndStatusAsync(request, null!);
+        var response = await service.GetStepsByWorkflowAndStatus(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3578,7 +3578,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStepsByWorkflowAndStatusAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStepsByWorkflowAndStatus(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -3606,7 +3606,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetWorkflowInitialStatusCodeAsync(request, null!);
+        var response = await service.GetWorkflowInitialStatusCode(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3628,7 +3628,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetWorkflowInitialStatusCodeAsync(request, null!);
+        var response = await service.GetWorkflowInitialStatusCode(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3651,7 +3651,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowInitialStatusCodeAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowInitialStatusCode(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -3679,7 +3679,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetWorkflowByCompoAsync(request, null!);
+        var response = await service.GetWorkflowByCompo(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3701,7 +3701,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetWorkflowByCompoAsync(request, null!);
+        var response = await service.GetWorkflowByCompo(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3724,7 +3724,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowByCompoAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowByCompo(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -3752,7 +3752,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetWorkflowFromModuleAsync(request, null!);
+        var response = await service.GetWorkflowFromModule(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3774,7 +3774,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetWorkflowFromModuleAsync(request, null!);
+        var response = await service.GetWorkflowFromModule(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3797,7 +3797,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowFromModuleAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowFromModule(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -3825,7 +3825,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetWorkflowTitleAsync(request, null!);
+        var response = await service.GetWorkflowTitle(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3847,7 +3847,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetWorkflowTitleAsync(request, null!);
+        var response = await service.GetWorkflowTitle(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3870,7 +3870,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowTitleAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowTitle(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -3898,7 +3898,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetWorkflowTitleByWorkStatusIdAsync(request, null!);
+        var response = await service.GetWorkflowTitleByWorkStatusId(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3920,7 +3920,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.GetWorkflowTitleByWorkStatusIdAsync(request, null!);
+        var response = await service.GetWorkflowTitleByWorkStatusId(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3943,7 +3943,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowTitleByWorkStatusIdAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowTitleByWorkStatusId(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -3971,7 +3971,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.InsertActionAsync(request, null!);
+        var response = await service.InsertAction(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -3993,7 +3993,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.InsertActionAsync(request, null!);
+        var response = await service.InsertAction(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -4016,7 +4016,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.InsertActionAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.InsertAction(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -4044,7 +4044,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.InsertOptionActionAsync(request, null!);
+        var response = await service.InsertOptionAction(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -4066,7 +4066,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act
-        var response = await service.InsertOptionActionAsync(request, null!);
+        var response = await service.InsertOptionAction(request, null!);
 
         // Assert
         Assert.NotNull(response);
@@ -4089,7 +4089,7 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.InsertOptionActionAsync(request, null!));
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.InsertOptionAction(request, null!));
         Assert.Equal("Database connection failed", exception.Message);
     }
 
@@ -4153,4 +4153,3 @@ internal class TestResilienceService : IResilienceService
     }
 }
 #endregion
-
