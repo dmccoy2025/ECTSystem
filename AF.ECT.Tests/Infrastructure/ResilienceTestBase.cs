@@ -96,7 +96,7 @@ public abstract class ResilienceTestBase : IDisposable
     /// <summary>
     /// Measures the execution time of an action.
     /// </summary>
-    protected async Task<TimeSpan> MeasureExecutionTime(Func<Task> action)
+    protected static async Task<TimeSpan> MeasureExecutionTime(Func<Task> action)
     {
         var startTime = DateTime.UtcNow;
         await action();

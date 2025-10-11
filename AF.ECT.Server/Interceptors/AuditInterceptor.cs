@@ -97,7 +97,7 @@ public class AuditInterceptor : Interceptor
     /// <summary>
     /// Extracts the user ID from the request context.
     /// </summary>
-    private string GetUserId(ServerCallContext context)
+    private static string GetUserId(ServerCallContext context)
     {
         try
         {
@@ -139,7 +139,7 @@ public class AuditInterceptor : Interceptor
     /// <summary>
     /// Extracts the client IP address from the request context.
     /// </summary>
-    private string GetClientIpAddress(ServerCallContext context)
+    private static string GetClientIpAddress(ServerCallContext context)
     {
         try
         {
