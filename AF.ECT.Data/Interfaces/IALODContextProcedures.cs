@@ -37,6 +37,11 @@ public partial interface IALODContextProcedures
     Task<List<ApplicationWarmupProcess_sp_GetAllLogsResult>> ApplicationWarmupProcess_sp_GetAllLogsAsync(OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default);
 
     /// <summary>
+    /// Asynchronously executes the ApplicationWarmupProcess_sp_GetAllLogs_pagination stored procedure.
+    /// </summary>
+    Task<List<ApplicationWarmupProcess_sp_GetAllLogsResult>> ApplicationWarmupProcess_sp_GetAllLogs_paginationAsync(int? pageNumber = 1, int? pageSize = 10, string? processName = null, DateTime? startDate = null, DateTime? endDate = null, string? messageFilter = null, string? sortBy = "ExecutionDate", string? sortOrder = "DESC", OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default);
+
+    /// <summary>
     /// Asynchronously executes the ApplicationWarmupProcess_sp_InsertLog stored procedure.
     /// </summary>
     Task<int> ApplicationWarmupProcess_sp_InsertLogAsync(string? processName, DateTime? executionDate, string? message, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default);

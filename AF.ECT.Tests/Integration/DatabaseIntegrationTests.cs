@@ -2,7 +2,7 @@ using AF.ECT.Shared;
 using FluentAssertions;
 using AF.ECT.Tests.Infrastructure;
 
-namespace AF.ECT.Tests;
+namespace AF.ECT.Tests.Integration;
 
 /// <summary>
 /// Integration tests that use a real SQLite database for more realistic testing.

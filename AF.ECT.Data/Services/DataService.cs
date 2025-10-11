@@ -4,10 +4,12 @@ using AF.ECT.Data.Models;
 using AF.ECT.Data.Extensions;
 using AF.ECT.Shared;
 using AF.ECT.Data.ResultTypes;
+using AF.ECT.Data.Interfaces;
+
 
 #nullable enable
 
-namespace AF.ECT.Data.Interfaces;
+namespace AF.ECT.Data.Services;
 
 /// <summary>
 /// Provides data access operations for the application.
@@ -1431,7 +1433,7 @@ public class DataService : IDataService
         try
         {
             using var context = await _contextFactory.CreateDbContextAsync(cancellationToken);
-            var result = await ((ALODContextProcedures)context.Procedures).ApplicationWarmupProcess_sp_DeleteLogByIdAsync(logId, cancellationToken: cancellationToken);
+            var result = await context.Procedures.ApplicationWarmupProcess_sp_DeleteLogByIdAsync(logId, cancellationToken: cancellationToken);
             _logger.LogInformation("Log entry {LogId} deleted successfully", logId);
             return result;
         }
@@ -1488,6 +1490,45 @@ public class DataService : IDataService
     }
 
     /// <summary>
+    /// Asynchronously retrieves all log entries with pagination, filtering, and sorting.
+    /// </summary>
+    /// <param name="pageNumber">The page number to retrieve.</param>
+    /// <param name="pageSize">The number of items per page.</param>
+    /// <param name="processName">Optional filter by process name.</param>
+    /// <param name="startDate">Optional filter for execution date from this date.</param>
+    /// <param name="endDate">Optional filter for execution date up to this date.</param>
+    /// <param name="messageFilter">Optional filter by message content.</param>
+    /// <param name="sortBy">Column to sort by ('Id', 'Name', 'ExecutionDate', 'Message').</param>
+    /// <param name="sortOrder">Sort order ('ASC' or 'DESC').</param>
+    /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
+    /// <returns>A task representing the asynchronous operation, containing a list of log entries for the specified page.</returns>
+    public async Task<List<ApplicationWarmupProcess_sp_GetAllLogsResult>> GetAllLogsPaginationAsync(int? pageNumber = 1, int? pageSize = 10, string? processName = null, DateTime? startDate = null, DateTime? endDate = null, string? messageFilter = null, string? sortBy = "ExecutionDate", string? sortOrder = "DESC", CancellationToken cancellationToken = default)
+    {
+        _logger.LogInformation("Retrieving all log entries with pagination, filtering, and sorting, page {PageNumber}, size {PageSize}", pageNumber, pageSize);
+        try
+        {
+            using var context = await _contextFactory.CreateDbContextAsync(cancellationToken);
+            var result = await context.Procedures.ApplicationWarmupProcess_sp_GetAllLogs_paginationAsync(
+                pageNumber,
+                pageSize,
+                processName,
+                startDate,
+                endDate,
+                messageFilter,
+                sortBy,
+                sortOrder,
+                cancellationToken: cancellationToken);
+            _logger.LogInformation("Retrieved {Count} log entries for page {PageNumber}", result.Count, pageNumber);
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error retrieving all log entries with pagination, filtering, and sorting, page {PageNumber}", pageNumber);
+            throw;
+        }
+    }
+
+    /// <summary>
     /// Asynchronously inserts a new log entry.
     /// </summary>
     /// <param name="processName">The name of the process.</param>
@@ -1501,7 +1542,7 @@ public class DataService : IDataService
         try
         {
             using var context = await _contextFactory.CreateDbContextAsync(cancellationToken);
-            var result = await ((ALODContextProcedures)context.Procedures).ApplicationWarmupProcess_sp_InsertLogAsync(processName, executionDate, message, cancellationToken: cancellationToken);
+            var result = await context.Procedures.ApplicationWarmupProcess_sp_InsertLogAsync(processName, executionDate, message, cancellationToken: cancellationToken);
             _logger.LogInformation("Log entry inserted successfully for process {ProcessName}", processName);
             return result;
         }

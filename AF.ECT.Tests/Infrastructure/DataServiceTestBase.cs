@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using AF.ECT.Data.Models;
 using AF.ECT.Data.Interfaces;
 using AF.ECT.Data.ResultTypes;
+using AF.ECT.Data.Services;
 
 namespace AF.ECT.Tests.Infrastructure;
 

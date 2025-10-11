@@ -11,129 +11,129 @@ service WorkflowService {
 
 // Core User Methods
   // Retrieves reinvestigation requests for a user, optionally filtered by SARC status.
-  rpc GetReinvestigationRequests (GetReinvestigationRequestsRequest) returns (GetReinvestigationRequestsResponse) {
+  rpc GetReinvestigationRequestsAsync (GetReinvestigationRequestsRequest) returns (GetReinvestigationRequestsResponse) {
     option (google.api.http) = {
       get: "/v1/users/reinvestigation-requests"
     };
   }
   // Retrieves reinvestigation requests for a user as a stream, optionally filtered by SARC status.
-  rpc GetReinvestigationRequestsStream (GetReinvestigationRequestsRequest) returns (stream ReinvestigationRequestItem) {
+  rpc GetReinvestigationRequestsStreamAsync (GetReinvestigationRequestsRequest) returns (stream ReinvestigationRequestItem) {
     option (google.api.http) = {
       get: "/v1/users/reinvestigation-requests/stream"
     };
   }
   // Retrieves mailing list for LOD based on reference ID, group ID, and status.
-  rpc GetMailingListForLOD (GetMailingListForLODRequest) returns (GetMailingListForLODResponse) {
+  rpc GetMailingListForLODAsync (GetMailingListForLODRequest) returns (GetMailingListForLODResponse) {
     option (google.api.http) = {
       get: "/v1/users/mailing-list"
     };
   }
   // Retrieves mailing list for LOD as a stream based on reference ID, group ID, and status.
-  rpc GetMailingListForLODStream (GetMailingListForLODRequest) returns (stream MailingListItem) {
+  rpc GetMailingListForLODStreamAsync (GetMailingListForLODRequest) returns (stream MailingListItem) {
     option (google.api.http) = {
       get: "/v1/users/mailing-list/stream"
     };
   }
   // Retrieves managed users based on various filters like user ID, SSN, name, status, role, and unit.
   // Caching hint: User data may be cached for short periods (5-15 minutes) depending on update frequency.
-  rpc GetManagedUsers (GetManagedUsersRequest) returns (GetManagedUsersResponse) {
+  rpc GetManagedUsersAsync (GetManagedUsersRequest) returns (GetManagedUsersResponse) {
     option (google.api.http) = {
       get: "/v1/users/managed"
     };
   }
   // Retrieves managed users as a stream based on various filters.
-  rpc GetManagedUsersStream (GetManagedUsersRequest) returns (stream ManagedUserItem) {
+  rpc GetManagedUsersStreamAsync (GetManagedUsersRequest) returns (stream ManagedUserItem) {
     option (google.api.http) = {
       get: "/v1/users/managed/stream"
     };
   }
   // Retrieves user ID for a member based on SSN.
-  rpc GetMembersUserId (GetMembersUserIdRequest) returns (GetMembersUserIdResponse) {
+  rpc GetMembersUserIdAsync (GetMembersUserIdRequest) returns (GetMembersUserIdResponse) {
     option (google.api.http) = {
       get: "/v1/users/member-id"
     };
   }
   // Retrieves alternative title for a user based on user ID and group ID.
-  rpc GetUserAltTitle (GetUserAltTitleRequest) returns (GetUserAltTitleResponse) {
+  rpc GetUserAltTitleAsync (GetUserAltTitleRequest) returns (GetUserAltTitleResponse) {
     option (google.api.http) = {
       get: "/v1/users/alt-title"
     };
   }
   // Retrieves alternative title for a user as a stream based on user ID and group ID.
-  rpc GetUserAltTitleStream (GetUserAltTitleRequest) returns (stream UserAltTitleItem) {
+  rpc GetUserAltTitleStreamAsync (GetUserAltTitleRequest) returns (stream UserAltTitleItem) {
     option (google.api.http) = {
       get: "/v1/users/alt-title/stream"
     };
   }
   // Retrieves alternative title for a user by group component based on group ID and work component.
-  rpc GetUserAltTitleByGroupCompo (GetUserAltTitleByGroupCompoRequest) returns (GetUserAltTitleByGroupCompoResponse) {
+  rpc GetUserAltTitleByGroupCompoAsync (GetUserAltTitleByGroupCompoRequest) returns (GetUserAltTitleByGroupCompoResponse) {
     option (google.api.http) = {
       get: "/v1/users/alt-title-by-group-compo"
     };
   }
   // Retrieves alternative title for a user by group component as a stream.
-  rpc GetUserAltTitleByGroupCompoStream (GetUserAltTitleByGroupCompoRequest) returns (stream UserAltTitleByGroupCompoItem) {
+  rpc GetUserAltTitleByGroupCompoStreamAsync (GetUserAltTitleByGroupCompoRequest) returns (stream UserAltTitleByGroupCompoItem) {
     option (google.api.http) = {
       get: "/v1/users/alt-title-by-group-compo/stream"
     };
   }
   // Retrieves user name based on first and last name.
-  rpc GetUserName (GetUserNameRequest) returns (GetUserNameResponse) {
+  rpc GetUserNameAsync (GetUserNameRequest) returns (GetUserNameResponse) {
     option (google.api.http) = {
       get: "/v1/users/name"
     };
   }
   // Retrieves user name as a stream based on first and last name.
-  rpc GetUserNameStream (GetUserNameRequest) returns (stream UserNameItem) {
+  rpc GetUserNameStreamAsync (GetUserNameRequest) returns (stream UserNameItem) {
     option (google.api.http) = {
       get: "/v1/users/name/stream"
     };
   }
   // Retrieves alternative titles for users by group based on group ID.
-  rpc GetUsersAltTitleByGroup (GetUsersAltTitleByGroupRequest) returns (GetUsersAltTitleByGroupResponse) {
+  rpc GetUsersAltTitleByGroupAsync (GetUsersAltTitleByGroupRequest) returns (GetUsersAltTitleByGroupResponse) {
     option (google.api.http) = {
       get: "/v1/users/alt-title-by-group"
     };
   }
   // Retrieves alternative titles for users by group as a stream.
-  rpc GetUsersAltTitleByGroupStream (GetUsersAltTitleByGroupRequest) returns (stream UsersAltTitleByGroupItem) {
+  rpc GetUsersAltTitleByGroupStreamAsync (GetUsersAltTitleByGroupRequest) returns (stream UsersAltTitleByGroupItem) {
     option (google.api.http) = {
       get: "/v1/users/alt-title-by-group/stream"
     };
   }
   // Retrieves users who are currently online.
   // Caching hint: Online status changes frequently; use short cache duration (1-5 minutes) or real-time updates.
-  rpc GetUsersOnline (EmptyRequest) returns (GetUsersOnlineResponse) {
+  rpc GetUsersOnlineAsync (EmptyRequest) returns (GetUsersOnlineResponse) {
     option (google.api.http) = {
       get: "/v1/users/online"
     };
   }
   // Retrieves users who are currently online as a stream.
-  rpc GetUsersOnlineStream (EmptyRequest) returns (stream UserOnlineItem) {
+  rpc GetUsersOnlineStreamAsync (EmptyRequest) returns (stream UserOnlineItem) {
     option (google.api.http) = {
       get: "/v1/users/online/stream"
     };
   }
   // Retrieves whois information as a stream based on user ID.
-  rpc GetWhoisStream (GetWhoisRequest) returns (stream WhoisItem) {
+  rpc GetWhoisStreamAsync (GetWhoisRequest) returns (stream WhoisItem) {
     option (google.api.http) = {
       get: "/v1/users/whois/stream"
     };
   }
   // Checks if a user has HQ tech account as a stream based on origin user ID and EDIPIN.
-  rpc HasHQTechAccountStream (HasHQTechAccountRequest) returns (stream HQTechAccountItem) {
+  rpc HasHQTechAccountStreamAsync (HasHQTechAccountRequest) returns (stream HQTechAccountItem) {
     option (google.api.http) = {
       get: "/v1/users/hq-tech-account/stream"
     };
   }
   // Checks if a status code is final as a stream based on status ID.
-  rpc IsFinalStatusCodeStream (IsFinalStatusCodeRequest) returns (stream FinalStatusCodeItem) {
+  rpc IsFinalStatusCodeStreamAsync (IsFinalStatusCodeRequest) returns (stream FinalStatusCodeItem) {
     option (google.api.http) = {
       get: "/v1/status-codes/final/stream"
     };
   }
   // Updates login information as a stream based on user ID, session ID, and remote address.
-  rpc UpdateLoginStream (UpdateLoginRequest) returns (stream LoginUpdateItem) {
+  rpc UpdateLoginStreamAsync (UpdateLoginRequest) returns (stream LoginUpdateItem) {
     option (google.api.http) = {
       post: "/v1/users/login/stream"
       body: "*"
@@ -141,91 +141,91 @@ service WorkflowService {
   }
   // Retrieves whois information based on user ID.
   // Caching hint: User session data; cache for short duration (5-10 minutes) to balance performance and accuracy.
-  rpc GetWhois (GetWhoisRequest) returns (GetWhoisResponse) {
+  rpc GetWhoisAsync (GetWhoisRequest) returns (GetWhoisResponse) {
     option (google.api.http) = {
       get: "/v1/users/whois"
     };
   }
   // Checks if a user has HQ tech account based on origin user ID and EDIPIN.
-  rpc HasHQTechAccount (HasHQTechAccountRequest) returns (HasHQTechAccountResponse) {
+  rpc HasHQTechAccountAsync (HasHQTechAccountRequest) returns (HasHQTechAccountResponse) {
     option (google.api.http) = {
       get: "/v1/users/hq-tech-account"
     };
   }
   // Checks if a status code is final based on status ID.
-  rpc IsFinalStatusCode (IsFinalStatusCodeRequest) returns (IsFinalStatusCodeResponse) {
+  rpc IsFinalStatusCodeAsync (IsFinalStatusCodeRequest) returns (IsFinalStatusCodeResponse) {
     option (google.api.http) = {
       get: "/v1/status-codes/final"
     };
   }
   // Logs out a user based on user ID.
-  rpc Logout (LogoutRequest) returns (LogoutResponse) {
+  rpc LogoutAsync (LogoutRequest) returns (LogoutResponse) {
     option (google.api.http) = {
       post: "/v1/users/logout"
       body: "*"
     };
   }
   // Registers a new user with details like user ID, work component, email preference, group ID, account status, and expiration date.
-  rpc RegisterUser (RegisterUserRequest) returns (RegisterUserResponse) {
+  rpc RegisterUserAsync (RegisterUserRequest) returns (RegisterUserResponse) {
     option (google.api.http) = {
       post: "/v1/users/register"
       body: "*"
     };
   }
   // Registers a user role with user ID, group ID, and status.
-  rpc RegisterUserRole (RegisterUserRoleRequest) returns (RegisterUserRoleResponse) {
+  rpc RegisterUserRoleAsync (RegisterUserRoleRequest) returns (RegisterUserRoleResponse) {
     option (google.api.http) = {
       post: "/v1/users/register-role"
       body: "*"
     };
   }
   // Searches member data based on user ID, SSN, names, unit, and report view.
-  rpc SearchMemberData (SearchMemberDataRequest) returns (SearchMemberDataResponse) {
+  rpc SearchMemberDataAsync (SearchMemberDataRequest) returns (SearchMemberDataResponse) {
     option (google.api.http) = {
       get: "/v1/members/search"
     };
   }
   // Searches member data as a stream based on user ID, SSN, names, unit, and report view.
-  rpc SearchMemberDataStream (SearchMemberDataRequest) returns (stream MemberDataItem) {
+  rpc SearchMemberDataStreamAsync (SearchMemberDataRequest) returns (stream MemberDataItem) {
     option (google.api.http) = {
       get: "/v1/members/search/stream"
     };
   }
   // Searches member data for testing based on user ID, SSN, name, unit, and report view.
-  rpc SearchMemberDataTest (SearchMemberDataTestRequest) returns (SearchMemberDataTestResponse) {
+  rpc SearchMemberDataTestAsync (SearchMemberDataTestRequest) returns (SearchMemberDataTestResponse) {
     option (google.api.http) = {
       get: "/v1/members/search-test"
     };
   }
   // Searches member data for testing as a stream.
-  rpc SearchMemberDataTestStream (SearchMemberDataTestRequest) returns (stream MemberDataTestItem) {
+  rpc SearchMemberDataTestStreamAsync (SearchMemberDataTestRequest) returns (stream MemberDataTestItem) {
     option (google.api.http) = {
       get: "/v1/members/search-test/stream"
     };
   }
   // Updates account status for a user with status, expiration date, and comment.
-  rpc UpdateAccountStatus (UpdateAccountStatusRequest) returns (UpdateAccountStatusResponse) {
+  rpc UpdateAccountStatusAsync (UpdateAccountStatusRequest) returns (UpdateAccountStatusResponse) {
     option (google.api.http) = {
       put: "/v1/users/account-status"
       body: "*"
     };
   }
   // Updates login information based on user ID, session ID, and remote address.
-  rpc UpdateLogin (UpdateLoginRequest) returns (UpdateLoginResponse) {
+  rpc UpdateLoginAsync (UpdateLoginRequest) returns (UpdateLoginResponse) {
     option (google.api.http) = {
       post: "/v1/users/login"
       body: "*"
     };
   }
   // Updates managed settings for a user with component, role ID, group ID, comment, email preference, and expiration date.
-  rpc UpdateManagedSettings (UpdateManagedSettingsRequest) returns (UpdateManagedSettingsResponse) {
+  rpc UpdateManagedSettingsAsync (UpdateManagedSettingsRequest) returns (UpdateManagedSettingsResponse) {
     option (google.api.http) = {
       put: "/v1/users/managed-settings"
       body: "*"
     };
   }
   // Updates alternative title for a user based on user ID, group ID, and new title.
-  rpc UpdateUserAltTitle (UpdateUserAltTitleRequest) returns (UpdateUserAltTitleResponse) {
+  rpc UpdateUserAltTitleAsync (UpdateUserAltTitleRequest) returns (UpdateUserAltTitleResponse) {
     option (google.api.http) = {
       put: "/v1/users/alt-title"
       body: "*"
@@ -234,442 +234,442 @@ service WorkflowService {
 
   // Core Workflow Methods
   // Adds a signature to a workflow with reference ID, module type, user ID, action ID, group ID, status in/out.
-  rpc AddSignature (AddSignatureRequest) returns (AddSignatureResponse) {
+  rpc AddSignatureAsync (AddSignatureRequest) returns (AddSignatureResponse) {
     option (google.api.http) = {
       post: "/v1/workflows/signature"
       body: "*"
     };
   }
   // Copies actions from one workflow step to another.
-  rpc CopyActions (CopyActionsRequest) returns (CopyActionsResponse) {
+  rpc CopyActionsAsync (CopyActionsRequest) returns (CopyActionsResponse) {
     option (google.api.http) = {
       post: "/v1/workflows/copy-actions"
       body: "*"
     };
   }
   // Copies rules from one workflow to another.
-  rpc CopyRules (CopyRulesRequest) returns (CopyRulesResponse) {
+  rpc CopyRulesAsync (CopyRulesRequest) returns (CopyRulesResponse) {
     option (google.api.http) = {
       post: "/v1/workflows/copy-rules"
       body: "*"
     };
   }
   // Copies a workflow from one ID to another.
-  rpc CopyWorkflow (CopyWorkflowRequest) returns (CopyWorkflowResponse) {
+  rpc CopyWorkflowAsync (CopyWorkflowRequest) returns (CopyWorkflowResponse) {
     option (google.api.http) = {
       post: "/v1/workflows/copy"
       body: "*"
     };
   }
   // Deletes a status code by its ID.
-  rpc DeleteStatusCode (DeleteStatusCodeRequest) returns (DeleteStatusCodeResponse) {
+  rpc DeleteStatusCodeAsync (DeleteStatusCodeRequest) returns (DeleteStatusCodeResponse) {
     option (google.api.http) = {
       delete: "/v1/status-codes/{status_id}"
     };
   }
   // Retrieves actions by step ID.
-  rpc GetActionsByStep (GetActionsByStepRequest) returns (GetActionsByStepResponse) {
+  rpc GetActionsByStepAsync (GetActionsByStepRequest) returns (GetActionsByStepResponse) {
     option (google.api.http) = {
       get: "/v1/steps/{step_id}/actions"
     };
   }
   // Retrieves active cases based on reference ID and group ID.
-  rpc GetActiveCases (GetActiveCasesRequest) returns (GetActiveCasesResponse) {
+  rpc GetActiveCasesAsync (GetActiveCasesRequest) returns (GetActiveCasesResponse) {
     option (google.api.http) = {
       get: "/v1/cases/active"
     };
   }
   // Retrieves all findings by reason of.
-  rpc GetAllFindingByReasonOf (EmptyRequest) returns (GetAllFindingByReasonOfResponse) {
+  rpc GetAllFindingByReasonOfAsync (EmptyRequest) returns (GetAllFindingByReasonOfResponse) {
     option (google.api.http) = {
       get: "/v1/findings/reason-of"
     };
   }
   // Retrieves all locks.
-  rpc GetAllLocks (EmptyRequest) returns (GetAllLocksResponse) {
+  rpc GetAllLocksAsync (EmptyRequest) returns (GetAllLocksResponse) {
     option (google.api.http) = {
       get: "/v1/locks"
     };
   }
   // Retrieves cancel reasons for a workflow, optionally formal.
-  rpc GetCancelReasons (GetCancelReasonsRequest) returns (GetCancelReasonsResponse) {
+  rpc GetCancelReasonsAsync (GetCancelReasonsRequest) returns (GetCancelReasonsResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/cancel-reasons"
     };
   }
   // Retrieves creatable workflows by group based on component, module, and group ID.
   // Caching hint: Creatable workflows by group; cache for 15-30 minutes depending on workflow creation frequency.
-  rpc GetCreatableByGroup (GetCreatableByGroupRequest) returns (GetCreatableByGroupResponse) {
+  rpc GetCreatableByGroupAsync (GetCreatableByGroupRequest) returns (GetCreatableByGroupResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/creatable"
     };
   }
   // Retrieves finding by reason of by ID.
-  rpc GetFindingByReasonOfById (GetFindingByReasonOfByIdRequest) returns (GetFindingByReasonOfByIdResponse) {
+  rpc GetFindingByReasonOfByIdAsync (GetFindingByReasonOfByIdRequest) returns (GetFindingByReasonOfByIdResponse) {
     option (google.api.http) = {
       get: "/v1/findings/reason-of/{id}"
     };
   }
   // Retrieves findings for a workflow based on workflow ID and group ID.
-  rpc GetFindings (GetFindingsRequest) returns (GetFindingsResponse) {
+  rpc GetFindingsAsync (GetFindingsRequest) returns (GetFindingsResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/findings"
     };
   }
   // Retrieves module from workflow by workflow ID.
-  rpc GetModuleFromWorkflow (GetModuleFromWorkflowRequest) returns (GetModuleFromWorkflowResponse) {
+  rpc GetModuleFromWorkflowAsync (GetModuleFromWorkflowRequest) returns (GetModuleFromWorkflowResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/module"
     };
   }
   // Retrieves page access by group based on workflow, status, and group.
-  rpc GetPageAccessByGroup (GetPageAccessByGroupRequest) returns (GetPageAccessByGroupResponse) {
+  rpc GetPageAccessByGroupAsync (GetPageAccessByGroupRequest) returns (GetPageAccessByGroupResponse) {
     option (google.api.http) = {
       get: "/v1/pages/access-by-group"
     };
   }
   // Retrieves page access by workflow view based on component, workflow, and status.
-  rpc GetPageAccessByWorkflowView (GetPageAccessByWorkflowViewRequest) returns (GetPageAccessByWorkflowViewResponse) {
+  rpc GetPageAccessByWorkflowViewAsync (GetPageAccessByWorkflowViewRequest) returns (GetPageAccessByWorkflowViewResponse) {
     option (google.api.http) = {
       get: "/v1/pages/access-by-workflow-view"
     };
   }
   // Retrieves pages by workflow ID.
-  rpc GetPagesByWorkflowId (GetPagesByWorkflowIdRequest) returns (GetPagesByWorkflowIdResponse) {
+  rpc GetPagesByWorkflowIdAsync (GetPagesByWorkflowIdRequest) returns (GetPagesByWorkflowIdResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/pages"
     };
   }
   // Retrieves permissions for a workflow.
   // Caching hint: Permissions change infrequently per user/role; consider caching for 15-30 minutes.
-  rpc GetPermissions (GetPermissionsRequest) returns (GetPermissionsResponse) {
+  rpc GetPermissionsAsync (GetPermissionsRequest) returns (GetPermissionsResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/permissions"
     };
   }
   // Retrieves permissions by component for a workflow.
-  rpc GetPermissionsByCompo (GetPermissionsByCompoRequest) returns (GetPermissionsByCompoResponse) {
+  rpc GetPermissionsByCompoAsync (GetPermissionsByCompoRequest) returns (GetPermissionsByCompoResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/permissions-by-compo"
     };
   }
   // Retrieves return reasons for a workflow.
-  rpc GetReturnReasons (GetReturnReasonsRequest) returns (GetReturnReasonsResponse) {
+  rpc GetReturnReasonsAsync (GetReturnReasonsRequest) returns (GetReturnReasonsResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/return-reasons"
     };
   }
   // Retrieves RWoA reasons for a workflow.
-  rpc GetRwoaReasons (GetRwoaReasonsRequest) returns (GetRwoaReasonsResponse) {
+  rpc GetRwoaReasonsAsync (GetRwoaReasonsRequest) returns (GetRwoaReasonsResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/rwoa-reasons"
     };
   }
   // Retrieves status codes by component.
   // Caching hint: Status codes change infrequently; consider caching for 1 hour.
-  rpc GetStatusCodesByCompo (GetStatusCodesByCompoRequest) returns (GetStatusCodesByCompoResponse) {
+  rpc GetStatusCodesByCompoAsync (GetStatusCodesByCompoRequest) returns (GetStatusCodesByCompoResponse) {
     option (google.api.http) = {
       get: "/v1/status-codes/by-compo"
     };
   }
   // Retrieves status codes by component and module.
-  rpc GetStatusCodesByCompoAndModule (GetStatusCodesByCompoAndModuleRequest) returns (GetStatusCodesByCompoAndModuleResponse) {
+  rpc GetStatusCodesByCompoAndModuleAsync (GetStatusCodesByCompoAndModuleRequest) returns (GetStatusCodesByCompoAndModuleResponse) {
     option (google.api.http) = {
       get: "/v1/status-codes/by-compo-and-module"
     };
   }
   // Retrieves status codes by sign code based on group ID and module.
-  rpc GetStatusCodesBySignCode (GetStatusCodesBySignCodeRequest) returns (GetStatusCodesBySignCodeResponse) {
+  rpc GetStatusCodesBySignCodeAsync (GetStatusCodesBySignCodeRequest) returns (GetStatusCodesBySignCodeResponse) {
     option (google.api.http) = {
       get: "/v1/status-codes/by-sign-code"
     };
   }
   // Retrieves status codes by workflow.
   // Caching hint: Status codes per workflow; cache for 30-60 minutes if status codes are stable.
-  rpc GetStatusCodesByWorkflow (GetStatusCodesByWorkflowRequest) returns (GetStatusCodesByWorkflowResponse) {
+  rpc GetStatusCodesByWorkflowAsync (GetStatusCodesByWorkflowRequest) returns (GetStatusCodesByWorkflowResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/status-codes"
     };
   }
   // Retrieves status codes by workflow and access scope.
-  rpc GetStatusCodesByWorkflowAndAccessScope (GetStatusCodesByWorkflowAndAccessScopeRequest) returns (GetStatusCodesByWorkflowAndAccessScopeResponse) {
+  rpc GetStatusCodesByWorkflowAndAccessScopeAsync (GetStatusCodesByWorkflowAndAccessScopeRequest) returns (GetStatusCodesByWorkflowAndAccessScopeResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/status-codes-by-access-scope"
     };
   }
   // Retrieves status code scope by status ID.
-  rpc GetStatusCodeScope (GetStatusCodeScopeRequest) returns (GetStatusCodeScopeResponse) {
+  rpc GetStatusCodeScopeAsync (GetStatusCodeScopeRequest) returns (GetStatusCodeScopeResponse) {
     option (google.api.http) = {
       get: "/v1/status-codes/{status_id}/scope"
     };
   }
   // Retrieves steps by workflow.
-  rpc GetStepsByWorkflow (GetStepsByWorkflowRequest) returns (GetStepsByWorkflowResponse) {
+  rpc GetStepsByWorkflowAsync (GetStepsByWorkflowRequest) returns (GetStepsByWorkflowResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow}/steps"
     };
   }
   // Retrieves steps by workflow and status, optionally with death status.
-  rpc GetStepsByWorkflowAndStatus (GetStepsByWorkflowAndStatusRequest) returns (GetStepsByWorkflowAndStatusResponse) {
+  rpc GetStepsByWorkflowAndStatusAsync (GetStepsByWorkflowAndStatusRequest) returns (GetStepsByWorkflowAndStatusResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow}/steps-by-status"
     };
   }
   // Retrieves viewable workflows by group based on group ID and module.
   // Caching hint: Viewable workflows by group; cache for 10-20 minutes if permissions change moderately.
-  rpc GetViewableByGroup (GetViewableByGroupRequest) returns (GetViewableByGroupResponse) {
+  rpc GetViewableByGroupAsync (GetViewableByGroupRequest) returns (GetViewableByGroupResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/viewable"
     };
   }
   // Retrieves workflows by component based on component and user ID.
   // Caching hint: Workflow lists by component; cache for 10-15 minutes if workflows don't change often.
-  rpc GetWorkflowByCompo (GetWorkflowByCompoRequest) returns (GetWorkflowByCompoResponse) {
+  rpc GetWorkflowByCompoAsync (GetWorkflowByCompoRequest) returns (GetWorkflowByCompoResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/by-compo"
     };
   }
   // Retrieves workflows from module by module ID.
-  rpc GetWorkflowFromModule (GetWorkflowFromModuleRequest) returns (GetWorkflowFromModuleResponse) {
+  rpc GetWorkflowFromModuleAsync (GetWorkflowFromModuleRequest) returns (GetWorkflowFromModuleResponse) {
     option (google.api.http) = {
       get: "/v1/modules/{module_id}/workflows"
     };
   }
   // Retrieves initial status code for a workflow based on component, module, and workflow ID.
-  rpc GetWorkflowInitialStatusCode (GetWorkflowInitialStatusCodeRequest) returns (GetWorkflowInitialStatusCodeResponse) {
+  rpc GetWorkflowInitialStatusCodeAsync (GetWorkflowInitialStatusCodeRequest) returns (GetWorkflowInitialStatusCodeResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/initial-status-code"
     };
   }
   // Retrieves workflow title based on module ID and sub-case.
-  rpc GetWorkflowTitle (GetWorkflowTitleRequest) returns (GetWorkflowTitleResponse) {
+  rpc GetWorkflowTitleAsync (GetWorkflowTitleRequest) returns (GetWorkflowTitleResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/title"
     };
   }
   // Retrieves workflow title by work status ID based on workflow ID and sub-case.
-  rpc GetWorkflowTitleByWorkStatusId (GetWorkflowTitleByWorkStatusIdRequest) returns (GetWorkflowTitleByWorkStatusIdResponse) {
+  rpc GetWorkflowTitleByWorkStatusIdAsync (GetWorkflowTitleByWorkStatusIdRequest) returns (GetWorkflowTitleByWorkStatusIdResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/title-by-work-status"
     };
   }
   // Inserts a new action with type, step ID, target, and data.
-  rpc InsertAction (InsertActionRequest) returns (InsertActionResponse) {
+  rpc InsertActionAsync (InsertActionRequest) returns (InsertActionResponse) {
     option (google.api.http) = {
       post: "/v1/actions"
       body: "*"
     };
   }
   // Inserts an option action with type, WSOID, target, and data.
-  rpc InsertOptionAction (InsertOptionActionRequest) returns (InsertOptionActionResponse) {
+  rpc InsertOptionActionAsync (InsertOptionActionRequest) returns (InsertOptionActionResponse) {
     option (google.api.http) = {
       post: "/v1/actions/option"
       body: "*"
     };
   }
   // Adds a signature as a stream.
-  rpc AddSignatureStream (AddSignatureRequest) returns (stream SignatureItem) {
+  rpc AddSignatureStreamAsync (AddSignatureRequest) returns (stream SignatureItem) {
     option (google.api.http) = {
       post: "/v1/workflows/signature/stream"
       body: "*"
     };
   }
   // Copies a workflow as a stream.
-  rpc CopyWorkflowStream (CopyWorkflowRequest) returns (stream WorkflowCopyItem) {
+  rpc CopyWorkflowStreamAsync (CopyWorkflowRequest) returns (stream WorkflowCopyItem) {
     option (google.api.http) = {
       post: "/v1/workflows/copy/stream"
       body: "*"
     };
   }
   // Retrieves actions by step as a stream.
-  rpc GetActionsByStepStream (GetActionsByStepRequest) returns (stream ActionByStepItem) {
+  rpc GetActionsByStepStreamAsync (GetActionsByStepRequest) returns (stream ActionByStepItem) {
     option (google.api.http) = {
       get: "/v1/steps/{step_id}/actions/stream"
     };
   }
   // Retrieves active cases as a stream.
-  rpc GetActiveCasesStream (GetActiveCasesRequest) returns (stream ActiveCaseItem) {
+  rpc GetActiveCasesStreamAsync (GetActiveCasesRequest) returns (stream ActiveCaseItem) {
     option (google.api.http) = {
       get: "/v1/cases/active/stream"
     };
   }
   // Retrieves all findings by reason of as a stream.
-  rpc GetAllFindingByReasonOfStream (EmptyRequest) returns (stream FindingByReasonOfItem) {
+  rpc GetAllFindingByReasonOfStreamAsync (EmptyRequest) returns (stream FindingByReasonOfItem) {
     option (google.api.http) = {
       get: "/v1/findings/reason-of/stream"
     };
   }
   // Retrieves all locks as a stream.
-  rpc GetAllLocksStream (EmptyRequest) returns (stream LockItem) {
+  rpc GetAllLocksStreamAsync (EmptyRequest) returns (stream LockItem) {
     option (google.api.http) = {
       get: "/v1/locks/stream"
     };
   }
   // Retrieves cancel reasons as a stream.
-  rpc GetCancelReasonsStream (GetCancelReasonsRequest) returns (stream CancelReasonItem) {
+  rpc GetCancelReasonsStreamAsync (GetCancelReasonsRequest) returns (stream CancelReasonItem) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/cancel-reasons/stream"
     };
   }
   // Retrieves creatable by group as a stream.
-  rpc GetCreatableByGroupStream (GetCreatableByGroupRequest) returns (stream CreatableByGroupItem) {
+  rpc GetCreatableByGroupStreamAsync (GetCreatableByGroupRequest) returns (stream CreatableByGroupItem) {
     option (google.api.http) = {
       get: "/v1/workflows/creatable/stream"
     };
   }
   // Retrieves finding by reason of by ID as a stream.
-  rpc GetFindingByReasonOfByIdStream (GetFindingByReasonOfByIdRequest) returns (stream FindingByReasonOfByIdItem) {
+  rpc GetFindingByReasonOfByIdStreamAsync (GetFindingByReasonOfByIdRequest) returns (stream FindingByReasonOfByIdItem) {
     option (google.api.http) = {
       get: "/v1/findings/reason-of/{id}/stream"
     };
   }
   // Retrieves findings as a stream.
-  rpc GetFindingsStream (GetFindingsRequest) returns (stream FindingItem) {
+  rpc GetFindingsStreamAsync (GetFindingsRequest) returns (stream FindingItem) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/findings/stream"
     };
   }
   // Retrieves module from workflow as a stream.
-  rpc GetModuleFromWorkflowStream (GetModuleFromWorkflowRequest) returns (stream ModuleFromWorkflowItem) {
+  rpc GetModuleFromWorkflowStreamAsync (GetModuleFromWorkflowRequest) returns (stream ModuleFromWorkflowItem) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/module/stream"
     };
   }
   // Retrieves page access by group as a stream.
-  rpc GetPageAccessByGroupStream (GetPageAccessByGroupRequest) returns (stream PageAccessByGroupItem) {
+  rpc GetPageAccessByGroupStreamAsync (GetPageAccessByGroupRequest) returns (stream PageAccessByGroupItem) {
     option (google.api.http) = {
       get: "/v1/pages/access-by-group/stream"
     };
   }
   // Retrieves page access by workflow view as a stream.
-  rpc GetPageAccessByWorkflowViewStream (GetPageAccessByWorkflowViewRequest) returns (stream PageAccessByWorkflowViewItem) {
+  rpc GetPageAccessByWorkflowViewStreamAsync (GetPageAccessByWorkflowViewRequest) returns (stream PageAccessByWorkflowViewItem) {
     option (google.api.http) = {
       get: "/v1/pages/access-by-workflow-view/stream"
     };
   }
   // Retrieves pages by workflow ID as a stream.
-  rpc GetPagesByWorkflowIdStream (GetPagesByWorkflowIdRequest) returns (stream PageByWorkflowItem) {
+  rpc GetPagesByWorkflowIdStreamAsync (GetPagesByWorkflowIdRequest) returns (stream PageByWorkflowItem) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/pages/stream"
     };
   }
   // Retrieves permissions as a stream.
-  rpc GetPermissionsStream (GetPermissionsRequest) returns (stream PermissionItem) {
+  rpc GetPermissionsStreamAsync (GetPermissionsRequest) returns (stream PermissionItem) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/permissions/stream"
     };
   }
   // Retrieves permissions by component as a stream.
-  rpc GetPermissionsByCompoStream (GetPermissionsByCompoRequest) returns (stream PermissionByCompoItem) {
+  rpc GetPermissionsByCompoStreamAsync (GetPermissionsByCompoRequest) returns (stream PermissionByCompoItem) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/permissions-by-compo/stream"
     };
   }
   // Retrieves return reasons as a stream.
-  rpc GetReturnReasonsStream (GetReturnReasonsRequest) returns (stream ReturnReasonItem) {
+  rpc GetReturnReasonsStreamAsync (GetReturnReasonsRequest) returns (stream ReturnReasonItem) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/return-reasons/stream"
     };
   }
   // Retrieves RWoA reasons as a stream.
-  rpc GetRwoaReasonsStream (GetRwoaReasonsRequest) returns (stream RwoaReasonItem) {
+  rpc GetRwoaReasonsStreamAsync (GetRwoaReasonsRequest) returns (stream RwoaReasonItem) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/rwoa-reasons/stream"
     };
   }
   // Retrieves status codes by component as a stream.
-  rpc GetStatusCodesByCompoStream (GetStatusCodesByCompoRequest) returns (stream StatusCodeByCompoItem) {
+  rpc GetStatusCodesByCompoStreamAsync (GetStatusCodesByCompoRequest) returns (stream StatusCodeByCompoItem) {
     option (google.api.http) = {
       get: "/v1/status-codes/by-compo/stream"
     };
   }
   // Retrieves status codes by component and module as a stream.
-  rpc GetStatusCodesByCompoAndModuleStream (GetStatusCodesByCompoAndModuleRequest) returns (stream StatusCodeByCompoAndModuleItem) {
+  rpc GetStatusCodesByCompoAndModuleStreamAsync (GetStatusCodesByCompoAndModuleRequest) returns (stream StatusCodeByCompoAndModuleItem) {
     option (google.api.http) = {
       get: "/v1/status-codes/by-compo-and-module/stream"
     };
   }
   // Retrieves status codes by sign code as a stream.
-  rpc GetStatusCodesBySignCodeStream (GetStatusCodesBySignCodeRequest) returns (stream StatusCodeBySignCodeItem) {
+  rpc GetStatusCodesBySignCodeStreamAsync (GetStatusCodesBySignCodeRequest) returns (stream StatusCodeBySignCodeItem) {
     option (google.api.http) = {
       get: "/v1/status-codes/by-sign-code/stream"
     };
   }
   // Retrieves status codes by workflow as a stream.
-  rpc GetStatusCodesByWorkflowStream (GetStatusCodesByWorkflowRequest) returns (stream StatusCodeByWorkflowItem) {
+  rpc GetStatusCodesByWorkflowStreamAsync (GetStatusCodesByWorkflowRequest) returns (stream StatusCodeByWorkflowItem) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/status-codes/stream"
     };
   }
   // Retrieves status codes by workflow and access scope as a stream.
-  rpc GetStatusCodesByWorkflowAndAccessScopeStream (GetStatusCodesByWorkflowAndAccessScopeRequest) returns (stream StatusCodeByWorkflowAndAccessScopeItem) {
+  rpc GetStatusCodesByWorkflowAndAccessScopeStreamAsync (GetStatusCodesByWorkflowAndAccessScopeRequest) returns (stream StatusCodeByWorkflowAndAccessScopeItem) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/status-codes-by-access-scope/stream"
     };
   }
   // Retrieves status code scope as a stream.
-  rpc GetStatusCodeScopeStream (GetStatusCodeScopeRequest) returns (stream StatusCodeScopeItem) {
+  rpc GetStatusCodeScopeStreamAsync (GetStatusCodeScopeRequest) returns (stream StatusCodeScopeItem) {
     option (google.api.http) = {
       get: "/v1/status-codes/{status_id}/scope/stream"
     };
   }
   // Retrieves steps by workflow as a stream.
-  rpc GetStepsByWorkflowStream (GetStepsByWorkflowRequest) returns (stream StepByWorkflowItem) {
+  rpc GetStepsByWorkflowStreamAsync (GetStepsByWorkflowRequest) returns (stream StepByWorkflowItem) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow}/steps/stream"
     };
   }
   // Retrieves steps by workflow and status as a stream.
-  rpc GetStepsByWorkflowAndStatusStream (GetStepsByWorkflowAndStatusRequest) returns (stream StepByWorkflowAndStatusItem) {
+  rpc GetStepsByWorkflowAndStatusStreamAsync (GetStepsByWorkflowAndStatusRequest) returns (stream StepByWorkflowAndStatusItem) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow}/steps-by-status/stream"
     };
   }
   // Retrieves viewable by group as a stream.
-  rpc GetViewableByGroupStream (GetViewableByGroupRequest) returns (stream ViewableByGroupItem) {
+  rpc GetViewableByGroupStreamAsync (GetViewableByGroupRequest) returns (stream ViewableByGroupItem) {
     option (google.api.http) = {
       get: "/v1/workflows/viewable/stream"
     };
   }
   // Retrieves workflow by component as a stream.
-  rpc GetWorkflowByCompoStream (GetWorkflowByCompoRequest) returns (stream WorkflowByCompoItem) {
+  rpc GetWorkflowByCompoStreamAsync (GetWorkflowByCompoRequest) returns (stream WorkflowByCompoItem) {
     option (google.api.http) = {
       get: "/v1/workflows/by-compo/stream"
     };
   }
   // Retrieves workflow from module as a stream.
-  rpc GetWorkflowFromModuleStream (GetWorkflowFromModuleRequest) returns (stream WorkflowFromModuleItem) {
+  rpc GetWorkflowFromModuleStreamAsync (GetWorkflowFromModuleRequest) returns (stream WorkflowFromModuleItem) {
     option (google.api.http) = {
       get: "/v1/modules/{module_id}/workflows/stream"
     };
   }
   // Retrieves workflow initial status code as a stream.
-  rpc GetWorkflowInitialStatusCodeStream (GetWorkflowInitialStatusCodeRequest) returns (stream WorkflowInitialStatusCodeItem) {
+  rpc GetWorkflowInitialStatusCodeStreamAsync (GetWorkflowInitialStatusCodeRequest) returns (stream WorkflowInitialStatusCodeItem) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/initial-status-code/stream"
     };
   }
   // Retrieves workflow title as a stream.
-  rpc GetWorkflowTitleStream (GetWorkflowTitleRequest) returns (stream WorkflowTitleItem) {
+  rpc GetWorkflowTitleStreamAsync (GetWorkflowTitleRequest) returns (stream WorkflowTitleItem) {
     option (google.api.http) = {
       get: "/v1/workflows/title/stream"
     };
   }
   // Retrieves workflow title by work status ID as a stream.
-  rpc GetWorkflowTitleByWorkStatusIdStream (GetWorkflowTitleByWorkStatusIdRequest) returns (stream WorkflowTitleByWorkStatusIdItem) {
+  rpc GetWorkflowTitleByWorkStatusIdStreamAsync (GetWorkflowTitleByWorkStatusIdRequest) returns (stream WorkflowTitleByWorkStatusIdItem) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/title-by-work-status/stream"
     };
   }
   // Inserts an action as a stream.
-  rpc InsertActionStream (InsertActionRequest) returns (stream InsertActionItem) {
+  rpc InsertActionStreamAsync (InsertActionRequest) returns (stream InsertActionItem) {
     option (google.api.http) = {
       post: "/v1/actions/stream"
       body: "*"
     };
   }
   // Inserts an option action as a stream.
-  rpc InsertOptionActionStream (InsertOptionActionRequest) returns (stream InsertOptionActionItem) {
+  rpc InsertOptionActionStreamAsync (InsertOptionActionRequest) returns (stream InsertOptionActionItem) {
     option (google.api.http) = {
       post: "/v1/actions/option/stream"
       body: "*"
@@ -678,114 +678,120 @@ service WorkflowService {
 
   // Application Warmup Process Methods
   // Deletes a log entry by ID.
-  rpc DeleteLogById (DeleteLogByIdRequest) returns (DeleteLogByIdResponse) {
+  rpc DeleteLogByIdAsync (DeleteLogByIdRequest) returns (DeleteLogByIdResponse) {
     option (google.api.http) = {
       delete: "/v1/logs/{log_id}"
     };
   }
   // Finds the last execution date of a process.
-  rpc FindProcessLastExecutionDate (FindProcessLastExecutionDateRequest) returns (FindProcessLastExecutionDateResponse) {
+  rpc FindProcessLastExecutionDateAsync (FindProcessLastExecutionDateRequest) returns (FindProcessLastExecutionDateResponse) {
     option (google.api.http) = {
       get: "/v1/processes/last-execution-date"
     };
   }
   // Finds the last execution date of a process as a stream.
-  rpc FindProcessLastExecutionDateStream (FindProcessLastExecutionDateRequest) returns (stream ProcessLastExecutionDateItem) {
+  rpc FindProcessLastExecutionDateStreamAsync (FindProcessLastExecutionDateRequest) returns (stream ProcessLastExecutionDateItem) {
     option (google.api.http) = {
       get: "/v1/processes/last-execution-date/stream"
     };
   }
   // Retrieves all log entries.
-  rpc GetAllLogs (EmptyRequest) returns (GetAllLogsResponse) {
+  rpc GetAllLogsAsync (EmptyRequest) returns (GetAllLogsResponse) {
     option (google.api.http) = {
       get: "/v1/logs"
     };
   }
   // Retrieves all log entries as a stream.
-  rpc GetAllLogsStream (EmptyRequest) returns (stream LogItem) {
+  rpc GetAllLogsStreamAsync (EmptyRequest) returns (stream LogItem) {
     option (google.api.http) = {
       get: "/v1/logs/stream"
     };
   }
   // Inserts a new log entry with process name, execution date, and message.
-  rpc InsertLog (InsertLogRequest) returns (InsertLogResponse) {
+  rpc InsertLogAsync (InsertLogRequest) returns (InsertLogResponse) {
     option (google.api.http) = {
       post: "/v1/logs"
       body: "*"
     };
   }
   // Checks if a process is active.
-  rpc IsProcessActive (IsProcessActiveRequest) returns (IsProcessActiveResponse) {
+  rpc IsProcessActiveAsync (IsProcessActiveRequest) returns (IsProcessActiveResponse) {
     option (google.api.http) = {
       get: "/v1/processes/active"
     };
   }
   // Checks if a process is active as a stream.
-  rpc IsProcessActiveStream (IsProcessActiveRequest) returns (stream ProcessActiveItem) {
+  rpc IsProcessActiveStreamAsync (IsProcessActiveRequest) returns (stream ProcessActiveItem) {
     option (google.api.http) = {
       get: "/v1/processes/active/stream"
+    };
+  }
+  // Retrieves all log entries with pagination.
+  rpc GetAllLogsPaginationAsync (GetAllLogsPaginationRequest) returns (GetAllLogsPaginationResponse) {
+    option (google.api.http) = {
+      get: "/v1/logs/pagination"
     };
   }
 
   // Workflow Methods
   // Retrieves a workflow by its ID.
-  rpc GetWorkflowById (GetWorkflowByIdRequest) returns (GetWorkflowByIdResponse) {
+  rpc GetWorkflowByIdAsync (GetWorkflowByIdRequest) returns (GetWorkflowByIdResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}"
     };
   }
   // Retrieves a workflow by its ID as a stream.
-  rpc GetWorkflowByIdStream (GetWorkflowByIdRequest) returns (stream WorkflowByIdItem) {
+  rpc GetWorkflowByIdStreamAsync (GetWorkflowByIdRequest) returns (stream WorkflowByIdItem) {
     option (google.api.http) = {
       get: "/v1/workflows/{workflow_id}/stream"
     };
   }
   // Retrieves workflows by reference ID and optionally module.
-  rpc GetWorkflowsByRefId (GetWorkflowsByRefIdRequest) returns (GetWorkflowsByRefIdResponse) {
+  rpc GetWorkflowsByRefIdAsync (GetWorkflowsByRefIdRequest) returns (GetWorkflowsByRefIdResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/by-ref-id"
     };
   }
   // Retrieves workflows by reference ID as a stream.
-  rpc GetWorkflowsByRefIdStream (GetWorkflowsByRefIdRequest) returns (stream WorkflowByRefIdItem) {
+  rpc GetWorkflowsByRefIdStreamAsync (GetWorkflowsByRefIdRequest) returns (stream WorkflowByRefIdItem) {
     option (google.api.http) = {
       get: "/v1/workflows/by-ref-id/stream"
     };
   }
   // Retrieves workflows by reference ID, module, and workflow type.
-  rpc GetWorkflowsByRefIdAndType (GetWorkflowsByRefIdAndTypeRequest) returns (GetWorkflowsByRefIdAndTypeResponse) {
+  rpc GetWorkflowsByRefIdAndTypeAsync (GetWorkflowsByRefIdAndTypeRequest) returns (GetWorkflowsByRefIdAndTypeResponse) {
     option (google.api.http) = {
       get: "/v1/workflows/by-ref-id-and-type"
     };
   }
   // Retrieves workflows by reference ID and type as a stream.
-  rpc GetWorkflowsByRefIdAndTypeStream (GetWorkflowsByRefIdAndTypeRequest) returns (stream WorkflowByRefIdAndTypeItem) {
+  rpc GetWorkflowsByRefIdAndTypeStreamAsync (GetWorkflowsByRefIdAndTypeRequest) returns (stream WorkflowByRefIdAndTypeItem) {
     option (google.api.http) = {
       get: "/v1/workflows/by-ref-id-and-type/stream"
     };
   }
   // Retrieves all workflow types.
   // Caching hint: Workflow types are static reference data; cache for extended periods (1-24 hours).
-  rpc GetWorkflowTypes (EmptyRequest) returns (GetWorkflowTypesResponse) {
+  rpc GetWorkflowTypesAsync (EmptyRequest) returns (GetWorkflowTypesResponse) {
     option (google.api.http) = {
       get: "/v1/workflow-types"
     };
   }
   // Retrieves all workflow types as a stream.
-  rpc GetWorkflowTypesStream (EmptyRequest) returns (stream WorkflowTypeItem) {
+  rpc GetWorkflowTypesStreamAsync (EmptyRequest) returns (stream WorkflowTypeItem) {
     option (google.api.http) = {
       get: "/v1/workflow-types/stream"
     };
   }
   // Inserts a new workflow with reference ID, module, type, text, and user ID.
-  rpc InsertWorkflow (InsertWorkflowRequest) returns (InsertWorkflowResponse) {
+  rpc InsertWorkflowAsync (InsertWorkflowRequest) returns (InsertWorkflowResponse) {
     option (google.api.http) = {
       post: "/v1/workflows"
       body: "*"
     };
   }
   // Updates an existing workflow with new text and user ID.
-  rpc UpdateWorkflow (UpdateWorkflowRequest) returns (UpdateWorkflowResponse) {
+  rpc UpdateWorkflowAsync (UpdateWorkflowRequest) returns (UpdateWorkflowResponse) {
     option (google.api.http) = {
       put: "/v1/workflows/{workflow_id}"
       body: "*"
@@ -794,63 +800,63 @@ service WorkflowService {
 
   // Workstatus Methods
   // Retrieves a workstatus by its ID.
-  rpc GetWorkstatusById (GetWorkstatusByIdRequest) returns (GetWorkstatusByIdResponse) {
+  rpc GetWorkstatusByIdAsync (GetWorkstatusByIdRequest) returns (GetWorkstatusByIdResponse) {
     option (google.api.http) = {
       get: "/v1/workstatuses/{workstatus_id}"
     };
   }
   // Retrieves a workstatus by its ID as a stream.
-  rpc GetWorkstatusByIdStream (GetWorkstatusByIdRequest) returns (stream WorkstatusByIdItem) {
+  rpc GetWorkstatusByIdStreamAsync (GetWorkstatusByIdRequest) returns (stream WorkstatusByIdItem) {
     option (google.api.http) = {
       get: "/v1/workstatuses/{workstatus_id}/stream"
     };
   }
   // Retrieves workstatuses by reference ID and optionally module.
-  rpc GetWorkstatusesByRefId (GetWorkstatusesByRefIdRequest) returns (GetWorkstatusesByRefIdResponse) {
+  rpc GetWorkstatusesByRefIdAsync (GetWorkstatusesByRefIdRequest) returns (GetWorkstatusesByRefIdResponse) {
     option (google.api.http) = {
       get: "/v1/workstatuses/by-ref-id"
     };
   }
   // Retrieves workstatuses by reference ID as a stream.
-  rpc GetWorkstatusesByRefIdStream (GetWorkstatusesByRefIdRequest) returns (stream WorkstatusByRefIdItem) {
+  rpc GetWorkstatusesByRefIdStreamAsync (GetWorkstatusesByRefIdRequest) returns (stream WorkstatusByRefIdItem) {
     option (google.api.http) = {
       get: "/v1/workstatuses/by-ref-id/stream"
     };
   }
   // Retrieves workstatuses by reference ID, module, and workstatus type.
-  rpc GetWorkstatusesByRefIdAndType (GetWorkstatusesByRefIdAndTypeRequest) returns (GetWorkstatusesByRefIdAndTypeResponse) {
+  rpc GetWorkstatusesByRefIdAndTypeAsync (GetWorkstatusesByRefIdAndTypeRequest) returns (GetWorkstatusesByRefIdAndTypeResponse) {
     option (google.api.http) = {
       get: "/v1/workstatuses/by-ref-id-and-type"
     };
   }
   // Retrieves workstatuses by reference ID and type as a stream.
-  rpc GetWorkstatusesByRefIdAndTypeStream (GetWorkstatusesByRefIdAndTypeRequest) returns (stream WorkstatusByRefIdAndTypeItem) {
+  rpc GetWorkstatusesByRefIdAndTypeStreamAsync (GetWorkstatusesByRefIdAndTypeRequest) returns (stream WorkstatusByRefIdAndTypeItem) {
     option (google.api.http) = {
       get: "/v1/workstatuses/by-ref-id-and-type/stream"
     };
   }
   // Retrieves all workstatus types.
   // Caching hint: Workstatus types are static reference data; cache for extended periods (1-24 hours).
-  rpc GetWorkstatusTypes (EmptyRequest) returns (GetWorkstatusTypesResponse) {
+  rpc GetWorkstatusTypesAsync (EmptyRequest) returns (GetWorkstatusTypesResponse) {
     option (google.api.http) = {
       get: "/v1/workstatus-types"
     };
   }
   // Retrieves all workstatus types as a stream.
-  rpc GetWorkstatusTypesStream (EmptyRequest) returns (stream WorkstatusTypeItem) {
+  rpc GetWorkstatusTypesStreamAsync (EmptyRequest) returns (stream WorkstatusTypeItem) {
     option (google.api.http) = {
       get: "/v1/workstatus-types/stream"
     };
   }
   // Inserts a new workstatus with reference ID, module, type, text, and user ID.
-  rpc InsertWorkstatus (InsertWorkstatusRequest) returns (InsertWorkstatusResponse) {
+  rpc InsertWorkstatusAsync (InsertWorkstatusRequest) returns (InsertWorkstatusResponse) {
     option (google.api.http) = {
       post: "/v1/workstatuses"
       body: "*"
     };
   }
   // Updates an existing workstatus with new text and user ID.
-  rpc UpdateWorkstatus (UpdateWorkstatusRequest) returns (UpdateWorkstatusResponse) {
+  rpc UpdateWorkstatusAsync (UpdateWorkstatusRequest) returns (UpdateWorkstatusResponse) {
     option (google.api.http) = {
       put: "/v1/workstatuses/{workstatus_id}"
       body: "*"
@@ -2099,5 +2105,23 @@ message UpdateWorkstatusRequest {
 
 message UpdateWorkstatusResponse {
   int32 result = 1;
+  optional int32 api_version = 999;
+}
+
+message GetAllLogsPaginationRequest {
+  optional int32 page_number = 1;
+  optional int32 page_size = 2;
+  optional string process_name = 3;
+  optional string start_date = 4;
+  optional string end_date = 5;
+  optional string message_filter = 6;
+  optional string sort_by = 7;
+  optional string sort_order = 8;
+  optional int32 api_version = 999;
+}
+
+message GetAllLogsPaginationResponse {
+  repeated LogItem items = 1;
+  int32 total_count = 2;
   optional int32 api_version = 999;
 }

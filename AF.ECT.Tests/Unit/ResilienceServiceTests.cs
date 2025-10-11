@@ -4,7 +4,7 @@ using Polly.Timeout;
 using Xunit.Abstractions;
 using AF.ECT.Tests.Infrastructure;
 
-namespace AF.ECT.Tests;
+namespace AF.ECT.Tests.Unit;
 
 /// <summary>
 /// Tests for the ResilienceService class.

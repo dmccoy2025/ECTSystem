@@ -3,7 +3,7 @@ using AF.ECT.Tests.Infrastructure;
 using AF.ECT.Data.Extensions;
 using Microsoft.Data.Sqlite;
 
-namespace AF.ECT.Tests;
+namespace AF.ECT.Tests.Unit;
 
 /// <summary>
 /// Contains unit tests for the <see cref="DbContextExtensions"/> class.

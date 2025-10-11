@@ -3,7 +3,7 @@ using Polly.CircuitBreaker;
 using Xunit.Abstractions;
 using AF.ECT.Tests.Infrastructure;
 
-namespace AF.ECT.Tests;
+namespace AF.ECT.Tests.Unit;
 
 /// <summary>
 /// Chaos engineering tests to simulate real-world failure scenarios.

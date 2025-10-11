@@ -35,6 +35,7 @@ ECTSystem is an Electronic Case Tracking application for ALOD (Army Lodging) bui
 - **Observability**: OpenTelemetry integrated; logs via Serilog; health checks at `/healthz`; structured audit events with performance metrics.
 - **Injection**: Dependency injection everywhere; configure in `Program.cs`.
 - **Code Refactoring**: Follow SOLID principles; use partial classes and regions for organization. Use static methods and extension methods to keep code clean.
+- **Styling**: Inline temporary variables wherever possible; use block body for lambda expressions.
 
 ## Audit Logging Implementation
 - **Client-Side Audit**: All unary gRPC methods in `WorkflowClient.cs` include audit logging with correlation IDs, performance timing, and structured events.

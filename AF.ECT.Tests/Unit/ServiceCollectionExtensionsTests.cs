@@ -7,6 +7,7 @@ using AF.ECT.Data.Models;
 using AF.ECT.Data.Interfaces;
 using AF.ECT.Server.Services;
 using static AF.ECT.Tests.Data.ServiceCollectionExtensionsTestData;
+using AF.ECT.Data.Services;
 
 namespace AF.ECT.Tests.Unit;
 

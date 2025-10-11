@@ -11,7 +11,7 @@
     <PackageReference Include="Google.Api.CommonProtos" Version="2.17.0" PrivateAssets="All" />
     <PackageReference Include="Grpc.Net.Client" Version="2.71.0" />
     <PackageReference Include="Grpc.Tools" Version="2.71.0" PrivateAssets="all" />
-    <Protobuf Include="Protos\**\*.proto" ProtoRoot="Protos" />
+    <Protobuf Include="Protos\**\*.proto" ProtoRoot="Protos" GrpcServices="Both" />
   </ItemGroup>
 
 </Project>

@@ -7,7 +7,7 @@ using static AF.ECT.Tests.Data.WorkflowServiceTestData;
 using AF.ECT.Data.Interfaces;
 using AF.ECT.Data.ResultTypes;
 
-namespace AF.ECT.Tests;
+namespace AF.ECT.Tests.Unit;
 
 /// <summary>
 /// Contains unit tests for the <see cref="WorkflowServiceImpl"/> class.

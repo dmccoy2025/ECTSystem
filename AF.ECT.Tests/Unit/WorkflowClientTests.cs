@@ -4,7 +4,7 @@ using AF.ECT.Client.Services;
 using AF.ECT.Shared;
 using static AF.ECT.Tests.Data.WorkflowClientTestData;
 
-namespace AF.ECT.Tests;
+namespace AF.ECT.Tests.Unit;
 
 /// <summary>
 /// Contains unit tests for the <see cref="WorkflowClient"/> class.

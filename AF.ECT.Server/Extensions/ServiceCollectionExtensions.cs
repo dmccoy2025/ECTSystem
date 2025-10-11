@@ -7,6 +7,7 @@ using Radzen;
 using AspNetCoreRateLimit;
 using AF.ECT.Server.Interceptors;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using AF.ECT.Data.Services;
 
 namespace AF.ECT.Server.Extensions;
 

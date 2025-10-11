@@ -3,7 +3,7 @@ using System.Collections;
 using System.Reflection;
 using AF.ECT.Tests.Infrastructure;
 
-namespace AF.ECT.Tests;
+namespace AF.ECT.Tests.Integration;
 
 public class WorkflowServiceIntegrationTests : IntegrationTestBase
 {

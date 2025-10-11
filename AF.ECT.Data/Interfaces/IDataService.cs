@@ -547,6 +547,21 @@ public interface IDataService
     Task<List<ApplicationWarmupProcess_sp_GetAllLogsResult>> GetAllLogsAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
+    /// Asynchronously retrieves all logs with pagination, filtering, and sorting.
+    /// </summary>
+    /// <param name="pageNumber">The page number to retrieve.</param>
+    /// <param name="pageSize">The number of items per page.</param>
+    /// <param name="processName">Optional filter by process name.</param>
+    /// <param name="startDate">Optional filter for execution date from this date.</param>
+    /// <param name="endDate">Optional filter for execution date up to this date.</param>
+    /// <param name="messageFilter">Optional filter by message content.</param>
+    /// <param name="sortBy">Column to sort by ('Id', 'Name', 'ExecutionDate', 'Message').</param>
+    /// <param name="sortOrder">Sort order ('ASC' or 'DESC').</param>
+    /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
+    /// <returns>A task representing the asynchronous operation, containing a list of logs for the specified page.</returns>
+    Task<List<ApplicationWarmupProcess_sp_GetAllLogsResult>> GetAllLogsPaginationAsync(int? pageNumber = 1, int? pageSize = 10, string? processName = null, DateTime? startDate = null, DateTime? endDate = null, string? messageFilter = null, string? sortBy = "ExecutionDate", string? sortOrder = "DESC", CancellationToken cancellationToken = default);
+
+    /// <summary>
     /// Asynchronously inserts a log entry.
     /// </summary>
     /// <param name="processName">The process name.</param>
