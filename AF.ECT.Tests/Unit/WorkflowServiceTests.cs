@@ -4094,6 +4094,472 @@ public class WorkflowServiceTests
     }
 
     #endregion
+
+    #region Application Warmup Process Methods Tests
+
+    #region GetAllLogsPagination Tests
+
+    /// <summary>
+    /// Tests that GetAllLogsPagination returns correct response with default pagination when data service returns results.
+    /// </summary>
+    [Fact]
+    public async Task GetAllLogsPagination_ReturnsCorrectResponse_WithDefaultPagination()
+    {
+        // Arrange
+        var request = new GetAllLogsPaginationRequest();
+        var mockData = new List<ApplicationWarmupProcess_sp_GetAllLogsResult>
+        {
+            new() { Id = 1, Name = "Process1", ExecutionDate = DateTime.Now, Message = "Success" },
+            new() { Id = 2, Name = "Process2", ExecutionDate = DateTime.Now.AddMinutes(-5), Message = "Completed" }
+        };
+        var mockResults = new ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result
+        {
+            TotalCount = 2,
+            Data = mockData
+        };
+
+        _mockDataService.Setup(ds => ds.GetAllLogsPaginationAsync(
+            It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<string>(), It.IsAny<DateTime?>(),
+            It.IsAny<DateTime?>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
+            It.IsAny<CancellationToken>()))
+            .ReturnsAsync(mockResults);
+
+        var service = CreateWorkflowManagementService();
+
+        // Act
+        var response = await service.GetAllLogsPagination(request, null!);
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.Equal(2, response.Items.Count);
+        Assert.Equal(2, response.TotalCount);
+        Assert.Equal(1, response.Items[0].LogId);
+        Assert.Equal("Process1", response.Items[0].ProcessName);
+        Assert.Equal("Success", response.Items[0].Message);
+        Assert.Equal(2, response.Items[1].LogId);
+        Assert.Equal("Process2", response.Items[1].ProcessName);
+        Assert.Equal("Completed", response.Items[1].Message);
+    }
+
+    /// <summary>
+    /// Tests that GetAllLogsPagination returns correct response with custom pagination parameters.
+    /// </summary>
+    [Fact]
+    public async Task GetAllLogsPagination_ReturnsCorrectResponse_WithCustomPagination()
+    {
+        // Arrange
+        var request = new GetAllLogsPaginationRequest
+        {
+            PageNumber = 2,
+            PageSize = 25,
+            ProcessName = "TestProcess",
+            SortBy = "Name",
+            SortOrder = "ASC"
+        };
+
+        var mockData = new List<ApplicationWarmupProcess_sp_GetAllLogsResult>
+        {
+            new() { Id = 26, Name = "TestProcess", ExecutionDate = DateTime.Now, Message = "Result 26" },
+            new() { Id = 27, Name = "TestProcess", ExecutionDate = DateTime.Now, Message = "Result 27" }
+        };
+        var mockResults = new ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result
+        {
+            TotalCount = 2,
+            Data = mockData
+        };
+
+        _mockDataService.Setup(ds => ds.GetAllLogsPaginationAsync(
+            It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<string>(), It.IsAny<DateTime?>(),
+            It.IsAny<DateTime?>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
+            It.IsAny<CancellationToken>()))
+            .ReturnsAsync(mockResults);
+
+        var service = CreateWorkflowManagementService();
+
+        // Act
+        var response = await service.GetAllLogsPagination(request, null!);
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.Equal(2, response.Items.Count);
+        Assert.Equal(2, response.TotalCount);
+        Assert.Equal(26, response.Items[0].LogId);
+        Assert.Equal("TestProcess", response.Items[0].ProcessName);
+    }
+
+    /// <summary>
+    /// Tests that GetAllLogsPagination returns correct response with date filtering.
+    /// </summary>
+    [Fact]
+    public async Task GetAllLogsPagination_ReturnsCorrectResponse_WithDateFiltering()
+    {
+        // Arrange
+        var startDate = "2024-01-01";
+        var endDate = "2024-12-31";
+        var request = new GetAllLogsPaginationRequest
+        {
+            StartDate = startDate,
+            EndDate = endDate,
+            PageNumber = 1,
+            PageSize = 10
+        };
+
+        var mockData = new List<ApplicationWarmupProcess_sp_GetAllLogsResult>
+        {
+            new() { Id = 1, Name = "Process1", ExecutionDate = new DateTime(2024, 6, 15), Message = "Mid-year" }
+        };
+        var mockResults = new ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result
+        {
+            TotalCount = 1,
+            Data = mockData
+        };
+
+        _mockDataService.Setup(ds => ds.GetAllLogsPaginationAsync(
+            It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<string>(),
+            It.IsAny<DateTime?>(), It.IsAny<DateTime?>(),
+            It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
+            It.IsAny<CancellationToken>()))
+            .ReturnsAsync(mockResults);
+
+        var service = CreateWorkflowManagementService();
+
+        // Act
+        var response = await service.GetAllLogsPagination(request, null!);
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.Single(response.Items);
+        Assert.Equal(1, response.TotalCount);
+        Assert.Equal("Mid-year", response.Items[0].Message);
+    }
+
+    /// <summary>
+    /// Tests that GetAllLogsPagination returns correct response with message filtering.
+    /// </summary>
+    [Fact]
+    public async Task GetAllLogsPagination_ReturnsCorrectResponse_WithMessageFiltering()
+    {
+        // Arrange
+        var request = new GetAllLogsPaginationRequest
+        {
+            MessageFilter = "error",
+            PageNumber = 1,
+            PageSize = 10
+        };
+
+        var mockData = new List<ApplicationWarmupProcess_sp_GetAllLogsResult>
+        {
+            new() { Id = 1, Name = "Process1", ExecutionDate = DateTime.Now, Message = "An error occurred" },
+            new() { Id = 2, Name = "Process2", ExecutionDate = DateTime.Now, Message = "Another error" }
+        };
+        var mockResults = new ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result
+        {
+            TotalCount = 2,
+            Data = mockData
+        };
+
+        _mockDataService.Setup(ds => ds.GetAllLogsPaginationAsync(
+            It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<string>(), It.IsAny<DateTime?>(),
+            It.IsAny<DateTime?>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
+            It.IsAny<CancellationToken>()))
+            .ReturnsAsync(mockResults);
+
+        var service = CreateWorkflowManagementService();
+
+        // Act
+        var response = await service.GetAllLogsPagination(request, null!);
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.Equal(2, response.Items.Count);
+        Assert.Equal(2, response.TotalCount);
+        Assert.Contains("error", response.Items[0].Message.ToLower());
+        Assert.Contains("error", response.Items[1].Message.ToLower());
+    }
+
+    /// <summary>
+    /// Tests that GetAllLogsPagination returns correct response with all filters combined.
+    /// </summary>
+    [Fact]
+    public async Task GetAllLogsPagination_ReturnsCorrectResponse_WithAllFiltersCombined()
+    {
+        // Arrange
+        var request = new GetAllLogsPaginationRequest
+        {
+            PageNumber = 1,
+            PageSize = 50,
+            ProcessName = "CriticalProcess",
+            StartDate = "2024-10-01",
+            EndDate = "2024-10-12",
+            MessageFilter = "completed",
+            SortBy = "ExecutionDate",
+            SortOrder = "ASC"
+        };
+
+        var mockData = new List<ApplicationWarmupProcess_sp_GetAllLogsResult>
+        {
+            new() { Id = 100, Name = "CriticalProcess", ExecutionDate = new DateTime(2024, 10, 5), Message = "Task completed successfully" },
+            new() { Id = 101, Name = "CriticalProcess", ExecutionDate = new DateTime(2024, 10, 10), Message = "Process completed" }
+        };
+        var mockResults = new ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result
+        {
+            TotalCount = 2,
+            Data = mockData
+        };
+
+        _mockDataService.Setup(ds => ds.GetAllLogsPaginationAsync(
+            It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<string>(), It.IsAny<DateTime?>(),
+            It.IsAny<DateTime?>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
+            It.IsAny<CancellationToken>()))
+            .ReturnsAsync(mockResults);
+
+        var service = CreateWorkflowManagementService();
+
+        // Act
+        var response = await service.GetAllLogsPagination(request, null!);
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.Equal(2, response.Items.Count);
+        Assert.Equal(2, response.TotalCount);
+        Assert.All(response.Items, item => Assert.Equal("CriticalProcess", item.ProcessName));
+        Assert.All(response.Items, item => Assert.Contains("completed", item.Message.ToLower()));
+    }
+
+    /// <summary>
+    /// Tests that GetAllLogsPagination returns empty response when data service returns null.
+    /// </summary>
+    [Fact]
+    public async Task GetAllLogsPagination_ReturnsEmptyResponse_WhenDataServiceReturnsNull()
+    {
+        // Arrange
+        var request = new GetAllLogsPaginationRequest { PageNumber = 1, PageSize = 10 };
+
+        _mockDataService.Setup(ds => ds.GetAllLogsPaginationAsync(
+            It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<string>(), It.IsAny<DateTime?>(),
+            It.IsAny<DateTime?>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
+            It.IsAny<CancellationToken>()))
+            .ReturnsAsync((ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result)null!);
+
+        var service = CreateWorkflowManagementService();
+
+        // Act
+        var response = await service.GetAllLogsPagination(request, null!);
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.Empty(response.Items);
+        Assert.Equal(0, response.TotalCount);
+    }
+
+    /// <summary>
+    /// Tests that GetAllLogsPagination returns empty response when data service returns empty list.
+    /// </summary>
+    [Fact]
+    public async Task GetAllLogsPagination_ReturnsEmptyResponse_WhenDataServiceReturnsEmptyList()
+    {
+        // Arrange
+        var request = new GetAllLogsPaginationRequest { PageNumber = 1, PageSize = 10 };
+
+        _mockDataService.Setup(ds => ds.GetAllLogsPaginationAsync(
+            It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<string>(), It.IsAny<DateTime?>(),
+            It.IsAny<DateTime?>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
+            It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result { TotalCount = 0, Data = [] });
+
+        var service = CreateWorkflowManagementService();
+
+        // Act
+        var response = await service.GetAllLogsPagination(request, null!);
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.Empty(response.Items);
+        Assert.Equal(0, response.TotalCount);
+    }
+
+    /// <summary>
+    /// Tests that GetAllLogsPagination handles null message in results correctly.
+    /// </summary>
+    [Fact]
+    public async Task GetAllLogsPagination_HandlesNullMessage_Correctly()
+    {
+        // Arrange
+        var request = new GetAllLogsPaginationRequest { PageNumber = 1, PageSize = 10 };
+        var mockData = new List<ApplicationWarmupProcess_sp_GetAllLogsResult>
+        {
+            new() { Id = 1, Name = "Process1", ExecutionDate = DateTime.Now, Message = null }
+        };
+        var mockResults = new ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result
+        {
+            TotalCount = 1,
+            Data = mockData
+        };
+
+        _mockDataService.Setup(ds => ds.GetAllLogsPaginationAsync(
+            It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<string>(), It.IsAny<DateTime?>(),
+            It.IsAny<DateTime?>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
+            It.IsAny<CancellationToken>()))
+            .ReturnsAsync(mockResults);
+
+        var service = CreateWorkflowManagementService();
+
+        // Act
+        var response = await service.GetAllLogsPagination(request, null!);
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.Single(response.Items);
+        Assert.Equal(string.Empty, response.Items[0].Message);
+    }
+
+    /// <summary>
+    /// Tests that GetAllLogsPagination propagates exceptions from data service.
+    /// </summary>
+    [Fact]
+    public async Task GetAllLogsPagination_PropagatesExceptionsFromDataService()
+    {
+        // Arrange
+        var request = new GetAllLogsPaginationRequest { PageNumber = 1, PageSize = 10 };
+        var expectedException = new InvalidOperationException("Database connection failed");
+
+        _mockDataService.Setup(ds => ds.GetAllLogsPaginationAsync(
+            It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<string>(), It.IsAny<DateTime?>(),
+            It.IsAny<DateTime?>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
+            It.IsAny<CancellationToken>()))
+            .ThrowsAsync(expectedException);
+
+        var service = CreateWorkflowManagementService();
+
+        // Act & Assert
+        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetAllLogsPagination(request, null!));
+        Assert.Equal("Database connection failed", exception.Message);
+    }
+
+    /// <summary>
+    /// Tests that GetAllLogsPagination formats execution date correctly.
+    /// </summary>
+    [Fact]
+    public async Task GetAllLogsPagination_FormatsExecutionDate_Correctly()
+    {
+        // Arrange
+        var executionDate = new DateTime(2024, 10, 12, 14, 30, 45);
+        var request = new GetAllLogsPaginationRequest { PageNumber = 1, PageSize = 10 };
+        var mockData = new List<ApplicationWarmupProcess_sp_GetAllLogsResult>
+        {
+            new() { Id = 1, Name = "Process1", ExecutionDate = executionDate, Message = "Test" }
+        };
+        var mockResults = new ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result
+        {
+            TotalCount = 1,
+            Data = mockData
+        };
+
+        _mockDataService.Setup(ds => ds.GetAllLogsPaginationAsync(
+            It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<string>(), It.IsAny<DateTime?>(),
+            It.IsAny<DateTime?>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
+            It.IsAny<CancellationToken>()))
+            .ReturnsAsync(mockResults);
+
+        var service = CreateWorkflowManagementService();
+
+        // Act
+        var response = await service.GetAllLogsPagination(request, null!);
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.Single(response.Items);
+        Assert.Equal("2024-10-12 14:30:45", response.Items[0].ExecutionDate);
+    }
+
+    /// <summary>
+    /// Tests that GetAllLogsPagination handles large result sets correctly.
+    /// </summary>
+    [Fact]
+    public async Task GetAllLogsPagination_HandlesLargeResultSets_Correctly()
+    {
+        // Arrange
+        var request = new GetAllLogsPaginationRequest { PageNumber = 1, PageSize = 100 };
+        var mockData = new List<ApplicationWarmupProcess_sp_GetAllLogsResult>();
+        
+        for (var i = 1; i <= 100; i++)
+        {
+            mockData.Add(new ApplicationWarmupProcess_sp_GetAllLogsResult
+            {
+                Id = i,
+                Name = $"Process{i}",
+                ExecutionDate = DateTime.Now.AddMinutes(-i),
+                Message = $"Message {i}"
+            });
+        }
+        var mockResults = new ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result
+        {
+            TotalCount = 100,
+            Data = mockData
+        };
+
+        _mockDataService.Setup(ds => ds.GetAllLogsPaginationAsync(
+            It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<string>(), It.IsAny<DateTime?>(),
+            It.IsAny<DateTime?>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
+            It.IsAny<CancellationToken>()))
+            .ReturnsAsync(mockResults);
+
+        var service = CreateWorkflowManagementService();
+
+        // Act
+        var response = await service.GetAllLogsPagination(request, null!);
+
+        // Assert
+        Assert.NotNull(response);
+        Assert.Equal(100, response.Items.Count);
+        Assert.Equal(100, response.TotalCount);
+        Assert.All(response.Items, item => Assert.NotNull(item.ProcessName));
+    }
+
+    /// <summary>
+    /// Tests that GetAllLogsPagination verifies correct parameters are passed to data service.
+    /// </summary>
+    [Fact]
+    public async Task GetAllLogsPagination_PassesCorrectParametersToDataService()
+    {
+        // Arrange
+        var request = new GetAllLogsPaginationRequest
+        {
+            PageNumber = 3,
+            PageSize = 20,
+            ProcessName = "SpecificProcess",
+            StartDate = "2024-01-01",
+            EndDate = "2024-12-31",
+            MessageFilter = "warning",
+            SortBy = "Name",
+            SortOrder = "DESC"
+        };
+
+        var mockResults = new ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result
+        {
+            TotalCount = 0,
+            Data = new List<ApplicationWarmupProcess_sp_GetAllLogsResult>()
+        };
+
+        _mockDataService.Setup(ds => ds.GetAllLogsPaginationAsync(
+            It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<string>(), It.IsAny<DateTime?>(),
+            It.IsAny<DateTime?>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
+            It.IsAny<CancellationToken>()))
+            .ReturnsAsync(mockResults)
+            .Verifiable();
+
+        var service = CreateWorkflowManagementService();
+
+        // Act
+        await service.GetAllLogsPagination(request, null!);
+
+        // Assert
+        _mockDataService.Verify();
+    }
+
+    #endregion
+
+    #endregion
 }
 
 /// <summary>

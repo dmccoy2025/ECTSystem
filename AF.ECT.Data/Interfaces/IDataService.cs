@@ -558,8 +558,8 @@ public interface IDataService
     /// <param name="sortBy">Column to sort by ('Id', 'Name', 'ExecutionDate', 'Message').</param>
     /// <param name="sortOrder">Sort order ('ASC' or 'DESC').</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
-    /// <returns>A task representing the asynchronous operation, containing a list of logs for the specified page.</returns>
-    Task<List<ApplicationWarmupProcess_sp_GetAllLogsResult>> GetAllLogsPaginationAsync(int? pageNumber = 1, int? pageSize = 10, string? processName = null, DateTime? startDate = null, DateTime? endDate = null, string? messageFilter = null, string? sortBy = "ExecutionDate", string? sortOrder = "DESC", CancellationToken cancellationToken = default);
+    /// <returns>A task representing the asynchronous operation, containing both the total count and paginated log entries.</returns>
+    Task<ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result> GetAllLogsPaginationAsync(int? pageNumber = 1, int? pageSize = 10, string? processName = null, DateTime? startDate = null, DateTime? endDate = null, string? messageFilter = null, string? sortBy = "ExecutionDate", string? sortOrder = "DESC", CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Asynchronously inserts a log entry.

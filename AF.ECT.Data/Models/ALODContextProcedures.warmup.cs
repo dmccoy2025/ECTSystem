@@ -110,6 +110,7 @@ public partial class ALODContextProcedures : IALODContextProcedures
 
     /// <summary>
     /// Retrieves all logs from the Application Warmup Process with pagination, filtering, and sorting.
+    /// Returns both the total count and the paginated data in a single result object.
     /// </summary>
     /// <param name="pageNumber">The page number to retrieve.</param>
     /// <param name="pageSize">The number of items per page.</param>
@@ -121,8 +122,8 @@ public partial class ALODContextProcedures : IALODContextProcedures
     /// <param name="sortOrder">Sort order ('ASC' or 'DESC').</param>
     /// <param name="returnValue">Output parameter containing the return value from the stored procedure.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
-    /// <returns>A list of log entries for the specified page.</returns>
-    public async virtual Task<List<ApplicationWarmupProcess_sp_GetAllLogsResult>> ApplicationWarmupProcess_sp_GetAllLogs_paginationAsync(int? pageNumber = 1, int? pageSize = 10, string? processName = null, DateTime? startDate = null, DateTime? endDate = null, string? messageFilter = null, string? sortBy = "ExecutionDate", string? sortOrder = "DESC", OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+    /// <returns>A result object containing the total count and list of log entries for the specified page.</returns>
+    public async virtual Task<ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result> ApplicationWarmupProcess_sp_GetAllLogs_paginationAsync(int? pageNumber = 1, int? pageSize = 10, string? processName = null, DateTime? startDate = null, DateTime? endDate = null, string? messageFilter = null, string? sortBy = "ExecutionDate", string? sortOrder = "DESC", OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
     {
         var parameterreturnValue = new SqlParameter
         {
@@ -187,11 +188,22 @@ public partial class ALODContextProcedures : IALODContextProcedures
             },
             parameterreturnValue,
         };
-        var _ = await _context.SqlQueryToListAsync<ApplicationWarmupProcess_sp_GetAllLogsResult>("EXEC @returnValue = [dbo].[ApplicationWarmupProcess_sp_GetAllLogs_pagination] @PageNumber = @PageNumber, @PageSize = @PageSize, @ProcessName = @ProcessName, @StartDate = @StartDate, @EndDate = @EndDate, @MessageFilter = @MessageFilter, @SortBy = @SortBy, @SortOrder = @SortOrder", sqlParameters, cancellationToken);
+        
+        // The stored procedure returns two result sets:
+        // 1. Total count (single row with TotalCount column)
+        // 2. Paginated data (list of log entries)
+        var (totalCountResults, dataResults) = await _context.SqlQueryToTwoResultSetsAsync<ApplicationWarmupProcess_sp_GetAllLogs_pagination_TotalCountResult, ApplicationWarmupProcess_sp_GetAllLogsResult>(
+            "EXEC @returnValue = [dbo].[ApplicationWarmupProcess_sp_GetAllLogs_pagination] @PageNumber = @PageNumber, @PageSize = @PageSize, @ProcessName = @ProcessName, @StartDate = @StartDate, @EndDate = @EndDate, @MessageFilter = @MessageFilter, @SortBy = @SortBy, @SortOrder = @SortOrder", 
+            sqlParameters, 
+            cancellationToken);
 
         returnValue?.SetValue(parameterreturnValue.Value);
 
-        return _;
+        return new ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result
+        {
+            TotalCount = totalCountResults.FirstOrDefault()?.TotalCount ?? 0,
+            Data = dataResults
+        };
     }
 
     /// <summary>

@@ -1501,8 +1501,8 @@ public class DataService : IDataService
     /// <param name="sortBy">Column to sort by ('Id', 'Name', 'ExecutionDate', 'Message').</param>
     /// <param name="sortOrder">Sort order ('ASC' or 'DESC').</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
-    /// <returns>A task representing the asynchronous operation, containing a list of log entries for the specified page.</returns>
-    public async Task<List<ApplicationWarmupProcess_sp_GetAllLogsResult>> GetAllLogsPaginationAsync(int? pageNumber = 1, int? pageSize = 10, string? processName = null, DateTime? startDate = null, DateTime? endDate = null, string? messageFilter = null, string? sortBy = "ExecutionDate", string? sortOrder = "DESC", CancellationToken cancellationToken = default)
+    /// <returns>A task representing the asynchronous operation, containing both the total count and paginated log entries.</returns>
+    public async Task<ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result> GetAllLogsPaginationAsync(int? pageNumber = 1, int? pageSize = 10, string? processName = null, DateTime? startDate = null, DateTime? endDate = null, string? messageFilter = null, string? sortBy = "ExecutionDate", string? sortOrder = "DESC", CancellationToken cancellationToken = default)
     {
         _logger.LogInformation("Retrieving all log entries with pagination, filtering, and sorting, page {PageNumber}, size {PageSize}", pageNumber, pageSize);
         try
@@ -1518,7 +1518,7 @@ public class DataService : IDataService
                 sortBy,
                 sortOrder,
                 cancellationToken: cancellationToken);
-            _logger.LogInformation("Retrieved {Count} log entries for page {PageNumber}", result.Count, pageNumber);
+            _logger.LogInformation("Retrieved {Count} log entries (total: {TotalCount}) for page {PageNumber}", result.Data.Count, result.TotalCount, pageNumber);
             return result;
         }
         catch (Exception ex)

@@ -602,6 +602,20 @@ public interface IWorkflowClient : IDisposable
     IAsyncEnumerable<LogItem> GetAllLogsStream();
 
     /// <summary>
+    /// Retrieves all logs with pagination, filtering, and sorting.
+    /// </summary>
+    /// <param name="pageNumber">The page number (optional, defaults to 1).</param>
+    /// <param name="pageSize">The page size (optional, defaults to 10).</param>
+    /// <param name="processName">The process name filter (optional).</param>
+    /// <param name="startDate">The start date filter (optional).</param>
+    /// <param name="endDate">The end date filter (optional).</param>
+    /// <param name="messageFilter">The message filter (optional).</param>
+    /// <param name="sortBy">The sort by field (optional, defaults to "ExecutionDate").</param>
+    /// <param name="sortOrder">The sort order (optional, defaults to "DESC").</param>
+    /// <returns>A task representing the asynchronous operation, containing the paginated logs response.</returns>
+    Task<GetAllLogsPaginationResponse> GetAllLogsPaginationAsync(int? pageNumber = null, int? pageSize = null, string? processName = null, string? startDate = null, string? endDate = null, string? messageFilter = null, string? sortBy = null, string? sortOrder = null);
+
+    /// <summary>
     /// Inserts a log entry.
     /// </summary>
     /// <param name="processName">The name of the process.</param>

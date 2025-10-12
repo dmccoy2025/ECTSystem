@@ -729,7 +729,8 @@ service WorkflowService {
   // Retrieves all log entries with pagination.
   rpc GetAllLogsPagination(GetAllLogsPaginationRequest) returns (GetAllLogsPaginationResponse) {
     option (google.api.http) = {
-      get: "/v1/logs/pagination"
+      post: "/v1/logs/pagination"
+      body: "*"
     };
   }
 

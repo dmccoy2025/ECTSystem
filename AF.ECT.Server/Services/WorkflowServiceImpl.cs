@@ -2449,14 +2449,14 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         {
             Items =
             {
-                results?.Select(r => new LogItem
+                results?.Data?.Select(r => new LogItem
                 {
                     LogId = r.Id,
                     ProcessName = r.Name ?? string.Empty,
                     ExecutionDate = r.ExecutionDate.ToString("yyyy-MM-dd HH:mm:ss"),
                     Message = r.Message ?? string.Empty }) ?? [] 
             },
-            TotalCount = results?.Count ?? 0
+            TotalCount = results?.TotalCount ?? 0
         };
     }
 

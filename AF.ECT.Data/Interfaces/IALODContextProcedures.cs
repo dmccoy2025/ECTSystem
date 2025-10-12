@@ -38,8 +38,9 @@ public partial interface IALODContextProcedures
 
     /// <summary>
     /// Asynchronously executes the ApplicationWarmupProcess_sp_GetAllLogs_pagination stored procedure.
+    /// Returns both the total count and the paginated data in a single result object.
     /// </summary>
-    Task<List<ApplicationWarmupProcess_sp_GetAllLogsResult>> ApplicationWarmupProcess_sp_GetAllLogs_paginationAsync(int? pageNumber = 1, int? pageSize = 10, string? processName = null, DateTime? startDate = null, DateTime? endDate = null, string? messageFilter = null, string? sortBy = "ExecutionDate", string? sortOrder = "DESC", OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default);
+    Task<ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result> ApplicationWarmupProcess_sp_GetAllLogs_paginationAsync(int? pageNumber = 1, int? pageSize = 10, string? processName = null, DateTime? startDate = null, DateTime? endDate = null, string? messageFilter = null, string? sortBy = "ExecutionDate", string? sortOrder = "DESC", OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default);
 
     /// <summary>
     /// Asynchronously executes the ApplicationWarmupProcess_sp_InsertLog stored procedure.

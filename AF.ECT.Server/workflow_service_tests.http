@@ -702,6 +702,127 @@ Accept: application/json
 
 ###
 
+# Test GetAllLogsPagination with basic pagination (page 1, 10 items)
+POST {{ServerHostAddress}}/v1/logs/pagination
+Content-Type: application/json
+
+{
+  "page_number": 1,
+  "page_size": 10
+}
+
+###
+
+# Test GetAllLogsPagination with larger page size
+POST {{ServerHostAddress}}/v1/logs/pagination
+Content-Type: application/json
+
+{
+  "page_number": 1,
+  "page_size": 50
+}
+
+###
+
+# Test GetAllLogsPagination with filtering by process name
+POST {{ServerHostAddress}}/v1/logs/pagination
+Content-Type: application/json
+
+{
+  "page_number": 1,
+  "page_size": 10,
+  "process_name": "test"
+}
+
+###
+
+# Test GetAllLogsPagination with date range filtering
+POST {{ServerHostAddress}}/v1/logs/pagination
+Content-Type: application/json
+
+{
+  "page_number": 1,
+  "page_size": 10,
+  "start_date": "2025-10-01",
+  "end_date": "2025-10-12"
+}
+
+###
+
+# Test GetAllLogsPagination with message filtering
+POST {{ServerHostAddress}}/v1/logs/pagination
+Content-Type: application/json
+
+{
+  "page_number": 1,
+  "page_size": 10,
+  "message_filter": "error"
+}
+
+###
+
+# Test GetAllLogsPagination with sorting (ascending by execution date)
+POST {{ServerHostAddress}}/v1/logs/pagination
+Content-Type: application/json
+
+{
+  "page_number": 1,
+  "page_size": 10,
+  "sort_by": "ExecutionDate",
+  "sort_order": "ASC"
+}
+
+###
+
+# Test GetAllLogsPagination with sorting (descending by process name)
+POST {{ServerHostAddress}}/v1/logs/pagination
+Content-Type: application/json
+
+{
+  "page_number": 1,
+  "page_size": 10,
+  "sort_by": "Name",
+  "sort_order": "DESC"
+}
+
+###
+
+# Test GetAllLogsPagination with combined filters (comprehensive test)
+POST {{ServerHostAddress}}/v1/logs/pagination
+Content-Type: application/json
+
+{
+  "page_number": 1,
+  "page_size": 20,
+  "process_name": "test",
+  "start_date": "2025-10-01",
+  "end_date": "2025-10-12",
+  "message_filter": "success",
+  "sort_by": "ExecutionDate",
+  "sort_order": "DESC"
+}
+
+###
+
+# Test GetAllLogsPagination with page 2
+POST {{ServerHostAddress}}/v1/logs/pagination
+Content-Type: application/json
+
+{
+  "page_number": 2,
+  "page_size": 10
+}
+
+###
+
+# Test GetAllLogsPagination with minimum parameters (defaults should apply)
+POST {{ServerHostAddress}}/v1/logs/pagination
+Content-Type: application/json
+
+{}
+
+###
+
 # Workflow Entity Endpoints
 
 GET {{ServerHostAddress}}/v1/workflows/1

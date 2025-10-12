@@ -241,6 +241,115 @@ public static class DbContextExtensions
             return null;
         }
     }
+
+    /// <summary>
+    /// Executes a raw SQL query asynchronously and returns two result sets.
+    /// </summary>
+    /// <typeparam name="T1">The type of objects to return from the first result set.</typeparam>
+    /// <typeparam name="T2">The type of objects to return from the second result set.</typeparam>
+    /// <param name="db">The database context to execute the query against.</param>
+    /// <param name="sql">The raw SQL query to execute.</param>
+    /// <param name="parameters">The parameters to pass to the SQL query.</param>
+    /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
+    /// <returns>A tuple containing the first and second result sets.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when db or sql is null.</exception>
+    public static async Task<(List<T1>, List<T2>)> SqlQueryToTwoResultSetsAsync<T1, T2>(
+        this DbContext db, 
+        string sql, 
+        object[]? parameters = null, 
+        CancellationToken? cancellationToken = default)
+        where T1 : class
+        where T2 : class
+    {
+        parameters ??= Array.Empty<object>();
+        cancellationToken ??= CancellationToken.None;
+
+        var connection = db.Database.GetDbConnection();
+        var wasClosed = connection.State == System.Data.ConnectionState.Closed;
+        
+        try
+        {
+            if (wasClosed)
+            {
+                await connection.OpenAsync(cancellationToken.Value);
+            }
+
+            using var command = connection.CreateCommand();
+            command.CommandText = sql;
+            command.CommandType = System.Data.CommandType.Text;
+
+            // Add parameters
+            foreach (var param in parameters)
+            {
+                if (param is DbParameter dbParam)
+                {
+                    command.Parameters.Add(dbParam);
+                }
+            }
+
+            using var reader = await command.ExecuteReaderAsync(cancellationToken.Value);
+            
+            // Read first result set
+            var firstResults = new List<T1>();
+            while (await reader.ReadAsync(cancellationToken.Value))
+            {
+                var instance = Activator.CreateInstance<T1>();
+                MapReaderToObject(reader, instance);
+                firstResults.Add(instance);
+            }
+
+            // Move to second result set
+            var secondResults = new List<T2>();
+            if (await reader.NextResultAsync(cancellationToken.Value))
+            {
+                while (await reader.ReadAsync(cancellationToken.Value))
+                {
+                    var instance = Activator.CreateInstance<T2>();
+                    MapReaderToObject(reader, instance);
+                    secondResults.Add(instance);
+                }
+            }
+
+            return (firstResults, secondResults);
+        }
+        finally
+        {
+            if (wasClosed)
+            {
+                await connection.CloseAsync();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Maps a DbDataReader row to an object instance using reflection.
+    /// </summary>
+    /// <param name="reader">The data reader to map from.</param>
+    /// <param name="instance">The object instance to map to.</param>
+    private static void MapReaderToObject(DbDataReader reader, object instance)
+    {
+        var properties = instance.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+        
+        for (int i = 0; i < reader.FieldCount; i++)
+        {
+            var columnName = reader.GetName(i);
+            var property = properties.FirstOrDefault(p => 
+                p.Name.Equals(columnName, StringComparison.OrdinalIgnoreCase) && p.CanWrite);
+
+            if (property != null && !reader.IsDBNull(i))
+            {
+                var value = reader.GetValue(i);
+                var targetType = Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType;
+                
+                if (value != null && value.GetType() != targetType)
+                {
+                    value = Convert.ChangeType(value, targetType);
+                }
+                
+                property.SetValue(instance, value);
+            }
+        }
+    }
 }
 
 /// <summary>

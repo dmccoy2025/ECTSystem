@@ -135,6 +135,9 @@ public class WorkflowClient : IWorkflowClient
         // Configure handler for non-browser platforms (these properties are not available in Blazor WebAssembly)
         // Note: MaxConnectionsPerServer, UseProxy, and UseCookies are not supported in browser environments
 
+        // Determine if the connection uses HTTPS
+        var isHttps = httpClient.BaseAddress!.Scheme == "https";
+
         // Create gRPC-Web channel for browser compatibility with optimized settings
         _channel = GrpcChannel.ForAddress(httpClient.BaseAddress!,
             new GrpcChannelOptions
@@ -142,7 +145,7 @@ public class WorkflowClient : IWorkflowClient
                 HttpHandler = new GrpcWebHandler(httpClientHandler),
                 MaxReceiveMessageSize = 10 * 1024 * 1024, // 10MB max message size
                 MaxSendMessageSize = 10 * 1024 * 1024, // 10MB max message size
-                Credentials = Grpc.Core.ChannelCredentials.SecureSsl, // Use secure credentials for HTTPS
+                Credentials = isHttps ? Grpc.Core.ChannelCredentials.SecureSsl : Grpc.Core.ChannelCredentials.Insecure, // Use appropriate credentials based on scheme
             });
 
         // Create client
@@ -2641,6 +2644,71 @@ public class WorkflowClient : IWorkflowClient
         while (await call.ResponseStream.MoveNext(CancellationToken.None))
         {
             yield return call.ResponseStream.Current;
+        }
+    }
+
+    /// <summary>
+    /// Retrieves all logs with pagination, filtering, and sorting.
+    /// </summary>
+    /// <param name="pageNumber">The page number (optional, defaults to 1).</param>
+    /// <param name="pageSize">The page size (optional, defaults to 10).</param>
+    /// <param name="processName">The process name filter (optional).</param>
+    /// <param name="startDate">The start date filter (optional).</param>
+    /// <param name="endDate">The end date filter (optional).</param>
+    /// <param name="messageFilter">The message filter (optional).</param>
+    /// <param name="sortBy">The sort by field (optional, defaults to "ExecutionDate").</param>
+    /// <param name="sortOrder">The sort order (optional, defaults to "DESC").</param>
+    /// <returns>A task representing the asynchronous operation, containing the paginated logs response.</returns>
+    /// <exception cref="Grpc.Core.RpcException">Thrown when gRPC communication fails.</exception>
+    public async Task<GetAllLogsPaginationResponse> GetAllLogsPaginationAsync(int? pageNumber = null, int? pageSize = null, string? processName = null, string? startDate = null, string? endDate = null, string? messageFilter = null, string? sortBy = null, string? sortOrder = null)
+    {
+        var correlationId = GenerateCorrelationId();
+        var startTime = DateTime.UtcNow;
+        _stopwatch.Restart();
+
+        try
+        {
+            var result = await _retryPolicy.ExecuteAsync(async () =>
+            {
+                var request = new GetAllLogsPaginationRequest();
+                
+                if (pageNumber.HasValue)
+                    request.PageNumber = pageNumber.Value;
+                
+                if (pageSize.HasValue)
+                    request.PageSize = pageSize.Value;
+                
+                if (!string.IsNullOrEmpty(processName))
+                    request.ProcessName = processName;
+                
+                if (!string.IsNullOrEmpty(startDate))
+                    request.StartDate = startDate;
+                
+                if (!string.IsNullOrEmpty(endDate))
+                    request.EndDate = endDate;
+                
+                if (!string.IsNullOrEmpty(messageFilter))
+                    request.MessageFilter = messageFilter;
+                
+                if (!string.IsNullOrEmpty(sortBy))
+                    request.SortBy = sortBy;
+                
+                if (!string.IsNullOrEmpty(sortOrder))
+                    request.SortOrder = sortOrder;
+
+                return await _client.GetAllLogsPaginationAsync(request);
+            });
+
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetAllLogsPaginationAsync), correlationId, startTime, _stopwatch.Elapsed, true, additionalData: new { PageNumber = pageNumber, PageSize = pageSize, ProcessName = processName, StartDate = startDate, EndDate = endDate, MessageFilter = messageFilter, SortBy = sortBy, SortOrder = sortOrder });
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _stopwatch.Stop();
+            LogAuditEvent(nameof(GetAllLogsPaginationAsync), correlationId, startTime, _stopwatch.Elapsed, false, ex.Message, new { PageNumber = pageNumber, PageSize = pageSize, ProcessName = processName, StartDate = startDate, EndDate = endDate, MessageFilter = messageFilter, SortBy = sortBy, SortOrder = sortOrder });
+            throw;
         }
     }
 

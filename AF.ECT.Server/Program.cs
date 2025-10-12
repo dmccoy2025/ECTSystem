@@ -9,12 +9,12 @@ builder.Services.AddSwaggerGen();
 
 // Add application services
 builder.Services.AddApplicationServices(builder.Configuration);
-builder.Services.AddApplicationCors();
+//builder.Services.AddApplicationCors();
 builder.Services.AddGrpcServices();
-builder.Services.AddHealthChecks(builder.Configuration);
-builder.Services.AddAntiforgeryServices();
-builder.Services.AddRateLimitingServices(builder.Configuration);
-builder.Services.AddRateLimiter();
+//builder.Services.AddHealthChecks(builder.Configuration);
+//builder.Services.AddAntiforgeryServices();
+//builder.Services.AddRateLimitingServices(builder.Configuration);
+//builder.Services.AddRateLimiter();
 
 var app = builder.Build();
 
@@ -27,17 +27,26 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors();
+
+// Enable CORS before GrpcWeb
+//app.UseCors();
+
+// Enable gRPC-Web for browser clients (MUST be before UseRouting)
+app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
+
+// Explicitly call UseRouting to ensure gRPC-Web is before it
+app.UseRouting();
+
 app.UseAntiforgery();
-app.UseRateLimiter();
+//app.UseRateLimiter();
 
 // Map health checks endpoint
-app.MapHealthChecks("/healthz");
+//app.MapHealthChecks("/healthz");
 
-// Map gRPC services
-app.MapGrpcService<WorkflowServiceImpl>();
+// Map gRPC services with GrpcWeb enabled
+app.MapGrpcService<WorkflowServiceImpl>().EnableGrpcWeb();
 
-// Map fallback for SPA
+// Map fallback for SPA (must be last)
 app.MapFallbackToFile("index.html");
 
 app.Run();

@@ -7,7 +7,7 @@
 -- Modified Date:	4/19/2016
 -- Description:		Added selection of the Message field.
 -- ============================================================================
--- Modified By:		[Your Name]
+-- Modified By:		Donell McCoy
 -- Modified Date:	10/11/2025
 -- Description:		Added filtering and dynamic sorting capabilities.
 -- ============================================================================
@@ -39,6 +39,16 @@ BEGIN
 		RETURN;
 	END
 	
+	-- Return total count first
+	SELECT COUNT(*) AS TotalCount
+	FROM	ApplicationWarmupProcessLog l
+			JOIN ApplicationWarmupProcess p ON l.ProcessId = p.Id
+	WHERE	(@ProcessName IS NULL OR p.Name LIKE '%' + @ProcessName + '%')
+			AND (@StartDate IS NULL OR l.ExecutionDate >= @StartDate)
+			AND (@EndDate IS NULL OR l.ExecutionDate <= @EndDate)
+			AND (@MessageFilter IS NULL OR l.Message LIKE '%' + @MessageFilter + '%');
+	
+	-- Return paginated data
 	SELECT	l.Id, p.Name, l.ExecutionDate, l.Message
 	FROM	ApplicationWarmupProcessLog l
 			JOIN ApplicationWarmupProcess p ON l.ProcessId = p.Id
@@ -55,6 +65,6 @@ BEGIN
 		CASE WHEN @SortBy = 'ExecutionDate' AND @SortOrder = 'DESC' THEN l.ExecutionDate END DESC,
 		CASE WHEN @SortBy = 'Message' AND @SortOrder = 'ASC' THEN l.Message END ASC,
 		CASE WHEN @SortBy = 'Message' AND @SortOrder = 'DESC' THEN l.Message END DESC
-	OFFSET (@PageNumber - 1) * @PageSize ROWS FETCH NEXT @PageSize ROWS ONLY
+	OFFSET (@PageNumber - 1) * @PageSize ROWS FETCH NEXT @PageSize ROWS ONLY;
 END
 GO
