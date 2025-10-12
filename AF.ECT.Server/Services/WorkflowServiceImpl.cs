@@ -2217,7 +2217,10 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     {
         _logger.LogInformation($"Deleting log by ID: {request.LogId}");
 
-        var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.DeleteLogByIdAsync(request.LogId, context?.CancellationToken ?? CancellationToken.None));
+        var result = await _resilienceService.ExecuteWithRetryAsync(() =>
+        {
+            return _dataService.DeleteLogByIdAsync(request.LogId, context?.CancellationToken ?? CancellationToken.None);
+        });
 
         return new DeleteLogByIdResponse
         {
@@ -2235,11 +2238,22 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     {
         _logger.LogInformation("Finding process last execution date");
 
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.FindProcessLastExecutionDateAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None));
+        var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+        {
+            return _dataService.FindProcessLastExecutionDateAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None);
+        });
 
         return new FindProcessLastExecutionDateResponse
         {
-            Items = { results?.Select(r => new ProcessLastExecutionDateItem { ProcessName = request.ProcessName ?? string.Empty, LastExecutionDate = r.ExecutionDate?.ToString("yyyy-MM-dd HH:mm:ss") ?? string.Empty, Message = string.Empty }) ?? [] }
+            Items =
+            {
+                results?.Select(r => new ProcessLastExecutionDateItem
+                {
+                    ProcessName = request.ProcessName ?? string.Empty,
+                    LastExecutionDate = r.ExecutionDate?.ToString("yyyy-MM-dd HH:mm:ss") ?? string.Empty,
+                    Message = string.Empty 
+                }) ?? [] 
+            }
         };
     }
 
@@ -2254,7 +2268,10 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     {
         _logger.LogInformation("Streaming process last execution date");
 
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.FindProcessLastExecutionDateAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None));
+        var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+        {
+            return _dataService.FindProcessLastExecutionDateAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None);
+        });
 
         if (results != null)
         {
@@ -2280,11 +2297,26 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     {
         _logger.LogInformation("Getting all logs");
 
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetAllLogsAsync(context?.CancellationToken ?? CancellationToken.None));
+        var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+        {
+            return _dataService.GetAllLogsAsync(context?.CancellationToken ?? CancellationToken.None);
+        });
 
         return new GetAllLogsResponse
         {
-            Items = { results?.Select(r => new LogItem { LogId = r.Id, ProcessName = r.Name ?? string.Empty, ExecutionDate = r.ExecutionDate.ToString("yyyy-MM-dd HH:mm:ss"), Message = r.Message ?? string.Empty }) ?? [] }
+            Items =
+            {
+                results?.Select(r =>
+                {
+                    return new LogItem
+                    {
+                        LogId = r.Id,
+                        ProcessName = r.Name ?? string.Empty,
+                        ExecutionDate = r.ExecutionDate.ToString("yyyy-MM-dd HH:mm:ss"),
+                        Message = r.Message ?? string.Empty
+                    };
+                }) ?? []
+            }
         };
     }
 
@@ -2299,7 +2331,10 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     {
         _logger.LogInformation("Streaming all logs");
 
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetAllLogsAsync(context?.CancellationToken ?? CancellationToken.None));
+        var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+        {
+            return _dataService.GetAllLogsAsync(context?.CancellationToken ?? CancellationToken.None);
+        });
 
         if (results != null)
         {
@@ -2326,7 +2361,10 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     {
         _logger.LogInformation("Inserting log");
 
-        var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.InsertLogAsync(request.ProcessName, DateTime.TryParse(request.ExecutionDate, out var execDate) ? execDate : DateTime.Now, request.Message, context?.CancellationToken ?? CancellationToken.None));
+        var result = await _resilienceService.ExecuteWithRetryAsync(() =>
+        {
+            return _dataService.InsertLogAsync(request.ProcessName, DateTime.TryParse(request.ExecutionDate, out var execDate) ? execDate : DateTime.Now, request.Message, context?.CancellationToken ?? CancellationToken.None);
+        });
 
         return new InsertLogResponse
         {
@@ -2344,11 +2382,14 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     {
         _logger.LogInformation("Checking if process is active");
 
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.IsProcessActiveAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None));
+        var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+        {
+            return _dataService.IsProcessActiveAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None);
+        });
 
         return new IsProcessActiveResponse
         {
-            Items = { results?.Select(r => new ProcessActiveItem { ProcessName = request.ProcessName ?? string.Empty, IsActive = results.Any() }) ?? [] }
+            Items = { results?.Select(r => new ProcessActiveItem { ProcessName = request.ProcessName ?? string.Empty, IsActive = results.Count != 0 }) ?? [] }
         };
     }
 
@@ -2363,15 +2404,21 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     {
         _logger.LogInformation("Streaming process active check");
 
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.IsProcessActiveAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None));
-
-        if (results != null && results.Any())
+        var results = await _resilienceService.ExecuteWithRetryAsync(() =>
         {
-            await responseStream.WriteAsync(new ProcessActiveItem
+            return _dataService.IsProcessActiveAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None);
+        });
+
+        if (results != null)
+        {
+            foreach (var result in results)
             {
-                ProcessName = request.ProcessName ?? string.Empty,
-                IsActive = true
-            });
+                await responseStream.WriteAsync(new ProcessActiveItem
+                {
+                    ProcessName = request.ProcessName ?? string.Empty,
+                    IsActive = true
+                });
+            }
         }
     }
 
@@ -2385,9 +2432,9 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     {
         _logger.LogInformation("Getting all logs with pagination, filtering, and sorting");
 
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () =>
+        var results = await _resilienceService.ExecuteWithRetryAsync(() =>
         {
-            return await _dataService.GetAllLogsPaginationAsync(
+            return _dataService.GetAllLogsPaginationAsync(
                 request.HasPageNumber ? request.PageNumber : 1,
                 request.HasPageSize ? request.PageSize : 10,
                 request.ProcessName,
@@ -2400,7 +2447,15 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
 
         return new GetAllLogsPaginationResponse
         {
-            Items = { results?.Select(r => new LogItem { LogId = r.Id, ProcessName = r.Name ?? string.Empty, ExecutionDate = r.ExecutionDate.ToString("yyyy-MM-dd HH:mm:ss"), Message = r.Message ?? string.Empty }) ?? [] },
+            Items =
+            {
+                results?.Select(r => new LogItem
+                {
+                    LogId = r.Id,
+                    ProcessName = r.Name ?? string.Empty,
+                    ExecutionDate = r.ExecutionDate.ToString("yyyy-MM-dd HH:mm:ss"),
+                    Message = r.Message ?? string.Empty }) ?? [] 
+            },
             TotalCount = results?.Count ?? 0
         };
     }
@@ -2419,11 +2474,21 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     {
         _logger.LogInformation("Getting workflow by ID");
 
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetWorkflowByIdAsync(request.WorkflowId, context?.CancellationToken ?? CancellationToken.None));
+        var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+        {
+            return _dataService.GetWorkflowByIdAsync(request.WorkflowId, context?.CancellationToken ?? CancellationToken.None);
+        });
 
         return new GetWorkflowByIdResponse
         {
-            Items = { results?.Select(r => new WorkflowByIdItem { WorkflowId = (int)r.workflowId, WorkflowText = r.title ?? string.Empty }) ?? [] }
+            Items =
+            {
+                results?.Select(r => new WorkflowByIdItem 
+                {
+                    WorkflowId = r.workflowId,
+                    WorkflowText = r.title ?? string.Empty 
+                }) ?? []
+            }
         };
     }
 

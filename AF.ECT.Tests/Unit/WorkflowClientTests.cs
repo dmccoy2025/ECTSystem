@@ -52,7 +52,7 @@ public class WorkflowClientTests : IDisposable
             Task.FromResult(reinvestigationResponse),
             Task.FromResult(new Metadata()),
             () => Grpc.Core.Status.DefaultSuccess,
-            () => new Metadata(),
+            () => [],
             () => { });
         _mockGrpcClient
             .Setup(x => x.GetReinvestigationRequestsAsync(It.IsAny<GetReinvestigationRequestsRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
@@ -67,7 +67,7 @@ public class WorkflowClientTests : IDisposable
             Task.FromResult(userNameResponse),
             Task.FromResult(new Metadata()),
             () => Grpc.Core.Status.DefaultSuccess,
-            () => new Metadata(),
+            () => [],
             () => { });
         _mockGrpcClient
             .Setup(x => x.GetUserNameAsync(It.IsAny<GetUserNameRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
@@ -82,7 +82,7 @@ public class WorkflowClientTests : IDisposable
             Task.FromResult(managedUsersResponse),
             Task.FromResult(new Metadata()),
             () => Grpc.Core.Status.DefaultSuccess,
-            () => new Metadata(),
+            () => [],
             () => { });
         _mockGrpcClient
             .Setup(x => x.GetManagedUsersAsync(It.IsAny<GetManagedUsersRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
@@ -97,7 +97,7 @@ public class WorkflowClientTests : IDisposable
             Task.FromResult(userAltTitleResponse),
             Task.FromResult(new Metadata()),
             () => Grpc.Core.Status.DefaultSuccess,
-            () => new Metadata(),
+            () => [],
             () => { });
         _mockGrpcClient
             .Setup(x => x.GetUserAltTitleAsync(It.IsAny<GetUserAltTitleRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
@@ -112,7 +112,7 @@ public class WorkflowClientTests : IDisposable
             Task.FromResult(pageAccessResponse),
             Task.FromResult(new Metadata()),
             () => Grpc.Core.Status.DefaultSuccess,
-            () => new Metadata(),
+            () => [],
             () => { });
         _mockGrpcClient
             .Setup(x => x.GetPageAccessByGroupAsync(It.IsAny<GetPageAccessByGroupRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
@@ -124,7 +124,7 @@ public class WorkflowClientTests : IDisposable
             Task.FromResult(registerUserResponse),
             Task.FromResult(new Metadata()),
             () => Grpc.Core.Status.DefaultSuccess,
-            () => new Metadata(),
+            () => [],
             () => { });
         _mockGrpcClient
             .Setup(x => x.RegisterUserAsync(It.IsAny<RegisterUserRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
@@ -139,7 +139,7 @@ public class WorkflowClientTests : IDisposable
             Task.FromResult(workflowStatusResponse),
             Task.FromResult(new Metadata()),
             () => Grpc.Core.Status.DefaultSuccess,
-            () => new Metadata(),
+            () => [],
             () => { });
         _mockGrpcClient
             .Setup(x => x.GetWorkflowInitialStatusCodeAsync(It.IsAny<GetWorkflowInitialStatusCodeRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
@@ -154,7 +154,7 @@ public class WorkflowClientTests : IDisposable
             Task.FromResult(workflowTitleResponse),
             Task.FromResult(new Metadata()),
             () => Grpc.Core.Status.DefaultSuccess,
-            () => new Metadata(),
+            () => [],
             () => { });
         _mockGrpcClient
             .Setup(x => x.GetWorkflowTitleAsync(It.IsAny<GetWorkflowTitleRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
@@ -169,7 +169,7 @@ public class WorkflowClientTests : IDisposable
             Task.FromResult(workflowTitleByStatusResponse),
             Task.FromResult(new Metadata()),
             () => Grpc.Core.Status.DefaultSuccess,
-            () => new Metadata(),
+            () => [],
             () => { });
         _mockGrpcClient
             .Setup(x => x.GetWorkflowTitleByWorkStatusIdAsync(It.IsAny<GetWorkflowTitleByWorkStatusIdRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
@@ -184,7 +184,7 @@ public class WorkflowClientTests : IDisposable
             Task.FromResult(searchMemberResponse),
             Task.FromResult(new Metadata()),
             () => Grpc.Core.Status.DefaultSuccess,
-            () => new Metadata(),
+            () => [],
             () => { });
         _mockGrpcClient
             .Setup(x => x.SearchMemberDataAsync(It.IsAny<SearchMemberDataRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
@@ -199,7 +199,7 @@ public class WorkflowClientTests : IDisposable
             Task.FromResult(searchMemberTestResponse),
             Task.FromResult(new Metadata()),
             () => Grpc.Core.Status.DefaultSuccess,
-            () => new Metadata(),
+            () => [],
             () => { });
         _mockGrpcClient
             .Setup(x => x.SearchMemberDataTestAsync(It.IsAny<SearchMemberDataTestRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
@@ -211,7 +211,7 @@ public class WorkflowClientTests : IDisposable
             Task.FromResult(registerUserRoleResponse),
             Task.FromResult(new Metadata()),
             () => Grpc.Core.Status.DefaultSuccess,
-            () => new Metadata(),
+            () => [],
             () => { });
         _mockGrpcClient
             .Setup(x => x.RegisterUserRoleAsync(It.IsAny<RegisterUserRoleRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
@@ -226,7 +226,7 @@ public class WorkflowClientTests : IDisposable
             Task.FromResult(insertActionResponse),
             Task.FromResult(new Metadata()),
             () => Grpc.Core.Status.DefaultSuccess,
-            () => new Metadata(),
+            () => [],
             () => { });
         _mockGrpcClient
             .Setup(x => x.InsertActionAsync(It.IsAny<InsertActionRequest>(), It.IsAny<Metadata>(), It.IsAny<DateTime?>(), It.IsAny<CancellationToken>()))
@@ -301,7 +301,7 @@ public class WorkflowClientTests : IDisposable
             Task.FromResult(expectedResponse),
             Task.FromResult(new Metadata()),
             () => Grpc.Core.Status.DefaultSuccess,
-            () => new Metadata(),
+            () => [],
             () => { });
 
         _mockGrpcClient

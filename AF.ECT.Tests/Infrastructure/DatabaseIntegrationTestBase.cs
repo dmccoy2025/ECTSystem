@@ -79,11 +79,11 @@ public class DatabaseIntegrationTestBase : WebApplicationFactory<TestProgram>, I
             // This allows testing the gRPC layer without database complications
             var mockDataService = new Mock<IDataService>();
             mockDataService.Setup(x => x.GetReinvestigationRequestsAsync(It.IsAny<int?>(), It.IsAny<bool?>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new List<core_lod_sp_GetReinvestigationRequestsResult>());
+                .ReturnsAsync([]);
             mockDataService.Setup(x => x.GetUserNameAsync(It.IsAny<string?>(), It.IsAny<string?>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new List<core_user_sp_GetUserNameResult>());
+                .ReturnsAsync([]);
             mockDataService.Setup(x => x.GetWorkflowTitleAsync(It.IsAny<int?>(), It.IsAny<int?>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new List<core_workflow_sp_GetWorkflowTitleResult>());
+                .ReturnsAsync([]);
 
             services.AddSingleton(mockDataService.Object);
         });
