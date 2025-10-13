@@ -1529,6 +1529,98 @@ public class DataService : IDataService
     }
 
     /// <summary>
+    /// Asynchronously retrieves all log entries with pagination, filtering, and sorting using LINQ.
+    /// </summary>
+    /// <param name="pageNumber">The page number to retrieve.</param>
+    /// <param name="pageSize">The number of items per page.</param>
+    /// <param name="processName">Optional filter by process name.</param>
+    /// <param name="startDate">Optional filter for execution date from this date.</param>
+    /// <param name="endDate">Optional filter for execution date up to this date.</param>
+    /// <param name="messageFilter">Optional filter by message content.</param>
+    /// <param name="sortBy">Column to sort by ('Id', 'Name', 'ExecutionDate', 'Message').</param>
+    /// <param name="sortOrder">Sort order ('ASC' or 'DESC').</param>
+    /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
+    /// <returns>A task representing the asynchronous operation, containing both the total count and paginated log entries.</returns>
+    public async Task<ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result> GetAllLogsPaginationAsync1(int? pageNumber = 1, int? pageSize = 10, string? processName = null, DateTime? startDate = null, DateTime? endDate = null, string? messageFilter = null, string? sortBy = "ExecutionDate", string? sortOrder = "DESC", CancellationToken cancellationToken = default)
+    {
+        _logger.LogInformation("Retrieving all log entries with pagination, filtering, and sorting using LINQ, page {PageNumber}, size {PageSize}", pageNumber, pageSize);
+        try
+        {
+            // Validate sort parameters
+            var validSortColumns = new[] { "Id", "Name", "ExecutionDate", "Message" };
+            if (!validSortColumns.Contains(sortBy ?? "ExecutionDate"))
+            {
+                throw new ArgumentException($"Invalid sortBy parameter. Valid values are: {string.Join(", ", validSortColumns)}", nameof(sortBy));
+            }
+
+            var validSortOrders = new[] { "ASC", "DESC" };
+            if (!validSortOrders.Contains(sortOrder ?? "DESC"))
+            {
+                throw new ArgumentException("Invalid sortOrder parameter. Valid values are: ASC, DESC", nameof(sortOrder));
+            }
+
+            using var context = await _contextFactory.CreateDbContextAsync(cancellationToken);
+
+            // Build base query with filters
+            var query = from l in context.Set<ApplicationWarmupProcessLog>()
+                        join p in context.Set<ApplicationWarmupProcess>() on l.ProcessId equals p.Id
+                        where (processName == null || p.Name.Contains(processName)) &&
+                              (startDate == null || l.ExecutionDate >= startDate) &&
+                              (endDate == null || l.ExecutionDate <= endDate) &&
+                              (messageFilter == null || (l.Message != null && l.Message.Contains(messageFilter)))
+                        select new { Log = l, Process = p };
+
+            // Get total count
+            var totalCount = await query.CountAsync(cancellationToken);
+
+            // Apply dynamic sorting
+            var sortedQuery = sortBy switch
+            {
+                "Id" => sortOrder == "ASC" 
+                    ? query.OrderBy(x => x.Log.Id) 
+                    : query.OrderByDescending(x => x.Log.Id),
+                "Name" => sortOrder == "ASC" 
+                    ? query.OrderBy(x => x.Process.Name) 
+                    : query.OrderByDescending(x => x.Process.Name),
+                "ExecutionDate" => sortOrder == "ASC" 
+                    ? query.OrderBy(x => x.Log.ExecutionDate) 
+                    : query.OrderByDescending(x => x.Log.ExecutionDate),
+                "Message" => sortOrder == "ASC" 
+                    ? query.OrderBy(x => x.Log.Message) 
+                    : query.OrderByDescending(x => x.Log.Message),
+                _ => query.OrderByDescending(x => x.Log.ExecutionDate)
+            };
+
+            // Apply pagination and project to result type
+            var data = await sortedQuery
+                .Skip(((pageNumber ?? 1) - 1) * (pageSize ?? 10))
+                .Take(pageSize ?? 10)
+                .Select(x => new ApplicationWarmupProcess_sp_GetAllLogsResult
+                {
+                    Id = x.Log.Id,
+                    Name = x.Process.Name,
+                    ExecutionDate = x.Log.ExecutionDate,
+                    Message = x.Log.Message
+                })
+                .ToListAsync(cancellationToken);
+
+            var result = new ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result
+            {
+                TotalCount = totalCount,
+                Data = data
+            };
+
+            _logger.LogInformation("Retrieved {Count} log entries (total: {TotalCount}) for page {PageNumber} using LINQ", result.Data.Count, result.TotalCount, pageNumber);
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error retrieving all log entries with pagination, filtering, and sorting using LINQ, page {PageNumber}", pageNumber);
+            throw;
+        }
+    }
+
+    /// <summary>
     /// Asynchronously inserts a new log entry.
     /// </summary>
     /// <param name="processName">The name of the process.</param>
