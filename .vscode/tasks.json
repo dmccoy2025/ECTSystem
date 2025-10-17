@@ -9,7 +9,8 @@
                 "build",
                 "${workspaceFolder}/ElectronicCaseTracking.sln",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "/consoleloggerparameters:NoSummary", 
+                "/m:8"
             ],
             "problemMatcher": "$msCompile"
         },

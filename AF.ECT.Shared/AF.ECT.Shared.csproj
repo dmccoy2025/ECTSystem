@@ -10,7 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Google.Api.CommonProtos" Version="2.17.0" />
     <PackageReference Include="Grpc.Net.Client" Version="2.71.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.71.0" PrivateAssets="all" />
+    <PackageReference Include="Grpc.Tools" Version="2.72.0" PrivateAssets="all" />
     <Protobuf Include="Protos\**\*.proto" Exclude="Protos\google\**\*.proto" ProtoRoot="Protos" GrpcServices="Both" />
   </ItemGroup>
 
