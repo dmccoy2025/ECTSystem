@@ -1,6 +1,6 @@
 using AF.ECT.Shared;
 
-namespace AF.ECT.Client.Services;
+namespace AF.ECT.Shared.Services;
 
 /// <summary>
 /// Interface for the GreeterClient service that provides gRPC communication with the server.
@@ -808,4 +808,3 @@ public interface IWorkflowClient : IDisposable
 
     #endregion
 }
-

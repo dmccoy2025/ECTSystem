@@ -6,7 +6,6 @@ using AF.ECT.Shared;
 using AF.ECT.Data.ResultTypes;
 using AF.ECT.Data.Interfaces;
 
-
 #nullable enable
 
 namespace AF.ECT.Data.Services;

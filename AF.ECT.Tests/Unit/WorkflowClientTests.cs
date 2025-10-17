@@ -1,6 +1,7 @@
 using Grpc.Core;
+using Grpc.Net.Client;
 using Moq;
-using AF.ECT.Client.Services;
+using AF.ECT.Shared.Services;
 using AF.ECT.Shared;
 using static AF.ECT.Tests.Data.WorkflowClientTestData;
 
@@ -245,18 +246,7 @@ public class WorkflowClientTests : IDisposable
     #region Constructor Tests
 
     /// <summary>
-    /// Tests that the GreeterClient constructor throws <see cref="ArgumentNullException"/>
-    /// when null HttpClient is provided.
-    /// </summary>
-    [Fact]
-    public void Constructor_ThrowsArgumentNullException_WhenHttpClientIsNull()
-    {
-        // Act & Assert
-        Assert.Throws<ArgumentNullException>(() => new WorkflowClient((HttpClient)null!));
-    }
-
-    /// <summary>
-    /// Tests that the GreeterClient constructor throws <see cref="ArgumentNullException"/>
+    /// Tests that the WorkflowClient constructor throws <see cref="ArgumentNullException"/>
     /// when null gRPC client is provided.
     /// </summary>
     [Fact]
@@ -267,20 +257,14 @@ public class WorkflowClientTests : IDisposable
     }
 
     /// <summary>
-    /// Tests that the GreeterClient constructor throws <see cref="ArgumentNullException"/>
-    /// when HttpClient with null BaseAddress is provided.
+    /// Tests that the WorkflowClient constructor throws <see cref="ArgumentNullException"/>
+    /// when null GrpcChannel is provided.
     /// </summary>
     [Fact]
-    public void Constructor_ThrowsArgumentNullException_WhenHttpClientBaseAddressIsNull()
+    public void Constructor_ThrowsArgumentNullException_WhenGrpcChannelIsNull()
     {
-        // Arrange
-        var httpClient = new HttpClient();
-
         // Act & Assert
-        // The implementation uses null-forgiving operator but GrpcChannel.ForAddress
-        // will still throw ArgumentNullException when BaseAddress is null
-        var exception = Assert.Throws<ArgumentNullException>(() => new WorkflowClient(httpClient));
-        Assert.Equal("address", exception.ParamName);
+        Assert.Throws<ArgumentNullException>(() => new WorkflowClient((GrpcChannel)null!));
     }
 
     #endregion

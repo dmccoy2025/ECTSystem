@@ -12,6 +12,10 @@
     <PackageReference Include="Google.Protobuf" Version="3.33.0" />
     <PackageReference Include="Grpc.Net.Client" Version="2.71.0" />
     <PackageReference Include="Grpc.Tools" Version="2.72.0" PrivateAssets="all" />
+    <PackageReference Include="Polly" Version="8.6.4" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0" />
     <Protobuf Include="Protos\**\*.proto" Exclude="Protos\google\**\*.proto" ProtoRoot="Protos" GrpcServices="Both" />
   </ItemGroup>
 

@@ -1,13 +1,13 @@
 using Grpc.Net.Client;
-using Grpc.Net.Client.Web;
 using AF.ECT.Shared;
 using System.Diagnostics;
 using Polly;
 using Polly.Retry;
 using Microsoft.Extensions.Options;
-using AF.ECT.Client.Options;
+using Microsoft.Extensions.Logging;
+using AF.ECT.Shared.Options;
 
-namespace AF.ECT.Client.Services;
+namespace AF.ECT.Shared.Services;
 
 /// <summary>
 /// Provides gRPC client services for communicating with the WorkflowManagementService.
@@ -113,40 +113,17 @@ public class WorkflowClient : IWorkflowClient
     }
 
     /// <summary>
-    /// Initializes a new instance of the GreeterClient.
+    /// Initializes a new instance of the WorkflowClient with a pre-configured gRPC channel.
     /// </summary>
-    /// <param name="httpClient">The HTTP client for making web requests.</param>
+    /// <param name="channel">The pre-configured gRPC channel to use for communication.</param>
     /// <param name="logger">The logger for performance monitoring.</param>
     /// <param name="options">The configuration options for the workflow client.</param>
-    /// <exception cref="ArgumentNullException">Thrown when httpClient is null.</exception>
-    public WorkflowClient(HttpClient httpClient, ILogger<WorkflowClient>? logger = null, IOptions<WorkflowClientOptions>? options = null)
+    /// <exception cref="ArgumentNullException">Thrown when channel is null.</exception>
+    public WorkflowClient(GrpcChannel channel, ILogger<WorkflowClient>? logger = null, IOptions<WorkflowClientOptions>? options = null)
     {
-        if (httpClient == null)
-        {
-            throw new ArgumentNullException(nameof(httpClient));
-        }
-
+        _channel = channel ?? throw new ArgumentNullException(nameof(channel));
         _logger = logger;
         _options = options?.Value ?? new WorkflowClientOptions();
-
-        // Create optimized HttpClientHandler for connection pooling
-        var httpClientHandler = new HttpClientHandler();
-
-        // Configure handler for non-browser platforms (these properties are not available in Blazor WebAssembly)
-        // Note: MaxConnectionsPerServer, UseProxy, and UseCookies are not supported in browser environments
-
-        // Determine if the connection uses HTTPS
-        var isHttps = httpClient.BaseAddress!.Scheme == "https";
-
-        // Create gRPC-Web channel for browser compatibility with optimized settings
-        _channel = GrpcChannel.ForAddress(httpClient.BaseAddress!,
-            new GrpcChannelOptions
-            {
-                HttpHandler = new GrpcWebHandler(httpClientHandler),
-                MaxReceiveMessageSize = 10 * 1024 * 1024, // 10MB max message size
-                MaxSendMessageSize = 10 * 1024 * 1024, // 10MB max message size
-                Credentials = isHttps ? Grpc.Core.ChannelCredentials.SecureSsl : Grpc.Core.ChannelCredentials.Insecure, // Use appropriate credentials based on scheme
-            });
 
         // Create client
         _client = new WorkflowService.WorkflowServiceClient(_channel);

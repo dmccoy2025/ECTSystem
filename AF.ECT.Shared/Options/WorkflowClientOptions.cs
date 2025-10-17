@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace AF.ECT.Client.Options;
+namespace AF.ECT.Shared.Options;
 
 /// <summary>
 /// Configuration options for the WorkflowClient.
