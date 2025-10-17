@@ -26,7 +26,7 @@ public partial class ALODContextProcedures : IALODContextProcedures
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A list of training data results for the specified users.</returns>
     /// <exception cref="ArgumentNullException">Thrown when required parameters are null.</exception>
-    public async virtual Task<List<arcnet_GetIAATrainingDataForUsersResult>> arcnet_GetIAATrainingDataForUsersAsync(string? ediPIN, string? lastName, string? firstName, string? middleNames, DateTime? beginDate, DateTime? endDate, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+    public async virtual Task<List<arcnet_GetIAATrainingDataForUsersResult>> ArcnetGetIAATrainingDataForUsersAsync(string? ediPIN, string? lastName, string? firstName, string? middleNames, DateTime? beginDate, DateTime? endDate, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
     {
         var parameterreturnValue = new SqlParameter
         {
@@ -92,7 +92,7 @@ public partial class ALODContextProcedures : IALODContextProcedures
     /// <param name="returnValue">Output parameter containing the return value from the stored procedure.</param>
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>A list of results containing the last execution date.</returns>
-    public async virtual Task<List<arcnet_GetLastExecutionDateResult>> arcnet_GetLastExecutionDateAsync(OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+    public async virtual Task<List<arcnet_GetLastExecutionDateResult>> ArcnetGetLastExecutionDateAsync(OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
     {
         var parameterreturnValue = new SqlParameter
         {
@@ -120,7 +120,7 @@ public partial class ALODContextProcedures : IALODContextProcedures
     /// <param name="cancellationToken">A token to cancel the asynchronous operation.</param>
     /// <returns>The number of affected rows.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="logId"/> is null.</exception>
-    public async virtual Task<int> arcnet_importAsync(int? logId, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
+    public async virtual Task<int> ArcnetImportAsync(int? logId, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default)
     {
         var parameterreturnValue = new SqlParameter
         {

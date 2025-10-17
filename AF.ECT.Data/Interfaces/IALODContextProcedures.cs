@@ -52,12 +52,6 @@ public partial interface IALODContextProcedures
     /// </summary>
     Task<List<ApplicationWarmupProcess_sp_IsProcessActiveResult>> ApplicationWarmupProcess_sp_IsProcessActiveAsync(string? processName, OutputParameter<int>? returnValue = null, CancellationToken? cancellationToken = default);
 
-    // Note: Arcnet operation methods are implemented in ALODContextProcedures.cs
-    // Interface methods will be added as needed
-
-    // Note: Command Structure Management methods are implemented in ALODContextProcedures.cs
-    // Interface methods will be added as needed
-
     /// <summary>
     /// Asynchronously executes the core_actions_sp_DeleteOptionAction stored procedure.
     /// </summary>
