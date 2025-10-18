@@ -2,8 +2,74 @@
 
 <PageTitle>Reports</PageTitle>
 
-<h3>Reports</h3>
+<body class="bg-background-light dark:bg-background-dark font-display">
+    <div class="grid lg:grid-cols-2 min-h-screen">
+        <div class="relative hidden lg:block">
+            <video autoplay loop muted class="absolute inset-0 w-full h-full object-cover">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-military-soldiers-in-a-field-3983-large.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+            <div class="absolute inset-0 bg-black/50"></div>
+        </div>
+        <div class="flex items-center justify-center p-8">
+            <div class="w-full max-w-md">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold text-slate-800 dark:text-white">Electronic Case Tracking</h1>
+                    <p class="text-slate-600 dark:text-slate-400">Air Force Reserve & Air Force National Guard</p>
+                </div>
+                <EditForm Model="@loginModel" OnValidSubmit="@HandleLogin" class="space-y-6">
+                    <DataAnnotationsValidator />
+                    <div>
+                        <label class="sr-only" for="service-branch">Service Branch</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500 dark:text-slate-400">shield</span>
+                            <InputSelect @bind-Value="loginModel.ServiceBranch" class="w-full pl-10 pr-4 py-3 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 focus:ring-primary focus:border-primary appearance-none" id="service-branch" required>
+                                <option value="air-force-reserve">Air Force Reserve</option>
+                                <option value="air-national-guard">Air Force National Guard</option>
+                            </InputSelect>
+                            <span class="material-symbols-outlined absolute inset-y-0 right-0 flex items-center pr-3 text-slate-500 dark:text-slate-400 pointer-events-none">expand_more</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="sr-only" for="username">Username</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500 dark:text-slate-400">person</span>
+                            <InputText @bind-Value="loginModel.Username" class="w-full pl-10 pr-4 py-3 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 focus:ring-primary focus:border-primary" id="username" placeholder="Username" required />
+                        </div>
+                    </div>
+                    <div>
+                        <label class="sr-only" for="password">Password</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500 dark:text-slate-400">lock</span>
+                            <InputText @bind-Value="loginModel.Password" type="password" class="w-full pl-10 pr-4 py-3 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 focus:ring-primary focus:border-primary" id="password" placeholder="Password" required />
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <a class="text-sm text-primary hover:underline" href="#">Forgot Password?</a>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                            Login
+                        </button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</body>
+    @code {
+        private LoginModel loginModel = new LoginModel();
 
-<p>View and generate reports here.</p>
+        private class LoginModel
+        {
+            public string ServiceBranch { get; set; } = "air-force-reserve";
+            public string Username { get; set; } = string.Empty;
+            public string Password { get; set; } = string.Empty;
+        }
 
-<p>This is a placeholder for the reports page.</p>
+        private void HandleLogin()
+        {
+            // Handle login logic here
+            Console.WriteLine($"Service Branch: {loginModel.ServiceBranch}, Username: {loginModel.Username}, Password: {loginModel.Password}");
+        }
+    }

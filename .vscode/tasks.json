@@ -28,6 +28,17 @@
             "isBackground": true,
             "problemMatcher": "$msCompile",
             "group": "build"
+        },
+        {
+            "label": "cleanup-and-build",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "Stop-Process -Name 'dotnet' -Force -ErrorAction SilentlyContinue; dotnet clean ElectronicCaseTracking.sln; dotnet build ElectronicCaseTracking.sln /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary /m:8"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "build"
         }
     ]
 }
