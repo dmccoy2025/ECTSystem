@@ -46,6 +46,12 @@ app.UseAntiforgery();
 // Map gRPC services with GrpcWeb enabled
 app.MapGrpcService<WorkflowServiceImpl>().EnableGrpcWeb();
 
+// Map gRPC reflection service (for development)
+if (app.Environment.IsDevelopment())
+{
+    app.MapGrpcReflectionService();
+}
+
 // Map fallback for SPA (must be last)
 app.MapFallbackToFile("index.html");
 
