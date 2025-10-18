@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Moq;
 using SharedModels = AF.ECT.Shared;
@@ -6,7 +5,6 @@ using static AF.ECT.Tests.Data.DataServiceTestData;
 using AF.ECT.Tests.Infrastructure;
 using AF.ECT.Data.Extensions;
 using AF.ECT.Data.ResultTypes;
-using AF.ECT.Server.Extensions;
 using System.Reflection;
 using AF.ECT.Data.Services;
 

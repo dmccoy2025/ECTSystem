@@ -2,10 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AF.ECT.Server.Extensions;
-using AF.ECT.Data;
 using AF.ECT.Data.Models;
 using AF.ECT.Data.Interfaces;
-using AF.ECT.Server.Services;
 using static AF.ECT.Tests.Data.ServiceCollectionExtensionsTestData;
 using AF.ECT.Data.Services;
 

@@ -1,7 +1,6 @@
 using System.Data.Common;
 using AF.ECT.Data.Interfaces;
 using AF.ECT.Data.Models;
-using AF.ECT.Data.ResultTypes;
 using Grpc.Net.Client;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;

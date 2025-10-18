@@ -1,5 +1,3 @@
-using AF.ECT.Shared;
-
 namespace AF.ECT.Shared.Services;
 
 /// <summary>

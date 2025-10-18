@@ -1,7 +1,5 @@
 using Grpc.Core;
 using Grpc.Core.Interceptors;
-using Microsoft.Extensions.Logging;
-using System.Diagnostics;
 
 namespace AF.ECT.Client.Interceptors;
 

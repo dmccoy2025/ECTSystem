@@ -1,5 +1,4 @@
 using Grpc.Net.Client;
-using AF.ECT.Shared;
 using System.Diagnostics;
 using Polly;
 using Polly.Retry;

@@ -1,6 +1,5 @@
 using Grpc.Core;
 using Grpc.Core.Interceptors;
-using Microsoft.Extensions.Logging;
 using System.Security.Claims;
 
 namespace AF.ECT.Server.Interceptors;
