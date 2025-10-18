@@ -2434,7 +2434,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
 
         var results = await _resilienceService.ExecuteWithRetryAsync(() =>
         {
-            return _dataService.GetAllLogsPaginationAsync(
+            return _dataService.GetAllLogsPaginationAsync1(
                 request.HasPageNumber ? request.PageNumber : 1,
                 request.HasPageSize ? request.PageSize : 10,
                 request.ProcessName,
