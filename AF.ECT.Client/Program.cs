@@ -20,20 +20,17 @@ builder.Services.AddBlazoredLocalStorage();
 // Configure WorkflowClient options from appsettings.json
 builder.Services.Configure<WorkflowClientOptions>(options => builder.Configuration.GetSection("WorkflowClient").Bind(options));
 
-// Create gRPC channel for browser compatibility
-builder.Services.AddScoped<GrpcChannel>(sp =>
+// Configure gRPC client for browser compatibility
+var serverUrl = builder.Configuration["ServerUrl"] ?? "https://localhost:5001";
+builder.Services.AddScoped(sp =>
 {
     var httpClient = sp.GetRequiredService<HttpClient>();
-    var isHttps = httpClient.BaseAddress!.Scheme == "https";
-
-    return GrpcChannel.ForAddress(httpClient.BaseAddress!,
-        new GrpcChannelOptions
-        {
-            HttpHandler = new GrpcWebHandler(),
-            MaxReceiveMessageSize = 10 * 1024 * 1024, // 10MB max message size
-            MaxSendMessageSize = 10 * 1024 * 1024, // 10MB max message size
-            Credentials = isHttps ? Grpc.Core.ChannelCredentials.SecureSsl : Grpc.Core.ChannelCredentials.Insecure
-        });
+    var channel = GrpcChannel.ForAddress(serverUrl, new GrpcChannelOptions
+    {
+        HttpClient = httpClient,
+        DisposeHttpClient = false
+    });
+    return new AF.ECT.Shared.WorkflowService.WorkflowServiceClient(channel);
 });
 
 // Register WorkflowClient for gRPC communication

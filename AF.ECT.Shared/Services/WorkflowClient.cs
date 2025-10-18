@@ -142,6 +142,34 @@ public class WorkflowClient : IWorkflowClient
                 });
     }
 
+    /// <summary>
+    /// Initializes a new instance of the WorkflowClient with an injected gRPC client (for DI with AddGrpcClient).
+    /// </summary>
+    /// <param name="client">The injected gRPC client.</param>
+    /// <param name="logger">The logger for performance monitoring.</param>
+    /// <param name="options">The configuration options for the workflow client.</param>
+    /// <exception cref="ArgumentNullException">Thrown when client is null.</exception>
+    public WorkflowClient(WorkflowService.WorkflowServiceClient client, ILogger<WorkflowClient>? logger = null, IOptions<WorkflowClientOptions>? options = null)
+    {
+        _client = client ?? throw new ArgumentNullException(nameof(client));
+        _channel = null; // No channel when using injected client
+        _logger = logger;
+        _options = options?.Value ?? new WorkflowClientOptions();
+
+        // Configure retry policy for transient failures
+        _retryPolicy = Policy.Handle<Grpc.Core.RpcException>(ex =>
+                ex.StatusCode == Grpc.Core.StatusCode.Unavailable ||
+                ex.StatusCode == Grpc.Core.StatusCode.DeadlineExceeded ||
+                ex.StatusCode == Grpc.Core.StatusCode.Internal)
+            .WaitAndRetryAsync(_options.MaxRetryAttempts,
+                attempt => TimeSpan.FromMilliseconds(Math.Min(_options.InitialRetryDelayMs * Math.Pow(2, attempt), _options.MaxRetryDelayMs)),
+                (exception, timeSpan, retryCount, context) =>
+                {
+                    _logger?.LogWarning(exception, "gRPC call failed, retrying in {Delay}ms (attempt {Attempt}/{MaxAttempts})",
+                        timeSpan.TotalMilliseconds, retryCount, _options.MaxRetryAttempts);
+                });
+    }
+
     #endregion
 
     #region Core User Methods
@@ -3372,7 +3400,7 @@ public class WorkflowClient : IWorkflowClient
     #endregion
 
     /// <summary>
-    /// Disposes the gRPC channel and releases resources.
+    /// Disposes the gRPC channel and releases resources (only when channel is owned by this instance).
     /// </summary>
     public void Dispose()
     {

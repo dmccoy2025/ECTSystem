@@ -9,7 +9,7 @@ builder.Services.AddSwaggerGen();
 
 // Add application services
 builder.Services.AddApplicationServices(builder.Configuration);
-//builder.Services.AddApplicationCors();
+builder.Services.AddApplicationCors();
 builder.Services.AddGrpcServices();
 //builder.Services.AddHealthChecks(builder.Configuration);
 //builder.Services.AddAntiforgeryServices();
@@ -29,7 +29,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // Enable CORS before GrpcWeb
-//app.UseCors();
+app.UseCors();
 
 // Enable gRPC-Web for browser clients (MUST be before UseRouting)
 app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
