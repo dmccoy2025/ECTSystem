@@ -1,39 +1,44 @@
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using AF.ECT.Client;
-using Radzen;
+using AF.ECT.Shared;
+using AF.ECT.Shared.Options;
+using AF.ECT.Shared.Services;
 using Blazored.LocalStorage;
 using Grpc.Net.Client;
-using Grpc.Net.Client.Web;
-using AF.ECT.Shared.Services;
-using AF.ECT.Shared.Options;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Radzen;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+builder.Services.AddScoped(sp =>
+{
+    return new HttpClient 
+    { 
+        BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) 
+    };
+});
 
 builder.Services.AddRadzenComponents();
 builder.Services.AddBlazoredLocalStorage();
 
 // Configure WorkflowClient options from appsettings.json
-builder.Services.Configure<WorkflowClientOptions>(options => builder.Configuration.GetSection("WorkflowClient").Bind(options));
-
-// Configure gRPC client for browser compatibility
-var serverUrl = builder.Configuration["ServerUrl"] ?? "https://localhost:5001";
-builder.Services.AddScoped(sp =>
+builder.Services.Configure<WorkflowClientOptions>(options =>
 {
-    var httpClient = sp.GetRequiredService<HttpClient>();
-    var channel = GrpcChannel.ForAddress(serverUrl, new GrpcChannelOptions
-    {
-        HttpClient = httpClient,
-        DisposeHttpClient = false
-    });
-    return new AF.ECT.Shared.WorkflowService.WorkflowServiceClient(channel);
+    builder.Configuration.GetSection("WorkflowClientOptions").Bind(options);
 });
 
-// Register WorkflowClient for gRPC communication
+// Configure gRPC client for browser compatibility
+builder.Services.AddScoped(sp =>
+{
+    return new WorkflowService.WorkflowServiceClient(GrpcChannel.ForAddress(builder.Configuration["ServerUrl"] ?? "https://localhost:5001", new GrpcChannelOptions
+    {
+        HttpClient = sp.GetRequiredService<HttpClient>(),
+        DisposeHttpClient = false
+    }));
+});
+
 builder.Services.AddScoped<IWorkflowClient, WorkflowClient>();
 
 await builder.Build().RunAsync();

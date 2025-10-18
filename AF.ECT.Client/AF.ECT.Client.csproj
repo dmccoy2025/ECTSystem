@@ -23,4 +23,8 @@
     <ProjectReference Include="..\AF.ECT.Shared\AF.ECT.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>
