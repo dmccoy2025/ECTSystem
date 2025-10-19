@@ -1503,7 +1503,39 @@ public class DataService : IDataService
     /// <returns>A task representing the asynchronous operation, containing both the total count and paginated log entries.</returns>
     public async Task<ApplicationWarmupProcess_sp_GetAllLogs_pagination_Result> GetAllLogsPaginationAsync(int? pageNumber = 1, int? pageSize = 10, string? processName = null, DateTime? startDate = null, DateTime? endDate = null, string? messageFilter = null, string? sortBy = "ExecutionDate", string? sortOrder = "DESC", CancellationToken cancellationToken = default)
     {
+        // Validate input parameters
+        if ((pageNumber ?? 1) <= 0)
+        {
+            throw new ArgumentException("Page number must be greater than 0", nameof(pageNumber));
+        }
+
+        if ((pageSize ?? 10) <= 0 || (pageSize ?? 10) > 1000)
+        {
+            throw new ArgumentException("Page size must be between 1 and 1000", nameof(pageSize));
+        }
+
+        var validSortColumns = new[] { "Id", "Name", "ExecutionDate", "Message" };
+        if (!validSortColumns.Contains(sortBy ?? "ExecutionDate"))
+        {
+            throw new ArgumentException($"Invalid sortBy parameter. Valid values are: {string.Join(", ", validSortColumns)}", nameof(sortBy));
+        }
+
+        var validSortOrders = new[] { "ASC", "DESC" };
+        if (!validSortOrders.Contains(sortOrder ?? "DESC"))
+        {
+            throw new ArgumentException("Invalid sortOrder parameter. Valid values are: ASC, DESC", nameof(sortOrder));
+        }
+
+        if (startDate.HasValue && endDate.HasValue && startDate.Value > endDate.Value)
+        {
+            throw new ArgumentException("Start date cannot be after end date", nameof(startDate));
+        }
+
+        // Check for cancellation before proceeding
+        cancellationToken.ThrowIfCancellationRequested();
+
         _logger.LogInformation("Retrieving all log entries with pagination, filtering, and sorting, page {PageNumber}, size {PageSize}", pageNumber, pageSize);
+
         try
         {
             using var context = await _contextFactory.CreateDbContextAsync(cancellationToken);
@@ -1520,10 +1552,30 @@ public class DataService : IDataService
             _logger.LogInformation("Retrieved {Count} log entries (total: {TotalCount}) for page {PageNumber}", result.Data.Count, result.TotalCount, pageNumber);
             return result;
         }
+        catch (OperationCanceledException)
+        {
+            _logger.LogWarning("Operation was cancelled while retrieving log entries with pagination for page {PageNumber}", pageNumber);
+            throw;
+        }
+        catch (Microsoft.Data.SqlClient.SqlException ex)
+        {
+            _logger.LogError(ex, "Database error occurred while retrieving log entries with pagination for page {PageNumber}: {Message}", pageNumber, ex.Message);
+            throw new InvalidOperationException("A database error occurred while retrieving log entries. Please try again later.", ex);
+        }
+        catch (Microsoft.EntityFrameworkCore.DbUpdateException ex)
+        {
+            _logger.LogError(ex, "Entity Framework update error occurred while retrieving log entries with pagination for page {PageNumber}: {Message}", pageNumber, ex.Message);
+            throw new InvalidOperationException("An error occurred while accessing the database. Please try again later.", ex);
+        }
+        catch (TimeoutException ex)
+        {
+            _logger.LogError(ex, "Timeout occurred while retrieving log entries with pagination for page {PageNumber}: {Message}", pageNumber, ex.Message);
+            throw new InvalidOperationException("The operation timed out. Please try again later.", ex);
+        }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error retrieving all log entries with pagination, filtering, and sorting, page {PageNumber}", pageNumber);
-            throw;
+            _logger.LogError(ex, "Unexpected error occurred while retrieving log entries with pagination for page {PageNumber}: {Message}", pageNumber, ex.Message);
+            throw new InvalidOperationException("An unexpected error occurred while retrieving log entries. Please contact support if the problem persists.", ex);
         }
     }
 

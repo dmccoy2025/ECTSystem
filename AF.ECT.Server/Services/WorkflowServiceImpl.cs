@@ -40,6 +40,10 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
 
     #endregion
 
+    #region Helpers
+
+    #endregion
+
     #region Core User Methods
 
     /// <summary>
@@ -50,18 +54,37 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the reinvestigation requests Response.</returns>
     public async override Task<GetReinvestigationRequestsResponse> GetReinvestigationRequests(GetReinvestigationRequestsRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Getting reinvestigation requests");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetReinvestigationRequestsAsync(request.UserId, request.Sarc, context?.CancellationToken ?? CancellationToken.None));
-
-        return new GetReinvestigationRequestsResponse
+        try
         {
-            Items = { results?.Select(r => new ReinvestigationRequestItem {
-                Id = r.request_id,
-                Description = $"{r.Member_Name ?? "Unknown"} - {r.Case_Id} ({r.Status})"
-            }) ?? [] },
-            Count = results?.Count ?? 0
-        };
+            _logger.LogInformation("Getting reinvestigation requests");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetReinvestigationRequestsAsync(request.UserId, request.Sarc, context?.CancellationToken ?? CancellationToken.None));
+
+            return new GetReinvestigationRequestsResponse
+            {
+                Items = { results?.Select(r => new ReinvestigationRequestItem {
+                    Id = r.request_id,
+                    Description = $"{r.Member_Name ?? "Unknown"} - {r.Case_Id} ({r.Status})"
+                }) ?? [] },
+                Count = results?.Count ?? 0
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while getting reinvestigation requests");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -73,20 +96,40 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task GetReinvestigationRequestsStream(GetReinvestigationRequestsRequest request, IServerStreamWriter<ReinvestigationRequestItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming reinvestigation requests");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetReinvestigationRequestsAsync(request.UserId, request.Sarc, context?.CancellationToken ?? CancellationToken.None));
-
-        if (results != null)
+        try
         {
-            foreach (var item in results)
+            _logger.LogInformation("Streaming reinvestigation requests");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetReinvestigationRequestsAsync(request.UserId, request.Sarc, context?.CancellationToken ?? CancellationToken.None));
+
+            if (results != null)
             {
-                await responseStream.WriteAsync(new ReinvestigationRequestItem
+                foreach (var item in results)
                 {
-                    Id = item.request_id,
-                    Description = $"{item.Member_Name ?? "Unknown"} - {item.Case_Id} ({item.Status})"
-                });
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new ReinvestigationRequestItem
+                    {
+                        Id = item.request_id,
+                        Description = $"{item.Member_Name ?? "Unknown"} - {item.Case_Id} ({item.Status})"
+                    });
+                }
             }
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while streaming reinvestigation requests");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
         }
     }
 
@@ -98,14 +141,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the mailing list Response.</returns>
     public async override Task<GetMailingListForLODResponse> GetMailingListForLOD(GetMailingListForLODRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Getting mailing list for LOD");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetMailingListForLODAsync(request, context?.CancellationToken ?? CancellationToken.None));
-
-        return new GetMailingListForLODResponse
+        try
         {
-            Items = { results?.Select((r, index) => new MailingListItem { Id = index, Email = r.Email ?? string.Empty, Name = string.Empty }) ?? [] }
-        };
+            _logger.LogInformation("Getting mailing list for LOD");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetMailingListForLODAsync(request, context?.CancellationToken ?? CancellationToken.None));
+
+            return new GetMailingListForLODResponse
+            {
+                Items = { results?.Select((r, index) => new MailingListItem { Id = index, Email = r.Email ?? string.Empty, Name = string.Empty }) ?? [] }
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while getting mailing list for LOD");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -117,21 +179,41 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task GetMailingListForLODStream(GetMailingListForLODRequest request, IServerStreamWriter<MailingListItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming mailing list for LOD");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetMailingListForLODAsync(request, context?.CancellationToken ?? CancellationToken.None));
-
-        if (results != null)
+        try
         {
-            for (var i = 0; i < results.Count; i++)
+            _logger.LogInformation("Streaming mailing list for LOD");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetMailingListForLODAsync(request, context?.CancellationToken ?? CancellationToken.None));
+
+            if (results != null)
             {
-                await responseStream.WriteAsync(new MailingListItem
+                for (var i = 0; i < results.Count; i++)
                 {
-                    Id = i,
-                    Email = results[i].Email ?? string.Empty,
-                    Name = string.Empty
-                });
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new MailingListItem
+                    {
+                        Id = i,
+                        Email = results[i].Email ?? string.Empty,
+                        Name = string.Empty
+                    });
+                }
             }
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while streaming mailing list for LOD");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
         }
     }
 
@@ -143,14 +225,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the managed users Response.</returns>
     public async override Task<GetManagedUsersResponse> GetManagedUsers(GetManagedUsersRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Getting managed users");
-        
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetManagedUsersAsync(request, context?.CancellationToken ?? CancellationToken.None));
-
-        return new GetManagedUsersResponse
+        try
         {
-            Items = { results?.Select(r => new ManagedUserItem { UserId = r.Id, UserName = r.username ?? string.Empty, Email = string.Empty, Status = r.Status }) ?? [] }
-        };
+            _logger.LogInformation("Getting managed users");
+            
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetManagedUsersAsync(request, context?.CancellationToken ?? CancellationToken.None));
+
+            return new GetManagedUsersResponse
+            {
+                Items = { results?.Select(r => new ManagedUserItem { UserId = r.Id, UserName = r.username ?? string.Empty, Email = string.Empty, Status = r.Status }) ?? [] }
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while getting managed users");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -162,22 +263,42 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task GetManagedUsersStream(GetManagedUsersRequest request, IServerStreamWriter<ManagedUserItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming managed users");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetManagedUsersAsync(request, context?.CancellationToken ?? CancellationToken.None));
-
-        if (results != null)
+        try
         {
-            foreach (var item in results)
+            _logger.LogInformation("Streaming managed users");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetManagedUsersAsync(request, context?.CancellationToken ?? CancellationToken.None));
+
+            if (results != null)
             {
-                await responseStream.WriteAsync(new ManagedUserItem
+                foreach (var item in results)
                 {
-                    UserId = item.Id,
-                    UserName = item.username ?? string.Empty,
-                    Email = string.Empty,
-                    Status = item.Status
-                });
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new ManagedUserItem
+                    {
+                        UserId = item.Id,
+                        UserName = item.username ?? string.Empty,
+                        Email = string.Empty,
+                        Status = item.Status
+                    });
+                }
             }
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while streaming managed users");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
         }
     }
 
@@ -189,14 +310,38 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the member user ID Response.</returns>
     public async override Task<GetMembersUserIdResponse> GetMembersUserId(GetMembersUserIdRequest request, ServerCallContext context)
     {
-        _logger.LogInformation($"Getting member user ID for SSN: {request.MemberSsn}");
-
-        var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetMembersUserIdAsync(request.MemberSsn, context?.CancellationToken ?? CancellationToken.None));
-
-        return new GetMembersUserIdResponse
+        try
         {
-            UserId = result
-        };
+            if (string.IsNullOrWhiteSpace(request.MemberSsn))
+            {
+                throw new RpcException(new Status(StatusCode.InvalidArgument, "Member SSN is required"));
+            }
+
+            _logger.LogInformation($"Getting member user ID for SSN: {request.MemberSsn}");
+
+            var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetMembersUserIdAsync(request.MemberSsn, context?.CancellationToken ?? CancellationToken.None));
+
+            return new GetMembersUserIdResponse
+            {
+                UserId = result
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while getting member user ID");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -207,14 +352,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the user alternate title Response.</returns>
     public async override Task<GetUserAltTitleResponse> GetUserAltTitle(GetUserAltTitleRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Getting user alternate title");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUserAltTitleAsync(request.UserId, request.GroupId, context?.CancellationToken ?? CancellationToken.None));
-
-        return new GetUserAltTitleResponse
+        try
         {
-            Items = { results?.Select(r => new UserAltTitleItem { UserId = request.UserId, Title = r.Title ?? string.Empty, GroupId = request.GroupId }) ?? [] }
-        };
+            _logger.LogInformation("Getting user alternate title");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUserAltTitleAsync(request.UserId, request.GroupId, context?.CancellationToken ?? CancellationToken.None));
+
+            return new GetUserAltTitleResponse
+            {
+                Items = { results?.Select(r => new UserAltTitleItem { UserId = request.UserId, Title = r.Title ?? string.Empty, GroupId = request.GroupId }) ?? [] }
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while getting user alternate title");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -226,21 +390,41 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task GetUserAltTitleStream(GetUserAltTitleRequest request, IServerStreamWriter<UserAltTitleItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming user alternate title");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUserAltTitleAsync(request.UserId, request.GroupId, context?.CancellationToken ?? CancellationToken.None));
-
-        if (results != null)
+        try
         {
-            foreach (var item in results)
+            _logger.LogInformation("Streaming user alternate title");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUserAltTitleAsync(request.UserId, request.GroupId, context?.CancellationToken ?? CancellationToken.None));
+
+            if (results != null)
             {
-                await responseStream.WriteAsync(new UserAltTitleItem
+                foreach (var item in results)
                 {
-                    UserId = request.UserId,
-                    Title = item.Title ?? string.Empty,
-                    GroupId = request.GroupId
-                });
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new UserAltTitleItem
+                    {
+                        UserId = request.UserId,
+                        Title = item.Title ?? string.Empty,
+                        GroupId = request.GroupId
+                    });
+                }
             }
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while streaming user alternate title");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
         }
     }
 
@@ -252,14 +436,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the user alternate title by group component Response.</returns>
     public async override Task<GetUserAltTitleByGroupCompoResponse> GetUserAltTitleByGroupCompo(GetUserAltTitleByGroupCompoRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Getting user alternate title by group component");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUserAltTitleByGroupCompoAsync(request.GroupId, request.WorkCompo, context?.CancellationToken ?? CancellationToken.None));
-
-        return new GetUserAltTitleByGroupCompoResponse
+        try
         {
-            Items = { results?.Select(r => new UserAltTitleByGroupCompoItem { UserId = r.userID, Title = r.Title ?? string.Empty, Component = r.Name ?? string.Empty }) ?? [] }
-        };
+            _logger.LogInformation("Getting user alternate title by group component");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUserAltTitleByGroupCompoAsync(request.GroupId, request.WorkCompo, context?.CancellationToken ?? CancellationToken.None));
+
+            return new GetUserAltTitleByGroupCompoResponse
+            {
+                Items = { results?.Select(r => new UserAltTitleByGroupCompoItem { UserId = r.userID, Title = r.Title ?? string.Empty, Component = r.Name ?? string.Empty }) ?? [] }
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while getting user alternate title by group component");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -271,21 +474,41 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task GetUserAltTitleByGroupCompoStream(GetUserAltTitleByGroupCompoRequest request, IServerStreamWriter<UserAltTitleByGroupCompoItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming user alternate title by group component");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUserAltTitleByGroupCompoAsync(request.GroupId, request.WorkCompo, context?.CancellationToken ?? CancellationToken.None));
-
-        if (results != null)
+        try
         {
-            foreach (var item in results)
+            _logger.LogInformation("Streaming user alternate title by group component");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUserAltTitleByGroupCompoAsync(request.GroupId, request.WorkCompo, context?.CancellationToken ?? CancellationToken.None));
+
+            if (results != null)
             {
-                await responseStream.WriteAsync(new UserAltTitleByGroupCompoItem
+                foreach (var item in results)
                 {
-                    UserId = item.userID,
-                    Title = item.Title ?? string.Empty,
-                    Component = item.Name ?? string.Empty
-                });
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new UserAltTitleByGroupCompoItem
+                    {
+                        UserId = item.userID,
+                        Title = item.Title ?? string.Empty,
+                        Component = item.Name ?? string.Empty
+                    });
+                }
             }
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while streaming user alternate title by group component");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
         }
     }
 
@@ -297,14 +520,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the user name Response.</returns>
     public async override Task<GetUserNameResponse> GetUserName(GetUserNameRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Getting user name");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUserNameAsync(request.First, request.Last, context?.CancellationToken ?? CancellationToken.None));
-
-        return new GetUserNameResponse
+        try
         {
-            Items = { results?.Select(r => new UserNameItem { UserId = r.UserId, FirstName = r.FirstName, LastName = r.LastName, FullName = r.FullName }) ?? [] }
-        };
+            _logger.LogInformation("Getting user name");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUserNameAsync(request.First, request.Last, context?.CancellationToken ?? CancellationToken.None));
+
+            return new GetUserNameResponse
+            {
+                Items = { results?.Select(r => new UserNameItem { UserId = r.UserId, FirstName = r.FirstName, LastName = r.LastName, FullName = r.FullName }) ?? [] }
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while getting user name");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -316,22 +558,42 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task GetUserNameStream(GetUserNameRequest request, IServerStreamWriter<UserNameItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming user name");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUserNameAsync(request.First, request.Last, context?.CancellationToken ?? CancellationToken.None));
-
-        if (results != null)
+        try
         {
-            foreach (var item in results)
+            _logger.LogInformation("Streaming user name");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUserNameAsync(request.First, request.Last, context?.CancellationToken ?? CancellationToken.None));
+
+            if (results != null)
             {
-                await responseStream.WriteAsync(new UserNameItem
+                foreach (var item in results)
                 {
-                    UserId = 0,
-                    FirstName = "First",
-                    LastName = "Last",
-                    FullName = "Full Name"
-                });
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new UserNameItem
+                    {
+                        UserId = item.UserId,
+                        FirstName = item.FirstName,
+                        LastName = item.LastName,
+                        FullName = item.FullName
+                    });
+                }
             }
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while streaming user name");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
         }
     }
 
@@ -343,14 +605,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the users alternate title by group Response.</returns>
     public async override Task<GetUsersAltTitleByGroupResponse> GetUsersAltTitleByGroup(GetUsersAltTitleByGroupRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Getting users alternate title by group");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUsersAltTitleByGroupAsync(request.GroupId, context?.CancellationToken ?? CancellationToken.None));
-
-        return new GetUsersAltTitleByGroupResponse
+        try
         {
-            Items = { results?.Select(r => new UsersAltTitleByGroupItem { UserId = r.userID, Title = r.Title ?? string.Empty, GroupId = request.GroupId }) ?? [] }
-        };
+            _logger.LogInformation("Getting users alternate title by group");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUsersAltTitleByGroupAsync(request.GroupId, context?.CancellationToken ?? CancellationToken.None));
+
+            return new GetUsersAltTitleByGroupResponse
+            {
+                Items = { results?.Select(r => new UsersAltTitleByGroupItem { UserId = r.userID, Title = r.Title ?? string.Empty, GroupId = request.GroupId }) ?? [] }
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while getting users alternate title by group");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -362,21 +643,41 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task GetUsersAltTitleByGroupStream(GetUsersAltTitleByGroupRequest request, IServerStreamWriter<UsersAltTitleByGroupItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming users alternate title by group");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUsersAltTitleByGroupAsync(request.GroupId, context?.CancellationToken ?? CancellationToken.None));
-
-        if (results != null)
+        try
         {
-            foreach (var item in results)
+            _logger.LogInformation("Streaming users alternate title by group");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUsersAltTitleByGroupAsync(request.GroupId, context?.CancellationToken ?? CancellationToken.None));
+
+            if (results != null)
             {
-                await responseStream.WriteAsync(new UsersAltTitleByGroupItem
+                foreach (var item in results)
                 {
-                    UserId = item.userID,
-                    Title = item.Title ?? string.Empty,
-                    GroupId = request.GroupId
-                });
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new UsersAltTitleByGroupItem
+                    {
+                        UserId = item.userID,
+                        Title = item.Title ?? string.Empty,
+                        GroupId = request.GroupId
+                    });
+                }
             }
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while streaming users alternate title by group");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
         }
     }
 
@@ -388,14 +689,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the users online Response.</returns>
     public async override Task<GetUsersOnlineResponse> GetUsersOnline(EmptyRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Getting users online");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUsersOnlineAsync(context?.CancellationToken ?? CancellationToken.None));
-
-        return new GetUsersOnlineResponse
+        try
         {
-            Items = { results?.Select(r => new UserOnlineItem { UserId = r.userId, UserName = r.UserName ?? string.Empty, LastActivity = r.loginTime.ToString("yyyy-MM-dd") }) ?? [] }
-        };
+            _logger.LogInformation("Getting users online");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUsersOnlineAsync(context?.CancellationToken ?? CancellationToken.None));
+
+            return new GetUsersOnlineResponse
+            {
+                Items = { results?.Select(r => new UserOnlineItem { UserId = r.userId, UserName = r.UserName ?? string.Empty, LastActivity = r.loginTime.ToString("yyyy-MM-dd") }) ?? [] }
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while getting users online");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -407,21 +727,41 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task GetUsersOnlineStream(EmptyRequest request, IServerStreamWriter<UserOnlineItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming users online");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUsersOnlineAsync(context?.CancellationToken ?? CancellationToken.None));
-
-        if (results != null)
+        try
         {
-            foreach (var item in results)
+            _logger.LogInformation("Streaming users online");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetUsersOnlineAsync(context?.CancellationToken ?? CancellationToken.None));
+
+            if (results != null)
             {
-                await responseStream.WriteAsync(new UserOnlineItem
+                foreach (var item in results)
                 {
-                    UserId = item.userId,
-                    UserName = item.UserName ?? string.Empty,
-                    LastActivity = item.loginTime.ToString("yyyy-MM-dd")
-                });
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new UserOnlineItem
+                    {
+                        UserId = item.userId,
+                        UserName = item.UserName ?? string.Empty,
+                        LastActivity = item.loginTime.ToString("yyyy-MM-dd")
+                    });
+                }
             }
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while streaming users online");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
         }
     }
 
@@ -434,16 +774,36 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task GetWhoisStream(GetWhoisRequest request, IServerStreamWriter<WhoisItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming WHOIS information");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetWhoisAsync(request.UserId, context?.CancellationToken ?? CancellationToken.None));
-
-        if (results != null)
+        try
         {
-            foreach (var item in results)
+            _logger.LogInformation("Streaming WHOIS information");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetWhoisAsync(request.UserId, context?.CancellationToken ?? CancellationToken.None));
+
+            if (results != null)
             {
-                await responseStream.WriteAsync(new WhoisItem { UserId = item.UserId, UserName = $"{item.FirstName ?? ""} {item.LastName ?? ""}".Trim(), IpAddress = item.Role ?? string.Empty, LastLogin = string.Empty });
+                foreach (var item in results)
+                {
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new WhoisItem { UserId = item.UserId, UserName = $"{item.FirstName ?? ""} {item.LastName ?? ""}".Trim(), IpAddress = item.Role ?? string.Empty, LastLogin = string.Empty });
+                }
             }
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while streaming WHOIS information");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
         }
     }
 
@@ -456,16 +816,36 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task HasHQTechAccountStream(HasHQTechAccountRequest request, IServerStreamWriter<HQTechAccountItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming HQ tech account check");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.HasHQTechAccountAsync(request.OriginUserId, request.UserEdipin, context?.CancellationToken ?? CancellationToken.None));
-
-        if (results != null)
+        try
         {
-            foreach (var item in results)
+            _logger.LogInformation("Streaming HQ tech account check");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.HasHQTechAccountAsync(request.OriginUserId, request.UserEdipin, context?.CancellationToken ?? CancellationToken.None));
+
+            if (results != null)
             {
-                await responseStream.WriteAsync(new HQTechAccountItem { UserId = 0, HasAccount = true, AccountType = "Type" });
+                foreach (var item in results)
+                {
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new HQTechAccountItem { UserId = 0, HasAccount = true, AccountType = "Type" });
+                }
             }
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while streaming HQ tech account check");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
         }
     }
 
@@ -478,16 +858,36 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task IsFinalStatusCodeStream(IsFinalStatusCodeRequest request, IServerStreamWriter<FinalStatusCodeItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming final status code check");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.IsFinalStatusCodeAsync((byte?)request.StatusId, context?.CancellationToken ?? CancellationToken.None));
-
-        if (results != null)
+        try
         {
-            foreach (var item in results)
+            _logger.LogInformation("Streaming final status code check");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.IsFinalStatusCodeAsync((byte?)request.StatusId, context?.CancellationToken ?? CancellationToken.None));
+
+            if (results != null)
             {
-                await responseStream.WriteAsync(new FinalStatusCodeItem { StatusId = (int)request.StatusId, IsFinal = item.isFinal, Description = string.Empty });
+                foreach (var item in results)
+                {
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new FinalStatusCodeItem { StatusId = (int)request.StatusId, IsFinal = item.isFinal, Description = string.Empty });
+                }
             }
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while streaming final status code check");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
         }
     }
 
@@ -500,16 +900,36 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task UpdateLoginStream(UpdateLoginRequest request, IServerStreamWriter<LoginUpdateItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming login update");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.UpdateLoginAsync(request.UserId, request.SessionId, request.RemoteAddr, context?.CancellationToken ?? CancellationToken.None));
-
-        if (results != null)
+        try
         {
-            foreach (var item in results)
+            _logger.LogInformation("Streaming login update");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.UpdateLoginAsync(request.UserId, request.SessionId, request.RemoteAddr, context?.CancellationToken ?? CancellationToken.None));
+
+            if (results != null)
             {
-                await responseStream.WriteAsync(new LoginUpdateItem { UserId = 0, SessionId = "session123", LoginTime = "2023-01-01" });
+                foreach (var item in results)
+                {
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new LoginUpdateItem { UserId = 0, SessionId = "session123", LoginTime = "2023-01-01" });
+                }
             }
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while streaming login update");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
         }
     }
 
@@ -521,14 +941,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the WHOIS Response.</returns>
     public async override Task<GetWhoisResponse> GetWhois(GetWhoisRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Getting WHOIS information");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetWhoisAsync(request.UserId, context?.CancellationToken ?? CancellationToken.None));
-
-        return new GetWhoisResponse
+        try
         {
-            Items = { results?.Select(r => new WhoisItem { UserId = r.UserId, UserName = $"{r.FirstName ?? ""} {r.LastName ?? ""}".Trim(), IpAddress = r.Role ?? string.Empty, LastLogin = string.Empty }) ?? [] }
-        };
+            _logger.LogInformation("Getting WHOIS information");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.GetWhoisAsync(request.UserId, context?.CancellationToken ?? CancellationToken.None));
+
+            return new GetWhoisResponse
+            {
+                Items = { results?.Select(r => new WhoisItem { UserId = r.UserId, UserName = $"{r.FirstName ?? ""} {r.LastName ?? ""}".Trim(), IpAddress = r.Role ?? string.Empty, LastLogin = string.Empty }) ?? [] }
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while getting WHOIS information");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -539,14 +978,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the HQ tech account Response.</returns>
     public async override Task<HasHQTechAccountResponse> HasHQTechAccount(HasHQTechAccountRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Checking HQ tech account");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.HasHQTechAccountAsync(request.OriginUserId, request.UserEdipin, context?.CancellationToken ?? CancellationToken.None));
-
-        return new HasHQTechAccountResponse
+        try
         {
-            Items = { results?.Select(r => new HQTechAccountItem { UserId = 0, HasAccount = true, AccountType = "Type" }) ?? [] }
-        };
+            _logger.LogInformation("Checking HQ tech account");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.HasHQTechAccountAsync(request.OriginUserId, request.UserEdipin, context?.CancellationToken ?? CancellationToken.None));
+
+            return new HasHQTechAccountResponse
+            {
+                Items = { results?.Select(r => new HQTechAccountItem { UserId = 0, HasAccount = true, AccountType = "Type" }) ?? [] }
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while checking HQ tech account");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -557,14 +1015,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the final status code Response.</returns>
     public async override Task<IsFinalStatusCodeResponse> IsFinalStatusCode(IsFinalStatusCodeRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Checking if status code is final");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.IsFinalStatusCodeAsync((byte?)request.StatusId, context?.CancellationToken ?? CancellationToken.None));
-
-        return new IsFinalStatusCodeResponse
+        try
         {
-            Items = { results?.Select(r => new FinalStatusCodeItem { StatusId = (int)request.StatusId, IsFinal = r.isFinal, Description = string.Empty }) ?? [] }
-        };
+            _logger.LogInformation("Checking if status code is final");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.IsFinalStatusCodeAsync((byte?)request.StatusId, context?.CancellationToken ?? CancellationToken.None));
+
+            return new IsFinalStatusCodeResponse
+            {
+                Items = { results?.Select(r => new FinalStatusCodeItem { StatusId = (int)request.StatusId, IsFinal = r.isFinal, Description = string.Empty }) ?? [] }
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while checking if status code is final");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -575,14 +1052,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the logout Response.</returns>
     public async override Task<LogoutResponse> Logout(LogoutRequest request, ServerCallContext context)
     {
-        _logger.LogInformation($"Logging out user: {request.UserId}");
-
-        var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.LogoutAsync(request.UserId, context?.CancellationToken ?? CancellationToken.None));
-
-        return new LogoutResponse
+        try
         {
-            Result = result
-        };
+            _logger.LogInformation($"Logging out user: {request.UserId}");
+
+            var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.LogoutAsync(request.UserId, context?.CancellationToken ?? CancellationToken.None));
+
+            return new LogoutResponse
+            {
+                Result = result
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while logging out user");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -593,14 +1089,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the user registration Response.</returns>
     public async override Task<RegisterUserResponse> RegisterUser(RegisterUserRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Registering user");
-
-        var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.RegisterUserAsync(request, context?.CancellationToken ?? CancellationToken.None));
-
-        return new RegisterUserResponse
+        try
         {
-            Result = result
-        };
+            _logger.LogInformation("Registering user");
+
+            var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.RegisterUserAsync(request, context?.CancellationToken ?? CancellationToken.None));
+
+            return new RegisterUserResponse
+            {
+                Result = result
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while registering user");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -611,14 +1126,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the user role registration Response.</returns>
     public async override Task<RegisterUserRoleResponse> RegisterUserRole(RegisterUserRoleRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Registering user role");
-
-        var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.RegisterUserRoleAsync(request.UserId, (short?)request.GroupId, (byte?)request.Status, context?.CancellationToken ?? CancellationToken.None));
-
-        return new RegisterUserRoleResponse
+        try
         {
-            UserRoleId = result
-        };
+            _logger.LogInformation("Registering user role");
+
+            var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.RegisterUserRoleAsync(request.UserId, (short?)request.GroupId, (byte?)request.Status, context?.CancellationToken ?? CancellationToken.None));
+
+            return new RegisterUserRoleResponse
+            {
+                UserRoleId = result
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while registering user role");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -629,14 +1163,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the member data search Response.</returns>
     public async override Task<SearchMemberDataResponse> SearchMemberData(SearchMemberDataRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Searching member data");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.SearchMemberDataAsync(request, context?.CancellationToken ?? CancellationToken.None));
-
-        return new SearchMemberDataResponse
+        try
         {
-            Items = { results?.Select(r => new MemberDataItem { MemberId = r.Id, Ssn = r.SSAN ?? string.Empty, FirstName = r.FirstName ?? string.Empty, LastName = r.LastName ?? string.Empty, MiddleName = r.MiddleName ?? string.Empty }) ?? [] }
-        };
+            _logger.LogInformation("Searching member data");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.SearchMemberDataAsync(request, context?.CancellationToken ?? CancellationToken.None));
+
+            return new SearchMemberDataResponse
+            {
+                Items = { results?.Select(r => new MemberDataItem { MemberId = r.Id, Ssn = r.SSAN ?? string.Empty, FirstName = r.FirstName ?? string.Empty, LastName = r.LastName ?? string.Empty, MiddleName = r.MiddleName ?? string.Empty }) ?? [] }
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while searching member data");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -648,23 +1201,43 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task SearchMemberDataStream(SearchMemberDataRequest request, IServerStreamWriter<MemberDataItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming member data search");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.SearchMemberDataAsync(request, context?.CancellationToken ?? CancellationToken.None));
-
-        if (results != null)
+        try
         {
-            foreach (var item in results)
+            _logger.LogInformation("Streaming member data search");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.SearchMemberDataAsync(request, context?.CancellationToken ?? CancellationToken.None));
+
+            if (results != null)
             {
-                await responseStream.WriteAsync(new MemberDataItem
+                foreach (var item in results)
                 {
-                    MemberId = item.Id,
-                    Ssn = item.SSAN ?? string.Empty,
-                    FirstName = item.FirstName ?? string.Empty,
-                    LastName = item.LastName ?? string.Empty,
-                    MiddleName = item.MiddleName ?? string.Empty
-                });
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new MemberDataItem
+                    {
+                        MemberId = item.Id,
+                        Ssn = item.SSAN ?? string.Empty,
+                        FirstName = item.FirstName ?? string.Empty,
+                        LastName = item.LastName ?? string.Empty,
+                        MiddleName = item.MiddleName ?? string.Empty
+                    });
+                }
             }
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while streaming member data search");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
         }
     }
 
@@ -676,14 +1249,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the member data test search Response.</returns>
     public async override Task<SearchMemberDataTestResponse> SearchMemberDataTest(SearchMemberDataTestRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Searching member data (test version)");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.SearchMemberDataTestAsync(request, context?.CancellationToken ?? CancellationToken.None));
-
-        return new SearchMemberDataTestResponse
+        try
         {
-            Items = { results?.Select(r => new MemberDataTestItem { MemberId = r.Id, Ssn = r.SSAN ?? string.Empty, Name = $"{r.FirstName ?? string.Empty} {r.LastName ?? string.Empty}".Trim() }) ?? [] }
-        };
+            _logger.LogInformation("Searching member data (test version)");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.SearchMemberDataTestAsync(request, context?.CancellationToken ?? CancellationToken.None));
+
+            return new SearchMemberDataTestResponse
+            {
+                Items = { results?.Select(r => new MemberDataTestItem { MemberId = r.Id, Ssn = r.SSAN ?? string.Empty, Name = $"{r.FirstName ?? string.Empty} {r.LastName ?? string.Empty}".Trim() }) ?? [] }
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while searching member data (test version)");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -695,21 +1287,41 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task SearchMemberDataTestStream(SearchMemberDataTestRequest request, IServerStreamWriter<MemberDataTestItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming member data test search");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.SearchMemberDataTestAsync(request, context?.CancellationToken ?? CancellationToken.None));
-
-        if (results != null)
+        try
         {
-            foreach (var item in results)
+            _logger.LogInformation("Streaming member data test search");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.SearchMemberDataTestAsync(request, context?.CancellationToken ?? CancellationToken.None));
+
+            if (results != null)
             {
-                await responseStream.WriteAsync(new MemberDataTestItem
+                foreach (var item in results)
                 {
-                    MemberId = item.Id,
-                    Ssn = item.SSAN ?? string.Empty,
-                    Name = $"{item.FirstName ?? string.Empty} {item.LastName ?? string.Empty}".Trim()
-                });
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new MemberDataTestItem
+                    {
+                        MemberId = item.Id,
+                        Ssn = item.SSAN ?? string.Empty,
+                        Name = $"{item.FirstName ?? string.Empty} {item.LastName ?? string.Empty}".Trim()
+                    });
+                }
             }
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while streaming member data test search");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
         }
     }
 
@@ -721,14 +1333,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the account status update Response.</returns>
     public async override Task<UpdateAccountStatusResponse> UpdateAccountStatus(UpdateAccountStatusRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Updating account status");
-
-        var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.UpdateAccountStatusAsync(request, context?.CancellationToken ?? CancellationToken.None));
-
-        return new UpdateAccountStatusResponse
+        try
         {
-            Result = result
-        };
+            _logger.LogInformation("Updating account status");
+
+            var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.UpdateAccountStatusAsync(request, context?.CancellationToken ?? CancellationToken.None));
+
+            return new UpdateAccountStatusResponse
+            {
+                Result = result
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while updating account status");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -739,14 +1370,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the login update Response.</returns>
     public async override Task<UpdateLoginResponse> UpdateLogin(UpdateLoginRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Updating login information");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.UpdateLoginAsync(request.UserId, request.SessionId, request.RemoteAddr, context?.CancellationToken ?? CancellationToken.None));
-
-        return new UpdateLoginResponse
+        try
         {
-            Items = { results?.Select(r => new LoginUpdateItem { UserId = 0, SessionId = "session123", LoginTime = "2023-01-01" }) ?? [] }
-        };
+            _logger.LogInformation("Updating login information");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.UpdateLoginAsync(request.UserId, request.SessionId, request.RemoteAddr, context?.CancellationToken ?? CancellationToken.None));
+
+            return new UpdateLoginResponse
+            {
+                Items = { results?.Select(r => new LoginUpdateItem { UserId = 0, SessionId = "session123", LoginTime = "2023-01-01" }) ?? [] }
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while updating login information");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -757,14 +1407,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the managed settings update Response.</returns>
     public async override Task<UpdateManagedSettingsResponse> UpdateManagedSettings(UpdateManagedSettingsRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Updating managed settings");
-
-        var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.UpdateManagedSettingsAsync(request, context?.CancellationToken ?? CancellationToken.None));
-
-        return new UpdateManagedSettingsResponse
+        try
         {
-            Result = result
-        };
+            _logger.LogInformation("Updating managed settings");
+
+            var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.UpdateManagedSettingsAsync(request, context?.CancellationToken ?? CancellationToken.None));
+
+            return new UpdateManagedSettingsResponse
+            {
+                Result = result
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while updating managed settings");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     /// <summary>
@@ -775,14 +1444,33 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the user alternate title update Response.</returns>
     public async override Task<UpdateUserAltTitleResponse> UpdateUserAltTitle(UpdateUserAltTitleRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Updating user alternate title");
-
-        var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.UpdateUserAltTitleAsync(request.UserId, request.GroupId, request.NewTitle, context?.CancellationToken ?? CancellationToken.None));
-
-        return new UpdateUserAltTitleResponse
+        try
         {
-            Result = result
-        };
+            _logger.LogInformation("Updating user alternate title");
+
+            var result = await _resilienceService.ExecuteWithRetryAsync(async () => await _dataService.UpdateUserAltTitleAsync(request.UserId, request.GroupId, request.NewTitle, context?.CancellationToken ?? CancellationToken.None));
+
+            return new UpdateUserAltTitleResponse
+            {
+                Result = result
+            };
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while updating user alternate title");
+            var errorId = Guid.NewGuid().ToString();
+            var trailers = new Metadata { { "error-id", errorId } };
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), trailers);
+        }
     }
 
     #endregion
@@ -2215,17 +2903,46 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the log deletion Response.</returns>
     public async override Task<DeleteLogByIdResponse> DeleteLogById(DeleteLogByIdRequest request, ServerCallContext context)
     {
-        _logger.LogInformation($"Deleting log by ID: {request.LogId}");
-
-        var result = await _resilienceService.ExecuteWithRetryAsync(() =>
+        try
         {
-            return _dataService.DeleteLogByIdAsync(request.LogId, context?.CancellationToken ?? CancellationToken.None);
-        });
+            if (context.CancellationToken.IsCancellationRequested)
+            {
+                throw new RpcException(new Status(StatusCode.Cancelled, "Request was cancelled"));
+            }
 
-        return new DeleteLogByIdResponse
+            // Validate input
+            if (!request.HasLogId || request.LogId <= 0)
+            {
+                throw new RpcException(new Status(StatusCode.InvalidArgument, "LogId must be provided and greater than 0"));
+            }
+
+            _logger.LogInformation($"Deleting log by ID: {request.LogId}");
+
+            var result = await _resilienceService.ExecuteWithRetryAsync(() =>
+            {
+                return _dataService.DeleteLogByIdAsync(request.LogId, context?.CancellationToken ?? CancellationToken.None);
+            });
+
+            return new DeleteLogByIdResponse
+            {
+                Result = result
+            };
+        }
+        catch (RpcException)
         {
-            Result = result
-        };
+            // Re-throw RpcException as-is
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogInformation(ex, "Operation cancelled in DeleteLogById");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unexpected error in DeleteLogById for LogId {LogId}: {Message}", request.LogId, ex.Message);
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
+        }
     }
 
     /// <summary>
@@ -2236,25 +2953,43 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the process last execution date Response.</returns>
     public async override Task<FindProcessLastExecutionDateResponse> FindProcessLastExecutionDate(FindProcessLastExecutionDateRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Finding process last execution date");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+        try
         {
-            return _dataService.FindProcessLastExecutionDateAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None);
-        });
-
-        return new FindProcessLastExecutionDateResponse
-        {
-            Items =
+            if (context.CancellationToken.IsCancellationRequested)
             {
-                results?.Select(r => new ProcessLastExecutionDateItem
-                {
-                    ProcessName = request.ProcessName ?? string.Empty,
-                    LastExecutionDate = r.ExecutionDate?.ToString("yyyy-MM-dd HH:mm:ss") ?? string.Empty,
-                    Message = string.Empty 
-                }) ?? [] 
+                throw new RpcException(new Status(StatusCode.Cancelled, "Request was cancelled"));
             }
-        };
+
+            _logger.LogInformation("Finding process last execution date");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+            {
+                return _dataService.FindProcessLastExecutionDateAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None);
+            });
+
+            return new FindProcessLastExecutionDateResponse
+            {
+                Items =
+                {
+                    results?.Select(r => new ProcessLastExecutionDateItem
+                    {
+                        ProcessName = request.ProcessName ?? string.Empty,
+                        LastExecutionDate = r.ExecutionDate?.ToString("yyyy-MM-dd HH:mm:ss") ?? string.Empty,
+                        Message = string.Empty 
+                    }) ?? [] 
+                }
+            };
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogInformation(ex, "Operation cancelled in FindProcessLastExecutionDate");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unexpected error in FindProcessLastExecutionDate: {Message}", ex.Message);
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
+        }
     }
 
     /// <summary>
@@ -2266,24 +3001,43 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task FindProcessLastExecutionDateStream(FindProcessLastExecutionDateRequest request, IServerStreamWriter<ProcessLastExecutionDateItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming process last execution date");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+        try
         {
-            return _dataService.FindProcessLastExecutionDateAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None);
-        });
-
-        if (results != null)
-        {
-            foreach (var item in results)
+            if (context.CancellationToken.IsCancellationRequested)
             {
-                await responseStream.WriteAsync(new ProcessLastExecutionDateItem
-                {
-                    ProcessName = request.ProcessName ?? string.Empty,
-                    LastExecutionDate = item.ExecutionDate?.ToString("yyyy-MM-dd HH:mm:ss") ?? string.Empty,
-                    Message = string.Empty
-                });
+                throw new RpcException(new Status(StatusCode.Cancelled, "Request was cancelled"));
             }
+
+            _logger.LogInformation("Streaming process last execution date");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+            {
+                return _dataService.FindProcessLastExecutionDateAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None);
+            });
+
+            if (results != null)
+            {
+                foreach (var item in results)
+                {
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new ProcessLastExecutionDateItem
+                    {
+                        ProcessName = request.ProcessName ?? string.Empty,
+                        LastExecutionDate = item.ExecutionDate?.ToString("yyyy-MM-dd HH:mm:ss") ?? string.Empty,
+                        Message = string.Empty
+                    });
+                }
+            }
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogInformation(ex, "Operation cancelled in FindProcessLastExecutionDateStream");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unexpected error in FindProcessLastExecutionDateStream: {Message}", ex.Message);
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
         }
     }
 
@@ -2295,29 +3049,47 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the all logs Response.</returns>
     public async override Task<GetAllLogsResponse> GetAllLogs(EmptyRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Getting all logs");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+        try
         {
-            return _dataService.GetAllLogsAsync(context?.CancellationToken ?? CancellationToken.None);
-        });
-
-        return new GetAllLogsResponse
-        {
-            Items =
+            if (context.CancellationToken.IsCancellationRequested)
             {
-                results?.Select(r =>
-                {
-                    return new LogItem
-                    {
-                        LogId = r.Id,
-                        ProcessName = r.Name ?? string.Empty,
-                        ExecutionDate = r.ExecutionDate.ToString("yyyy-MM-dd HH:mm:ss"),
-                        Message = r.Message ?? string.Empty
-                    };
-                }) ?? []
+                throw new RpcException(new Status(StatusCode.Cancelled, "Request was cancelled"));
             }
-        };
+
+            _logger.LogInformation("Getting all logs");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+            {
+                return _dataService.GetAllLogsAsync(context?.CancellationToken ?? CancellationToken.None);
+            });
+
+            return new GetAllLogsResponse
+            {
+                Items =
+                {
+                    results?.Select(r =>
+                    {
+                        return new LogItem
+                        {
+                            LogId = r.Id,
+                            ProcessName = r.Name ?? string.Empty,
+                            ExecutionDate = r.ExecutionDate.ToString("yyyy-MM-dd HH:mm:ss"),
+                            Message = r.Message ?? string.Empty
+                        };
+                    }) ?? []
+                }
+            };
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogInformation(ex, "Operation cancelled in GetAllLogs");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unexpected error in GetAllLogs: {Message}", ex.Message);
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
+        }
     }
 
     /// <summary>
@@ -2329,25 +3101,44 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task GetAllLogsStream(EmptyRequest request, IServerStreamWriter<LogItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming all logs");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+        try
         {
-            return _dataService.GetAllLogsAsync(context?.CancellationToken ?? CancellationToken.None);
-        });
-
-        if (results != null)
-        {
-            foreach (var item in results)
+            if (context.CancellationToken.IsCancellationRequested)
             {
-                await responseStream.WriteAsync(new LogItem
-                {
-                    LogId = item.Id,
-                    ProcessName = item.Name ?? string.Empty,
-                    ExecutionDate = item.ExecutionDate.ToString("yyyy-MM-dd HH:mm:ss"),
-                    Message = item.Message ?? string.Empty
-                });
+                throw new RpcException(new Status(StatusCode.Cancelled, "Request was cancelled"));
             }
+
+            _logger.LogInformation("Streaming all logs");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+            {
+                return _dataService.GetAllLogsAsync(context?.CancellationToken ?? CancellationToken.None);
+            });
+
+            if (results != null)
+            {
+                foreach (var item in results)
+                {
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new LogItem
+                    {
+                        LogId = item.Id,
+                        ProcessName = item.Name ?? string.Empty,
+                        ExecutionDate = item.ExecutionDate.ToString("yyyy-MM-dd HH:mm:ss"),
+                        Message = item.Message ?? string.Empty
+                    });
+                }
+            }
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogInformation(ex, "Operation cancelled in GetAllLogsStream");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unexpected error in GetAllLogsStream: {Message}", ex.Message);
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
         }
     }
 
@@ -2359,17 +3150,52 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the log insertion Response.</returns>
     public async override Task<InsertLogResponse> InsertLog(InsertLogRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Inserting log");
-
-        var result = await _resilienceService.ExecuteWithRetryAsync(() =>
+        try
         {
-            return _dataService.InsertLogAsync(request.ProcessName, DateTime.TryParse(request.ExecutionDate, out var execDate) ? execDate : DateTime.Now, request.Message, context?.CancellationToken ?? CancellationToken.None);
-        });
+            if (context.CancellationToken.IsCancellationRequested)
+            {
+                throw new RpcException(new Status(StatusCode.Cancelled, "Request was cancelled"));
+            }
 
-        return new InsertLogResponse
+            // Validate input
+            if (string.IsNullOrWhiteSpace(request.ProcessName))
+            {
+                throw new RpcException(new Status(StatusCode.InvalidArgument, "ProcessName is required"));
+            }
+
+            if (string.IsNullOrWhiteSpace(request.Message))
+            {
+                throw new RpcException(new Status(StatusCode.InvalidArgument, "Message is required"));
+            }
+
+            _logger.LogInformation("Inserting log");
+
+            var result = await _resilienceService.ExecuteWithRetryAsync(() =>
+            {
+                DateTime executionDate = DateTime.TryParse(request.ExecutionDate, out var parsedDate) ? parsedDate : DateTime.Now;
+                return _dataService.InsertLogAsync(request.ProcessName, executionDate, request.Message, context?.CancellationToken ?? CancellationToken.None);
+            });
+
+            return new InsertLogResponse
+            {
+                Result = result
+            };
+        }
+        catch (FormatException ex)
         {
-            Result = result
-        };
+            _logger.LogWarning(ex, "Invalid date format in InsertLog: {ExecutionDate}", request.ExecutionDate);
+            throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid date format"));
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogInformation(ex, "Operation cancelled in InsertLog");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unexpected error in InsertLog: {Message}", ex.Message);
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
+        }
     }
 
     /// <summary>
@@ -2380,17 +3206,35 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the process active Response.</returns>
     public async override Task<IsProcessActiveResponse> IsProcessActive(IsProcessActiveRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Checking if process is active");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+        try
         {
-            return _dataService.IsProcessActiveAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None);
-        });
+            if (context.CancellationToken.IsCancellationRequested)
+            {
+                throw new RpcException(new Status(StatusCode.Cancelled, "Request was cancelled"));
+            }
 
-        return new IsProcessActiveResponse
+            _logger.LogInformation("Checking if process is active");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+            {
+                return _dataService.IsProcessActiveAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None);
+            });
+
+            return new IsProcessActiveResponse
+            {
+                Items = { results?.Select(r => new ProcessActiveItem { ProcessName = request.ProcessName ?? string.Empty, IsActive = results.Count != 0 }) ?? [] }
+            };
+        }
+        catch (OperationCanceledException ex)
         {
-            Items = { results?.Select(r => new ProcessActiveItem { ProcessName = request.ProcessName ?? string.Empty, IsActive = results.Count != 0 }) ?? [] }
-        };
+            _logger.LogInformation(ex, "Operation cancelled in IsProcessActive");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unexpected error in IsProcessActive: {Message}", ex.Message);
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
+        }
     }
 
     /// <summary>
@@ -2402,23 +3246,42 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task IsProcessActiveStream(IsProcessActiveRequest request, IServerStreamWriter<ProcessActiveItem> responseStream, ServerCallContext context)
     {
-        _logger.LogInformation("Streaming process active check");
-
-        var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+        try
         {
-            return _dataService.IsProcessActiveAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None);
-        });
-
-        if (results != null)
-        {
-            foreach (var result in results)
+            if (context.CancellationToken.IsCancellationRequested)
             {
-                await responseStream.WriteAsync(new ProcessActiveItem
-                {
-                    ProcessName = request.ProcessName ?? string.Empty,
-                    IsActive = true
-                });
+                throw new RpcException(new Status(StatusCode.Cancelled, "Request was cancelled"));
             }
+
+            _logger.LogInformation("Streaming process active check");
+
+            var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+            {
+                return _dataService.IsProcessActiveAsync(request.ProcessName, context?.CancellationToken ?? CancellationToken.None);
+            });
+
+            if (results != null)
+            {
+                foreach (var result in results)
+                {
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(new ProcessActiveItem
+                    {
+                        ProcessName = request.ProcessName ?? string.Empty,
+                        IsActive = true
+                    });
+                }
+            }
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogInformation(ex, "Operation cancelled in IsProcessActiveStream");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unexpected error in IsProcessActiveStream: {Message}", ex.Message);
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
         }
     }
 
@@ -2430,10 +3293,15 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     /// <returns>A task representing the asynchronous operation, containing the paginated logs Response.</returns>
     public async override Task<GetAllLogsPaginationResponse> GetAllLogsPagination(GetAllLogsPaginationRequest request, ServerCallContext context)
     {
-        _logger.LogInformation("Getting all logs with pagination, filtering, and sorting");
-
         try
         {
+            if (context.CancellationToken.IsCancellationRequested)
+            {
+                throw new RpcException(new Status(StatusCode.Cancelled, "Request was cancelled"));
+            }
+
+            _logger.LogInformation("Getting all logs with pagination, filtering, and sorting");
+
             var results = await _resilienceService.ExecuteWithRetryAsync(() =>
             {
                 return _dataService.GetAllLogsPaginationAsync(
@@ -2461,15 +3329,25 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
                 TotalCount = results?.TotalCount ?? 0
             };
         }
-        catch (TaskCanceledException)
+        catch (FormatException ex)
         {
-            _logger.LogInformation("Request canceled by client for GetAllLogsPagination");
-            throw;
+            _logger.LogWarning(ex, "Invalid date format in GetAllLogsPagination: {Message}", ex.Message);
+            throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid date format in request parameters"));
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            _logger.LogWarning(ex, "Invalid pagination parameters in GetAllLogsPagination: {Message}", ex.Message);
+            throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid pagination parameters"));
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogInformation(ex, "Operation cancelled in GetAllLogsPagination");
+            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error in GetAllLogsPagination");
-            throw;
+            _logger.LogError(ex, "Unexpected error in GetAllLogsPagination: {Message}", ex.Message);
+            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
         }
     }
 
