@@ -3,6 +3,15 @@ using AF.ECT.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure Kestrel to support HTTP/2
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ConfigureEndpointDefaults(listenOptions =>
+    {
+        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http1AndHttp2;
+    });
+});
+
 // Add services to the container.
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();

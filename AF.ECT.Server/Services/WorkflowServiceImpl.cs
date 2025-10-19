@@ -2432,32 +2432,45 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     {
         _logger.LogInformation("Getting all logs with pagination, filtering, and sorting");
 
-        var results = await _resilienceService.ExecuteWithRetryAsync(() =>
+        try
         {
-            return _dataService.GetAllLogsPaginationAsync1(
-                request.HasPageNumber ? request.PageNumber : 1,
-                request.HasPageSize ? request.PageSize : 10,
-                request.ProcessName,
-                string.IsNullOrEmpty(request.StartDate) ? null : DateTime.Parse(request.StartDate),
-                string.IsNullOrEmpty(request.EndDate) ? null : DateTime.Parse(request.EndDate),
-                request.MessageFilter,
-                request.SortBy ?? "ExecutionDate",
-                request.SortOrder ?? "DESC", context?.CancellationToken ?? CancellationToken.None);
-        });
-
-        return new GetAllLogsPaginationResponse
-        {
-            Items =
+            var results = await _resilienceService.ExecuteWithRetryAsync(() =>
             {
-                results?.Data?.Select(r => new LogItem
+                return _dataService.GetAllLogsPaginationAsync(
+                    request.HasPageNumber ? request.PageNumber : 1,
+                    request.HasPageSize ? request.PageSize : 10,
+                    request.ProcessName,
+                    string.IsNullOrEmpty(request.StartDate) ? null : DateTime.Parse(request.StartDate),
+                    string.IsNullOrEmpty(request.EndDate) ? null : DateTime.Parse(request.EndDate),
+                    request.MessageFilter,
+                    request.SortBy ?? "ExecutionDate",
+                    request.SortOrder ?? "DESC", context?.CancellationToken ?? CancellationToken.None);
+            });
+
+            return new GetAllLogsPaginationResponse
+            {
+                Items =
                 {
-                    LogId = r.Id,
-                    ProcessName = r.Name ?? string.Empty,
-                    ExecutionDate = r.ExecutionDate.ToString("yyyy-MM-dd HH:mm:ss"),
-                    Message = r.Message ?? string.Empty }) ?? [] 
-            },
-            TotalCount = results?.TotalCount ?? 0
-        };
+                    results?.Data?.Select(r => new LogItem
+                    {
+                        LogId = r.Id,
+                        ProcessName = r.Name ?? string.Empty,
+                        ExecutionDate = r.ExecutionDate.ToString("yyyy-MM-dd HH:mm:ss"),
+                        Message = r.Message ?? string.Empty }) ?? [] 
+                },
+                TotalCount = results?.TotalCount ?? 0
+            };
+        }
+        catch (TaskCanceledException)
+        {
+            _logger.LogInformation("Request canceled by client for GetAllLogsPagination");
+            throw;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error in GetAllLogsPagination");
+            throw;
+        }
     }
 
     #endregion

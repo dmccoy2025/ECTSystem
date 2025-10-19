@@ -32,7 +32,7 @@ public static class ServiceCollectionExtensions
         // Configure gRPC client for browser compatibility
         services.AddScoped(serviceProvider =>
         {
-            return new WorkflowService.WorkflowServiceClient(GrpcChannel.ForAddress(builder.Configuration["ServerUrl"] ?? "https://localhost:5001", new GrpcChannelOptions
+            return new WorkflowService.WorkflowServiceClient(GrpcChannel.ForAddress(builder.Configuration["ServerUrl"] ?? "https://localhost:7000", new GrpcChannelOptions
             {
                 HttpClient = serviceProvider.GetRequiredService<HttpClient>(),
                 DisposeHttpClient = false
