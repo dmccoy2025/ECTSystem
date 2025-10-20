@@ -49,16 +49,19 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddDataAccess(this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("ALODConnection");
-        
+        var retryCount = configuration.GetValue("Database:MaxRetryCount", 3);
+        var retryDelaySeconds = configuration.GetValue("Database:MaxRetryDelaySeconds", 30);
+        var commandTimeout = configuration.GetValue("Database:CommandTimeoutSeconds", 30);
+
         services.AddDbContextFactory<ALODContext>(options =>
         {
             options.UseSqlServer(connectionString, sqlOptions =>
             {
                 sqlOptions.EnableRetryOnFailure(
-                    maxRetryCount: 3,
-                    maxRetryDelay: TimeSpan.FromSeconds(30),
+                    maxRetryCount: retryCount,
+                    maxRetryDelay: TimeSpan.FromSeconds(retryDelaySeconds),
                     errorNumbersToAdd: null);
-                sqlOptions.CommandTimeout(30);
+                sqlOptions.CommandTimeout(commandTimeout);
             });
             
             // Add detailed logging in development
@@ -85,7 +88,7 @@ public static class ServiceCollectionExtensions
     {
         services.AddRadzenCookieThemeService(options =>
         {
-            options.Name = "RadzenBlazorApp1Theme";
+            options.Name = "ECT-Theme";
             options.Duration = TimeSpan.FromDays(365);
         });
 
@@ -96,14 +99,17 @@ public static class ServiceCollectionExtensions
     /// Adds CORS (Cross-Origin Resource Sharing) configuration to the application.
     /// </summary>
     /// <param name="services">The service collection to add services to.</param>
+    /// <param name="configuration">The application configuration containing CORS settings.</param>
     /// <returns>The service collection with CORS configured.</returns>
-    public static IServiceCollection AddApplicationCors(this IServiceCollection services)
+    public static IServiceCollection AddApplicationCors(this IServiceCollection services, IConfiguration configuration)
     {
+        var allowedOrigins = configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? Array.Empty<string>();
+        
         services.AddCors(options =>
         {
             options.AddDefaultPolicy(policy =>
             {
-                policy.AllowAnyOrigin()
+                policy.WithOrigins(allowedOrigins)
                       .AllowAnyHeader()
                       .AllowAnyMethod();
             });
@@ -176,20 +182,6 @@ public static class ServiceCollectionExtensions
     /// <returns>The service collection with resilience services configured.</returns>
     public static IServiceCollection AddResilienceServices(this IServiceCollection services)
     {
-        services.AddResiliencePipeline("default", builder =>
-        {
-            builder.AddRetry(new RetryStrategyOptions
-            {
-                MaxRetryAttempts = 3,
-                Delay = TimeSpan.FromSeconds(2)
-            });
-            builder.AddCircuitBreaker(new CircuitBreakerStrategyOptions
-            {
-                FailureThreshold = 0.5,
-                SamplingDuration = TimeSpan.FromSeconds(10)
-            });
-        });
-
         services.AddSingleton<IResilienceService, ResilienceService>();
 
         return services;
@@ -199,8 +191,9 @@ public static class ServiceCollectionExtensions
     /// Adds caching services to improve performance and reduce load.   
     /// </summary>
     /// <param name="services">The service collection to add services to.</param>
+    /// <param name="configuration">The application configuration containing caching settings.</param>
     /// <returns>The service collection with caching services configured.</returns>
-    public static IServiceCollection AddCachingServices(this IServiceCollection services)
+    public static IServiceCollection AddCachingServices(this IServiceCollection services, IConfiguration configuration)
     {
         // Add memory cache for rate limiting stores
         services.AddMemoryCache();

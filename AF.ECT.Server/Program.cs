@@ -6,13 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddWebComponents(builder);
 builder.Services.AddDataAccess(builder.Configuration);
 builder.Services.AddThemeServices();
-builder.Services.AddApplicationCors();
+builder.Services.AddApplicationCors(builder.Configuration);
 builder.Services.AddGrpcServices();
 builder.Services.AddHealthCheckServices(builder.Configuration);
 builder.Services.AddLoggingServices(builder.Configuration);
 builder.Services.AddAntiforgeryServices();
 builder.Services.AddResilienceServices();
-builder.Services.AddCachingServices();
+builder.Services.AddCachingServices(builder.Configuration);
 builder.Services.AddRateLimitingServices(builder.Configuration);
 builder.Services.AddDocumentation();
 
