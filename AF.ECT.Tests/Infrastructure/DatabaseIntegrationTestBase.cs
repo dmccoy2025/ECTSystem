@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
+using AF.ECT.Server;
 
 namespace AF.ECT.Tests.Infrastructure;
 
@@ -15,7 +16,7 @@ namespace AF.ECT.Tests.Infrastructure;
 /// Enhanced integration test base that uses SQLite in-memory database
 /// for realistic database integration testing.
 /// </summary>
-public class DatabaseIntegrationTestBase : WebApplicationFactory<TestProgram>, IAsyncLifetime
+public class DatabaseIntegrationTestBase : WebApplicationFactory<Program>, IAsyncLifetime
 {
     private readonly string _databaseName = Guid.NewGuid().ToString();
     private DbConnection _dbConnection = null!;

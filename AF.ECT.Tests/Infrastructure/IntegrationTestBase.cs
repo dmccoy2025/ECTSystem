@@ -6,10 +6,11 @@ using Moq;
 using AF.ECT.Shared;
 using AF.ECT.Data.Interfaces;
 using AF.ECT.Data.ResultTypes;
+using AF.ECT.Server;
 
 namespace AF.ECT.Tests.Infrastructure;
 
-public class IntegrationTestBase : WebApplicationFactory<TestProgram>
+public class IntegrationTestBase : WebApplicationFactory<Program>
 {
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {

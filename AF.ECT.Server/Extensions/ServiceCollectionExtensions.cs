@@ -17,34 +17,25 @@ namespace AF.ECT.Server.Extensions;
 public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// Adds all application services to the dependency injection container.
-    /// </summary>
-    /// <param name="services">The service collection to add services to.</param>
-    /// <param name="configuration">The application configuration for connection strings and settings.</param>
-    /// <returns>The service collection with all application services configured.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when services or configuration is null.</exception>
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
-    {
-        return services
-            .AddWebComponents()
-            .AddDataAccess(configuration)
-            .AddThemeServices()
-            .AddHttpClient()
-            .AddResilienceServices();
-    }
-
-    /// <summary>
     /// Adds web components and related services to the dependency injection container.
     /// </summary>
     /// <param name="services">The service collection to add services to.</param>
+    /// <param name="builder">The web application builder to configure Kestrel options.</param>
     /// <returns>The service collection with web components configured.</returns>
-    private static IServiceCollection AddWebComponents(this IServiceCollection services)
+    public static IServiceCollection AddWebComponents(this IServiceCollection services, WebApplicationBuilder builder)
     {
+        builder.WebHost.ConfigureKestrel(options =>
+        {
+            options.ConfigureEndpointDefaults(listenOptions =>
+            {
+                listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http1AndHttp2;
+            });
+        });
+
         services
+            .AddRadzenComponents()
             .AddRazorComponents()
             .AddInteractiveServerComponents();
-
-        services.AddRadzenComponents();
 
         return services;
     }
@@ -55,8 +46,7 @@ public static class ServiceCollectionExtensions
     /// <param name="services">The service collection to add services to.</param>
     /// <param name="configuration">The application configuration containing database connection strings.</param>
     /// <returns>The service collection with data access services configured.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when configuration is null.</exception>
-    private static IServiceCollection AddDataAccess(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddDataAccess(this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("ALODConnection");
         
@@ -91,7 +81,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services">The service collection to add services to.</param>
     /// <returns>The service collection with theme services configured.</returns>
-    private static IServiceCollection AddThemeServices(this IServiceCollection services)
+    public static IServiceCollection AddThemeServices(this IServiceCollection services)
     {
         services.AddRadzenCookieThemeService(options =>
         {
@@ -107,10 +97,6 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services">The service collection to add services to.</param>
     /// <returns>The service collection with CORS configured.</returns>
-    /// <remarks>
-    /// This configuration allows any origin, header, and method.
-    /// In production, this should be restricted to specific origins.
-    /// </remarks>
     public static IServiceCollection AddApplicationCors(this IServiceCollection services)
     {
         services.AddCors(options =>
@@ -153,8 +139,7 @@ public static class ServiceCollectionExtensions
     /// <param name="services">The service collection to add services to.</param>
     /// <param name="configuration">The application configuration containing database connection strings.</param>
     /// <returns>The service collection with health checks configured.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when configuration is null.</exception>
-    public static IServiceCollection AddHealthChecks(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddHealthCheckServices(this IServiceCollection services, IConfiguration configuration)
     {
         var healthChecksBuilder = services.AddHealthChecks();
         
@@ -189,9 +174,22 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services">The service collection to add services to.</param>
     /// <returns>The service collection with resilience services configured.</returns>
-    private static IServiceCollection AddResilienceServices(this IServiceCollection services)
+    public static IServiceCollection AddResilienceServices(this IServiceCollection services)
     {
         services.AddSingleton<IResilienceService, ResilienceService>();
+
+        return services;
+    }
+
+    /// <summary>
+    /// Adds caching services to improve performance and reduce load.   
+    /// </summary>
+    /// <param name="services">The service collection to add services to.</param>
+    /// <returns>The service collection with caching services configured.</returns>
+    public static IServiceCollection AddCachingServices(this IServiceCollection services)
+    {
+        // Add memory cache for rate limiting stores
+        services.AddMemoryCache();
 
         return services;
     }
@@ -202,12 +200,8 @@ public static class ServiceCollectionExtensions
     /// <param name="services">The service collection to add services to.</param>
     /// <param name="configuration">The application configuration containing rate limiting settings.</param>
     /// <returns>The service collection with rate limiting configured.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when configuration is null.</exception>
     public static IServiceCollection AddRateLimitingServices(this IServiceCollection services, IConfiguration configuration)
     {
-        // Add memory cache for rate limiting stores
-        services.AddMemoryCache();
-
         // Load rate limiting configuration from appsettings.json
         services.Configure<IpRateLimitOptions>(configuration.GetSection("IpRateLimiting"));
 
@@ -219,6 +213,19 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
         services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+
+        return services;
+    }
+
+    /// <summary>
+    /// Adds OpenAPI and Swagger documentation services to the dependency injection container.
+    /// </summary>
+    /// <param name="services">The service collection to add services to.</param>
+    /// <returns>The service collection with documentation services configured.</returns>
+    public static IServiceCollection AddDocumentation(this IServiceCollection services)
+    {
+        services.AddOpenApi();
+        services.AddSwaggerGen();
 
         return services;
     }

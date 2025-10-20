@@ -3,31 +3,20 @@ using AF.ECT.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure Kestrel to support HTTP/2
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ConfigureEndpointDefaults(listenOptions =>
-    {
-        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http1AndHttp2;
-    });
-});
-
-// Add services to the container.
-builder.Services.AddOpenApi();
-builder.Services.AddSwaggerGen();
-
-// Add application services
-builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddWebComponents(builder);
+builder.Services.AddDataAccess(builder.Configuration);
+builder.Services.AddThemeServices();
 builder.Services.AddApplicationCors();
 builder.Services.AddGrpcServices();
-//builder.Services.AddHealthChecks(builder.Configuration);
-//builder.Services.AddAntiforgeryServices();
-//builder.Services.AddRateLimitingServices(builder.Configuration);
-//builder.Services.AddRateLimiter();
+builder.Services.AddHealthCheckServices(builder.Configuration);
+builder.Services.AddAntiforgeryServices();
+builder.Services.AddResilienceServices();
+builder.Services.AddCachingServices();
+builder.Services.AddRateLimitingServices(builder.Configuration);
+builder.Services.AddDocumentation();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -36,32 +25,22 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-// Enable CORS before GrpcWeb
 app.UseCors();
-
-// Enable gRPC-Web for browser clients (MUST be before UseRouting)
 app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
-
-// Explicitly call UseRouting to ensure gRPC-Web is before it
 app.UseRouting();
-
 app.UseAntiforgery();
-//app.UseRateLimiter();
-
-// Map health checks endpoint
-//app.MapHealthChecks("/healthz");
-
-// Map gRPC services with GrpcWeb enabled
+app.UseRateLimiter();
+app.MapHealthChecks("/healthz");
 app.MapGrpcService<WorkflowServiceImpl>().EnableGrpcWeb();
 
-// Map gRPC reflection service (for development)
 if (app.Environment.IsDevelopment())
 {
     app.MapGrpcReflectionService();
 }
 
-// Map fallback for SPA (must be last)
 app.MapFallbackToFile("index.html");
 
-app.Run();
+await app.RunAsync();
+
+// Make Program class public for testing
+public partial class Program { }
