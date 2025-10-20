@@ -124,7 +124,7 @@ public static class ServiceCollectionExtensions
             {
                 options.Interceptors.Add<ExceptionInterceptor>();
                 options.Interceptors.Add<AuditInterceptor>();
-                options.EnableDetailedErrors = true;
+                options.EnableDetailedErrors = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
             })
             .AddJsonTranscoding();
 
@@ -176,6 +176,20 @@ public static class ServiceCollectionExtensions
     /// <returns>The service collection with resilience services configured.</returns>
     public static IServiceCollection AddResilienceServices(this IServiceCollection services)
     {
+        services.AddResiliencePipeline("default", builder =>
+        {
+            builder.AddRetry(new RetryStrategyOptions
+            {
+                MaxRetryAttempts = 3,
+                Delay = TimeSpan.FromSeconds(2)
+            });
+            builder.AddCircuitBreaker(new CircuitBreakerStrategyOptions
+            {
+                FailureThreshold = 0.5,
+                SamplingDuration = TimeSpan.FromSeconds(10)
+            });
+        });
+
         services.AddSingleton<IResilienceService, ResilienceService>();
 
         return services;
@@ -203,7 +217,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddRateLimitingServices(this IServiceCollection services, IConfiguration configuration)
     {
         // Load rate limiting configuration from appsettings.json
-        services.Configure<IpRateLimitOptions>(configuration.GetSection("IpRateLimiting"));
+        services.Configure<IpRateLimitOptions>(configuration.GetSection("IpRateLimitOptions"));
 
         // Register rate limiting stores
         services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
@@ -226,6 +240,24 @@ public static class ServiceCollectionExtensions
     {
         services.AddOpenApi();
         services.AddSwaggerGen();
+
+        return services;
+    }
+
+    /// <summary>
+    /// Adds logging services to the dependency injection container.
+    /// </summary>
+    /// <param name="services">The service collection to add services to.</param>
+    /// <param name="configuration">The application configuration containing logging settings.</param>
+    /// <returns>The service collection with logging services configured.</returns>
+    public static IServiceCollection AddLoggingServices(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddLogging(logging =>
+        {
+            logging.AddConfiguration(configuration.GetSection("Logging"));
+            logging.AddConsole();
+            logging.AddDebug();
+        });
 
         return services;
     }

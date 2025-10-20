@@ -9,6 +9,7 @@ builder.Services.AddThemeServices();
 builder.Services.AddApplicationCors();
 builder.Services.AddGrpcServices();
 builder.Services.AddHealthCheckServices(builder.Configuration);
+builder.Services.AddLoggingServices(builder.Configuration);
 builder.Services.AddAntiforgeryServices();
 builder.Services.AddResilienceServices();
 builder.Services.AddCachingServices();
