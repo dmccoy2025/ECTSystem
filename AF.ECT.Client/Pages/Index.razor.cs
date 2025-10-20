@@ -96,13 +96,13 @@ public partial class Index
                 sortOrder: sortOrder
             );
 
-            logData = response.Items.ToList();
+            logData = [.. response.Items];
             totalCount = response.TotalCount;
         }
         catch (Exception ex)
         {
             errorMessage = $"Error loading logs: {ex.Message}";
-            logData = new List<LogItem>();
+            logData = [];
             totalCount = 0;
         }
         finally
