@@ -40,10 +40,6 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
 
     #endregion
 
-    #region Helpers
-
-    #endregion
-
     #region Core User Methods
 
     /// <summary>
