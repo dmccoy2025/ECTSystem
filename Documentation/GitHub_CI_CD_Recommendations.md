@@ -1,4 +1,4 @@
-Based on the ECTSystem's architecture—a .NET Aspire-orchestrated distributed application with ASP.NET Core, Blazor WebAssembly, gRPC services, EF Core, and SQL Server—here are targeted GitHub Actions CI/CD recommendations and suggestions. These focus on automating builds, tests, deployments, and monitoring using GitHub's native CI/CD platform, leveraging .NET Aspire's cloud-native features for seamless integration. I'll assume a typical Azure target like Azure Container Apps (ACA) or GitHub Pages for the client, as Aspire supports these. If your deployment target differs, let me know for refinements.
+Based on the ECTSystem's architecture—a .NET Aspire-orchestrated distributed application with ASP.NET Core, Blazor WebAssembly, Win UI (desktop), gRPC services, EF Core, and SQL Server—here are targeted GitHub Actions CI/CD recommendations and suggestions. These focus on automating builds, tests, deployments, and monitoring using GitHub's native CI/CD platform, leveraging .NET Aspire's cloud-native features for seamless integration. I'll assume a typical Azure target like Azure Container Apps (ACA) for web/server components and separate deployment for Win UI, as Aspire supports these. If your deployment target differs, let me know for refinements.
 
 ### 1. **Workflow Overview and Structure**
    - **Why?** GitHub Actions provides free CI/CD for public repos with YAML workflows in `.github/workflows/`. For a microservices app, use jobs for build → test → deploy to ensure reliability.
@@ -32,7 +32,7 @@ Based on the ECTSystem's architecture—a .NET Aspire-orchestrated distributed a
    - **Recommendations**:
      - Restore NuGet: Use `actions/setup-dotnet` and `dotnet restore`.
      - Build: `dotnet build --configuration Release`.
-     - Publish: `dotnet publish` for AppHost, Server, Client. For Aspire, publish as containers.
+     - Publish: `dotnet publish` for AppHost, Server, WebClient, Win UI. For Aspire, publish as containers; for Win UI, publish as self-contained app.
      - Upload artifacts: Use `actions/upload-artifact` for reuse in deploy jobs.
      - Example steps:
        ```yaml
@@ -45,11 +45,13 @@ Based on the ECTSystem's architecture—a .NET Aspire-orchestrated distributed a
          run: dotnet build --configuration Release --no-restore
        - name: Publish AppHost
          run: dotnet publish AF.ECT.AppHost/AF.ECT.AppHost.csproj --configuration Release --output ./publish/apphost
+       - name: Publish Win UI
+         run: dotnet publish AF.ECT.WinUI/AF.ECT.WinUI.csproj --configuration Release --self-contained --runtime win-x64 --output ./publish/winui
        - name: Upload artifacts
          uses: actions/upload-artifact@v3
          with:
-           name: apphost
-           path: ./publish/apphost
+           name: artifacts
+           path: ./publish/
        ```
      - For Blazor, ensure WASM files are published.
 
@@ -84,7 +86,8 @@ Based on the ECTSystem's architecture—a .NET Aspire-orchestrated distributed a
 ### 5. **Deploy Job: Release to Azure or GitHub**
    - **Why?** Aspire simplifies Azure deployments; use azd or GitHub Pages for client.
    - **Recommendations**:
-     - For ACA/AKS: Use `azure/login` and `azure/CLI` to run azd deploy.
+     - For ACA/AKS: Use `azure/login` and `azure/CLI` to run azd deploy for web/server components.
+     - For Win UI: Deploy separately (e.g., as MSIX via GitHub Releases or Windows Store).
      - Database: Run EF migrations post-deploy.
      - Secrets: Store in GitHub Secrets (e.g., Azure credentials).
      - Monitoring: Enable Application Insights.

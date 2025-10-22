@@ -12,7 +12,8 @@ Based on the current structure of your ECTSystem solution—an Aspire-based dist
 
        var database = sqlServer.AddDatabase("ectdb");
 
-       var client = builder.AddProject<Projects.AF_ECT_Client>("client");
+       var webClient = builder.AddProject<Projects.AF_ECT_WebClient>("webclient");
+       var winUI = builder.AddProject<Projects.AF_ECT_WinUI>("winui");  // If added
        var server = builder.AddProject<Projects.AF_ECT_Server>("server")
            .WithReference(database);  // Inject connection string
 
@@ -26,7 +27,7 @@ Based on the current structure of your ECTSystem solution—an Aspire-based dist
    - **Current State**: Your `AF.ECT.ServiceDefaults` project has solid defaults (OpenTelemetry, health checks, resilience), but the server project uses custom extensions instead of `AddServiceDefaults()`. The client (Blazor) likely needs integration too.
    - **Recommendations**:
      - Update `AF.ECT.Server\Program.cs` to use `builder.AddServiceDefaults()` early in the builder pipeline, replacing custom health checks and telemetry with Aspire's unified approach. This ensures consistent logging, tracing, and metrics across services.
-     - For the Blazor client (`AF.ECT.Client`), add `builder.AddServiceDefaults()` in `Program.cs` to enable service discovery and resilience for any HTTP calls (e.g., to the server).
+     - For the Blazor client (`AF.ECT.WebClient`), add `builder.AddServiceDefaults()` in `Program.cs` to enable service discovery and resilience for any HTTP calls (e.g., to the server).
      - Enable the Aspire dashboard by running the AppHost—it provides real-time logs, metrics, and traces. Uncomment OTLP exporter in `ServiceDefaults` if you plan to send telemetry to external tools like Application Insights.
      - Add custom health checks in `ServiceDefaults` for database connectivity (e.g., via EF Core) to monitor app health.
      - **Why?** Aspire's service defaults promote cloud-native patterns like resilience (e.g., Polly for retries) and observability, reducing boilerplate and improving debugging.

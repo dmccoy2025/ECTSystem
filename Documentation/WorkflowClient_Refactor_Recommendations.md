@@ -1,31 +1,31 @@
-Yes, [`AF.ECT.Client/Services/WorkflowClient.cs`](AF.ECT.Client/Services/WorkflowClient.cs ) can be moved to the [`AF.ECT.Shared`](AF.ECT.Shared ) project to eliminate duplication, but it requires some refactoring to handle platform-specific differences (primarily gRPC channel creation for browser vs. desktop compatibility). The core logic (methods, audit logging, retry policies, etc.) is nearly identical between the two implementations, so sharing is feasible with minimal changes.
+Yes, [`AF.ECT.WebClient/Services/WorkflowClient.cs`](AF.ECT.WebClient/Services/WorkflowClient.cs ) can be moved to the [`AF.ECT.Shared`](AF.ECT.Shared ) project to eliminate duplication, but it requires some refactoring to handle platform-specific differences (primarily gRPC channel creation for browser vs. desktop compatibility). The core logic (methods, audit logging, retry policies, etc.) is nearly identical between the two implementations, so sharing is feasible with minimal changes.
 
 ### Key Differences Observed
-- **Namespace**: [`AF.ECT.Client.Services`](AF.ECT.Client/Services/WorkflowClient.cs ) vs. [`AF.ECT.Windows.Services`](AF.ECT.Client/Services/WorkflowClient.cs ).
-- **Channel Creation**: The client version uses [`GrpcWebHandler`](AF.ECT.Client/Services/WorkflowClient.cs ) for browser compatibility (Blazor WebAssembly), while the Windows version uses a standard [`HttpClientHandler`](AF.ECT.Client/Services/WorkflowClient.cs ) for desktop.
+- **Namespace**: [`AF.ECT.WebClient.Services`](AF.ECT.WebClient/Services/WorkflowClient.cs ) vs. [`AF.ECT.WinUI.Services`](AF.ECT.WebClient/Services/WorkflowClient.cs ).
+- **Channel Creation**: The client version uses [`GrpcWebHandler`](AF.ECT.WebClient/Services/WorkflowClient.cs ) for browser compatibility (Blazor WebAssembly), while the Windows version uses a standard [`HttpClientHandler`](AF.ECT.WebClient/Services/WorkflowClient.cs ) for desktop.
 - **Remarks**: Minor documentation tweaks for platform context.
-- **Other**: The [`IWorkflowClient`](AF.ECT.Client/Services/WorkflowClient.cs ) interface and [`WorkflowClientOptions`](AF.ECT.Client/Services/WorkflowClient.cs ) are also duplicated and should be moved for full sharing.
+- **Other**: The [`IWorkflowClient`](AF.ECT.WebClient/Services/WorkflowClient.cs ) interface and [`WorkflowClientOptions`](AF.ECT.WebClient/Services/WorkflowClient.cs ) are also duplicated and should be moved for full sharing.
 
 The rest of the code (methods, constructors for testing, audit logging, etc.) is identical.
 
 ### Proposed Solution
 1. **Move Shared Components**:
-   - Move [`IWorkflowClient.cs`](AF.ECT.Client/Services/WorkflowClient.cs ) from both client and Windows [`Services/`](AF.ECT.Client/Services/WorkflowClient.cs ) folders to [`AF.ECT.Shared/Services`](AF.ECT.Shared/Services ).
-   - Move [`WorkflowClientOptions.cs`](AF.ECT.Client/Services/WorkflowClient.cs ) from both [`Options/`](AF.ECT.Client/Services/WorkflowClient.cs ) folders to [`AF.ECT.Shared\Options\`](AF.ECT.Client/Services/WorkflowClient.cs ) (assuming it's identical).
-   - Move [`AF.ECT.Client/Services/WorkflowClient.cs`](AF.ECT.Client/Services/WorkflowClient.cs ) to [`AF.ECT.Shared/Services`](AF.ECT.Shared/Services ).
+   - Move [`IWorkflowClient.cs`](AF.ECT.WebClient/Services/WorkflowClient.cs ) from both client and Windows [`Services/`](AF.ECT.WebClient/Services/WorkflowClient.cs ) folders to [`AF.ECT.Shared/Services`](AF.ECT.Shared/Services ).
+   - Move [`WorkflowClientOptions.cs`](AF.ECT.WebClient/Services/WorkflowClient.cs ) from both [`Options/`](AF.ECT.WebClient/Services/WorkflowClient.cs ) folders to [`AF.ECT.Shared\Options\`](AF.ECT.WebClient/Services/WorkflowClient.cs ) (assuming it's identical).
+   - Move [`AF.ECT.WebClient/Services/WorkflowClient.cs`](AF.ECT.WebClient/Services/WorkflowClient.cs ) to [`AF.ECT.Shared/Services`](AF.ECT.Shared/Services ).
 
-2. **Refactor [`AF.ECT.Client/Services/WorkflowClient.cs`](AF.ECT.Client/Services/WorkflowClient.cs )**:
-   - Update the namespace to [`AF.ECT.Shared.Services`](AF.ECT.Client/Services/WorkflowClient.cs ).
-   - Modify the main constructor to accept a pre-configured [`GrpcChannel`](AF.ECT.Client/Services/WorkflowClient.cs ) instead of [`HttpClient`](AF.ECT.Client/Services/WorkflowClient.cs ). This abstracts platform-specific channel creation, allowing each project to handle it.
-   - Remove platform-specific channel setup logic (e.g., [`GrpcWebHandler`](AF.ECT.Client/Services/WorkflowClient.cs ) or [`HttpClientHandler`](AF.ECT.Client/Services/WorkflowClient.cs )).
-   - Update the test constructor to remain as-is (it already accepts a [`WorkflowService.WorkflowServiceClient`](AF.ECT.Client/Services/WorkflowClient.cs )).
+2. **Refactor [`AF.ECT.WebClient/Services/WorkflowClient.cs`](AF.ECT.WebClient/Services/WorkflowClient.cs )**:
+   - Update the namespace to [`AF.ECT.Shared.Services`](AF.ECT.WebClient/Services/WorkflowClient.cs ).
+   - Modify the main constructor to accept a pre-configured [`GrpcChannel`](AF.ECT.WebClient/Services/WorkflowClient.cs ) instead of [`HttpClient`](AF.ECT.WebClient/Services/WorkflowClient.cs ). This abstracts platform-specific channel creation, allowing each project to handle it.
+   - Remove platform-specific channel setup logic (e.g., [`GrpcWebHandler`](AF.ECT.WebClient/Services/WorkflowClient.cs ) or [`HttpClientHandler`](AF.ECT.WebClient/Services/WorkflowClient.cs )).
+   - Update the test constructor to remain as-is (it already accepts a [`WorkflowService.WorkflowServiceClient`](AF.ECT.WebClient/Services/WorkflowClient.cs )).
 
 3. **Update Client Projects**:
-   - In [`AF.ECT.Client`](AF.ECT.Client ), update dependency injection (likely in `Program.cs`) to create the [`GrpcChannel`](AF.ECT.Client/Services/WorkflowClient.cs ) with [`GrpcWebHandler`](AF.ECT.Client/Services/WorkflowClient.cs ) and pass it to [`WorkflowClient`](AF.ECT.Client/Services/WorkflowClient.cs ).
-   - In [`AF.ECT.Windows`](AF.ECT.Windows ), update to create the [`GrpcChannel`](AF.ECT.Client/Services/WorkflowClient.cs ) with [`HttpClientHandler`](AF.ECT.Client/Services/WorkflowClient.cs ) and pass it.
+   - In [`AF.ECT.WebClient`](AF.ECT.WebClient ), update dependency injection (likely in `Program.cs`) to create the [`GrpcChannel`](AF.ECT.WebClient/Services/WorkflowClient.cs ) with [`GrpcWebHandler`](AF.ECT.WebClient/Services/WorkflowClient.cs ) and pass it to [`WorkflowClient`](AF.ECT.WebClient/Services/WorkflowClient.cs ).
+   - In [`AF.ECT.WinUI`](AF.ECT.WinUI ), update to create the [`GrpcChannel`](AF.ECT.WebClient/Services/WorkflowClient.cs ) with [`HttpClientHandler`](AF.ECT.WebClient/Services/WorkflowClient.cs ) and pass it.
    - Ensure both projects reference [`AF.ECT.Shared`](AF.ECT.Shared ) (they likely already do).
 
-### Example Refactored Code for [`AF.ECT.Client/Services/WorkflowClient.cs`](AF.ECT.Client/Services/WorkflowClient.cs )
+### Example Refactored Code for [`AF.ECT.WebClient/Services/WorkflowClient.cs`](AF.ECT.WebClient/Services/WorkflowClient.cs )
 Here's the updated constructor section (full file is too long to show, but apply these changes to the moved file):
 
 ```csharp
@@ -100,7 +100,7 @@ public class WorkflowClient : IWorkflowClient
 ```
 
 ### Example Updates for Client Projects
-- **[`AF.ECT.Client/Program.cs`](AF.ECT.Client/Program.cs )** (or wherever DI is configured):
+- **[`AF.ECT.WebClient/Program.cs`](AF.ECT.WebClient/Program.cs )** (or wherever DI is configured):
   ```csharp
   // ... existing code ...
   builder.Services.AddSingleton<GrpcChannel>(sp =>
@@ -119,7 +119,7 @@ public class WorkflowClient : IWorkflowClient
   // ... existing code ...
   ```
 
-- **[`AF.ECT.Windows`](AF.ECT.Windows )** (similarly, in its DI setup, e.g., `App.xaml.cs` or a service locator):
+- **[`AF.ECT.WinUI`](AF.ECT.WinUI )** (similarly, in its DI setup, e.g., `App.xaml.cs` or a service locator):
   ```csharp
   // ... existing code ...
   var channel = GrpcChannel.ForAddress("your-server-address",  // Configure address appropriately

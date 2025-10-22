@@ -1,4 +1,15 @@
-Based on the ECTSystem's architecture—a .NET Aspire-orchestrated distributed application with ASP.NET Core, Blazor WebAssembly, gRPC services, EF Core, and SQL Server—here are targeted Azure DevOps CI/CD recommendations and suggestions. These focus on automating builds, tests, deployments, and monitoring using Azure DevOps Pipelines, leveraging .NET Aspire's cloud-native features for seamless Azure integration. I'll assume a typical Azure target like Azure Container Apps (ACA) or Azure Kubernetes Service (AKS), as Aspire excels there. If your deployment target differs (e.g., on-premises), let me know for refinements.
+# Azure DevOps CI/CD Recommendations for ECTSystem
+
+## Table of Contents
+1. [Pipeline Overview and Structure](#1-pipeline-overview-and-structure)
+2. [Build Stage: Restore, Build, and Package](#2-build-stage-restore-build-and-package)
+3. [Test Stage: Run Unit and Integration Tests](#3-test-stage-run-unit-and-integration-tests)
+4. [Security and Quality Gates](#4-security-and-quality-gates)
+5. [Deploy Stage: Release to Azure](#5-deploy-stage-release-to-azure)
+6. [Monitoring, Alerts, and Best Practices](#6-monitoring-alerts-and-best-practices)
+7. [Next Steps](#next-steps)
+
+Based on the ECTSystem's architecture—a .NET Aspire-orchestrated distributed application with ASP.NET Core, Blazor WebAssembly, Win UI (desktop), gRPC services, EF Core, and SQL Server—here are targeted Azure DevOps CI/CD recommendations and suggestions. These focus on automating builds, tests, deployments, and monitoring using Azure DevOps Pipelines, leveraging .NET Aspire's cloud-native features for seamless Azure integration. I'll assume a typical Azure target like Azure Container Apps (ACA) or Azure Kubernetes Service (AKS) for the web/server components, as Aspire excels there. The Win UI project can be built and packaged for Windows deployment. If your deployment target differs (e.g., on-premises), let me know for refinements.
 
 ### 1. **Pipeline Overview and Structure**
    - **Why?** Azure DevOps provides end-to-end CI/CD with YAML pipelines for version control, artifact management, and environments. For a microservices app, use multi-stage pipelines (build → test → deploy) to ensure reliability.
@@ -39,9 +50,9 @@ Based on the ECTSystem's architecture—a .NET Aspire-orchestrated distributed a
    - **Recommendations**:
      - Restore NuGet packages: `dotnet restore ElectronicCaseTracking.sln`.
      - Build the solution: `dotnet build --configuration Release --no-restore`.
-     - Publish projects: Use `dotnet publish` for each (AppHost, Server, Client) to create deployable artifacts. For Aspire, publish the AppHost as a container-ready app.
-     - Generate containers: Use Docker tasks or `dotnet publish` with `--os linux --arch x64` for ACA/AKS.
-     - Publish artifacts: Upload build outputs (e.g., Docker images or ZIPs) to Azure DevOps Artifacts for reuse in deploy stages.
+     - Publish projects: Use `dotnet publish` for each (AppHost, Server, WebClient, Win UI) to create deployable artifacts. For Aspire, publish the AppHost as a container-ready app. For Win UI, publish as a self-contained app or MSIX package.
+     - Generate containers: Use Docker tasks or `dotnet publish` with `--os linux --arch x64` for ACA/AKS (web/server components).
+     - Publish artifacts: Upload build outputs (e.g., Docker images, ZIPs, or MSIX) to Azure DevOps Artifacts for reuse in deploy stages.
      - Example steps:
        ```yaml
        - task: DotNetCoreCLI@2
@@ -62,6 +73,13 @@ Based on the ECTSystem's architecture—a .NET Aspire-orchestrated distributed a
            publishWebProjects: false
            projects: 'AF.ECT.AppHost/AF.ECT.AppHost.csproj'
            arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)/apphost'
+       - task: DotNetCoreCLI@2
+         displayName: 'Publish Win UI'
+         inputs:
+           command: 'publish'
+           publishWebProjects: false
+           projects: 'AF.ECT.WinUI/AF.ECT.WinUI.csproj'
+           arguments: '--configuration Release --self-contained --runtime win-x64 --output $(Build.ArtifactStagingDirectory)/winui'
        - task: PublishBuildArtifacts@1
          displayName: 'Publish artifacts'
          inputs:
@@ -104,8 +122,8 @@ Based on the ECTSystem's architecture—a .NET Aspire-orchestrated distributed a
 ### 5. **Deploy Stage: Release to Azure**
    - **Why?** Aspire simplifies deployment to Azure; use azd or ARM templates for infrastructure as code.
    - **Recommendations**:
-     - Target Azure Container Apps (ACA) for serverless microservices—Aspire generates manifests automatically.
-     - Use Azure DevOps Release Pipelines or YAML deployments for environments (dev → staging → prod).
+     - Target Azure Container Apps (ACA) for serverless microservices—Aspire generates manifests automatically. The Win UI project can be deployed separately as an MSIX package or sideloaded on Windows devices.
+     - Use Azure DevOps Release Pipelines or YAML deployments for environments (dev → staging → prod) for web/server components.
      - Deploy database: Run EF Core migrations via `dotnet ef database update` in a post-deploy script, or use Azure SQL Database with azd.
      - Secrets: Store connection strings in Azure Key Vault; inject via pipeline variables.
      - Monitoring: Enable Application Insights post-deployment for logs/traces (ties into your OpenTelemetry setup).
@@ -139,4 +157,4 @@ Based on the ECTSystem's architecture—a .NET Aspire-orchestrated distributed a
 - If you have an Azure subscription, set up service connections for deployments.
 - For hands-on help, I can generate a sample `azure-pipelines.yml` file or update your code (e.g., add azd config). Just specify your Azure target (e.g., ACA)!
 
-These align with .NET Aspire's deployment patterns and Azure best practices. If you'd like this as a markdown file in the `Documentation` folder, let me know!
+These align with .NET Aspire's deployment patterns and Azure best practices.
