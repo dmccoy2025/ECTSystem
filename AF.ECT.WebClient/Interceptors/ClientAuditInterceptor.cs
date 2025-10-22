@@ -1,7 +1,7 @@
 using Grpc.Core;
 using Grpc.Core.Interceptors;
 
-namespace AF.ECT.Client.Interceptors;
+namespace AF.ECT.WebClient.Interceptors;
 
 /// <summary>
 /// gRPC client-side interceptor for military-grade audit logging and monitoring.

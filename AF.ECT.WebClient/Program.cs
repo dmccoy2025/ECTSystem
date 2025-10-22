@@ -1,5 +1,5 @@
-using AF.ECT.Client;
-using AF.ECT.Client.Extensions;
+using AF.ECT.WebClient;
+using AF.ECT.WebClient.Extensions;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 

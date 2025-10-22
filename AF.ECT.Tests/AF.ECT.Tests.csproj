@@ -32,7 +32,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AF.ECT.Server\AF.ECT.Server.csproj" />
-    <ProjectReference Include="..\AF.ECT.Client\AF.ECT.Client.csproj" />
+    <ProjectReference Include="..\AF.ECT.WebClient\AF.ECT.WebClient.csproj" />
     <ProjectReference Include="..\AF.ECT.Data\AF.ECT.Data.csproj" />
   </ItemGroup>
 

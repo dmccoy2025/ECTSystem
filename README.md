@@ -19,7 +19,7 @@ ECTSystem is built using .NET 9.0 and leverages ASP.NET Core for the backend, Bl
 The solution consists of several projects:
 
 - **AF.ECT.AppHost**: ASP.NET Core app host using .NET Aspire for orchestration
-- **AF.ECT.Client**: Blazor web application for the user interface
+- **AF.ECT.WebClient**: Blazor web application for the user interface
 - **AF.ECT.Server**: ASP.NET Core Web API server
 - **AF.ECT.Shared**: Shared models and utilities
 - **AF.ECT.ServiceDefaults**: Common service configurations and extensions

@@ -3,7 +3,7 @@ using AF.ECT.Shared;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 
-namespace AF.ECT.Client.Pages;
+namespace AF.ECT.WebClient.Pages;
 
 /// <summary>
 /// Code-behind for the Index page.

@@ -6,7 +6,7 @@ using Grpc.Net.Client;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Radzen;
 
-namespace AF.ECT.Client.Extensions;
+namespace AF.ECT.WebClient.Extensions;
 
 public static class ServiceCollectionExtensions
 {
