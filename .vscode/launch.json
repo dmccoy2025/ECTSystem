@@ -92,7 +92,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             "program": "dotnet",
-            "args": ["run", "--project", "${workspaceFolder}/AF.ECT.Windows/AF.ECT.Windows.csproj", "--launch-profile", "AF.ECT.Windows (Unpackaged)"],
+            "args": ["run", "--project", "${workspaceFolder}/AF.ECT.WindowsClient/AF.ECT.WindowsClient.csproj", "--launch-profile", "AF.ECT.WindowsClient (Unpackaged)"],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "env": {
