@@ -1,7 +1,7 @@
 # AI Coding Assistant Instructions for ECTSystem
 
 ## CRITICAL: Build Verification Requirement
-**ALWAYS verify the solution builds successfully before responding to any code changes.**
+**ALWAYS verify the solution builds successfully before responding to any code changes. Do not rebuild solution if markdown are changed**
 
 - After making ANY code modifications, run `dotnet build ElectronicCaseTracking.sln` and wait for completion
 - Only respond after confirming the build succeeds (exit code 0)

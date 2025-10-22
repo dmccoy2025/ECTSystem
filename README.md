@@ -4,15 +4,19 @@ Electronic Case Tracking System - A modern web application for managing and trac
 
 ## Overview
 
-ECTSystem is built using .NET 9.0 and leverages ASP.NET Core for the backend, Blazor for the frontend, and .NET Aspire for cloud-ready application orchestration. It provides a comprehensive solution for case management, reporting, and workflow automation.
+ECTSystem is built using .NET 9.0 and leverages ASP.NET Core for the backend, Blazor for the web frontend, Win UI for the desktop frontend, and .NET Aspire for cloud-ready application orchestration. It provides a comprehensive solution for case management, reporting, and workflow automation.
 
 ## Features
 
-- **Case Management**: Create, update, and track electronic cases
-- **Workflow Integration**: Automated workflows for case processing
-- **Reporting**: Generate reports on case statuses and metrics
-- **User Interface**: Modern web UI built with Blazor
-- **API Services**: RESTful APIs for integration with other systems
+- **Case Management**: Comprehensive case tracking and workflow management for ALOD operations
+- **User Management**: Secure user authentication and role-based access control
+- **Workflow Automation**: Automated case processing with gRPC-based services
+- **Reporting and Analytics**: Generate detailed reports on case metrics and performance
+- **Audit Logging**: End-to-end audit trails with correlation IDs for military-grade compliance
+- **Observability**: Integrated OpenTelemetry for logging, monitoring, and health checks
+- **Multi-Platform UI**: Modern web interface with Blazor and desktop application with Win UI
+- **API Integration**: RESTful APIs with JSON transcoding for external system integration
+- **Database Layer**: Robust data access with Entity Framework Core and optimized stored procedures
 
 ## Architecture
 
@@ -20,14 +24,19 @@ The solution consists of several projects:
 
 - **AF.ECT.AppHost**: ASP.NET Core app host using .NET Aspire for orchestration
 - **AF.ECT.WebClient**: Blazor web application for the user interface
+- **AF.ECT.WindowsClient**: Win UI desktop application for the user interface
 - **AF.ECT.Server**: ASP.NET Core Web API server
-- **AF.ECT.Shared**: Shared models and utilities
+- **AF.ECT.Data**: Data access layer using Entity Framework Core
+- **AF.ECT.Database**: SQL Server database project with stored procedures and schemas
+- **AF.ECT.Shared**: Shared models, utilities, and protobuf definitions for gRPC contracts
 - **AF.ECT.ServiceDefaults**: Common service configurations and extensions
+- **AF.ECT.Tests**: Unit and integration tests
 
 ## Prerequisites
 
 - [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/) or [VS Code](https://code.visualstudio.com/) with C# extension
+- [Windows App SDK](https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/) (for Win UI desktop app)
 - [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) (LocalDB, Express, or Developer Edition)
 - Git (for version control)
 - [SQL Server Command Line Utilities](https://aka.ms/sqlcmd) (optional, for running tests)
@@ -60,6 +69,58 @@ dotnet build ECTSystem.sln
    ```
 
 The application will start and open in your default browser. The Aspire dashboard will be available for monitoring services.
+
+### API Usage
+
+The ECTSystem provides gRPC services with JSON transcoding, enabling REST-like API calls. When running in development, the API endpoints are accessible via HTTP at the server's base URL (typically `http://localhost:5173/v1/`).
+
+#### Example API Calls
+
+You can test the API using tools like curl, Postman, or the provided `AF.ECT.Server/workflow_service_tests.http` file.
+
+For example, to retrieve online users:
+
+```bash
+curl -X GET "http://localhost:5173/v1/users/online" \
+     -H "accept: application/json"
+```
+
+To get workflow information:
+
+```bash
+curl -X GET "http://localhost:5173/v1/workflows/1" \
+     -H "accept: application/json"
+```
+
+#### gRPC Direct Calls
+
+For direct gRPC communication (bypassing JSON transcoding), use gRPC clients or tools like `grpcurl`. This provides better performance and type safety.
+
+**Prerequisites:** Install [grpcurl](https://github.com/fullstorydev/grpcurl).
+
+**List available services:**
+```bash
+grpcurl -plaintext localhost:5173 list
+```
+
+**Call a gRPC method directly:**
+```bash
+grpcurl -plaintext -d '{"user_id": 1}' localhost:5173 workflow.WorkflowService/GetUserById
+```
+
+**Using .NET gRPC Client:**
+```csharp
+// In your .NET application
+using var channel = GrpcChannel.ForAddress("http://localhost:5173");
+var client = new WorkflowService.WorkflowServiceClient(channel);
+var response = await client.GetUserByIdAsync(new GetUserByIdRequest { UserId = 1 });
+```
+
+The protobuf definitions and generated client code are available in `AF.ECT.Shared/Protos/`.
+
+#### OpenAPI Documentation
+
+In development mode, interactive API documentation is available via Swagger UI at `/swagger` on the server port.
 
 ### Development
 
