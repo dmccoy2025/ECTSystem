@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AF.ECT.WindowsClient (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "AF.ECT.WindowsClient (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
