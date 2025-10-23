@@ -16,7 +16,7 @@ builder.Services.AddLoggingServices(builder.Configuration);
 builder.Services.AddAntiforgeryServices();
 builder.Services.AddResilienceServices();
 builder.Services.AddCachingServices(builder.Configuration);
-//builder.Services.AddRateLimitingServices(builder.Configuration);
+builder.Services.AddRateLimitingServices(builder.Configuration);
 builder.Services.AddDocumentation();
 
 builder.Services.AddOpenTelemetry()
@@ -45,7 +45,7 @@ app.UseCors();
 app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
 app.UseRouting();
 app.UseAntiforgery();
-//app.UseRateLimiter();
+app.UseRateLimiter();
 app.MapHealthChecks("/healthz");
 app.MapGrpcService<WorkflowServiceImpl>().EnableGrpcWeb();
 
