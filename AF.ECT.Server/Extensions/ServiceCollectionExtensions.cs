@@ -1,16 +1,16 @@
-using Microsoft.EntityFrameworkCore;
-using AF.ECT.Data.Models;
 using AF.ECT.Data.Interfaces;
+using AF.ECT.Data.Models;
+using AF.ECT.Data.Services;
+using AF.ECT.Server.Interceptors;
 using AF.ECT.Server.Services;
 using AF.ECT.Server.Services.Interfaces;
-using Radzen;
 using AspNetCoreRateLimit;
-using AF.ECT.Server.Interceptors;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
-using AF.ECT.Data.Services;
 using Audit.Core;
-using AF.ECT.Shared.Options;
-using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Trace;
+using Radzen;
 using System.ComponentModel.DataAnnotations;
 
 namespace AF.ECT.Server.Extensions;
@@ -69,10 +69,10 @@ public static class ServiceCollectionExtensions
                     errorNumbersToAdd: null);
                 sqlOptions.CommandTimeout(databaseOptions.CommandTimeoutSeconds);
             });
-            
+        
             // Add Audit.NET interceptor for EF Core
             options.AddInterceptors(new Audit.EntityFramework.AuditSaveChangesInterceptor());
-            
+        
             // Add detailed logging in development
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             if (environment == "Development")
@@ -124,7 +124,7 @@ public static class ServiceCollectionExtensions
         var corsOptions = new CorsOptions();
         configuration.GetSection("CorsOptions").Bind(corsOptions);
         Validator.ValidateObject(corsOptions, new ValidationContext(corsOptions), validateAllProperties: true);
-        
+    
         services.AddCors(options =>
         {
             options.AddDefaultPolicy(policy =>
@@ -168,10 +168,10 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddHealthCheckServices(this IServiceCollection services, IConfiguration configuration)
     {
         var healthChecksBuilder = services.AddHealthChecks();
-        
+    
         // Add EF Core DbContext health check for SQL Server
         healthChecksBuilder.AddDbContextCheck<ALODContext>();
-        
+    
         healthChecksBuilder.AddCheck("Self", () => HealthCheckResult.Healthy());
 
         return services;
@@ -271,6 +271,29 @@ public static class ServiceCollectionExtensions
             logging.AddConsole();
             logging.AddDebug();
         });
+
+        return services;
+    }
+
+    /// <summary>
+    /// Adds OpenTelemetry telemetry services for tracing and metrics.  
+    /// </summary>
+    /// <param name="services">The service collection to add services to.</param>
+    /// <param name="configuration">The application configuration containing telemetry settings.</param>
+    /// <returns>The service collection with telemetry services configured.</returns>
+    public static IServiceCollection AddTelemetry(this IServiceCollection services)
+    {
+        services.AddOpenTelemetry()
+            .WithTracing(tracing => tracing
+                .AddAspNetCoreInstrumentation()
+                .AddEntityFrameworkCoreInstrumentation()
+                .AddOtlpExporter()
+            )
+            .WithMetrics(metrics => metrics
+                .AddAspNetCoreInstrumentation()
+                .AddRuntimeInstrumentation()
+                .AddOtlpExporter()
+            );
 
         return services;
     }
