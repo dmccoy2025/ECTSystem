@@ -279,7 +279,6 @@ public static class ServiceCollectionExtensions
     /// Adds OpenTelemetry telemetry services for tracing and metrics.  
     /// </summary>
     /// <param name="services">The service collection to add services to.</param>
-    /// <param name="configuration">The application configuration containing telemetry settings.</param>
     /// <returns>The service collection with telemetry services configured.</returns>
     public static IServiceCollection AddTelemetry(this IServiceCollection services)
     {
