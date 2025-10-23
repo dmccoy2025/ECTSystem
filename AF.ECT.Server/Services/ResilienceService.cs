@@ -52,8 +52,8 @@ public class ResilienceService : IResilienceService
                     Console.WriteLine("Circuit breaker half-open, testing next call");
                 });
 
-        // Timeout policy: Timeout after 10 seconds
-        _timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(TimeSpan.FromSeconds(10));
+        // Timeout policy: Timeout after 3 seconds
+        _timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(TimeSpan.FromSeconds(3), TimeoutStrategy.Pessimistic);
 
         // Combined policy: Timeout -> Retry -> Circuit Breaker
         _combinedPolicy = Policy.WrapAsync(_circuitBreakerPolicy, _retryPolicy, _timeoutPolicy);
@@ -74,7 +74,7 @@ public class ResilienceService : IResilienceService
     {
         var retryPolicy = Policy<T>
             .Handle<Exception>()
-            .WaitAndRetryAsync(3, retryAttempt =>
+            .WaitAndRetryAsync(4, retryAttempt =>
                 TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
 
         return await retryPolicy.ExecuteAsync(action);
