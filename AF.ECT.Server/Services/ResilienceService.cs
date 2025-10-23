@@ -1,8 +1,8 @@
+using AF.ECT.Server.Services.Interfaces;
 using Polly;
 using Polly.CircuitBreaker;
 using Polly.Retry;
 using Polly.Timeout;
-using AF.ECT.Server.Services.Interfaces;
 
 #nullable enable
 
