@@ -9,6 +9,9 @@ using AF.ECT.Server.Interceptors;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using AF.ECT.Data.Services;
 using Audit.Core;
+using AF.ECT.Shared.Options;
+using Microsoft.Extensions.Options;
+using System.ComponentModel.DataAnnotations;
 
 namespace AF.ECT.Server.Extensions;
 
@@ -49,20 +52,22 @@ public static class ServiceCollectionExtensions
     /// <returns>The service collection with data access services configured.</returns>
     public static IServiceCollection AddDataAccess(this IServiceCollection services, IConfiguration configuration)
     {
+        // Configure and validate database options
+        var databaseOptions = new DatabaseOptions();
+        configuration.GetSection("Database").Bind(databaseOptions);
+        Validator.ValidateObject(databaseOptions, new ValidationContext(databaseOptions), validateAllProperties: true);
+
         var connectionString = configuration.GetConnectionString("ALODConnection");
-        var retryCount = configuration.GetValue("Database:MaxRetryCount", 3);
-        var retryDelaySeconds = configuration.GetValue("Database:MaxRetryDelaySeconds", 30);
-        var commandTimeout = configuration.GetValue("Database:CommandTimeoutSeconds", 30);
 
         services.AddDbContextFactory<ALODContext>(options =>
         {
             options.UseSqlServer(connectionString, sqlOptions =>
             {
                 sqlOptions.EnableRetryOnFailure(
-                    maxRetryCount: retryCount,
-                    maxRetryDelay: TimeSpan.FromSeconds(retryDelaySeconds),
+                    maxRetryCount: databaseOptions.MaxRetryCount,
+                    maxRetryDelay: TimeSpan.FromSeconds(databaseOptions.MaxRetryDelaySeconds),
                     errorNumbersToAdd: null);
-                sqlOptions.CommandTimeout(commandTimeout);
+                sqlOptions.CommandTimeout(databaseOptions.CommandTimeoutSeconds);
             });
             
             // Add Audit.NET interceptor for EF Core
@@ -115,13 +120,16 @@ public static class ServiceCollectionExtensions
     /// <returns>The service collection with CORS configured.</returns>
     public static IServiceCollection AddApplicationCors(this IServiceCollection services, IConfiguration configuration)
     {
-        var allowedOrigins = configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? Array.Empty<string>();
+        // Configure and validate CORS options
+        var corsOptions = new CorsOptions();
+        configuration.GetSection("Cors").Bind(corsOptions);
+        Validator.ValidateObject(corsOptions, new ValidationContext(corsOptions), validateAllProperties: true);
         
         services.AddCors(options =>
         {
             options.AddDefaultPolicy(policy =>
             {
-                policy.WithOrigins(allowedOrigins)
+                policy.WithOrigins(corsOptions.AllowedOrigins)
                       .AllowAnyHeader()
                       .AllowAnyMethod();
             });
@@ -222,7 +230,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddRateLimitingServices(this IServiceCollection services, IConfiguration configuration)
     {
         // Load rate limiting configuration from appsettings.json
-        services.Configure<IpRateLimitOptions>(configuration.GetSection("IpRateLimitOptions"));
+        services.AddOptions<IpRateLimitOptions>().Bind(configuration.GetSection("IpRateLimitOptions")).ValidateDataAnnotations().ValidateOnStart();
 
         // Register rate limiting stores
         services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();

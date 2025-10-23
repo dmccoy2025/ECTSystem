@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Radzen;
 using OpenTelemetry;
 using OpenTelemetry.Trace;
+using Microsoft.Extensions.Options;
+using System.ComponentModel.DataAnnotations;
 
 namespace AF.ECT.WebClient.Extensions;
 
@@ -25,16 +27,17 @@ public static class ServiceCollectionExtensions
         services.AddRadzenComponents();
         services.AddBlazoredLocalStorage();
 
-        // Configure WorkflowClient options from appsettings.json
-        services.Configure<WorkflowClientOptions>(options =>
-        {
-            builder.Configuration.GetSection("WorkflowClientOptions").Bind(options);
-        });
+        // Configure and validate WorkflowClient options from appsettings.json
+        services.AddOptions<WorkflowClientOptions>().Bind(builder.Configuration.GetSection("WorkflowClientOptions")).ValidateDataAnnotations().ValidateOnStart();
+
+        // Configure and validate server options
+        services.AddOptions<ServerOptions>().Bind(builder.Configuration.GetSection("Server")).ValidateDataAnnotations().ValidateOnStart();
 
         // Configure gRPC client for browser compatibility
         services.AddScoped(serviceProvider =>
         {
-            return new WorkflowService.WorkflowServiceClient(GrpcChannel.ForAddress(builder.Configuration["ServerUrl"] ?? "https://localhost:7000", new GrpcChannelOptions
+            var serverOptions = serviceProvider.GetRequiredService<IOptions<ServerOptions>>().Value;
+            return new WorkflowService.WorkflowServiceClient(GrpcChannel.ForAddress(serverOptions.ServerUrl, new GrpcChannelOptions
             {
                 HttpClient = serviceProvider.GetRequiredService<HttpClient>(),
                 DisposeHttpClient = false

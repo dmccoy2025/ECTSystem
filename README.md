@@ -132,6 +132,9 @@ In development mode, interactive API documentation is available via Swagger UI a
 
 - Appsettings files are located in each project directory
 - Environment-specific settings can be configured in `appsettings.Development.json` and `appsettings.json`
+- Configuration uses strongly-typed options classes with data annotation validation
+- Invalid configuration values will cause the application to fail on startup with detailed error messages
+- Key configuration sections: Database, Cors, Server, WorkflowClientOptions
 
 ## Testing
 

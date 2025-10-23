@@ -29,6 +29,7 @@ ECTSystem is an Electronic Case Tracking application for ALOD (Army Lodging) bui
 ## Conventions and Patterns
 - **Naming**: Projects prefixed `AF.ECT.*`; methods use Async suffix; streaming methods end with `Stream`.
 - **gRPC**: Unary for single responses, streaming for large datasets (e.g., `GetUsersOnlineStreamAsync`).
+- **Configuration Validation**: Use strongly-typed options classes with data annotations for all configuration settings. Validate on startup using `ValidateDataAnnotations().ValidateOnStart()`. Options classes in `AF.ECT.Shared/Options` with `[Required]`, `[Range]`, `[Url]`, etc.
 - **Audit Logging**: Client-side audit logging with correlation IDs for end-to-end traceability; implemented in `WorkflowClient` methods for military-grade compliance.
 - **Resilience**: Polly policies for retries/circuit breakers in `ServiceDefaults`.
 - **Security**: Antiforgery tokens in Blazor forms; CORS restricted to trusted origins.
@@ -58,6 +59,7 @@ ECTSystem is an Electronic Case Tracking application for ALOD (Army Lodging) bui
 - `AF.ECT.Server/Program.cs`: Server setup with gRPC.
 - `AF.ECT.Server/Extensions/ServiceCollectionExtensions.cs`: Audit.NET configuration for EF Core and SQL Server storage.
 - `AF.ECT.Shared/Services/WorkflowClient.cs`: Shared gRPC client wrapper with Audit.NET audit logging and correlation IDs.
+- `AF.ECT.Shared/Options/`: Strongly-typed configuration options with validation (DatabaseOptions, CorsOptions, ServerOptions, WorkflowClientOptions).
 - `AF.ECT.WindowsClient/`: Win UI desktop application.
 - `AF.ECT.Database/dbo/Tables/`: SQL schemas.
 - `AF.ECT.Data/`: Data access layer.
@@ -67,6 +69,7 @@ ECTSystem is an Electronic Case Tracking application for ALOD (Army Lodging) bui
 - Use XML documentation comments for all methods, classes, properties and fields to enable IntelliSense and API documentation.
 - Format: `/// <summary>Description</summary>` for summaries, `<param name="param">Description</param>` for parameters, `<returns>Description</returns>` for return values, `<exception cref="ExceptionType">Description</exception>` for exceptions.
 - Enable XML documentation generation in project files: `<GenerateDocumentationFile>true</GenerateDocumentationFile>`.
+- Configuration: Use strongly-typed options classes with data annotations; validate on startup with `ValidateDataAnnotations().ValidateOnStart()`.
 - Example: See `AF.ECT.WebClient/Services/WorkflowClient.cs` for extensive XML comments on gRPC client methods.
 
 Focus on gRPC-first design, Aspire for cloud readiness, and military-specific workflows. Avoid generic patterns; follow existing protobuf and EF conventions.
