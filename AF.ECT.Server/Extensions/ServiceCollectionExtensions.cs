@@ -54,7 +54,7 @@ public static class ServiceCollectionExtensions
     {
         // Configure and validate database options
         var databaseOptions = new DatabaseOptions();
-        configuration.GetSection("Database").Bind(databaseOptions);
+        configuration.GetSection("DatabaseOptions").Bind(databaseOptions);
         Validator.ValidateObject(databaseOptions, new ValidationContext(databaseOptions), validateAllProperties: true);
 
         var connectionString = configuration.GetConnectionString("ALODConnection");
@@ -122,7 +122,7 @@ public static class ServiceCollectionExtensions
     {
         // Configure and validate CORS options
         var corsOptions = new CorsOptions();
-        configuration.GetSection("Cors").Bind(corsOptions);
+        configuration.GetSection("CorsOptions").Bind(corsOptions);
         Validator.ValidateObject(corsOptions, new ValidationContext(corsOptions), validateAllProperties: true);
         
         services.AddCors(options =>
