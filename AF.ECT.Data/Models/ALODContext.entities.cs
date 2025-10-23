@@ -27,6 +27,13 @@ public partial class ALODContext : DbContext
     }
 
     /// <summary>
+    /// Initializes a new instance of the ALODContext without options (for Audit.NET).
+    /// </summary>
+    public ALODContext()
+    {
+    }
+
+    /// <summary>
     /// Configures the model for the context.
     /// </summary>
     /// <param name="modelBuilder">The builder being used to construct the model for this context.</param>

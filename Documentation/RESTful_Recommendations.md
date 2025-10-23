@@ -1,3 +1,6 @@
+# RESTful API Recommendations for ECTSystem
+
+## Overview
 To ensure all endpoints in your ECTSystem follow RESTful conventions, focus on designing your gRPC service (defined in [`AF.ECT.Shared/Protos/workflow.proto`](AF.ECT.Shared/Protos/workflow.proto )) in a way that aligns with REST principles when transcoded to HTTP via JSON transcoding. RESTful APIs emphasize resource-based URLs, appropriate HTTP methods, statelessness, and standard status codes. Since your system uses gRPC with JSON transcoding (via [`AddJsonTranscoding()`](/C:/Users/DonellMcCoy/AppData/Local/Temp/SymbolCache/GrpcJsonTranscodingServiceExtensions.cs ) in your server setup), the proto annotations directly influence the REST endpoints.
 
 Here's a step-by-step guide on how to achieve this, with examples based on your existing proto file. I'll reference specific parts of your code and suggest improvements.

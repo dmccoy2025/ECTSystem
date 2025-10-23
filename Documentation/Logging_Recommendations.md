@@ -1,3 +1,6 @@
+# Logging Recommendations
+
+## Overview
 Based on the ECTSystem's architecture—a distributed microservices setup with .NET Aspire orchestration, ASP.NET Core, Blazor WebAssembly, gRPC, and EF Core—here are some targeted logging recommendations. These build on the existing OpenTelemetry integration for observability and aim to improve debugging, monitoring, and compliance in a military-specific workflow environment. I'll focus on structured logging, traceability, and best practices for .NET applications.
 
 ### 1. **Adopt Serilog for Structured Logging**
@@ -52,9 +55,14 @@ Based on the ECTSystem's architecture—a distributed microservices setup with .
      - Set up alerts for errors (e.g., failed gRPC calls) and performance issues (e.g., slow database queries).
      - For compliance (military workflows), ensure logs are retained securely and auditable.
 
-### 5. **Security and Performance Considerations**
-   - Avoid logging sensitive data (e.g., passwords, PII) in production—use placeholders or exclude fields.
-   - Implement log rotation and compression to prevent disk space issues.
-   - Test logging in load scenarios to ensure it doesn't impact performance (e.g., async logging with Serilog).
+### 6. **Implement Audit.NET for Compliance Auditing**
+   - **Why?** For military-grade compliance, the system requires automated auditing of all data changes and user actions. Audit.NET provides structured, automated audit trails that integrate with existing logging.
+   - **Recommendations:**
+     - Install Audit.NET packages: `Audit.NET`, `Audit.EntityFramework.Core`, `Audit.NET.SqlServer`.
+     - Configure EF Core auditing in `ServiceCollectionExtensions.cs` with `AuditSaveChangesInterceptor` and SQL Server storage.
+     - For gRPC auditing, use `AuditScope.Create()` in client methods to log operations with correlation IDs.
+     - Store audit events in a dedicated `AuditLogs` table with EventType, timestamps, and structured data.
+     - Ensure audit logs are retained securely and are tamper-proof for compliance.
+     - Example: Automatic EF auditing captures all database changes; gRPC auditing logs user actions with performance metrics.
 
 These recommendations align with .NET Aspire's observability patterns and the system's gRPC-first design. If you'd like me to implement any of these (e.g., adding Serilog configuration), just let me know! For example, I can update the `Program.cs` files and `appsettings.json` accordingly.

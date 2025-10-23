@@ -9,6 +9,7 @@
 6. [Monitoring, Alerts, and Best Practices](#6-monitoring-alerts-and-best-practices)
 7. [Next Steps](#next-steps)
 
+## Overview
 Based on the ECTSystem's architecture—a .NET Aspire-orchestrated distributed application with ASP.NET Core, Blazor WebAssembly, Win UI (desktop), gRPC services, EF Core, and SQL Server—here are targeted Azure DevOps CI/CD recommendations and suggestions. These focus on automating builds, tests, deployments, and monitoring using Azure DevOps Pipelines, leveraging .NET Aspire's cloud-native features for seamless Azure integration. I'll assume a typical Azure target like Azure Container Apps (ACA) or Azure Kubernetes Service (AKS) for the web/server components, as Aspire excels there. The Win UI project can be built and packaged for Windows deployment. If your deployment target differs (e.g., on-premises), let me know for refinements.
 
 ### 1. **Pipeline Overview and Structure**

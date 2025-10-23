@@ -5,6 +5,8 @@ using Blazored.LocalStorage;
 using Grpc.Net.Client;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Radzen;
+using OpenTelemetry;
+using OpenTelemetry.Trace;
 
 namespace AF.ECT.WebClient.Extensions;
 
@@ -40,6 +42,12 @@ public static class ServiceCollectionExtensions
         });
 
         services.AddScoped<IWorkflowClient, WorkflowClient>();
+
+        services.AddOpenTelemetry()
+            .WithTracing(tracing => tracing
+                .AddGrpcClientInstrumentation()
+                .AddOtlpExporter()
+            );
 
         return services;
     }

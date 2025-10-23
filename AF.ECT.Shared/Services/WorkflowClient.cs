@@ -5,6 +5,7 @@ using Polly.Retry;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
 using AF.ECT.Shared.Options;
+using Audit.Core;
 
 namespace AF.ECT.Shared.Services;
 
@@ -51,23 +52,26 @@ public class WorkflowClient : IWorkflowClient
     /// <param name="additionalData">Additional audit data.</param>
     private void LogAuditEvent(string methodName, string correlationId, DateTime startTime, TimeSpan duration, bool success, string? errorMessage = null, object? additionalData = null)
     {
-        var auditEvent = new
+        using (var scope = AuditScope.Create($"gRPC:{methodName}", () => additionalData))
         {
-            Timestamp = startTime,
-            CorrelationId = correlationId,
-            MethodName = methodName,
-            DurationMs = duration.TotalMilliseconds,
-            Success = success,
-            ErrorMessage = errorMessage,
-            AdditionalData = additionalData,
-            ClientInfo = new
+            scope.Event.StartDate = startTime;
+            scope.Event.EndDate = startTime + duration;
+            scope.Event.Duration = (int)duration.TotalMilliseconds;
+            scope.SetCustomField("CorrelationId", correlationId);
+            scope.SetCustomField("Success", success);
+            if (!success && errorMessage != null)
+            {
+                scope.SetCustomField("ErrorMessage", errorMessage);
+            }
+            scope.SetCustomField("ClientInfo", new
             {
                 UserAgent = "ECTSystem-BlazorClient",
                 Version = "1.0.0",
-                Environment = "Production" // Could be made configurable
-            }
-        };
+                Environment = "Production"
+            });
+        }
 
+        // Keep existing logger calls for immediate logging
         if (success)
         {
             _logger?.LogInformation("gRPC Audit: {MethodName} completed successfully. CorrelationId: {CorrelationId}, Duration: {DurationMs}ms",
@@ -78,9 +82,6 @@ public class WorkflowClient : IWorkflowClient
             _logger?.LogError("gRPC Audit: {MethodName} failed. CorrelationId: {CorrelationId}, Duration: {DurationMs}ms, Error: {ErrorMessage}",
                 methodName, correlationId, duration.TotalMilliseconds, errorMessage);
         }
-
-        // Structured logging for audit trail
-        _logger?.LogInformation("gRPC Audit Event: {@AuditEvent}", auditEvent);
     }
 
     /// <summary>

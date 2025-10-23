@@ -1,3 +1,6 @@
+# Architectural Recommendations for ECTSystem
+
+## Overview
 Based on my analysis of your Electronic Case Tracking (ECT) System, which is built with .NET 9.0, ASP.NET Core, Blazor, .NET Aspire, gRPC, Entity Framework Core, and SQL Server, here are my recommendations. I've categorized them for clarity, focusing on architecture, security, performance, scalability, maintainability, best practices, and deployment. These are tailored to the solution's current structure, including its workflow management, user handling, and case tracking features for what appears to be an ALOD (Army Lodging) system.
 
 ### 1. **Architecture**
@@ -11,7 +14,7 @@ Based on my analysis of your Electronic Case Tracking (ECT) System, which is bui
    - **CORS Tightening**: The CORS policy allows any origin, header, and method, which is risky in production. Restrict it to specific trusted domains (e.g., your frontend URL) and methods (e.g., GET, POST only where needed).
    - **Data Protection**: Sensitive data like SSNs and user details are handled—ensure encryption at rest (via SQL Server's Always Encrypted) and in transit (HTTPS enforced). Add input validation and sanitization to prevent SQL injection or XSS, especially in search and update endpoints.
    - **Rate Limiting and DDoS Protection**: You've added AspNetCoreRateLimit, which is good. Configure it with stricter limits (e.g., per-user or per-IP) and integrate with Azure Front Door or Application Gateway for additional DDoS mitigation if deploying to Azure.
-   - **Audit Logging**: Enhance logging for security events (e.g., user logins, case modifications) using structured logging (Serilog) and store in a secure, tamper-proof location. Comply with regulations like GDPR or DoD standards if applicable.
+   - **Audit Logging**: Implemented Audit.NET for automated, structured auditing of all EF Core changes and gRPC operations. Audit events are stored in SQL Server with correlation IDs, performance metrics, and tamper-proof trails. This ensures compliance with military-grade observability and traceability requirements.
 
 ### 3. **Performance**
    - **Caching Strategy**: The proto file includes caching hints (e.g., for user data or status codes). Implement distributed caching (e.g., Redis via Azure Cache for Redis) for frequently accessed data like workflow types or permissions to reduce database load.

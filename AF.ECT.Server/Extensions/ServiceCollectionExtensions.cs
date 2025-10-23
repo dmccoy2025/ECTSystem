@@ -8,6 +8,7 @@ using AspNetCoreRateLimit;
 using AF.ECT.Server.Interceptors;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using AF.ECT.Data.Services;
+using Audit.Core;
 
 namespace AF.ECT.Server.Extensions;
 
@@ -64,6 +65,9 @@ public static class ServiceCollectionExtensions
                 sqlOptions.CommandTimeout(commandTimeout);
             });
             
+            // Add Audit.NET interceptor for EF Core
+            options.AddInterceptors(new Audit.EntityFramework.AuditSaveChangesInterceptor());
+            
             // Add detailed logging in development
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             if (environment == "Development")
@@ -75,6 +79,14 @@ public static class ServiceCollectionExtensions
         }, ServiceLifetime.Scoped);
 
         services.AddScoped<IDataService, DataService>();
+
+        // Configure Audit.NET for Entity Framework Core
+        Audit.Core.Configuration.Setup()
+            .UseSqlServer(config => config
+                .ConnectionString(connectionString)
+                .TableName("AuditLogs")
+                .IdColumnName("AuditId")
+            );
 
         return services;
     }

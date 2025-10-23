@@ -1,3 +1,6 @@
+# .NET Aspire Recommendations for ECTSystem
+
+## Overview
 Based on the current structure of your ECTSystem solution—an Aspire-based distributed application with components like an AppHost, Blazor client, ASP.NET Core server (with gRPC), SQL Server database, and shared service defaults—here are my recommendations for effectively using .NET Aspire. These draw from the official Aspire documentation (e.g., integrations, service discovery, and deployment best practices) and an analysis of your codebase. Aspire helps orchestrate cloud-ready apps with built-in observability, resilience, and local development tooling, so we'll focus on enhancing your setup for scalability, monitoring, and deployment.
 
 ### 1. **Integrate All Services into the AppHost for Unified Orchestration**

@@ -9,13 +9,13 @@
 - Never assume builds will succeed - always verify explicitly
 
 ## Overview
-ECTSystem is an Electronic Case Tracking application for ALOD (Army Lodging) built with .NET 9.0, ASP.NET Core, Blazor WebAssembly, .NET Aspire orchestration, gRPC services, Entity Framework Core, and SQL Server. It manages case workflows, user management, and reporting in a distributed microservices architecture.
+ECTSystem is an Electronic Case Tracking application for ALOD (Army Lodging) built with .NET 9.0, ASP.NET Core, Blazor WebAssembly, Win UI (desktop), .NET Aspire orchestration, gRPC services, Entity Framework Core, and SQL Server. It manages case workflows, user management, and reporting in a distributed microservices architecture.
 
 ## Architecture
 - **Orchestration**: .NET Aspire manages service discovery, health checks, and observability via `AF.ECT.AppHost/AppHost.cs`.
-- **Client**: Blazor WASM in `AF.ECT.Client` communicates with server via gRPC-Web.
+- **Client**: Blazor WASM in `AF.ECT.WebClient` and Win UI desktop in `AF.ECT.WindowsClient` communicate with server via gRPC-Web.
 - **Server**: ASP.NET Core API in `AF.ECT.Server` exposes gRPC services with JSON transcoding for REST-like endpoints.
-- **Data**: EF Core with stored procedures in `AF.ECT.Database` connects to SQL Server.
+- **Data**: EF Core with stored procedures in `AF.ECT.Database` connects to SQL Server; data access layer in `AF.ECT.Data`.
 - **Shared**: Protobuf definitions in `AF.ECT.Shared/Protos` for gRPC contracts.
 - **Communication**: Client uses `WorkflowClient` for gRPC calls; server implements `WorkflowServiceImpl`.
 
@@ -38,30 +38,35 @@ ECTSystem is an Electronic Case Tracking application for ALOD (Army Lodging) bui
 - **Styling**: Inline temporary variables wherever possible; use block body for lambda expressions.
 
 ## Audit Logging Implementation
-- **Client-Side Audit**: All unary gRPC methods in `WorkflowClient.cs` include audit logging with correlation IDs, performance timing, and structured events.
+- **Automated Auditing**: Implemented Audit.NET for comprehensive auditing of Entity Framework changes and gRPC operations.
+- **EF Core Auditing**: Automatic audit logging for all database operations using Audit.EntityFramework.Core with SQL Server storage.
+- **gRPC Auditing**: Client-side gRPC calls audited via AuditScope.Create() with correlation IDs, performance metrics, and structured events.
 - **Correlation IDs**: Generated per operation for linking client and server audit trails using `GenerateCorrelationId()`.
-- **Audit Events**: Logged via `LogAuditEvent()` with method name, duration, success/failure status, and parameter data.
-- **Performance Metrics**: Stopwatch-based timing for all gRPC operations.
+- **Audit Events**: Stored in AuditLogs table with EventType ("EF:{entity}" or "gRPC:{method}"), timestamps, duration, success/failure status, and parameter data.
+- **Performance Metrics**: Automatic timing for all operations.
 - **Structured Logging**: Audit events include timestamp, correlation ID, method name, duration, success status, error messages, and additional context.
-- **Coverage**: Applied to all applicable unary methods; streaming methods excluded as they are not single operations.
-- **Compliance**: Supports military-grade observability and end-to-end traceability requirements.
+- **Coverage**: Applied to all EF operations and unary gRPC methods; streaming methods excluded as they are not single operations.
+- **Compliance**: Supports military-grade observability and end-to-end traceability requirements with automated audit trails.
 
 ## Examples
 - Add gRPC method: Define in `workflow.proto`, implement in `WorkflowServiceImpl.cs`, call via `WorkflowClient`.
 - Database query: Use EF Core context with stored procedures like `GetWorkflowById`.
-- Client component: In `AF.ECT.Client/Pages`, inject `IWorkflowClient` for data.
+- Client component: In `AF.ECT.WebClient/Pages`, inject `IWorkflowClient` for data.
 
 ## Key Files
 - `AF.ECT.AppHost/AppHost.cs`: Service orchestration.
 - `AF.ECT.Server/Program.cs`: Server setup with gRPC.
-- `AF.ECT.Client/Services/WorkflowClient.cs`: Client gRPC wrapper with comprehensive audit logging and correlation IDs.
+- `AF.ECT.Server/Extensions/ServiceCollectionExtensions.cs`: Audit.NET configuration for EF Core and SQL Server storage.
+- `AF.ECT.Shared/Services/WorkflowClient.cs`: Shared gRPC client wrapper with Audit.NET audit logging and correlation IDs.
+- `AF.ECT.WindowsClient/`: Win UI desktop application.
 - `AF.ECT.Database/dbo/Tables/`: SQL schemas.
+- `AF.ECT.Data/`: Data access layer.
 - `Documentation/`: Architectural and REST guidelines.
 
 ## Documentation
 - Use XML documentation comments for all methods, classes, properties and fields to enable IntelliSense and API documentation.
 - Format: `/// <summary>Description</summary>` for summaries, `<param name="param">Description</param>` for parameters, `<returns>Description</returns>` for return values, `<exception cref="ExceptionType">Description</exception>` for exceptions.
 - Enable XML documentation generation in project files: `<GenerateDocumentationFile>true</GenerateDocumentationFile>`.
-- Example: See `AF.ECT.Client/Services/WorkflowClient.cs` for extensive XML comments on gRPC client methods.
+- Example: See `AF.ECT.WebClient/Services/WorkflowClient.cs` for extensive XML comments on gRPC client methods.
 
 Focus on gRPC-first design, Aspire for cloud readiness, and military-specific workflows. Avoid generic patterns; follow existing protobuf and EF conventions.

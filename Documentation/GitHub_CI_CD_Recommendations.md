@@ -1,3 +1,6 @@
+# GitHub Actions CI/CD Recommendations for ECTSystem
+
+## Overview
 Based on the ECTSystem's architecture—a .NET Aspire-orchestrated distributed application with ASP.NET Core, Blazor WebAssembly, Win UI (desktop), gRPC services, EF Core, and SQL Server—here are targeted GitHub Actions CI/CD recommendations and suggestions. These focus on automating builds, tests, deployments, and monitoring using GitHub's native CI/CD platform, leveraging .NET Aspire's cloud-native features for seamless integration. I'll assume a typical Azure target like Azure Container Apps (ACA) for web/server components and separate deployment for Win UI, as Aspire supports these. If your deployment target differs, let me know for refinements.
 
 ### 1. **Workflow Overview and Structure**
