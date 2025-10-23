@@ -26,6 +26,7 @@ ECTSystem is an Electronic Case Tracking application for ALOD (Army Lodging) bui
 - **Test**: `dotnet test` runs xUnit tests in `AF.ECT.Tests`.
 - **Database**: Migrations via EF Core; stored procedures for complex queries.
 
+
 ## Conventions and Patterns
 - **Naming**: Projects prefixed `AF.ECT.*`; methods use Async suffix; streaming methods end with `Stream`.
 - **gRPC**: Unary for single responses, streaming for large datasets (e.g., `GetUsersOnlineStreamAsync`).
@@ -37,6 +38,8 @@ ECTSystem is an Electronic Case Tracking application for ALOD (Army Lodging) bui
 - **Injection**: Dependency injection everywhere; configure in `Program.cs`.
 - **Code Refactoring**: Follow SOLID principles; use partial classes and regions for organization. Use static methods and extension methods to keep code clean.
 - **Styling**: Inline temporary variables wherever possible; use block body for lambda expressions.
+- **File-Scoped Namespaces**: Use file-scoped namespaces for all C# files throughout the solution to improve readability and reduce indentation.
+- **Usings Cleanup**: Remove unused and duplicate `using` statements in all files to keep code clean and maintainable.
 
 ## Audit Logging Implementation
 - **Automated Auditing**: Implemented Audit.NET for comprehensive auditing of Entity Framework changes and gRPC operations.
