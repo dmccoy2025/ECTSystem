@@ -1,5 +1,6 @@
 using AF.ECT.Server.Extensions;
 using AF.ECT.Server.Services;
+using AspNetCoreRateLimit;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
@@ -45,7 +46,7 @@ app.UseCors();
 app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
 app.UseRouting();
 app.UseAntiforgery();
-app.UseRateLimiter();
+app.UseIpRateLimiting();
 app.MapHealthChecks("/healthz");
 app.MapGrpcService<WorkflowServiceImpl>().EnableGrpcWeb();
 
