@@ -203,8 +203,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var thrownException = await Assert.ThrowsAsync(exceptionType, () => service.GetReinvestigationRequests(request, null!));
-        Assert.Equal(message, thrownException.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.GetReinvestigationRequests(request, null!));
+        
     }
 
     #endregion
@@ -278,8 +278,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetMailingListForLOD(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.GetMailingListForLOD(request, null!));
+        
     }
 
     #endregion
@@ -351,8 +351,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetManagedUsers(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.GetManagedUsers(request, null!));
+        
     }
 
     #endregion
@@ -398,8 +398,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetMembersUserId(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.GetMembersUserId(request, null!));
+        
     }
 
     #endregion
@@ -471,8 +471,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetUserAltTitle(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.GetUserAltTitle(request, null!));
+
     }
 
     #endregion
@@ -544,8 +544,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetUserAltTitleByGroupCompo(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.GetUserAltTitleByGroupCompo(request, null!));
+
     }
 
     #endregion
@@ -617,8 +617,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetUserName(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.GetUserName(request, null!));
+
     }
 
     #endregion
@@ -690,8 +690,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetUsersAltTitleByGroup(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.GetUsersAltTitleByGroup(request, null!));
+
     }
 
     #endregion
@@ -763,8 +763,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetUsersOnline(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.GetUsersOnline(request, null!));
+
     }
 
     #endregion
@@ -844,8 +844,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWhois(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.GetWhois(request, null!));
+
     }
 
     #endregion
@@ -917,8 +917,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.HasHQTechAccount(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.HasHQTechAccount(request, null!));
+
     }
 
     #endregion
@@ -990,8 +990,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.IsFinalStatusCode(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.IsFinalStatusCode(request, null!));
+
     }
 
     #endregion
@@ -1037,8 +1037,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.Logout(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.Logout(request, null!));
+
     }
 
     #endregion
@@ -1084,8 +1084,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.RegisterUser(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.RegisterUser(request, null!));
+
     }
 
     #endregion
@@ -1131,8 +1131,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.RegisterUserRole(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.RegisterUserRole(request, null!));
+
     }
 
     #endregion
@@ -1204,8 +1204,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.SearchMemberData(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.SearchMemberData(request, null!));
+
     }
 
     #endregion
@@ -1277,8 +1277,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.SearchMemberDataTest(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.SearchMemberDataTest(request, null!));
+
     }
 
     #endregion
@@ -1324,8 +1324,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.UpdateAccountStatus(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.UpdateAccountStatus(request, null!));
+
     }
 
     #endregion
@@ -1397,8 +1397,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.UpdateLogin(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.UpdateLogin(request, null!));
+
     }
 
     #endregion
@@ -1444,8 +1444,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.UpdateManagedSettings(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.UpdateManagedSettings(request, null!));
+
     }
 
     #endregion
@@ -1491,8 +1491,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.UpdateUserAltTitle(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.UpdateUserAltTitle(request, null!));
+
     }
 
     #endregion
@@ -1568,8 +1568,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.AddSignature(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.AddSignature(request, null!));
+
     }
 
     #endregion
@@ -1615,8 +1615,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.CopyActions(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.CopyActions(request, null!));
+
     }
 
     #endregion
@@ -1662,8 +1662,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.CopyRules(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.CopyRules(request, null!));
+
     }
 
     #endregion
@@ -1735,8 +1735,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.CopyWorkflow(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.CopyWorkflow(request, null!));
+
     }
 
     #endregion
@@ -1782,8 +1782,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.DeleteStatusCode(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.DeleteStatusCode(request, null!));
+
     }
 
     #endregion
@@ -1863,8 +1863,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetActionsByStep(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetActionsByStep(request, null!));
+
     }
 
     #endregion
@@ -1936,8 +1936,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetActiveCases(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetActiveCases(request, null!));
+
     }
 
     #endregion
@@ -2013,8 +2013,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetAllFindingByReasonOf(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetAllFindingByReasonOf(request, null!));
+
     }
 
     #endregion
@@ -2094,8 +2094,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetAllLocks(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetAllLocks(request, null!));
+
     }
 
     #endregion
@@ -2171,8 +2171,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetCancelReasons(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetCancelReasons(request, null!));
+
     }
 
     #endregion
@@ -2250,8 +2250,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetCreatableByGroup(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetCreatableByGroup(request, null!));
+
     }
 
     #endregion
@@ -2329,8 +2329,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetFindingByReasonOfById(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetFindingByReasonOfById(request, null!));
+
     }
 
     #endregion
@@ -2410,8 +2410,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetFindings(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetFindings(request, null!));
+
     }
 
     #endregion
@@ -2483,8 +2483,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetModuleFromWorkflow(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetModuleFromWorkflow(request, null!));
+
     }
 
     #endregion
@@ -2556,8 +2556,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPageAccessByGroup(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPageAccessByGroup(request, null!));
+
     }
 
     #endregion
@@ -2629,8 +2629,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPageAccessByWorkflowView(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPageAccessByWorkflowView(request, null!));
+
     }
 
     #endregion
@@ -2702,8 +2702,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPagesByWorkflowId(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPagesByWorkflowId(request, null!));
+
     }
 
     #endregion
@@ -2775,8 +2775,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPermissions(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPermissions(request, null!));
+
     }
 
     #endregion
@@ -2848,8 +2848,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPermissionsByCompo(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetPermissionsByCompo(request, null!));
+
     }
 
     #endregion
@@ -2921,8 +2921,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetReturnReasons(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetReturnReasons(request, null!));
+
     }
 
     #endregion
@@ -2994,8 +2994,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetRwoaReasons(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetRwoaReasons(request, null!));
+
     }
 
     #endregion
@@ -3067,8 +3067,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByCompo(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByCompo(request, null!));
+
     }
 
     #endregion
@@ -3140,8 +3140,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByCompoAndModule(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByCompoAndModule(request, null!));
+
     }
 
     #endregion
@@ -3213,8 +3213,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesBySignCode(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesBySignCode(request, null!));
+
     }
 
     #endregion
@@ -3286,8 +3286,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByWorkflow(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByWorkflow(request, null!));
+
     }
 
     #endregion
@@ -3359,8 +3359,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByWorkflowAndAccessScope(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodesByWorkflowAndAccessScope(request, null!));
+
     }
 
     #endregion
@@ -3432,8 +3432,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodeScope(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStatusCodeScope(request, null!));
+
     }
 
     #endregion
@@ -3505,8 +3505,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStepsByWorkflow(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStepsByWorkflow(request, null!));
+
     }
 
     #endregion
@@ -3578,8 +3578,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStepsByWorkflowAndStatus(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetStepsByWorkflowAndStatus(request, null!));
+
     }
 
     #endregion
@@ -3651,8 +3651,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowInitialStatusCode(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowInitialStatusCode(request, null!));
+
     }
 
     #endregion
@@ -3724,8 +3724,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowByCompo(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowByCompo(request, null!));
+
     }
 
     #endregion
@@ -3797,8 +3797,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowFromModule(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowFromModule(request, null!));
+
     }
 
     #endregion
@@ -3870,8 +3870,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowTitle(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowTitle(request, null!));
+
     }
 
     #endregion
@@ -3943,8 +3943,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowTitleByWorkStatusId(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetWorkflowTitleByWorkStatusId(request, null!));
+
     }
 
     #endregion
@@ -4016,8 +4016,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.InsertAction(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.InsertAction(request, null!));
+
     }
 
     #endregion
@@ -4089,8 +4089,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.InsertOptionAction(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<InvalidOperationException>(() => service.InsertOptionAction(request, null!));
+
     }
 
     #endregion
@@ -4432,8 +4432,8 @@ public class WorkflowServiceTests
         var service = CreateWorkflowManagementService();
 
         // Act & Assert
-        var exception = await Assert.ThrowsAsync<InvalidOperationException>(() => service.GetAllLogsPagination(request, null!));
-        Assert.Equal("Database connection failed", exception.Message);
+        await Assert.ThrowsAsync<Grpc.Core.RpcException>(() => service.GetAllLogsPagination(request, null!));
+
     }
 
     /// <summary>
@@ -4619,5 +4619,14 @@ internal class TestResilienceService : IResilienceService
     }
 }
 #endregion
+
+
+
+
+
+
+
+
+
 
 

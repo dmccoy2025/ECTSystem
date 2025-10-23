@@ -377,12 +377,11 @@ public class WorkflowClientTests : IDisposable
     /// <summary>
     /// Tests that methods handle very large integer values correctly.
     /// </summary>
-    [Fact]
-    public async Task Methods_HandleLargeIntegerValuesCorrectly()
+    /// <param name="largeValue">The large integer value to test.</param>
+    [Theory]
+    [ClassData(typeof(WorkflowClientLargeIntegerData))]
+    public async Task Methods_HandleLargeIntegerValuesCorrectly(int largeValue)
     {
-        // Arrange
-        var largeValue = int.MaxValue;
-
         // Act
         await _greeterClient.GetUserAltTitleAsync(largeValue, largeValue);
 
@@ -427,14 +426,13 @@ public class WorkflowClientTests : IDisposable
     /// <summary>
     /// Tests that workflow methods handle various parameter combinations correctly.
     /// </summary>
-    [Fact]
-    public async Task WorkflowMethods_HandleParameterCombinationsCorrectly()
+    /// <param name="workflowId">The workflow ID parameter.</param>
+    /// <param name="groupId">The group ID parameter.</param>
+    /// <param name="status">The status parameter.</param>
+    [Theory]
+    [ClassData(typeof(WorkflowClientWorkflowParameterData))]
+    public async Task WorkflowMethods_HandleParameterCombinationsCorrectly(int workflowId, int groupId, int status)
     {
-        // Arrange
-        var workflowId = 123;
-        var groupId = 456;
-        var status = 789;
-
         // Act
         await _greeterClient.GetPageAccessByGroupAsync(workflowId, status, groupId);
 
@@ -445,14 +443,13 @@ public class WorkflowClientTests : IDisposable
     /// <summary>
     /// Tests that GetWorkflowInitialStatusCodeAsync handles integer component parameter correctly.
     /// </summary>
-    [Fact]
-    public async Task GetWorkflowInitialStatusCodeAsync_HandlesIntegerComponentCorrectly()
+    /// <param name="compo">The component parameter.</param>
+    /// <param name="module">The module parameter.</param>
+    /// <param name="workflowId">The workflow ID parameter.</param>
+    [Theory]
+    [ClassData(typeof(WorkflowClientWorkflowParameterData))]
+    public async Task GetWorkflowInitialStatusCodeAsync_HandlesIntegerComponentCorrectly(int compo, int module, int workflowId)
     {
-        // Arrange
-        var compo = 123; // This should be int, not string
-        var module = 456;
-        var workflowId = 789;
-
         // Act
         await _greeterClient.GetWorkflowInitialStatusCodeAsync(compo, module, workflowId);
 

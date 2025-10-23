@@ -77,20 +77,6 @@ public static class WorkflowClientTestData
     }
 
     /// <summary>
-    /// Test data for GreeterClient boolean parameter scenarios
-    /// </summary>
-    public class WorkflowClientBooleanData : IEnumerable<object[]>
-    {
-        public IEnumerator<object[]> GetEnumerator()
-        {
-            yield return new object[] { true };
-            yield return new object[] { false };
-        }
-
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-    }
-
-    /// <summary>
     /// Test data for GreeterClient nullable parameter combinations
     /// </summary>
     public class WorkflowClientNullableParameterData : IEnumerable<object[]>
@@ -101,6 +87,55 @@ public static class WorkflowClientTestData
             yield return new object[] { 1, "test", "name", 1, 1, 1, true };
             yield return new object[] { 0, "", "", 0, 0, 0, false };
             yield return new object[] { int.MaxValue, new string('A', 100), new string('B', 100), int.MaxValue, int.MaxValue, int.MaxValue, true };
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+
+    /// <summary>
+    /// Test data for WorkflowClient large integer values
+    /// </summary>
+    public class WorkflowClientLargeIntegerData : IEnumerable<object[]>
+    {
+        public IEnumerator<object[]> GetEnumerator()
+        {
+            yield return new object[] { int.MaxValue };
+            yield return new object[] { int.MinValue };
+            yield return new object[] { 0 };
+            yield return new object[] { -1 };
+            yield return new object[] { 1000000 };
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+
+    /// <summary>
+    /// Test data for WorkflowClient workflow parameter combinations
+    /// </summary>
+    public class WorkflowClientWorkflowParameterData : IEnumerable<object[]>
+    {
+        public IEnumerator<object[]> GetEnumerator()
+        {
+            yield return new object[] { 1, 2, 3 };
+            yield return new object[] { 0, 0, 0 };
+            yield return new object[] { int.MaxValue, int.MaxValue, int.MaxValue };
+            yield return new object[] { 100, 200, 300 };
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+
+    /// <summary>
+    /// Test data for WorkflowClient request parameter combinations
+    /// </summary>
+    public class WorkflowClientRequestParameterData : IEnumerable<object[]>
+    {
+        public IEnumerator<object[]> GetEnumerator()
+        {
+            yield return new object[] { 1, 2, 3, "test" };
+            yield return new object[] { 0, 0, 0, "" };
+            yield return new object[] { int.MaxValue, int.MaxValue, int.MaxValue, new string('A', 100) };
+            yield return new object[] { 100, 200, 300, "service" };
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

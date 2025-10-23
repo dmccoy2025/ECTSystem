@@ -1865,7 +1865,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
 
         return new GetStatusCodesByCompoResponse
         {
-            Items = { results?.Select(r => new StatusCodeByCompoItem { StatusId = r.statusId, StatusName = r.description ?? string.Empty, Component = r.compo }) ?? [] }
+            Items = { results?.Select(r => new StatusCodeByCompoItem { StatusId = r.statusId, StatusName = r.description ?? string.Empty, Component = r.compo ?? string.Empty }) ?? [] }
         };
     }
 
@@ -1883,7 +1883,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
 
         return new GetStatusCodesByCompoAndModuleResponse
         {
-            Items = { results?.Select(r => new StatusCodeByCompoAndModuleItem { StatusId = r.statusId, StatusName = r.description ?? string.Empty, Component = r.compo, ModuleId = r.moduleId }) ?? [] }
+            Items = { results?.Select(r => new StatusCodeByCompoAndModuleItem { StatusId = r.statusId, StatusName = r.description ?? string.Empty, Component = r.compo ?? string.Empty, ModuleId = r.moduleId }) ?? [] }
         };
     }
 
