@@ -4,10 +4,12 @@
 The [`AF.ECT.Shared/Services/WorkflowClient.cs`](AF.ECT.Shared/Services/WorkflowClient.cs ) has been successfully moved to the [`AF.ECT.Shared`](AF.ECT.Shared ) project to eliminate duplication. The refactoring included platform-specific differences handling (primarily gRPC channel creation for browser vs. desktop compatibility). The core logic (methods, audit logging, retry policies, etc.) is shared, with Audit.NET now integrated for automated auditing.
 
 ### Key Changes Implemented
-- **Namespace**: Updated to [`AF.ECT.Shared.Services`](AF.ECT.Shared/Services/WorkflowClient.cs ).
-- **Channel Creation**: Refactored to accept pre-configured [`GrpcChannel`](AF.ECT.Shared/Services/WorkflowClient.cs ) instead of platform-specific handlers.
+- **Namespace**: Updated to `AF.ECT.Shared.Services`.
+- **Channel Creation**: Refactored to accept pre-configured `GrpcChannel` instead of platform-specific handlers.
 - **Audit Logging**: Migrated from custom `LogAuditEvent()` to Audit.NET's `AuditScope.Create()` for automated, structured auditing.
-- **Other**: [`IWorkflowClient`](AF.ECT.Shared/Services/WorkflowClient.cs ) and [`WorkflowClientOptions`](AF.ECT.Shared/Services/WorkflowClient.cs ) moved to [`AF.ECT.Shared`](AF.ECT.Shared ).
+- **GlobalUsings**: Added file-scoped namespaces and cleaned up using directives across projects.
+- **Telemetry**: Integrated AddTelemetry extension for enhanced observability.
+- **Other**: `IWorkflowClient` and `WorkflowClientOptions` moved to `AF.ECT.Shared`.
 
 The rest of the code (methods, constructors for testing, retry policies, etc.) remains consistent across platforms.
 

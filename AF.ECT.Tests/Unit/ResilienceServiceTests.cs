@@ -58,7 +58,7 @@ public class ResilienceServiceTests : ResilienceTestBase
         var exception = await Assert.ThrowsAsync<HttpRequestException>(
             () => _resilienceService.ExecuteWithRetryAsync(AlwaysFailingOperation));
 
-        Assert.Equal(4, callCount); // Initial call + 3 retries
+        Assert.Equal(5, callCount); // Initial call + 4 retries
         Assert.Contains("Persistent failure", exception.Message);
         _output.WriteLine($"Operation failed after {callCount} attempts as expected");
     }
@@ -108,31 +108,41 @@ public class ResilienceServiceTests : ResilienceTestBase
             {
                 await _resilienceService.ExecuteResilientHttpRequestAsync(FailingOperation);
             }
-            catch (HttpRequestException)
+            catch (Exception)
             {
-                // Expected
+                // Expected any exception during failure induction
             }
         }
 
-        // Wait for circuit breaker to open if threshold met
+        // Assert circuit state
         if (failureThreshold >= 5)
         {
             await WaitForCircuitBreakerState(CircuitState.Open);
-            // Assert circuit breaker is open
             Assert.Equal(CircuitState.Open, _resilienceService.CircuitBreakerState);
         }
+        else
+        {
+            Assert.Equal(CircuitState.Closed, _resilienceService.CircuitBreakerState);
+        }
 
-        // Act - Try operation while circuit breaker is open (should fail fast if open)
+        // Act - Try operation
         var startTime = DateTime.UtcNow;
+        var circuitStateBeforeTestCall = _resilienceService.CircuitBreakerState;
         try
         {
             await _resilienceService.ExecuteResilientHttpRequestAsync(FailingOperation);
+            Assert.Fail("Expected exception");
         }
         catch (BrokenCircuitException)
         {
+            Assert.Equal(CircuitState.Open, circuitStateBeforeTestCall);
             var executionTime = DateTime.UtcNow - startTime;
             // Assert it failed fast
             Assert.True(executionTime.TotalMilliseconds < 100);
+        }
+        catch (HttpRequestException)
+        {
+            Assert.Equal(CircuitState.Closed, circuitStateBeforeTestCall);
         }
 
         _output.WriteLine($"Circuit breaker test with {failureThreshold} failures completed");

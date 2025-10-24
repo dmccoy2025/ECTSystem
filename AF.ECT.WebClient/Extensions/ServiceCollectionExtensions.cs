@@ -5,10 +5,8 @@ using Blazored.LocalStorage;
 using Grpc.Net.Client;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Radzen;
-using OpenTelemetry;
 using OpenTelemetry.Trace;
 using Microsoft.Extensions.Options;
-using System.ComponentModel.DataAnnotations;
 
 namespace AF.ECT.WebClient.Extensions;
 

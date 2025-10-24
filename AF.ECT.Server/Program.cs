@@ -1,63 +1,57 @@
 using AF.ECT.Server.Extensions;
 using AF.ECT.Server.Services;
 using AspNetCoreRateLimit;
-using OpenTelemetry;
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Trace;
 
-var builder = WebApplication.CreateBuilder(args);
+namespace AF.ECT.Server;
 
-builder.Services.AddWebComponents(builder);
-builder.Services.AddDataAccess(builder.Configuration);
-builder.Services.AddThemeServices();
-builder.Services.AddApplicationCors(builder.Configuration);
-builder.Services.AddGrpcServices();
-builder.Services.AddHealthCheckServices(builder.Configuration);
-builder.Services.AddLoggingServices(builder.Configuration);
-builder.Services.AddAntiforgeryServices();
-builder.Services.AddResilienceServices();
-builder.Services.AddCachingServices(builder.Configuration);
-builder.Services.AddRateLimitingServices(builder.Configuration);
-builder.Services.AddDocumentation();
-
-builder.Services.AddOpenTelemetry()
-    .WithTracing(tracing => tracing
-        .AddAspNetCoreInstrumentation()
-        .AddEntityFrameworkCoreInstrumentation()
-        .AddOtlpExporter()
-    )
-    .WithMetrics(metrics => metrics
-        .AddAspNetCoreInstrumentation()
-        .AddRuntimeInstrumentation()
-        .AddOtlpExporter()
-    );
-
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
+public partial class Program 
 {
-    app.MapOpenApi();
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    private static async Task Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
+
+        builder.Services.AddWebComponents(builder);
+        builder.Services.AddDataAccess(builder.Configuration);
+        builder.Services.AddThemeServices();
+        builder.Services.AddApplicationCors(builder.Configuration);
+        builder.Services.AddGrpcServices();
+        builder.Services.AddHealthCheckServices(builder.Configuration);
+        builder.Services.AddLoggingServices(builder.Configuration);
+        builder.Services.AddAntiforgeryServices();
+        builder.Services.AddResilienceServices();
+        builder.Services.AddCachingServices(builder.Configuration);
+        builder.Services.AddRateLimitingServices(builder.Configuration);
+        builder.Services.AddDocumentation();
+        builder.Services.AddTelemetry();
+
+        var app = builder.Build();
+
+        if (app.Environment.IsDevelopment())
+        {
+            app.MapOpenApi();
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
+
+        app.UseHttpsRedirection();
+        app.UseCors();
+        app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
+        app.UseRouting();
+        app.UseAntiforgery();
+        app.UseIpRateLimiting();
+        app.MapHealthChecks("/healthz");
+        app.MapGrpcService<WorkflowServiceImpl>().EnableGrpcWeb();
+
+        if (app.Environment.IsDevelopment())
+        {
+            app.MapGrpcReflectionService();
+        }
+
+        app.MapFallbackToFile("index.html");
+
+        await app.RunAsync();
+    }
 }
-
-app.UseHttpsRedirection();
-app.UseCors();
-app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
-app.UseRouting();
-app.UseAntiforgery();
-app.UseIpRateLimiting();
-app.MapHealthChecks("/healthz");
-app.MapGrpcService<WorkflowServiceImpl>().EnableGrpcWeb();
-
-if (app.Environment.IsDevelopment())
-{
-    app.MapGrpcReflectionService();
-}
-
-app.MapFallbackToFile("index.html");
-
-await app.RunAsync();
 
 // Make Program class public for testing
 public partial class Program { }

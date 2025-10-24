@@ -43,13 +43,21 @@ Based on the current structure of your ECTSystem solution—an Aspire-based dist
      - Test gRPC calls locally with Aspire's networking—ensure the server maps gRPC endpoints correctly and the client can discover them.
      - **Why?** This simplifies development by avoiding hardcoded ports and enables easy scaling to multiple instances.
 
-### 4. **Add Integrations for Storage, Caching, and Messaging (If Applicable)**
+### 5. **Add Integrations for Storage, Caching, and Messaging (If Applicable)**
    - **Current State**: Your database is SQL-based, but no caching or messaging is integrated.
    - **Recommendations**:
      - If your app handles file uploads or large data, add Azure Blob Storage via `builder.AddAzureStorage("storage").AddBlobs("blobs")` in `AppHost.cs`.
      - For performance, integrate Redis caching with `builder.AddRedis("cache")` and use it in the server for distributed caching.
      - If workflows involve async messaging (e.g., case updates), add RabbitMQ or Azure Service Bus with Aspire's messaging integrations.
      - **Why?** Aspire provides ready-to-use local emulators for these, making development easier without external dependencies.
+
+### 6. **Integrate Telemetry and Observability**
+   - **Recent Updates**: Added AddTelemetry extension for enhanced observability.
+   - **Recommendations**:
+     - Use the AddTelemetry extension in `ServiceDefaults` to enable comprehensive tracing, metrics, and logging with OpenTelemetry.
+     - Ensure telemetry is exported to Application Insights or other backends for production monitoring.
+     - Integrate with existing audit logging for end-to-end traceability.
+     - **Why?** This aligns with Aspire's focus on cloud-native observability and improves debugging in distributed environments.
 
 ### 5. **Improve Deployment and Production Readiness**
    - **Current State**: No deployment configuration is visible, but Aspire supports Azure Container Apps (ACA) and Kubernetes.
