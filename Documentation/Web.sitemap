@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+  <siteMapNode roles="*">
+    <!-- common pages -->
+    <siteMapNode roles="*"  title="" visible="false">
+      <siteMapNode roles="*" url="~/Default.aspx" />
+      <siteMapNode roles="*" url="~/ClientTest.aspx" />
+      <siteMapNode roles="*" url="~/public/DevLogin.aspx" />
+      <siteMapNode roles="*" url="~/public/Start.aspx" />
+      <siteMapNode roles="*" url="~/public/Logout.aspx" />
+      <siteMapNode roles="*" url="~/Public/About.aspx" />
+      <siteMapNode roles="*" url="~/images/pdf.ico" />
+      <siteMapNode roles="*" url="~/Public/DbSignInstall.htm" />
+      <!--<siteMapNode roles="*" url="~/Images/pdf.ico" />-->
+      <siteMapNode roles="*" url="~/Secure/Shared/SessionViewer.aspx" />
+      <siteMapNode roles="*" url="~/Secure/Shared/Memos/EditMemo.aspx" />
+      <siteMapNode roles="*" url="~/Secure/Shared/Memos/ViewPdf.aspx" />
+      <siteMapNode roles="*" url="~/Secure/Shared/ChangeLog.aspx" />
+      <siteMapNode roles="*" url="~/Secure/Shared/DocumentViewer.aspx" />
+      <siteMapNode roles="*" url="~/Secure/Shared/DocumentUpload.aspx" />
+      <siteMapNode roles="*" url="~/Secure/Shared/CustomDocumentUpload.aspx" />
+      <siteMapNode roles="*" url="~/Secure/Shared/AFIReportExportInstructions.aspx" />
+      <siteMapNode roles="*" url="~/Secure/appeals/start.aspx" />
+      <siteMapNode roles="*" url="~/Secure/Utility/PrintTracking.aspx" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/js" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/jsdebug" />
+      <!-- Web Services -->
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetCompos" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetUserGroups" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetUserGroupsWithAccessScope" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetDocumentAcquisitionURL" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/LogUserAction" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetIcd9Data" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetMessages" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/SetMessagesRead" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetWhois" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetWorkflowUsers" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetChangeSetByLogId" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetChangeSet" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetChangeSetByReferenceId" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/ValidPascode" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetUnits" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetDbSignInfo" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetICDChapter" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetICDCategory" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetICDContent" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetICDSection" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetICDDiagnosisLevel1" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetICDDiagnosisLevel2" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetICDDiagnosisLevel3" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetICDDiagnosisLevel4" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetICDIncident" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetChildUnits" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetPendingLodCount" />
+      <!--<siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetPendingLegacyLodCount" />-->
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetPendingIOLodCount" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetPendingAppealCount" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetCompletedLodCount" />
+      <!--<siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetCompletedLegacyLodCount" />-->
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetCompletedAppealCount" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetReinvestigationRequestCount" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetPendingUserCount" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetPendingRoleRequestCount" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetSpecialCasesCount" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetSpecialCasesByModuleCount" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetRestrictedSARCsCaseCount" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetRestrictedSARCsPostCompletionCaseCount" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetSARCAppealsCaseCount" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetSARCAppealsPostCompletionCaseCount" />
+      <!--<siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetSpecialCasesCount_BCMR" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetSpecialCasesCount_BMT" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetSpecialCasesCount_CMAS" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetSpecialCasesCount_Congress" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetSpecialCasesCount_FastTrack" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetSpecialCasesCount_Incap" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetSpecialCasesCount_MEB" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetSpecialCasesCount_PWaivers" />
+      <siteMapNode roles="*" url="~/Secure/Utility/DataService.asmx/GetSpecialCasesCount_WWD" />-->
+      <siteMapNode roles="*" url="~/Secure/Welcome.aspx" title="Welcome" />
+      <siteMapNode roles="*" url="~/Secure/Shared/SecureAccessDenied.aspx" title="Access Denied" />
+
+      <siteMapNode roles="signature" url="~/Secure/Shared/DBSign/altsigning.aspx" title="Digital Signature" />
+      <siteMapNode roles="signature" url="~/Secure/Shared/DBSign/signing.aspx" title="Digital Signature" />
+      <siteMapNode roles="signature" url="~/Secure/Shared/DBSign/failure.aspx" title="Digital Signature Failed" />
+      <siteMapNode roles="signature" url="~/Secure/Shared/DBSign/successful.aspx" title="Digital Signature Accepted" />
+      <siteMapNode roles="signature" url="~/Secure/Shared/DBSign/receivesignature.aspx" title="Digital Signature Posted" />
+      <siteMapNode roles="signature" url="~/Secure/Shared/DBSign/clear.htm" title="Clear Previous Signature" />
+      <siteMapNode roles="signature" url="~/Secure/Shared/DBSign/UWS/4.0.7.8/DBsignUWS.jar" title="DBSign Applet" />
+      <siteMapNode roles="signature" url="~/Secure/Shared/DBSign/UWS/4.0.7.8/DBsignLibs-JCE-win32-4.0.7.8.jar" title="DBSign Applet" />
+      <siteMapNode roles="signature" url="~/Secure/Shared/DBSign/UWS/4.0.7.8/DBsignLibs-JCE-win64-4.0.7.8.jar" title="DBSign Applet" />
+      <siteMapNode roles="signature" url="~/Secure/Shared/DBSign/UWS/4.0.7.8/DBsignUWS.jar.pack.gz" title="DBSign Applet Compressed" />
+      <siteMapNode roles="signature" url="~/Secure/Shared/DBSign/UWS/4.0.7.8/F4534E05.lic" title="DBSign Applet License" />
+
+      <siteMapNode roles="*" url="~/Secure/Shared/PrintCaseTracking.aspx" title="Print Case Tracking" />
+
+      <siteMapNode roles="*" title="Error">
+        <siteMapNode roles="*" url="~/Secure/Shared/AppError.aspx" title="Application Error" />
+      </siteMapNode>
+    </siteMapNode>
+
+    <siteMapNode roles="lodSearch, lodCreate, myLod, reinvestigate, reinvestigateSearch, exePostCompletion, sysAdmin, myAP, APSearch, APCompletion, myRSARC, RSARCSearch, RSARCCreate, RSARCPostCompletion, SARCUnrestrictedCreate" title="LOD">
+      <siteMapNode roles="myLod" title="My LODs" url="~/Secure/lod/MyLods.aspx" />
+      <!--<siteMapNode roles="myLod" title="My Legacy LODs" url="~/Secure/lod/MyLegacyLods.aspx" />-->
+      <siteMapNode roles="myLod" title="My LOD Consults" url="~/Secure/lod/MyLodConsult.aspx" />
+      <siteMapNode roles="myLod" title="SC Pending Consults" url="~/Secure/SC_AwaitingConsult/SCPendingConsult.aspx" />
+      <siteMapNode roles="myLod" title="SC Awaiting Consults" url="~/Secure/SC_AwaitingConsult/AwaitingConsult.aspx" />
+      <siteMapNode roles="myLod" title="My LOD Audit" url="~/Secure/lod/MyLodAudit.aspx" />
+      <siteMapNode roles="lodCreate, RSARCCreate, SARCUnrestrictedCreate" title="Start New LOD" url="~/Secure/lod/start.aspx" />
+      <siteMapNode roles="lodCreate, RSARCCreate, SARCUnrestrictedCreate" visible="false" url="~/Secure/lod/start.aspx/MemberSelected" />
+      <siteMapNode roles="lodSearch" title="LOD Search" url="~/Secure/lod/search.aspx" />
+      <siteMapNode roles="reinvestigate" title="Reinvestigations" url="~/Secure/ReinvestigationRequests/MyRequests.aspx" />
+      <siteMapNode roles="reinvestigateSearch" title="RR Search" url="~/Secure/ReinvestigationRequests/search.aspx" />
+      <siteMapNode roles="exePostCompletion" title="Process Completed Cases" url="~/Secure/lod/PostCompletionLOD.aspx" />
+      <!--<siteMapNode roles="exePostCompletion" title="Process Completed Legacy Cases" url="~/Secure/lod/PostCompletionLegacyLOD.aspx" />-->
+      <siteMapNode roles="APCompletion" title="Process Completed Appeals" url="~/Secure/AppealRequests/PostCompletionAppeal.aspx" />
+      <siteMapNode roles="myAP" title="Appeals" url="~/Secure/AppealRequests/MyRequests.aspx" />
+      <siteMapNode roles="APSearch" title="AP Search" url="~/Secure/AppealRequests/search.aspx" />
+
+      <siteMapNode roles="myRSARC" title="My SARCs" url="~/Secure/SARC/MyCases.aspx" />
+      <siteMapNode roles="RSARCSearch" title="SARC Search" url="~/Secure/SARC/Search.aspx" />
+      <siteMapNode roles="RSARCPostCompletion" title="Process Completed Restricted SARCs" url="~/Secure/SARC/PostCompletion.aspx" />
+
+      <siteMapNode roles="myRSARCAppeal" title="My SARC Appeals" url="~/Secure/SARC_Appeal/MyRequests.aspx" />
+      <siteMapNode roles="RSARCAppealSearch" title="SARC Appeal Search" url="~/Secure/SARC_Appeal/Search.aspx" />
+      <siteMapNode roles="RSARCAppealPostCompletion" title="Process Completed Restricted SARC Appeals" url="~/Secure/SARC_Appeal/PostCompletionSARCAppeal.aspx" />
+
+      <siteMapNode roles="sysAdmin" title="Inbox View" url="~/Secure/lod/inbox.aspx" />
+      <siteMapNode roles="sysAdmin" title="Override" url="~/Secure/lod/Override.aspx" />
+      <siteMapNode roles="sysAdmin" title="Generate LOD Forms" url="~/Secure/Shared/Admin/GenerateLODForms.aspx" />
+      <siteMapNode roles="sysAdmin" title="Generate SARC Forms" url="~/Secure/Shared/Admin/GenerateSARCForms.aspx" />
+    </siteMapNode>
+
+    <!--<siteMapNode roles="scSearch, scCreate, mySCs, sysAdmin" title="Special Cases" visible="False">
+      <siteMapNode roles="mySCs, MMSOSearch" title="My Special Cases" url="~/Secure/SpecialCases/MyCases.aspx" />
+      <siteMapNode roles="scSearch, MMSOSearch" title="Print Tracking" visible="false" url="~/Secure/SpecialCases/PrintTracking.aspx" />
+    </siteMapNode>-->
+
+    <siteMapNode roles="scSearch, scSearchMT, scCreate, mySCs, sysAdmin" title="Special Cases" visible="False">
+      <siteMapNode roles="mySCs, MMSOSearch" title="My Special Cases" url="~/Secure/SpecialCases/MyCases.aspx" />
+      <siteMapNode roles="scSearch, scSearchMT" title="Search" visible="false" url="~/Secure/SpecialCases/search.aspx" />
+      <!--   <siteMapNode roles="*" title="Tracking" url="~/Secure/SpecialCases/Tracking.aspx"></siteMapNode>
+       <siteMapNode roles="*" title="Tracking" url="~/Secure/SpecialCases/SMData.aspx"></siteMapNode> -->
+    </siteMapNode>
+    <!--<siteMapNode roles="scSearch, scCreate, mySCs, sysAdmin" title="Special Cases" visible="False">
+      <siteMapNode roles="mySCs" title="My Special Cases" url="~/Secure/SpecialCases/MyCases.aspx" />
+      <siteMapNode roles="scCreate" title="Start New SpecialCase" url="~/Secure/SpecialCases/start.aspx" />
+      <siteMapNode roles="scSearch" title="Search" url="~/Secure/SpecialCases/search.aspx" />
+      <siteMapNode roles="scSearch" title="Print Tracking" visible="false" url="~/Secure/SpecialCases/PrintTracking.aspx" />
+    </siteMapNode>-->
+
+    <siteMapNode roles="scSearch, scSearchMT, scCreate, mySCs, sysAdmin" title="Other Cases">
+
+      <siteMapNode roles="*" title="Basic Military Training Waivers (BMT) / &lt;br/&gt;Military Entrance Processing Station (MEPS)">
+        <siteMapNode roles="myBmt" title="My BMTs/MEPS" url="~/Secure/SC_BMT/MyCases.aspx" />
+        <siteMapNode roles="BmtCreate" title="Start New BMT Waiver/MEPS" url="~/Secure/SpecialCases/start.aspx?mid=8" />
+        <siteMapNode roles="BMTSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=8" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Board for Correction of Military Records (BCMR)">
+        <siteMapNode roles="myBcmr" title="My BCMRs" url="~/Secure/SC_BCMR/MyCases.aspx" />
+        <siteMapNode roles="BcmrCreate" title="Start New BCMR" url="~/Secure/SpecialCases/start.aspx?mid=12" />
+        <siteMapNode roles="BCMRSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=12" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Command Man-day Allocation System (CMAS)">
+        <siteMapNode roles="myCmas" title="My CMASs" url="~/Secure/SC_CMAS/MyCases.aspx" />
+        <siteMapNode roles="CmasCreate" title="Start New CMAS" url="~/Secure/SpecialCases/start.aspx?mid=14" />
+        <siteMapNode roles="CMASSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=14" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Congressionals (CI)">
+        <siteMapNode roles="myCi" title="My Congressionals" url="~/Secure/SC_Congress/MyCases.aspx" />
+        <siteMapNode roles="CiCreate" title="Start New Congressional" url="~/Secure/SpecialCases/start.aspx?mid=7" />
+        <siteMapNode roles="CISearch" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=7" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Deployment Waivers (DW)">
+        <siteMapNode roles="myDW" title="My Deployment Waiver" url="~/Secure/SC_DW/MyCases.aspx" />
+        <siteMapNode roles="DWCreate" title="Start New Deployment Waiver" url="~/Secure/SpecialCases/start.aspx?mid=19" />
+        <siteMapNode roles="DWSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=19" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Incapacitation (INCAP)">
+        <siteMapNode roles="myIncap" title="My Incaps" url="~/Secure/SC_Incap/MyCases.aspx" />
+        <siteMapNode roles="IncapCreate" title="Start New INCAP" url="~/Secure/SpecialCases/start.aspx?mid=6" />
+        <siteMapNode roles="INCAPSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=6" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Initial Review In Lieu Of (IRILO)">
+        <siteMapNode roles="myFTs" title="My IRILOs" url="~/Secure/SC_FastTrack/MyCases.aspx" />
+        <!-- edit roles? -->
+        <siteMapNode roles="FTCreate" title="Start New IRILO" url="~/Secure/SpecialCases/start.aspx?mid=13" />
+        <siteMapNode roles="FTSearch, scSearchMT" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=13" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Medical Evaluation Board (MEB)">
+        <siteMapNode roles="myMeb" title="My MEBs" url="~/Secure/SC_MEB/MyCases.aspx" />
+        <siteMapNode roles="MebCreate" title="Start New MEB" url="~/Secure/SpecialCases/start.aspx?mid=11" />
+        <siteMapNode roles="MEBSearch, scSearchMT" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=11" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Medical Holds (MH)">
+        <siteMapNode roles="myMH" title="My MHs" url="~/Secure/SC_MH/MyCases.aspx" />
+        <siteMapNode roles="MHCreate" title="Start New MH" url="~/Secure/SpecialCases/start.aspx?mid=17" />
+        <siteMapNode roles="MHSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=17" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Modification (MO)">
+        <siteMapNode roles="myMO" title="My MOs" url="~/Secure/SC_MO/MyCases.aspx" />
+        <siteMapNode roles="MOCreate" title="Start New MO" url="~/Secure/SpecialCases/start.aspx?mid=20" />
+        <siteMapNode roles="MOSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=20" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Non Emergent Surgery Request (NE)">
+        <siteMapNode roles="myNE" title="My NEs" url="~/Secure/SC_NE/MyCases.aspx" />
+        <siteMapNode roles="NECreate" title="Start New NE" url="~/Secure/SpecialCases/start.aspx?mid=18" />
+        <siteMapNode roles="NESearch" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=18" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Participation Waiver (PWaiver)">
+        <siteMapNode roles="myPwaiver" title="My PWaivers" url="~/Secure/SC_PWaivers/MyCases.aspx" />
+        <siteMapNode roles="PwaiverCreate" title="Start New PWaiver" url="~/Secure/SpecialCases/start.aspx?mid=10" />
+        <siteMapNode roles="PWSearch, scSearchMT" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=10" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="AGR Medical Certification (AGR)">
+        <siteMapNode roles="myAGRCert" title="My AGR Certifications" url="~/Secure/SC_AGRCert/MyCases.aspx" />
+        <siteMapNode roles="AGRCertCreate" title="Start New AGR" url="~/Secure/SpecialCases/start.aspx?mid=28" />
+        <siteMapNode roles="AGRCertSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=28" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Physical Examination Processing Program (PEPP) / &lt;br/&gt;AIMWITS (AW)">
+        <siteMapNode roles="myPEPP" title="My PEPPs/AIMWITSs" url="~/Secure/SC_PEPP/MyCases.aspx" />
+        <siteMapNode roles="PEPPCreate" title="Start New PEPP/AIMWITS" url="~/Secure/SpecialCases/start.aspx?mid=21" />
+        <siteMapNode roles="PEPPSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=21" />
+      </siteMapNode>
+
+      <siteMapNode roles="myPH,PHCreate,PHSearch" title="PH Non-Clinical Tracking (PH)">
+        <siteMapNode roles="myPH" title="My PHs" url="~/Secure/SC_PH/MyCases.aspx" />
+        <siteMapNode roles="PHCreate" title="Start New PH" url="~/Secure/SC_PH/Start.aspx?mid=23" />
+        <siteMapNode roles="PHSearch" title="Search" url="~/Secure/SC_PH/Search.aspx" />
+        <siteMapNode roles="sysAdmin" title="Generate PH Form" url="~/Secure/Shared/Admin/GeneratePHForm.aspx" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Recruiting Services (RS)">
+        <siteMapNode roles="myRS" title="My RSs" url="~/Secure/SC_RS/MyCases.aspx" />
+        <siteMapNode roles="RSCreate" title="Start New RS" url="~/Secure/SpecialCases/start.aspx?mid=22" />
+        <siteMapNode roles="RSSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=22" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Retention Waiver Renewal (RW)">
+        <siteMapNode roles="myRW" title="My RWs" url="~/Secure/SC_RW/MyCases.aspx" />
+        <siteMapNode roles="RWCreate" title="Start New RW" url="~/Secure/SpecialCases/start.aspx?mid=27" />
+        <siteMapNode roles="RWSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=27" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Worldwide Duty (WWD)">
+        <siteMapNode roles="myWWDs" title="My WWDs" url="~/Secure/SC_WWD/MyCases.aspx" />
+        <siteMapNode roles="WWDCreate" title="Start New WWD" url="~/Secure/SpecialCases/start.aspx?mid=9" />
+        <siteMapNode roles="WWDSearch, scSearchMT" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=9" />
+      </siteMapNode>
+
+      <siteMapNode roles="*" title="Prior Service Condition Determination (PSC-D)">
+        <siteMapNode roles="myPSCDs" title="My PSC-Ds" url="~/Secure/SC_PSCD/MyCases.aspx" />
+        <siteMapNode roles="PSCDCreate" title="Start New PSC-Ds" url="~/Secure/SpecialCases/start.aspx?mid=30" />
+        <siteMapNode roles="PSCDSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?mid=30" />
+      </siteMapNode>
+
+      <siteMapNode roles="sysAdmin" title="Override" url="~/Secure/SpecialCases/Override.aspx" />
+
+      <!--<siteMapNode roles="*" title="Specialty Cases">-->
+      <!--</siteMapNode>-->
+
+      <!-- <siteMapNode roles="*" title="Non Emergent Surgery Request (NE)">
+          <siteMapNode roles="myNEs" title="My NEs" url="" />
+          <siteMapNode roles="FTCreate" title="Start New NE" url="~/Secure/SpecialCases/start.aspx?wid=18" />
+          <siteMapNode roles="scSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?wid=18" />
+        </siteMapNode>
+        <siteMapNode roles="*" title="Deployment Waivers (DW)">
+          <siteMapNode roles="myDWs" title="My DWs" url="" />
+          <siteMapNode roles="FTCreate" title="Start New DW" url="~/Secure/SpecialCases/start.aspx?wid=19" />
+          <siteMapNode roles="scSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?wid=19" />
+        </siteMapNode>
+        <siteMapNode roles="*" title="Modifationics (MD)">
+          <siteMapNode roles="myMDs" title="My MDs" url="" />
+          <siteMapNode roles="FTCreate" title="Start New MD" url="~/Secure/SpecialCases/start.aspx?wid=20" />
+          <siteMapNode roles="scSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?wid=20" />
+        </siteMapNode>
+        <siteMapNode roles="*" title="Physical Examination Processing Program (PE)">
+          <siteMapNode roles="myPEs" title="My PEs" url="" />
+          <siteMapNode roles="FTCreate" title="Start New PE" url="~/Secure/SpecialCases/start.aspx?wid=21" />
+          <siteMapNode roles="scSearch" title="Search" url="~/Secure/SpecialCases/search.aspx?wid=21" />
+        </siteMapNode>-->
+    </siteMapNode>
+
+    <siteMapNode roles="MMSOCreate, MMSOView, MMSOSearch, sysAdmin" title="MMSO">
+      <siteMapNode roles="MMSOCreate" title="Start New Pre-Authorization Request" url="~/Secure/SpecialCases/start.aspx?wid=16" />
+      <siteMapNode roles="MMSOView" title ="My Requests" url="~/Secure/SC_MMSO/MyCases.aspx" />
+      <siteMapNode roles="MMSOSearch" title ="Search" url="~/Secure/SpecialCases/search.aspx?wid=16" />
+    </siteMapNode>
+
+    <siteMapNode title="Reports" roles="*, reportAdHocLod, repSearchSoldierDetails, repSearchLODDetails, repSearchTimeFrame, repSearchSummaryOptions, repSearchWorkload">
+      <siteMapNode roles="AdHocReport, SARCAdHocReports" title="Ad-Hoc Reporting" url="~/Secure/Reports/adhoc.aspx" />
+      <siteMapNode roles="AdHocReport, SARCAdHocReports" title="Ad-Hoc Reporting Results" url="~/Secure/Reports/adhocresults.aspx" Visible="false" />
+      <siteMapNode roles="lodViewAllCases" title="Case History Report" url="~/Secure/Reports/CaseHistory.aspx" />
+      <siteMapNode roles="LODCategoryCountReport" title="LOD Category Count Report" url="~/Secure/Reports/LodCategoryCount.aspx" />
+      <siteMapNode roles="DisapprovedLODReport" title="LOD Disapproved  Report" url="~/Secure/Reports/DisapprovedLod.aspx" />
+      <siteMapNode roles="DispositionReports" title="LOD Disposition Report" url="~/Secure/Reports/LodDisposition.aspx" />
+      <siteMapNode roles="LODGraphReport" title="LOD Graph Report" url="~/Secure/Reports/LODGraphReport.aspx" />
+      <siteMapNode roles="LODMetricsReport_Cases" title="LOD Metrics Report (LOD Cases)" url="~/Secure/Reports/lodActivity.aspx" />
+      <siteMapNode roles="LODMetricsReport_Avg" title="LOD Metrics Report (Average Times Of LOD Cases)" url="~/Secure/Reports/MetricsReport.aspx" />
+      <siteMapNode roles="sysAdmin" title="LOD Packages Execution Report" url="~/Secure/Reports/PackagesReport.aspx" />
+      <siteMapNode roles="LODPhysicianCancelledReport" title="LOD Physician Cancelled Report" url="~/Secure/Reports/PhsicianCanceledLod.aspx" />
+      <siteMapNode roles="LODComplianceReport" title="LOD PM Compliance Report" url="~/Secure/Reports/LODComplianceReport.aspx" />
+      <siteMapNode roles="LODSuspenseMonitoringReport" title="LOD PM Monthly Suspense Monitoring Report" url="~/Secure/Reports/LODSuspenseMonitoringReport.aspx" />
+      <siteMapNode roles="LODProgramStatusReport" title="LOD PM Quarterly-Annual Program Status Report" url="~/Secure/Reports/LODProgramStatusReport.aspx" />
+      <siteMapNode roles="RWOAReport" title="LOD RWOA Report" url="~/Secure/Reports/Rowa.aspx" />
+      <siteMapNode roles="LODSARCCasesReport - UNRESTRICTED,LODSARCCasesReport - ALL" title="LOD SARC Report" url="~/Secure/Reports/LODSARCCasesReport.aspx" />
+      <siteMapNode roles="LODStatisticsReport" title="LOD Statistics Report" url="~/Secure/Reports/LodStatistics.aspx" />
+      <siteMapNode roles="LODTotalCountByProcessReport" title="LOD Total Count By Process Report" url="~/Secure/Reports/LODTotalCountByProcess.aspx" />
+      <siteMapNode roles="PALDocumentsReport" title="PAL Documents" url="~/Secure/Reports/PALDocuments.aspx" />
+      <siteMapNode roles="PHTotalsReport" title="PH Totals Report" url="~/Secure/Reports/PHTotals.aspx" />
+      <siteMapNode roles="pwaiverReport" title="PWaivers Report" url="~/Secure/Reports/PWaiversReport.aspx" />
+      <siteMapNode roles="RSDispositionReport" title="RS Disposition Report" url="~/Secure/Reports/RSDisposition.aspx" />
+      <!--<siteMapNode roles="*" title="PH Trending Report" url="~/Secure/Reports/PHTrend.aspx" />-->
+      <siteMapNode roles="RFAReportByUnit" title="RFA Cases By Unit Report" url="~/Secure/Reports/RFAByUnit.aspx" />
+      <siteMapNode roles="RFAReportByGroup" title="RFA Cases By Group Report" url="~/Secure/Reports/RFAByGroup.aspx" />
+    </siteMapNode>
+
+    <siteMapNode title="Administration" roles="sysAdmin,usersView,unitsEdit,usersModify,usersApprove,feedbackManage,viewUserLog,memberAdd">
+      <siteMapNode title="Create" roles="sysAdmin,memberAdd">
+        <siteMapNode title="Add Member" roles="sysAdmin,memberAdd" url="~/Secure/Shared/Admin/AddMember.aspx" />
+        <siteMapNode title="Create Unit" roles="sysAdmin" url="~/Secure/Shared/Admin/CreateUnit.aspx" />
+        <siteMapNode title="Create User" roles="sysAdmin" url="~/Secure/Shared/Admin/CreateUser.aspx" />
+      </siteMapNode>
+      <siteMapNode title="Emails" roles="sysAdmin">
+        <siteMapNode title="Email Templates" roles="sysAdmin" url="~/Secure/Shared/System/ManageEmailTemplate.aspx" />
+        <siteMapNode title="Email Test" roles="sysAdmin" url="~/Secure/Shared/System/EmailTest.aspx" />
+        <siteMapNode title="Inactive Email Settings" roles="sysAdmin" url="~/Secure/Shared/System/InactiveSettings.aspx" />
+        <siteMapNode title="Send System Emails" roles="sysAdmin" url="~/Secure/Shared/System/SystemEmails.aspx" />
+      </siteMapNode>
+      <siteMapNode title="Lookup" roles="sysAdmin, usersApprove, usersEdit">
+        <siteMapNode title="ARCNet User Lookup" roles="sysAdmin" url="~/Secure/Shared/Admin/ARCNetUserLookup.aspx" />
+        <siteMapNode title="Approval Authorities" roles="sysAdmin" url="~/Secure/Shared/Admin/AppAuth.aspx" />
+        <siteMapNode title="Case Locks" roles="sysAdmin" url="~/Secure/Shared/Admin/CaseLocks.aspx" />
+        <siteMapNode title="Child Unit View" roles="sysAdmin" url="~/Secure/Shared/Admin/ChildUnits.aspx" />
+        <siteMapNode title="Pending Role Requests" roles="usersEdit,sysAdmin, usersApprove" url="~/Secure/Shared/Admin/RoleRequests.aspx" />
+        <siteMapNode title="Permission Report" roles="sysAdmin" url="~/Secure/Shared/Admin/PermissionReport.aspx" />
+        <siteMapNode title="Search Members" roles="usersEdit,usersApprove,sysAdmin" url="~/Secure/Shared/Admin/MemberData.aspx" />
+        <siteMapNode title="Users Online" roles="sysAdmin" url="~/Secure/Shared/Admin/UsersOnline.aspx" />
+      </siteMapNode>
+      <siteMapNode title="Manage" roles="sysAdmin, msgAdmin, unitsEdit,usersEdit,usersApprove">
+        <siteMapNode title="Edit ICD Codes" roles="sysAdmin" url="~/Secure/Shared/System/EditICDCodes.aspx" />
+        <siteMapNode title="Edit Permissions" roles="sysAdmin" url="~/Secure/Shared/System/Permissions.aspx" />
+        <siteMapNode title="Groups" roles="sysAdmin">
+          <siteMapNode title="Edit Groups" roles="sysAdmin" url="~/Secure/Shared/System/UserGroups.aspx" />
+          <siteMapNode title="Group Approval" roles="sysAdmin" url="~/Secure/Shared/System/ManagedBy.aspx" />
+          <siteMapNode title="Group Permissions" roles="sysAdmin" url="~/Secure/Shared/System/ManagePermissions.aspx" />
+        </siteMapNode>
+        <siteMapNode title="Manage Cancel Reasons" roles="sysAdmin" url="~/Secure/Shared/System/CancelReasons.aspx" />
+        <siteMapNode title="Manage Lookups" roles="sysAdmin">
+          <siteMapNode title="Edit Case Types" roles="sysAdmin" url="~/Secure/Shared/System/EditCaseTypes.aspx" />
+          <siteMapNode title="Edit Certification Stamps" roles="sysAdmin" url="~/Secure/Shared/System/EditCertificationStamps.aspx" />
+          <siteMapNode title="Edit Completed By Groups" roles="sysAdmin" url="~/Secure/Shared/System/EditCompletedByGroups.aspx" />
+          <siteMapNode title="Edit Dispositions" roles="sysAdmin" url="~/Secure/Shared/System/EditDispositionLookup.aspx" />
+          <siteMapNode title="Edit Miscellaneous Lookups" roles="sysAdmin" url="~/Secure/Shared/System/EditLookups.aspx" />
+          <siteMapNode title="Edit LOD Medical" roles="sysAdmin" url="~/Secure/Shared/System/EditMedical.aspx" />
+          <siteMapNode title="Edit LOD Unit" roles="sysAdmin" url="~/Secure/Shared/System/EditUnit.aspx" />
+        </siteMapNode>
+        <siteMapNode title="Manage Hyper Links" roles="sysAdmin" url="~/Secure/Shared/Admin/EditHyperLink.aspx" />
+        <siteMapNode title="Manage Messages" roles="msgAdmin" url="~/Secure/Shared/Admin/MsgAdmin.aspx" />
+        <siteMapNode title="Manage PH Workflow Form" roles="sysAdmin">
+          <siteMapNode title="Edit PH Fields" roles="sysAdmin" url="~/Secure/Shared/System/EditPHFields.aspx" />
+          <siteMapNode title="Edit PH Field Types" roles="sysAdmin" url="~/Secure/Shared/System/EditPHFieldTypes.aspx" />
+          <siteMapNode title="Edit PH Form Fields" roles="sysAdmin" url="~/Secure/Shared/System/EditPHFormFields.aspx" />
+          <siteMapNode title="Edit PH Sections" roles="sysAdmin" url="~/Secure/Shared/System/EditPHSections.aspx" />
+          <siteMapNode title="Test PH Form" roles="sysAdmin" url="~/Secure/Shared/System/TestPHForm.aspx" />
+        </siteMapNode>
+        <siteMapNode title="Manage Units" roles="unitsEdit" url="~/Secure/Shared/Admin/Pascodes.aspx" />
+        <siteMapNode title="Manage Users" roles="usersEdit,usersApprove,sysAdmin" url="~/Secure/Shared/Admin/ManageUsers.aspx" />
+        <siteMapNode title="Mapped Values" roles="sysAdmin" url="~/Secure/Shared/Admin/MappedValues.aspx" />
+        <siteMapNode title="Pages" roles="sysAdmin">
+          <siteMapNode title="Manage Pages" roles="sysAdmin" url="~/Secure/Shared/System/PageTitles.aspx" />
+          <siteMapNode title="Page Access" roles="sysAdmin" url="~/Secure/Shared/System/PageAccess.aspx" />
+        </siteMapNode>
+        <siteMapNode title="Welcome Page Banner" roles="sysAdmin" url="~/Secure/Shared/Admin/WelcomePageBanner.aspx" />
+        <siteMapNode title="Workflows" roles="sysAdmin">
+          <siteMapNode title="Workflows" roles="sysAdmin" url="~/Secure/Shared/System/Workflows.aspx" />
+          <siteMapNode title="Workflow View" roles="sysAdmin" url="~/Secure/Shared/System/WorkflowView.aspx" />
+        </siteMapNode>
+      </siteMapNode>
+      <siteMapNode title="Memo" roles="sysAdmin">
+        <siteMapNode title="Memo Mapped Values" roles="sysAdmin" url="~/Secure/Shared/Admin/MemoMappedValues.aspx" />
+        <siteMapNode title="Memo Templates" roles="sysAdmin" url="~/Secure/Shared/Admin/MemoTemplates.aspx" />
+      </siteMapNode>
+      <siteMapNode title="System" roles="sysAdmin">
+        <siteMapNode title="Error" roles="sysAdmin">
+          <siteMapNode title="Error Log" roles="sysAdmin" url="~/Secure/Shared/Admin/ErrorLog.aspx" />
+          <siteMapNode title="Error Test" roles="sysAdmin" url="~/Secure/Shared/System/ErrorTest.aspx" />
+        </siteMapNode>
+        <siteMapNode title="Historical Copy (Snapshot)" roles="sysAdmin" url="~/Secure/Shared/Admin/Snapshot.aspx" />
+        <siteMapNode title="Rules" roles="sysAdmin" url="~/Secure/Shared/System/Rules.aspx" />
+        <siteMapNode title="Status Codes" roles="sysAdmin" url="~/Secure/Shared/System/StatusCodes.aspx" />
+        <siteMapNode title="Test Automatic Processes" roles="sysAdmin" url="~/Secure/Shared/System/TestAppWarmupProcesses.aspx" />
+        <siteMapNode title="Test Component" roles="sysAdmin" url="~/Secure/shared/System/TestComponents.aspx" />
+        <siteMapNode title="Test Page" roles="sysAdmin" url="~/Secure/shared/System/TestPage.aspx" />
+      </siteMapNode>
+    </siteMapNode>
+
+    <siteMapNode title="Edit Member" roles="sysAdmin" url="~/Secure/Shared/Admin/EditMember.aspx" Visible="False" />
+    <siteMapNode title="User Permissions" roles="sysAdmin" url="~/Secure/Shared/System/UserPermissions.aspx" visible="False" />
+    <siteMapNode title="User Activity Log" roles="sysAdmin,viewUserLog" url="~/Secure/Shared/Admin/UserTracking.aspx" visible="False" />
+    <!--<siteMapNode roles="sysAdmin" url="~/Secure/Shared/System/MAJCOM.aspx" title="MAJCOM Lookup" />-->
+
+    <siteMapNode title="Edit Template" roles="sysAdmin" url="~/Secure/Shared/System/EditEmailTemplates.aspx" visible="False" />
+    <siteMapNode title="Workflow Permissions" roles="sysAdmin" url="~/Secure/Shared/System/WorkflowPerms.aspx" visible="False" />
+    <siteMapNode title="Workflow Steps" roles="sysAdmin" url="~/Secure/Shared/System/WorkflowSteps.aspx" visible="False" />
+    <siteMapNode title="Workflow Steps" roles="sysAdmin" url="~/Secure/Shared/System/WorkStatus.aspx" visible="False" />
+    <siteMapNode title="Option Rules" roles="sysAdmin" url="~/Secure/Shared/System/WorkStatusRules.aspx" visible="False" />
+    <siteMapNode title="Option Actions" roles="sysAdmin" url="~/Secure/Shared/System/WorkStatusActions.aspx" visible="False" />
+    <siteMapNode title="Reminder Emails" roles="sysAdmin" url ="~/Secure/Shared/System/WorkStatusReminderEmails.aspx" visible="False" />
+    <siteMapNode title="Edit User Account" roles="usersEdit,sysAdmin, usersApprove" url="~/Secure/Shared/Admin/EditUser.aspx" visible="False" />
+    <siteMapNode title="Print Account History" roles="usersEdit,sysAdmin, usersApprove" url="~/Secure/Shared/Admin/PrintTracking.aspx" visible="False" />
+    <siteMapNode title="Edit" roles="*" url="~/Secure/Shared/Admin/EditPasCode.aspx" Visible="False" />
+    <siteMapNode roles="*"  url="~/Secure/Shared/Admin/SearchUnit.aspx" Visible="False" />
+    <siteMapNode title="Unit Administration" roles="*" url="~/Secure/Shared/Admin/ManageHierarchy.aspx" Visible="False" />
+
+    <siteMapNode roles="*" title="Help">
+      <siteMapNode title="Select Account" roles="*" url="~/public/SelectAccount.aspx" />
+      <siteMapNode title="My Account" roles="*" url="~/Secure/help/MyAccount.aspx" />
+      <siteMapNode title="Documentation" roles="*" url="~/Secure/Help/Documentation.aspx" />
+
+      <siteMapNode title="ALOD Manual" roles="*" visible="false" url="~/Secure/Help/files/ALOD_V_1.0.pdf" />
+      <siteMapNode title="Master LOD Checklist" roles="*" visible="false" url="~/Secure/Help/files/Master_LOD_Checklist.doc" />
+      <siteMapNode title="8 Year Rule" roles="*" visible="false" url="~/Secure/Help/files/8_Year_Rule.pdf" />
+      <siteMapNode title="AFI 36-2910 AFRCSUP1 I" roles="*" visible="false" url="~/Secure/Help/files/AFI_36-2910_AFRCSUP1_I.pdf" />
+      <siteMapNode title="AFRCI 36-3004" roles="*" visible="false" url="~/Secure/Help/files/AFRCI_36-3004.pdf" />
+      <siteMapNode title="DODI 1241.2" roles="*" visible="false" url="~/Secure/Help/files/DODI_1241.2.pdf" />
+      <siteMapNode title="DODI 1332.38" roles="*" visible="false" url="~/Secure/Help/files/DODI_1332.38.pdf" />
+      <siteMapNode title="SARC Modifications" roles="*" visible="false" url="~/Secure/Help/files/SARC_Modifications.pdf" />
+      <siteMapNode title="Medical Briefing" roles="*" visible="false" url="~/Secure/Help/files/MEDICAL_BRIEFING.pdf" />
+      <siteMapNode title="Personnel Briefing" roles="*" visible="false" url="~/Secure/Help/files/PERSONNEL_BRIEFING.pdf" />
+      <siteMapNode title="Financial Entitlements Briefing" roles="*" visible="false" url="~/Secure/Help/files/FINANCIAL_ENTITLEMENTS_BRIEFING.pdf" />
+      <siteMapNode title="LOD Policy for ARC Members" roles="*" visible="false" url="~/Secure/Help/files/LOD_Policy_for_ARC_Members.pdf" />
+      <siteMapNode title="AFRC PHA Guide (Mar 2015)" roles="*" visible="false" url="~/Secure/Help/files/AFRC PHA Guide (Mar 2015).pdf" />
+      <siteMapNode title="AFRC SGP CPM (1 Jun 15)" roles="*" visible="false" url="~/Secure/Help/files/AFRC SGP CPM (1 Jun 15).pdf" />
+
+      <siteMapNode title="ALOD RTM" roles="*" visible="false" url="~/Secure/Help/files/ALOD RTM.xlsx" />
+
+      <siteMapNode title="User Account" roles="*" visible="false" url="~/Secure/Help/files/CBTs/User_Account.wmv" />
+      <siteMapNode title="Ad Hoc Reporting" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Reports/Ad-Hoc_Reporting.wmv" />
+      <siteMapNode title="LOD Category Count Report" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Reports/LOD_Category_Count_Report.wmv" />
+      <siteMapNode title="LOD Dispapproved Report" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Reports/LOD_Disapproved_Report.wmv" />
+      <siteMapNode title="LOD Disposition Report" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Reports/LOD_Disposition_Report.wmv" />
+      <siteMapNode title="LOD Metrics Report" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Reports/LOD_Metrics_Report.wmv" />
+      <siteMapNode title="LOD Physician Cancelled Report" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Reports/LOD_Physician_Cancelled_Report.wmv" />
+      <siteMapNode title="LOD RWOA Report" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Reports/LOD_RWOA_Report.wmv" />
+      <siteMapNode title="LOD Statistics Report" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Reports/LOD_Statistics_Report.wmv" />
+      <siteMapNode title="LOD Total Count Report" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Reports/LOD_Total_Count_by_Process_Report.wmv" />
+      <siteMapNode title="Investigation Officer" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Roles/Investigating_Officer.wmv" />
+      <siteMapNode title="Medical Officer" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Roles/Medical_Officer.wmv" />
+      <siteMapNode title="Medical Technician" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Roles/Medical_Technician_2.wmv" />
+      <siteMapNode title="MPF" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Roles/Military_Personnel_Flight.wmv" />
+      <siteMapNode title="Unit Commander" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Roles/Unit_Commander.wmv" />
+      <siteMapNode title="Wing Commander" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Roles/Wing_Commander.wmv" />
+      <siteMapNode title="Wing JA" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Roles/Wing_Judge_Advocate.wmv" />
+      <siteMapNode title="Wing SARC" roles="*" visible="false" url="~/Secure/Help/files/CBTs/Roles/WING_SARC.wmv" />
+
+      <siteMapNode title="Release Notes - v1.2.4" roles="*" visible="false" url="~/Secure/Help/files/ECT_Release_Notes_1.2.4.pdf" />
+      <siteMapNode title="Release Notes - v1.2.3" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_1.2.3.pdf" />
+      <siteMapNode title="Release Notes - v1.2.2" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_1.2.2.pdf" />
+      <siteMapNode title="Release Notes - v1.2.1" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_1.2.1.pdf" />
+      <siteMapNode title="Release Notes - v1.2.0" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_1.2.0.pdf" />
+      <siteMapNode title="AFRC ALOD Instr for 1.1.11" roles="*" visible="false" url="~/Secure/Help/files/AFRC Automated Line of Duty release notes for 1.1.11.pdf" />
+      <siteMapNode title="Release Notes - v1.1.11" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_notes_1.1.11.pdf" />
+      <siteMapNode title="AFRC ALOD Instr for 1.1.10.2" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_11102.pdf" />
+      <siteMapNode title="Release Notes - v1.1.10.2" roles="*" visible="false" url="~/Secure/Help/files/AFRC Automated Line of Duty release notes for 1 1.10.2.pdf" />
+      <siteMapNode title="Release Notes - v1.1.9" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_1.1.9.pdf" />
+      <siteMapNode title="Release Notes - v1.1.7" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_1.1.7.pdf" />
+      <siteMapNode title="Release Notes - v1.1.6" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_1.1.6.pdf" />
+      <siteMapNode title="Release Notes - v1.1.5" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_1.1.5.pdf" />
+      <siteMapNode title="Release Notes - v1.1.4.1" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_1.1.4.1.pdf" />
+      <siteMapNode title="Release Notes - v1.1.4" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_1.1.4.pdf" />
+      <siteMapNode title="Release Notes - v1.1.3" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_1.1.3.pdf" />
+      <siteMapNode title="Release Notes - v1.1.1" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_1.1.1.pdf" />
+      <siteMapNode title="Release Notes - v1.1.0" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_1.1.0.pdf" />
+      <siteMapNode title="Release Notes - v1.0.10" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_1.0.10.pdf" />
+      <siteMapNode title="Release Notes - v1.0.9" roles="*" visible="false" url="~/Secure/Help/files/ALOD_Release_Notes_1.0.9.pdf" />
+    </siteMapNode>
+
+    <siteMapNode title="Line Of Duty" roles="*" visible="False">
+      <siteMapNode roles="lodView" title="" visible="false" url="~/Secure/lod/Init.aspx" />
+      <siteMapNode roles="lodView" title="Member" visible="false" url="~/Secure/lod/SMData.aspx" Hippa="False" />
+      <siteMapNode roles="lodView" title="Unit CC" visible="True" url="~/Secure/lod/Unit.aspx" Hippa="True" />
+      <siteMapNode roles="lodView" title="Medical" visible="false" url="~/Secure/lod/Medical.aspx" Hippa="True" />
+      <siteMapNode roles="lodView" title="Audit" visible="True" url="~/Secure/lod/Audit.aspx" Hippa="True" />
+      <siteMapNode roles="lodView" title="Wing JA" visible="false" url="~/Secure/lod/WingJA.aspx" Hippa="True" />
+      <siteMapNode roles="lodView" title="Wing CC" visible="false" url="~/Secure/lod/WingCC.aspx" Hippa="True" />
+      <siteMapNode roles="lodView" title="Senior Med" visible="false" url="~/Secure/lod/SeniorMedReviewer.aspx" Hippa="True" />
+      <siteMapNode roles="lodView" title="Investigation" visible="false" url="~/Secure/lod/Investigation.aspx" Hippa="True" />
+      <siteMapNode roles="lodView" title="Documents" visible="false" url="~/Secure/lod/Documents.aspx" Hippa="True" />
+      <siteMapNode roles="lodView" title="LOD Board" visible="false" url="~/Secure/lod/lodBoard.aspx" Hippa="True" />
+      <siteMapNode roles="lodView" title="Next Action" visible="false" url="~/Secure/lod/NextAction.aspx" Hippa="True" />
+      <siteMapNode roles="lodView" title="Tracking" visible="false" url="~/Secure/lod/Tracking.aspx" Hippa="False" />
+      <siteMapNode roles="lodView" title="Print" visible="false" url="~/Secure/lod/Print.aspx" />
+      <siteMapNode roles="lodView" title="Lessons Learned" visible="false" url="~/Secure/lod/BoardComments.aspx" />
+      <siteMapNode roles="lodView" title="Comments" visible="false" url="~/Secure/lod/UnitComments.aspx" />
+      <siteMapNode roles="lodView" title="Case Dialogue" visible="false" url="~/Secure/lod/CaseDialogue.aspx" />
+      <siteMapNode roles="lodView" title="Audit" visible="false" url="~/Secure/lod/Audit.aspx.aspx" />
+    </siteMapNode>
+
+    <siteMapNode title="Reinvestigation Request" roles="*" visible="False">
+      <siteMapNode roles="RRView" title="" visible="false" url="~/Secure/ReinvestigationRequests/Init.aspx" />
+      <siteMapNode roles="RRView" title="RR Member" visible="false" url="~/Secure/ReinvestigationRequests/SMData.aspx" Hippa="False" />
+      <siteMapNode roles="RRView" title="RR Wing JA" visible="false" url="~/Secure/ReinvestigationRequests/WingJA.aspx" Hippa="True" />
+      <siteMapNode roles="RRView" title="RR Wing CC" visible="false" url="~/Secure/ReinvestigationRequests/WingCC.aspx" Hippa="True" />
+      <siteMapNode roles="RRView" title="RR Senior Med" visible="false" url="~/Secure/ReinvestigationRequests/SeniorMedReviewer.aspx" Hippa="True" />
+      <siteMapNode roles="RRView" title="RR Documents" visible="false" url="~/Secure/ReinvestigationRequests/Documents.aspx" Hippa="True" />
+      <siteMapNode roles="RRView" title="RR Board Review" visible="false" url="~/Secure/ReinvestigationRequests/lodBoard.aspx" Hippa="True" />
+      <siteMapNode roles="RRView" title="RR Next Action" visible="false" url="~/Secure/ReinvestigationRequests/NextAction.aspx" Hippa="True" />
+      <siteMapNode roles="RRView" title="RR Case Comments" visible="false" url="~/Secure/ReinvestigationRequests/UnitComments.aspx" Hippa="False" />
+      <siteMapNode roles="RRView" title="RR Tracking" visible="false" url="~/Secure/ReinvestigationRequests/Tracking.aspx" Hippa="False" />
+      <siteMapNode roles="RRView" title="Print" visible="false" url="~/Secure/ReinvestigationRequests/Print.aspx" Hippa="False" />
+      <siteMapNode roles="RRView" title="Case Dialogue" visible="false" url="~/Secure/ReinvestigationRequests/CaseDialogue.aspx" />
+    </siteMapNode>
+
+    <siteMapNode title="Appeal" roles="*" visible="False">
+      <siteMapNode roles="APView" title="" visible="false" url="~/Secure/AppealRequests/Init.aspx" />
+      <siteMapNode roles="APView" title="AP Member" visible="false" url="~/Secure/AppealRequests/SMData.aspx" Hippa="False" />
+      <siteMapNode roles="APView" title="LOD Documents" visible="false" url="~/Secure/AppealRequests/LODDocuments.aspx" Hippa="True" />
+      <siteMapNode roles="APView" title="AP Documents" visible="false" url="~/Secure/AppealRequests/Documents.aspx" Hippa="True" />
+      <siteMapNode roles="APView" title="AP Senior Med" visible="false" url="~/Secure/AppealRequests/SeniorMedReviewer.aspx" Hippa="True" />
+      <siteMapNode roles="APView" title="AP Board" visible="false" url="~/Secure/AppealRequests/lodBoard.aspx" Hippa="True" />
+      <siteMapNode roles="APView" title="AP Next Action" visible="false" url="~/Secure/AppealRequests/NextAction.aspx" Hippa="True" />
+      <siteMapNode roles="APView" title="AP Case Comments" visible="false" url="~/Secure/AppealRequests/UnitComments.aspx" Hippa="False" />
+      <siteMapNode roles="APView" title="AP Tracking" visible="false" url="~/Secure/AppealRequests/Tracking.aspx" Hippa="False" />
+      <siteMapNode roles="APView" title="Print" visible="false" url="~/Secure/AppealRequests/Print.aspx" Hippa="False" />
+      <siteMapNode roles="APView" title="Case Dialogue" visible="false" url="~/Secure/AppealRequests/CaseDialogue.aspx" />
+    </siteMapNode>
+
+    <siteMapNode title="Restricted SARC" roles="*" visible="False">
+      <siteMapNode roles="RSARCView " title="" visible="false" url="~/Secure/SARC/Init.aspx" />
+      <siteMapNode roles="RSARCView " title="SARC Member" visible="false" url="~/Secure/SARC/SMData.aspx" Hippa="False" />
+      <siteMapNode roles="RSARCView " title="Wing SARC" visible="false" url="~/Secure/SARC/Wing.aspx" Hippa="True" />
+      <siteMapNode roles="RSARCView " title="SARC Admin" visible="false" url="~/Secure/SARC/Admin.aspx" Hippa="True" />
+      <siteMapNode roles="RSARCView " title="SARC Senior Med" visible="false" url="~/Secure/SARC/SeniorMedReviewer.aspx" Hippa="True" />
+      <siteMapNode roles="RSARCView " title="SARC Board" visible="false" url="~/Secure/SARC/Board.aspx" Hippa="True" />
+      <siteMapNode roles="RSARCView " title="SARC Documents" visible="false" url="~/Secure/SARC/Documents.aspx" Hippa="True" />
+      <siteMapNode roles="RSARCView " title="SARC Tracking" visible="false" url="~/Secure/SARC/Tracking.aspx" Hippa="False" />
+      <siteMapNode roles="RSARCView " title="SARC Case Comments" visible="false" url="~/Secure/SARC/UnitComments.aspx" Hippa="False" />
+      <siteMapNode roles="RSARCView " title="SARC Next Action" visible="false" url="~/Secure/SARC/NextAction.aspx" Hippa="True" />
+      <siteMapNode roles="RSARCView " title="SARC Print" visible="false" url="~/Secure/SARC/Print.aspx" Hippa="False" />
+      <siteMapNode roles="RSARCView" title="Case Dialogue" visible="false" url="~/Secure/SARC/CaseDialogue.aspx" />
+    </siteMapNode>
+
+    <siteMapNode title="SARC Appeal" roles="*" visible="False">
+      <siteMapNode roles="RSARCAppealView " title="" visible="false" url="~/Secure/SARC_Appeal/Init.aspx" />
+      <siteMapNode roles="RSARCAppealView " title="SARC AP Member" visible="false" url="~/Secure/SARC_Appeal/SMData.aspx" Hippa="False" />
+      <siteMapNode roles="RSARCAppealView " title="SARC Documents" visible="false" url="~/Secure/SARC_Appeal/SARCDocuments.aspx" Hippa="True" />
+      <siteMapNode roles="RSARCAppealView " title="SARC AP Documents" visible="false" url="~/Secure/SARC_Appeal/Documents.aspx" Hippa="True" />
+      <siteMapNode roles="RSARCAppealView " title="SARC AP Admin" visible="false" url="~/Secure/SARC_Appeal/Admin.aspx" Hippa="True" />
+      <siteMapNode roles="RSARCAppealView " title="SARC AP Senior Med" visible="false" url="~/Secure/SARC_Appeal/SeniorMedReviewer.aspx" Hippa="True" />
+      <siteMapNode roles="RSARCAppealView " title="SARC AP Board" visible="false" url="~/Secure/SARC_Appeal/Board.aspx" Hippa="True" />
+      <siteMapNode roles="RSARCAppealView " title="SARC AP Next Action" visible="false" url="~/Secure/SARC_Appeal/NextAction.aspx" Hippa="True" />
+      <siteMapNode roles="RSARCAppealView " title="SARC AP Case Comments" visible="false" url="~/Secure/SARC_Appeal/UnitComments.aspx" Hippa="False" />
+      <siteMapNode roles="RSARCAppealView " title="SARC Appeal Tracking" visible="false" url="~/Secure/SARC_Appeal/Tracking.aspx" Hippa="False" />
+      <siteMapNode roles="RSARCAppealView" title="Case Dialogue" visible="false" url="~/Secure/SARC_Appeal/CaseDialogue.aspx" />
+    </siteMapNode>
+
+    <siteMapNode title="Other Cases" roles="*" visible="False">
+      <siteMapNode title="WWD" roles="*" visible="False">
+        <siteMapNode roles="WWDView" title="" visible="false" url="~/Secure/SC_WWD/Init.aspx" />
+        <siteMapNode roles="WWDView" title="WD Member" visible="false" url="~/Secure/SC_WWD/SMData.aspx" Hippa="False" />
+        <siteMapNode roles="WWDView" title="WD Med Tech" visible="false" url="~/Secure/SC_WWD/MedTech.aspx" Hippa="True" />
+        <siteMapNode roles="WWDView" title="WD HQ AFRC Tech" visible="false" url="~/Secure/SC_WWD/HQTech.aspx" Hippa="True" />
+        <siteMapNode roles="WWDView" title="WD Board Med" visible="false" url="~/Secure/SC_WWD/MedOff.aspx" Hippa="True" />
+        <siteMapNode roles="WWDView" title="WD Documents" visible="false" url="~/Secure/SC_WWD/Documents.aspx" Hippa="True" />
+        <siteMapNode roles="WWDView" title="WD Next Action" visible="false" url="~/Secure/SC_WWD/NextAction.aspx" Hippa="True" />
+        <siteMapNode roles="WWDView" title="WD Case Comments" visible="false" url="~/Secure/SC_WWD/UnitComments.aspx" Hippa="False" />
+        <siteMapNode roles="WWDView" title="WD Tracking" visible="false" url="~/Secure/SC_WWD/Tracking.aspx" Hippa="False" />
+        <siteMapNode roles="WWDView" title="Print" visible="false" url="~/Secure/SC_WWD/Print.aspx" />
+        <siteMapNode roles="WWDView" title="Case Dialogue" visible="false" url="~/Secure/SC_WWD/CaseDialogue.aspx" />
+      </siteMapNode>
+      <siteMapNode title="PWaiver" roles="*" visible="False">
+        <siteMapNode roles="PWView" title="" visible="false" url="~/Secure/SC_PWaivers/Init.aspx" />
+        <siteMapNode roles="PWView" title="PW Member" visible="false" url="~/Secure/SC_PWaivers/SMData.aspx" Hippa="False" />
+        <siteMapNode roles="PWView" title="PW Med Tech" visible="false" url="~/Secure/SC_PWaivers/MedTech.aspx" Hippa="True" />
+        <siteMapNode roles="PWView" title="PW Board Med" visible="false" url="~/Secure/SC_PWaivers/MedOfficer.aspx" Hippa="True" />
+        <siteMapNode roles="PWView" title="PW Documents" visible="false" url="~/Secure/SC_PWaivers/Documents.aspx" Hippa="True" />
+        <siteMapNode roles="PWView" title="PW Next Action" visible="false" url="~/Secure/SC_PWaivers/NextAction.aspx" Hippa="True" />
+        <siteMapNode roles="PWView" title="PW Case Comments" visible="false" url="~/Secure/SC_PWaivers/UnitComments.aspx" Hippa="False" />
+        <siteMapNode roles="PWView" title="PW Tracking" visible="false" url="~/Secure/SC_PWaivers/Tracking.aspx" Hippa="False" />
+        <siteMapNode roles="PWView" title="Print" visible="false" url="~/Secure/SC_PWaivers/Print.aspx" />
+        <siteMapNode roles="PWView" title="Case Dialogue" visible="false" url="~/Secure/SC_PWaivers/CaseDialogue.aspx" />
+      </siteMapNode>
+      <siteMapNode title="AGRCert" roles="*" visible="False">
+        <siteMapNode roles="AGRCertView" title="" visible="false" url="~/Secure/SC_AGRCert/Init.aspx" />
+        <siteMapNode roles="AGRCertView" title="AGR Member" visible="false" url="~/Secure/SC_AGRCert/SMData.aspx" Hippa="False" />
+        <siteMapNode roles="AGRCertView" title="AGR Med Tech" visible="false" url="~/Secure/SC_AGRCert/MedTech.aspx" Hippa="True" />
+        <siteMapNode roles="AGRCertView" title="AGR Medical Review" visible="false" url="~/Secure/SC_AGRCert/MedOfficer.aspx" Hippa="True" />
+        <siteMapNode roles="AGRCertView" title="AGR Documents" visible="false" url="~/Secure/SC_AGRCert/Documents.aspx" Hippa="True" />
+        <siteMapNode roles="AGRCertView" title="AGR Next Action" visible="false" url="~/Secure/SC_AGRCert/NextAction.aspx" Hippa="True" />
+        <siteMapNode roles="AGRCertView" title="AGR Case Comments" visible="false" url="~/Secure/SC_AGRCert/UnitComments.aspx" Hippa="False" />
+        <siteMapNode roles="AGRCertView" title="AGR Tracking" visible="false" url="~/Secure/SC_AGRCert/Tracking.aspx" Hippa="False" />
+        <!--<siteMapNode roles="AGRCertView" title="Print" visible="false" url="~/Secure/SC_AGRCert/Print.aspx" />-->
+        <siteMapNode roles="AGRCertView" title="AGR Case Dialogue" visible="false" url="~/Secure/SC_AGRCert/CaseDialogue.aspx" />
+      </siteMapNode>
+      <siteMapNode title="MEB" roles="*" visible="False">
+        <siteMapNode roles="MEBView" title="" visible="false" url="~/Secure/SC_MEB/Init.aspx" />
+        <siteMapNode roles="MEBView" title="MB Member" visible="false" url="~/Secure/SC_MEB/SMData.aspx" Hippa="False" />
+        <siteMapNode roles="MEBView" title="MB HQ AFRC Tech" visible="false" url="~/Secure/SC_MEB/HQTech.aspx" Hippa="True" />
+        <siteMapNode roles="MEBView" title="MB Med Off" visible="false" url="~/Secure/SC_MEB/MedOff.aspx" Hippa="True" />
+        <siteMapNode roles="MEBView" title="MB Med Tech" visible="false" url="~/Secure/SC_MEB/MedTech.aspx" Hippa="False" />
+        <siteMapNode roles="MEBView" title="MB Documents" visible="false" url="~/Secure/SC_MEB/Documents.aspx" Hippa="True" />
+        <siteMapNode roles="MEBView" title="MB Next Action" visible="false" url="~/Secure/SC_MEB/NextAction.aspx" Hippa="True" />
+        <siteMapNode roles="MEBView" title="MB Case Comments" visible="false" url="~/Secure/SC_MEB/UnitComments.aspx" Hippa="False" />
+        <siteMapNode roles="MEBView" title="MB Tracking" visible="false" url="~/Secure/SC_MEB/Tracking.aspx" Hippa="False" />
+        <siteMapNode roles="MEBView" title="Print" visible="false" url="~/Secure/SC_MEB/Print.aspx" />
+        <siteMapNode roles="MEBView" title="Case Dialogue" visible="false" url="~/Secure/SC_MEB/CaseDialogue.aspx" />
+      </siteMapNode>
+      <siteMapNode roles="*" title="Specialty Cases" visible="False">
+        <siteMapNode title="INCAP" roles="*" visible="False">
+          <siteMapNode roles="INCAPView" title="" visible="false" url="~/Secure/SC_Incap/Init.aspx" />
+          <siteMapNode roles="INCAPView" title="IN Member" visible="false" url="~/Secure/SC_Incap/SMData.aspx" Hippa="False" />
+          <siteMapNode roles="INCAPView" title="IN Wing Int" visible="false" url="~/Secure/SC_Incap/MedOff.aspx" Hippa="True" />
+          <siteMapNode roles="INCAPView" title="IN HQ Ext/ App" visible="false" url="~/Secure/SC_Incap/HQTech.aspx" Hippa="True" />
+          <siteMapNode roles="INCAPView" title="IN Documents" visible="false" url="~/Secure/SC_Incap/Documents.aspx" Hippa="True" />
+          <siteMapNode roles="INCAPView" title="LOD Documents" visible="false" url="~/Secure/SC_Incap/LODDocuments.aspx" Hippa="True" />
+          <siteMapNode roles="INCAPView" title="IN Next Action" visible="false" url="~/Secure/SC_Incap/NextAction.aspx" Hippa="True" />
+          <siteMapNode roles="INCAPView" title="IN Case Comments" visible="false" url="~/Secure/SC_Incap/UnitComments.aspx" Hippa="False" />
+          <siteMapNode roles="INCAPView" title="IN Tracking" visible="false" url="~/Secure/SC_Incap/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="INCAPView" title="Print" visible="false" url="~/Secure/SC_Incap/Print.aspx" Hippa="True" />
+          <siteMapNode roles="INCAPView" title="Case Dialogue" visible="false" url="~/Secure/SC_Incap/CaseDialogue.aspx" />
+        </siteMapNode>
+        <siteMapNode title="BMT Waivers/MEPS" roles="*" visible="False">
+          <siteMapNode roles="BMTView" title="" visible="false" url="~/Secure/SC_BMT/Init.aspx" />
+          <siteMapNode roles="BMTView" title="BT Member" visible="false" url="~/Secure/SC_BMT/SMData.aspx" Hippa="False" />
+          <siteMapNode roles="BMTView" title="BT Board Med" visible="false" url="~/Secure/SC_BMT/MedOff.aspx" Hippa="True" />
+          <siteMapNode roles="BMTView" title="BT HQ AFRC Tech" visible="false" url="~/Secure/SC_BMT/HQTech.aspx" Hippa="True" />
+          <siteMapNode roles="BMTView" title="BT Documents" visible="false" url="~/Secure/SC_BMT/Documents.aspx" Hippa="True" />
+          <siteMapNode roles="BMTView" title="BT Board Review" visible="false" url="~/Secure/SC_BMT/lodBoard.aspx" Hippa="True" />
+          <siteMapNode roles="BMTView" title="BT Next Action" visible="false" url="~/Secure/SC_BMT/NextAction.aspx" Hippa="True" />
+          <siteMapNode roles="BMTView" title="BT Case Comments" visible="false" url="~/Secure/SC_BMT/UnitComments.aspx" Hippa="False" />
+          <siteMapNode roles="BMTView" title="BT Tracking" visible="false" url="~/Secure/SC_BMT/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="BMTView" title="Print" visible="false" url="~/Secure/SC_BMT/Print.aspx" />
+          <siteMapNode roles="BMTView" title="Case Dialogue" visible="false" url="~/Secure/SC_BMT/CaseDialogue.aspx" />
+        </siteMapNode>
+        <siteMapNode title="Congressionals" roles="*" visible="False">
+          <siteMapNode roles="CIView" title="" visible="false" url="~/Secure/SC_Congress/Init.aspx" />
+          <siteMapNode roles="CIView" title="CI Member" visible="false" url="~/Secure/SC_Congress/SMData.aspx" Hippa="False" />
+          <siteMapNode roles="CIView" title="CI Med Tech" visible="false" url="~/Secure/SC_Congress/MedTech.aspx" Hippa="True" />
+          <siteMapNode roles="CIView" title="CI HQ AFRC Tech" visible="false" url="~/Secure/SC_Congress/HQTech.aspx" Hippa="True" />
+          <siteMapNode roles="CIView" title="CI Documents" visible="false" url="~/Secure/SC_Congress/Documents.aspx" Hippa="True" />
+          <siteMapNode roles="CIView" title="CI Next Action" visible="false" url="~/Secure/SC_Congress/NextAction.aspx" Hippa="True" />
+          <siteMapNode roles="CIView" title="CI Case Comments" visible="false" url="~/Secure/SC_Congress/UnitComments.aspx" Hippa="False" />
+          <siteMapNode roles="CIView" title="CI Tracking" visible="false" url="~/Secure/SC_Congress/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="CIView" title="Print" visible="false" url="~/Secure/SC_Congress/Print.aspx" />
+          <siteMapNode roles="CIView" title="Case Dialogue" visible="false" url="~/Secure/SC_Congress/CaseDialogue.aspx" />
+        </siteMapNode>
+        <siteMapNode title="BCMR" roles="*" visible="False">
+          <siteMapNode roles="BCMRView" title="" visible="false" url="~/Secure/SC_BCMR/Init.aspx" />
+          <siteMapNode roles="BCMRView" title="BC Member" visible="false" url="~/Secure/SC_BCMR/SMData.aspx" Hippa="False" />
+          <siteMapNode roles="BCMRView" title="BC Med Tech" visible="false" url="~/Secure/SC_BCMR/MedTech.aspx" Hippa="True" />
+          <siteMapNode roles="BCMRView" title="BC HQ AFRC Tech" visible="false" url="~/Secure/SC_BCMR/HQTech.aspx" Hippa="True" />
+          <siteMapNode roles="BCMRView" title="BC Documents" visible="false" url="~/Secure/SC_BCMR/Documents.aspx" Hippa="True" />
+          <siteMapNode roles="BCMRView" title="BC Next Action" visible="false" url="~/Secure/SC_BCMR/NextAction.aspx" Hippa="True" />
+          <siteMapNode roles="BCMRView" title="BC Case Comments" visible="false" url="~/Secure/SC_BCMR/UnitComments.aspx" Hippa="False" />
+          <siteMapNode roles="BCMRView" title="BC Tracking" visible="false" url="~/Secure/SC_BCMR/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="BCMRView" title="Print" visible="false" url="~/Secure/SC_BCMR/Print.aspx" />
+          <siteMapNode roles="BCMRView" title="Case Dialogue" visible="false" url="~/Secure/SC_BCMR/CaseDialogue.aspx" />
+        </siteMapNode>
+        <siteMapNode title="CMAS" roles="*" visible="False">
+          <siteMapNode roles="CMASView" title="" visible="false" url="~/Secure/SC_CMAS/Init.aspx" />
+          <siteMapNode roles="CMASView" title="CM Member" visible="false" url="~/Secure/SC_CMAS/SMData.aspx" Hippa="False" />
+          <siteMapNode roles="CMASView" title="CM Med Tech" visible="false" url="~/Secure/SC_CMAS/MedTech.aspx" Hippa="True" />
+          <siteMapNode roles="CMASView" title="CM HQ AFRC Tech" visible="false" url="~/Secure/SC_CMAS/HQTech.aspx" Hippa="True" />
+          <siteMapNode roles="CMASView" title="CM Documents" visible="false" url="~/Secure/SC_CMAS/Documents.aspx" Hippa="True" />
+          <siteMapNode roles="CMASView" title="CM Next Action" visible="false" url="~/Secure/SC_CMAS/NextAction.aspx" Hippa="True" />
+          <siteMapNode roles="CMASView" title="CM Case Comments" visible="false" url="~/Secure/SC_CMAS/UnitComments.aspx" Hippa="False" />
+          <siteMapNode roles="CMASView" title="CM Tracking" visible="false" url="~/Secure/SC_CMAS/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="CMASView" title="Print" visible="false" url="~/Secure/SC_CMAS/Print.aspx" />
+          <siteMapNode roles="CMASView" title="Case Dialogue" visible="false" url="~/Secure/SC_CMAS/CaseDialogue.aspx" />
+        </siteMapNode>
+        <siteMapNode title="IRILO" roles="*" visible="False">
+          <siteMapNode roles="IRILOView" title="" visible="false" url="~/Secure/SC_FastTrack/Init.aspx" />
+          <siteMapNode roles="IRILOView" title="IR Member" visible="false" url="~/Secure/SC_FastTrack/SMData.aspx" Hippa="False" />
+          <siteMapNode roles="IRILOView" title="IR Med Tech" visible="false" url="~/Secure/SC_FastTrack/MedTech.aspx" Hippa="True" />
+          <siteMapNode roles="IRILOView" title="IR HQ AFRC Tech" visible="false" url="~/Secure/SC_FastTrack/HQTech.aspx" Hippa="True" />
+          <siteMapNode roles="IRILOView" title="IR Med Off" visible="false" url="~/Secure/SC_FastTrack/MedOff.aspx" Hippa="True" />
+          <siteMapNode roles="IRILOView" title="IR Documents" visible="false" url="~/Secure/SC_FastTrack/Documents.aspx" Hippa="True" />
+          <siteMapNode roles="IRILOView" title="LOD Documents" visible="false" url="~/Secure/SC_FastTrack/LODDocuments.aspx" Hippa="True" />
+          <siteMapNode roles="IRILOView" title="IR Next Action" visible="false" url="~/Secure/SC_FastTrack/NextAction.aspx" Hippa="True" />
+          <siteMapNode roles="IRILOView" title="IR Case Comments" visible="false" url="~/Secure/SC_FastTrack/UnitComments.aspx" Hippa="False" />
+          <siteMapNode roles="IRILOView" title="IR Tracking" visible="false" url="~/Secure/SC_FastTrack/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="IRILOView" title="Print" visible="false" url="~/Secure/SC_FastTrack/Print.aspx" />
+          <siteMapNode roles="IRILOView" title="Case Dialogue" visible="false" url="~/Secure/SC_FastTrack/CaseDialogue.aspx" />
+        </siteMapNode>
+        <siteMapNode title="MMSO" roles="*" visible="False">
+          <siteMapNode roles="*" title="" visible="false" url="~/Secure/SC_MMSO/Init.aspx" />
+          <siteMapNode roles="*" title="MM Member" visible="false" url="~/Secure/SC_MMSO/SMData.aspx" Hippa="False" />
+          <siteMapNode roles="*" title="Pre-Authorization Request" visible="false" url="~/Secure/SC_MMSO/MedTech.aspx" Hippa="True" />
+          <siteMapNode roles="*" title="MM Documents" visible="false" url="~/Secure/SC_MMSO/Documents.aspx" Hippa="True" />
+          <siteMapNode roles="*" title="MM LOD Documents" visible="false" url="~/Secure/SC_MMSO/LODDocuments.aspx" Hippa="True" />
+          <siteMapNode roles="*" title="MM Next Action" visible="false" url="~/Secure/SC_MMSO/NextAction.aspx" Hippa="True" />
+          <siteMapNode roles="*" title="MM Tracking" visible="false" url="~/Secure/SC_MMSO/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="*" title="Print" visible="false" url="~/Secure/SC_MMSO/Print.aspx" />
+          <siteMapNode roles="*" title="Case Dialogue" visible="false" url="~/Secure/SC_MMSO/CaseDialogue.aspx" />
+        </siteMapNode>
+
+        <siteMapNode title="MH" roles="*" visible="False">
+          <siteMapNode roles="MHView" title="" visible="false" url="~/Secure/SC_MH/Init.aspx" />
+          <siteMapNode roles="MHView" title="MH Member" visible="false" url="~/Secure/SC_MH/SMData.aspx" Hippa="False" />
+          <siteMapNode roles="MHView" title="MH HQ AFRC Tech" visible="false" url="~/Secure/SC_MH/HQTech.aspx" Hippa="True" />
+          <siteMapNode roles="MHView" title="MH Board Med" visible="false" url="~/Secure/SC_MH/MedOff.aspx" Hippa="True" />
+          <siteMapNode roles="MHView" title="MH Documents" visible="false" url="~/Secure/SC_MH/Documents.aspx" Hippa="True" />
+          <siteMapNode roles="MHView" title="MH Next Action" visible="false" url="~/Secure/SC_MH/NextAction.aspx" Hippa="True" />
+          <siteMapNode roles="MHView" title="MH Case Comments" visible="false" url="~/Secure/SC_MH/UnitComments.aspx" Hippa="False" />
+          <siteMapNode roles="MHView" title="MH Tracking" visible="false" url="~/Secure/SC_MH/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="MHView" title="Print" visible="false" url="~/Secure/SC_MH/Print.aspx" />
+          <siteMapNode roles="MHView" title="Case Dialogue" visible="false" url="~/Secure/SC_MH/CaseDialogue.aspx" />
+        </siteMapNode>
+
+        <siteMapNode title="DW" roles="*" visible="False">
+          <siteMapNode roles="DWView" title="" visible="false" url="~/Secure/SC_DW/Init.aspx" />
+          <siteMapNode roles="DWView" title="DW Member" visible="false" url="~/Secure/SC_DW/SMData.aspx" Hippa="False" />
+          <siteMapNode roles="DWView" title="DW Med Tech" visible="false" url="~/Secure/SC_DW/MedTech.aspx" Hippa="False" />
+          <siteMapNode roles="DWView" title="DW Board Med" visible="false" url="~/Secure/SC_DW/MedOff.aspx" Hippa="True" />
+          <siteMapNode roles="DWView" title="DW Documents" visible="false" url="~/Secure/SC_DW/Documents.aspx" Hippa="True" />
+          <siteMapNode roles="DWView" title="DW Next Action" visible="false" url="~/Secure/SC_DW/NextAction.aspx" Hippa="True" />
+          <siteMapNode roles="DWView" title="DW Case Comments" visible="false" url="~/Secure/SC_DW/UnitComments.aspx" Hippa="False" />
+          <siteMapNode roles="DWView" title="DW Tracking" visible="false" url="~/Secure/SC_DW/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="DWView" title="Print" visible="false" url="~/Secure/SC_DW/Print.aspx" />
+          <siteMapNode roles="DWView" title="Case Dialogue" visible="false" url="~/Secure/SC_DW/CaseDialogue.aspx" />
+        </siteMapNode>
+
+        <siteMapNode title="NE" roles="*" visible="False">
+          <siteMapNode roles="NEView" title="" visible="false" url="~/Secure/SC_NE/Init.aspx" />
+          <siteMapNode roles="NEView" title="NE Member" visible="false" url="~/Secure/SC_NE/SMData.aspx" Hippa="False" />
+          <siteMapNode roles="NEView" title="NE Med Tech" visible="false" url="~/Secure/SC_NE/MedTech.aspx" Hippa="True" />
+          <siteMapNode roles="NEView" title="NE Board Med" visible="false" url="~/Secure/SC_NE/MedOff.aspx" Hippa="True" />
+          <siteMapNode roles="NEView" title="NE Documents" visible="false" url="~/Secure/SC_NE/Documents.aspx" Hippa="True" />
+          <siteMapNode roles="NEView" title="NE Next Action" visible="false" url="~/Secure/SC_NE/NextAction.aspx" Hippa="True" />
+          <siteMapNode roles="NEView" title="NE Case Comments" visible="false" url="~/Secure/SC_NE/UnitComments.aspx" Hippa="False" />
+          <siteMapNode roles="NEView" title="NE Tracking" visible="false" url="~/Secure/SC_NE/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="NEView" title="Print" visible="false" url="~/Secure/SC_NE/Print.aspx" />
+          <siteMapNode roles="NEView" title="Case Dialogue" visible="false" url="~/Secure/SC_NE/CaseDialogue.aspx" />
+        </siteMapNode>
+
+        <siteMapNode title="MO" roles="*" visible="False">
+          <siteMapNode roles="MOView" title="" visible="false" url="~/Secure/SC_MO/Init.aspx" />
+          <siteMapNode roles="MOView" title="MO Member" visible="false" url="~/Secure/SC_MO/SMData.aspx" Hippa="False" />
+          <siteMapNode roles="MOView" title="MO Med Tech" visible="false" url="~/Secure/SC_MO/MedTech.aspx" Hippa="True" />
+          <siteMapNode roles="MOView" title="MO Board Med" visible="false" url="~/Secure/SC_MO/MedOff.aspx" Hippa="True" />
+          <siteMapNode roles="MOView" title="MO Documents" visible="false" url="~/Secure/SC_MO/Documents.aspx" Hippa="True" />
+          <siteMapNode roles="MOView" title="MO Next Action" visible="false" url="~/Secure/SC_MO/NextAction.aspx" Hippa="True" />
+          <siteMapNode roles="MOView" title="MO Case Comments" visible="false" url="~/Secure/SC_MO/UnitComments.aspx" Hippa="False" />
+          <siteMapNode roles="MOView" title="MO Tracking" visible="false" url="~/Secure/SC_MO/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="MOView" title="Print" visible="false" url="~/Secure/SC_MO/Print.aspx" />
+          <siteMapNode roles="MOView" title="Case Dialogue" visible="false" url="~/Secure/SC_MO/CaseDialogue.aspx" />
+        </siteMapNode>
+
+        <siteMapNode title="PEPP/AIMWITS" roles="*" visible="False">
+          <siteMapNode roles="PEPPView" title="" visible="false" url="~/Secure/SC_PEPP/Init.aspx" />
+          <siteMapNode roles="PEPPView" title="PEPP Member" visible="false" url="~/Secure/SC_PEPP/SMData.aspx" Hippa="False" />
+          <siteMapNode roles="PEPPView" title="PEPP HQ AFRC Tech" visible="false" url="~/Secure/SC_PEPP/HQTech.aspx" Hippa="True" />
+          <siteMapNode roles="PEPPView" title="PEPP Board Med" visible="false" url="~/Secure/SC_PEPP/MedOff.aspx" Hippa="True" />
+          <siteMapNode roles="PEPPView" title="PEPP Documents" visible="false" url="~/Secure/SC_PEPP/Documents.aspx" Hippa="True" />
+          <siteMapNode roles="PEPPView" title="PEPP Next Action" visible="false" url="~/Secure/SC_PEPP/NextAction.aspx" Hippa="True" />
+          <siteMapNode roles="PEPPView" title="PEPP Case Comments" visible="false" url="~/Secure/SC_PEPP/UnitComments.aspx" Hippa="False" />
+          <siteMapNode roles="PEPPView" title="PEPP Tracking" visible="false" url="~/Secure/SC_PEPP/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="PEPPView" title="Print" visible="false" url="~/Secure/SC_PEPP/Print.aspx" />
+          <siteMapNode roles="PEPPView" title="Case Dialogue" visible="false" url="~/Secure/SC_PEPP/CaseDialogue.aspx" />
+        </siteMapNode>
+
+        <siteMapNode title="RS" roles="*" visible="False">
+          <siteMapNode roles="RSView" title="" visible="false" url="~/Secure/SC_RS/Init.aspx" />
+          <siteMapNode roles="RSView" title="RS Member" visible="false" url="~/Secure/SC_RS/SMData.aspx" Hippa="False" />
+          <siteMapNode roles="RSView" title="RS Tech" visible="false" url="~/Secure/SC_RS/HQTech.aspx" Hippa="True" />
+          <siteMapNode roles="RSView" title="RS Board Med" visible="false" url="~/Secure/SC_RS/MedOff.aspx" Hippa="True" />
+          <siteMapNode roles="RSView" title="RS Documents" visible="false" url="~/Secure/SC_RS/Documents.aspx" Hippa="True" />
+          <siteMapNode roles="RSView" title="RS Next Action" visible="false" url="~/Secure/SC_RS/NextAction.aspx" Hippa="True" />
+          <siteMapNode roles="RSView" title="RS Case Comments" visible="false" url="~/Secure/SC_RS/UnitComments.aspx" Hippa="False" />
+          <siteMapNode roles="RSView" title="RS Tracking" visible="false" url="~/Secure/SC_RS/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="RSView" title="Case Dialogue" visible="false" url="~/Secure/SC_RS/CaseDialogue.aspx" />
+        </siteMapNode>
+
+        <siteMapNode title="RW" roles="*" visible="False">
+          <siteMapNode roles="RWView" title="" visible="false" url="~/Secure/SC_RW/Init.aspx" />
+          <siteMapNode roles="RWView" title="RW Member" visible="false" url="~/Secure/SC_RW/SMData.aspx" Hippa="False" />
+          <siteMapNode roles="RWView" title="RW Med Tech" visible="false" url="~/Secure/SC_RW/MedTech.aspx" Hippa="True" />
+          <siteMapNode roles="RWView" title="RW Med Off" visible="false" url="~/Secure/SC_RW/MedOff.aspx" Hippa="True" />
+          <siteMapNode roles="RWView" title="RW Documents" visible="false" url="~/Secure/SC_RW/Documents.aspx" Hippa="True" />
+          <siteMapNode roles="RWView" title="RW Previous RTD" visible="false" url="~/Secure/SC_RW/PreviousRTD.aspx" Hippa="True" />
+          <siteMapNode roles="RWView" title="LOD Documents" visible="false" url="~/Secure/SC_RW/LODDocuments.aspx" Hippa="True" />
+          <siteMapNode roles="RWView" title="RW Next Action" visible="false" url="~/Secure/SC_RW/NextAction.aspx" Hippa="True" />
+          <siteMapNode roles="RWView" title="RW Case Comments" visible="false" url="~/Secure/SC_RW/UnitComments.aspx" Hippa="False" />
+          <siteMapNode roles="RWView" title="RW Tracking" visible="false" url="~/Secure/SC_RW/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="RWView" title="Case Dialogue" visible="false" url="~/Secure/SC_RW/CaseDialogue.aspx" />
+        </siteMapNode>
+
+        <siteMapNode title="PH" roles="*" visible="False">
+          <siteMapNode roles="PHView" title="" visible="false" url="~/Secure/SC_PH/Init.aspx" />
+          <siteMapNode roles="PHView" title="PH History" visible="false" url="~/Secure/SC_PH/History.aspx" Hippa="True" />
+          <siteMapNode roles="PHView" title="PH Form" visible="false" url="~/Secure/SC_PH/Form.aspx" Hippa="True" />
+          <siteMapNode roles="PHView" title="PH Documents" visible="false" url="~/Secure/SC_PH/Documents.aspx" Hippa="True" />
+          <siteMapNode roles="PHView" title="PH Next Action" visible="false" url="~/Secure/SC_PH/NextAction.aspx" Hippa="True" />
+          <siteMapNode roles="PHView" title="PH Case Comments" visible="false" url="~/Secure/SC_PH/UnitComments.aspx" Hippa="False" />
+          <siteMapNode roles="PHView" title="PH Tracking" visible="false" url="~/Secure/SC_PH/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="PHView" title="Print" visible="false" url="~/Secure/SC_PH/Print.aspx" />
+          <siteMapNode roles="PHView" title="Case Dialogue" visible="false" url="~/Secure/SC_PH/CaseDialogue.aspx" />
+        </siteMapNode>
+
+        <siteMapNode title="PSCD" roles="*" visible="False">
+          <siteMapNode roles="PSCDView" title="" visible="false" url="~/Secure/SC_PSCD/Init.aspx" />
+          <siteMapNode roles="PSCDView" title="PSC Member" visible="false" url="~/Secure/SC_PSCD/SMData.aspx" Hippa="False" />
+          <siteMapNode roles="PSCDView" title="PSC Med Tech" visible="false" url="~/Secure/SC_PSCD/PSCDTech.aspx" Hippa="False" />
+          <siteMapNode roles="PSCDView" title="Case Dialogue" visible="false" url="~/Secure/SC_PSCD/CaseDialogue.aspx" Hippa="False" />
+          <siteMapNode roles="PSCDView" title="PSC Case Comments" visible="false" url="~/Secure/SC_PSCD/UnitComments.aspx" Hippa="False" />
+          <siteMapNode roles="PSCDView" title="PSC Tracking" visible="false" url="~/Secure/SC_PSCD/Tracking.aspx" Hippa="False" />
+          <siteMapNode roles="PSCDView" title="PSC Next Action" visible="false" url="~/Secure/SC_PSCD/NextAction.aspx" Hippa="False" />
+          <siteMapNode roles="PSCDView" title="PSC Board" visible="false" url="~/Secure/SC_PSCD/PSCDBoard.aspx" Hippa="False" />
+          <siteMapNode roles="PSCDView" title="PSC Documents" visible="false" url="~/Secure/SC_PSCD/Documents.aspx" Hippa="False" />
+          <siteMapNode roles="PSCDView" title="PSC WD Documents" visible="false" url="~/Secure/SC_PSCD/WD_Documents.aspx" Hippa="False" />
+          <siteMapNode roles="PSCDView" title="PSC IR Documents" visible="false" url="~/Secure/SC_PSCD/IR_Documents.aspx" Hippa="False" />
+          <siteMapNode roles="PSCDView" title="PSC RW Documents" visible="false" url="~/Secure/SC_PSCD/RW_Documents.aspx" Hippa="False" />
+        </siteMapNode>
+      </siteMapNode>
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>
