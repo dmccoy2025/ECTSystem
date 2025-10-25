@@ -24,6 +24,7 @@ ECTSystem is an Electronic Case Tracking application for ALOD (Army Lodging) bui
 - **Run**: `dotnet run` in `AF.ECT.AppHost` launches Aspire dashboard at http://localhost:15888.
 - **Debug**: Use launchSettings.json profiles; attach debugger to processes.
 - **Test**: `dotnet test` runs xUnit tests in `AF.ECT.Tests`.
+- **Package Updates**: `dotnet list ElectronicCaseTracking.sln package --outdated` to check for outdated NuGet packages.
 - **Database**: Migrations via EF Core; stored procedures for complex queries.
 
 
