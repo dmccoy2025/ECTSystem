@@ -110,6 +110,25 @@
             }
         },
         {
+            "name": ".NET Launch (MAUI App)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "dotnet",
+            "args": [
+                "run",
+                "--project",
+                "${workspaceFolder}/AF.ECT.MobileClient/AF.ECT.MobileClient.csproj",
+                "--launch-profile",
+                "Windows Machine"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
             "type": "pwa-msedge",
             "name": "Launch Microsoft Edge",
             "request": "launch",
