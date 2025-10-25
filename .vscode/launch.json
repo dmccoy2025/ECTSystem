@@ -119,8 +119,8 @@
                 "run",
                 "--project",
                 "${workspaceFolder}/AF.ECT.MobileClient/AF.ECT.MobileClient.csproj",
-                "--launch-profile",
-                "Windows Machine"
+                "--framework",
+                "net9.0-windows10.0.19041.0"
             ],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
