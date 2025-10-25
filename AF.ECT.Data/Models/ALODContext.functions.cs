@@ -1,3 +1,5 @@
+using AF.ECT.Data.Interfaces;
+
 namespace AF.ECT.Data.Models;
 
 public partial class ALODContext
