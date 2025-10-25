@@ -1,0 +1,935 @@
+{
+  "Root": {
+    "roles": ["*"],
+    "pages": {
+      "Common Pages": {
+        "roles": ["*"],
+        "visible": false,
+        "pages": {
+          "Default.aspx": {"roles": ["*"]},
+          "ClientTest.aspx": {"roles": ["*"]},
+          "DevLogin.aspx": {"roles": ["*"]},
+          "Start.aspx": {"roles": ["*"]},
+          "Logout.aspx": {"roles": ["*"]},
+          "About.aspx": {"roles": ["*"]},
+          "pdf.ico": {"roles": ["*"]},
+          "DbSignInstall.htm": {"roles": ["*"]},
+          "SessionViewer.aspx": {"roles": ["*"]},
+          "EditMemo.aspx": {"roles": ["*"]},
+          "ViewPdf.aspx": {"roles": ["*"]},
+          "ChangeLog.aspx": {"roles": ["*"]},
+          "DocumentViewer.aspx": {"roles": ["*"]},
+          "DocumentUpload.aspx": {"roles": ["*"]},
+          "CustomDocumentUpload.aspx": {"roles": ["*"]},
+          "AFIReportExportInstructions.aspx": {"roles": ["*"]},
+          "start.aspx": {"roles": ["*"]},
+          "PrintTracking.aspx": {"roles": ["*"]},
+          "DataService.asmx/js": {"roles": ["*"]},
+          "DataService.asmx/jsdebug": {"roles": ["*"]},
+          "DataService.asmx": {"roles": ["*"]},
+          "GetCompos": {"roles": ["*"]},
+          "GetUserGroups": {"roles": ["*"]},
+          "GetUserGroupsWithAccessScope": {"roles": ["*"]},
+          "GetDocumentAcquisitionURL": {"roles": ["*"]},
+          "LogUserAction": {"roles": ["*"]},
+          "GetIcd9Data": {"roles": ["*"]},
+          "GetMessages": {"roles": ["*"]},
+          "SetMessagesRead": {"roles": ["*"]},
+          "GetWhois": {"roles": ["*"]},
+          "GetWorkflowUsers": {"roles": ["*"]},
+          "GetChangeSetByLogId": {"roles": ["*"]},
+          "GetChangeSet": {"roles": ["*"]},
+          "GetChangeSetByReferenceId": {"roles": ["*"]},
+          "ValidPascode": {"roles": ["*"]},
+          "GetUnits": {"roles": ["*"]},
+          "GetDbSignInfo": {"roles": ["*"]},
+          "GetICDChapter": {"roles": ["*"]},
+          "GetICDCategory": {"roles": ["*"]},
+          "GetICDContent": {"roles": ["*"]},
+          "GetICDSection": {"roles": ["*"]},
+          "GetICDDiagnosisLevel1": {"roles": ["*"]},
+          "GetICDDiagnosisLevel2": {"roles": ["*"]},
+          "GetICDDiagnosisLevel3": {"roles": ["*"]},
+          "GetICDDiagnosisLevel4": {"roles": ["*"]},
+          "GetICDIncident": {"roles": ["*"]},
+          "GetChildUnits": {"roles": ["*"]},
+          "GetPendingLodCount": {"roles": ["*"]},
+          "GetPendingIOLodCount": {"roles": ["*"]},
+          "GetPendingAppealCount": {"roles": ["*"]},
+          "GetCompletedLodCount": {"roles": ["*"]},
+          "GetCompletedAppealCount": {"roles": ["*"]},
+          "GetReinvestigationRequestCount": {"roles": ["*"]},
+          "GetPendingUserCount": {"roles": ["*"]},
+          "GetPendingRoleRequestCount": {"roles": ["*"]},
+          "GetSpecialCasesCount": {"roles": ["*"]},
+          "GetSpecialCasesByModuleCount": {"roles": ["*"]},
+          "GetRestrictedSARCsCaseCount": {"roles": ["*"]},
+          "GetRestrictedSARCsPostCompletionCaseCount": {"roles": ["*"]},
+          "GetSARCAppealsCaseCount": {"roles": ["*"]},
+          "GetSARCAppealsPostCompletionCaseCount": {"roles": ["*"]},
+          "Welcome": {"roles": ["*"]},
+          "Access Denied": {"roles": ["*"]},
+          "Digital Signature": {"roles": ["signature"]},
+          "Digital Signature Failed": {"roles": ["signature"]},
+          "Digital Signature Accepted": {"roles": ["signature"]},
+          "Digital Signature Posted": {"roles": ["signature"]},
+          "Clear Previous Signature": {"roles": ["signature"]},
+          "DBSign Applet": {"roles": ["signature"]},
+          "DBSign Applet Compressed": {"roles": ["signature"]},
+          "DBSign Applet License": {"roles": ["signature"]},
+          "Print Case Tracking": {"roles": ["*"]},
+          "Error": {"roles": ["*"]},
+          "Application Error": {"roles": ["*"]}
+        }
+      },
+      "LOD": {
+        "roles": ["lodSearch", "lodCreate", "myLod", "reinvestigate", "reinvestigateSearch", "exePostCompletion", "sysAdmin", "myAP", "APSearch", "APCompletion", "myRSARC", "RSARCSearch", "RSARCPostCompletion", "SARCUnrestrictedCreate"],
+        "pages": {
+          "My LODs": {"roles": ["myLod"]},
+          "My LOD Consults": {"roles": ["myLod"]},
+          "SC Pending Consults": {"roles": ["myLod"]},
+          "SC Awaiting Consults": {"roles": ["myLod"]},
+          "My LOD Audit": {"roles": ["myLod"]},
+          "Start New LOD": {"roles": ["lodCreate", "RSARCCreate", "SARCUnrestrictedCreate"]},
+          "LOD Search": {"roles": ["lodSearch"]},
+          "Reinvestigations": {"roles": ["reinvestigate"]},
+          "RR Search": {"roles": ["reinvestigateSearch"]},
+          "Process Completed Cases": {"roles": ["exePostCompletion"]},
+          "Process Completed Appeals": {"roles": ["APCompletion"]},
+          "Appeals": {"roles": ["myAP"]},
+          "AP Search": {"roles": ["APSearch"]},
+          "My SARCs": {"roles": ["myRSARC"]},
+          "SARC Search": {"roles": ["RSARCSearch"]},
+          "Process Completed Restricted SARCs": {"roles": ["RSARCPostCompletion"]},
+          "My SARC Appeals": {"roles": ["myRSARCAppeal"]},
+          "SARC Appeal Search": {"roles": ["RSARCAppealSearch"]},
+          "Process Completed Restricted SARC Appeals": {"roles": ["RSARCAppealPostCompletion"]},
+          "Inbox View": {"roles": ["sysAdmin"]},
+          "Override": {"roles": ["sysAdmin"]},
+          "Generate LOD Forms": {"roles": ["sysAdmin"]},
+          "Generate SARC Forms": {"roles": ["sysAdmin"]}
+        }
+      },
+      "Special Cases": {
+        "roles": ["scSearch", "scSearchMT", "scCreate", "mySCs", "sysAdmin"],
+        "visible": false,
+        "pages": {
+          "My Special Cases": {"roles": ["mySCs", "MMSOSearch"]},
+          "Search": {"roles": ["scSearch", "scSearchMT"], "visible": false},
+          "Other Cases": {"roles": ["scSearch", "scSearchMT", "scCreate", "mySCs", "sysAdmin"]}
+        }
+      },
+      "Basic Military Training Waivers (BMT) / Military Entrance Processing Station (MEPS)": {
+        "roles": ["*"],
+        "pages": {
+          "My BMTs/MEPS": {"roles": ["myBmt"]},
+          "Start New BMT Waiver/MEPS": {"roles": ["BmtCreate"]},
+          "Search": {"roles": ["BMTSearch"]}
+        }
+      },
+      "Board for Correction of Military Records (BCMR)": {
+        "roles": ["*"],
+        "pages": {
+          "My BCMRs": {"roles": ["myBcmr"]},
+          "Start New BCMR": {"roles": ["BcmrCreate"]},
+          "Search": {"roles": ["BCMRSearch"]}
+        }
+      },
+      "Command Man-day Allocation System (CMAS)": {
+        "roles": ["*"],
+        "pages": {
+          "My CMASs": {"roles": ["myCmas"]},
+          "Start New CMAS": {"roles": ["CmasCreate"]},
+          "Search": {"roles": ["CMASSearch"]}
+        }
+      },
+      "Congressionals (CI)": {
+        "roles": ["*"],
+        "pages": {
+          "My Congressionals": {"roles": ["myCi"]},
+          "Start New Congressional": {"roles": ["CiCreate"]},
+          "Search": {"roles": ["CISearch"]}
+        }
+      },
+      "Deployment Waivers (DW)": {
+        "roles": ["*"],
+        "pages": {
+          "My Deployment Waiver": {"roles": ["myDW"]},
+          "Start New Deployment Waiver": {"roles": ["DWCreate"]},
+          "Search": {"roles": ["DWSearch"]}
+        }
+      },
+      "Incapacitation (INCAP)": {
+        "roles": ["*"],
+        "pages": {
+          "My Incaps": {"roles": ["myIncap"]},
+          "Start New INCAP": {"roles": ["IncapCreate"]},
+          "Search": {"roles": ["INCAPSearch"]}
+        }
+      },
+      "Initial Review In Lieu Of (IRILO)": {
+        "roles": ["*"],
+        "pages": {
+          "My IRILOs": {"roles": ["myFTs"]},
+          "Start New IRILO": {"roles": ["FTCreate"]},
+          "Search": {"roles": ["FTSearch", "scSearchMT"]}
+        }
+      },
+      "Medical Evaluation Board (MEB)": {
+        "roles": ["*"],
+        "pages": {
+          "My MEBs": {"roles": ["myMeb"]},
+          "Start New MEB": {"roles": ["MebCreate"]},
+          "Search": {"roles": ["MEBSearch", "scSearchMT"]}
+        }
+      },
+      "Medical Holds (MH)": {
+        "roles": ["*"],
+        "pages": {
+          "My MHs": {"roles": ["myMH"]},
+          "Start New MH": {"roles": ["MHCreate"]},
+          "Search": {"roles": ["MHSearch"]}
+        }
+      },
+      "Modification (MO)": {
+        "roles": ["*"],
+        "pages": {
+          "My MOs": {"roles": ["myMO"]},
+          "Start New MO": {"roles": ["MOCreate"]},
+          "Search": {"roles": ["MOSearch"]}
+        }
+      },
+      "Non Emergent Surgery Request (NE)": {
+        "roles": ["*"],
+        "pages": {
+          "My NEs": {"roles": ["myNE"]},
+          "Start New NE": {"roles": ["NECreate"]},
+          "Search": {"roles": ["NESearch"]}
+        }
+      },
+      "Participation Waiver (PWaiver)": {
+        "roles": ["*"],
+        "pages": {
+          "My PWaivers": {"roles": ["myPwaiver"]},
+          "Start New PWaiver": {"roles": ["PwaiverCreate"]},
+          "Search": {"roles": ["PWSearch", "scSearchMT"]}
+        }
+      },
+      "AGR Medical Certification (AGR)": {
+        "roles": ["*"],
+        "pages": {
+          "My AGR Certifications": {"roles": ["myAGRCert"]},
+          "Start New AGR": {"roles": ["AGRCertCreate"]},
+          "Search": {"roles": ["AGRCertSearch"]}
+        }
+      },
+      "Physical Examination Processing Program (PEPP) / AIMWITS (AW)": {
+        "roles": ["*"],
+        "pages": {
+          "My PEPPs/AIMWITSs": {"roles": ["myPEPP"]},
+          "Start New PEPP/AIMWITS": {"roles": ["PEPPCreate"]},
+          "Search": {"roles": ["PEPPSearch"]}
+        }
+      },
+      "PH Non-Clinical Tracking (PH)": {
+        "roles": ["myPH", "PHCreate", "PHSearch"],
+        "pages": {
+          "My PHs": {"roles": ["myPH"]},
+          "Start New PH": {"roles": ["PHCreate"]},
+          "Search": {"roles": ["PHSearch"]},
+          "Generate PH Form": {"roles": ["sysAdmin"]}
+        }
+      },
+      "Recruiting Services (RS)": {
+        "roles": ["*"],
+        "pages": {
+          "My RSs": {"roles": ["myRS"]},
+          "Start New RS": {"roles": ["RSCreate"]},
+          "Search": {"roles": ["RSSearch"]}
+        }
+      },
+      "Retention Waiver Renewal (RW)": {
+        "roles": ["*"],
+        "pages": {
+          "My RWs": {"roles": ["myRW"]},
+          "Start New RW": {"roles": ["RWCreate"]},
+          "Search": {"roles": ["RWSearch"]}
+        }
+      },
+      "Worldwide Duty (WWD)": {
+        "roles": ["*"],
+        "pages": {
+          "My WWDs": {"roles": ["myWWDs"]},
+          "Start New WWD": {"roles": ["WWDCreate"]},
+          "Search": {"roles": ["WWDSearch", "scSearchMT"]}
+        }
+      },
+      "Prior Service Condition Determination (PSC-D)": {
+        "roles": ["*"],
+        "pages": {
+          "My PSC-Ds": {"roles": ["myPSCDs"]},
+          "Start New PSC-Ds": {"roles": ["PSCDCreate"]},
+          "Search": {"roles": ["PSCDSearch"]}
+        }
+      },
+      "MMSO": {
+        "roles": ["MMSOCreate", "MMSOView", "MMSOSearch", "sysAdmin"],
+        "pages": {
+          "Start New Pre-Authorization Request": {"roles": ["MMSOCreate"]},
+          "My Requests": {"roles": ["MMSOView"]},
+          "Search": {"roles": ["MMSOSearch"]}
+        }
+      },
+      "Reports": {
+        "roles": ["*", "reportAdHocLod", "repSearchSoldierDetails", "repSearchLODDetails", "repSearchTimeFrame", "repSearchSummaryOptions", "repSearchWorkload"],
+        "pages": {
+          "Ad-Hoc Reporting": {"roles": ["AdHocReport", "SARCAdHocReports"]},
+          "Ad-Hoc Reporting Results": {"roles": ["AdHocReport", "SARCAdHocReports"], "visible": false},
+          "Case History Report": {"roles": ["lodViewAllCases"]},
+          "LOD Category Count Report": {"roles": ["LODCategoryCountReport"]},
+          "LOD Disapproved Report": {"roles": ["DisapprovedLODReport"]},
+          "LOD Disposition Report": {"roles": ["DispositionReports"]},
+          "LOD Graph Report": {"roles": ["LODGraphReport"]},
+          "LOD Metrics Report (LOD Cases)": {"roles": ["LODMetricsReport_Cases"]},
+          "LOD Metrics Report (Average Times Of LOD Cases)": {"roles": ["LODMetricsReport_Avg"]},
+          "LOD Packages Execution Report": {"roles": ["sysAdmin"]},
+          "LOD Physician Cancelled Report": {"roles": ["LODPhysicianCancelledReport"]},
+          "LOD PM Compliance Report": {"roles": ["LODComplianceReport"]},
+          "LOD PM Monthly Suspense Monitoring Report": {"roles": ["LODSuspenseMonitoringReport"]},
+          "LOD PM Quarterly-Annual Program Status Report": {"roles": ["LODProgramStatusReport"]},
+          "LOD RWOA Report": {"roles": ["RWOAReport"]},
+          "LOD SARC Report": {"roles": ["LODSARCCasesReport - UNRESTRICTED", "LODSARCCasesReport - ALL"]},
+          "LOD Statistics Report": {"roles": ["LODStatisticsReport"]},
+          "LOD Total Count By Process Report": {"roles": ["LODTotalCountByProcessReport"]},
+          "PAL Documents": {"roles": ["PALDocumentsReport"]},
+          "PH Totals Report": {"roles": ["PHTotalsReport"]},
+          "PWaivers Report": {"roles": ["pwaiverReport"]},
+          "RS Disposition Report": {"roles": ["RSDispositionReport"]},
+          "RFA Cases By Unit Report": {"roles": ["RFAReportByUnit"]},
+          "RFA Cases By Group Report": {"roles": ["RFAReportByGroup"]}
+        }
+      },
+      "Administration": {
+        "roles": ["sysAdmin", "usersView", "unitsEdit", "usersModify", "usersApprove", "feedbackManage", "viewUserLog", "memberAdd"],
+        "pages": {
+          "Create": {
+            "roles": ["sysAdmin", "memberAdd"],
+            "pages": {
+              "Add Member": {"roles": ["sysAdmin", "memberAdd"]},
+              "Create Unit": {"roles": ["sysAdmin"]},
+              "Create User": {"roles": ["sysAdmin"]}
+            }
+          },
+          "Emails": {
+            "roles": ["sysAdmin"],
+            "pages": {
+              "Email Templates": {"roles": ["sysAdmin"]},
+              "Email Test": {"roles": ["sysAdmin"]},
+              "Inactive Email Settings": {"roles": ["sysAdmin"]},
+              "Send System Emails": {"roles": ["sysAdmin"]}
+            }
+          },
+          "Lookup": {
+            "roles": ["sysAdmin", "usersApprove", "usersEdit"],
+            "pages": {
+              "ARCNet User Lookup": {"roles": ["sysAdmin"]},
+              "Approval Authorities": {"roles": ["sysAdmin"]},
+              "Case Locks": {"roles": ["sysAdmin"]},
+              "Child Unit View": {"roles": ["sysAdmin"]},
+              "Pending Role Requests": {"roles": ["usersEdit", "sysAdmin", "usersApprove"]},
+              "Permission Report": {"roles": ["sysAdmin"]},
+              "Search Members": {"roles": ["usersEdit", "usersApprove", "sysAdmin"]},
+              "Users Online": {"roles": ["sysAdmin"]}
+            }
+          },
+          "Manage": {
+            "roles": ["sysAdmin", "msgAdmin", "unitsEdit", "usersEdit", "usersApprove"],
+            "pages": {
+              "Groups": {
+                "roles": ["sysAdmin"],
+                "pages": {
+                  "Edit Groups": {"roles": ["sysAdmin"]},
+                  "Group Approval": {"roles": ["sysAdmin"]},
+                  "Group Permissions": {"roles": ["sysAdmin"]}
+                }
+              },
+              "Manage Cancel Reasons": {"roles": ["sysAdmin"]},
+              "Manage Lookups": {"roles": ["sysAdmin"]},
+              "Edit Case Types": {"roles": ["sysAdmin"]},
+              "Edit Certification Stamps": {"roles": ["sysAdmin"]},
+              "Edit Completed By Groups": {"roles": ["sysAdmin"]},
+              "Edit Dispositions": {"roles": ["sysAdmin"]},
+              "Edit Miscellaneous Lookups": {"roles": ["sysAdmin"]},
+              "Edit LOD Medical": {"roles": ["sysAdmin"]},
+              "Edit LOD Unit": {"roles": ["sysAdmin"]},
+              "Manage Hyper Links": {"roles": ["sysAdmin"]},
+              "Manage Messages": {"roles": ["msgAdmin"]},
+              "Manage PH Workflow Form": {
+                "roles": ["sysAdmin"],
+                "pages": {
+                  "Edit PH Fields": {"roles": ["sysAdmin"]},
+                  "Edit PH Field Types": {"roles": ["sysAdmin"]},
+                  "Edit PH Form Fields": {"roles": ["sysAdmin"]},
+                  "Edit PH Sections": {"roles": ["sysAdmin"]},
+                  "Edit PH Workflow Form": {"roles": ["sysAdmin"]},
+                  "Test PH Form": {"roles": ["sysAdmin"]}
+                }
+              },
+              "Manage Units": {"roles": ["unitsEdit"]},
+              "Manage Users": {"roles": ["usersEdit", "usersApprove", "sysAdmin"]},
+              "Mapped Values": {"roles": ["sysAdmin"]},
+              "Pages": {
+                "roles": ["sysAdmin"],
+                "pages": {
+                  "Manage Pages": {"roles": ["sysAdmin"]},
+                  "Page Access": {"roles": ["sysAdmin"]},
+                  "Welcome Page Banner": {"roles": ["sysAdmin"]}
+                }
+              },
+              "Workflows": {
+                "roles": ["sysAdmin"],
+                "pages": {
+                  "Workflow View": {"roles": ["sysAdmin"]}
+                }
+              },
+              "Memo": {
+                "roles": ["sysAdmin"],
+                "pages": {
+                  "Memo Mapped Values": {"roles": ["sysAdmin"]},
+                  "Memo Templates": {"roles": ["sysAdmin"]}
+                }
+              }
+            }
+          },
+          "System": {
+            "roles": ["sysAdmin"],
+            "pages": {
+              "Error": {
+                "roles": ["sysAdmin"],
+                "pages": {
+                  "Error Log": {"roles": ["sysAdmin"]},
+                  "Error Test": {"roles": ["sysAdmin"]}
+                }
+              },
+              "Historical Copy (Snapshot)": {"roles": ["sysAdmin"]},
+              "Rules": {"roles": ["sysAdmin"]},
+              "Status Codes": {"roles": ["sysAdmin"]},
+              "Test Automatic Processes": {"roles": ["sysAdmin"]},
+              "Test Component": {"roles": ["sysAdmin"]},
+              "Test Page": {"roles": ["sysAdmin"]}
+            }
+          },
+          "Edit Member": {"roles": ["sysAdmin"], "visible": false},
+          "User Permissions": {"roles": ["sysAdmin"], "visible": false},
+          "User Activity Log": {"roles": ["sysAdmin", "viewUserLog"], "visible": false},
+          "Edit Template": {"roles": ["sysAdmin"], "visible": false},
+          "Workflow Permissions": {"roles": ["sysAdmin"], "visible": false},
+          "Workflow Steps": {"roles": ["sysAdmin"], "visible": false},
+          "Option Rules": {"roles": ["sysAdmin"], "visible": false},
+          "Option Actions": {"roles": ["sysAdmin"], "visible": false},
+          "Reminder Emails": {"roles": ["sysAdmin"], "visible": false},
+          "Edit User Account": {"roles": ["usersEdit", "sysAdmin", "usersApprove"], "visible": false},
+          "Print Account History": {"roles": ["usersEdit", "sysAdmin", "usersApprove"], "visible": false}
+        }
+      },
+      "Edit": {"roles": ["*"], "visible": false},
+      "Search Unit": {"roles": ["*"], "visible": false},
+      "Unit Administration": {"roles": ["*"], "visible": false},
+      "Help": {
+        "roles": ["*"],
+        "pages": {
+          "Select Account": {"roles": ["*"]},
+          "My Account": {"roles": ["*"]},
+          "Documentation": {
+            "roles": ["*"],
+            "pages": {
+              "ALOD Manual": {"roles": ["*"], "visible": false},
+              "Master LOD Checklist": {"roles": ["*"], "visible": false},
+              "8 Year Rule": {"roles": ["*"], "visible": false},
+              "AFI 36-2910 AFRCSUP1 I": {"roles": ["*"], "visible": false},
+              "AFRCI 36-3004": {"roles": ["*"], "visible": false},
+              "DODI 1241.2": {"roles": ["*"], "visible": false},
+              "DODI 1332.38": {"roles": ["*"], "visible": false},
+              "SARC Modifications": {"roles": ["*"], "visible": false},
+              "Medical Briefing": {"roles": ["*"], "visible": false},
+              "Personnel Briefing": {"roles": ["*"], "visible": false},
+              "Financial Entitlements Briefing": {"roles": ["*"], "visible": false},
+              "LOD Policy for ARC Members": {"roles": ["*"], "visible": false},
+              "AFRC PHA Guide (Mar 2015)": {"roles": ["*"], "visible": false},
+              "AFRC SGP CPM (1 Jun 15)": {"roles": ["*"], "visible": false},
+              "ALOD RTM": {"roles": ["*"], "visible": false},
+              "User Account": {"roles": ["*"], "visible": false},
+              "Ad Hoc Reporting": {"roles": ["*"], "visible": false},
+              "LOD Category Count Report": {"roles": ["*"], "visible": false},
+              "LOD Dispapproved Report": {"roles": ["*"], "visible": false},
+              "LOD Disposition Report": {"roles": ["*"], "visible": false},
+              "LOD Metrics Report": {"roles": ["*"], "visible": false},
+              "LOD Physician Cancelled Report": {"roles": ["*"], "visible": false},
+              "LOD RWOA Report": {"roles": ["*"], "visible": false},
+              "LOD Statistics Report": {"roles": ["*"], "visible": false},
+              "LOD Total Count Report": {"roles": ["*"], "visible": false},
+              "Investigation Officer": {"roles": ["*"], "visible": false},
+              "Medical Officer": {"roles": ["*"], "visible": false},
+              "Medical Technician": {"roles": ["*"], "visible": false},
+              "MPF": {"roles": ["*"], "visible": false},
+              "Unit Commander": {"roles": ["*"], "visible": false},
+              "Wing Commander": {"roles": ["*"], "visible": false},
+              "Wing JA": {"roles": ["*"], "visible": false},
+              "Wing SARC": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.2.4": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.2.3": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.2.2": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.2.1": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.2.0": {"roles": ["*"], "visible": false},
+              "AFRC ALOD Instr for 1.1.11": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.1.11": {"roles": ["*"], "visible": false},
+              "AFRC ALOD Instr for 1.1.10.2": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.1.10.2": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.1.9": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.1.7": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.1.6": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.1.5": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.1.4.1": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.1.4": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.1.3": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.1.1": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.1.0": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.0.10": {"roles": ["*"], "visible": false},
+              "Release Notes - v1.0.9": {"roles": ["*"], "visible": false}
+            }
+          }
+        }
+      },
+      "Line Of Duty": {
+        "roles": ["*"],
+        "visible": false,
+        "pages": {
+          "Init.aspx": {"roles": ["lodView"]},
+          "Member": {"roles": ["lodView"]},
+          "Unit CC": {"roles": ["lodView"]},
+          "Medical": {"roles": ["lodView"]},
+          "Audit": {"roles": ["lodView"]},
+          "Wing JA": {"roles": ["lodView"]},
+          "Wing CC": {"roles": ["lodView"]},
+          "Senior Med": {"roles": ["lodView"]},
+          "Investigation": {"roles": ["lodView"]},
+          "Documents": {"roles": ["lodView"]},
+          "LOD Board": {"roles": ["lodView"]},
+          "Next Action": {"roles": ["lodView"]},
+          "Tracking": {"roles": ["lodView"]},
+          "Print": {"roles": ["lodView"]},
+          "Lessons Learned": {"roles": ["lodView"]},
+          "Comments": {"roles": ["lodView"]},
+          "Case Dialogue": {"roles": ["lodView"]}
+        }
+      },
+      "Reinvestigation Request": {
+        "roles": ["*"],
+        "visible": false,
+        "pages": {
+          "Init.aspx": {"roles": ["RRView"]},
+          "RR Member": {"roles": ["RRView"]},
+          "RR Wing JA": {"roles": ["RRView"]},
+          "RR Wing CC": {"roles": ["RRView"]},
+          "RR Senior Med": {"roles": ["RRView"]},
+          "RR Documents": {"roles": ["RRView"]},
+          "RR Board Review": {"roles": ["RRView"]},
+          "RR Next Action": {"roles": ["RRView"]},
+          "RR Case Comments": {"roles": ["RRView"]},
+          "RR Tracking": {"roles": ["RRView"]},
+          "Print": {"roles": ["RRView"]},
+          "Case Dialogue": {"roles": ["RRView"]}
+        }
+      },
+      "Appeal": {
+        "roles": ["*"],
+        "visible": false,
+        "pages": {
+          "Init.aspx": {"roles": ["APView"]},
+          "AP Member": {"roles": ["APView"]},
+          "LOD Documents": {"roles": ["APView"]},
+          "AP Documents": {"roles": ["APView"]},
+          "AP Senior Med": {"roles": ["APView"]},
+          "AP Board": {"roles": ["APView"]},
+          "AP Next Action": {"roles": ["APView"]},
+          "AP Case Comments": {"roles": ["APView"]},
+          "AP Tracking": {"roles": ["APView"]},
+          "Print": {"roles": ["APView"]},
+          "Case Dialogue": {"roles": ["APView"]}
+        }
+      },
+      "Restricted SARC": {
+        "roles": ["*"],
+        "visible": false,
+        "pages": {
+          "Init.aspx": {"roles": ["RSARCView"]},
+          "SARC Member": {"roles": ["RSARCView"]},
+          "Wing SARC": {"roles": ["RSARCView"]},
+          "SARC Admin": {"roles": ["RSARCView"]},
+          "SARC Senior Med": {"roles": ["RSARCView"]},
+          "SARC Board": {"roles": ["RSARCView"]},
+          "SARC Documents": {"roles": ["RSARCView"]},
+          "SARC Tracking": {"roles": ["RSARCView"]},
+          "SARC Case Comments": {"roles": ["RSARCView"]},
+          "SARC Next Action": {"roles": ["RSARCView"]},
+          "SARC Print": {"roles": ["RSARCView"]},
+          "Case Dialogue": {"roles": ["RSARCView"]}
+        }
+      },
+      "SARC Appeal": {
+        "roles": ["*"],
+        "visible": false,
+        "pages": {
+          "Init.aspx": {"roles": ["RSARCAppealView"]},
+          "SARC AP Member": {"roles": ["RSARCAppealView"]},
+          "SARC Documents": {"roles": ["RSARCAppealView"]},
+          "SARC AP Documents": {"roles": ["RSARCAppealView"]},
+          "SARC AP Admin": {"roles": ["RSARCAppealView"]},
+          "SARC AP Senior Med": {"roles": ["RSARCAppealView"]},
+          "SARC AP Board": {"roles": ["RSARCAppealView"]},
+          "SARC AP Next Action": {"roles": ["RSARCAppealView"]},
+          "SARC AP Case Comments": {"roles": ["RSARCAppealView"]},
+          "SARC Appeal Tracking": {"roles": ["RSARCAppealView"]},
+          "Case Dialogue": {"roles": ["RSARCAppealView"]}
+        }
+      },
+      "Other Cases": {
+        "roles": ["*"],
+        "visible": false,
+        "pages": {
+          "WWD": {
+            "roles": ["*"],
+            "visible": false,
+            "pages": {
+              "Init.aspx": {"roles": ["WWDView"]},
+              "WD Member": {"roles": ["WWDView"]},
+              "WD Med Tech": {"roles": ["WWDView"]},
+              "WD HQ AFRC Tech": {"roles": ["WWDView"]},
+              "WD Board Med": {"roles": ["WWDView"]},
+              "WD Documents": {"roles": ["WWDView"]},
+              "WD Next Action": {"roles": ["WWDView"]},
+              "WD Case Comments": {"roles": ["WWDView"]},
+              "WD Tracking": {"roles": ["WWDView"]},
+              "Print": {"roles": ["WWDView"]},
+              "Case Dialogue": {"roles": ["WWDView"]}
+            }
+          },
+          "PWaiver": {
+            "roles": ["*"],
+            "visible": false,
+            "pages": {
+              "Init.aspx": {"roles": ["PWView"]},
+              "PW Member": {"roles": ["PWView"]},
+              "PW Med Tech": {"roles": ["PWView"]},
+              "PW Board Med": {"roles": ["PWView"]},
+              "PW Documents": {"roles": ["PWView"]},
+              "PW Next Action": {"roles": ["PWView"]},
+              "PW Case Comments": {"roles": ["PWView"]},
+              "PW Tracking": {"roles": ["PWView"]},
+              "Print": {"roles": ["PWView"]},
+              "Case Dialogue": {"roles": ["PWView"]}
+            }
+          },
+          "AGR Cert": {
+            "roles": ["*"],
+            "visible": false,
+            "pages": {
+              "Init.aspx": {"roles": ["AGRCertView"]},
+              "AGR Member": {"roles": ["AGRCertView"]},
+              "AGR Med Tech": {"roles": ["AGRCertView"]},
+              "AGR Medical Review": {"roles": ["AGRCertView"]},
+              "AGR Documents": {"roles": ["AGRCertView"]},
+              "AGR Next Action": {"roles": ["AGRCertView"]},
+              "AGR Case Comments": {"roles": ["AGRCertView"]},
+              "AGR Tracking": {"roles": ["AGRCertView"]},
+              "AGR Case Dialogue": {"roles": ["AGRCertView"]}
+            }
+          },
+          "MEB": {
+            "roles": ["*"],
+            "visible": false,
+            "pages": {
+              "Init.aspx": {"roles": ["MEBView"]},
+              "MB Member": {"roles": ["MEBView"]},
+              "MB HQ AFRC Tech": {"roles": ["MEBView"]},
+              "MB Med Off": {"roles": ["MEBView"]},
+              "MB Med Tech": {"roles": ["MEBView"]},
+              "MB Documents": {"roles": ["MEBView"]},
+              "MB Next Action": {"roles": ["MEBView"]},
+              "MB Case Comments": {"roles": ["MEBView"]},
+              "MB Tracking": {"roles": ["MEBView"]},
+              "Print": {"roles": ["MEBView"]},
+              "Case Dialogue": {"roles": ["MEBView"]}
+            }
+          },
+          "Specialty Cases": {
+            "roles": ["*"],
+            "visible": false,
+            "pages": {
+              "INCAP": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["INCAPView"]},
+                  "IN Member": {"roles": ["INCAPView"]},
+                  "IN Wing Int": {"roles": ["INCAPView"]},
+                  "IN HQ Ext/ App": {"roles": ["INCAPView"]},
+                  "IN Documents": {"roles": ["INCAPView"]},
+                  "LOD Documents": {"roles": ["INCAPView"]},
+                  "IN Next Action": {"roles": ["INCAPView"]},
+                  "IN Case Comments": {"roles": ["INCAPView"]},
+                  "IN Tracking": {"roles": ["INCAPView"]},
+                  "Print": {"roles": ["INCAPView"]},
+                  "Case Dialogue": {"roles": ["INCAPView"]}
+                }
+              },
+              "BMT Waivers/MEPS": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["BMTView"]},
+                  "BT Member": {"roles": ["BMTView"]},
+                  "BT Board Med": {"roles": ["BMTView"]},
+                  "BT HQ AFRC Tech": {"roles": ["BMTView"]},
+                  "BT Documents": {"roles": ["BMTView"]},
+                  "BT Board Review": {"roles": ["BMTView"]},
+                  "BT Next Action": {"roles": ["BMTView"]},
+                  "BT Case Comments": {"roles": ["BMTView"]},
+                  "BT Tracking": {"roles": ["BMTView"]},
+                  "Print": {"roles": ["BMTView"]},
+                  "Case Dialogue": {"roles": ["BMTView"]}
+                }
+              },
+              "Congressionals": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["CIView"]},
+                  "CI Member": {"roles": ["CIView"]},
+                  "CI Med Tech": {"roles": ["CIView"]},
+                  "CI HQ AFRC Tech": {"roles": ["CIView"]},
+                  "CI Documents": {"roles": ["CIView"]},
+                  "CI Next Action": {"roles": ["CIView"]},
+                  "CI Case Comments": {"roles": ["CIView"]},
+                  "CI Tracking": {"roles": ["CIView"]},
+                  "Print": {"roles": ["CIView"]},
+                  "Case Dialogue": {"roles": ["CIView"]}
+                }
+              },
+              "BCMR": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["BCMRView"]},
+                  "BC Member": {"roles": ["BCMRView"]},
+                  "BC Med Tech": {"roles": ["BCMRView"]},
+                  "BC HQ AFRC Tech": {"roles": ["BCMRView"]},
+                  "BC Documents": {"roles": ["BCMRView"]},
+                  "BC Next Action": {"roles": ["BCMRView"]},
+                  "BC Case Comments": {"roles": ["BCMRView"]},
+                  "BC Tracking": {"roles": ["BCMRView"]},
+                  "Print": {"roles": ["BCMRView"]},
+                  "Case Dialogue": {"roles": ["BCMRView"]}
+                }
+              },
+              "CMAS": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["CMASView"]},
+                  "CM Member": {"roles": ["CMASView"]},
+                  "CM Med Tech": {"roles": ["CMASView"]},
+                  "CM HQ AFRC Tech": {"roles": ["CMASView"]},
+                  "CM Documents": {"roles": ["CMASView"]},
+                  "CM Next Action": {"roles": ["CMASView"]},
+                  "CM Case Comments": {"roles": ["CMASView"]},
+                  "CM Tracking": {"roles": ["CMASView"]},
+                  "Print": {"roles": ["CMASView"]},
+                  "Case Dialogue": {"roles": ["CMASView"]}
+                }
+              },
+              "IRILO": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["IRILOView"]},
+                  "IR Member": {"roles": ["IRILOView"]},
+                  "IR Med Tech": {"roles": ["IRILOView"]},
+                  "IR HQ AFRC Tech": {"roles": ["IRILOView"]},
+                  "IR Med Off": {"roles": ["IRILOView"]},
+                  "IR Documents": {"roles": ["IRILOView"]},
+                  "LOD Documents": {"roles": ["IRILOView"]},
+                  "IR Next Action": {"roles": ["IRILOView"]},
+                  "IR Case Comments": {"roles": ["IRILOView"]},
+                  "IR Tracking": {"roles": ["IRILOView"]},
+                  "Print": {"roles": ["IRILOView"]},
+                  "Case Dialogue": {"roles": ["IRILOView"]}
+                }
+              },
+              "MMSO": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["*"]},
+                  "MM Member": {"roles": ["*"]},
+                  "Pre-Authorization Request": {"roles": ["*"]},
+                  "MM Documents": {"roles": ["*"]},
+                  "MM LOD Documents": {"roles": ["*"]},
+                  "MM Next Action": {"roles": ["*"]},
+                  "MM Tracking": {"roles": ["*"]},
+                  "Print": {"roles": ["*"]},
+                  "Case Dialogue": {"roles": ["*"]}
+                }
+              },
+              "MH": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["MHView"]},
+                  "MH Member": {"roles": ["MHView"]},
+                  "MH HQ AFRC Tech": {"roles": ["MHView"]},
+                  "MH Board Med": {"roles": ["MHView"]},
+                  "MH Documents": {"roles": ["MHView"]},
+                  "MH Next Action": {"roles": ["MHView"]},
+                  "MH Case Comments": {"roles": ["MHView"]},
+                  "MH Tracking": {"roles": ["MHView"]},
+                  "Print": {"roles": ["MHView"]},
+                  "Case Dialogue": {"roles": ["MHView"]}
+                }
+              },
+              "DW": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["DWView"]},
+                  "DW Member": {"roles": ["DWView"]},
+                  "DW Med Tech": {"roles": ["DWView"]},
+                  "DW Board Med": {"roles": ["DWView"]},
+                  "DW Documents": {"roles": ["DWView"]},
+                  "DW Next Action": {"roles": ["DWView"]},
+                  "DW Case Comments": {"roles": ["DWView"]},
+                  "DW Tracking": {"roles": ["DWView"]},
+                  "Print": {"roles": ["DWView"]},
+                  "Case Dialogue": {"roles": ["DWView"]}
+                }
+              },
+              "NE": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["NEView"]},
+                  "NE Member": {"roles": ["NEView"]},
+                  "NE Med Tech": {"roles": ["NEView"]},
+                  "NE Board Med": {"roles": ["NEView"]},
+                  "NE Documents": {"roles": ["NEView"]},
+                  "NE Next Action": {"roles": ["NEView"]},
+                  "NE Case Comments": {"roles": ["NEView"]},
+                  "NE Tracking": {"roles": ["NEView"]},
+                  "Print": {"roles": ["NEView"]},
+                  "Case Dialogue": {"roles": ["NEView"]}
+                }
+              },
+              "MO": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["MOView"]},
+                  "MO Member": {"roles": ["MOView"]},
+                  "MO Med Tech": {"roles": ["MOView"]},
+                  "MO Board Med": {"roles": ["MOView"]},
+                  "MO Documents": {"roles": ["MOView"]},
+                  "MO Next Action": {"roles": ["MOView"]},
+                  "MO Case Comments": {"roles": ["MOView"]},
+                  "MO Tracking": {"roles": ["MOView"]},
+                  "Print": {"roles": ["MOView"]},
+                  "Case Dialogue": {"roles": ["MOView"]}
+                }
+              },
+              "PEPP/AIMWITS": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["PEPPView"]},
+                  "PEPP Member": {"roles": ["PEPPView"]},
+                  "PEPP HQ AFRC Tech": {"roles": ["PEPPView"]},
+                  "PEPP Board Med": {"roles": ["PEPPView"]},
+                  "PEPP Documents": {"roles": ["PEPPView"]},
+                  "PEPP Next Action": {"roles": ["PEPPView"]},
+                  "PEPP Case Comments": {"roles": ["PEPPView"]},
+                  "PEPP Tracking": {"roles": ["PEPPView"]},
+                  "Print": {"roles": ["PEPPView"]},
+                  "Case Dialogue": {"roles": ["PEPPView"]}
+                }
+              },
+              "RS": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["RSView"]},
+                  "RS Member": {"roles": ["RSView"]},
+                  "RS Tech": {"roles": ["RSView"]},
+                  "RS Board Med": {"roles": ["RSView"]},
+                  "RS Documents": {"roles": ["RSView"]},
+                  "RS Next Action": {"roles": ["RSView"]},
+                  "RS Case Comments": {"roles": ["RSView"]},
+                  "RS Tracking": {"roles": ["RSView"]},
+                  "Case Dialogue": {"roles": ["RSView"]}
+                }
+              },
+              "RW": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["RWView"]},
+                  "RW Member": {"roles": ["RWView"]},
+                  "RW Med Tech": {"roles": ["RWView"]},
+                  "RW Med Off": {"roles": ["RWView"]},
+                  "RW Documents": {"roles": ["RWView"]},
+                  "RW Previous RTD": {"roles": ["RWView"]},
+                  "LOD Documents": {"roles": ["RWView"]},
+                  "RW Next Action": {"roles": ["RWView"]},
+                  "RW Case Comments": {"roles": ["RWView"]},
+                  "RW Tracking": {"roles": ["RWView"]},
+                  "Case Dialogue": {"roles": ["RWView"]}
+                }
+              },
+              "PH": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["PHView"]},
+                  "PH History": {"roles": ["PHView"]},
+                  "PH Form": {"roles": ["PHView"]},
+                  "PH Documents": {"roles": ["PHView"]},
+                  "PH Next Action": {"roles": ["PHView"]},
+                  "PH Case Comments": {"roles": ["PHView"]},
+                  "PH Tracking": {"roles": ["PHView"]},
+                  "Print": {"roles": ["PHView"]},
+                  "Case Dialogue": {"roles": ["PHView"]}
+                }
+              },
+              "PSCD": {
+                "roles": ["*"],
+                "visible": false,
+                "pages": {
+                  "Init.aspx": {"roles": ["PSCDView"]},
+                  "PSC Member": {"roles": ["PSCDView"]},
+                  "PSC Med Tech": {"roles": ["PSCDView"]},
+                  "Case Dialogue": {"roles": ["PSCDView"]},
+                  "PSC Case Comments": {"roles": ["PSCDView"]},
+                  "PSC Tracking": {"roles": ["PSCDView"]},
+                  "PSC Next Action": {"roles": ["PSCDView"]},
+                  "PSC Board": {"roles": ["PSCDView"]},
+                  "PSC Documents": {"roles": ["PSCDView"]},
+                  "PSC WD Documents": {"roles": ["PSCDView"]},
+                  "PSC IR Documents": {"roles": ["PSCDView"]},
+                  "PSC RW Documents": {"roles": ["PSCDView"]}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
