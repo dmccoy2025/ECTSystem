@@ -17,6 +17,7 @@
     <PackageReference Include="Aspire.Hosting.SqlServer" Version="9.5.2" />
     <ProjectReference Include="..\AF.ECT.WebClient\AF.ECT.WebClient.csproj" />
     <ProjectReference Include="..\AF.ECT.Server\AF.ECT.Server.csproj" />
+    <ProjectReference Include="..\AF.ECT.Wiki\AF.ECT.Wiki.csproj" />
   </ItemGroup>
 
 </Project>

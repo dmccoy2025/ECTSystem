@@ -40,6 +40,7 @@ ECTSystem is an Electronic Case Tracking application for ALOD (Army Lodging) bui
 - **Styling**: Inline temporary variables wherever possible; use block body for lambda expressions.
 - **File-Scoped Namespaces**: Use file-scoped namespaces for all C# files throughout the solution to improve readability and reduce indentation.
 - **Usings Cleanup**: Remove unused and duplicate `using` statements in all files to keep code clean and maintainable.
+- **Project Versioning**: All projects added to the solution must target at least .NET 9.0 to maintain compatibility with the global.json specification.
 
 ## Audit Logging Implementation
 - **Automated Auditing**: Implemented Audit.NET for comprehensive auditing of Entity Framework changes and gRPC operations.

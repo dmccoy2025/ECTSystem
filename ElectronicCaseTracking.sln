@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AF.ECT.Data", "AF.ECT.Data\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AF.ECT.WindowsClient", "AF.ECT.WindowsClient\AF.ECT.WindowsClient.csproj", "{44EA654C-E5D6-45EC-A89D-B4185A58C546}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AF.ECT.Wiki", "AF.ECT.Wiki\AF.ECT.Wiki.csproj", "{CD092078-7A73-48D7-80DD-D3E4C9E8D23F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -125,6 +127,18 @@ Global
 		{44EA654C-E5D6-45EC-A89D-B4185A58C546}.Release|x64.Build.0 = Release|x64
 		{44EA654C-E5D6-45EC-A89D-B4185A58C546}.Release|x86.ActiveCfg = Release|x86
 		{44EA654C-E5D6-45EC-A89D-B4185A58C546}.Release|x86.Build.0 = Release|x86
+		{CD092078-7A73-48D7-80DD-D3E4C9E8D23F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD092078-7A73-48D7-80DD-D3E4C9E8D23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD092078-7A73-48D7-80DD-D3E4C9E8D23F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CD092078-7A73-48D7-80DD-D3E4C9E8D23F}.Debug|x64.Build.0 = Debug|Any CPU
+		{CD092078-7A73-48D7-80DD-D3E4C9E8D23F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CD092078-7A73-48D7-80DD-D3E4C9E8D23F}.Debug|x86.Build.0 = Debug|Any CPU
+		{CD092078-7A73-48D7-80DD-D3E4C9E8D23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD092078-7A73-48D7-80DD-D3E4C9E8D23F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD092078-7A73-48D7-80DD-D3E4C9E8D23F}.Release|x64.ActiveCfg = Release|Any CPU
+		{CD092078-7A73-48D7-80DD-D3E4C9E8D23F}.Release|x64.Build.0 = Release|Any CPU
+		{CD092078-7A73-48D7-80DD-D3E4C9E8D23F}.Release|x86.ActiveCfg = Release|Any CPU
+		{CD092078-7A73-48D7-80DD-D3E4C9E8D23F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
