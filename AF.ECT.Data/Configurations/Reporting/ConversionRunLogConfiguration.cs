@@ -2,7 +2,7 @@ using AF.ECT.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AF.ECT.Data.Configurations.Development;
+namespace AF.ECT.Data.Configurations.Reporting;
 
 /// <summary>
 /// Configures the <see cref="ConversionRunLog"/> entity for Entity Framework Core.

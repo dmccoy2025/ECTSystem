@@ -646,6 +646,28 @@ public partial class ALODContext : DbContext
         modelBuilder.ApplyConfiguration(new Form348MedicalConfiguration());
         modelBuilder.ApplyConfiguration(new Form348PostProcessingAppealSarcConfiguration());
         modelBuilder.ApplyConfiguration(new Form348RrConfiguration());
+
+        // Batch 31: Form 348 RR findings, SC PEPP types/reassessments, grade abbreviations, hyperlinks, and import staging - RR investigation findings, special category PEPP/reassessments, military grade abbreviations, hyperlink management, command structure/chain/DBA import staging (9 entities)
+        modelBuilder.ApplyConfiguration(new Form348RrFindingConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348ScPeppTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348ScReassessmentConfiguration());
+        modelBuilder.ApplyConfiguration(new GradeAbbreviationConfiguration());
+        modelBuilder.ApplyConfiguration(new HyperLinkConfiguration());
+        modelBuilder.ApplyConfiguration(new HyperLinkTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpCommandStructConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpCommandStructChainConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpDbaRolePrivConfiguration());
+
+        // Batch 32: Import staging tables - database users, EDIPIN mappings, grade lookups, workflow history, access status, LOD approving authority mappings, active duty personnel, LOD dispositions, investigation reports (9 entities)
+        modelBuilder.ApplyConfiguration(new ImpDbaUserConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpEdipinConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpGradeLookUpConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpHistoryConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpLkupAccessStatusConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpLodAaMappingConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpLodActiveDutyConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpLodDispositionConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpLodInvestigationRptConfiguration());
     }
 
     /// <summary>
