@@ -668,6 +668,36 @@ public partial class ALODContext : DbContext
         modelBuilder.ApplyConfiguration(new ImpLodActiveDutyConfiguration());
         modelBuilder.ApplyConfiguration(new ImpLodDispositionConfiguration());
         modelBuilder.ApplyConfiguration(new ImpLodInvestigationRptConfiguration());
+
+        // Batch 33: Import staging tables - LOD mappings, personnel involved, RWOA tracking, manpower, member data, non-unit personnel, error logging, permission mappings, unit personnel (9 entities)
+        modelBuilder.ApplyConfiguration(new ImpLodmappingConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpLodPersInvolvedConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpLodRwoaConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpManpowerConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpMemberConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpNonUnitPersonnelConfiguration());
+        modelBuilder.ApplyConfiguration(new ImportErrorLogConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpPermmappingConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpPersonnelConfiguration());
+
+        // Batch 34: Import staging tables - personnel feeds (current/old), legacy personnel, workflow processes (definitions/instances/statuses/person-process), process mappings, temp personnel IDs (9 entities)
+        modelBuilder.ApplyConfiguration(new ImpPersonnelFeedConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpPersonnelFeedOldConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpPersonnelOldConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpPersonProcessConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpProcessConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpProcessInstanceConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpProcessValidStatusConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpProcmappingConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpTmpPersidConfiguration());
+
+        // Batch 35: Import staging temp tables, user mappings, production LOD mapping, member data backup/audit - temp username, user/role mappings, LOD ID cross-reference, member backup, member change history (6 entities)
+        modelBuilder.ApplyConfiguration(new ImpTmpUsernameConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpUsermappingConfiguration());
+        modelBuilder.ApplyConfiguration(new ImpUserroleConfiguration());
+        modelBuilder.ApplyConfiguration(new LodmappingConfiguration());
+        modelBuilder.ApplyConfiguration(new MemberdataBackupConfiguration());
+        modelBuilder.ApplyConfiguration(new MemberDataChangeHistoryConfiguration());
     }
 
     /// <summary>

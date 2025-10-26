@@ -2,7 +2,7 @@ using AF.ECT.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AF.ECT.Data.Configurations.Development;
+namespace AF.ECT.Data.Configurations.CoreSystem;
 
 /// <summary>
 /// Configures the <see cref="DevUnit"/> entity for Entity Framework Core.
