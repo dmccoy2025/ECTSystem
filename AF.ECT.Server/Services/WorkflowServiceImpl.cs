@@ -52,6 +52,16 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         return new RpcException(new Status(StatusCode.Internal, message), trailers);
     }
 
+    /// <summary>
+    /// Creates a gRPC exception for cancelled operations.
+    /// </summary>
+    /// <param name="message">The cancellation message to include in the exception.</param>
+    /// <returns>An RpcException with Cancelled status code.</returns>
+    private static RpcException CreateCancelledException(string message = "Operation was cancelled")
+    {
+        return new RpcException(new Status(StatusCode.Cancelled, message));
+    }
+
     #endregion
 
     #region Core User Methods
@@ -86,7 +96,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -133,7 +143,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -171,7 +181,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -219,7 +229,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -239,7 +249,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         try
         {
             _logger.LogInformation("Getting managed users");
-            
+
             var results = await _resilienceService.ExecuteWithRetryAsync(async () =>
             {
                 return await _dataService.GetManagedUsersAsync(request, context?.CancellationToken ?? CancellationToken.None);
@@ -257,7 +267,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -306,7 +316,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -346,7 +356,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -381,7 +391,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -426,7 +436,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -461,7 +471,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -506,7 +516,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -541,7 +551,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -587,7 +597,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -622,7 +632,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -667,7 +677,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -702,7 +712,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -747,7 +757,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -787,7 +797,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -827,7 +837,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -867,7 +877,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -907,7 +917,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -942,7 +952,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -977,7 +987,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1012,7 +1022,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1047,7 +1057,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1082,7 +1092,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1117,7 +1127,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1152,7 +1162,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1199,7 +1209,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1234,7 +1244,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1279,7 +1289,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1314,7 +1324,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1349,7 +1359,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1384,7 +1394,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1419,7 +1429,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1458,7 +1468,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1493,7 +1503,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1528,7 +1538,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1563,7 +1573,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1598,7 +1608,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1633,7 +1643,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1668,7 +1678,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1703,7 +1713,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1738,7 +1748,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1773,7 +1783,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1808,7 +1818,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting creatable by group");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1843,7 +1853,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting finding by reason of by ID");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1878,7 +1888,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting findings");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1913,7 +1923,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting module from workflow");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1948,7 +1958,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting page access by group");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -1983,7 +1993,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting page access by workflow view");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2018,7 +2028,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting pages by workflow ID");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2053,7 +2063,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting permissions");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2088,7 +2098,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting permissions by component");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2123,7 +2133,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting return reasons");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2158,7 +2168,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting RWOA reasons");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2193,7 +2203,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting status codes by component");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2228,7 +2238,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting status codes by component and module");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2263,7 +2273,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting status codes by sign code");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2298,7 +2308,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting status codes by workflow");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2333,7 +2343,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting status codes by workflow and access scope");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2368,7 +2378,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting status code scope");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2403,7 +2413,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting steps by workflow");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2438,7 +2448,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting steps by workflow and status");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2473,7 +2483,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting viewable by group");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2508,7 +2518,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting workflow by component");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2543,7 +2553,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting workflow from module");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2578,7 +2588,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting workflow initial status code");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2613,7 +2623,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting workflow title");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2648,7 +2658,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting workflow title by work status ID");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2683,7 +2693,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while inserting action");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2718,7 +2728,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while inserting option action");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2757,7 +2767,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming signature addition");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2796,7 +2806,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming workflow copy");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2835,7 +2845,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming actions by step");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2874,7 +2884,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming active cases");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2913,7 +2923,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming all findings by reason of");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2952,7 +2962,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming all locks");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -2991,7 +3001,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming cancel reasons");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3030,7 +3040,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming creatable by group");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3069,7 +3079,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming finding by reason of by ID");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3108,7 +3118,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming findings");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3147,7 +3157,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming module from workflow");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3186,7 +3196,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming page access by group");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3225,7 +3235,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming page access by workflow view");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3264,7 +3274,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming pages by workflow ID");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3303,7 +3313,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming permissions");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3342,7 +3352,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming permissions by component");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3381,7 +3391,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming return reasons");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3420,7 +3430,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming RWOA reasons");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3459,7 +3469,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming status codes by component");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3498,7 +3508,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming status codes by component and module");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3537,7 +3547,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming status codes by sign code");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3576,7 +3586,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming status codes by workflow");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3615,7 +3625,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming status codes by workflow and access scope");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3654,7 +3664,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming status code scope");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3693,7 +3703,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming steps by workflow");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3732,7 +3742,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming steps by workflow and status");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3771,7 +3781,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming viewable by group");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3810,7 +3820,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming workflow by component");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3849,7 +3859,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming workflow from module");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3888,7 +3898,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming workflow initial status code");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3927,7 +3937,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming workflow title");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -3966,7 +3976,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming workflow title by work status ID");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -4005,7 +4015,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming action insertion");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -4044,7 +4054,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming option action insertion");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -4098,7 +4108,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogInformation(ex, "Operation cancelled in DeleteLogById");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -4137,30 +4147,32 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
                     {
                         ProcessName = request.ProcessName ?? string.Empty,
                         LastExecutionDate = r.ExecutionDate?.ToString("yyyy-MM-dd HH:mm:ss") ?? string.Empty,
-                        Message = string.Empty 
-                    }) ?? [] 
+                        Message = string.Empty
+                    }) ?? []
                 }
             };
+        }
+        catch (RpcException)
+        {
+            throw;
         }
         catch (OperationCanceledException ex)
         {
             _logger.LogInformation(ex, "Operation cancelled in FindProcessLastExecutionDate");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Unexpected error in FindProcessLastExecutionDate: {Message}", ex.Message);
-            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
+            throw CreateInternalErrorException();
         }
-    }
-
-    /// <summary>
-    /// Handles the FindProcessLastExecutionDateStream gRPC request (streaming version).
-    /// </summary>
-    /// <param name="request">The request containing process last execution date parameters.</param>
-    /// <param name="responseStream">The server stream writer for sending items.</param>
-    /// <param name="context">The server call context for the gRPC operation.</param>
-    /// <returns>A task representing the asynchronous operation.</returns>
+    }    /// <summary>
+         /// Handles the FindProcessLastExecutionDateStream gRPC request (streaming version).
+         /// </summary>
+         /// <param name="request">The request containing process last execution date parameters.</param>
+         /// <param name="responseStream">The server stream writer for sending items.</param>
+         /// <param name="context">The server call context for the gRPC operation.</param>
+         /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task FindProcessLastExecutionDateStream(FindProcessLastExecutionDateRequest request, IServerStreamWriter<ProcessLastExecutionDateItem> responseStream, ServerCallContext context)
     {
         try
@@ -4191,15 +4203,19 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
                 }
             }
         }
+        catch (RpcException)
+        {
+            throw;
+        }
         catch (OperationCanceledException ex)
         {
             _logger.LogInformation(ex, "Operation cancelled in FindProcessLastExecutionDateStream");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Unexpected error in FindProcessLastExecutionDateStream: {Message}", ex.Message);
-            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
+            throw CreateInternalErrorException();
         }
     }
 
@@ -4242,15 +4258,19 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
                 }
             };
         }
+        catch (RpcException)
+        {
+            throw;
+        }
         catch (OperationCanceledException ex)
         {
             _logger.LogInformation(ex, "Operation cancelled in GetAllLogs");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Unexpected error in GetAllLogs: {Message}", ex.Message);
-            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
+            throw CreateInternalErrorException();
         }
     }
 
@@ -4292,15 +4312,19 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
                 }
             }
         }
+        catch (RpcException)
+        {
+            throw;
+        }
         catch (OperationCanceledException ex)
         {
             _logger.LogInformation(ex, "Operation cancelled in GetAllLogsStream");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Unexpected error in GetAllLogsStream: {Message}", ex.Message);
-            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
+            throw CreateInternalErrorException();
         }
     }
 
@@ -4348,15 +4372,19 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
             _logger.LogWarning(ex, "Invalid date format in InsertLog: {ExecutionDate}", request.ExecutionDate);
             throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid date format"));
         }
+        catch (RpcException)
+        {
+            throw;
+        }
         catch (OperationCanceledException ex)
         {
             _logger.LogInformation(ex, "Operation cancelled in InsertLog");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Unexpected error in InsertLog: {Message}", ex.Message);
-            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
+            throw CreateInternalErrorException();
         }
     }
 
@@ -4387,15 +4415,19 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
                 Items = { results?.Select(r => new ProcessActiveItem { ProcessName = request.ProcessName ?? string.Empty, IsActive = results.Count != 0 }) ?? [] }
             };
         }
+        catch (RpcException)
+        {
+            throw;
+        }
         catch (OperationCanceledException ex)
         {
             _logger.LogInformation(ex, "Operation cancelled in IsProcessActive");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Unexpected error in IsProcessActive: {Message}", ex.Message);
-            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
+            throw CreateInternalErrorException();
         }
     }
 
@@ -4435,15 +4467,19 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
                 }
             }
         }
+        catch (RpcException)
+        {
+            throw;
+        }
         catch (OperationCanceledException ex)
         {
             _logger.LogInformation(ex, "Operation cancelled in IsProcessActiveStream");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Unexpected error in IsProcessActiveStream: {Message}", ex.Message);
-            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
+            throw CreateInternalErrorException();
         }
     }
 
@@ -4486,7 +4522,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
                         LogId = r.Id,
                         ProcessName = r.Name ?? string.Empty,
                         ExecutionDate = r.ExecutionDate.ToString("yyyy-MM-dd HH:mm:ss"),
-                        Message = r.Message ?? string.Empty }) ?? [] 
+                        Message = r.Message ?? string.Empty }) ?? []
                 },
                 TotalCount = results?.TotalCount ?? 0
             };
@@ -4501,15 +4537,19 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
             _logger.LogWarning(ex, "Invalid pagination parameters in GetAllLogsPagination: {Message}", ex.Message);
             throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid pagination parameters"));
         }
+        catch (RpcException)
+        {
+            throw;
+        }
         catch (OperationCanceledException ex)
         {
             _logger.LogInformation(ex, "Operation cancelled in GetAllLogsPagination");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Unexpected error in GetAllLogsPagination: {Message}", ex.Message);
-            throw new RpcException(new Status(StatusCode.Internal, "An internal error occurred"), new Metadata { { "error-id", Guid.NewGuid().ToString() } });
+            throw CreateInternalErrorException();
         }
     }
 
@@ -4538,10 +4578,10 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
             {
                 Items =
                 {
-                    results?.Select(r => new WorkflowByIdItem 
+                    results?.Select(r => new WorkflowByIdItem
                     {
                         WorkflowId = r.workflowId,
-                        WorkflowText = r.title ?? string.Empty 
+                        WorkflowText = r.title ?? string.Empty
                     }) ?? []
                 }
             };
@@ -4553,7 +4593,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting workflow by ID");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -4596,7 +4636,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming workflow by ID");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -4631,7 +4671,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting workflows by ref ID");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -4675,7 +4715,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming workflows by ref ID");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -4710,7 +4750,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting workflows by ref ID and type");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -4755,7 +4795,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming workflows by ref ID and type");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -4790,7 +4830,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting workflow types");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -4833,7 +4873,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming workflow types");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -4868,7 +4908,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while inserting workflow");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -4903,7 +4943,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while updating workflow");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -4942,7 +4982,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting workstatus by ID");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -4985,7 +5025,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming workstatus by ID");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -5020,7 +5060,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting workstatuses by ref ID");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -5064,7 +5104,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming workstatuses by ref ID");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -5099,7 +5139,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting workstatuses by ref ID and type");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -5144,7 +5184,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming workstatuses by ref ID and type");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -5179,7 +5219,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while getting workstatus types");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -5222,7 +5262,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while streaming workstatus types");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -5257,7 +5297,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while inserting workstatus");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
@@ -5292,7 +5332,7 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
         catch (OperationCanceledException ex)
         {
             _logger.LogWarning(ex, "Operation was cancelled while updating workstatus");
-            throw new RpcException(new Status(StatusCode.Cancelled, "Operation was cancelled"));
+            throw CreateCancelledException();
         }
         catch (Exception ex)
         {
