@@ -5,20 +5,78 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a workflow definition in the Electronic Case Tracking (ECT) system.
+/// </summary>
+/// <remarks>
+/// Workflows define the sequence of statuses and transitions that cases follow from initiation
+/// to completion. Each workflow is configured for a specific module (e.g., LOD, RLOD, INCAP),
+/// component (Active, Reserve, Guard), and formality level (formal vs. informal investigation).
+/// Workflows control case routing, required approvals, and signature authorities throughout
+/// the case lifecycle.
+/// </remarks>
 public partial class CoreWorkflow
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the workflow.
+    /// </summary>
+    /// <remarks>
+    /// This is the primary key for the workflow definition.
+    /// </remarks>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the module identifier this workflow belongs to.
+    /// </summary>
+    /// <remarks>
+    /// References the CoreLkupModule entity. Modules represent different case types
+    /// such as Line of Duty (LOD), Retroactive Line of Duty (RLOD), or Incapacitation (INCAP).
+    /// </remarks>
     public byte ModuleId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the component (military service branch) this workflow applies to.
+    /// </summary>
+    /// <remarks>
+    /// Valid values include Active Duty, Reserve, and National Guard components.
+    /// Different components may have different workflow requirements and approval chains.
+    /// </remarks>
     public string Compo { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the descriptive title of the workflow.
+    /// </summary>
+    /// <remarks>
+    /// Human-readable name for the workflow, e.g., "Active Duty Formal LOD" or "Reserve Informal RLOD".
+    /// </remarks>
     public string Title { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this is a formal investigation workflow.
+    /// </summary>
+    /// <remarks>
+    /// Formal investigations require more extensive review, board approvals, and documentation
+    /// compared to informal investigations. The formality level determines the approval chain
+    /// and signature requirements.
+    /// </remarks>
     public bool Formal { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this workflow is currently active and available for use.
+    /// </summary>
+    /// <remarks>
+    /// Inactive workflows cannot be assigned to new cases but existing cases may continue
+    /// using the workflow until completion.
+    /// </remarks>
     public bool Active { get; set; }
 
+    /// <summary>
+    /// Gets or sets the initial status identifier for cases using this workflow.
+    /// </summary>
+    /// <remarks>
+    /// References the CoreWorkStatus entity. When a new case is created using this workflow,
+    /// it will be automatically assigned this initial status.
+    /// </remarks>
     public int? InitialStatus { get; set; }
 
     public virtual ICollection<CoreLkupRule> CoreLkupRules { get; set; } = new List<CoreLkupRule>();

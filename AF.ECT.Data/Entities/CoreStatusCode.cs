@@ -5,32 +5,158 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a workflow status code in the Electronic Case Tracking (ECT) system.
+/// </summary>
+/// <remarks>
+/// <para>
+/// Status codes define the state of cases at various points in their lifecycle. Each status code
+/// represents a specific point in a workflow (e.g., Draft, In Review, Approved, Canceled) and controls
+/// what actions can be taken and which users can access the case.
+/// </para>
+/// <para>
+/// Status codes are component-specific (Army, Navy, Air Force, etc.) and module-specific (LOD, IDES, etc.).
+/// They support different workflow patterns including formal investigations, informal investigations,
+/// and administrative processing.
+/// </para>
+/// <para>
+/// Key status code types:
+/// - Draft statuses: Case is being created or edited by the originator
+/// - In-progress statuses: Case is moving through workflow steps
+/// - Review statuses: Case is under review by supervisors or boards
+/// - Final statuses: Case has reached a terminal state (approved, disapproved, canceled)
+/// - Disposition statuses: Case has a final determination
+/// - Appeal statuses: Case is under appeal review
+/// </para>
+/// </remarks>
 public partial class CoreStatusCode
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for this status code.
+    /// </summary>
+    /// <remarks>
+    /// Primary key. This ID uniquely identifies the status across all modules and components.
+    /// </remarks>
     public int StatusId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the human-readable description of this status.
+    /// </summary>
+    /// <remarks>
+    /// This description is displayed in the UI to users. Examples: "Draft", "Awaiting Board Review",
+    /// "Approved", "Canceled", "Disposition - In Line of Duty".
+    /// Maximum 100 characters. Required field.
+    /// </remarks>
     public string Description { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the module identifier this status belongs to.
+    /// </summary>
+    /// <remarks>
+    /// Foreign key to CoreLkupModule. Indicates which module uses this status (LOD, IDES, etc.).
+    /// Each module can have its own set of status codes to support module-specific workflows.
+    /// Required field.
+    /// </remarks>
     public byte ModuleId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the component code this status applies to.
+    /// </summary>
+    /// <remarks>
+    /// Component code (Army, Navy, Air Force, Marine Corps, etc.). Status codes can be customized
+    /// per component to support component-specific workflow requirements. Maximum 4 characters.
+    /// Required field.
+    /// </remarks>
     public string Compo { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the user group that handles cases in this status.
+    /// </summary>
+    /// <remarks>
+    /// Foreign key to CoreUserGroup. Optional field. When specified, indicates which group is
+    /// responsible for handling cases in this status (e.g., Board Review group handles cases
+    /// in "Awaiting Board Review" status).
+    /// </remarks>
     public byte? GroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this status represents a final state.
+    /// </summary>
+    /// <remarks>
+    /// When true, cases in this status cannot move to other statuses. Final statuses typically
+    /// include: Approved, Disapproved, Canceled, Withdrawn, Disposition final statuses.
+    /// Final statuses are often used to close cases and prevent further modification.
+    /// </remarks>
     public bool IsFinal { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this status represents an approved state.
+    /// </summary>
+    /// <remarks>
+    /// When true, cases in this status have been approved by the appropriate authority.
+    /// Approved statuses typically allow the case to proceed or mark successful completion.
+    /// Used for reporting and filtering approved cases.
+    /// </remarks>
     public bool IsApproved { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether cases in this status can be appealed.
+    /// </summary>
+    /// <remarks>
+    /// When true, users can appeal the decision made while the case is in this status.
+    /// Typically used for final disposition statuses where the decision may be contested.
+    /// Appeal functionality creates a new workflow path for reconsideration.
+    /// </remarks>
     public bool CanAppeal { get; set; }
 
+    /// <summary>
+    /// Gets or sets an optional filter criteria for this status.
+    /// </summary>
+    /// <remarks>
+    /// Optional field (max 50 characters). Used to further categorize or filter statuses within a module.
+    /// Can store additional metadata about when this status applies or how it should be used.
+    /// </remarks>
     public string? Filter { get; set; }
 
+    /// <summary>
+    /// Gets or sets the display order for sorting statuses in the UI.
+    /// </summary>
+    /// <remarks>
+    /// Controls the order in which statuses appear in dropdowns, lists, and reports.
+    /// Lower numbers appear first. Typically ordered by workflow sequence (1=Draft, 2=Submitted,
+    /// 3=In Review, 4=Approved, etc.).
+    /// </remarks>
     public byte DisplayOrder { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this status represents a canceled state.
+    /// </summary>
+    /// <remarks>
+    /// When true, cases in this status have been canceled or withdrawn. Cancel statuses are
+    /// typically final statuses that end the workflow without a formal disposition.
+    /// Optional field - null values are treated as false.
+    /// </remarks>
     public bool? IsCancel { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this status represents a disposition.
+    /// </summary>
+    /// <remarks>
+    /// When true, this status represents a final determination or disposition for the case.
+    /// Disposition statuses typically include: In Line of Duty, Not In Line of Duty, etc.
+    /// These statuses often have legal and administrative implications.
+    /// </remarks>
     public bool IsDisposition { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this status applies to formal investigations.
+    /// </summary>
+    /// <remarks>
+    /// When true, this status is used in formal investigation workflows.
+    /// When false, it's used in informal investigation workflows.
+    /// Formal investigations have more rigorous requirements, board reviews, and legal procedures.
+    /// Informal investigations are simplified processes for less complex cases.
+    /// </remarks>
     public bool IsFormal { get; set; }
 
     public virtual ICollection<CoreWorkStatus> CoreWorkStatuses { get; set; } = new List<CoreWorkStatus>();

@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a mapping between messages and user groups for targeted message distribution.
+/// </summary>
 public partial class CoreMessagesGroup
 {
+    /// <summary>
+    /// Gets or sets the message identifier.
+    /// </summary>
     public short MessageId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the user group identifier that should receive this message.
+    /// </summary>
     public byte GroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the user group.
+    /// </summary>
     public virtual CoreUserGroup Group { get; set; } = null!;
 }

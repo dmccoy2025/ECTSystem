@@ -5,15 +5,33 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a mapping between workflows and findings, defining which findings are applicable for specific workflows.
+/// </summary>
 public partial class CoreWorkflowFinding
 {
+    /// <summary>
+    /// Gets or sets the workflow identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the finding identifier.
+    /// </summary>
     public byte FindingId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the sort order for displaying findings in the UI.
+    /// </summary>
     public int? SortOrder { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated finding.
+    /// </summary>
     public virtual CoreLkUpFinding Finding { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated workflow.
+    /// </summary>
     public virtual CoreWorkflow Workflow { get; set; } = null!;
 }

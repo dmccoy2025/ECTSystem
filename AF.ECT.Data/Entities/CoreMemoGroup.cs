@@ -5,23 +5,53 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents permissions for user groups to access and manage memo templates.
+/// </summary>
 public partial class CoreMemoGroup
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the memo group permission.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the memo template identifier.
+    /// </summary>
     public byte TemplateId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the user group identifier.
+    /// </summary>
     public byte GroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the group can create memos from this template.
+    /// </summary>
     public bool CanCreate { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the group can edit memos using this template.
+    /// </summary>
     public bool CanEdit { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the group can delete memos using this template.
+    /// </summary>
     public bool CanDelete { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the group can view memos using this template.
+    /// </summary>
     public bool CanView { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the user group.
+    /// </summary>
     public virtual CoreUserGroup Group { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the memo template.
+    /// </summary>
     public virtual CoreMemoTemplate Template { get; set; } = null!;
 }

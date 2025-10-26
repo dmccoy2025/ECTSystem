@@ -5,6 +5,22 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an action option available to users when a case is in a specific workflow status.
+/// </summary>
+/// <remarks>
+/// Status options define the user-facing actions that can be performed on a case in a particular
+/// workflow status. Each option includes display text shown to users, a target status that the
+/// case will transition to, and configuration for sort order and availability.
+/// 
+/// The Template field specifies which form or template to display when the action is selected.
+/// The Compo field allows component-specific options (e.g., different actions for Active vs Reserve).
+/// The Active flag enables options to be temporarily disabled without removing them.
+/// 
+/// Status options are linked to workflow actions via CoreWorkStatusAction, which defines the
+/// specific behavior when the option is selected. This separation allows the same display option
+/// to trigger different actions based on business rules.
+/// </remarks>
 public partial class CoreWorkStatusOption
 {
     public int WsoId { get; set; }

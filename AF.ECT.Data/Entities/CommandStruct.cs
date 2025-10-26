@@ -5,42 +5,140 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a military command structure unit in the Electronic Case Tracking (ECT) system.
+/// </summary>
+/// <remarks>
+/// The CommandStruct entity defines the hierarchical military organization structure used throughout
+/// the ECT system. It includes units at all echelons from wing/division level down to detachments,
+/// supporting all components (Active Duty, Air Force Reserve, Air National Guard). This hierarchy
+/// is used for user assignments, case routing, approval chains, permission management, and reporting.
+/// The structure supports both geographical and operational command relationships, including gaining
+/// command assignments for Reserve and Guard units.
+/// </remarks>
 public partial class CommandStruct
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the command structure record.
+    /// </summary>
+    /// <remarks>
+    /// This is the primary key and auto-incremented identity column.
+    /// </remarks>
     public int CsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the first line of the unit's physical address.
+    /// </summary>
     public string? Address1 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the second line of the unit's physical address.
+    /// </summary>
     public string? Address2 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the base or installation code where the unit is located.
+    /// </summary>
+    /// <remarks>
+    /// References official Air Force base codes for tracking unit locations.
+    /// </remarks>
     public string? BaseCode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the city where the unit is located.
+    /// </summary>
     public string? City { get; set; }
 
+    /// <summary>
+    /// Gets or sets the command code identifier for the unit.
+    /// </summary>
+    /// <remarks>
+    /// Unique code used for official military correspondence and reporting.
+    /// </remarks>
     public string? CommandCode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Unit Type Code (UTC) for the command structure.
+    /// </summary>
+    /// <remarks>
+    /// Used for force packaging and deployment planning in contingency operations.
+    /// </remarks>
     public string? CommandStructUtc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the component designation (Active, Reserve, Guard).
+    /// </summary>
+    /// <remarks>
+    /// Critical for workflow routing and approval chain determination. Different components
+    /// have different regulatory requirements and command relationships.
+    /// </remarks>
     public string? Component { get; set; }
 
+    /// <summary>
+    /// Gets or sets the country where the unit is located.
+    /// </summary>
     public string? Country { get; set; }
 
+    /// <summary>
+    /// Gets or sets the username of the person who created this record.
+    /// </summary>
     public string? CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when this record was created.
+    /// </summary>
     public DateTime? CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the parent command structure in the hierarchy.
+    /// </summary>
+    /// <remarks>
+    /// Self-referencing foreign key that establishes the organizational hierarchy.
+    /// Used for reporting chains and permission inheritance.
+    /// </remarks>
     public int? CsIdParent { get; set; }
 
+    /// <summary>
+    /// Gets or sets the organizational level (e.g., Wing, Group, Squadron, Flight).
+    /// </summary>
+    /// <remarks>
+    /// Defines the echelon of the unit within the command hierarchy.
+    /// </remarks>
     public string? CsLevel { get; set; }
 
+    /// <summary>
+    /// Gets or sets the operational type of the command structure.
+    /// </summary>
+    /// <remarks>
+    /// Indicates whether the unit is operational, support, training, etc.
+    /// </remarks>
     public string? CsOperType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the primary email address for the unit.
+    /// </summary>
     public string? EMail { get; set; }
 
+    /// <summary>
+    /// Gets or sets the gaining command identifier for Reserve/Guard units.
+    /// </summary>
+    /// <remarks>
+    /// References another CommandStruct record representing the Active Duty organization
+    /// that gains operational control of Reserve or Guard units when mobilized.
+    /// </remarks>
     public int? GainingCommandCsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the geographic location code for the unit.
+    /// </summary>
     public string? GeoLoc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the full descriptive name of the unit.
+    /// </summary>
+    /// <remarks>
+    /// Complete unit designation including squadron number, type, and parent organization.
+    /// </remarks>
     public string? LongName { get; set; }
 
     public string? MedicalService { get; set; }

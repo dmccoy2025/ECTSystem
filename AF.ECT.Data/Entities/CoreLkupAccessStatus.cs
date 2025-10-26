@@ -5,6 +5,27 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an access status for users and user-role assignments in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// This lookup table defines the statuses that control whether users can access the system
+/// and which roles are currently effective. Typical statuses include Active, Inactive,
+/// Suspended, Pending, and Expired.
+/// 
+/// Access statuses are used in two contexts:
+/// 1. Core_User.Status_id: Controls whether a user account is active and can log in
+/// 2. Core_User_Role.Status_id: Controls whether a specific role assignment is active
+/// 
+/// This allows fine-grained control over user access:
+/// - A user account can be temporarily suspended without deleting the account
+/// - Individual role assignments can be disabled without removing them
+/// - Access can be set to "Pending" for users awaiting approval
+/// - Expired statuses can indicate time-limited access that has lapsed
+/// 
+/// The system enforces access status checks during authentication and authorization
+/// to ensure only active users with active role assignments can perform operations.
+/// </remarks>
 public partial class CoreLkupAccessStatus
 {
     public byte StatusId { get; set; }

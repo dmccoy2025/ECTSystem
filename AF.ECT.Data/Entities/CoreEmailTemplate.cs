@@ -5,22 +5,111 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an email template for automated notifications in the ECT system.
+/// </summary>
+/// <remarks>
+/// <para>
+/// Email templates define the subject and body content for automated emails sent by the ECT system.
+/// Templates support component-specific customization and can include placeholders for dynamic content
+/// that is populated at email generation time.
+/// </para>
+/// <para>
+/// Templates can be linked to data procedures (DataProc) that query the database to retrieve
+/// dynamic content for the email. This allows templates to include case-specific information,
+/// user details, workflow status, and other contextual data.
+/// </para>
+/// <para>
+/// Common template uses:
+/// - Case assignment notifications
+/// - Workflow status change notifications
+/// - Deadline reminder emails
+/// - Review request notifications
+/// - Approval/disapproval notifications
+/// - System alerts and announcements
+/// </para>
+/// </remarks>
 public partial class CoreEmailTemplate
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for this email template.
+    /// </summary>
+    /// <remarks>
+    /// Primary key. This ID uniquely identifies the template across the system.
+    /// </remarks>
     public int TemplateId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the component code this template applies to.
+    /// </summary>
+    /// <remarks>
+    /// Optional component code (Army, Navy, Air Force, etc.). Maximum 4 characters.
+    /// When null, template applies to all components. When specified, template is only
+    /// used for cases belonging to that component, allowing component-specific email content.
+    /// </remarks>
     public string? Compo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the administrative title of this template.
+    /// </summary>
+    /// <remarks>
+    /// Internal template title used for identification in the admin interface. Maximum 200 characters.
+    /// Required field. Should be descriptive enough to identify the template's purpose.
+    /// Examples: "LOD Case Assignment", "Approval Reminder - Army", "Board Review Notification".
+    /// </remarks>
     public string Title { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the email subject line template.
+    /// </summary>
+    /// <remarks>
+    /// Email subject line. Maximum 500 characters. Required field.
+    /// Can include placeholders that are replaced with dynamic content at email generation time.
+    /// Common placeholders: {CaseNumber}, {CaseName}, {UserName}, {Status}, {DueDate}, etc.
+    /// Example: "Action Required: Case {CaseNumber} - {CaseName} requires your review"
+    /// </remarks>
     public string Subject { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the email body template.
+    /// </summary>
+    /// <remarks>
+    /// HTML or plain text email body content. No maximum length. Required field.
+    /// Can include placeholders for dynamic content and HTML formatting for rich email display.
+    /// Supports standard HTML tags for formatting: paragraphs, lists, tables, links, etc.
+    /// Placeholders are replaced with actual data when the email is generated.
+    /// </remarks>
     public string Body { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the name of the stored procedure used to retrieve dynamic data for this template.
+    /// </summary>
+    /// <remarks>
+    /// Optional stored procedure name (maximum 200 characters). When specified, this stored procedure
+    /// is executed to retrieve data that populates placeholders in the subject and body.
+    /// The stored procedure typically accepts case ID or user ID as parameters and returns
+    /// a result set with columns matching the template placeholders.
+    /// Example: "usp_GetCaseEmailData" returns columns like CaseNumber, CaseName, AssigneeName, etc.
+    /// </remarks>
     public string? DataProc { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this template is active and can be used.
+    /// </summary>
+    /// <remarks>
+    /// When true, template is active and available for use in email generation.
+    /// When false, template is disabled and will not be used, but remains in the database
+    /// for historical reference or future reactivation. Allows temporary disabling without deletion.
+    /// </remarks>
     public bool Active { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when this template was created or last modified.
+    /// </summary>
+    /// <remarks>
+    /// System timestamp. Defaults to current date/time on insert.
+    /// Used for auditing template changes and identifying recently modified templates.
+    /// </remarks>
     public DateTime SysDate { get; set; }
 
     public virtual ICollection<ReminderEmailSetting> ReminderEmailSettings { get; set; } = new List<ReminderEmailSetting>();

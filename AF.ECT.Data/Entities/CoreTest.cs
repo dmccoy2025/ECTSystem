@@ -5,15 +5,33 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a test record used for development and quality assurance purposes.
+/// </summary>
 public partial class CoreTest
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the test record.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name or description of the test.
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this test is active.
+    /// </summary>
     public bool? Active { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier or name of the user who created the test.
+    /// </summary>
     public string CreatedBy { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the date when the test was created (note: typo in column name 'CreatedDaye').
+    /// </summary>
     public DateTime CreatedDaye { get; set; }
 }

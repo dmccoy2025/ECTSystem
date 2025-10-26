@@ -5,6 +5,22 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a hierarchical chain of command in the military organizational structure.
+/// </summary>
+/// <remarks>
+/// <para>
+/// Command chains define parent-child relationships between military units, supporting multiple
+/// chain types (administrative, operational, medical) and hierarchical navigation for case routing
+/// and approval workflows.
+/// </para>
+/// <para>
+/// Chain types include:
+/// - Administrative: Normal chain of command for personnel actions
+/// - Operational: Combat/mission-focused chain
+/// - Medical: Medical treatment facility hierarchy
+/// </para>
+/// </remarks>
 public partial class CommandStructChain
 {
     public int CscId { get; set; }

@@ -5,17 +5,38 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a signature collected for sign-only operations without full workflow processing.
+/// </summary>
 public partial class CoreSignOnlySignature
 {
+    /// <summary>
+    /// Gets or sets the reference identifier for the associated case or entity.
+    /// </summary>
     public int RefId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the workflow identifier.
+    /// </summary>
     public int Workflow { get; set; }
 
+    /// <summary>
+    /// Gets or sets the signature data (image or text representation).
+    /// </summary>
     public string Signature { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the date when the signature was collected.
+    /// </summary>
     public string SigDate { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the identifier of the user who provided the signature.
+    /// </summary>
     public int? UserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the person type identifier for the signer.
+    /// </summary>
     public int? Ptype { get; set; }
 }

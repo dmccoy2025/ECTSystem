@@ -5,13 +5,84 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a permission in the Electronic Case Tracking (ECT) system.
+/// </summary>
+/// <remarks>
+/// <para>
+/// Permissions define granular access controls throughout the ECT system. Each permission grants
+/// access to a specific feature, form, workflow action, or data scope. Permissions are assigned to
+/// user groups via CoreGroupPermission, and users inherit permissions from their group memberships.
+/// </para>
+/// <para>
+/// Common permission types include:
+/// - Form access permissions (view, edit, create specific forms)
+/// - Workflow action permissions (approve, disapprove, return, cancel)
+/// - Data scope permissions (view own cases, unit cases, chain-of-command cases, all cases)
+/// - Feature access permissions (reporting, admin functions, system configuration)
+/// - Module access permissions (LOD, IDES, PDES, etc.)
+/// </para>
+/// <para>
+/// The Exclude flag supports deny permissions - when true, the permission explicitly denies access
+/// rather than granting it. This allows for exception-based security models where groups have
+/// broad access but specific exclusions.
+/// </para>
+/// </remarks>
 public partial class CorePermission
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for this permission.
+    /// </summary>
+    /// <remarks>
+    /// Primary key. This ID uniquely identifies the permission across the entire system.
+    /// Permission IDs are typically assigned sequentially and remain stable across deployments.
+    /// </remarks>
     public short PermId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the unique name of this permission.
+    /// </summary>
+    /// <remarks>
+    /// Unique identifier for the permission in code. Maximum 100 characters. Required field.
+    /// Permission names follow a hierarchical naming convention:
+    /// - "Form.348.View" - View access to Form 348
+    /// - "Form.348.Edit" - Edit access to Form 348
+    /// - "Workflow.Approve" - Approve workflow actions
+    /// - "Data.ViewAll" - View all cases regardless of ownership
+    /// - "Admin.UserManagement" - Access to user management features
+    /// This name is used in code to check permissions programmatically.
+    /// </remarks>
     public string PermName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the human-readable description of this permission.
+    /// </summary>
+    /// <remarks>
+    /// Detailed description explaining what access this permission grants. Maximum 500 characters.
+    /// Required field. This description is displayed in the UI when managing group permissions,
+    /// helping administrators understand what each permission does before assigning it to groups.
+    /// Should clearly explain both the scope and limitations of the permission.
+    /// </remarks>
     public string PermDesc { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this permission is an exclusion (deny) permission.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// When false (default): This permission grants access to the specified feature or data.
+    /// When true: This permission explicitly denies access, overriding any grant permissions.
+    /// </para>
+    /// <para>
+    /// Exclude permissions enable exception-based security models. For example:
+    /// - Grant "Data.ViewAll" to a supervisory group
+    /// - Exclude "Form.348.Edit" to prevent editing sensitive forms
+    /// - The user can view all cases but cannot edit Form 348
+    /// </para>
+    /// <para>
+    /// Deny permissions (Exclude=true) always take precedence over grant permissions.
+    /// This implements a "deny wins" security model common in enterprise systems.
+    /// </para>
+    /// </remarks>
     public bool Exclude { get; set; }
 }

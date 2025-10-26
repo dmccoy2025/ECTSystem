@@ -5,17 +5,38 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an error that occurred during package import operations.
+/// </summary>
 public partial class CorePkgImportError
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the import error.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name of the stored procedure that encountered the error.
+    /// </summary>
     public string? StoredProcName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the key value that caused the error during import.
+    /// </summary>
     public string? KeyValue { get; set; }
 
+    /// <summary>
+    /// Gets or sets the package log identifier associated with this error.
+    /// </summary>
     public int? PkgLogId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when the error occurred.
+    /// </summary>
     public DateTime? Time { get; set; }
 
+    /// <summary>
+    /// Gets or sets the detailed error message.
+    /// </summary>
     public string? ErrorMessage { get; set; }
 }

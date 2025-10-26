@@ -5,19 +5,43 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a performance metric log capturing page generation times for monitoring.
+/// </summary>
 public partial class CoreLogPageGenerationTime
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the generation time log entry.
+    /// </summary>
     public int GId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when the page was generated.
+    /// </summary>
     public DateTime? ActionDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the measured time it took to generate the page.
+    /// </summary>
     public string? MeasuredTime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the current page that was generated.
+    /// </summary>
     public string? CurrentPage { get; set; }
 
+    /// <summary>
+    /// Gets or sets the referring page that linked to the current page.
+    /// </summary>
     public string? ReferringPage { get; set; }
 
+    /// <summary>
+    /// Gets or sets the username of the user who accessed the page.
+    /// </summary>
     public string? Username { get; set; }
 
+    /// <summary>
+    /// Gets or sets the role of the user who accessed the page.
+    /// </summary>
     public string? Role { get; set; }
 }

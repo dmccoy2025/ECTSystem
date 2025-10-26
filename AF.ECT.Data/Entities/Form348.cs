@@ -5,28 +5,112 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a DA Form 348 (Line of Duty Determination) case in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// The Form 348 entity manages the complete lifecycle of Line of Duty (LOD) investigations,
+/// which determine whether a service member's injury, disease, or death occurred in the line of duty
+/// and whether the member was at fault. This determination affects eligibility for medical care,
+/// disability benefits, and other entitlements. The entity supports both formal and informal
+/// investigations, multiple levels of review and approval, and comprehensive signature tracking
+/// for all authorities involved in the adjudication process.
+/// </remarks>
 public partial class Form348
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the LOD case.
+    /// </summary>
+    /// <remarks>
+    /// This is the primary key and auto-incremented identity column.
+    /// </remarks>
     public int LodId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the human-readable case identifier.
+    /// </summary>
+    /// <remarks>
+    /// Required field. Must be unique. Format typically includes component, year, and sequence number
+    /// (e.g., "AR-2024-00123"). This is the primary reference number used in correspondence and reports.
+    /// </remarks>
     public string CaseId { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the current workflow status of the case.
+    /// </summary>
+    /// <remarks>
+    /// References the CoreWorkStatus entity. The status determines the current stage of processing,
+    /// available actions, and next steps in the workflow.
+    /// </remarks>
     public int Status { get; set; }
 
+    /// <summary>
+    /// Gets or sets the workflow definition identifier for this case.
+    /// </summary>
+    /// <remarks>
+    /// References the CoreWorkflow entity. The workflow determines the sequence of statuses,
+    /// required approvals, and routing rules for the case based on component and formality level.
+    /// </remarks>
     public byte Workflow { get; set; }
 
+    /// <summary>
+    /// Gets or sets the full name of the service member who is the subject of the LOD investigation.
+    /// </summary>
+    /// <remarks>
+    /// Required field. Typically formatted as "Last, First Middle" or "Last, First MI".
+    /// </remarks>
     public string MemberName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Social Security Number of the service member.
+    /// </summary>
+    /// <remarks>
+    /// Required field. Stored in encrypted or protected format. Used for positive identification
+    /// and correlation with personnel and medical records.
+    /// </remarks>
     public string MemberSsn { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the pay grade/rank of the service member.
+    /// </summary>
+    /// <remarks>
+    /// References the CoreLkupGrade entity. Grade at the time of the incident being investigated.
+    /// </remarks>
     public int MemberGrade { get; set; }
 
+    /// <summary>
+    /// Gets or sets the unit name/designation of the service member.
+    /// </summary>
+    /// <remarks>
+    /// Required field. Free-text unit designation. Also linked via MemberUnitId to the
+    /// command structure for routing and reporting purposes.
+    /// </remarks>
     public string MemberUnit { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the command structure identifier for the service member's unit.
+    /// </summary>
+    /// <remarks>
+    /// References the CommandStruct entity. Used for case routing, approval chains,
+    /// and hierarchical reporting.
+    /// </remarks>
     public int MemberUnitId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date of birth of the service member.
+    /// </summary>
+    /// <remarks>
+    /// Used for positive identification and age-related regulatory requirements.
+    /// </remarks>
     public DateTime? MemberDob { get; set; }
 
+    /// <summary>
+    /// Gets or sets the component (Active, Reserve, Guard) of the service member.
+    /// </summary>
+    /// <remarks>
+    /// Required field. Different components have different workflows, approval authorities,
+    /// and regulatory requirements for LOD determinations.
+    /// </remarks>
     public string MemberCompo { get; set; } = null!;
 
     public int CreatedBy { get; set; }

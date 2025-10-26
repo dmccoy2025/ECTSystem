@@ -5,32 +5,134 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a role/permission group in the Electronic Case Tracking (ECT) system.
+/// </summary>
+/// <remarks>
+/// CoreUserGroup defines sets of permissions that control user access to pages, features,
+/// and data within the application. Groups are component-specific (Active, Reserve, Guard)
+/// and use hierarchical access scopes to determine data visibility across command structures.
+/// Access scope levels (Own, Unit, Chain, Component, All) control whether users see only
+/// their own cases, their unit's cases, or broader datasets. Groups support HIPAA restrictions
+/// for medical data access, self-registration capabilities, and custom reporting chain views.
+/// Partial matching enables flexible permission assignment based on name patterns.
+/// </remarks>
 public partial class CoreUserGroup
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the user group.
+    /// </summary>
+    /// <remarks>
+    /// This is the primary key for the role/permission group.
+    /// </remarks>
     public byte GroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the full name of the user group.
+    /// </summary>
+    /// <remarks>
+    /// Required field. Must be unique. Descriptive name displayed in role assignment UI.
+    /// </remarks>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the abbreviated name of the user group.
+    /// </summary>
+    /// <remarks>
+    /// Required field. Must be unique. Short code used in compact UI displays and reports.
+    /// </remarks>
     public string Abbr { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the component (Active, Reserve, Guard) this group applies to.
+    /// </summary>
+    /// <remarks>
+    /// Required field. References CoreLkupCompo. Groups are component-specific to support
+    /// different permission requirements and workflows across components.
+    /// </remarks>
     public string Compo { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the access scope level for this group.
+    /// </summary>
+    /// <remarks>
+    /// References CoreLkupAccessScope. Defines data visibility:
+    /// - Own: User sees only their own cases
+    /// - Unit: User sees cases for their assigned unit
+    /// - Chain: User sees cases for their command chain
+    /// - Component: User sees all cases for their component
+    /// - All: User sees all cases across all components
+    /// </remarks>
     public byte AccessScope { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this group is active and can be assigned.
+    /// </summary>
+    /// <remarks>
+    /// Inactive groups cannot be assigned to new users but existing assignments remain valid.
+    /// </remarks>
     public bool Active { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether partial name matching is enabled.
+    /// </summary>
+    /// <remarks>
+    /// When true, enables flexible permission assignment based on name pattern matching
+    /// rather than exact matches.
+    /// </remarks>
     public bool PartialMatch { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether to display group information to users.
+    /// </summary>
+    /// <remarks>
+    /// Controls visibility of group details in user-facing interfaces.
+    /// </remarks>
     public bool ShowInfo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the display order for this group in sorted lists.
+    /// </summary>
+    /// <remarks>
+    /// Determines sequence in role selection dropdowns and administrative displays.
+    /// Lower values appear first.
+    /// </remarks>
     public byte SortOrder { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether HIPAA training certification is required.
+    /// </summary>
+    /// <remarks>
+    /// When true, users must have valid HIPAA certification to be assigned this group.
+    /// Required for groups that access protected health information (PHI).
+    /// </remarks>
     public bool HipaaRequired { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether users can self-register for this group.
+    /// </summary>
+    /// <remarks>
+    /// When true, users can request assignment to this group without administrator approval.
+    /// Typically used for basic access groups.
+    /// </remarks>
     public bool CanRegister { get; set; }
 
+    /// <summary>
+    /// Gets or sets the reporting chain view type for this group.
+    /// </summary>
+    /// <remarks>
+    /// References CoreLkupChainType. Determines which command structure hierarchy
+    /// is used for reporting and data filtering.
+    /// </remarks>
     public byte ReportView { get; set; }
 
+    /// <summary>
+    /// Gets or sets the hierarchical level of this group.
+    /// </summary>
+    /// <remarks>
+    /// References CoreUserGroupLevel. Defines the authority level and permission
+    /// hierarchy for this group.
+    /// </remarks>
     public int GroupLevel { get; set; }
 
     public virtual CoreLkupAccessScope AccessScopeNavigation { get; set; } = null!;

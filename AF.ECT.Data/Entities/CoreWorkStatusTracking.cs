@@ -5,35 +5,83 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents historical tracking of workflow status transitions and assignments.
+/// </summary>
 public partial class CoreWorkStatusTracking
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the work status tracking record.
+    /// </summary>
     public int WstId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the work status identifier being tracked.
+    /// </summary>
     public int WsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the reference identifier for the associated case.
+    /// </summary>
     public int RefId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the module identifier.
+    /// </summary>
     public byte Module { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when the status period started.
+    /// </summary>
     public DateTime StartDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when the status period ended.
+    /// </summary>
     public DateTime? EndDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the user who completed this status.
+    /// </summary>
     public int? CompletedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the workflow identifier.
+    /// </summary>
     public byte? WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the rank/grade of the person who completed the status.
+    /// </summary>
     public int? Rank { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name of the person who completed the status.
+    /// </summary>
     public string? Name { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the user who completed the status.
+    /// </summary>
     public virtual CoreUser? CompletedByNavigation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the module.
+    /// </summary>
     public virtual CoreLkupModule ModuleNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the rank/grade.
+    /// </summary>
     public virtual CoreLkupGrade? RankNavigation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the workflow.
+    /// </summary>
     public virtual CoreWorkflow? Workflow { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the work status.
+    /// </summary>
     public virtual CoreWorkStatus Ws { get; set; } = null!;
 }

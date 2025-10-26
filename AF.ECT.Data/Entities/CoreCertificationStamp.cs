@@ -5,6 +5,21 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a certification statement template used for official approvals in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// Certification stamps provide standardized legal language for official signatures and approvals on case documents.
+/// Each stamp contains a Name (short identifier) and Body (the full certification text) that appears on official
+/// documents when approvers sign off on case actions.
+/// 
+/// The IsQualified flag distinguishes between qualified certifications (with limitations or conditions) and
+/// unqualified certifications (without reservations). This is important for legal compliance and ensures
+/// that approval authorities use appropriate language for their level of endorsement.
+/// 
+/// Certification stamps are mapped to workflows via CoreWorkflowCertificationStampMap, allowing different
+/// workflows to use different certification language based on regulatory requirements.
+/// </remarks>
 public partial class CoreCertificationStamp
 {
     public int Id { get; set; }

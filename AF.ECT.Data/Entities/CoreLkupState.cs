@@ -5,6 +5,24 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a U.S. state, territory, or international region in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// This lookup table defines geographic regions for address information, location-based filtering,
+/// and geographic reporting. Includes all 50 U.S. states, territories, and select international
+/// regions where U.S. military personnel may be stationed.
+/// 
+/// The State field contains the two-character state/region code (e.g., "CA", "TX", "GU"),
+/// StateName contains the full name (e.g., "California", "Texas", "Guam"), and Country
+/// indicates the country association (typically "USA" for domestic locations).
+/// 
+/// This table is used throughout the system for:
+/// - Member and facility address information
+/// - Geographic filtering in reports and queries
+/// - Location-based data aggregation
+/// - Command structure organization by geographic region
+/// </remarks>
 public partial class CoreLkupState
 {
     public string? State { get; set; }

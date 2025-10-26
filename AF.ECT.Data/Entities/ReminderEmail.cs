@@ -5,21 +5,73 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a reminder email tracking record for a specific case.
+/// </summary>
+/// <remarks>
+/// Tracks when reminder emails were last sent for cases in specific workflow statuses, preventing
+/// duplicate reminders and managing reminder frequency according to configured intervals.
+/// </remarks>
 public partial class ReminderEmail
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for this reminder email record.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the reminder email setting identifier that defines the reminder rules.
+    /// </summary>
+    /// <remarks>
+    /// Foreign key to ReminderEmailSetting. Links to the configuration that defines when and how
+    /// often reminders should be sent.
+    /// </remarks>
     public int SettingId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the case identifier this reminder applies to.
+    /// </summary>
+    /// <remarks>
+    /// The user-visible case ID (e.g., "LOD-2024-00123"). Maximum 50 characters. Required field.
+    /// </remarks>
     public string CaseId { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the date when the last reminder email was sent for this case.
+    /// </summary>
+    /// <remarks>
+    /// Used to calculate when the next reminder should be sent based on the configured interval.
+    /// </remarks>
     public DateOnly LastSentDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date when this reminder record was last modified.
+    /// </summary>
+    /// <remarks>
+    /// Tracks updates to the reminder record for audit purposes.
+    /// </remarks>
     public DateOnly LastModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the number of reminder emails sent for this case.
+    /// </summary>
+    /// <remarks>
+    /// Optional field. Tracks how many reminders have been sent to monitor reminder frequency
+    /// and potentially limit excessive reminders.
+    /// </remarks>
     public int? SentCount { get; set; }
 
+    /// <summary>
+    /// Gets or sets the member's unit identifier.
+    /// </summary>
+    /// <remarks>
+    /// Identifies the unit responsible for the case, used for targeting reminder emails
+    /// to the appropriate organizational contacts.
+    /// </remarks>
     public int MemberUnitId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the reminder email setting.
+    /// </summary>
     public virtual ReminderEmailSetting Setting { get; set; } = null!;
 }

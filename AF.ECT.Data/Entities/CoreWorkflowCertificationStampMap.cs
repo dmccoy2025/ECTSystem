@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a mapping between workflows and certification stamps, defining which official stamps are available for specific workflows.
+/// </summary>
 public partial class CoreWorkflowCertificationStampMap
 {
+    /// <summary>
+    /// Gets or sets the workflow identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the certification stamp identifier.
+    /// </summary>
     public int CertStampId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated certification stamp.
+    /// </summary>
     public virtual CoreCertificationStamp CertStamp { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated workflow.
+    /// </summary>
     public virtual CoreWorkflow Workflow { get; set; } = null!;
 }

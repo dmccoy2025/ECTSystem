@@ -5,43 +5,103 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a memo letterhead template defining branding and formatting for official memoranda.
+/// </summary>
 public partial class CoreMemoLetterhead
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the letterhead.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the title/name of the letterhead.
+    /// </summary>
     public string Title { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the version number of the letterhead.
+    /// </summary>
     public byte Version { get; set; }
 
+    /// <summary>
+    /// Gets or sets the military component code (e.g., Army, Navy, Air Force).
+    /// </summary>
     public string Compo { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the date when this letterhead was created.
+    /// </summary>
     public DateTime DateCreated { get; set; }
 
+    /// <summary>
+    /// Gets or sets the path to the left logo image.
+    /// </summary>
     public string LogoImageLeft { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the header title text.
+    /// </summary>
     public string HeaderTitle { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the font size for the header title.
+    /// </summary>
     public int HeaderTitleSize { get; set; }
 
+    /// <summary>
+    /// Gets or sets the header subtitle text.
+    /// </summary>
     public string HeaderSubtitle { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the font size for the header subtitle.
+    /// </summary>
     public int HeaderSubtitleSize { get; set; }
 
+    /// <summary>
+    /// Gets or sets the font family name.
+    /// </summary>
     public string Font { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the default font size for memo body.
+    /// </summary>
     public int FontSize { get; set; }
 
+    /// <summary>
+    /// Gets or sets the color for header fonts.
+    /// </summary>
     public string HeaderFontColor { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the path to the right logo image.
+    /// </summary>
     public string LogoImageRight { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the path to the center footer image.
+    /// </summary>
     public string FooterImageCenter { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the date when this letterhead becomes effective.
+    /// </summary>
     public DateTime EffectiveDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the component.
+    /// </summary>
     public virtual CoreLkupCompo CompoNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the collection of memos using this letterhead.
+    /// </summary>
     public virtual ICollection<CoreMemo> CoreMemos { get; set; } = new List<CoreMemo>();
 
+    /// <summary>
+    /// Gets or sets the collection of version 2 memos using this letterhead.
+    /// </summary>
     public virtual ICollection<CoreMemos2> CoreMemos2s { get; set; } = new List<CoreMemos2>();
 }

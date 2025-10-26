@@ -5,25 +5,58 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a log entry for emails sent by the system.
+/// </summary>
 public partial class CoreLogEmail
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the email log entry.
+    /// </summary>
     public int EId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the user who triggered the email.
+    /// </summary>
     public int? UserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when the email was sent.
+    /// </summary>
     public DateTime? DateSent { get; set; }
 
+    /// <summary>
+    /// Gets or sets the recipient email addresses.
+    /// </summary>
     public string? ETo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the CC (carbon copy) email addresses.
+    /// </summary>
     public string? ECc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the BCC (blind carbon copy) email addresses.
+    /// </summary>
     public string? EBcc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the email subject line.
+    /// </summary>
     public string? Subject { get; set; }
 
+    /// <summary>
+    /// Gets or sets the email body content.
+    /// </summary>
     public string? Body { get; set; }
 
+    /// <summary>
+    /// Gets or sets the failure message if the email failed to send.
+    /// </summary>
     public string? Failed { get; set; }
 
+    /// <summary>
+    /// Gets or sets the email template identifier used to generate the email.
+    /// </summary>
     public int? TemplateId { get; set; }
 }

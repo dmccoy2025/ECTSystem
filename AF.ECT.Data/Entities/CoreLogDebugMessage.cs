@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a debug message logged for development and troubleshooting purposes.
+/// </summary>
 public partial class CoreLogDebugMessage
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the debug message.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when the message was created.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the debug message text.
+    /// </summary>
     public string Message { get; set; } = null!;
 }

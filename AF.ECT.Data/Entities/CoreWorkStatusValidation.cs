@@ -5,17 +5,38 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents validation rules applied to workflow statuses to ensure data integrity.
+/// </summary>
 public partial class CoreWorkStatusValidation
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the work status validation rule.
+    /// </summary>
     public int WsvId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the work status identifier this validation applies to.
+    /// </summary>
     public int WsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the type of validation to perform.
+    /// </summary>
     public short ValidationType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the validation data or rules (typically JSON or serialized format).
+    /// </summary>
     public string Data { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this validation rule is active.
+    /// </summary>
     public bool Active { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the work status.
+    /// </summary>
     public virtual CoreWorkStatus Ws { get; set; } = null!;
 }

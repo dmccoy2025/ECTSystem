@@ -5,6 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a page or feature in the application for access control purposes.
+/// </summary>
+/// <remarks>
+/// The CorePage entity catalogs pages, screens, and features in the application that require
+/// access control. Each page has a unique identifier and descriptive title used in permission
+/// management and access control rules.
+/// 
+/// Pages are referenced by CorePageAccess to define group-based, workflow-based, and status-based
+/// access permissions, enabling fine-grained control over which users can access specific
+/// application features based on their roles and context.
+/// </remarks>
 public partial class CorePage
 {
     public short PageId { get; set; }

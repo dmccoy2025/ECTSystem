@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a categorization type for key-value pair keys.
+/// </summary>
 public partial class CoreKeyValKeyType
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the key type.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name of the key type.
+    /// </summary>
     public string TypeName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the collection of keys of this type.
+    /// </summary>
     public virtual ICollection<CoreKeyValKey> CoreKeyValKeys { get; set; } = new List<CoreKeyValKey>();
 }

@@ -5,6 +5,14 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a parent-level dialogue comment that can have threaded child replies.
+/// </summary>
+/// <remarks>
+/// Dialogue comments support collaborative discussion threads within cases, allowing multiple users
+/// to have threaded conversations about specific aspects of a case. Each dialogue comment can have
+/// multiple child replies, creating a nested discussion structure.
+/// </remarks>
 public partial class CaseDialogueComment
 {
     public int Id { get; set; }

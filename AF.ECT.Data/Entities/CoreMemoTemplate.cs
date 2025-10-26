@@ -5,53 +5,128 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a template for generating standardized memoranda.
+/// </summary>
 public partial class CoreMemoTemplate
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the template.
+    /// </summary>
     public byte TemplateId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the title of the template.
+    /// </summary>
     public string Title { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the default body content for the template.
+    /// </summary>
     public string Body { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets default attachments for memos created from this template.
+    /// </summary>
     public string? Attachments { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this template is active.
+    /// </summary>
     public bool Active { get; set; }
 
+    /// <summary>
+    /// Gets or sets the default signature block for the template.
+    /// </summary>
     public string? SigBlock { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether to add a date field.
+    /// </summary>
     public bool AddDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether to add a suspense date field.
+    /// </summary>
     public bool AddSuspenseDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the data source for populating template fields.
+    /// </summary>
     public string DataSource { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the military component code.
+    /// </summary>
     public string Compo { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether to add a signature field.
+    /// </summary>
     public bool AddSignature { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the memo contains PHI (Protected Health Information).
+    /// </summary>
     public bool Phi { get; set; }
 
+    /// <summary>
+    /// Gets or sets the module identifier this template belongs to.
+    /// </summary>
     public byte Module { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the user who created the template.
+    /// </summary>
     public int CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when the template was created.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the user who last modified the template.
+    /// </summary>
     public int ModifiedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when the template was last modified.
+    /// </summary>
     public DateTime ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the default font size for memos created from this template.
+    /// </summary>
     public int? FontSize { get; set; }
 
+    /// <summary>
+    /// Gets or sets the collection of group permissions for this template.
+    /// </summary>
     public virtual ICollection<CoreMemoGroup> CoreMemoGroups { get; set; } = new List<CoreMemoGroup>();
 
+    /// <summary>
+    /// Gets or sets the collection of memos created from this template.
+    /// </summary>
     public virtual ICollection<CoreMemo> CoreMemos { get; set; } = new List<CoreMemo>();
 
+    /// <summary>
+    /// Gets or sets the collection of version 2 memos created from this template.
+    /// </summary>
     public virtual ICollection<CoreMemos2> CoreMemos2s { get; set; } = new List<CoreMemos2>();
 
+    /// <summary>
+    /// Gets or sets the navigation property to the user who created the template.
+    /// </summary>
     public virtual CoreUser CreatedByNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the user who last modified the template.
+    /// </summary>
     public virtual CoreUser ModifiedByNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the module.
+    /// </summary>
     public virtual CoreLkupModule ModuleNavigation { get; set; } = null!;
 }

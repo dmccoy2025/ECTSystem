@@ -5,6 +5,26 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Major Command (MAJCOM) in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// This lookup table defines Air Force Major Commands (MAJCOMs), which are major functional
+/// subdivisions of the Air Force organized by mission or geographic region. MAJCOMs are
+/// the primary organizational structure for Air Force units and personnel.
+/// 
+/// Examples include:
+/// - AETC (Air Education and Training Command)
+/// - ACC (Air Combat Command)
+/// - AMC (Air Mobility Command)
+/// - AFMC (Air Force Materiel Command)
+/// - AFSOC (Air Force Special Operations Command)
+/// - PACAF (Pacific Air Forces)
+/// - USAFE (United States Air Forces in Europe)
+/// 
+/// The Active flag allows MAJCOMs to be disabled (e.g., due to reorganization) without
+/// removing historical references to that MAJCOM in existing case data.
+/// </remarks>
 public partial class CoreLkupMajcom
 {
     public int Id { get; set; }

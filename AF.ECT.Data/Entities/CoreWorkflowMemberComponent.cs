@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a mapping between workflows and member components, defining which military components can use specific workflows.
+/// </summary>
 public partial class CoreWorkflowMemberComponent
 {
+    /// <summary>
+    /// Gets or sets the workflow identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the component identifier (e.g., Army, Navy, Air Force).
+    /// </summary>
     public int ComponentId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated military component.
+    /// </summary>
     public virtual CoreLkupComponent Component { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated workflow.
+    /// </summary>
     public virtual CoreWorkflow Workflow { get; set; } = null!;
 }

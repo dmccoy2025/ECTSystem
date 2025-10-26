@@ -5,6 +5,19 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents automated email reminder configuration for specific workflow statuses.
+/// </summary>
+/// <remarks>
+/// <para>
+/// Defines when and how often reminder emails should be sent for cases in specific workflow statuses.
+/// Ensures responsible parties are notified when cases require attention or action.
+/// </para>
+/// <para>
+/// Example: Send reminder email every 7 days to the assigned group when an LOD case
+/// is in "Awaiting Medical Documentation" status for Army component.
+/// </para>
+/// </remarks>
 public partial class ReminderEmailSetting
 {
     public int Id { get; set; }

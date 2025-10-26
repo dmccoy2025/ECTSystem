@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a mapping between workflows and pages that are visible/accessible for that workflow.
+/// </summary>
 public partial class CoreWorkflowView
 {
+    /// <summary>
+    /// Gets or sets the workflow identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the page identifier that is viewable in this workflow.
+    /// </summary>
     public short PageId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated page.
+    /// </summary>
     public virtual CorePage Page { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated workflow.
+    /// </summary>
     public virtual CoreWorkflow Workflow { get; set; } = null!;
 }

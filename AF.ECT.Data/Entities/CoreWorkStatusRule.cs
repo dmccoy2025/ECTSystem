@@ -5,19 +5,43 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents business rules associated with workflow status options.
+/// </summary>
 public partial class CoreWorkStatusRule
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the work status rule.
+    /// </summary>
     public int WsrId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the work status option identifier this rule applies to.
+    /// </summary>
     public int WsoId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the rule type identifier.
+    /// </summary>
     public byte RuleId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the rule data or parameters (typically JSON or serialized format).
+    /// </summary>
     public string RuleData { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether all conditions must be met (true) or any condition (false).
+    /// </summary>
     public bool? CheckAll { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the rule definition.
+    /// </summary>
     public virtual CoreLkupRule Rule { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the work status option.
+    /// </summary>
     public virtual CoreWorkStatusOption Wso { get; set; } = null!;
 }

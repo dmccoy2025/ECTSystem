@@ -5,27 +5,63 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents the content of a memorandum, including body text and signature blocks.
+/// </summary>
 public partial class CoreMemoContent
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the memo content.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the parent memo.
+    /// </summary>
     public int MemoId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the main body text of the memo.
+    /// </summary>
     public string Body { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the signature block for the memo.
+    /// </summary>
     public string? SigBlock { get; set; }
 
+    /// <summary>
+    /// Gets or sets the suspense date for the memo.
+    /// </summary>
     public string? SuspenseDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the official date of the memo.
+    /// </summary>
     public string? MemoDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when this content was created.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the user who created this content.
+    /// </summary>
     public int CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets file paths or metadata for attachments.
+    /// </summary>
     public string? Attachments { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the user who created the content.
+    /// </summary>
     public virtual CoreUser CreatedByNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the parent memo.
+    /// </summary>
     public virtual CoreMemo Memo { get; set; } = null!;
 }

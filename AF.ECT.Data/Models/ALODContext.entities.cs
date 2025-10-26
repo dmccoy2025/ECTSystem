@@ -3,6 +3,12 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using AF.ECT.Data.Configurations.Users;
+using AF.ECT.Data.Configurations.Workflow;
+using AF.ECT.Data.Configurations.Forms;
+using AF.ECT.Data.Configurations.CommandStructure;
+using AF.ECT.Data.Configurations.Permissions;
+using AF.ECT.Data.Configurations.System;
 
 namespace AF.ECT.Data.Models;
 
@@ -363,6 +369,9 @@ public partial class ALODContext : DbContext
     /// </remarks>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        // Apply custom entity configurations from Configurations folder
+        ApplyCoreEntityConfigurations(modelBuilder);
+        
         OnModelCreatingPartial(modelBuilder);
     }
 
@@ -372,6 +381,115 @@ public partial class ALODContext : DbContext
     /// <param name="modelBuilder">The builder being used to construct the model.</param>
     private void ApplyCoreEntityConfigurations(ModelBuilder modelBuilder)
     {
+        // Apply custom configurations from Configurations folder
+        // User management configurations
+        modelBuilder.ApplyConfiguration(new CoreUserConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUsersOnlineConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUserGroupConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUserGroupLevelConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUserGroupsManagedByConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUserGroupsViewByConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUserRoleRequestConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUsersAltTitleConfiguration());
+        
+        // Workflow configurations
+        modelBuilder.ApplyConfiguration(new CoreWorkflowConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkStatusConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkStatusOptionConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkStatusActionConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkStatusRuleConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkStatusTrackingConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkStatusUpdatedConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkStatusValidationConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreStatusCodeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreStatusCodeSignerConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreAssociatedCaseConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreSignatureMetaDatumConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreSignOnlySignatureConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupWorkflowActionConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWitnessConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowCancelReasonConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowCaseTypeMapConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowCertificationStampMapConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowCompletedByGroupMapConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowDispositionMapConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowFindingConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowInitStatusConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowLockConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowMemberComponentConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowPermConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowPermissionConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowReturnReasonConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowRwoaReasonConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowViewConfiguration());
+        
+        // Form configurations
+        modelBuilder.ApplyConfiguration(new Form348Configuration());
+        modelBuilder.ApplyConfiguration(new CaseCommentConfiguration());
+        modelBuilder.ApplyConfiguration(new CaseDialogueCommentConfiguration());
+        modelBuilder.ApplyConfiguration(new ChildCaseCommentConfiguration());
+        
+        // Command structure configurations
+        modelBuilder.ApplyConfiguration(new CommandStructConfiguration());
+        modelBuilder.ApplyConfiguration(new CommandStructChainConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupChainTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupMajcomConfiguration());
+        
+        // Permission configurations
+        modelBuilder.ApplyConfiguration(new CoreUserRoleConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUserGroupConfiguration());
+        modelBuilder.ApplyConfiguration(new CorePermissionConfiguration());
+        modelBuilder.ApplyConfiguration(new CorePermissionDocGroupConfiguration());
+        modelBuilder.ApplyConfiguration(new CorePermissionRequestConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreGroupPermissionConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUserPermissionConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupAccessScopeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupAccessStatusConfiguration());
+        modelBuilder.ApplyConfiguration(new CorePageConfiguration());
+        modelBuilder.ApplyConfiguration(new CorePageAccessConfiguration());
+        
+        // System configurations (lookup tables and system entities)
+        modelBuilder.ApplyConfiguration(new CoreEmailTemplateConfiguration());
+        modelBuilder.ApplyConfiguration(new ReminderEmailSettingConfiguration());
+        modelBuilder.ApplyConfiguration(new ReminderEmailConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupModuleConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupCompoConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupGradeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupStateConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupProcessConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupCountryConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupActionConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupAmrodispositionConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupAvailabilityCodeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupCancelReasonConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupComponentConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupDataTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreCaseTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreSubCaseTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreCertificationStampConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreCompletedByGroupConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreKeyValKeyConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreKeyValKeyTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreKeyValValueConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLogActionConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLogChangeSetConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLogDebugMessageConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLogEmailConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLogErrorConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLogErrorArchiveConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLogPageGenerationTimeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreMemoConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreMemoContentConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreMemoContents2Configuration());
+        modelBuilder.ApplyConfiguration(new CoreMemoGroupConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreMemoLetterheadConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreMemos2Configuration());
+        modelBuilder.ApplyConfiguration(new CoreMemoTemplateConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreMessageConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreMessagesGroupConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreMessagesReadConfiguration());
+        modelBuilder.ApplyConfiguration(new CorePkgImportErrorConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreTestConfiguration());
     }
 
     /// <summary>

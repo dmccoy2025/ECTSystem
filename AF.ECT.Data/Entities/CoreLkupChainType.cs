@@ -5,6 +5,24 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a chain type in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// This lookup table defines the types of command chains used in the military organizational
+/// structure. Chain types determine how cases are routed through the command hierarchy and
+/// which approval authorities are invoked for specific actions.
+/// 
+/// Common chain types include:
+/// - Administrative Chain: For routine administrative matters and personnel actions
+/// - Operational Chain: For mission-related decisions and operational matters
+/// - Medical Chain: For medical evaluations and health-related determinations
+/// 
+/// Each chain type can have an associated Description that provides detailed guidance on
+/// when that chain type should be used. The Active flag allows chain types to be disabled
+/// without removing historical references. The system tracks creation and modification
+/// metadata for audit purposes.
+/// </remarks>
 public partial class CoreLkupChainType
 {
     public byte Id { get; set; }

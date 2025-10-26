@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a mapping between workflows and case dispositions, defining which dispositions are valid for specific workflows.
+/// </summary>
 public partial class CoreWorkflowDispositionMap
 {
+    /// <summary>
+    /// Gets or sets the workflow identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the disposition identifier.
+    /// </summary>
     public int DispositionId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated disposition.
+    /// </summary>
     public virtual CoreLkupDisposition Disposition { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated workflow.
+    /// </summary>
     public virtual CoreWorkflow Workflow { get; set; } = null!;
 }

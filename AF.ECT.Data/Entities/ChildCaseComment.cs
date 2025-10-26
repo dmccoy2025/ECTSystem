@@ -5,27 +5,73 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a threaded reply to a parent dialogue comment.
+/// </summary>
+/// <remarks>
+/// Child comments enable nested discussion threads within cases, allowing users to reply to specific
+/// dialogue comments and maintain context in collaborative conversations.
+/// </remarks>
 public partial class ChildCaseComment
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for this child comment.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the case identifier this child comment belongs to.
+    /// </summary>
     public int Lodid { get; set; }
 
+    /// <summary>
+    /// Gets or sets the comment text content.
+    /// </summary>
     public string Comments { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the user ID who created this child comment.
+    /// </summary>
     public int CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the timestamp when this child comment was created.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this child comment has been soft-deleted.
+    /// </summary>
     public bool Deleted { get; set; }
 
+    /// <summary>
+    /// Gets or sets the module identifier.
+    /// </summary>
     public int ModuleId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the type of comment.
+    /// </summary>
     public int CommentType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the parent dialogue comment identifier this is a reply to.
+    /// </summary>
+    /// <remarks>
+    /// Foreign key to CaseDialogueComment. Creates the threading relationship.
+    /// </remarks>
     public int ParentCommentId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the role of the commenter.
+    /// </summary>
+    /// <remarks>
+    /// Optional field indicating the commenter's role or capacity (e.g., "Supervisor", "Medical Officer").
+    /// </remarks>
     public string? Role { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the parent dialogue comment.
+    /// </summary>
     public virtual CaseDialogueComment ParentComment { get; set; } = null!;
 }

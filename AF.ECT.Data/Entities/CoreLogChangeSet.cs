@@ -5,17 +5,38 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a detailed record of field-level changes made during a logged action.
+/// </summary>
 public partial class CoreLogChangeSet
 {
+    /// <summary>
+    /// Gets or sets the log identifier linking to the parent action log.
+    /// </summary>
     public int LogId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the section or form area where the change occurred.
+    /// </summary>
     public string Section { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the field name that was changed.
+    /// </summary>
     public string Field { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the previous value of the field.
+    /// </summary>
     public string Old { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the new value of the field.
+    /// </summary>
     public string New { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the parent action log.
+    /// </summary>
     public virtual CoreLogAction Log { get; set; } = null!;
 }

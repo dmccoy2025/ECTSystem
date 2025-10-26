@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents the authorization for user groups to digitally sign documents at specific workflow statuses.
+/// </summary>
 public partial class CoreStatusCodeSigner
 {
+    /// <summary>
+    /// Gets or sets the work status identifier requiring signature.
+    /// </summary>
     public int Status { get; set; }
 
+    /// <summary>
+    /// Gets or sets the user group identifier authorized to sign.
+    /// </summary>
     public byte GroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the authorized user group.
+    /// </summary>
     public virtual CoreUserGroup Group { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the work status.
+    /// </summary>
     public virtual CoreWorkStatus StatusNavigation { get; set; } = null!;
 }

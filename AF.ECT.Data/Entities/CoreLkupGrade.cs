@@ -5,6 +5,27 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a military pay grade/rank in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// This lookup table defines military pay grades and ranks used throughout the system
+/// for member identification and organizational hierarchy. Includes enlisted grades
+/// (E-1 through E-9), officer grades (O-1 through O-10), warrant officer grades
+/// (W-1 through W-5), and civilian grade equivalents.
+/// 
+/// Pay grades are used to:
+/// - Identify service members in case records
+/// - Display rank information in user interfaces
+/// - Determine approval authorities based on grade/rank
+/// - Sort and filter members by seniority
+/// - Generate reports organized by grade/rank
+/// 
+/// The Displayorder field determines the sort order for displaying grades, typically
+/// from lowest to highest rank. The Title field contains the formal rank title
+/// (e.g., "Private", "Sergeant", "Lieutenant", "Captain"), while Grade contains
+/// the pay grade code (e.g., "E-1", "E-5", "O-1", "O-3").
+/// </remarks>
 public partial class CoreLkupGrade
 {
     public int Code { get; set; }

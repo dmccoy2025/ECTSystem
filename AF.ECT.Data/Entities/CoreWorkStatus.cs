@@ -5,24 +5,94 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a specific status within a workflow in the Electronic Case Tracking (ECT) system.
+/// </summary>
+/// <remarks>
+/// CoreWorkStatus defines individual stages within workflow definitions. Each workflow consists of
+/// multiple ordered statuses that cases progress through from initiation to completion. Statuses
+/// control available actions, validation requirements, routing rules, and user permissions. Board
+/// statuses indicate formal review levels, holding statuses pause automatic progression for manual
+/// intervention, and consult statuses enable subject matter expert review before proceeding.
+/// The display text can be customized per status to provide context-specific instructions to users.
+/// </remarks>
 public partial class CoreWorkStatus
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for this work status.
+    /// </summary>
+    /// <remarks>
+    /// This is the primary key combining workflow and status into a unique work status instance.
+    /// </remarks>
     public int WsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the workflow identifier this status belongs to.
+    /// </summary>
+    /// <remarks>
+    /// References the CoreWorkflow entity. Multiple statuses combine to form a complete workflow.
+    /// </remarks>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the status code identifier for this work status.
+    /// </summary>
+    /// <remarks>
+    /// References the CoreStatusCode entity. Status codes can be reused across multiple workflows.
+    /// </remarks>
     public int StatusId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the display order of this status within the workflow.
+    /// </summary>
+    /// <remarks>
+    /// Determines the sequence in which statuses appear in UI elements and reports.
+    /// Lower values appear first.
+    /// </remarks>
     public byte SortOrder { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this status represents a board review level.
+    /// </summary>
+    /// <remarks>
+    /// Board statuses require formal review by designated authorities such as medical boards,
+    /// legal boards, or administrative boards before cases can progress.
+    /// </remarks>
     public bool IsBoardStatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the custom display text for this status in the workflow.
+    /// </summary>
+    /// <remarks>
+    /// Allows workflow-specific customization of status names and user instructions.
+    /// If null, the default status code name is used.
+    /// </remarks>
     public string? DisplayText { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this is a holding status.
+    /// </summary>
+    /// <remarks>
+    /// Holding statuses pause automatic workflow progression and require manual action
+    /// to move cases forward. Used for awaiting additional information or external reviews.
+    /// </remarks>
     public bool IsHolding { get; set; }
 
+    /// <summary>
+    /// Gets or sets the component (Active, Reserve, Guard) this status applies to.
+    /// </summary>
+    /// <remarks>
+    /// Allows component-specific status configurations within the same workflow.
+    /// </remarks>
     public string? Compo { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this status enables consultation mode.
+    /// </summary>
+    /// <remarks>
+    /// Consult statuses allow subject matter experts to review and provide input
+    /// without taking ownership of the case.
+    /// </remarks>
     public bool? IsConsult { get; set; }
 
     public virtual ICollection<CoreWorkStatusOption> CoreWorkStatusOptionWs { get; set; } = new List<CoreWorkStatusOption>();

@@ -5,16 +5,51 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a system user in the Electronic Case Tracking (ECT) system.
+/// </summary>
+/// <remarks>
+/// The CoreUser entity manages user accounts for military personnel, civilian employees,
+/// and contractors who interact with the ALOD system. Users are assigned to command structures,
+/// have specific roles and permissions, and can be associated with multiple workflows and cases.
+/// This entity supports multi-component operations (Active, Reserve, Guard) and includes
+/// comprehensive audit tracking, access control, and notification preferences.
+/// </remarks>
 public partial class CoreUser
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the user.
+    /// </summary>
+    /// <remarks>
+    /// This is the primary key and auto-incremented identity column.
+    /// </remarks>
     public int UserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Electronic Data Interchange Personal Identifier Number (EDIPIN).
+    /// </summary>
+    /// <remarks>
+    /// Also known as DoD ID number. This 10-digit identifier is unique to each service member
+    /// and is used across DoD systems for identification and authentication.
+    /// </remarks>
     public string? Edipin { get; set; }
 
+    /// <summary>
+    /// Gets or sets the username for system authentication.
+    /// </summary>
+    /// <remarks>
+    /// Required field. Must be unique across the system. Typically the user's CAC/PKI username.
+    /// </remarks>
     public string Username { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the user's last name (surname).
+    /// </summary>
     public string LastName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the user's first name (given name).
+    /// </summary>
     public string FirstName { get; set; } = null!;
 
     public string? MiddleName { get; set; }

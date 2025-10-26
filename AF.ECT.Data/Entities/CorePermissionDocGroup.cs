@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a mapping between permissions and document groups for access control.
+/// </summary>
 public partial class CorePermissionDocGroup
 {
+    /// <summary>
+    /// Gets or sets the permission identifier.
+    /// </summary>
     public int PermId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the document group identifier.
+    /// </summary>
     public int DocGroupId { get; set; }
 }

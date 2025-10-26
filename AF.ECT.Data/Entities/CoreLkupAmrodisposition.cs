@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an AMRO (Army Medical Review Officer) disposition code for medical evaluations.
+/// </summary>
 public partial class CoreLkupAmrodisposition
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the disposition.
+    /// </summary>
     public int DispositionId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the disposition.
+    /// </summary>
     public string Description { get; set; } = null!;
 }

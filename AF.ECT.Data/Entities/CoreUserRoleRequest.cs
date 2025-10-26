@@ -5,37 +5,88 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a request for a user to be assigned to or changed within a role/group.
+/// </summary>
 public partial class CoreUserRoleRequest
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the role request.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the status of the request (pending, approved, denied).
+    /// </summary>
     public byte Status { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the user making the request.
+    /// </summary>
     public int UserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the group being requested.
+    /// </summary>
     public byte RequestedGroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the user's existing group, if changing roles.
+    /// </summary>
     public byte? ExistingGroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this is a request for a new role (true) or role change (false).
+    /// </summary>
     public bool NewRole { get; set; }
 
+    /// <summary>
+    /// Gets or sets the requestor's comment explaining the request.
+    /// </summary>
     public string? RequestorComment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when the request was submitted.
+    /// </summary>
     public DateTime RequestedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the user who completed/processed the request.
+    /// </summary>
     public int? CompletedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when the request was completed.
+    /// </summary>
     public DateTime? CompletedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the comment from the approver when completing the request.
+    /// </summary>
     public string? CompletedComment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the user who completed the request.
+    /// </summary>
     public virtual CoreUser? CompletedByNavigation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the existing user group.
+    /// </summary>
     public virtual CoreUserGroup? ExistingGroup { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the requested user group.
+    /// </summary>
     public virtual CoreUserGroup RequestedGroup { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the request status.
+    /// </summary>
     public virtual CoreLkupAccessStatus StatusNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the user making the request.
+    /// </summary>
     public virtual CoreUser User { get; set; } = null!;
 }

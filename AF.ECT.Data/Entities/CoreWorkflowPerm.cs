@@ -5,17 +5,38 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents workflow permissions for user groups, defining view and create access to workflows.
+/// </summary>
 public partial class CoreWorkflowPerm
 {
+    /// <summary>
+    /// Gets or sets the workflow identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the user group identifier.
+    /// </summary>
     public byte GroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the group can view cases in this workflow.
+    /// </summary>
     public bool CanView { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the group can create new cases in this workflow.
+    /// </summary>
     public bool CanCreate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated user group.
+    /// </summary>
     public virtual CoreUserGroup Group { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated workflow.
+    /// </summary>
     public virtual CoreWorkflow Workflow { get; set; } = null!;
 }

@@ -5,25 +5,59 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents the assignment of a user to a role/group in the Electronic Case Tracking (ECT) system.
+/// </summary>
+/// <remarks>
+/// CoreUserRole implements the many-to-many relationship between users and user groups (roles).
+/// A single user can have multiple role assignments, each with independent active status.
+/// Role assignments determine page access, action permissions, data visibility, and workflow
+/// participation. Roles can be temporarily deactivated without deletion to support leave periods,
+/// temporary duty assignments, or access reviews. When a user's CurrentRole property references
+/// a CoreUserRole, it determines their primary active role for session-based permissions.
+/// </remarks>
 public partial class CoreUserRole
 {
     /// <summary>
-    /// userRoleID identifies UserRoles
+    /// Gets or sets the unique identifier for this user role assignment.
     /// </summary>
+    /// <remarks>
+    /// This is the primary key for the user-role relationship.
+    /// </remarks>
     public int UserRoleId { get; set; }
 
     /// <summary>
-    /// roleID from table Roles
+    /// Gets or sets the user group (role) identifier.
     /// </summary>
+    /// <remarks>
+    /// References the CoreUserGroup entity. Defines the set of permissions granted to the user.
+    /// </remarks>
     public byte GroupId { get; set; }
 
     /// <summary>
-    /// UserId from table Users
+    /// Gets or sets the user identifier.
     /// </summary>
+    /// <remarks>
+    /// References the CoreUser entity. The user receiving the role assignment.
+    /// </remarks>
     public int UserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the access status for this role assignment.
+    /// </summary>
+    /// <remarks>
+    /// References the CoreLkupAccessStatus entity. Determines if the role assignment
+    /// is pending, approved, or denied.
+    /// </remarks>
     public byte Status { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this role assignment is currently active.
+    /// </summary>
+    /// <remarks>
+    /// Inactive role assignments do not grant permissions but are retained for historical
+    /// tracking and can be reactivated without creating a new assignment.
+    /// </remarks>
     public bool Active { get; set; }
 
     public virtual ICollection<CoreUser> CoreUsers { get; set; } = new List<CoreUser>();

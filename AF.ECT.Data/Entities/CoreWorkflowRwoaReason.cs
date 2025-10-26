@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a mapping between workflows and RWOA (Return Without Official Action) reasons.
+/// </summary>
 public partial class CoreWorkflowRwoaReason
 {
+    /// <summary>
+    /// Gets or sets the workflow identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the RWOA reason identifier.
+    /// </summary>
     public byte RwoaId { get; set; }
 }

@@ -5,6 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a case type in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// Case types categorize different kinds of cases managed in the system, such as Line of Duty (LOD),
+/// Integrated Disability Evaluation System (IDES), Physical Evaluation Board (PEB), Medical Reviews,
+/// and other military case management categories.
+/// 
+/// Case types can be associated with workflows via CoreWorkflowCaseTypeMap and can have subcategories
+/// defined through CoreCaseTypeSubCaseTypeMap. This hierarchical classification enables flexible
+/// case organization and type-specific business rules, forms, and processing requirements.
+/// </remarks>
 public partial class CoreCaseType
 {
     public int Id { get; set; }

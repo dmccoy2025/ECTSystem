@@ -5,6 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a system-wide message, announcement, or alert displayed to users.
+/// </summary>
+/// <remarks>
+/// CoreMessage stores administrative messages, system announcements, maintenance notifications,
+/// and user alerts that are displayed across the application. Messages can be configured to:
+/// 
+/// - Display during specific time windows (StartTime to EndTime)
+/// - Show as popup dialogs (Popup = true) for urgent notifications
+/// - Target all users or admin users only (IsAdminMessage)
+/// - Include formatted content (Message) and optional titles
+/// 
+/// Messages are displayed prominently in the application UI during their active period and
+/// can be used for planned maintenance notifications, policy updates, training announcements,
+/// system changes, or emergency alerts. The Name field provides a short identifier for
+/// message management and tracking.
+/// </remarks>
 public partial class CoreMessage
 {
     public short MessageId { get; set; }

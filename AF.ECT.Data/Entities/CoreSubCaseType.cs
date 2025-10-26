@@ -5,6 +5,17 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a sub-case type for more granular case classification in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// Sub-case types provide additional categorization beneath case types, allowing for more specific
+/// classification of cases. For example, under a "LOD" case type, sub-case types might include
+/// "Active Duty LOD", "Reserve LOD", "Training LOD", etc.
+/// 
+/// Sub-case types are linked to parent case types via CoreCaseTypeSubCaseTypeMap, creating a
+/// many-to-many relationship that enables flexible case categorization and reporting.
+/// </remarks>
 public partial class CoreSubCaseType
 {
     public int Id { get; set; }

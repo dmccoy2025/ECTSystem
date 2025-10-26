@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a tracking record indicating when a user has read a specific message.
+/// </summary>
 public partial class CoreMessagesRead
 {
+    /// <summary>
+    /// Gets or sets the message identifier.
+    /// </summary>
     public short MessageId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the user identifier who read the message.
+    /// </summary>
     public int UserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when the message was read.
+    /// </summary>
     public DateTime DateRead { get; set; }
 }

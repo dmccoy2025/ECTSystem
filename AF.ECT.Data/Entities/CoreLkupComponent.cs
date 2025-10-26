@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a military component (e.g., Active Duty, Reserve, National Guard).
+/// </summary>
 public partial class CoreLkupComponent
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the component.
+    /// </summary>
     public int ComponentId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the component.
+    /// </summary>
     public string ComponentDescription { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the sort order for display purposes.
+    /// </summary>
     public int SortOrder { get; set; }
 }

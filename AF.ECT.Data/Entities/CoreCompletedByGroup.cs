@@ -5,6 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a group or role authorized to complete specific workflow stages in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// Completed-by groups define which organizational roles or functional groups are authorized to complete
+/// specific case types or workflow stages. Examples might include "Medical Board", "Legal Review Board",
+/// "Command Approval Authority", "Personnel Office", etc.
+/// 
+/// These groups are linked to workflows via CoreWorkflowCompletedByGroupMap, establishing which groups
+/// have authority to process and approve cases in specific workflows. This enables role-based access control
+/// and ensures cases are reviewed by the appropriate authorities.
+/// </remarks>
 public partial class CoreCompletedByGroup
 {
     public int Id { get; set; }

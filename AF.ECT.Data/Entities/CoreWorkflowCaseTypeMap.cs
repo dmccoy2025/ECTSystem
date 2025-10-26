@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a mapping between workflows and case types, defining which workflows apply to specific case types.
+/// </summary>
 public partial class CoreWorkflowCaseTypeMap
 {
+    /// <summary>
+    /// Gets or sets the workflow identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the case type identifier.
+    /// </summary>
     public int CaseTypeId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated case type.
+    /// </summary>
     public virtual CoreCaseType CaseType { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated workflow.
+    /// </summary>
     public virtual CoreWorkflow Workflow { get; set; } = null!;
 }

@@ -5,6 +5,24 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a business process or procedural step in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// This lookup table defines standardized business processes or procedural steps that may be
+/// referenced throughout the case management workflow. Processes represent major phases or
+/// milestones in case handling that may span multiple workflow states.
+/// 
+/// Examples might include:
+/// - Initial Case Review
+/// - Medical Evaluation
+/// - Legal Review
+/// - Final Determination
+/// - Appeal Processing
+/// 
+/// The Title field contains the descriptive name of the process, which is displayed in
+/// user interfaces and reports to provide context about the current phase of case processing.
+/// </remarks>
 public partial class CoreLkupProcess
 {
     public int Id { get; set; }

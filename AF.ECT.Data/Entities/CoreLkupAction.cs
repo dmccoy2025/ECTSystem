@@ -5,15 +5,33 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an action type that can be logged in the audit system.
+/// </summary>
 public partial class CoreLkupAction
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the action type.
+    /// </summary>
     public byte ActionId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name of the action.
+    /// </summary>
     public string ActionName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this action should be hidden from UI displays.
+    /// </summary>
     public bool Hide { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether changes should be logged for this action.
+    /// </summary>
     public bool? LogChanges { get; set; }
 
+    /// <summary>
+    /// Gets or sets the collection of log entries for this action type.
+    /// </summary>
     public virtual ICollection<CoreLogAction> CoreLogActions { get; set; } = new List<CoreLogAction>();
 }

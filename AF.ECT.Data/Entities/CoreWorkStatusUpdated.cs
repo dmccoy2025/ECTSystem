@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a record tracking when workflow statuses are updated or modified.
+/// </summary>
 public partial class CoreWorkStatusUpdated
 {
+    /// <summary>
+    /// Gets or sets the work status identifier that was updated.
+    /// </summary>
     public int WsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the workflow identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the new status identifier after the update.
+    /// </summary>
     public byte StatusId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the sort order for displaying this status update.
+    /// </summary>
     public byte SortOrder { get; set; }
 }

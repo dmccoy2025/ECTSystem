@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a mapping between workflows and valid cancellation reasons.
+/// </summary>
 public partial class CoreWorkflowCancelReason
 {
+    /// <summary>
+    /// Gets or sets the workflow identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the cancellation reason identifier.
+    /// </summary>
     public byte CancelReasonId { get; set; }
 }

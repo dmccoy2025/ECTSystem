@@ -5,25 +5,58 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an archived error log entry for long-term storage of historical errors.
+/// </summary>
 public partial class CoreLogErrorArchive
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the archived error log entry.
+    /// </summary>
     public int LogId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when the error occurred.
+    /// </summary>
     public DateTime ErrorTime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the username of the user who encountered the error.
+    /// </summary>
     public string? UserName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the page or URL where the error occurred.
+    /// </summary>
     public string? Page { get; set; }
 
+    /// <summary>
+    /// Gets or sets the application version at the time of the error.
+    /// </summary>
     public string? AppVersion { get; set; }
 
+    /// <summary>
+    /// Gets or sets the browser information where the error occurred.
+    /// </summary>
     public string? Browser { get; set; }
 
+    /// <summary>
+    /// Gets or sets the error message.
+    /// </summary>
     public string? Message { get; set; }
 
+    /// <summary>
+    /// Gets or sets the stack trace for debugging the error.
+    /// </summary>
     public string? StackTrace { get; set; }
 
+    /// <summary>
+    /// Gets or sets the method or function where the error originated.
+    /// </summary>
     public string? Caller { get; set; }
 
+    /// <summary>
+    /// Gets or sets the IP address from which the error occurred.
+    /// </summary>
     public string? Address { get; set; }
 }

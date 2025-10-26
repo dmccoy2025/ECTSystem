@@ -5,6 +5,21 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a workflow action available for a specific workflow status option.
+/// </summary>
+/// <remarks>
+/// This entity maps workflow actions to workflow status options, defining which actions users can
+/// perform when a case is in a specific status. Each action has a target status and optional data
+/// that controls the behavior of the workflow transition.
+/// 
+/// The ActionType references CoreLkupWorkflowAction (Approve, Reject, Return, etc.), while the
+/// Target specifies the destination status when the action is performed. The Data field can contain
+/// additional parameters or configuration for complex action behaviors.
+/// 
+/// This table enables flexible workflow configuration where different status options can have
+/// different sets of available actions, supporting component-specific or context-specific workflows.
+/// </remarks>
 public partial class CoreWorkStatusAction
 {
     public int WsaId { get; set; }

@@ -5,34 +5,74 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an audit log entry for user actions performed in the system.
+/// </summary>
 public partial class CoreLogAction
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the log entry.
+    /// </summary>
     public int LogId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the module identifier where the action occurred.
+    /// </summary>
     public byte ModuleId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the action type identifier.
+    /// </summary>
     public byte ActionId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when the action was performed.
+    /// </summary>
     public DateTime ActionDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the user who performed the action.
+    /// </summary>
     public int UserId { get; set; }
 
     /// <summary>
-    /// referenceId might be LODId, IncapId, AppealId, Budget, etc.  Not null and not FK
+    /// Gets or sets the reference identifier (might be LODId, IncapId, AppealId, Budget, etc.).
+    /// Not null and not a foreign key.
     /// </summary>
     public int? ReferenceId { get; set; }
 
+    /// <summary>
+    /// Gets or sets additional notes about the action.
+    /// </summary>
     public string? Notes { get; set; }
 
+    /// <summary>
+    /// Gets or sets the status before the action.
+    /// </summary>
     public int? Status { get; set; }
 
+    /// <summary>
+    /// Gets or sets the status after the action.
+    /// </summary>
     public int? NewStatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the IP address from which the action was performed.
+    /// </summary>
     public string? Address { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the action type.
+    /// </summary>
     public virtual CoreLkupAction Action { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the module.
+    /// </summary>
     public virtual CoreLkupModule Module { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the user who performed the action.
+    /// </summary>
     public virtual CoreUser User { get; set; } = null!;
 }

@@ -5,29 +5,68 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents version 2 of the memo entity with enhanced features and structure.
+/// </summary>
 public partial class CoreMemos2
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the memo.
+    /// </summary>
     public int MemoId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the reference identifier linking to the associated case or entity.
+    /// </summary>
     public int RefId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the module identifier this memo belongs to.
+    /// </summary>
     public int ModuleId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the memo template identifier used to create this memo.
+    /// </summary>
     public byte TemplateId { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this memo has been deleted.
+    /// </summary>
     public bool Deleted { get; set; }
 
+    /// <summary>
+    /// Gets or sets the letterhead identifier used for this memo.
+    /// </summary>
     public byte LetterHead { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the user who created this memo.
+    /// </summary>
     public int CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when this memo was created.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the collection of version 2 memo content revisions.
+    /// </summary>
     public virtual ICollection<CoreMemoContents2> CoreMemoContents2s { get; set; } = new List<CoreMemoContents2>();
 
+    /// <summary>
+    /// Gets or sets the navigation property to the user who created the memo.
+    /// </summary>
     public virtual CoreUser CreatedByNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the letterhead used.
+    /// </summary>
     public virtual CoreMemoLetterhead LetterHeadNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the memo template.
+    /// </summary>
     public virtual CoreMemoTemplate Template { get; set; } = null!;
 }

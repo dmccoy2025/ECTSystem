@@ -5,17 +5,38 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents management relationships between user groups, defining which groups manage other groups.
+/// </summary>
 public partial class CoreUserGroupsManagedBy
 {
+    /// <summary>
+    /// Gets or sets the identifier of the group being managed.
+    /// </summary>
     public byte GroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the group that manages the other group.
+    /// </summary>
     public byte ManagedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the managing group receives notifications.
+    /// </summary>
     public bool? Notify { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the managing group can view cases.
+    /// </summary>
     public bool? ViewBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the managed group.
+    /// </summary>
     public virtual CoreUserGroup Group { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the managing group.
+    /// </summary>
     public virtual CoreUserGroup ManagedByNavigation { get; set; } = null!;
 }

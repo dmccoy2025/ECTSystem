@@ -5,6 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents page-level access control rules based on user groups, workflows, and statuses.
+/// </summary>
+/// <remarks>
+/// CorePageAccess defines granular access permissions that control which user groups can access
+/// specific pages based on the workflow and workflow status context. This enables dynamic access
+/// control where permissions change based on the case type and current workflow state.
+/// 
+/// The Access field defines the permission level (read, write, admin, etc.), while WorkflowId
+/// and StatusId provide context-specific filtering. This allows the same user group to have
+/// different access levels to the same page depending on what they're working on.
+/// </remarks>
 public partial class CorePageAccess
 {
     public int MapId { get; set; }

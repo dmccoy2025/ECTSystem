@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents viewing permissions between user groups.
+/// </summary>
 public partial class CoreUserGroupsViewBy
 {
+    /// <summary>
+    /// Gets or sets the identifier of the group that can view.
+    /// </summary>
     public short ViewerId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the group being viewed.
+    /// </summary>
     public short MemberId { get; set; }
 }

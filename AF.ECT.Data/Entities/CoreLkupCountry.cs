@@ -5,6 +5,27 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a country in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// This lookup table defines countries for address information, geographic filtering,
+/// and international case handling. Includes all countries where U.S. military personnel
+/// may be stationed or where incidents may occur.
+/// 
+/// The Country field contains the full country name (e.g., "United States", "Germany",
+/// "Japan"), while the Abbr field contains standard abbreviations or country codes
+/// (e.g., "USA", "DEU", "JPN").
+/// 
+/// This table is used for:
+/// - Member and facility address information
+/// - International incident location tracking
+/// - Geographic reporting and filtering
+/// - Command structure organization for overseas units
+/// 
+/// The system tracks creation and modification metadata for audit purposes and to
+/// support data governance requirements.
+/// </remarks>
 public partial class CoreLkupCountry
 {
     public int CountryId { get; set; }

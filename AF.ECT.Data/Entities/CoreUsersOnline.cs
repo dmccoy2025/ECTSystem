@@ -5,6 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an active user session for monitoring and concurrent access management.
+/// </summary>
+/// <remarks>
+/// CoreUsersOnline tracks active user sessions in real-time, recording login times, last access
+/// times, session identifiers, and remote IP addresses. This information supports:
+/// 
+/// - Real-time monitoring of active users
+/// - Session management and timeout enforcement
+/// - Concurrent access tracking and limiting
+/// - Security auditing and access logging
+/// - "Who's Online" features for administrators
+/// 
+/// The composite primary key (UserId + GroupId + LoginTime) allows tracking multiple concurrent
+/// sessions per user if they log in with different groups or multiple times. The LastAccess field
+/// is updated periodically to detect inactive sessions for automatic logout.
+/// </remarks>
 public partial class CoreUsersOnline
 {
     public int UserId { get; set; }

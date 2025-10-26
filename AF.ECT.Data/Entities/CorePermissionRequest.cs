@@ -5,17 +5,38 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a user's request for additional permissions or access rights.
+/// </summary>
 public partial class CorePermissionRequest
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the permission request.
+    /// </summary>
     public int ReqId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the user requesting permission.
+    /// </summary>
     public int UserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the permission being requested.
+    /// </summary>
     public short PermId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when the permission was requested.
+    /// </summary>
     public DateTime DateReq { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the permission being requested.
+    /// </summary>
     public virtual CorePermission Perm { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the user making the request.
+    /// </summary>
     public virtual CoreUser User { get; set; } = null!;
 }

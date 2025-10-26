@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an availability code for personnel status tracking.
+/// </summary>
 public partial class CoreLkupAvailabilityCode
 {
+    /// <summary>
+    /// Gets or sets the availability code value.
+    /// </summary>
     public int AvailabilityCode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the availability code.
+    /// </summary>
     public string Description { get; set; } = null!;
 }

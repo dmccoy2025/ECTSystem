@@ -5,15 +5,33 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a reason for canceling appointments or actions in Form 348 processing.
+/// </summary>
 public partial class CoreLkupCancelReason
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the cancel reason.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the cancel reason.
+    /// </summary>
     public string Description { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the display order for UI presentation.
+    /// </summary>
     public byte DisplayOrder { get; set; }
 
+    /// <summary>
+    /// Gets or sets the collection of Form 348 records using this as an appointing cancel reason.
+    /// </summary>
     public virtual ICollection<Form348> Form348AppointingCancelReasons { get; set; } = new List<Form348>();
 
+    /// <summary>
+    /// Gets or sets the collection of Form 348 records using this as an approving cancel reason.
+    /// </summary>
     public virtual ICollection<Form348> Form348ApprovingCancelReasons { get; set; } = new List<Form348>();
 }

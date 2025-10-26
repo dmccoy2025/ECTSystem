@@ -5,6 +5,24 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a military component in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// This lookup table defines the military components (service branches) supported by the system,
+/// including Army, Navy, Air Force, Marines, Coast Guard, and civilian components. Components
+/// determine organizational hierarchies, command structures, and component-specific configurations.
+/// 
+/// Components are used throughout the system to:
+/// - Define organizational hierarchies and command chains
+/// - Filter data by service branch in queries and reports
+/// - Apply component-specific business rules and workflows
+/// - Determine approval authorities and routing logic
+/// - Generate component-specific reports and metrics
+/// 
+/// The Abbreviation field provides a short code for display in user interfaces and reports,
+/// while CompoDescr contains the full, formal name of the component.
+/// </remarks>
 public partial class CoreLkupCompo
 {
     public string Compo { get; set; } = null!;

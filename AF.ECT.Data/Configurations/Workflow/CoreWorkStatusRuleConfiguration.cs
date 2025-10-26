@@ -1,0 +1,31 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using AF.ECT.Data.Entities;
+
+namespace AF.ECT.Data.Configurations.Workflow;
+
+/// <summary>
+/// Entity Framework configuration for the CoreWorkStatusRule entity.
+/// </summary>
+public class CoreWorkStatusRuleConfiguration : IEntityTypeConfiguration<CoreWorkStatusRule>
+{
+    /// <summary>
+    /// Configures the CoreWorkStatusRule entity.
+    /// </summary>
+    /// <param name="builder">The entity type builder.</param>
+    public void Configure(EntityTypeBuilder<CoreWorkStatusRule> builder)
+    {
+        builder.ToTable("Core_WorkStatusRule");
+
+        builder.HasKey(e => e.WsrId);
+
+        builder.Property(e => e.WsrId).HasColumnName("wsrID");
+        builder.Property(e => e.WsoId).HasColumnName("wsoID");
+        builder.Property(e => e.RuleId).HasColumnName("RuleID");
+        builder.Property(e => e.RuleData).HasColumnName("RuleData");
+        builder.Property(e => e.CheckAll).HasColumnName("CheckAll");
+
+        builder.HasIndex(e => e.WsoId, "IX_Core_WorkStatusRule_wsoID");
+        builder.HasIndex(e => e.RuleId, "IX_Core_WorkStatusRule_RuleID");
+    }
+}

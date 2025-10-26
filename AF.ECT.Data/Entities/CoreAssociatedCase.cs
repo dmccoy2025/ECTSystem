@@ -5,15 +5,54 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a relationship between two cases across different workflows.
+/// </summary>
+/// <remarks>
+/// Associated cases enable linking related investigations, follow-up cases, and cross-referenced matters.
+/// For example, an LOD case may be associated with a Physical Evaluation Board case, or multiple LOD
+/// cases may be related to the same incident.
+/// </remarks>
 public partial class CoreAssociatedCase
 {
+    /// <summary>
+    /// Gets or sets the workflow identifier of the primary case.
+    /// </summary>
+    /// <remarks>
+    /// Part of composite primary key. Identifies which workflow the primary case belongs to.
+    /// </remarks>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the reference identifier of the primary case.
+    /// </summary>
+    /// <remarks>
+    /// Part of composite primary key. The internal reference ID within the primary workflow.
+    /// </remarks>
     public int RefId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the workflow identifier of the associated case.
+    /// </summary>
+    /// <remarks>
+    /// Part of composite primary key. Identifies which workflow the associated case belongs to.
+    /// </remarks>
     public byte AssociatedWorkflow { get; set; }
 
+    /// <summary>
+    /// Gets or sets the reference identifier of the associated case.
+    /// </summary>
+    /// <remarks>
+    /// Part of composite primary key. The internal reference ID within the associated workflow.
+    /// </remarks>
     public int AssociatedRefId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the case identifier of the associated case.
+    /// </summary>
+    /// <remarks>
+    /// Optional field. The user-visible case ID (e.g., "LOD-2024-00123") for display and reference purposes.
+    /// Maximum 100 characters.
+    /// </remarks>
     public string? AssociatedCaseId { get; set; }
 }

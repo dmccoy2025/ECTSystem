@@ -1,5 +1,14 @@
 # AI Coding Assistant Instructions for ECTSystem
 
+## CRITICAL: Microsoft Best Patterns and Practices
+**ALWAYS use Microsoft Best Patterns and Practices as the basis for all recommendations, architectural decisions, and code suggestions.**
+
+- Follow official Microsoft guidance from Microsoft Learn, Azure Architecture Center, and .NET documentation
+- Adhere to established patterns for .NET, ASP.NET Core, Entity Framework Core, and Azure services
+- Apply Microsoft's recommended practices for security, performance, scalability, and maintainability
+- Reference Microsoft's best practices for cloud-native applications, microservices, and distributed systems
+- Consult Microsoft's guidance for specific technologies used in this project (gRPC, Blazor, .NET Aspire, etc.)
+
 ## CRITICAL: Build Verification Requirement
 **ALWAYS verify the solution builds successfully before responding to any code changes. Do not rebuild solution if markdown are changed**
 

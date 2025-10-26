@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a mapping between workflows and authorized completion groups, defining which groups can complete specific workflows.
+/// </summary>
 public partial class CoreWorkflowCompletedByGroupMap
 {
+    /// <summary>
+    /// Gets or sets the workflow identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the group authorized to complete the workflow.
+    /// </summary>
     public int CompletedById { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated completion group.
+    /// </summary>
     public virtual CoreCompletedByGroup CompletedBy { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated workflow.
+    /// </summary>
     public virtual CoreWorkflow Workflow { get; set; } = null!;
 }

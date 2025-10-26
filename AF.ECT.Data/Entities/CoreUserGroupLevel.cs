@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a user group hierarchy level, defining organizational tiers for user groups.
+/// </summary>
 public partial class CoreUserGroupLevel
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the group level.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name of the group level (e.g., "Installation", "Wing", "Squadron").
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the collection of user groups at this level.
+    /// </summary>
     public virtual ICollection<CoreUserGroup> CoreUserGroups { get; set; } = new List<CoreUserGroup>();
 }

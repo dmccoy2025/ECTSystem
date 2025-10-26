@@ -5,6 +5,21 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a memorandum attached to a case for official correspondence and documentation.
+/// </summary>
+/// <remarks>
+/// CoreMemo stores official memoranda that document case actions, decisions, and communications.
+/// Each memo is generated from a template (CoreMemoTemplate) and includes formatted letterhead
+/// (CoreMemoLetterhead) for official presentation.
+/// 
+/// Memos are linked to cases via RefId and can contain multiple content sections stored in
+/// CoreMemoContent. The Deleted flag supports soft deletion, allowing memos to be hidden
+/// without losing historical records. This is important for audit trails and compliance.
+/// 
+/// Memos serve as official documentation for case decisions, approvals, notifications, and
+/// correspondence with service members, commanders, and medical providers.
+/// </remarks>
 public partial class CoreMemo
 {
     public int MemoId { get; set; }

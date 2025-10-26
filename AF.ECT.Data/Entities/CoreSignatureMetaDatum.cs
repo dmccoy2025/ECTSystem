@@ -5,6 +5,19 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents metadata about a digital signature applied to a case.
+/// </summary>
+/// <remarks>
+/// <para>
+/// Tracks who signed a case, when, in what capacity (user group/role), and at what workflow status.
+/// Critical for audit trail, legal compliance, and non-repudiation of case approvals and decisions.
+/// </para>
+/// <para>
+/// Digital signatures in the ECT system represent formal approval, review, or acknowledgment by
+/// authorized personnel at specific workflow steps. Each signature is immutable once recorded.
+/// </para>
+/// </remarks>
 public partial class CoreSignatureMetaDatum
 {
     public int Id { get; set; }

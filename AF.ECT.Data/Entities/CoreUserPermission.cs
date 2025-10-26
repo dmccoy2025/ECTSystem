@@ -5,6 +5,21 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents individual permissions granted directly to a specific user.
+/// </summary>
+/// <remarks>
+/// CoreUserPermission provides user-level permission overrides that grant or deny specific
+/// permissions to individual users, bypassing the group-based permission model. This is
+/// useful for exceptions, temporary access grants, or special user requirements.
+/// 
+/// The Status field ("Active", "Inactive", "Suspended") controls whether the permission
+/// is currently effective. This composite key relationship (UserId + PermId) ensures each
+/// user-permission combination is unique.
+/// 
+/// User permissions are evaluated alongside group permissions during authorization checks,
+/// with user-level permissions typically taking precedence over group-level permissions.
+/// </remarks>
 public partial class CoreUserPermission
 {
     public int UserId { get; set; }

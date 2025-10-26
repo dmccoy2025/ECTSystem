@@ -5,19 +5,43 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a workflow item lock that prevents concurrent editing by multiple users.
+/// </summary>
 public partial class CoreWorkflowLock
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the lock record.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the reference identifier of the locked item (e.g., case ID, form ID).
+    /// </summary>
     public int RefId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the module identifier indicating the type of locked item.
+    /// </summary>
     public byte Module { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the user who holds the lock.
+    /// </summary>
     public int UserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when the lock was acquired.
+    /// </summary>
     public DateTime LockTime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated module.
+    /// </summary>
     public virtual CoreLkupModule ModuleNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the user who holds the lock.
+    /// </summary>
     public virtual CoreUser User { get; set; } = null!;
 }

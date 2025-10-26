@@ -5,17 +5,38 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents the initial workflow status assigned when a specific user group initiates a workflow.
+/// </summary>
 public partial class CoreWorkflowInitStatus
 {
+    /// <summary>
+    /// Gets or sets the workflow identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the user group identifier that initiates the workflow.
+    /// </summary>
     public byte GroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the initial status identifier assigned when this group creates a new case.
+    /// </summary>
     public int StatusId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated user group.
+    /// </summary>
     public virtual CoreUserGroup Group { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated workflow status.
+    /// </summary>
     public virtual CoreWorkStatus Status { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated workflow.
+    /// </summary>
     public virtual CoreWorkflow Workflow { get; set; } = null!;
 }

@@ -5,21 +5,48 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a witness associated with a Line of Duty (LOD) investigation.
+/// </summary>
 public partial class CoreWitness
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the witness record.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Line of Duty investigation identifier this witness is associated with.
+    /// </summary>
     public int LodId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the type of witness (e.g., eyewitness, expert, character witness).
+    /// </summary>
     public byte WitnessType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the other type classification for the witness.
+    /// </summary>
     public byte OtherType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name of the witness.
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the address of the witness.
+    /// </summary>
     public string? Address { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the user who last modified this record.
+    /// </summary>
     public int? ModifiedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when this record was last modified.
+    /// </summary>
     public DateTime? ModifiedDate { get; set; }
 }

@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an alternate title for a user within a specific group.
+/// </summary>
 public partial class CoreUsersAltTitle
 {
+    /// <summary>
+    /// Gets or sets the user identifier.
+    /// </summary>
     public int UserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the group identifier.
+    /// </summary>
     public int GroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the alternate title for the user in this group.
+    /// </summary>
     public string? Title { get; set; }
 }

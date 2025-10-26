@@ -5,6 +5,25 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a module type in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// This lookup table defines the available modules (workflow types) in the ECT system,
+/// such as LOD (Line of Duty), IDES (Integrated Disability Evaluation System),
+/// PDES (Physical Disability Evaluation System), etc. Each module represents a distinct
+/// case management workflow with specific forms, processes, business rules, and approval chains.
+/// 
+/// Modules are foundational to the system architecture - they determine:
+/// - Which forms are available for case creation
+/// - What workflow states and transitions are valid
+/// - Which business rules apply to case processing
+/// - How cases are routed through approval chains
+/// - What reports and metrics are generated
+/// 
+/// The IsSpecialCase flag indicates whether the module requires special handling or
+/// has unique processing requirements beyond standard workflow logic.
+/// </remarks>
 public partial class CoreLkupModule
 {
     public byte ModuleId { get; set; }

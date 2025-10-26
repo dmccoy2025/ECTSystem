@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a mapping between workflows and valid return reasons for cases.
+/// </summary>
 public partial class CoreWorkflowReturnReason
 {
+    /// <summary>
+    /// Gets or sets the workflow identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the return reason identifier.
+    /// </summary>
     public byte ReturnId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated return reason.
+    /// </summary>
     public virtual CoreLkupRwoareason Return { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated workflow.
+    /// </summary>
     public virtual CoreWorkflow Workflow { get; set; } = null!;
 }

@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a data type for dynamic field definitions.
+/// </summary>
 public partial class CoreLkupDataType
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the data type.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name of the data type.
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the collection of field types using this data type.
+    /// </summary>
     public virtual ICollection<PhFieldType> PhFieldTypes { get; set; } = new List<PhFieldType>();
 }

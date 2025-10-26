@@ -5,21 +5,75 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a comment or note added to a case.
+/// </summary>
+/// <remarks>
+/// Case comments provide audit trail, collaboration, and communication capabilities for case workers.
+/// Comments track important events, decisions, and discussions related to case processing.
+/// </remarks>
 public partial class CaseComment
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for this comment.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Line of Duty (LOD) case identifier this comment belongs to.
+    /// </summary>
+    /// <remarks>
+    /// Foreign key to the case record. Multiple comments can be associated with a single case.
+    /// </remarks>
     public int Lodid { get; set; }
 
+    /// <summary>
+    /// Gets or sets the comment text content.
+    /// </summary>
+    /// <remarks>
+    /// Required field. Can contain any text including case notes, explanations, decisions, or instructions.
+    /// </remarks>
     public string Comments { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the user ID who created this comment.
+    /// </summary>
+    /// <remarks>
+    /// Foreign key to CoreUser. Tracks comment authorship for audit purposes.
+    /// </remarks>
     public int CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the timestamp when this comment was created.
+    /// </summary>
+    /// <remarks>
+    /// Defaults to current date/time. Used for chronological ordering and audit trail.
+    /// </remarks>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this comment has been soft-deleted.
+    /// </summary>
+    /// <remarks>
+    /// When true, comment is hidden from normal views but retained for audit purposes.
+    /// Supports logical deletion without physically removing data.
+    /// </remarks>
     public bool Deleted { get; set; }
 
+    /// <summary>
+    /// Gets or sets the module identifier this comment belongs to.
+    /// </summary>
+    /// <remarks>
+    /// Indicates which module the case belongs to (LOD, IDES, etc.).
+    /// </remarks>
     public int ModuleId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the type of comment.
+    /// </summary>
+    /// <remarks>
+    /// Categorizes comments by purpose: general note, status change, decision, instruction, etc.
+    /// Allows filtering and organizing comments by type.
+    /// </remarks>
     public int CommentType { get; set; }
 }

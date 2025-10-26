@@ -5,6 +5,25 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a data access scope level in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// This lookup table defines the hierarchical levels of data access that can be assigned
+/// to user groups. Access scopes determine how much data users can view based on
+/// organizational hierarchy and security requirements.
+/// 
+/// Typical access scopes include:
+/// - Own: Users can only see their own cases
+/// - Unit: Users can see cases for their organizational unit
+/// - Chain: Users can see cases throughout their command chain
+/// - Component: Users can see all cases for their military component
+/// - All: Users can see all cases across all components (system administrators)
+/// 
+/// Access scopes are assigned to user groups via the CoreUserGroup.ScopeId foreign key.
+/// When a user is assigned to a group, they inherit that group's access scope, which
+/// is then enforced by data filtering logic in queries and reports.
+/// </remarks>
 public partial class CoreLkupAccessScope
 {
     public byte ScopeId { get; set; }

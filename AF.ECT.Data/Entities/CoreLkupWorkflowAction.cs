@@ -5,6 +5,26 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a workflow action type in the Electronic Case Tracking system.
+/// </summary>
+/// <remarks>
+/// This lookup table defines the available actions that can be performed on cases as they
+/// move through workflow states. Workflow actions determine what state transitions are
+/// possible and what user interactions are allowed.
+/// 
+/// Common workflow actions include:
+/// - Approve: Move the case forward to the next state
+/// - Reject: Deny the case and move to a rejection state
+/// - Return: Send the case back to a previous state for corrections
+/// - Forward: Route the case to a different approval authority
+/// - Request Information: Pause processing while awaiting additional data
+/// - Withdraw: Cancel the case at the submitter's request
+/// 
+/// Workflow actions are linked to workflow states via the CoreWorkStatusAction table,
+/// which defines which actions are valid for each state. The Type field contains a
+/// numeric code while Text contains the user-friendly action label.
+/// </remarks>
 public partial class CoreLkupWorkflowAction
 {
     public byte Type { get; set; }

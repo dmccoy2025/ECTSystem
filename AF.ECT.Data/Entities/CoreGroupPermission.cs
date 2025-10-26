@@ -5,13 +5,63 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents the many-to-many relationship between user groups and permissions.
+/// </summary>
+/// <remarks>
+/// <para>
+/// This entity maps permissions to user groups, defining which groups have which permissions.
+/// Users inherit all permissions from the groups they belong to (via CoreUserRole).
+/// </para>
+/// <para>
+/// Permission inheritance chain:
+/// 1. User is assigned to one or more groups (CoreUserRole)
+/// 2. Each group has multiple permissions (CoreGroupPermission)
+/// 3. User inherits all permissions from all their groups
+/// 4. Exclude permissions (Exclude=true) override grant permissions
+/// </para>
+/// <para>
+/// Example:
+/// - User John is in groups: "Case Workers" and "Supervisors"
+/// - Case Workers group has permissions: Form.348.View, Form.348.Edit
+/// - Supervisors group has permissions: Workflow.Approve, Data.ViewUnit
+/// - John has all four permissions: Form.348.View, Form.348.Edit, Workflow.Approve, Data.ViewUnit
+/// </para>
+/// </remarks>
 public partial class CoreGroupPermission
 {
+    /// <summary>
+    /// Gets or sets the user group identifier.
+    /// </summary>
+    /// <remarks>
+    /// Foreign key to CoreUserGroup. Part of composite primary key (GroupId, PermId).
+    /// Identifies which user group this permission assignment applies to.
+    /// </remarks>
     public byte? GroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the permission identifier.
+    /// </summary>
+    /// <remarks>
+    /// Foreign key to CorePermission. Part of composite primary key (GroupId, PermId).
+    /// Identifies which permission is being assigned to the group.
+    /// </remarks>
     public short? PermId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated user group.
+    /// </summary>
+    /// <remarks>
+    /// Navigation property providing access to the full CoreUserGroup entity.
+    /// </remarks>
     public virtual CoreUserGroup? Group { get; set; }
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated permission.
+    /// </summary>
+    /// <remarks>
+    /// Navigation property providing access to the full CorePermission entity including
+    /// permission name, description, and exclude flag.
+    /// </remarks>
     public virtual CorePermission? Perm { get; set; }
 }

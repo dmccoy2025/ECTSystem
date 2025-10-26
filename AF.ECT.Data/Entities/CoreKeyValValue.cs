@@ -5,17 +5,38 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a value in a key-value pair system for storing dynamic configuration data.
+/// </summary>
 public partial class CoreKeyValValue
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the value.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the identifier of the associated key.
+    /// </summary>
     public int KeyId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the value identifier (optional alternative identifier).
+    /// </summary>
     public string? ValueId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the actual value data.
+    /// </summary>
     public string? Value { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the value.
+    /// </summary>
     public string ValueDescription { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the navigation property to the associated key.
+    /// </summary>
     public virtual CoreKeyValKey Key { get; set; } = null!;
 }
