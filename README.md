@@ -219,3 +219,14 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Support
 
 For questions or issues, please open an issue on GitHub.
+
+## Documentation
+
+For comprehensive documentation, see:
+
+- **[DEVELOPER_ONBOARDING.md](DEVELOPER_ONBOARDING.md)** - Complete setup guide for new developers
+- **[API_DOCUMENTATION.md](API_DOCUMENTATION.md)** - REST and gRPC API reference with examples
+- **[ARCHITECTURE_DIAGRAMS.md](ARCHITECTURE_DIAGRAMS.md)** - System architecture visualizations
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribution guidelines and coding standards
+- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Solutions to common development issues
+- **[CHANGELOG.md](CHANGELOG.md)** - Version history and release notes
