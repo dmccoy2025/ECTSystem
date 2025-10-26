@@ -1,9 +1,6 @@
 using Grpc.Net.Client;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
-using AF.ECT.Shared;
 using AF.ECT.Data.Interfaces;
 using AF.ECT.Data.ResultTypes;
 using AF.ECT.Server;

@@ -3,12 +3,8 @@
 #pragma warning disable CS8604 // Possible null reference argument
 using AF.ECT.Data.Interfaces;
 using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Threading;
-using System.Threading.Tasks;
 
 
 namespace AF.ECT.Data.Models;

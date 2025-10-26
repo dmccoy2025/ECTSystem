@@ -1,8 +1,5 @@
-using Microsoft.Extensions.Logging;
-using Moq;
 using AF.ECT.Server.Services;
 using AF.ECT.Server.Services.Interfaces;
-using AF.ECT.Shared;
 using static AF.ECT.Tests.Data.WorkflowServiceTestData;
 using AF.ECT.Data.Interfaces;
 using AF.ECT.Data.ResultTypes;

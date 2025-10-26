@@ -1,4 +1,3 @@
-using Grpc.Core;
 using Grpc.Core.Interceptors;
 
 namespace AF.ECT.Server.Interceptors;

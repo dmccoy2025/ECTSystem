@@ -1,12 +1,8 @@
-﻿using AF.ECT.Shared;
-using AF.ECT.Shared.Options;
-using AF.ECT.Shared.Services;
 using Blazored.LocalStorage;
 using Grpc.Net.Client;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Radzen;
 using OpenTelemetry.Trace;
-using Microsoft.Extensions.Options;
 
 namespace AF.ECT.WebClient.Extensions;
 

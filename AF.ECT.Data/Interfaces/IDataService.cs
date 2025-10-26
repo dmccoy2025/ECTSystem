@@ -1,7 +1,6 @@
 #nullable enable
 
 using AF.ECT.Data.ResultTypes;
-using AF.ECT.Shared;
 
 namespace AF.ECT.Data.Interfaces;
 

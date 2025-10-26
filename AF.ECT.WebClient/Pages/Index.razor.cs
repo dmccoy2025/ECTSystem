@@ -1,6 +1,3 @@
-using AF.ECT.Shared.Services;
-using AF.ECT.Shared;
-using Microsoft.AspNetCore.Components;
 using Radzen;
 
 namespace AF.ECT.WebClient.Pages;

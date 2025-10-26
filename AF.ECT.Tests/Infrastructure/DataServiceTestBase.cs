@@ -1,7 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using Moq;
 using System.Linq.Expressions;
-using Microsoft.Extensions.Logging;
 using AF.ECT.Data.Models;
 using AF.ECT.Data.Interfaces;
 using AF.ECT.Data.ResultTypes;

@@ -4,10 +4,7 @@ using AF.ECT.Data.Models;
 using Grpc.Net.Client;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
 using AF.ECT.Server;
 
 namespace AF.ECT.Tests.Infrastructure;

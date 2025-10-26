@@ -1,11 +1,5 @@
-using Grpc.Net.Client;
-using System.Diagnostics;
-using Polly;
-using Polly.Retry;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Logging;
-using AF.ECT.Shared.Options;
 using Audit.Core;
+using AF.ECT.Shared.Options;
 
 namespace AF.ECT.Shared.Services;
 

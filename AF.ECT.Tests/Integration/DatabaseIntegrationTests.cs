@@ -1,5 +1,3 @@
-using AF.ECT.Shared;
-using FluentAssertions;
 using AF.ECT.Tests.Infrastructure;
 
 namespace AF.ECT.Tests.Integration;

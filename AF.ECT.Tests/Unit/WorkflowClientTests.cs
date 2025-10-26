@@ -1,8 +1,6 @@
 using Grpc.Core;
 using Grpc.Net.Client;
-using Moq;
 using AF.ECT.Shared.Services;
-using AF.ECT.Shared;
 using static AF.ECT.Tests.Data.WorkflowClientTestData;
 
 namespace AF.ECT.Tests.Unit;

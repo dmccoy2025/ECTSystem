@@ -1,6 +1,4 @@
 using System.Net;
-using Microsoft.Extensions.Logging;
-using Moq;
 using Polly.CircuitBreaker;
 using AF.ECT.Server.Services;
 using AF.ECT.Server.Services.Interfaces;

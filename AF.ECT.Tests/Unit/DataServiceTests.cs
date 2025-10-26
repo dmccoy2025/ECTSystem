@@ -1,5 +1,3 @@
-using Microsoft.Extensions.Logging;
-using Moq;
 using SharedModels = AF.ECT.Shared;
 using static AF.ECT.Tests.Data.DataServiceTestData;
 using AF.ECT.Tests.Infrastructure;

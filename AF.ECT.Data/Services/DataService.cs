@@ -1,8 +1,5 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using AF.ECT.Data.Models;
 using AF.ECT.Data.Extensions;
-using AF.ECT.Shared;
 using AF.ECT.Data.ResultTypes;
 using AF.ECT.Data.Entities;
 using AF.ECT.Data.Interfaces;

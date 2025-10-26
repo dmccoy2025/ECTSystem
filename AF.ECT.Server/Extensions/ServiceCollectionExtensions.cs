@@ -6,12 +6,10 @@ using AF.ECT.Server.Services;
 using AF.ECT.Server.Services.Interfaces;
 using AspNetCoreRateLimit;
 using Audit.Core;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
 using Radzen;
-using System.ComponentModel.DataAnnotations;
 
 namespace AF.ECT.Server.Extensions;
 

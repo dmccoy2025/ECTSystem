@@ -1,5 +1,4 @@
 using AF.ECT.Data.Entities;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AF.ECT.Data.Configurations.Forms;

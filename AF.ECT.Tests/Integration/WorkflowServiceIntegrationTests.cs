@@ -1,4 +1,3 @@
-using AF.ECT.Shared;
 using System.Collections;
 using System.Reflection;
 using AF.ECT.Tests.Infrastructure;

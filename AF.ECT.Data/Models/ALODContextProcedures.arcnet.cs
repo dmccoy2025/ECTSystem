@@ -2,7 +2,6 @@
 #pragma warning disable CS8604 // Possible null reference argument
 using Microsoft.Data.SqlClient;
 using System.Data;
-using Microsoft.EntityFrameworkCore;
 using AF.ECT.Data.Extensions;
 using AF.ECT.Data.ResultTypes;
 using AF.ECT.Data.Interfaces;
