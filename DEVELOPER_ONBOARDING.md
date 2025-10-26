@@ -26,7 +26,7 @@ Before starting, ensure you have the following installed:
 
 | Software | Version | Download Link | Purpose |
 |----------|---------|---------------|---------|
-| .NET SDK | 9.0 or later | [Download](https://dotnet.microsoft.com/download/dotnet/9.0) | Core runtime and development tools |
+| .NET SDK | 9.0.306 or later | [Download](https://dotnet.microsoft.com/download/dotnet/9.0) | Core runtime and development tools |
 | Visual Studio 2022 | 17.12+ | [Download](https://visualstudio.microsoft.com/) | Primary IDE (Community/Professional/Enterprise) |
 | SQL Server | 2022+ | [Download](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) | Database (Developer/Express edition OK) |
 | Git | Latest | [Download](https://git-scm.com/) | Version control |
@@ -62,7 +62,7 @@ When installing Visual Studio, ensure these workloads are selected:
 3. Verify installation:
    ```powershell
    dotnet --version
-   # Should show 9.0.100 or later
+   # Should show 9.0.306 or later
    ```
 
 ### Step 2: Install SQL Server
@@ -123,14 +123,13 @@ ECTSystem/
 ├── AF.ECT.Server/           # ASP.NET Core API server
 ├── AF.ECT.WebClient/        # Blazor WebAssembly client
 ├── AF.ECT.WindowsClient/    # Win UI desktop client
-├── AF.ECT.MobileClient/     # .NET MAUI mobile client
+├── AF.ECT.MobileClient/     # .NET MAUI mobile client (future development)
 ├── AF.ECT.Data/             # Data access layer (EF Core)
 ├── AF.ECT.Database/         # SQL Server database project
 ├── AF.ECT.Shared/           # Shared models and gRPC contracts
 ├── AF.ECT.ServiceDefaults/  # Common service configuration
 ├── AF.ECT.Tests/            # Unit and integration tests
 ├── AF.ECT.Wiki/             # Documentation wiki (Blazor)
-├── Documentation/           # Architecture and design docs
 ├── ElectronicCaseTracking.sln
 └── README.md
 ```
@@ -286,7 +285,7 @@ ECTSystem follows a **distributed microservices architecture** using **.NET Aspi
 ```
 ┌─────────────────┐
 │   .NET Aspire   │  ← Orchestration & Service Discovery
-│    Dashboard    │
+│    Dashboard    │    (http://localhost:15888)
 └────────┬────────┘
          │
     ┌────┴─────┬──────────┬────────────┐
@@ -294,18 +293,19 @@ ECTSystem follows a **distributed microservices architecture** using **.NET Aspi
 ┌───▼───┐  ┌──▼───┐  ┌──▼──────┐  ┌──▼────┐
 │ Server│  │ Web  │  │ Desktop │  │ Wiki  │
 │  API  │  │Client│  │ Client  │  │  App  │
+│ gRPC  │  │Blazor│  │ Win UI  │  │Blazor │
 └───┬───┘  └──┬───┘  └────┬────┘  └───────┘
     │         │           │
-    │    gRPC │      gRPC │
+    │    gRPC-Web    gRPC │
     │         │           │
 ┌───▼─────────▼───────────▼────┐
 │      Data Access Layer       │  ← Entity Framework Core
-│        (AF.ECT.Data)          │
+│        (AF.ECT.Data)          │    + Audit.NET Interceptors
 └──────────────┬────────────────┘
                │
        ┌───────▼────────┐
        │   SQL Server   │  ← Database with stored procedures
-       │  (ALOD Schema) │
+       │  (ALOD Schema) │    + AuditLogs table
        └────────────────┘
 ```
 
@@ -313,12 +313,14 @@ ECTSystem follows a **distributed microservices architecture** using **.NET Aspi
 
 | Layer | Technologies |
 |-------|-------------|
-| **Frontend** | Blazor WebAssembly, Win UI, .NET MAUI |
-| **Backend** | ASP.NET Core, gRPC, gRPC-Web |
-| **Data Access** | Entity Framework Core 9.0, ADO.NET |
-| **Database** | SQL Server 2022, Stored Procedures |
+| **Frontend** | Blazor WebAssembly, Win UI 3, .NET MAUI (planned) |
+| **Backend** | ASP.NET Core 9.0, gRPC, gRPC-Web |
+| **Data Access** | Entity Framework Core 9.0, Stored Procedures |
+| **Database** | SQL Server 2022+, SSDT Database Projects |
 | **Orchestration** | .NET Aspire |
-| **Observability** | OpenTelemetry, Serilog |
+| **Observability** | OpenTelemetry, Serilog, Audit.NET |
+| **Resilience** | Polly (Retry, Circuit Breaker, Timeout) |
+| **Security** | Antiforgery Tokens, CORS, Rate Limiting |
 | **Testing** | xUnit, FluentAssertions, Moq |
 
 For detailed architecture diagrams, see [ARCHITECTURE_DIAGRAMS.md](ARCHITECTURE_DIAGRAMS.md).
@@ -329,7 +331,7 @@ For detailed architecture diagrams, see [ARCHITECTURE_DIAGRAMS.md](ARCHITECTURE_
 
 ### gRPC Communication
 
-ECTSystem uses gRPC for efficient client-server communication.
+ECTSystem uses gRPC for efficient client-server communication. Blazor WebAssembly clients use gRPC-Web (HTTP/1.1 compatible), while desktop clients can use native gRPC (HTTP/2).
 
 **Protobuf Definitions** are in `AF.ECT.Shared/Protos/`:
 
@@ -352,10 +354,26 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     public override async Task<GetUserByIdResponse> GetUserById(
         GetUserByIdRequest request, ServerCallContext context)
     {
-        // Implementation
+        // Implementation with automatic EF Core audit logging
+        var user = await _dataService.GetUserByIdAsync(request.UserId);
+        return new GetUserByIdResponse { User = user };
     }
 }
 ```
+
+**Middleware Pipeline** (from `AF.ECT.Server/Program.cs`):
+
+The server uses a carefully ordered middleware pipeline:
+
+1. **HTTPS Redirection** - Force secure connections
+2. **CORS** - Handle cross-origin requests (must be early for preflight)
+3. **gRPC-Web** - Protocol translation for browser clients
+4. **Routing** - Endpoint matching
+5. **Antiforgery** - Token validation for CSRF protection
+6. **Rate Limiting** - IP-based throttling
+7. **Endpoints** - gRPC services and health checks
+
+This order is critical for security and performance.
 
 **Client Usage** in `AF.ECT.Shared/Services/WorkflowClient.cs`:
 
@@ -371,6 +389,26 @@ public class WorkflowClient : IWorkflowClient
     }
 }
 ```
+
+### Service Configuration Order
+
+The `AF.ECT.Server/Program.cs` configures services in a specific order for proper dependency resolution:
+
+1. **Web Components** - Kestrel, Razor, Blazor Server
+2. **Data Access** - EF Core, DbContext factory, repositories
+3. **Theme Services** - Radzen UI components
+4. **CORS** - Cross-origin resource sharing
+5. **gRPC Services** - Core business logic
+6. **Health Checks** - Database and service monitoring
+7. **Logging** - Structured logging with Serilog
+8. **Antiforgery** - CSRF protection
+9. **Resilience** - Polly policies (retry, circuit breaker)
+10. **Caching** - Redis distributed caching
+11. **Rate Limiting** - IP-based throttling
+12. **Documentation** - OpenAPI/Swagger
+13. **Telemetry** - OpenTelemetry for observability
+
+This order ensures dependencies are available when services need them.
 
 ### Strongly-Typed Configuration
 
@@ -533,5 +571,5 @@ Welcome to the team! 🚀
 
 ---
 
-**Last Updated:** October 26, 2025  
-**Version:** 1.0.0
+**Last Updated:** January 26, 2025  
+**Version:** 1.0.1
