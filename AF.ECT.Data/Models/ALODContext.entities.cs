@@ -34,6 +34,326 @@ public partial class ALODContext : DbContext
     }
 
     /// <summary>
+    /// Gets or sets the DbSet for Access Scope lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupAccessScope> AccessScopes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Access Status lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupAccessStatus> AccessStatuses { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Action lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupAction> Actions { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for AMRO Disposition lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupAmrodisposition> Amrodispositions { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Availability Code lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupAvailabilityCode> AvailabilityCodes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Cancel Reason lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupCancelReason> CancelReasons { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Chain Type lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupChainType> ChainTypes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Compo lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupCompo> Compos { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Component lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupComponent> Components { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Countries lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupCountry> Countries { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Data Type lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupDataType> DataTypes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for DAWG Recommendation lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupDawgrecommendation> Dawgrecommendations { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for DbSign Templates lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupDbSignTemplate> DbSignTemplates { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Disposition lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupDisposition> Dispositions { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Duty Status lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupDutyStatus> DutyStatuses { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Fast Track Type lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupFastTrackType> FastTrackTypes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Finding By Reason Of lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkUpFindingByReasonOf> FindingByReasonOfs { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Findings lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkUpFinding> Findings { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Findings Text lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupFindingsText> FindingsTexts { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Follow Up Interval lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupFollowUpInterval> FollowUpIntervals { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for From Location lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupFromLocation> FromLocations { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for FT Recommendations lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupFtrecommendation> Ftrecommendations { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Grade lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupGrade> Grades { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Grade Abbreviation Type lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupGradeAbbreviationType> GradeAbbreviationTypes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for ICD 7th Character lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupIcd7thChar> Icd7thChars { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for ICD9 lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupIcd9> Icd9s { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Incident Type lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupIncidentType> IncidentTypes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Info Source lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupInfoSource> InfoSources { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for IO Grades lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupIograde> Iogrades { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for IRILO Status lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupIrilostatus> Irilostatuses { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for MAJCOM lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupMajcom> Majcoms { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Med Groups lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupMedGroup> MedGroups { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Medical Facility lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupMedicalFacility> MedicalFacilities { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Member Category lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupMemberCategory> MemberCategories { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Member Influence lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupMemberInfluence> MemberInfluences { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Member Status lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupMemberStatus> MemberStatuses { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Military Services lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupMilitaryService> MilitaryServices { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Missed Work Days lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupMissedWorkDay> MissedWorkDays { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Module lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupModule> Modules { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Nature Of Incident lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupNatureOfIncident> NatureOfIncidents { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Occurrence Description lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupOccurrenceDescription> OccurrenceDescriptions { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Operation Type lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupOperationType> OperationTypes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for PA lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupPa> Pas { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for PEPP Case Type lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupPeppcaseType> PeppcaseTypes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for PEPP Disposition lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupPeppdisposition> Peppdispositions { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for PEPP Rating lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupPepprating> Peppratings { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for PEPP Type lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupPepptype> Pepptypes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Personnel Type lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupPersonnelType> PersonnelTypes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Physical Cancel Reason lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupPhyCancelReason> PhyCancelReasons { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Process lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupProcess> Processes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Proximate Cause lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupProximateCause> ProximateCauses { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for PW Category lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupPwcategory> Pwcategories { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for RMU lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupRmu> Rmus { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Rule lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupRule> Rules { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Rule Type lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupRuleType> RuleTypes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for RWOA Reason lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupRwoareason> Rwoareasons { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for SC Sub Type lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupScsubType> ScsubTypes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Specialists Required For Management lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupSpecialistsRequiredForManagement> SpecialistsRequiredForManagements { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for States lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupState> States { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Sudden Incapacitation Risk lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupSuddenIncapacitationRisk> SuddenIncapacitationRisks { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Time Zone lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupTimeZone> TimeZones { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Unit Level Type lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupUnitLevelType> UnitLevelTypes { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Workflow Action lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupWorkflowAction> WorkflowActions { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DbSet for Years Satisfactory Service lookup data.
+    /// </summary>
+    public virtual DbSet<Entities.CoreLkupYearsSatisfactoryService> YearsSatisfactoryServices { get; set; }
+
+    /// <summary>
     /// Configures the model for the context.
     /// </summary>
     /// <param name="modelBuilder">The builder being used to construct the model for this context.</param>

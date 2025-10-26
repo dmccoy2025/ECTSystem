@@ -4,6 +4,7 @@ using AF.ECT.Data.Models;
 using AF.ECT.Data.Extensions;
 using AF.ECT.Shared;
 using AF.ECT.Data.ResultTypes;
+using AF.ECT.Data.Entities;
 using AF.ECT.Data.Interfaces;
 
 #nullable enable
@@ -68,6 +69,24 @@ public class DataService : IDataService
             throw;
         }
     }
+
+    public async virtual Task<List<core_lod_sp_GetSpecialCasesResult>> GetSpecialCasesAsync1(CancellationToken cancellationToken = default)
+    {
+        _logger.LogInformation("Retrieving special cases");
+        try
+        {
+            using var context = await _contextFactory.CreateDbContextAsync(cancellationToken);
+            var result = await context.Procedures.core_lod_sp_GetSpecialCasesAsync(cancellationToken);
+            _logger.LogInformation("Retrieved {Count} special cases", result.Count);
+            return result;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error retrieving special cases");
+            throw;
+        }
+    }
+
 
     /// <summary>
     /// Asynchronously retrieves special cases.
