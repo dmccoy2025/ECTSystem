@@ -21,7 +21,7 @@ public class CoreLkupAccessScopeConfiguration : IEntityTypeConfiguration<CoreLku
     public void Configure(EntityTypeBuilder<CoreLkupAccessScope> builder)
     {
         // Table mapping
-        builder.ToTable("core_lkup_access_scope");
+        builder.ToTable("core_lkup_access_scope", "dbo");
 
         // Primary key
         builder.HasKey(e => e.ScopeId)

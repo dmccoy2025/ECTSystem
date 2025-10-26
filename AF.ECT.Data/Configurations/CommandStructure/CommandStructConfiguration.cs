@@ -24,7 +24,7 @@ public class CommandStructConfiguration : IEntityTypeConfiguration<CommandStruct
     public void Configure(EntityTypeBuilder<CommandStruct> builder)
     {
         // Table mapping
-        builder.ToTable("command_struct");
+        builder.ToTable("command_struct", "dbo");
 
         // Primary key
         builder.HasKey(e => e.CsId)

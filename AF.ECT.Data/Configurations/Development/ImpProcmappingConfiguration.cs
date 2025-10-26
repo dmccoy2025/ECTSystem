@@ -34,7 +34,7 @@ public class ImpProcmappingConfiguration : IEntityTypeConfiguration<ImpProcmappi
     /// <param name="builder">The entity type builder for ImpProcmapping.</param>
     public void Configure(EntityTypeBuilder<ImpProcmapping> builder)
     {
-        builder.ToTable("ImpPROCMapping");
+        builder.ToTable("ImpPROCMapping", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

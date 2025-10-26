@@ -15,9 +15,10 @@ public class CoreLkupAmrodispositionConfiguration : IEntityTypeConfiguration<Cor
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupAmrodisposition> builder)
     {
-        builder.ToTable("Core_Lkup_AMRODisposition");
+        builder.ToTable("Core_Lkup_AMRODisposition", "dbo");
 
-        builder.HasKey(e => e.DispositionId);
+        builder.HasKey(e => e.DispositionId)
+            .HasName("PK_Core_Lkup_AMRODisposition");
 
         builder.Property(e => e.DispositionId).HasColumnName("DispositionID");
         builder.Property(e => e.Description).HasMaxLength(255);

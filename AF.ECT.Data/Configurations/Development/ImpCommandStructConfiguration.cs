@@ -33,7 +33,7 @@ public class ImpCommandStructConfiguration : IEntityTypeConfiguration<ImpCommand
     /// <param name="builder">The entity type builder for ImpCommandStruct.</param>
     public void Configure(EntityTypeBuilder<ImpCommandStruct> builder)
     {
-        builder.ToTable("ImpCommandStruct");
+        builder.ToTable("ImpCommandStruct", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

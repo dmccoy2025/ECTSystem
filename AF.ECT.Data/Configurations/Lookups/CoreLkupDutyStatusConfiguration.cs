@@ -15,9 +15,10 @@ public class CoreLkupDutyStatusConfiguration : IEntityTypeConfiguration<CoreLkup
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupDutyStatus> builder)
     {
-        builder.ToTable("Core_Lkup_DutyStatus");
+        builder.ToTable("Core_Lkup_DutyStatus", "dbo");
 
-        builder.HasKey(e => e.DutyId);
+        builder.HasKey(e => e.DutyId)
+            .HasName("PK_Core_Lkup_DutyStatus");
 
         builder.Property(e => e.DutyId).HasColumnName("DutyID");
         builder.Property(e => e.DutyType).HasMaxLength(100);

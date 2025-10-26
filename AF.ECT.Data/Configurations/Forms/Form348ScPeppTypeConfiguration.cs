@@ -29,10 +29,11 @@ public class Form348ScPeppTypeConfiguration : IEntityTypeConfiguration<Form348Sc
     /// <param name="builder">The entity type builder for Form348ScPeppType.</param>
     public void Configure(EntityTypeBuilder<Form348ScPeppType> builder)
     {
-        builder.ToTable("Form348_SC_PEPPType");
+        builder.ToTable("Form348_SC_PEPPType", "dbo");
 
         // Composite primary key
-        builder.HasKey(e => new { e.RefId, e.TypeId });
+        builder.HasKey(e => new { e.RefId, e.TypeId })
+            .HasName("PK_Form348_SC_PEPPType");
 
         builder.Property(e => e.RefId)
             .HasColumnName("RefID");

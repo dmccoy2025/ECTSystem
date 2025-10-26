@@ -33,7 +33,7 @@ public class ImpDbaRolePrivConfiguration : IEntityTypeConfiguration<ImpDbaRolePr
     /// <param name="builder">The entity type builder for ImpDbaRolePriv.</param>
     public void Configure(EntityTypeBuilder<ImpDbaRolePriv> builder)
     {
-        builder.ToTable("ImpDbaRolePriv");
+        builder.ToTable("ImpDbaRolePriv", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

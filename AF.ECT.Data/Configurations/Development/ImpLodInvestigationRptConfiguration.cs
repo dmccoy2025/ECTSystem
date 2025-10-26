@@ -36,7 +36,7 @@ public class ImpLodInvestigationRptConfiguration : IEntityTypeConfiguration<ImpL
     /// <param name="builder">The entity type builder for ImpLodInvestigationRpt.</param>
     public void Configure(EntityTypeBuilder<ImpLodInvestigationRpt> builder)
     {
-        builder.ToTable("ImpLodInvestigationRpt");
+        builder.ToTable("ImpLodInvestigationRpt", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

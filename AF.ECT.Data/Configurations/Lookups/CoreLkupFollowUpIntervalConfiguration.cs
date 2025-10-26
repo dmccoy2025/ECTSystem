@@ -15,9 +15,10 @@ public class CoreLkupFollowUpIntervalConfiguration : IEntityTypeConfiguration<Co
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupFollowUpInterval> builder)
     {
-        builder.ToTable("Core_Lkup_FollowUpInterval");
+        builder.ToTable("Core_Lkup_FollowUpInterval", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_Lkup_FollowUpInterval");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.Interval).HasMaxLength(100);

@@ -40,7 +40,7 @@ public class ImpProcessConfiguration : IEntityTypeConfiguration<ImpProcess>
     /// <param name="builder">The entity type builder for ImpProcess.</param>
     public void Configure(EntityTypeBuilder<ImpProcess> builder)
     {
-        builder.ToTable("ImpProcess");
+        builder.ToTable("ImpProcess", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

@@ -23,7 +23,7 @@ public class Form348IncapAppealConfiguration : IEntityTypeConfiguration<Form348I
     public void Configure(EntityTypeBuilder<Form348IncapAppeal> builder)
     {
         // Table mapping
-        builder.ToTable("Form_348_Incap_Appeal");
+        builder.ToTable("Form_348_Incap_Appeal", "dbo");
 
         // Primary key
         builder.HasKey(e => e.ApId)

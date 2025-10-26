@@ -12,7 +12,7 @@ public class CoreUserGroupsManagedByConfiguration : IEntityTypeConfiguration<Cor
     public void Configure(EntityTypeBuilder<CoreUserGroupsManagedBy> builder)
     {
         // Table mapping
-        builder.ToTable("core_user_groups_managed_by");
+        builder.ToTable("core_user_groups_managed_by", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.GroupId, e.ManagedBy })

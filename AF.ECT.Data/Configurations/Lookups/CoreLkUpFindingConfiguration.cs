@@ -15,9 +15,10 @@ public class CoreLkUpFindingConfiguration : IEntityTypeConfiguration<CoreLkUpFin
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkUpFinding> builder)
     {
-        builder.ToTable("Core_LkUp_Finding");
+        builder.ToTable("Core_LkUp_Finding", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_LkUp_Finding");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.FindingType).HasMaxLength(100);

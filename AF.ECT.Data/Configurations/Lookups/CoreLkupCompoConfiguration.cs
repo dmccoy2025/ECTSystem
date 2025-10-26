@@ -21,7 +21,7 @@ public class CoreLkupCompoConfiguration : IEntityTypeConfiguration<CoreLkupCompo
     public void Configure(EntityTypeBuilder<CoreLkupCompo> builder)
     {
         // Table mapping
-        builder.ToTable("core_lkup_compo");
+        builder.ToTable("core_lkup_compo", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Compo)

@@ -12,7 +12,7 @@ public class CoreWorkflowRwoaReasonConfiguration : IEntityTypeConfiguration<Core
     public void Configure(EntityTypeBuilder<CoreWorkflowRwoaReason> builder)
     {
         // Table mapping
-        builder.ToTable("core_workflow_rwoa_reason");
+        builder.ToTable("core_workflow_rwoa_reason", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.WorkflowId, e.RwoaId })

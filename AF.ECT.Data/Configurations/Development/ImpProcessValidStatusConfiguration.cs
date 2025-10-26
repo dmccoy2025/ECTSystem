@@ -38,7 +38,7 @@ public class ImpProcessValidStatusConfiguration : IEntityTypeConfiguration<ImpPr
     /// <param name="builder">The entity type builder for ImpProcessValidStatus.</param>
     public void Configure(EntityTypeBuilder<ImpProcessValidStatus> builder)
     {
-        builder.ToTable("ImpProcessValidStatus");
+        builder.ToTable("ImpProcessValidStatus", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

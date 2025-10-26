@@ -35,7 +35,7 @@ public class ImpUserroleConfiguration : IEntityTypeConfiguration<ImpUserrole>
     /// <param name="builder">The entity type builder for ImpUserrole.</param>
     public void Configure(EntityTypeBuilder<ImpUserrole> builder)
     {
-        builder.ToTable("ImpUSERRole");
+        builder.ToTable("ImpUSERRole", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

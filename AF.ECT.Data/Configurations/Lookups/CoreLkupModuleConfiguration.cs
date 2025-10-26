@@ -21,7 +21,7 @@ public class CoreLkupModuleConfiguration : IEntityTypeConfiguration<CoreLkupModu
     public void Configure(EntityTypeBuilder<CoreLkupModule> builder)
     {
         // Table mapping
-        builder.ToTable("core_lkup_module");
+        builder.ToTable("core_lkup_module", "dbo");
 
         // Primary key
         builder.HasKey(e => e.ModuleId)

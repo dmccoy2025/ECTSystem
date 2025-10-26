@@ -15,9 +15,10 @@ public class CoreLkupFromLocationConfiguration : IEntityTypeConfiguration<CoreLk
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupFromLocation> builder)
     {
-        builder.ToTable("Core_Lkup_FromLocation");
+        builder.ToTable("Core_Lkup_FromLocation", "dbo");
 
-        builder.HasKey(e => e.LocationId);
+        builder.HasKey(e => e.LocationId)
+            .HasName("PK_Core_Lkup_FromLocation");
 
         builder.Property(e => e.LocationId).HasColumnName("LocationID");
         builder.Property(e => e.LocationDescription).HasMaxLength(255);

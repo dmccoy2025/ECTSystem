@@ -15,9 +15,10 @@ public class CoreLkupMedicalFacilityConfiguration : IEntityTypeConfiguration<Cor
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupMedicalFacility> builder)
     {
-        builder.ToTable("Core_Lkup_MedicalFacility");
+        builder.ToTable("Core_Lkup_MedicalFacility", "dbo");
 
-        builder.HasKey(e => e.FacilityId);
+        builder.HasKey(e => e.FacilityId)
+            .HasName("PK_Core_Lkup_MedicalFacility");
 
         builder.Property(e => e.FacilityId).HasColumnName("FacilityID");
         builder.Property(e => e.FacilityDescription).HasMaxLength(255);

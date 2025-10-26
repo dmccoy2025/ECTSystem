@@ -20,7 +20,7 @@ public class PhFieldTypeConfiguration : IEntityTypeConfiguration<PhFieldType>
     {
         builder.HasKey(e => e.Id).HasName("PK__PH_FIELD__3214EC27F0D9BEB2");
 
-        builder.ToTable("PH_FIELD_TYPE");
+        builder.ToTable("PH_FIELD_TYPE", "dbo");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.Color)

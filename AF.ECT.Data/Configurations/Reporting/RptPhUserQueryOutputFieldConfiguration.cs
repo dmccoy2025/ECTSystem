@@ -20,7 +20,7 @@ public class RptPhUserQueryOutputFieldConfiguration : IEntityTypeConfiguration<R
     {
         builder.HasKey(e => e.Id).HasName("PK__RPT_PH_U__3214EC27C9E8F2A1");
 
-        builder.ToTable("RPT_PH_USER_QUERY_OUTPUT_FIELD");
+        builder.ToTable("RPT_PH_USER_QUERY_OUTPUT_FIELD", "dbo");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.FieldId).HasColumnName("FIELD_ID");

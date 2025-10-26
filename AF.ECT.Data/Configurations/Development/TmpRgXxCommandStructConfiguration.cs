@@ -19,7 +19,8 @@ public class TmpRgXxCommandStructConfiguration : IEntityTypeConfiguration<TmpRgX
         builder.ToTable("tmp_RG_XX_CommandStruct", "dbo");
 
         // Primary Key
-        builder.HasKey(e => e.CsId);
+        builder.HasKey(e => e.CsId)
+            .HasName("PK_tmp_RG_XX_CommandStruct");
 
         // Properties
         builder.Property(e => e.CsId)

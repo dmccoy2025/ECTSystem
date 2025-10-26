@@ -15,9 +15,10 @@ public class CoreLkupIcd9Configuration : IEntityTypeConfiguration<CoreLkupIcd9>
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupIcd9> builder)
     {
-        builder.ToTable("Core_Lkup_ICD9");
+        builder.ToTable("Core_Lkup_ICD9", "dbo");
 
-        builder.HasKey(e => e.Icd9Id);
+        builder.HasKey(e => e.Icd9Id)
+            .HasName("PK_Core_Lkup_ICD9");
 
         builder.Property(e => e.Icd9Id).HasColumnName("ICD9_ID");
         builder.Property(e => e.Value).HasMaxLength(50);

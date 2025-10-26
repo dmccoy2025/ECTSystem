@@ -12,7 +12,7 @@ public class CoreWorkflowMemberComponentConfiguration : IEntityTypeConfiguration
     public void Configure(EntityTypeBuilder<CoreWorkflowMemberComponent> builder)
     {
         // Table mapping
-        builder.ToTable("core_workflow_member_component");
+        builder.ToTable("core_workflow_member_component", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.WorkflowId, e.ComponentId })

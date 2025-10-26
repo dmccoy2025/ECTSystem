@@ -15,9 +15,10 @@ public class CoreWorkStatusUpdatedConfiguration : IEntityTypeConfiguration<CoreW
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreWorkStatusUpdated> builder)
     {
-        builder.ToTable("Core_WorkStatusUpdated");
+        builder.ToTable("Core_WorkStatusUpdated", "dbo");
 
-        builder.HasKey(e => new { e.WsId, e.WorkflowId, e.StatusId });
+        builder.HasKey(e => new { e.WsId, e.WorkflowId, e.StatusId })
+            .HasName("PK_Core_WorkStatusUpdated");
 
         builder.Property(e => e.WsId).HasColumnName("wsID");
         builder.Property(e => e.WorkflowId).HasColumnName("WorkflowID");

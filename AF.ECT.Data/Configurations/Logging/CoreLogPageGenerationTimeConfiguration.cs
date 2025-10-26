@@ -15,9 +15,10 @@ public class CoreLogPageGenerationTimeConfiguration : IEntityTypeConfiguration<C
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreLogPageGenerationTime> builder)
     {
-        builder.ToTable("Core_LogPageGenerationTime");
+        builder.ToTable("Core_LogPageGenerationTime", "dbo");
 
-        builder.HasKey(e => e.GId);
+        builder.HasKey(e => e.GId)
+            .HasName("PK_Core_LogPageGenerationTime");
 
         builder.Property(e => e.GId).HasColumnName("gID");
         builder.Property(e => e.ActionDate).HasColumnName("ActionDate");

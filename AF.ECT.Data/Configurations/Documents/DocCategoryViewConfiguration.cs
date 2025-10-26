@@ -20,10 +20,11 @@ public class DocCategoryViewConfiguration : IEntityTypeConfiguration<DocCategory
     public void Configure(EntityTypeBuilder<DocCategoryView> builder)
     {
         // Table mapping
-        builder.ToTable("DocCategoryView");
+        builder.ToTable("DocCategoryView", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.DocCatViewId);
+        builder.HasKey(e => e.DocCatViewId)
+            .HasName("PK_DocCategoryView");
 
         // Properties
         builder.Property(e => e.DocCatViewId).HasColumnName("DocCatViewID");

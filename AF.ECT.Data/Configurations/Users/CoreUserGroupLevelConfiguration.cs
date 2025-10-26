@@ -12,7 +12,7 @@ public class CoreUserGroupLevelConfiguration : IEntityTypeConfiguration<CoreUser
     public void Configure(EntityTypeBuilder<CoreUserGroupLevel> builder)
     {
         // Table mapping
-        builder.ToTable("core_user_group_level");
+        builder.ToTable("core_user_group_level", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

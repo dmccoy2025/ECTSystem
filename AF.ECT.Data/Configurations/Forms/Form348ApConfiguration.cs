@@ -19,10 +19,11 @@ public class Form348ApConfiguration : IEntityTypeConfiguration<Form348Ap>
     public void Configure(EntityTypeBuilder<Form348Ap> builder)
     {
         // Table mapping
-        builder.ToTable("Form348AP");
+        builder.ToTable("Form348AP", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.AppealId);
+        builder.HasKey(e => e.AppealId)
+            .HasName("PK_Form348AP");
 
         // Properties
         builder.Property(e => e.AppealId).HasColumnName("AppealID");

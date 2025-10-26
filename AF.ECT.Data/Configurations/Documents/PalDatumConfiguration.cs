@@ -20,7 +20,7 @@ public class PalDatumConfiguration : IEntityTypeConfiguration<PalDatum>
     {
         builder.HasKey(e => e.Ssan).HasName("PK__PAL_DATA__CA1E8E3C7C6F7215");
 
-        builder.ToTable("PAL_DATA");
+        builder.ToTable("PAL_DATA", "dbo");
 
         builder.Property(e => e.Ssan)
             .HasMaxLength(11)

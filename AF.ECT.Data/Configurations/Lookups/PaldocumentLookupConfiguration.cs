@@ -20,7 +20,7 @@ public class PaldocumentLookupConfiguration : IEntityTypeConfiguration<Paldocume
     {
         builder.HasKey(e => e.PalDocId).HasName("PK__PALDOCUM__41E3003001E7F7B6");
 
-        builder.ToTable("PALDOCUMENT_LOOKUP");
+        builder.ToTable("PALDOCUMENT_LOOKUP", "dbo");
 
         builder.Property(e => e.PalDocId).HasColumnName("PAL_DOC_ID");
         builder.Property(e => e.DocMonth).HasColumnName("DOC_MONTH");

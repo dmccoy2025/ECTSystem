@@ -15,9 +15,10 @@ public class CoreLkupRuleTypeConfiguration : IEntityTypeConfiguration<CoreLkupRu
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupRuleType> builder)
     {
-        builder.ToTable("Core_Lkup_RuleType");
+        builder.ToTable("Core_Lkup_RuleType", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_Lkup_RuleType");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.Description).HasMaxLength(255);

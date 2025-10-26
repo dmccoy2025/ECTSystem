@@ -19,10 +19,11 @@ public class DocumentViewConfiguration : IEntityTypeConfiguration<DocumentView>
     public void Configure(EntityTypeBuilder<DocumentView> builder)
     {
         // Table mapping
-        builder.ToTable("DocumentView");
+        builder.ToTable("DocumentView", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.ViewId);
+        builder.HasKey(e => e.ViewId)
+            .HasName("PK_DocumentView");
 
         // Properties
         builder.Property(e => e.ViewId).HasColumnName("ViewID");

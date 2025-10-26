@@ -15,9 +15,10 @@ public class CoreLogActionConfiguration : IEntityTypeConfiguration<CoreLogAction
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreLogAction> builder)
     {
-        builder.ToTable("Core_LogAction");
+        builder.ToTable("Core_LogAction", "dbo");
 
-        builder.HasKey(e => e.LogId);
+        builder.HasKey(e => e.LogId)
+            .HasName("PK_Core_LogAction");
 
         builder.Property(e => e.LogId).HasColumnName("LogID");
         builder.Property(e => e.ModuleId).HasColumnName("ModuleID");

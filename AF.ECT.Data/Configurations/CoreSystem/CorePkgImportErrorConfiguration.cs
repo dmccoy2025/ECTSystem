@@ -15,9 +15,10 @@ public class CorePkgImportErrorConfiguration : IEntityTypeConfiguration<CorePkgI
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CorePkgImportError> builder)
     {
-        builder.ToTable("Core_PkgImportError");
+        builder.ToTable("Core_PkgImportError", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_PkgImportError");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.StoredProcName)

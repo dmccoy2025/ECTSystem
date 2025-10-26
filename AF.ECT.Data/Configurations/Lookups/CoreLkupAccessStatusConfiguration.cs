@@ -21,7 +21,7 @@ public class CoreLkupAccessStatusConfiguration : IEntityTypeConfiguration<CoreLk
     public void Configure(EntityTypeBuilder<CoreLkupAccessStatus> builder)
     {
         // Table mapping
-        builder.ToTable("core_lkup_access_status");
+        builder.ToTable("core_lkup_access_status", "dbo");
 
         // Primary key
         builder.HasKey(e => e.StatusId)

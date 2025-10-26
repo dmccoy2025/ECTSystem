@@ -19,10 +19,11 @@ public class DevUnitConfiguration : IEntityTypeConfiguration<DevUnit>
     public void Configure(EntityTypeBuilder<DevUnit> builder)
     {
         // Table mapping
-        builder.ToTable("DevUnit");
+        builder.ToTable("DevUnit", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.CsId);
+        builder.HasKey(e => e.CsId)
+            .HasName("PK_DevUnit");
 
         // Properties
         builder.Property(e => e.CsId).HasColumnName("CSID");

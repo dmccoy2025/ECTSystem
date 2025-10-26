@@ -21,7 +21,7 @@ public class CaseDialogueCommentConfiguration : IEntityTypeConfiguration<CaseDia
     public void Configure(EntityTypeBuilder<CaseDialogueComment> builder)
     {
         // Table mapping
-        builder.ToTable("case_dialogue_comment");
+        builder.ToTable("case_dialogue_comment", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

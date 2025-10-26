@@ -25,7 +25,7 @@ public class CoreUserGroupConfiguration : IEntityTypeConfiguration<CoreUserGroup
     public void Configure(EntityTypeBuilder<CoreUserGroup> builder)
     {
         // Table mapping
-        builder.ToTable("core_user_group");
+        builder.ToTable("core_user_group", "dbo");
 
         // Primary key
         builder.HasKey(e => e.GroupId)

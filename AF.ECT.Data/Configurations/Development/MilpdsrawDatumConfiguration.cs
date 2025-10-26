@@ -20,7 +20,7 @@ public class MilpdsrawDatumConfiguration : IEntityTypeConfiguration<MilpdsrawDat
     {
         builder.HasKey(e => e.Ssan).HasName("PK__MILPDSRA__CA1E8E3C5B21B1F5");
 
-        builder.ToTable("MILPDSRawData");
+        builder.ToTable("MILPDSRawData", "dbo");
 
         builder.Property(e => e.Ssan)
             .HasMaxLength(11)

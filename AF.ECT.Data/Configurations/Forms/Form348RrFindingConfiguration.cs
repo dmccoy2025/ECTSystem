@@ -33,9 +33,10 @@ public class Form348RrFindingConfiguration : IEntityTypeConfiguration<Form348RrF
     /// <param name="builder">The entity type builder for Form348RrFinding.</param>
     public void Configure(EntityTypeBuilder<Form348RrFinding> builder)
     {
-        builder.ToTable("Form348_RR_Finding");
+        builder.ToTable("Form348_RR_Finding", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Form348_RR_Finding");
 
         // Primary key
         builder.Property(e => e.Id)

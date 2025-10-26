@@ -21,7 +21,7 @@ public class CoreLkupStateConfiguration : IEntityTypeConfiguration<CoreLkupState
     public void Configure(EntityTypeBuilder<CoreLkupState> builder)
     {
         // Table mapping
-        builder.ToTable("core_lkup_state");
+        builder.ToTable("core_lkup_state", "dbo");
 
         // Primary key (composite)
         builder.HasKey(e => e.State)

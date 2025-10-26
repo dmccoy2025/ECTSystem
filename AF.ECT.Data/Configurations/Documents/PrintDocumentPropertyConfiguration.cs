@@ -20,7 +20,7 @@ public class PrintDocumentPropertyConfiguration : IEntityTypeConfiguration<Print
     {
         builder.HasKey(e => e.PropertyId).HasName("PK__PRINT_DO__CFB9A9A4A4956C87");
 
-        builder.ToTable("PRINT_DOCUMENT_PROPERTY");
+        builder.ToTable("PRINT_DOCUMENT_PROPERTY", "dbo");
 
         builder.Property(e => e.PropertyId).HasColumnName("PROPERTY_ID");
         builder.Property(e => e.DocId).HasColumnName("DOC_ID");

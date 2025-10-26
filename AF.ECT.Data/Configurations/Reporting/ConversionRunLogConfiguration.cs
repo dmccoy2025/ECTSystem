@@ -19,10 +19,11 @@ public class ConversionRunLogConfiguration : IEntityTypeConfiguration<Conversion
     public void Configure(EntityTypeBuilder<ConversionRunLog> builder)
     {
         // Table mapping
-        builder.ToTable("ConversionRunLog");
+        builder.ToTable("ConversionRunLog", "dbo");
 
         // Primary key (composite)
-        builder.HasKey(e => new { e.RunId, e.LineNumber });
+        builder.HasKey(e => new { e.RunId, e.LineNumber })
+            .HasName("PK_ConversionRunLog");
 
         // Properties
         builder.Property(e => e.RunId).HasColumnName("RunID");

@@ -21,7 +21,7 @@ public class CoreStatusCodeConfiguration : IEntityTypeConfiguration<CoreStatusCo
     public void Configure(EntityTypeBuilder<CoreStatusCode> builder)
     {
         // Table mapping
-        builder.ToTable("core_status_code");
+        builder.ToTable("core_status_code", "dbo");
 
         // Primary key
         builder.HasKey(e => e.StatusId)

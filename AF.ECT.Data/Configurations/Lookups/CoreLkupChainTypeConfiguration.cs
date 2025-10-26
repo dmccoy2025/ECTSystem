@@ -22,7 +22,7 @@ public class CoreLkupChainTypeConfiguration : IEntityTypeConfiguration<CoreLkupC
     public void Configure(EntityTypeBuilder<CoreLkupChainType> builder)
     {
         // Table mapping
-        builder.ToTable("core_lkup_chain_type");
+        builder.ToTable("core_lkup_chain_type", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

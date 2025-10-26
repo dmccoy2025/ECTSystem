@@ -19,7 +19,8 @@ public class SuicideMethodConfiguration : IEntityTypeConfiguration<SuicideMethod
         builder.ToTable("SuicideMethod", "dbo");
 
         // Primary Key
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_SuicideMethod");
 
         // Properties
         builder.Property(e => e.Id)

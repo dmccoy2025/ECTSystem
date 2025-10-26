@@ -39,7 +39,7 @@ public class ImpLodDispositionConfiguration : IEntityTypeConfiguration<ImpLodDis
     /// <param name="builder">The entity type builder for ImpLodDisposition.</param>
     public void Configure(EntityTypeBuilder<ImpLodDisposition> builder)
     {
-        builder.ToTable("ImpLodDisposition");
+        builder.ToTable("ImpLodDisposition", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

@@ -12,7 +12,7 @@ public class CoreWorkflowPermConfiguration : IEntityTypeConfiguration<CoreWorkfl
     public void Configure(EntityTypeBuilder<CoreWorkflowPerm> builder)
     {
         // Table mapping
-        builder.ToTable("core_workflow_perm");
+        builder.ToTable("core_workflow_perm", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.WorkflowId, e.GroupId })

@@ -12,7 +12,7 @@ public class CoreWorkflowCaseTypeMapConfiguration : IEntityTypeConfiguration<Cor
     public void Configure(EntityTypeBuilder<CoreWorkflowCaseTypeMap> builder)
     {
         // Table mapping
-        builder.ToTable("core_workflow_case_type_map");
+        builder.ToTable("core_workflow_case_type_map", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.WorkflowId, e.CaseTypeId })

@@ -22,7 +22,7 @@ public class CoreUserConfiguration : IEntityTypeConfiguration<CoreUser>
     public void Configure(EntityTypeBuilder<CoreUser> builder)
     {
         // Table mapping
-        builder.ToTable("core_user");
+        builder.ToTable("core_user", "dbo");
 
         // Primary key
         builder.HasKey(e => e.UserId)

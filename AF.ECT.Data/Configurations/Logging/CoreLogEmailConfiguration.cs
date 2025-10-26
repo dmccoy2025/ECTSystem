@@ -15,9 +15,10 @@ public class CoreLogEmailConfiguration : IEntityTypeConfiguration<CoreLogEmail>
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreLogEmail> builder)
     {
-        builder.ToTable("Core_LogEmail");
+        builder.ToTable("Core_LogEmail", "dbo");
 
-        builder.HasKey(e => e.EId);
+        builder.HasKey(e => e.EId)
+            .HasName("PK_Core_LogEmail");
 
         builder.Property(e => e.EId).HasColumnName("eID");
         builder.Property(e => e.UserId).HasColumnName("UserID");

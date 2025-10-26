@@ -19,10 +19,11 @@ public class CoreCaseTypeSubCaseTypeMapConfiguration : IEntityTypeConfiguration<
     public void Configure(EntityTypeBuilder<CoreCaseTypeSubCaseTypeMap> builder)
     {
         // Table mapping
-        builder.ToTable("Core_CaseType_SubCaseType_Map");
+        builder.ToTable("Core_CaseType_SubCaseType_Map", "dbo");
 
         // Primary key (composite)
-        builder.HasKey(e => new { e.CaseTypeId, e.SubCaseTypeId });
+        builder.HasKey(e => new { e.CaseTypeId, e.SubCaseTypeId })
+            .HasName("PK_Core_CaseType_SubCaseType_Map");
 
         // Properties
         builder.Property(e => e.CaseTypeId).HasColumnName("CaseTypeID");

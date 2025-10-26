@@ -15,9 +15,10 @@ public class CoreLkupInfoSourceConfiguration : IEntityTypeConfiguration<CoreLkup
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupInfoSource> builder)
     {
-        builder.ToTable("Core_Lkup_InfoSource");
+        builder.ToTable("Core_Lkup_InfoSource", "dbo");
 
-        builder.HasKey(e => e.SourceId);
+        builder.HasKey(e => e.SourceId)
+            .HasName("PK_Core_Lkup_InfoSource");
 
         builder.Property(e => e.SourceId).HasColumnName("SourceID");
         builder.Property(e => e.SourceDescription).HasMaxLength(255);

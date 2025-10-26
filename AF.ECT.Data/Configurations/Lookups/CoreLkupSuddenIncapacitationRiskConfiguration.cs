@@ -15,9 +15,10 @@ public class CoreLkupSuddenIncapacitationRiskConfiguration : IEntityTypeConfigur
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupSuddenIncapacitationRisk> builder)
     {
-        builder.ToTable("Core_Lkup_SuddenIncapacitationRisk");
+        builder.ToTable("Core_Lkup_SuddenIncapacitationRisk", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_Lkup_SuddenIncapacitationRisk");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.RiskLevel).HasMaxLength(100);

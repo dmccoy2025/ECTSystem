@@ -20,7 +20,7 @@ public class PersonnelConfiguration : IEntityTypeConfiguration<Personnel>
     {
         builder.HasNoKey();
 
-        builder.ToTable("PERSONNEL");
+        builder.ToTable("PERSONNEL", "dbo");
 
         builder.Property(e => e.AltDavCode)
             .HasMaxLength(50)

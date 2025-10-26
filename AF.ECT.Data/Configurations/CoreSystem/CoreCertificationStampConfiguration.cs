@@ -20,7 +20,7 @@ public class CoreCertificationStampConfiguration : IEntityTypeConfiguration<Core
     public void Configure(EntityTypeBuilder<CoreCertificationStamp> builder)
     {
         // Table mapping
-        builder.ToTable("core_certification_stamp");
+        builder.ToTable("core_certification_stamp", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

@@ -36,7 +36,7 @@ public class ImpNonUnitPersonnelConfiguration : IEntityTypeConfiguration<ImpNonU
     /// <param name="builder">The entity type builder for ImpNonUnitPersonnel.</param>
     public void Configure(EntityTypeBuilder<ImpNonUnitPersonnel> builder)
     {
-        builder.ToTable("ImpNonUnitPersonnel");
+        builder.ToTable("ImpNonUnitPersonnel", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

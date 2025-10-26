@@ -21,7 +21,7 @@ public class CoreAssociatedCaseConfiguration : IEntityTypeConfiguration<CoreAsso
     public void Configure(EntityTypeBuilder<CoreAssociatedCase> builder)
     {
         // Table mapping
-        builder.ToTable("core_associated_case");
+        builder.ToTable("core_associated_case", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.WorkflowId, e.RefId, e.AssociatedWorkflow, e.AssociatedRefId })

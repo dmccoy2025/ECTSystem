@@ -19,7 +19,8 @@ public class TestCommandStructChainConfiguration : IEntityTypeConfiguration<Test
         builder.ToTable("Test_CommandStructChain", "dbo");
 
         // Primary Key
-        builder.HasKey(e => e.CscId);
+        builder.HasKey(e => e.CscId)
+            .HasName("PK_Test_CommandStructChain");
 
         // Properties
         builder.Property(e => e.CscId)

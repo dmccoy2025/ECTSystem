@@ -12,7 +12,7 @@ public class CoreWorkflowFindingConfiguration : IEntityTypeConfiguration<CoreWor
     public void Configure(EntityTypeBuilder<CoreWorkflowFinding> builder)
     {
         // Table mapping
-        builder.ToTable("core_workflow_finding");
+        builder.ToTable("core_workflow_finding", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.WorkflowId, e.FindingId })

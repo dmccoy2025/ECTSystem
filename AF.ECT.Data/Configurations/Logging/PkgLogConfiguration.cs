@@ -20,7 +20,7 @@ public class PkgLogConfiguration : IEntityTypeConfiguration<PkgLog>
     {
         builder.HasKey(e => e.Id).HasName("PK__PKG_LOG__3214EC27E0D18A88");
 
-        builder.ToTable("PKG_LOG");
+        builder.ToTable("PKG_LOG", "dbo");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.Endtime).HasColumnName("ENDTIME");

@@ -23,7 +23,7 @@ public class CoreWorkflowConfiguration : IEntityTypeConfiguration<CoreWorkflow>
     public void Configure(EntityTypeBuilder<CoreWorkflow> builder)
     {
         // Table mapping
-        builder.ToTable("core_workflow");
+        builder.ToTable("core_workflow", "dbo");
 
         // Primary key
         builder.HasKey(e => e.WorkflowId)

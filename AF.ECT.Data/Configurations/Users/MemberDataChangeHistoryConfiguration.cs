@@ -43,7 +43,7 @@ public class MemberDataChangeHistoryConfiguration : IEntityTypeConfiguration<Mem
     /// <param name="builder">The entity type builder for MemberDataChangeHistory.</param>
     public void Configure(EntityTypeBuilder<MemberDataChangeHistory> builder)
     {
-        builder.ToTable("MemberDataChangeHistory");
+        builder.ToTable("MemberDataChangeHistory", "dbo");
 
         // Keyless entity for audit storage
         builder.HasNoKey();

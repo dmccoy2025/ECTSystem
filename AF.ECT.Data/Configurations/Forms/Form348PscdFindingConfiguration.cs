@@ -19,10 +19,11 @@ public class Form348PscdFindingConfiguration : IEntityTypeConfiguration<Form348P
     public void Configure(EntityTypeBuilder<Form348PscdFinding> builder)
     {
         // Table mapping
-        builder.ToTable("Form348PSCDFinding");
+        builder.ToTable("Form348PSCDFinding", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Form348PSCDFinding");
 
         // Properties
         builder.Property(e => e.Id).HasColumnName("ID");

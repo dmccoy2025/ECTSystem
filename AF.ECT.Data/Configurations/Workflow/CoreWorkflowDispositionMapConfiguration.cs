@@ -12,7 +12,7 @@ public class CoreWorkflowDispositionMapConfiguration : IEntityTypeConfiguration<
     public void Configure(EntityTypeBuilder<CoreWorkflowDispositionMap> builder)
     {
         // Table mapping
-        builder.ToTable("core_workflow_disposition_map");
+        builder.ToTable("core_workflow_disposition_map", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.WorkflowId, e.DispositionId })

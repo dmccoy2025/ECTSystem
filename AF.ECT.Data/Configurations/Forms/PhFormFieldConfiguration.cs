@@ -21,7 +21,7 @@ public class PhFormFieldConfiguration : IEntityTypeConfiguration<PhFormField>
         builder.HasKey(e => new { e.SectionId, e.FieldId, e.FieldTypeId })
             .HasName("PK__PH_FORM___0AD1DB6F0D685C72");
 
-        builder.ToTable("PH_FORM_FIELD");
+        builder.ToTable("PH_FORM_FIELD", "dbo");
 
         builder.Property(e => e.SectionId).HasColumnName("SECTION_ID");
         builder.Property(e => e.FieldId).HasColumnName("FIELD_ID");

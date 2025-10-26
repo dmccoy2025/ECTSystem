@@ -15,9 +15,10 @@ public class CoreLkupAvailabilityCodeConfiguration : IEntityTypeConfiguration<Co
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupAvailabilityCode> builder)
     {
-        builder.ToTable("Core_Lkup_AvailabilityCode");
+        builder.ToTable("Core_Lkup_AvailabilityCode", "dbo");
 
-        builder.HasKey(e => e.AvailabilityCode);
+        builder.HasKey(e => e.AvailabilityCode)
+            .HasName("PK_Core_Lkup_AvailabilityCode");
 
         builder.Property(e => e.Description).HasMaxLength(255);
 

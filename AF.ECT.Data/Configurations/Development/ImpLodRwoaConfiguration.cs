@@ -34,7 +34,7 @@ public class ImpLodRwoaConfiguration : IEntityTypeConfiguration<ImpLodRwoa>
     /// <param name="builder">The entity type builder for ImpLodRwoa.</param>
     public void Configure(EntityTypeBuilder<ImpLodRwoa> builder)
     {
-        builder.ToTable("ImpLodRWOA");
+        builder.ToTable("ImpLodRWOA", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

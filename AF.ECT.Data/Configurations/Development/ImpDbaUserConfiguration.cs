@@ -34,7 +34,7 @@ public class ImpDbaUserConfiguration : IEntityTypeConfiguration<ImpDbaUser>
     /// <param name="builder">The entity type builder for ImpDbaUser.</param>
     public void Configure(EntityTypeBuilder<ImpDbaUser> builder)
     {
-        builder.ToTable("ImpDbaUser");
+        builder.ToTable("ImpDbaUser", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

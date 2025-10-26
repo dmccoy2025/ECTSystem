@@ -23,7 +23,7 @@ public class AfrcOracleLodRwoaDatumConfiguration : IEntityTypeConfiguration<Afrc
     public void Configure(EntityTypeBuilder<AfrcOracleLodRwoaDatum> builder)
     {
         // Table mapping
-        builder.ToTable("AfrcOracle_LOD_RWOA_Data");
+        builder.ToTable("AfrcOracle_LOD_RWOA_Data", "dbo");
 
         // No primary key - this is a staging/import table
         builder.HasNoKey();

@@ -21,7 +21,7 @@ public class CoreLkupGradeConfiguration : IEntityTypeConfiguration<CoreLkupGrade
     public void Configure(EntityTypeBuilder<CoreLkupGrade> builder)
     {
         // Table mapping
-        builder.ToTable("core_lkup_grade");
+        builder.ToTable("core_lkup_grade", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Code)

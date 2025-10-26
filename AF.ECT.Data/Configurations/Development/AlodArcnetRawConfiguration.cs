@@ -23,7 +23,7 @@ public class AlodArcnetRawConfiguration : IEntityTypeConfiguration<AlodArcnetRaw
     public void Configure(EntityTypeBuilder<AlodArcnetRaw> builder)
     {
         // Table mapping
-        builder.ToTable("ALOD_ARCNET_Raw");
+        builder.ToTable("ALOD_ARCNET_Raw", "dbo");
 
         // No primary key - this is a staging/import table
         builder.HasNoKey();

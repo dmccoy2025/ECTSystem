@@ -15,9 +15,10 @@ public class CoreSignOnlySignatureConfiguration : IEntityTypeConfiguration<CoreS
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreSignOnlySignature> builder)
     {
-        builder.ToTable("Core_SignOnlySignature");
+        builder.ToTable("Core_SignOnlySignature", "dbo");
 
-        builder.HasKey(e => new { e.RefId, e.Workflow });
+        builder.HasKey(e => new { e.RefId, e.Workflow })
+            .HasName("PK_Core_SignOnlySignature");
 
         builder.Property(e => e.RefId).HasColumnName("RefID");
         builder.Property(e => e.Workflow).HasColumnName("Workflow");

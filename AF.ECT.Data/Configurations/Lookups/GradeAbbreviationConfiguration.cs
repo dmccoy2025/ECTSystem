@@ -30,10 +30,11 @@ public class GradeAbbreviationConfiguration : IEntityTypeConfiguration<GradeAbbr
     /// <param name="builder">The entity type builder for GradeAbbreviation.</param>
     public void Configure(EntityTypeBuilder<GradeAbbreviation> builder)
     {
-        builder.ToTable("GradeAbbreviation");
+        builder.ToTable("GradeAbbreviation", "dbo");
 
         // Composite primary key
-        builder.HasKey(e => new { e.AbbreviationTypeId, e.GradeCode });
+        builder.HasKey(e => new { e.AbbreviationTypeId, e.GradeCode })
+            .HasName("PK_GradeAbbreviation");
 
         builder.Property(e => e.AbbreviationTypeId)
             .HasColumnName("AbbreviationTypeID");

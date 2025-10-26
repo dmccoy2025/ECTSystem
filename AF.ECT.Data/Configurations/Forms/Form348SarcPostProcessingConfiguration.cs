@@ -19,10 +19,11 @@ public class Form348SarcPostProcessingConfiguration : IEntityTypeConfiguration<F
     public void Configure(EntityTypeBuilder<Form348SarcPostProcessing> builder)
     {
         // Table mapping
-        builder.ToTable("Form348SARCPostProcessing");
+        builder.ToTable("Form348SARCPostProcessing", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.SarcId);
+        builder.HasKey(e => e.SarcId)
+            .HasName("PK_Form348SARCPostProcessing");
 
         // Properties
         builder.Property(e => e.SarcId).HasColumnName("SarcID");

@@ -19,10 +19,11 @@ public class Form348CommentConfiguration : IEntityTypeConfiguration<Form348Comme
     public void Configure(EntityTypeBuilder<Form348Comment> builder)
     {
         // Table mapping
-        builder.ToTable("Form348Comment");
+        builder.ToTable("Form348Comment", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Form348Comment");
 
         // Properties
         builder.Property(e => e.Id).HasColumnName("ID");

@@ -30,7 +30,7 @@ public class ImpPermmappingConfiguration : IEntityTypeConfiguration<ImpPermmappi
     /// <param name="builder">The entity type builder for ImpPermmapping.</param>
     public void Configure(EntityTypeBuilder<ImpPermmapping> builder)
     {
-        builder.ToTable("ImpPERMMapping");
+        builder.ToTable("ImpPERMMapping", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

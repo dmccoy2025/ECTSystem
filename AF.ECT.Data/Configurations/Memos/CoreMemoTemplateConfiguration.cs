@@ -12,7 +12,7 @@ public class CoreMemoTemplateConfiguration : IEntityTypeConfiguration<CoreMemoTe
     public void Configure(EntityTypeBuilder<CoreMemoTemplate> builder)
     {
         // Table mapping
-        builder.ToTable("core_memo_template");
+        builder.ToTable("core_memo_template", "dbo");
 
         // Primary key
         builder.HasKey(e => e.TemplateId)

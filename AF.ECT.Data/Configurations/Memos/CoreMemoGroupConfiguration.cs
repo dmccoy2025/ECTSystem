@@ -12,7 +12,7 @@ public class CoreMemoGroupConfiguration : IEntityTypeConfiguration<CoreMemoGroup
     public void Configure(EntityTypeBuilder<CoreMemoGroup> builder)
     {
         // Table mapping
-        builder.ToTable("core_memo_group");
+        builder.ToTable("core_memo_group", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

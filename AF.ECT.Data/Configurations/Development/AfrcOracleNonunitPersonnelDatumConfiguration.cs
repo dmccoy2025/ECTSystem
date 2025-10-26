@@ -24,7 +24,7 @@ public class AfrcOracleNonunitPersonnelDatumConfiguration : IEntityTypeConfigura
     public void Configure(EntityTypeBuilder<AfrcOracleNonunitPersonnelDatum> builder)
     {
         // Table mapping
-        builder.ToTable("AfrcOracle_NonUnit_Personnel_Data");
+        builder.ToTable("AfrcOracle_NonUnit_Personnel_Data", "dbo");
 
         // No primary key - this is a staging/import table
         builder.HasNoKey();

@@ -31,7 +31,7 @@ public class ImpLkupAccessStatusConfiguration : IEntityTypeConfiguration<ImpLkup
     /// <param name="builder">The entity type builder for ImpLkupAccessStatus.</param>
     public void Configure(EntityTypeBuilder<ImpLkupAccessStatus> builder)
     {
-        builder.ToTable("ImpLkupAccessStatus");
+        builder.ToTable("ImpLkupAccessStatus", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

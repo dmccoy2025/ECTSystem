@@ -20,7 +20,7 @@ public class CoreLkupProcessConfiguration : IEntityTypeConfiguration<CoreLkupPro
     public void Configure(EntityTypeBuilder<CoreLkupProcess> builder)
     {
         // Table mapping
-        builder.ToTable("core_lkup_process");
+        builder.ToTable("core_lkup_process", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

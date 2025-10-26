@@ -32,7 +32,7 @@ public class ImpTmpPersidConfiguration : IEntityTypeConfiguration<ImpTmpPersid>
     /// <param name="builder">The entity type builder for ImpTmpPersid.</param>
     public void Configure(EntityTypeBuilder<ImpTmpPersid> builder)
     {
-        builder.ToTable("ImpTmpPersid");
+        builder.ToTable("ImpTmpPersid", "dbo");
 
         // Keyless entity for temporary storage
         builder.HasNoKey();

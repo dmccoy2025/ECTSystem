@@ -12,7 +12,7 @@ public class CoreUserGroupsViewByConfiguration : IEntityTypeConfiguration<CoreUs
     public void Configure(EntityTypeBuilder<CoreUserGroupsViewBy> builder)
     {
         // Table mapping
-        builder.ToTable("core_user_groups_view_by");
+        builder.ToTable("core_user_groups_view_by", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.ViewerId, e.MemberId })

@@ -15,9 +15,10 @@ public class CoreLkupFindingsTextConfiguration : IEntityTypeConfiguration<CoreLk
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupFindingsText> builder)
     {
-        builder.ToTable("Core_Lkup_FindingsText");
+        builder.ToTable("Core_Lkup_FindingsText", "dbo");
 
-        builder.HasKey(e => e.FindingId);
+        builder.HasKey(e => e.FindingId)
+            .HasName("PK_Core_Lkup_FindingsText");
 
         builder.Property(e => e.FindingId).HasColumnName("FindingID");
         builder.Property(e => e.Description).HasMaxLength(1000);

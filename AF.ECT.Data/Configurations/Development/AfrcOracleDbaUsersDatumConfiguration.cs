@@ -22,7 +22,7 @@ public class AfrcOracleDbaUsersDatumConfiguration : IEntityTypeConfiguration<Afr
     public void Configure(EntityTypeBuilder<AfrcOracleDbaUsersDatum> builder)
     {
         // Table mapping
-        builder.ToTable("AfrcOracle_DBA_Users_Data");
+        builder.ToTable("AfrcOracle_DBA_Users_Data", "dbo");
 
         // No primary key - this is a staging/import table
         builder.HasNoKey();

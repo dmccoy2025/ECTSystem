@@ -15,9 +15,10 @@ public class CoreLkupNatureOfIncidentConfiguration : IEntityTypeConfiguration<Co
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupNatureOfIncident> builder)
     {
-        builder.ToTable("Core_Lkup_NatureOfIncident");
+        builder.ToTable("Core_Lkup_NatureOfIncident", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_Lkup_NatureOfIncident");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.Value).HasMaxLength(50);

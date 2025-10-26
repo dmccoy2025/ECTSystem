@@ -15,9 +15,10 @@ public class CoreLkupMemberStatusConfiguration : IEntityTypeConfiguration<CoreLk
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupMemberStatus> builder)
     {
-        builder.ToTable("Core_Lkup_MemberStatus");
+        builder.ToTable("Core_Lkup_MemberStatus", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_Lkup_MemberStatus");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.MemberType).HasMaxLength(100);

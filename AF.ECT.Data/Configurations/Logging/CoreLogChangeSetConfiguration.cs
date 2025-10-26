@@ -15,9 +15,10 @@ public class CoreLogChangeSetConfiguration : IEntityTypeConfiguration<CoreLogCha
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreLogChangeSet> builder)
     {
-        builder.ToTable("Core_LogChangeSet");
+        builder.ToTable("Core_LogChangeSet", "dbo");
 
-        builder.HasKey(e => new { e.LogId, e.Section, e.Field });
+        builder.HasKey(e => new { e.LogId, e.Section, e.Field })
+            .HasName("PK_Core_LogChangeSet");
 
         builder.Property(e => e.LogId).HasColumnName("LogID");
         builder.Property(e => e.Section)

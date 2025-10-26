@@ -20,10 +20,11 @@ public class Form348ScConfiguration : IEntityTypeConfiguration<Form348Sc>
     public void Configure(EntityTypeBuilder<Form348Sc> builder)
     {
         // Table mapping
-        builder.ToTable("Form348SC");
+        builder.ToTable("Form348SC", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.ScId);
+        builder.HasKey(e => e.ScId)
+            .HasName("PK_Form348SC");
 
         // Properties - Core fields
         builder.Property(e => e.ScId).HasColumnName("ScID");

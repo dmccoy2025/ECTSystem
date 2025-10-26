@@ -26,7 +26,7 @@ public class AlodPasRawConfiguration : IEntityTypeConfiguration<AlodPasRaw>
     public void Configure(EntityTypeBuilder<AlodPasRaw> builder)
     {
         // Table mapping
-        builder.ToTable("ALOD_PAS_Raw");
+        builder.ToTable("ALOD_PAS_Raw", "dbo");
 
         // No primary key - this is a staging/import table
         builder.HasNoKey();

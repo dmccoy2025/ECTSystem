@@ -33,7 +33,7 @@ public class ImpTmpUsernameConfiguration : IEntityTypeConfiguration<ImpTmpUserna
     /// <param name="builder">The entity type builder for ImpTmpUsername.</param>
     public void Configure(EntityTypeBuilder<ImpTmpUsername> builder)
     {
-        builder.ToTable("ImpTmpUsername");
+        builder.ToTable("ImpTmpUsername", "dbo");
 
         // Keyless entity for temporary storage
         builder.HasNoKey();

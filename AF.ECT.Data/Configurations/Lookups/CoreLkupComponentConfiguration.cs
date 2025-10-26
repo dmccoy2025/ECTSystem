@@ -15,9 +15,10 @@ public class CoreLkupComponentConfiguration : IEntityTypeConfiguration<CoreLkupC
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupComponent> builder)
     {
-        builder.ToTable("Core_Lkup_Component");
+        builder.ToTable("Core_Lkup_Component", "dbo");
 
-        builder.HasKey(e => e.ComponentId);
+        builder.HasKey(e => e.ComponentId)
+            .HasName("PK_Core_Lkup_Component");
 
         builder.Property(e => e.ComponentId).HasColumnName("ComponentID");
         builder.Property(e => e.ComponentDescription).HasMaxLength(255);

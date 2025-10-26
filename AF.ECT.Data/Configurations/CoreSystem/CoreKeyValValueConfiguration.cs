@@ -15,9 +15,10 @@ public class CoreKeyValValueConfiguration : IEntityTypeConfiguration<CoreKeyValV
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreKeyValValue> builder)
     {
-        builder.ToTable("Core_KeyValValue");
+        builder.ToTable("Core_KeyValValue", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_KeyValValue");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.KeyId).HasColumnName("KeyID");

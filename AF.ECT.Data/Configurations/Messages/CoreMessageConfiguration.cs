@@ -20,7 +20,7 @@ public class CoreMessageConfiguration : IEntityTypeConfiguration<CoreMessage>
     public void Configure(EntityTypeBuilder<CoreMessage> builder)
     {
         // Table mapping
-        builder.ToTable("core_message");
+        builder.ToTable("core_message", "dbo");
 
         // Primary key
         builder.HasKey(e => e.MessageId)

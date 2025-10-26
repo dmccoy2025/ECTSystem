@@ -27,7 +27,7 @@ public class Form348MedicalConfiguration : IEntityTypeConfiguration<Form348Medic
     public void Configure(EntityTypeBuilder<Form348Medical> builder)
     {
         // Table mapping
-        builder.ToTable("Form_348_Medical");
+        builder.ToTable("Form_348_Medical", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Lodid)

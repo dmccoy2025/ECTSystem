@@ -25,7 +25,7 @@ public class Form348IncapFindingConfiguration : IEntityTypeConfiguration<Form348
     public void Configure(EntityTypeBuilder<Form348IncapFinding> builder)
     {
         // Table mapping
-        builder.ToTable("Form_348_Incap_Finding");
+        builder.ToTable("Form_348_Incap_Finding", "dbo");
 
         // Primary key
         builder.HasKey(e => e.ScId)

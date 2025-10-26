@@ -15,9 +15,10 @@ public class CoreLkupScsubTypeConfiguration : IEntityTypeConfiguration<CoreLkupS
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupScsubType> builder)
     {
-        builder.ToTable("Core_Lkup_SCSubType");
+        builder.ToTable("Core_Lkup_SCSubType", "dbo");
 
-        builder.HasKey(e => e.SubTypeId);
+        builder.HasKey(e => e.SubTypeId)
+            .HasName("PK_Core_Lkup_SCSubType");
 
         builder.Property(e => e.SubTypeId).HasColumnName("SubTypeID");
         builder.Property(e => e.SubTypeTitle).HasMaxLength(255);

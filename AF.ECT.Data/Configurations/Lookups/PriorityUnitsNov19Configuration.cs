@@ -20,7 +20,7 @@ public class PriorityUnitsNov19Configuration : IEntityTypeConfiguration<Priority
     {
         builder.HasNoKey();
 
-        builder.ToTable("PRIORITY_UNITS_NOV19");
+        builder.ToTable("PRIORITY_UNITS_NOV19", "dbo");
 
         builder.Property(e => e.Id)
             .HasColumnType("numeric(18, 0)")

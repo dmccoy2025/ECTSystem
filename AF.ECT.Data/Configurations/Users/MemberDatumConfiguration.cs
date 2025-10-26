@@ -18,9 +18,10 @@ public class MemberDatumConfiguration : IEntityTypeConfiguration<MemberDatum>
     /// <param name="builder">The entity type builder for MemberDatum.</param>
     public void Configure(EntityTypeBuilder<MemberDatum> builder)
     {
-        builder.ToTable("MEMBER_DATA");
+        builder.ToTable("MEMBER_DATA", "dbo");
 
-        builder.HasKey(e => e.Ssan);
+        builder.HasKey(e => e.Ssan)
+            .HasName("PK_MEMBER_DATA");
 
         builder.Property(e => e.Ssan)
             .HasMaxLength(11)

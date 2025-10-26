@@ -12,7 +12,7 @@ public class CoreWorkflowLockConfiguration : IEntityTypeConfiguration<CoreWorkfl
     public void Configure(EntityTypeBuilder<CoreWorkflowLock> builder)
     {
         // Table mapping
-        builder.ToTable("core_workflow_lock");
+        builder.ToTable("core_workflow_lock", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

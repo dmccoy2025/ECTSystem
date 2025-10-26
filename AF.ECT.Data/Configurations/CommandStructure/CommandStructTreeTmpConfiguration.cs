@@ -23,7 +23,7 @@ public class CommandStructTreeTmpConfiguration : IEntityTypeConfiguration<Comman
     public void Configure(EntityTypeBuilder<CommandStructTreeTmp> builder)
     {
         // Table mapping
-        builder.ToTable("Command_Struct_Tree_Tmp");
+        builder.ToTable("Command_Struct_Tree_Tmp", "dbo");
 
         // No primary key - this is a temporary staging table
         builder.HasNoKey();

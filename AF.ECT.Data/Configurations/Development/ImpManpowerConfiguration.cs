@@ -30,7 +30,7 @@ public class ImpManpowerConfiguration : IEntityTypeConfiguration<ImpManpower>
     /// <param name="builder">The entity type builder for ImpManpower.</param>
     public void Configure(EntityTypeBuilder<ImpManpower> builder)
     {
-        builder.ToTable("ImpManpower");
+        builder.ToTable("ImpManpower", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

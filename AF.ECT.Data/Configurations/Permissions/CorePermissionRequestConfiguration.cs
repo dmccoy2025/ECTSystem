@@ -15,9 +15,10 @@ public class CorePermissionRequestConfiguration : IEntityTypeConfiguration<CoreP
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CorePermissionRequest> builder)
     {
-        builder.ToTable("Core_PermissionRequest");
+        builder.ToTable("Core_PermissionRequest", "dbo");
 
-        builder.HasKey(e => e.ReqId);
+        builder.HasKey(e => e.ReqId)
+            .HasName("PK_Core_PermissionRequest");
 
         builder.Property(e => e.ReqId).HasColumnName("ReqID");
         builder.Property(e => e.UserId).HasColumnName("UserID");

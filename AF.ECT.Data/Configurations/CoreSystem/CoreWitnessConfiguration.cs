@@ -12,7 +12,7 @@ public class CoreWitnessConfiguration : IEntityTypeConfiguration<CoreWitness>
     public void Configure(EntityTypeBuilder<CoreWitness> builder)
     {
         // Table mapping
-        builder.ToTable("core_witness");
+        builder.ToTable("core_witness", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

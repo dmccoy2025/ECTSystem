@@ -15,9 +15,10 @@ public class CoreLkupOperationTypeConfiguration : IEntityTypeConfiguration<CoreL
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupOperationType> builder)
     {
-        builder.ToTable("Core_Lkup_OperationType");
+        builder.ToTable("Core_Lkup_OperationType", "dbo");
 
-        builder.HasKey(e => e.OperationTypeId);
+        builder.HasKey(e => e.OperationTypeId)
+            .HasName("PK_Core_Lkup_OperationType");
 
         builder.Property(e => e.OperationTypeId).HasColumnName("OperationTypeID").HasMaxLength(50);
         builder.Property(e => e.Description).HasMaxLength(255);

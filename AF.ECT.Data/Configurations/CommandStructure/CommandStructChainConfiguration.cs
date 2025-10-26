@@ -21,7 +21,7 @@ public class CommandStructChainConfiguration : IEntityTypeConfiguration<CommandS
     public void Configure(EntityTypeBuilder<CommandStructChain> builder)
     {
         // Table mapping
-        builder.ToTable("command_struct_chain");
+        builder.ToTable("command_struct_chain", "dbo");
 
         // Primary key
         builder.HasKey(e => e.CscId)

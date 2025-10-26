@@ -12,7 +12,7 @@ public class CoreWorkflowReturnReasonConfiguration : IEntityTypeConfiguration<Co
     public void Configure(EntityTypeBuilder<CoreWorkflowReturnReason> builder)
     {
         // Table mapping
-        builder.ToTable("core_workflow_return_reason");
+        builder.ToTable("core_workflow_return_reason", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.WorkflowId, e.ReturnId })

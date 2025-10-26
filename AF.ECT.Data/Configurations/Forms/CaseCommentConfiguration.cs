@@ -21,7 +21,7 @@ public class CaseCommentConfiguration : IEntityTypeConfiguration<CaseComment>
     public void Configure(EntityTypeBuilder<CaseComment> builder)
     {
         // Table mapping
-        builder.ToTable("case_comment");
+        builder.ToTable("case_comment", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

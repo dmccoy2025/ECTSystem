@@ -20,7 +20,7 @@ public class ReportUnitMetricConfiguration : IEntityTypeConfiguration<ReportUnit
     {
         builder.HasKey(e => e.CsId).HasName("PK__REPORT_U__F2FEFB5E4F96E8CE");
 
-        builder.ToTable("REPORT_UNIT_METRICS");
+        builder.ToTable("REPORT_UNIT_METRICS", "dbo");
 
         builder.Property(e => e.CsId).HasColumnName("CS_ID");
         builder.Property(e => e.BoardCount).HasColumnName("BOARD_COUNT");

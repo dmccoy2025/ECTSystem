@@ -33,7 +33,7 @@ public class ImpLodAaMappingConfiguration : IEntityTypeConfiguration<ImpLodAaMap
     /// <param name="builder">The entity type builder for ImpLodAaMapping.</param>
     public void Configure(EntityTypeBuilder<ImpLodAaMapping> builder)
     {
-        builder.ToTable("ImpLodAaMapping");
+        builder.ToTable("ImpLodAaMapping", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

@@ -24,7 +24,7 @@ public class CoreUserRoleConfiguration : IEntityTypeConfiguration<CoreUserRole>
     public void Configure(EntityTypeBuilder<CoreUserRole> builder)
     {
         // Table mapping
-        builder.ToTable("core_user_role");
+        builder.ToTable("core_user_role", "dbo");
 
         // Primary key
         builder.HasKey(e => e.UserRoleId)

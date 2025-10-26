@@ -21,7 +21,7 @@ public class ReminderEmailSettingConfiguration : IEntityTypeConfiguration<Remind
     public void Configure(EntityTypeBuilder<ReminderEmailSetting> builder)
     {
         // Table mapping
-        builder.ToTable("reminder_email_setting");
+        builder.ToTable("reminder_email_setting", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

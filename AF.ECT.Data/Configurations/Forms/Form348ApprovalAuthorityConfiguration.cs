@@ -19,10 +19,11 @@ public class Form348ApprovalAuthorityConfiguration : IEntityTypeConfiguration<Fo
     public void Configure(EntityTypeBuilder<Form348ApprovalAuthority> builder)
     {
         // Table mapping
-        builder.ToTable("Form348ApprovalAuthority");
+        builder.ToTable("Form348ApprovalAuthority", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Form348ApprovalAuthority");
 
         // Properties
         builder.Property(e => e.Id).HasColumnName("ID");

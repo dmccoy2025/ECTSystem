@@ -23,7 +23,7 @@ public class CommandStructChainBackupConfiguration : IEntityTypeConfiguration<Co
     public void Configure(EntityTypeBuilder<CommandStructChainBackup> builder)
     {
         // Table mapping
-        builder.ToTable("Command_Struct_Chain_Backup");
+        builder.ToTable("Command_Struct_Chain_Backup", "dbo");
 
         // Primary key
         builder.HasKey(e => e.CscId)

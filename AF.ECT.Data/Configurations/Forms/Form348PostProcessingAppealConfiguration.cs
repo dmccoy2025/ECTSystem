@@ -19,10 +19,11 @@ public class Form348PostProcessingAppealConfiguration : IEntityTypeConfiguration
     public void Configure(EntityTypeBuilder<Form348PostProcessingAppeal> builder)
     {
         // Table mapping
-        builder.ToTable("Form348PostProcessingAppeal");
+        builder.ToTable("Form348PostProcessingAppeal", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.AppealId);
+        builder.HasKey(e => e.AppealId)
+            .HasName("PK_Form348PostProcessingAppeal");
 
         // Properties
         builder.Property(e => e.AppealId).HasColumnName("AppealID");

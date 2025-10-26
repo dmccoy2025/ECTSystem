@@ -40,7 +40,7 @@ public class ImpMemberConfiguration : IEntityTypeConfiguration<ImpMember>
     /// <param name="builder">The entity type builder for ImpMember.</param>
     public void Configure(EntityTypeBuilder<ImpMember> builder)
     {
-        builder.ToTable("ImpMember");
+        builder.ToTable("ImpMember", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

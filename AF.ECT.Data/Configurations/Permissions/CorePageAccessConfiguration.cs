@@ -20,7 +20,7 @@ public class CorePageAccessConfiguration : IEntityTypeConfiguration<CorePageAcce
     public void Configure(EntityTypeBuilder<CorePageAccess> builder)
     {
         // Table mapping
-        builder.ToTable("core_page_access");
+        builder.ToTable("core_page_access", "dbo");
 
         // Primary key
         builder.HasKey(e => e.MapId)

@@ -21,7 +21,7 @@ public class CoreLkupWorkflowActionConfiguration : IEntityTypeConfiguration<Core
     public void Configure(EntityTypeBuilder<CoreLkupWorkflowAction> builder)
     {
         // Table mapping
-        builder.ToTable("core_lkup_workflow_action");
+        builder.ToTable("core_lkup_workflow_action", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Type)

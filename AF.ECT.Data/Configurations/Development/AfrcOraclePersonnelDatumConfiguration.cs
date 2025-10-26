@@ -24,7 +24,7 @@ public class AfrcOraclePersonnelDatumConfiguration : IEntityTypeConfiguration<Af
     public void Configure(EntityTypeBuilder<AfrcOraclePersonnelDatum> builder)
     {
         // Table mapping
-        builder.ToTable("AfrcOracle_Personnel_Data");
+        builder.ToTable("AfrcOracle_Personnel_Data", "dbo");
 
         // No primary key - this is a staging/import table
         builder.HasNoKey();

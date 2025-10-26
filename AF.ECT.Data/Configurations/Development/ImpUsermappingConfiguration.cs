@@ -33,7 +33,7 @@ public class ImpUsermappingConfiguration : IEntityTypeConfiguration<ImpUsermappi
     /// <param name="builder">The entity type builder for ImpUsermapping.</param>
     public void Configure(EntityTypeBuilder<ImpUsermapping> builder)
     {
-        builder.ToTable("ImpUSERMapping");
+        builder.ToTable("ImpUSERMapping", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

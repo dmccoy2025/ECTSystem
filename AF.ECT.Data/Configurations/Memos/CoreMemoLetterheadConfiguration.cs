@@ -12,7 +12,7 @@ public class CoreMemoLetterheadConfiguration : IEntityTypeConfiguration<CoreMemo
     public void Configure(EntityTypeBuilder<CoreMemoLetterhead> builder)
     {
         // Table mapping
-        builder.ToTable("core_memo_letterhead");
+        builder.ToTable("core_memo_letterhead", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

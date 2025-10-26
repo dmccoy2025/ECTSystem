@@ -39,7 +39,7 @@ public class ImpPersonnelOldConfiguration : IEntityTypeConfiguration<ImpPersonne
     /// <param name="builder">The entity type builder for ImpPersonnelOld.</param>
     public void Configure(EntityTypeBuilder<ImpPersonnelOld> builder)
     {
-        builder.ToTable("ImpPersonnel_old");
+        builder.ToTable("ImpPersonnel_old", "dbo");
 
         // Keyless entity for archival staging
         builder.HasNoKey();

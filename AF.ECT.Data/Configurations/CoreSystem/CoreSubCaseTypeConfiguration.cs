@@ -20,7 +20,7 @@ public class CoreSubCaseTypeConfiguration : IEntityTypeConfiguration<CoreSubCase
     public void Configure(EntityTypeBuilder<CoreSubCaseType> builder)
     {
         // Table mapping
-        builder.ToTable("core_sub_case_type");
+        builder.ToTable("core_sub_case_type", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

@@ -21,7 +21,7 @@ public class CoreWorkStatusOptionConfiguration : IEntityTypeConfiguration<CoreWo
     public void Configure(EntityTypeBuilder<CoreWorkStatusOption> builder)
     {
         // Table mapping
-        builder.ToTable("core_work_status_option");
+        builder.ToTable("core_work_status_option", "dbo");
 
         // Primary key
         builder.HasKey(e => e.WsoId)

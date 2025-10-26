@@ -19,7 +19,8 @@ public class TestCommandStructConfiguration : IEntityTypeConfiguration<TestComma
         builder.ToTable("Test_CommandStruct", "dbo");
 
         // Primary Key
-        builder.HasKey(e => e.CsId);
+        builder.HasKey(e => e.CsId)
+            .HasName("PK_Test_CommandStruct");
 
         // Properties
         builder.Property(e => e.CsId)

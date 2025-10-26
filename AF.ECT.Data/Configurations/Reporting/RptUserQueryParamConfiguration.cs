@@ -19,10 +19,11 @@ public class RptUserQueryParamConfiguration : IEntityTypeConfiguration<RptUserQu
     public void Configure(EntityTypeBuilder<RptUserQueryParam> builder)
     {
         // Table mapping
-        builder.ToTable("Rpt_UserQueryParam");
+        builder.ToTable("Rpt_UserQueryParam", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Rpt_UserQueryParam");
 
         // Properties
         builder.Property(e => e.Id).HasColumnName("ID");

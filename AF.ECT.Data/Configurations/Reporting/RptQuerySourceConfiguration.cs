@@ -19,7 +19,8 @@ public class RptQuerySourceConfiguration : IEntityTypeConfiguration<RptQuerySour
         builder.ToTable("rptQuerySource", "dbo");
 
         // Primary Key
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_rptQuerySource");
 
         // Properties
         builder.Property(e => e.Id)

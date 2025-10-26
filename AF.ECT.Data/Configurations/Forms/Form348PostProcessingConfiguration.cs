@@ -20,10 +20,11 @@ public class Form348PostProcessingConfiguration : IEntityTypeConfiguration<Form3
     public void Configure(EntityTypeBuilder<Form348PostProcessing> builder)
     {
         // Table mapping
-        builder.ToTable("Form348PostProcessing");
+        builder.ToTable("Form348PostProcessing", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.LodId);
+        builder.HasKey(e => e.LodId)
+            .HasName("PK_Form348PostProcessing");
 
         // Properties
         builder.Property(e => e.LodId).HasColumnName("LodID");

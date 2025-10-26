@@ -19,10 +19,11 @@ public class DocumentCategory2Configuration : IEntityTypeConfiguration<DocumentC
     public void Configure(EntityTypeBuilder<DocumentCategory2> builder)
     {
         // Table mapping
-        builder.ToTable("DocumentCategory2");
+        builder.ToTable("DocumentCategory2", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.DocCatId);
+        builder.HasKey(e => e.DocCatId)
+            .HasName("PK_DocumentCategory2");
 
         // Properties
         builder.Property(e => e.DocCatId).HasColumnName("DocCatID");

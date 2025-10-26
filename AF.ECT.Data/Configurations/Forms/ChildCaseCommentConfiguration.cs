@@ -20,7 +20,7 @@ public class ChildCaseCommentConfiguration : IEntityTypeConfiguration<ChildCaseC
     public void Configure(EntityTypeBuilder<ChildCaseComment> builder)
     {
         // Table mapping
-        builder.ToTable("child_case_comment");
+        builder.ToTable("child_case_comment", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

@@ -33,7 +33,7 @@ public class ImportErrorLogConfiguration : IEntityTypeConfiguration<ImportErrorL
     /// <param name="builder">The entity type builder for ImportErrorLog.</param>
     public void Configure(EntityTypeBuilder<ImportErrorLog> builder)
     {
-        builder.ToTable("ImportErrorLog");
+        builder.ToTable("ImportErrorLog", "dbo");
 
         // Keyless entity for logging
         builder.HasNoKey();

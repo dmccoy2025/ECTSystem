@@ -12,7 +12,7 @@ public class CoreUsersAltTitleConfiguration : IEntityTypeConfiguration<CoreUsers
     public void Configure(EntityTypeBuilder<CoreUsersAltTitle> builder)
     {
         // Table mapping
-        builder.ToTable("core_users_alt_title");
+        builder.ToTable("core_users_alt_title", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.UserId, e.GroupId })

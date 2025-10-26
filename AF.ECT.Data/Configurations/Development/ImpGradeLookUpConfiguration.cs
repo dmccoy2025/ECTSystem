@@ -30,7 +30,7 @@ public class ImpGradeLookUpConfiguration : IEntityTypeConfiguration<ImpGradeLook
     /// <param name="builder">The entity type builder for ImpGradeLookUp.</param>
     public void Configure(EntityTypeBuilder<ImpGradeLookUp> builder)
     {
-        builder.ToTable("ImpGradeLookUp");
+        builder.ToTable("ImpGradeLookUp", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

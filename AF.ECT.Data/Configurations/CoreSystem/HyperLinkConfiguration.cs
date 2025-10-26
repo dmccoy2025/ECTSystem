@@ -29,9 +29,10 @@ public class HyperLinkConfiguration : IEntityTypeConfiguration<HyperLink>
     /// <param name="builder">The entity type builder for HyperLink.</param>
     public void Configure(EntityTypeBuilder<HyperLink> builder)
     {
-        builder.ToTable("HyperLink");
+        builder.ToTable("HyperLink", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_HyperLink");
 
         // Primary key
         builder.Property(e => e.Id)

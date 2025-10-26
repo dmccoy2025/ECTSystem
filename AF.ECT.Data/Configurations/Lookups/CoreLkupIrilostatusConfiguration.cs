@@ -15,9 +15,10 @@ public class CoreLkupIrilostatusConfiguration : IEntityTypeConfiguration<CoreLku
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupIrilostatus> builder)
     {
-        builder.ToTable("Core_Lkup_IRILOStatus");
+        builder.ToTable("Core_Lkup_IRILOStatus", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_Lkup_IRILOStatus");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.Description).HasMaxLength(255);

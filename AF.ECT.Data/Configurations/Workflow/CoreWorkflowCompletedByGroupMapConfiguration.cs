@@ -12,7 +12,7 @@ public class CoreWorkflowCompletedByGroupMapConfiguration : IEntityTypeConfigura
     public void Configure(EntityTypeBuilder<CoreWorkflowCompletedByGroupMap> builder)
     {
         // Table mapping
-        builder.ToTable("core_workflow_completed_by_group_map");
+        builder.ToTable("core_workflow_completed_by_group_map", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.WorkflowId, e.CompletedById })

@@ -15,9 +15,10 @@ public class CoreLogDebugMessageConfiguration : IEntityTypeConfiguration<CoreLog
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreLogDebugMessage> builder)
     {
-        builder.ToTable("Core_LogDebugMessage");
+        builder.ToTable("Core_LogDebugMessage", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_LogDebugMessage");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.CreatedDate).HasColumnName("CreatedDate");

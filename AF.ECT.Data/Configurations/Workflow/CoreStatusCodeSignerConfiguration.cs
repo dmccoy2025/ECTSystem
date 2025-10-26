@@ -15,9 +15,10 @@ public class CoreStatusCodeSignerConfiguration : IEntityTypeConfiguration<CoreSt
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreStatusCodeSigner> builder)
     {
-        builder.ToTable("Core_StatusCodeSigner");
+        builder.ToTable("Core_StatusCodeSigner", "dbo");
 
-        builder.HasKey(e => new { e.Status, e.GroupId });
+        builder.HasKey(e => new { e.Status, e.GroupId })
+            .HasName("PK_Core_StatusCodeSigner");
 
         builder.Property(e => e.Status).HasColumnName("Status");
         builder.Property(e => e.GroupId).HasColumnName("GroupID");

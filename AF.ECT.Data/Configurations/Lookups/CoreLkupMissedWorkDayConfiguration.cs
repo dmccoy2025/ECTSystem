@@ -15,9 +15,10 @@ public class CoreLkupMissedWorkDayConfiguration : IEntityTypeConfiguration<CoreL
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupMissedWorkDay> builder)
     {
-        builder.ToTable("Core_Lkup_MissedWorkDay");
+        builder.ToTable("Core_Lkup_MissedWorkDay", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_Lkup_MissedWorkDay");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.DayIntervals).HasMaxLength(100);

@@ -15,9 +15,10 @@ public class CoreLkupPepptypeConfiguration : IEntityTypeConfiguration<CoreLkupPe
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupPepptype> builder)
     {
-        builder.ToTable("Core_Lkup_PEPPType");
+        builder.ToTable("Core_Lkup_PEPPType", "dbo");
 
-        builder.HasKey(e => e.TypeId);
+        builder.HasKey(e => e.TypeId)
+            .HasName("PK_Core_Lkup_PEPPType");
 
         builder.Property(e => e.TypeId).HasColumnName("TypeID");
         builder.Property(e => e.TypeName).HasMaxLength(255);

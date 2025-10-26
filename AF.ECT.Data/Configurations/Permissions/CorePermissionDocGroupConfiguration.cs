@@ -15,9 +15,10 @@ public class CorePermissionDocGroupConfiguration : IEntityTypeConfiguration<Core
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CorePermissionDocGroup> builder)
     {
-        builder.ToTable("Core_PermissionDocGroup");
+        builder.ToTable("Core_PermissionDocGroup", "dbo");
 
-        builder.HasKey(e => new { e.PermId, e.DocGroupId });
+        builder.HasKey(e => new { e.PermId, e.DocGroupId })
+            .HasName("PK_Core_PermissionDocGroup");
 
         builder.Property(e => e.PermId).HasColumnName("PermID");
         builder.Property(e => e.DocGroupId).HasColumnName("DocGroupID");

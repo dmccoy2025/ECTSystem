@@ -20,7 +20,7 @@ public class CoreLkupCountryConfiguration : IEntityTypeConfiguration<CoreLkupCou
     public void Configure(EntityTypeBuilder<CoreLkupCountry> builder)
     {
         // Table mapping
-        builder.ToTable("core_lkup_country");
+        builder.ToTable("core_lkup_country", "dbo");
 
         // Primary key
         builder.HasKey(e => e.CountryId)

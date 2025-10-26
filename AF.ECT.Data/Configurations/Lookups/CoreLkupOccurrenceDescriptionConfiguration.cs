@@ -15,9 +15,10 @@ public class CoreLkupOccurrenceDescriptionConfiguration : IEntityTypeConfigurati
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupOccurrenceDescription> builder)
     {
-        builder.ToTable("Core_Lkup_OccurrenceDescription");
+        builder.ToTable("Core_Lkup_OccurrenceDescription", "dbo");
 
-        builder.HasKey(e => e.OccurrenceId);
+        builder.HasKey(e => e.OccurrenceId)
+            .HasName("PK_Core_Lkup_OccurrenceDescription");
 
         builder.Property(e => e.OccurrenceId).HasColumnName("OccurrenceID");
         builder.Property(e => e.OccurrenceDescription).HasMaxLength(500);

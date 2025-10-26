@@ -15,9 +15,10 @@ public class CoreMessagesReadConfiguration : IEntityTypeConfiguration<CoreMessag
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreMessagesRead> builder)
     {
-        builder.ToTable("Core_MessagesRead");
+        builder.ToTable("Core_MessagesRead", "dbo");
 
-        builder.HasKey(e => new { e.MessageId, e.UserId });
+        builder.HasKey(e => new { e.MessageId, e.UserId })
+            .HasName("PK_Core_MessagesRead");
 
         builder.Property(e => e.MessageId).HasColumnName("MessageID");
         builder.Property(e => e.UserId).HasColumnName("UserID");

@@ -15,9 +15,10 @@ public class CoreLogErrorConfiguration : IEntityTypeConfiguration<CoreLogError>
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreLogError> builder)
     {
-        builder.ToTable("Core_LogError");
+        builder.ToTable("Core_LogError", "dbo");
 
-        builder.HasKey(e => e.LogId);
+        builder.HasKey(e => e.LogId)
+            .HasName("PK_Core_LogError");
 
         builder.Property(e => e.LogId).HasColumnName("LogID");
         builder.Property(e => e.ErrorTime).HasColumnName("ErrorTime");

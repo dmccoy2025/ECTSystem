@@ -43,7 +43,7 @@ public class ImpPersonnelFeedConfiguration : IEntityTypeConfiguration<ImpPersonn
     /// <param name="builder">The entity type builder for ImpPersonnelFeed.</param>
     public void Configure(EntityTypeBuilder<ImpPersonnelFeed> builder)
     {
-        builder.ToTable("ImpPersonnelFeed");
+        builder.ToTable("ImpPersonnelFeed", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

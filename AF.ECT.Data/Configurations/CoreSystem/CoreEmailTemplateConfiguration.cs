@@ -21,7 +21,7 @@ public class CoreEmailTemplateConfiguration : IEntityTypeConfiguration<CoreEmail
     public void Configure(EntityTypeBuilder<CoreEmailTemplate> builder)
     {
         // Table mapping
-        builder.ToTable("core_email_template");
+        builder.ToTable("core_email_template", "dbo");
 
         // Primary key
         builder.HasKey(e => e.TemplateId)

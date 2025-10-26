@@ -21,7 +21,7 @@ public class CoreLkupMajcomConfiguration : IEntityTypeConfiguration<CoreLkupMajc
     public void Configure(EntityTypeBuilder<CoreLkupMajcom> builder)
     {
         // Table mapping
-        builder.ToTable("core_lkup_majcom");
+        builder.ToTable("core_lkup_majcom", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

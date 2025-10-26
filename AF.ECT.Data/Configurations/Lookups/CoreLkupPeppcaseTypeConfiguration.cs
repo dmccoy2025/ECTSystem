@@ -15,9 +15,10 @@ public class CoreLkupPeppcaseTypeConfiguration : IEntityTypeConfiguration<CoreLk
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupPeppcaseType> builder)
     {
-        builder.ToTable("Core_Lkup_PEPPCaseType");
+        builder.ToTable("Core_Lkup_PEPPCaseType", "dbo");
 
-        builder.HasKey(e => e.CaseTypeId);
+        builder.HasKey(e => e.CaseTypeId)
+            .HasName("PK_Core_Lkup_PEPPCaseType");
 
         builder.Property(e => e.CaseTypeId).HasColumnName("CaseTypeID");
         builder.Property(e => e.CaseTypeName).HasMaxLength(255);

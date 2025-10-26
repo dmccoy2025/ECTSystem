@@ -20,7 +20,7 @@ public class ReturnConfiguration : IEntityTypeConfiguration<Return>
     {
         builder.HasKey(e => e.ReturnId).HasName("PK__RETURN__F445E9485FA1564B");
 
-        builder.ToTable("RETURN");
+        builder.ToTable("RETURN", "dbo");
 
         builder.Property(e => e.ReturnId).HasColumnName("RETURN_ID");
         builder.Property(e => e.BoardReturn).HasColumnName("BOARD_RETURN");

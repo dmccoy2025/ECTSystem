@@ -21,7 +21,7 @@ public class CoreGroupPermissionConfiguration : IEntityTypeConfiguration<CoreGro
     public void Configure(EntityTypeBuilder<CoreGroupPermission> builder)
     {
         // Table mapping
-        builder.ToTable("core_group_permission");
+        builder.ToTable("core_group_permission", "dbo");
 
         // Composite key
         builder.HasKey(e => new { e.GroupId, e.PermId })

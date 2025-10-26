@@ -20,7 +20,7 @@ public class PrintDocumentFormFieldParserConfiguration : IEntityTypeConfiguratio
     {
         builder.HasKey(e => e.Id).HasName("PK__PRINT_DO__3214EC277AD1B0E7");
 
-        builder.ToTable("PRINT_DOCUMENT_FORM_FIELD_PARSER");
+        builder.ToTable("PRINT_DOCUMENT_FORM_FIELD_PARSER", "dbo");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.Name)

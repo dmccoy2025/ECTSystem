@@ -24,7 +24,7 @@ public class AfrcOraclePersonProcessDatumConfiguration : IEntityTypeConfiguratio
     public void Configure(EntityTypeBuilder<AfrcOraclePersonProcessDatum> builder)
     {
         // Table mapping
-        builder.ToTable("AfrcOracle_Person_Process_Data");
+        builder.ToTable("AfrcOracle_Person_Process_Data", "dbo");
 
         // No primary key - this is a staging/import table
         builder.HasNoKey();

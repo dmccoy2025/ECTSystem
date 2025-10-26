@@ -20,7 +20,7 @@ public class MemoGroupConfiguration : IEntityTypeConfiguration<MemoGroup>
     {
         builder.HasNoKey();
 
-        builder.ToTable("MEMO_GROUP");
+        builder.ToTable("MEMO_GROUP", "dbo");
 
         builder.Property(e => e.CanCreate)
             .HasMaxLength(10)

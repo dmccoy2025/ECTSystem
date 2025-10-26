@@ -20,7 +20,7 @@ public class CoreUsersOnlineConfiguration : IEntityTypeConfiguration<CoreUsersOn
     public void Configure(EntityTypeBuilder<CoreUsersOnline> builder)
     {
         // Table mapping
-        builder.ToTable("core_users_online");
+        builder.ToTable("core_users_online", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.UserId, e.GroupId, e.LoginTime })

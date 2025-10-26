@@ -15,9 +15,10 @@ public class CoreLkupPwcategoryConfiguration : IEntityTypeConfiguration<CoreLkup
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupPwcategory> builder)
     {
-        builder.ToTable("Core_Lkup_PWCategory");
+        builder.ToTable("Core_Lkup_PWCategory", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_Lkup_PWCategory");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.Name).HasMaxLength(255);

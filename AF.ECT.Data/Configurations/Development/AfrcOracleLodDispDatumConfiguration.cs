@@ -24,7 +24,7 @@ public class AfrcOracleLodDispDatumConfiguration : IEntityTypeConfiguration<Afrc
     public void Configure(EntityTypeBuilder<AfrcOracleLodDispDatum> builder)
     {
         // Table mapping
-        builder.ToTable("AfrcOracle_LOD_Disp_Data");
+        builder.ToTable("AfrcOracle_LOD_Disp_Data", "dbo");
 
         // No primary key - this is a staging/import table
         builder.HasNoKey();

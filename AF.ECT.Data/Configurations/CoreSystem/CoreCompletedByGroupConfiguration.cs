@@ -20,7 +20,7 @@ public class CoreCompletedByGroupConfiguration : IEntityTypeConfiguration<CoreCo
     public void Configure(EntityTypeBuilder<CoreCompletedByGroup> builder)
     {
         // Table mapping
-        builder.ToTable("core_completed_by_group");
+        builder.ToTable("core_completed_by_group", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

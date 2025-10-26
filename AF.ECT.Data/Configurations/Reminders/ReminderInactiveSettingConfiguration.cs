@@ -20,7 +20,7 @@ public class ReminderInactiveSettingConfiguration : IEntityTypeConfiguration<Rem
     {
         builder.HasKey(e => e.IId).HasName("PK__REMINDER__DC501F7953A266AC");
 
-        builder.ToTable("REMINDER_INACTIVE_SETTINGS");
+        builder.ToTable("REMINDER_INACTIVE_SETTINGS", "dbo");
 
         builder.Property(e => e.IId).HasColumnName("I_ID");
         builder.Property(e => e.Active).HasColumnName("ACTIVE");

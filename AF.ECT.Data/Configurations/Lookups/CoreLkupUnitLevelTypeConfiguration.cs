@@ -15,9 +15,10 @@ public class CoreLkupUnitLevelTypeConfiguration : IEntityTypeConfiguration<CoreL
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupUnitLevelType> builder)
     {
-        builder.ToTable("Core_Lkup_UnitLevelType");
+        builder.ToTable("Core_Lkup_UnitLevelType", "dbo");
 
-        builder.HasKey(e => e.LevelId);
+        builder.HasKey(e => e.LevelId)
+            .HasName("PK_Core_Lkup_UnitLevelType");
 
         builder.Property(e => e.LevelId).HasColumnName("LevelID").HasMaxLength(50);
         builder.Property(e => e.Description).HasMaxLength(255);

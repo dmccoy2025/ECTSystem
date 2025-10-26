@@ -20,7 +20,7 @@ public class RptPhUserQueryConfiguration : IEntityTypeConfiguration<RptPhUserQue
     {
         builder.HasKey(e => e.Id).HasName("PK__RPT_PH_U__3214EC27DA7EC3EF");
 
-        builder.ToTable("RPT_PH_USER_QUERY");
+        builder.ToTable("RPT_PH_USER_QUERY", "dbo");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.ReportType).HasColumnName("REPORT_TYPE");

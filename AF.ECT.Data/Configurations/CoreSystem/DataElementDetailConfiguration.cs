@@ -20,10 +20,11 @@ public class DataElementDetailConfiguration : IEntityTypeConfiguration<DataEleme
     public void Configure(EntityTypeBuilder<DataElementDetail> builder)
     {
         // Table mapping
-        builder.ToTable("DataElementDetail");
+        builder.ToTable("DataElementDetail", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.DataElementId);
+        builder.HasKey(e => e.DataElementId)
+            .HasName("PK_DataElementDetail");
 
         // Properties
         builder.Property(e => e.DataElementId).HasColumnName("DataElementID");

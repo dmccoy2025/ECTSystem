@@ -21,7 +21,7 @@ public class CoreSignatureMetaDatumConfiguration : IEntityTypeConfiguration<Core
     public void Configure(EntityTypeBuilder<CoreSignatureMetaDatum> builder)
     {
         // Table mapping
-        builder.ToTable("core_signature_meta_data");
+        builder.ToTable("core_signature_meta_data", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

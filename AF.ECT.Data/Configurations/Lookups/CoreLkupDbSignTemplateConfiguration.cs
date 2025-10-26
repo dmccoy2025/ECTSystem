@@ -15,9 +15,10 @@ public class CoreLkupDbSignTemplateConfiguration : IEntityTypeConfiguration<Core
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupDbSignTemplate> builder)
     {
-        builder.ToTable("Core_Lkup_dbSignTemplate");
+        builder.ToTable("Core_Lkup_dbSignTemplate", "dbo");
 
-        builder.HasKey(e => e.TId);
+        builder.HasKey(e => e.TId)
+            .HasName("PK_Core_Lkup_dbSignTemplate");
 
         builder.Property(e => e.TId).HasColumnName("tID");
         builder.Property(e => e.Title).HasMaxLength(255);

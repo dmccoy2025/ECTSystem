@@ -20,7 +20,7 @@ public class CoreUserPermissionConfiguration : IEntityTypeConfiguration<CoreUser
     public void Configure(EntityTypeBuilder<CoreUserPermission> builder)
     {
         // Table mapping
-        builder.ToTable("core_user_permission");
+        builder.ToTable("core_user_permission", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.UserId, e.PermId })

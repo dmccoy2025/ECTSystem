@@ -19,10 +19,11 @@ public class ConversionRunConfiguration : IEntityTypeConfiguration<ConversionRun
     public void Configure(EntityTypeBuilder<ConversionRun> builder)
     {
         // Table mapping
-        builder.ToTable("ConversionRun");
+        builder.ToTable("ConversionRun", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.RunId);
+        builder.HasKey(e => e.RunId)
+            .HasName("PK_ConversionRun");
 
         // Properties
         builder.Property(e => e.RunId).HasColumnName("RunID");

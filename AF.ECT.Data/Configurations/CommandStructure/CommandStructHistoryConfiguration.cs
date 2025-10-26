@@ -24,7 +24,7 @@ public class CommandStructHistoryConfiguration : IEntityTypeConfiguration<Comman
     public void Configure(EntityTypeBuilder<CommandStructHistory> builder)
     {
         // Table mapping
-        builder.ToTable("Command_Struct_History");
+        builder.ToTable("Command_Struct_History", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

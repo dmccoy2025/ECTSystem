@@ -20,10 +20,11 @@ public class Form348AuditConfiguration : IEntityTypeConfiguration<Form348Audit>
     public void Configure(EntityTypeBuilder<Form348Audit> builder)
     {
         // Table mapping
-        builder.ToTable("Form348Audit");
+        builder.ToTable("Form348Audit", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.AuditId);
+        builder.HasKey(e => e.AuditId)
+            .HasName("PK_Form348Audit");
 
         // Properties
         builder.Property(e => e.AuditId).HasColumnName("AuditID");

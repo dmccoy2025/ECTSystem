@@ -15,9 +15,10 @@ public class CoreMemos2Configuration : IEntityTypeConfiguration<CoreMemos2>
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreMemos2> builder)
     {
-        builder.ToTable("Core_Memos2");
+        builder.ToTable("Core_Memos2", "dbo");
 
-        builder.HasKey(e => e.MemoId);
+        builder.HasKey(e => e.MemoId)
+            .HasName("PK_Core_Memos2");
 
         builder.Property(e => e.MemoId).HasColumnName("MemoID");
         builder.Property(e => e.RefId).HasColumnName("RefID");

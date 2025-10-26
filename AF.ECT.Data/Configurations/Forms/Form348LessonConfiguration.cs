@@ -24,7 +24,7 @@ public class Form348LessonConfiguration : IEntityTypeConfiguration<Form348Lesson
     public void Configure(EntityTypeBuilder<Form348Lesson> builder)
     {
         // Table mapping
-        builder.ToTable("Form_348_Lesson");
+        builder.ToTable("Form_348_Lesson", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

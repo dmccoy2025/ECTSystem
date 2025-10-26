@@ -21,7 +21,7 @@ public class CoreWorkStatusActionConfiguration : IEntityTypeConfiguration<CoreWo
     public void Configure(EntityTypeBuilder<CoreWorkStatusAction> builder)
     {
         // Table mapping
-        builder.ToTable("core_work_status_action");
+        builder.ToTable("core_work_status_action", "dbo");
 
         // Primary key
         builder.HasKey(e => e.WsaId)

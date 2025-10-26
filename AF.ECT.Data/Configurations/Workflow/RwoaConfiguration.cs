@@ -19,7 +19,8 @@ public class RwoaConfiguration : IEntityTypeConfiguration<Rwoa>
         builder.ToTable("RWOA", "dbo");
 
         // Primary Key
-        builder.HasKey(e => e.RwoaId);
+        builder.HasKey(e => e.RwoaId)
+            .HasName("PK_RWOA");
 
         // Properties
         builder.Property(e => e.RwoaId)

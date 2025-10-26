@@ -21,7 +21,7 @@ public class CorePermissionConfiguration : IEntityTypeConfiguration<CorePermissi
     public void Configure(EntityTypeBuilder<CorePermission> builder)
     {
         // Table mapping
-        builder.ToTable("core_permission");
+        builder.ToTable("core_permission", "dbo");
 
         // Primary key
         builder.HasKey(e => e.PermId)

@@ -15,9 +15,10 @@ public class CoreLkupMilitaryServiceConfiguration : IEntityTypeConfiguration<Cor
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupMilitaryService> builder)
     {
-        builder.ToTable("Core_Lkup_MilitaryService");
+        builder.ToTable("Core_Lkup_MilitaryService", "dbo");
 
-        builder.HasKey(e => e.ServiceId);
+        builder.HasKey(e => e.ServiceId)
+            .HasName("PK_Core_Lkup_MilitaryService");
 
         builder.Property(e => e.ServiceId).HasColumnName("ServiceID");
         builder.Property(e => e.Service).HasMaxLength(100);

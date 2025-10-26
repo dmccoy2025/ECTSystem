@@ -23,7 +23,7 @@ public class CommandStructTreeConfiguration : IEntityTypeConfiguration<CommandSt
     public void Configure(EntityTypeBuilder<CommandStructTree> builder)
     {
         // Table mapping
-        builder.ToTable("Command_Struct_Tree");
+        builder.ToTable("Command_Struct_Tree", "dbo");
 
         // No primary key - this is a view/materialized query result
         builder.HasNoKey();

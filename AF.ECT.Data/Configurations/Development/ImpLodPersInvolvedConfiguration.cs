@@ -34,7 +34,7 @@ public class ImpLodPersInvolvedConfiguration : IEntityTypeConfiguration<ImpLodPe
     /// <param name="builder">The entity type builder for ImpLodPersInvolved.</param>
     public void Configure(EntityTypeBuilder<ImpLodPersInvolved> builder)
     {
-        builder.ToTable("ImpLodPersInvolved");
+        builder.ToTable("ImpLodPersInvolved", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

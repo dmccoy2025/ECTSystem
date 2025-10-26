@@ -15,9 +15,10 @@ public class CoreWorkStatusValidationConfiguration : IEntityTypeConfiguration<Co
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreWorkStatusValidation> builder)
     {
-        builder.ToTable("Core_WorkStatusValidation");
+        builder.ToTable("Core_WorkStatusValidation", "dbo");
 
-        builder.HasKey(e => e.WsvId);
+        builder.HasKey(e => e.WsvId)
+            .HasName("PK_Core_WorkStatusValidation");
 
         builder.Property(e => e.WsvId).HasColumnName("wsvID");
         builder.Property(e => e.WsId).HasColumnName("wsID");

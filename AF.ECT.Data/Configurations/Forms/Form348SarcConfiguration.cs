@@ -20,10 +20,11 @@ public class Form348SarcConfiguration : IEntityTypeConfiguration<Form348Sarc>
     public void Configure(EntityTypeBuilder<Form348Sarc> builder)
     {
         // Table mapping
-        builder.ToTable("Form348SARC");
+        builder.ToTable("Form348SARC", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.SarcId);
+        builder.HasKey(e => e.SarcId)
+            .HasName("PK_Form348SARC");
 
         // Properties
         builder.Property(e => e.SarcId).HasColumnName("SarcID");

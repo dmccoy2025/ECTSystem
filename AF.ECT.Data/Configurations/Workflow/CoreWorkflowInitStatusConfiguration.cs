@@ -12,7 +12,7 @@ public class CoreWorkflowInitStatusConfiguration : IEntityTypeConfiguration<Core
     public void Configure(EntityTypeBuilder<CoreWorkflowInitStatus> builder)
     {
         // Table mapping
-        builder.ToTable("core_workflow_init_status");
+        builder.ToTable("core_workflow_init_status", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.WorkflowId, e.GroupId, e.StatusId })

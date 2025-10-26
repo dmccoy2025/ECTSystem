@@ -15,9 +15,10 @@ public class CoreLkupDawgrecommendationConfiguration : IEntityTypeConfiguration<
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupDawgrecommendation> builder)
     {
-        builder.ToTable("Core_Lkup_DAWGRecommendation");
+        builder.ToTable("Core_Lkup_DAWGRecommendation", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_Lkup_DAWGRecommendation");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.Recommendation).HasMaxLength(500);

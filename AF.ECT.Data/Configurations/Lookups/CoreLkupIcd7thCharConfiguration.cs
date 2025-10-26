@@ -15,7 +15,7 @@ public class CoreLkupIcd7thCharConfiguration : IEntityTypeConfiguration<CoreLkup
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupIcd7thChar> builder)
     {
-        builder.ToTable("Core_Lkup_ICD7thChar");
+        builder.ToTable("Core_Lkup_ICD7thChar", "dbo");
 
         builder.HasNoKey();
 

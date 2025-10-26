@@ -15,9 +15,10 @@ public class CoreLkupPeppratingConfiguration : IEntityTypeConfiguration<CoreLkup
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupPepprating> builder)
     {
-        builder.ToTable("Core_Lkup_PEPPRating");
+        builder.ToTable("Core_Lkup_PEPPRating", "dbo");
 
-        builder.HasKey(e => e.RatingId);
+        builder.HasKey(e => e.RatingId)
+            .HasName("PK_Core_Lkup_PEPPRating");
 
         builder.Property(e => e.RatingId).HasColumnName("RatingID");
         builder.Property(e => e.RatingName).HasMaxLength(255);

@@ -15,9 +15,10 @@ public class CoreLkupPhyCancelReasonConfiguration : IEntityTypeConfiguration<Cor
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupPhyCancelReason> builder)
     {
-        builder.ToTable("Core_Lkup_PhyCancelReason");
+        builder.ToTable("Core_Lkup_PhyCancelReason", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_Lkup_PhyCancelReason");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.Description).HasMaxLength(255);

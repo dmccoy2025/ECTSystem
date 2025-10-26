@@ -12,7 +12,7 @@ public class CoreUserRoleRequestConfiguration : IEntityTypeConfiguration<CoreUse
     public void Configure(EntityTypeBuilder<CoreUserRoleRequest> builder)
     {
         // Table mapping
-        builder.ToTable("core_user_role_request");
+        builder.ToTable("core_user_role_request", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

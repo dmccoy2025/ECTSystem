@@ -15,9 +15,10 @@ public class CoreLkupMemberInfluenceConfiguration : IEntityTypeConfiguration<Cor
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupMemberInfluence> builder)
     {
-        builder.ToTable("Core_Lkup_MemberInfluence");
+        builder.ToTable("Core_Lkup_MemberInfluence", "dbo");
 
-        builder.HasKey(e => e.InfluenceId);
+        builder.HasKey(e => e.InfluenceId)
+            .HasName("PK_Core_Lkup_MemberInfluence");
 
         builder.Property(e => e.InfluenceId).HasColumnName("InfluenceID");
         builder.Property(e => e.InfluenceDescription).HasMaxLength(255);

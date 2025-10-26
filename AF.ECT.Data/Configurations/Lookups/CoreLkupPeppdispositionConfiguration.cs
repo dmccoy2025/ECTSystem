@@ -15,9 +15,10 @@ public class CoreLkupPeppdispositionConfiguration : IEntityTypeConfiguration<Cor
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupPeppdisposition> builder)
     {
-        builder.ToTable("Core_Lkup_PEPPDisposition");
+        builder.ToTable("Core_Lkup_PEPPDisposition", "dbo");
 
-        builder.HasKey(e => e.DispositionId);
+        builder.HasKey(e => e.DispositionId)
+            .HasName("PK_Core_Lkup_PEPPDisposition");
 
         builder.Property(e => e.DispositionId).HasColumnName("DispositionID");
         builder.Property(e => e.DispositionName).HasMaxLength(255);

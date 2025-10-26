@@ -42,7 +42,7 @@ public class MemberdataBackupConfiguration : IEntityTypeConfiguration<Memberdata
     /// <param name="builder">The entity type builder for MemberdataBackup.</param>
     public void Configure(EntityTypeBuilder<MemberdataBackup> builder)
     {
-        builder.ToTable("MemberdataBackup");
+        builder.ToTable("MemberdataBackup", "dbo");
 
         // Keyless entity for backup storage
         builder.HasNoKey();

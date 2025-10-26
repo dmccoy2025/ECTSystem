@@ -31,7 +31,7 @@ public class ImpHistoryConfiguration : IEntityTypeConfiguration<ImpHistory>
     /// <param name="builder">The entity type builder for ImpHistory.</param>
     public void Configure(EntityTypeBuilder<ImpHistory> builder)
     {
-        builder.ToTable("ImpHistory");
+        builder.ToTable("ImpHistory", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

@@ -24,7 +24,7 @@ public class Form348PostProcessingAppealSarcConfiguration : IEntityTypeConfigura
     public void Configure(EntityTypeBuilder<Form348PostProcessingAppealSarc> builder)
     {
         // Table mapping
-        builder.ToTable("Form_348_Post_Processing_Appeal_SARC");
+        builder.ToTable("Form_348_Post_Processing_Appeal_SARC", "dbo");
 
         // Primary key
         builder.HasKey(e => e.AppealId)

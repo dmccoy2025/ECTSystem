@@ -15,9 +15,10 @@ public class CoreLkupRuleConfiguration : IEntityTypeConfiguration<CoreLkupRule>
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupRule> builder)
     {
-        builder.ToTable("Core_Lkup_Rule");
+        builder.ToTable("Core_Lkup_Rule", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_Lkup_Rule");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.WorkFlow).HasColumnName("WorkFlow");

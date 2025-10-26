@@ -20,7 +20,7 @@ public class PalDataTempConfiguration : IEntityTypeConfiguration<PalDataTemp>
     {
         builder.HasKey(e => e.Id).HasName("PK__PAL_DATA__3214EC275C6BEA01");
 
-        builder.ToTable("PAL_DATA_TEMP");
+        builder.ToTable("PAL_DATA_TEMP", "dbo");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.AdditionalComments)

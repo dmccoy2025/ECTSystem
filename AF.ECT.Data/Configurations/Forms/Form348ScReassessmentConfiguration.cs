@@ -30,10 +30,11 @@ public class Form348ScReassessmentConfiguration : IEntityTypeConfiguration<Form3
     /// <param name="builder">The entity type builder for Form348ScReassessment.</param>
     public void Configure(EntityTypeBuilder<Form348ScReassessment> builder)
     {
-        builder.ToTable("Form348_SC_Reassessment");
+        builder.ToTable("Form348_SC_Reassessment", "dbo");
 
         // Composite primary key
-        builder.HasKey(e => new { e.OriginalRefId, e.ReassessmentRefId });
+        builder.HasKey(e => new { e.OriginalRefId, e.ReassessmentRefId })
+            .HasName("PK_Form348_SC_Reassessment");
 
         builder.Property(e => e.OriginalRefId)
             .HasColumnName("OriginalRefID");

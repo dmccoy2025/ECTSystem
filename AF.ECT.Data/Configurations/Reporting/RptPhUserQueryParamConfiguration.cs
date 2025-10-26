@@ -20,7 +20,7 @@ public class RptPhUserQueryParamConfiguration : IEntityTypeConfiguration<RptPhUs
     {
         builder.HasKey(e => e.Id).HasName("PK__RPT_PH_U__3214EC272E5F8764");
 
-        builder.ToTable("RPT_PH_USER_QUERY_PARAM");
+        builder.ToTable("RPT_PH_USER_QUERY_PARAM", "dbo");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.EndDisplay)

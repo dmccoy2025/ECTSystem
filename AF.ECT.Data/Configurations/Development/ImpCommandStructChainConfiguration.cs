@@ -32,7 +32,7 @@ public class ImpCommandStructChainConfiguration : IEntityTypeConfiguration<ImpCo
     /// <param name="builder">The entity type builder for ImpCommandStructChain.</param>
     public void Configure(EntityTypeBuilder<ImpCommandStructChain> builder)
     {
-        builder.ToTable("ImpCommandStructChain");
+        builder.ToTable("ImpCommandStructChain", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

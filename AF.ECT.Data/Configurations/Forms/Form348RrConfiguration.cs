@@ -27,7 +27,7 @@ public class Form348RrConfiguration : IEntityTypeConfiguration<Form348Rr>
     public void Configure(EntityTypeBuilder<Form348Rr> builder)
     {
         // Table mapping
-        builder.ToTable("Form_348_RR");
+        builder.ToTable("Form_348_RR", "dbo");
 
         // Primary key
         builder.HasKey(e => e.RequestId)

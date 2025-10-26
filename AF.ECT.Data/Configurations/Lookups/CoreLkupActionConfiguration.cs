@@ -15,9 +15,10 @@ public class CoreLkupActionConfiguration : IEntityTypeConfiguration<CoreLkupActi
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupAction> builder)
     {
-        builder.ToTable("Core_Lkup_Action");
+        builder.ToTable("Core_Lkup_Action", "dbo");
 
-        builder.HasKey(e => e.ActionId);
+        builder.HasKey(e => e.ActionId)
+            .HasName("PK_Core_Lkup_Action");
 
         builder.Property(e => e.ActionId).HasColumnName("ActionID");
         builder.Property(e => e.ActionName).HasMaxLength(255);

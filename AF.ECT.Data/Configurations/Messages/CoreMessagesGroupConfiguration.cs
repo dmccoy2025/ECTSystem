@@ -15,9 +15,10 @@ public class CoreMessagesGroupConfiguration : IEntityTypeConfiguration<CoreMessa
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreMessagesGroup> builder)
     {
-        builder.ToTable("Core_MessagesGroup");
+        builder.ToTable("Core_MessagesGroup", "dbo");
 
-        builder.HasKey(e => new { e.MessageId, e.GroupId });
+        builder.HasKey(e => new { e.MessageId, e.GroupId })
+            .HasName("PK_Core_MessagesGroup");
 
         builder.Property(e => e.MessageId).HasColumnName("MessageID");
         builder.Property(e => e.GroupId).HasColumnName("GroupID");

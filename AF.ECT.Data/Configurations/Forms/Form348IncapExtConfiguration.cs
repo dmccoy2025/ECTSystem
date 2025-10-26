@@ -25,7 +25,7 @@ public class Form348IncapExtConfiguration : IEntityTypeConfiguration<Form348Inca
     public void Configure(EntityTypeBuilder<Form348IncapExt> builder)
     {
         // Table mapping
-        builder.ToTable("Form_348_Incap_Ext");
+        builder.ToTable("Form_348_Incap_Ext", "dbo");
 
         // Primary key
         builder.HasKey(e => e.ExtId)

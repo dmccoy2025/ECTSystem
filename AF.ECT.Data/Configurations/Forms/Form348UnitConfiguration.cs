@@ -19,10 +19,11 @@ public class Form348UnitConfiguration : IEntityTypeConfiguration<Form348Unit>
     public void Configure(EntityTypeBuilder<Form348Unit> builder)
     {
         // Table mapping
-        builder.ToTable("Form348Unit");
+        builder.ToTable("Form348Unit", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.Lodid);
+        builder.HasKey(e => e.Lodid)
+            .HasName("PK_Form348Unit");
 
         // Properties
         builder.Property(e => e.Lodid).HasColumnName("LODID");

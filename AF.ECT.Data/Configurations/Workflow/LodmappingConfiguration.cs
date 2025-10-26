@@ -38,7 +38,7 @@ public class LodmappingConfiguration : IEntityTypeConfiguration<Lodmapping>
     /// <param name="builder">The entity type builder for Lodmapping.</param>
     public void Configure(EntityTypeBuilder<Lodmapping> builder)
     {
-        builder.ToTable("LODMapping");
+        builder.ToTable("LODMapping", "dbo");
 
         // Keyless entity for cross-reference mapping
         builder.HasNoKey();

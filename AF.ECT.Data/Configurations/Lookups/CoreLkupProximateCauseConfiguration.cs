@@ -15,9 +15,10 @@ public class CoreLkupProximateCauseConfiguration : IEntityTypeConfiguration<Core
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupProximateCause> builder)
     {
-        builder.ToTable("Core_Lkup_ProximateCause");
+        builder.ToTable("Core_Lkup_ProximateCause", "dbo");
 
-        builder.HasKey(e => e.CauseId);
+        builder.HasKey(e => e.CauseId)
+            .HasName("PK_Core_Lkup_ProximateCause");
 
         builder.Property(e => e.CauseId).HasColumnName("CauseID");
         builder.Property(e => e.CauseDescription).HasMaxLength(500);

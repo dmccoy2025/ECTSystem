@@ -15,9 +15,10 @@ public class CoreWorkStatusRuleConfiguration : IEntityTypeConfiguration<CoreWork
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreWorkStatusRule> builder)
     {
-        builder.ToTable("Core_WorkStatusRule");
+        builder.ToTable("Core_WorkStatusRule", "dbo");
 
-        builder.HasKey(e => e.WsrId);
+        builder.HasKey(e => e.WsrId)
+            .HasName("PK_Core_WorkStatusRule");
 
         builder.Property(e => e.WsrId).HasColumnName("wsrID");
         builder.Property(e => e.WsoId).HasColumnName("wsoID");

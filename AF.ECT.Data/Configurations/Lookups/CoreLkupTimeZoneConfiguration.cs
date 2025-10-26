@@ -15,9 +15,10 @@ public class CoreLkupTimeZoneConfiguration : IEntityTypeConfiguration<CoreLkupTi
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupTimeZone> builder)
     {
-        builder.ToTable("Core_Lkup_TimeZone");
+        builder.ToTable("Core_Lkup_TimeZone", "dbo");
 
-        builder.HasKey(e => e.ZoneId);
+        builder.HasKey(e => e.ZoneId)
+            .HasName("PK_Core_Lkup_TimeZone");
 
         builder.Property(e => e.ZoneId).HasColumnName("ZoneID").HasMaxLength(50);
         builder.Property(e => e.Description).HasMaxLength(255);

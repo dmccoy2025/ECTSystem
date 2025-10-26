@@ -31,7 +31,7 @@ public class ImpEdipinConfiguration : IEntityTypeConfiguration<ImpEdipin>
     /// <param name="builder">The entity type builder for ImpEdipin.</param>
     public void Configure(EntityTypeBuilder<ImpEdipin> builder)
     {
-        builder.ToTable("ImpEDIPIN");
+        builder.ToTable("ImpEDIPIN", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();

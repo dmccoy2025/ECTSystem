@@ -15,9 +15,10 @@ public class CoreLkupCancelReasonConfiguration : IEntityTypeConfiguration<CoreLk
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupCancelReason> builder)
     {
-        builder.ToTable("Core_Lkup_CancelReason");
+        builder.ToTable("Core_Lkup_CancelReason", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_Lkup_CancelReason");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.Description).HasMaxLength(500);

@@ -20,7 +20,7 @@ public class RptPhUserQueryClauseConfiguration : IEntityTypeConfiguration<RptPhU
     {
         builder.HasKey(e => e.Id).HasName("PK__RPT_PH_U__3214EC27B6C8A9D3");
 
-        builder.ToTable("RPT_PH_USER_QUERY_CLAUSE");
+        builder.ToTable("RPT_PH_USER_QUERY_CLAUSE", "dbo");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.PhqueryId).HasColumnName("PHQUERY_ID");

@@ -15,9 +15,10 @@ public class CoreLkupMedGroupConfiguration : IEntityTypeConfiguration<CoreLkupMe
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupMedGroup> builder)
     {
-        builder.ToTable("Core_Lkup_MedGroup");
+        builder.ToTable("Core_Lkup_MedGroup", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_Lkup_MedGroup");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.Mtf).HasMaxLength(255);

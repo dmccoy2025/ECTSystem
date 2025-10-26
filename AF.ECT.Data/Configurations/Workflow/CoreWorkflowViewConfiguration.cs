@@ -12,7 +12,7 @@ public class CoreWorkflowViewConfiguration : IEntityTypeConfiguration<CoreWorkfl
     public void Configure(EntityTypeBuilder<CoreWorkflowView> builder)
     {
         // Table mapping
-        builder.ToTable("core_workflow_view");
+        builder.ToTable("core_workflow_view", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.WorkflowId, e.PageId })

@@ -15,9 +15,10 @@ public class CoreLkupFastTrackTypeConfiguration : IEntityTypeConfiguration<CoreL
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkupFastTrackType> builder)
     {
-        builder.ToTable("Core_Lkup_FastTrackType");
+        builder.ToTable("Core_Lkup_FastTrackType", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_Lkup_FastTrackType");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.Description).HasMaxLength(255);

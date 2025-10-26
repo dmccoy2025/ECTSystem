@@ -23,7 +23,7 @@ public class ApplicationWarmupProcessConfiguration : IEntityTypeConfiguration<Ap
     public void Configure(EntityTypeBuilder<ApplicationWarmupProcess> builder)
     {
         // Table mapping
-        builder.ToTable("Application_Warmup_Process");
+        builder.ToTable("Application_Warmup_Process", "dbo");
 
         // Primary key
         builder.HasKey(e => e.Id)

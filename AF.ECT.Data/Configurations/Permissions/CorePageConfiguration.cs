@@ -20,7 +20,7 @@ public class CorePageConfiguration : IEntityTypeConfiguration<CorePage>
     public void Configure(EntityTypeBuilder<CorePage> builder)
     {
         // Table mapping
-        builder.ToTable("core_page");
+        builder.ToTable("core_page", "dbo");
 
         // Primary key
         builder.HasKey(e => e.PageId)

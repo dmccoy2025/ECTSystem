@@ -19,10 +19,11 @@ public class DevLoginConfiguration : IEntityTypeConfiguration<DevLogin>
     public void Configure(EntityTypeBuilder<DevLogin> builder)
     {
         // Table mapping
-        builder.ToTable("DevLogin");
+        builder.ToTable("DevLogin", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.UserId);
+        builder.HasKey(e => e.UserId)
+            .HasName("PK_DevLogin");
 
         // Properties
         builder.Property(e => e.UserId).HasColumnName("UserID");

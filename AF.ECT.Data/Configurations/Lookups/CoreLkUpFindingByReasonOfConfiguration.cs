@@ -15,9 +15,10 @@ public class CoreLkUpFindingByReasonOfConfiguration : IEntityTypeConfiguration<C
     /// <param name="builder">The builder to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<CoreLkUpFindingByReasonOf> builder)
     {
-        builder.ToTable("Core_LkUp_FindingByReasonOf");
+        builder.ToTable("Core_LkUp_FindingByReasonOf", "dbo");
 
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Core_LkUp_FindingByReasonOf");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.Description).HasMaxLength(500);

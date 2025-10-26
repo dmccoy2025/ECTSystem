@@ -12,7 +12,7 @@ public class CoreWorkflowPermissionConfiguration : IEntityTypeConfiguration<Core
     public void Configure(EntityTypeBuilder<CoreWorkflowPermission> builder)
     {
         // Table mapping
-        builder.ToTable("core_workflow_permission");
+        builder.ToTable("core_workflow_permission", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.WorkflowId, e.PermId })

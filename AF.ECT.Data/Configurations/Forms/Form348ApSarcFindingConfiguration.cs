@@ -19,10 +19,11 @@ public class Form348ApSarcFindingConfiguration : IEntityTypeConfiguration<Form34
     public void Configure(EntityTypeBuilder<Form348ApSarcFinding> builder)
     {
         // Table mapping
-        builder.ToTable("Form348APSARCFinding");
+        builder.ToTable("Form348APSARCFinding", "dbo");
 
         // Primary key
-        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.Id)
+            .HasName("PK_Form348APSARCFinding");
 
         // Properties
         builder.Property(e => e.Id).HasColumnName("ID");

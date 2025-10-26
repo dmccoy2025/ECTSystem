@@ -12,7 +12,7 @@ public class CoreWorkflowCertificationStampMapConfiguration : IEntityTypeConfigu
     public void Configure(EntityTypeBuilder<CoreWorkflowCertificationStampMap> builder)
     {
         // Table mapping
-        builder.ToTable("core_workflow_certification_stamp_map");
+        builder.ToTable("core_workflow_certification_stamp_map", "dbo");
 
         // Composite primary key
         builder.HasKey(e => new { e.WorkflowId, e.CertStampId })

@@ -25,7 +25,7 @@ public class AspstateTempSessionConfiguration : IEntityTypeConfiguration<Aspstat
     public void Configure(EntityTypeBuilder<AspstateTempSession> builder)
     {
         // Table mapping
-        builder.ToTable("ASPStateTempSessions");
+        builder.ToTable("ASPStateTempSessions", "dbo");
 
         // Primary key
         builder.HasKey(e => e.SessionId)

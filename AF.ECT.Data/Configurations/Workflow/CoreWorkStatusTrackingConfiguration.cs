@@ -15,9 +15,10 @@ public class CoreWorkStatusTrackingConfiguration : IEntityTypeConfiguration<Core
     /// <param name="builder">The entity type builder.</param>
     public void Configure(EntityTypeBuilder<CoreWorkStatusTracking> builder)
     {
-        builder.ToTable("Core_WorkStatusTracking");
+        builder.ToTable("Core_WorkStatusTracking", "dbo");
 
-        builder.HasKey(e => e.WstId);
+        builder.HasKey(e => e.WstId)
+            .HasName("PK_Core_WorkStatusTracking");
 
         builder.Property(e => e.WstId).HasColumnName("wstID");
         builder.Property(e => e.WsId).HasColumnName("wsID");

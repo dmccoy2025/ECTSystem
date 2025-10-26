@@ -23,7 +23,7 @@ public class AspstateTempApplicationConfiguration : IEntityTypeConfiguration<Asp
     public void Configure(EntityTypeBuilder<AspstateTempApplication> builder)
     {
         // Table mapping
-        builder.ToTable("ASPStateTempApplications");
+        builder.ToTable("ASPStateTempApplications", "dbo");
 
         // Primary key
         builder.HasKey(e => e.AppId)

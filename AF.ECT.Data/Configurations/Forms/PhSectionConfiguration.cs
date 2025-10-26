@@ -20,7 +20,7 @@ public class PhSectionConfiguration : IEntityTypeConfiguration<PhSection>
     {
         builder.HasKey(e => e.Id).HasName("PK__PH_SECTI__3214EC2729091925");
 
-        builder.ToTable("PH_SECTION");
+        builder.ToTable("PH_SECTION", "dbo");
 
         builder.Property(e => e.Id).HasColumnName("ID");
         builder.Property(e => e.DisplayOrder).HasColumnName("DISPLAY_ORDER");

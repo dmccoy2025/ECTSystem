@@ -35,7 +35,7 @@ public class ImpLodActiveDutyConfiguration : IEntityTypeConfiguration<ImpLodActi
     /// <param name="builder">The entity type builder for ImpLodActiveDuty.</param>
     public void Configure(EntityTypeBuilder<ImpLodActiveDuty> builder)
     {
-        builder.ToTable("ImpLodActiveDuty");
+        builder.ToTable("ImpLodActiveDuty", "dbo");
 
         // Keyless entity for staging
         builder.HasNoKey();
