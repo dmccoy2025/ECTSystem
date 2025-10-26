@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a type of incident for classification purposes.
+/// </summary>
 public partial class CoreLkupIncidentType
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the incident type.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the incident type name.
+    /// </summary>
     public string? IncidentType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the incident type.
+    /// </summary>
     public string? IncidentDescr { get; set; }
 }

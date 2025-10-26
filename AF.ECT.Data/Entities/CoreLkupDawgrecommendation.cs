@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a DAWG (Disability Assessment Working Group) recommendation for disability evaluations.
+/// </summary>
 public partial class CoreLkupDawgrecommendation
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the recommendation.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the recommendation text.
+    /// </summary>
     public string Recommendation { get; set; } = null!;
 }

@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a sub-type classification for SC (Service Connection) workflows.
+/// </summary>
 public partial class CoreLkupScsubType
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the SC sub-type.
+    /// </summary>
     public int SubTypeId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the title or name of the SC sub-type.
+    /// </summary>
     public string SubTypeTitle { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the workflow ID associated with this SC sub-type.
+    /// </summary>
     public int AssociatedWorkflowId { get; set; }
 }

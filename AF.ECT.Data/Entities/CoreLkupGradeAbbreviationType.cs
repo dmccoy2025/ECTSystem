@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a type of grade abbreviation system used across different contexts.
+/// </summary>
 public partial class CoreLkupGradeAbbreviationType
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the abbreviation type.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name of the abbreviation type.
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the collection of grade abbreviations using this type.
+    /// </summary>
     public virtual ICollection<GradeAbbreviation> GradeAbbreviations { get; set; } = new List<GradeAbbreviation>();
 }

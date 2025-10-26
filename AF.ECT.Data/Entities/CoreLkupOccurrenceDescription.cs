@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a description of an occurrence or event in the system.
+/// </summary>
 public partial class CoreLkupOccurrenceDescription
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the occurrence.
+    /// </summary>
     public int OccurrenceId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the occurrence.
+    /// </summary>
     public string OccurrenceDescription { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the sort order for displaying occurrences in lists.
+    /// </summary>
     public int SortOrder { get; set; }
 }

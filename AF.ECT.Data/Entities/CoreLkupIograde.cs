@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an Informal Officer (IO) grade classification.
+/// </summary>
 public partial class CoreLkupIograde
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the IO grade.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the grade value.
+    /// </summary>
     public string Grade { get; set; } = null!;
 }

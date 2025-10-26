@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a fast-track processing type for expedited case handling.
+/// </summary>
 public partial class CoreLkupFastTrackType
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the fast-track type.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the fast-track type.
+    /// </summary>
     public string Description { get; set; } = null!;
 }

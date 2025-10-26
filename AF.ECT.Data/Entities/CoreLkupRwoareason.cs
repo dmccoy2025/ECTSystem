@@ -5,17 +5,38 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a RWOA (Return to Work On Active duty) reason classification.
+/// </summary>
 public partial class CoreLkupRwoareason
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the RWOA reason.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the RWOA reason.
+    /// </summary>
     public string Description { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the type or category of the RWOA reason.
+    /// </summary>
     public string Type { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the collection of Form 348 SARC records associated with this reason.
+    /// </summary>
     public virtual ICollection<Form348Sarc> Form348Sarcs { get; set; } = new List<Form348Sarc>();
 
+    /// <summary>
+    /// Gets or sets the collection of Form 348 SC records associated with this reason.
+    /// </summary>
     public virtual ICollection<Form348Sc> Form348Scs { get; set; } = new List<Form348Sc>();
 
+    /// <summary>
+    /// Gets or sets the collection of Form 348 records associated with this reason.
+    /// </summary>
     public virtual ICollection<Form348> Form348s { get; set; } = new List<Form348>();
 }

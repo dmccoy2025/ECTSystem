@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents the proximate (direct or immediate) cause of an incident or event.
+/// </summary>
 public partial class CoreLkupProximateCause
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the proximate cause.
+    /// </summary>
     public int CauseId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the proximate cause.
+    /// </summary>
     public string CauseDescription { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the sort order for displaying proximate causes in lists.
+    /// </summary>
     public int SortOrder { get; set; }
 }

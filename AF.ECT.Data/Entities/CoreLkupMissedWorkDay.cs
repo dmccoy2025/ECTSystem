@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents intervals of missed work days for tracking purposes.
+/// </summary>
 public partial class CoreLkupMissedWorkDay
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the missed work day interval.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the day intervals (e.g., "1-3 days", "4-7 days").
+    /// </summary>
     public string DayIntervals { get; set; } = null!;
 }

@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a medical group or medical treatment facility (MTF) in the system.
+/// </summary>
 public partial class CoreLkupMedGroup
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the medical group.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the medical treatment facility (MTF) name or identifier.
+    /// </summary>
     public string? Mtf { get; set; }
 }

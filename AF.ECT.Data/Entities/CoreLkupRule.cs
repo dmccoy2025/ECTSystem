@@ -5,23 +5,53 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a validation or business rule associated with workflows and statuses.
+/// </summary>
 public partial class CoreLkupRule
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the rule.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the workflow ID this rule applies to.
+    /// </summary>
     public byte? WorkFlow { get; set; }
 
+    /// <summary>
+    /// Gets or sets the type of rule.
+    /// </summary>
     public byte RuleType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name of the rule.
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the prompt or description displayed when the rule is triggered.
+    /// </summary>
     public string? Prompt { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this rule is currently active.
+    /// </summary>
     public bool Active { get; set; }
 
+    /// <summary>
+    /// Gets or sets the collection of work status rules that reference this rule.
+    /// </summary>
     public virtual ICollection<CoreWorkStatusRule> CoreWorkStatusRules { get; set; } = new List<CoreWorkStatusRule>();
 
+    /// <summary>
+    /// Gets or sets the rule type navigation property.
+    /// </summary>
     public virtual CoreLkupRuleType RuleTypeNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the workflow navigation property.
+    /// </summary>
     public virtual CoreWorkflow? WorkFlowNavigation { get; set; }
 }

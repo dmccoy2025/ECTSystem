@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an IRILO (Informal Review by Informal Line Officer) status.
+/// </summary>
 public partial class CoreLkupIrilostatus
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the IRILO status.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the IRILO status.
+    /// </summary>
     public string Description { get; set; } = null!;
 }

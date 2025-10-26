@@ -5,25 +5,58 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a type of personnel involved in forms and evaluations.
+/// </summary>
 public partial class CoreLkupPersonnelType
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the personnel type.
+    /// </summary>
     public short Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the personnel type.
+    /// </summary>
     public string Description { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this is a formal personnel type.
+    /// </summary>
     public bool Formal { get; set; }
 
+    /// <summary>
+    /// Gets or sets the role name associated with this personnel type.
+    /// </summary>
     public string? RoleName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the collection of Form 348 AP findings associated with this personnel type.
+    /// </summary>
     public virtual ICollection<Form348ApFinding> Form348ApFindings { get; set; } = new List<Form348ApFinding>();
 
+    /// <summary>
+    /// Gets or sets the collection of Form 348 AP SARC findings associated with this personnel type.
+    /// </summary>
     public virtual ICollection<Form348ApSarcFinding> Form348ApSarcFindings { get; set; } = new List<Form348ApSarcFinding>();
 
+    /// <summary>
+    /// Gets or sets the collection of Form 348 findings associated with this personnel type.
+    /// </summary>
     public virtual ICollection<Form348Finding> Form348Findings { get; set; } = new List<Form348Finding>();
 
+    /// <summary>
+    /// Gets or sets the collection of Form 348 RR findings associated with this personnel type.
+    /// </summary>
     public virtual ICollection<Form348RrFinding> Form348RrFindings { get; set; } = new List<Form348RrFinding>();
 
+    /// <summary>
+    /// Gets or sets the collection of Form 348 SARC findings associated with this personnel type.
+    /// </summary>
     public virtual ICollection<Form348SarcFinding> Form348SarcFindings { get; set; } = new List<Form348SarcFinding>();
 
+    /// <summary>
+    /// Gets or sets the collection of Form 348s associated with this personnel type.
+    /// </summary>
     public virtual ICollection<Form348> Form348s { get; set; } = new List<Form348>();
 }

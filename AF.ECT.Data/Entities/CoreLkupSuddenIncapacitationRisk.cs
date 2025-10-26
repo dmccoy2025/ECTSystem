@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents the risk level of sudden incapacitation for medical evaluations.
+/// </summary>
 public partial class CoreLkupSuddenIncapacitationRisk
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the sudden incapacitation risk level.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the risk level description (e.g., "Low", "Medium", "High").
+    /// </summary>
     public string RiskLevel { get; set; } = null!;
 }

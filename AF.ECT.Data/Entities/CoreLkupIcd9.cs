@@ -5,33 +5,78 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an ICD-9/ICD-10 diagnosis code for medical conditions.
+/// </summary>
 public partial class CoreLkupIcd9
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the ICD code.
+    /// </summary>
     public int Icd9Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the ICD code value.
+    /// </summary>
     public string? Value { get; set; }
 
+    /// <summary>
+    /// Gets or sets the text description of the diagnosis.
+    /// </summary>
     public string? Text { get; set; }
 
+    /// <summary>
+    /// Gets or sets the parent ICD code identifier for hierarchical organization.
+    /// </summary>
     public int? ParentId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the sort order for display purposes.
+    /// </summary>
     public int? SortOrder { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this is a disease code.
+    /// </summary>
     public bool IsDisease { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this code is active.
+    /// </summary>
     public bool Active { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether a 7th character extension is required.
+    /// </summary>
     public bool? SeventhChr { get; set; }
 
+    /// <summary>
+    /// Gets or sets the diagnosis order.
+    /// </summary>
     public int? DiagOrder { get; set; }
 
+    /// <summary>
+    /// Gets or sets the ICD version (9 or 10).
+    /// </summary>
     public int? Icdversion { get; set; }
 
+    /// <summary>
+    /// Gets or sets the collection of Form 348 medical records using this ICD code.
+    /// </summary>
     public virtual ICollection<Form348Medical> Form348Medicals { get; set; } = new List<Form348Medical>();
 
+    /// <summary>
+    /// Gets or sets the collection of Form 348 SARC ICD records.
+    /// </summary>
     public virtual ICollection<Form348SarcIcd> Form348SarcIcds { get; set; } = new List<Form348SarcIcd>();
 
+    /// <summary>
+    /// Gets or sets the collection of Form 348 SC records.
+    /// </summary>
     public virtual ICollection<Form348Sc> Form348Scs { get; set; } = new List<Form348Sc>();
 
+    /// <summary>
+    /// Gets or sets the collection of nature of incident records linked to this ICD code.
+    /// </summary>
     public virtual ICollection<CoreLkupNatureOfIncident> Nois { get; set; } = new List<CoreLkupNatureOfIncident>();
 }

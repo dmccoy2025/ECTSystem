@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents the status or type classification for a service member.
+/// </summary>
 public partial class CoreLkupMemberStatus
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the member status.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the type of member (e.g., Active Duty, Reserve, Civilian).
+    /// </summary>
     public string? MemberType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the member status.
+    /// </summary>
     public string? MemberDescr { get; set; }
 
+    /// <summary>
+    /// Gets or sets the optional sort order for displaying member statuses in lists.
+    /// </summary>
     public int? SortOrder { get; set; }
 }

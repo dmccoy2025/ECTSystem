@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents pre-defined findings text for workflow-specific and group-specific use.
+/// </summary>
 public partial class CoreLkupFindingsText
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the findings text.
+    /// </summary>
     public int FindingId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the workflow identifier this finding applies to.
+    /// </summary>
     public int Workflow { get; set; }
 
+    /// <summary>
+    /// Gets or sets the group identifier this finding applies to.
+    /// </summary>
     public int GroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the pre-defined findings text.
+    /// </summary>
     public string Description { get; set; } = null!;
 }

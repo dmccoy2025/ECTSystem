@@ -5,23 +5,53 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a time zone with audit tracking and command structure associations.
+/// </summary>
 public partial class CoreLkupTimeZone
 {
+    /// <summary>
+    /// Gets or sets the unique string identifier for the time zone (e.g., "EST", "PST").
+    /// </summary>
     public string ZoneId { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the description of the time zone.
+    /// </summary>
     public string Description { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this time zone is currently active.
+    /// </summary>
     public bool Active { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when this time zone was created.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the user who created this time zone.
+    /// </summary>
     public string CreatedBy { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the date and time when this time zone was last modified.
+    /// </summary>
     public DateTime ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the user who last modified this time zone.
+    /// </summary>
     public string ModifiedBy { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the collection of command structures using this time zone.
+    /// </summary>
     public virtual ICollection<CommandStruct> CommandStructs { get; set; } = new List<CommandStruct>();
 
+    /// <summary>
+    /// Gets or sets the collection of test command structures using this time zone.
+    /// </summary>
     public virtual ICollection<TestCommandStruct> TestCommandStructs { get; set; } = new List<TestCommandStruct>();
 }

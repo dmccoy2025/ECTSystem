@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a follow-up time interval for scheduling case reviews.
+/// </summary>
 public partial class CoreLkupFollowUpInterval
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the follow-up interval.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the interval description (e.g., "30 days", "60 days", "90 days").
+    /// </summary>
     public string Interval { get; set; } = null!;
 }

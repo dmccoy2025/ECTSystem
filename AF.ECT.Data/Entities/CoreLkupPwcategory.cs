@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a PW (Pregnant Worker) category classification.
+/// </summary>
 public partial class CoreLkupPwcategory
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the PW category.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name of the PW category.
+    /// </summary>
     public string? Name { get; set; }
 
+    /// <summary>
+    /// Gets or sets additional paragraph or informational text about the category.
+    /// </summary>
     public string? ParaInfo { get; set; }
 }

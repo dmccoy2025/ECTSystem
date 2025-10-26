@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents the nature or type of an incident, linked to ICD diagnosis codes.
+/// </summary>
 public partial class CoreLkupNatureOfIncident
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the nature of incident.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the value or code representing the nature of the incident.
+    /// </summary>
     public string Value { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the descriptive text for the nature of the incident.
+    /// </summary>
     public string Text { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the collection of ICD-9 diagnosis codes associated with this incident nature.
+    /// </summary>
     public virtual ICollection<CoreLkupIcd9> Icds { get; set; } = new List<CoreLkupIcd9>();
 }

@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a duty status classification for military personnel.
+/// </summary>
 public partial class CoreLkupDutyStatus
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the duty status.
+    /// </summary>
     public byte DutyId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the type of duty.
+    /// </summary>
     public string? DutyType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the duty status.
+    /// </summary>
     public string DutyDescription { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the sort order for display purposes.
+    /// </summary>
     public int? SortOrder { get; set; }
 }

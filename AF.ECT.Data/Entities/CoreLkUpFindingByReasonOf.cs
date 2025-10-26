@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a finding reason classification for Form 348.
+/// </summary>
 public partial class CoreLkUpFindingByReasonOf
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the finding reason.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the finding reason.
+    /// </summary>
     public string Description { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the collection of Form 348 records using this finding reason.
+    /// </summary>
     public virtual ICollection<Form348> Form348s { get; set; } = new List<Form348>();
 }

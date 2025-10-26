@@ -5,17 +5,38 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a type of operation with audit tracking and active status.
+/// </summary>
 public partial class CoreLkupOperationType
 {
+    /// <summary>
+    /// Gets or sets the unique string identifier for the operation type.
+    /// </summary>
     public string OperationTypeId { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the description of the operation type.
+    /// </summary>
     public string Description { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this operation type is currently active.
+    /// </summary>
     public bool Active { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when this operation type was created.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date and time when this operation type was last modified.
+    /// </summary>
     public DateTime ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the collection of test command structures associated with this operation type.
+    /// </summary>
     public virtual ICollection<TestCommandStruct> TestCommandStructs { get; set; } = new List<TestCommandStruct>();
 }

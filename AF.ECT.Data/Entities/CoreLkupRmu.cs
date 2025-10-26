@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an RMU (Regional Medical Unit) with collocation status.
+/// </summary>
 public partial class CoreLkupRmu
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the RMU.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name or code of the Regional Medical Unit.
+    /// </summary>
     public string? Rmu { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Command Structure ID associated with this RMU.
+    /// </summary>
     public int? CsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this RMU is collocated with another facility.
+    /// </summary>
     public bool Collocated { get; set; }
 }

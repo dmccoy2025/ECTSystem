@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a branch of military service (e.g., Air Force, Army, Navy).
+/// </summary>
 public partial class CoreLkupMilitaryService
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the military service branch.
+    /// </summary>
     public int ServiceId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name of the military service branch.
+    /// </summary>
     public string? Service { get; set; }
 }

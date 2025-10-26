@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a categorization of member statuses in the system.
+/// </summary>
 public partial class CoreLkupMemberCategory
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the member status category.
+    /// </summary>
     public int MemberStatusId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the member status category.
+    /// </summary>
     public string MemberStatusDesc { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the optional sort order for displaying member status categories in lists.
+    /// </summary>
     public int? SortOrder { get; set; }
 }

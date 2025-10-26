@@ -3,12 +3,20 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using AF.ECT.Data.Configurations.CommandStructure;
+using AF.ECT.Data.Configurations.CoreSystem;
+using AF.ECT.Data.Configurations.Development;
+using AF.ECT.Data.Configurations.Documents;
+using AF.ECT.Data.Configurations.Forms;
+using AF.ECT.Data.Configurations.Logging;
+using AF.ECT.Data.Configurations.Lookups;
+using AF.ECT.Data.Configurations.Memos;
+using AF.ECT.Data.Configurations.Messages;
+using AF.ECT.Data.Configurations.Permissions;
+using AF.ECT.Data.Configurations.Reminders;
+using AF.ECT.Data.Configurations.Reporting;
 using AF.ECT.Data.Configurations.Users;
 using AF.ECT.Data.Configurations.Workflow;
-using AF.ECT.Data.Configurations.Forms;
-using AF.ECT.Data.Configurations.CommandStructure;
-using AF.ECT.Data.Configurations.Permissions;
-using AF.ECT.Data.Configurations.System;
 
 namespace AF.ECT.Data.Models;
 
@@ -464,6 +472,52 @@ public partial class ALODContext : DbContext
         modelBuilder.ApplyConfiguration(new CoreLkupCancelReasonConfiguration());
         modelBuilder.ApplyConfiguration(new CoreLkupComponentConfiguration());
         modelBuilder.ApplyConfiguration(new CoreLkupDataTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupDawgrecommendationConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupDbSignTemplateConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupDutyStatusConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupFastTrackTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkUpFindingConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkUpFindingByReasonOfConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupFindingsTextConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupFollowUpIntervalConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupFromLocationConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupFtrecommendationConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupGradeAbbreviationTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupIcd7thCharConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupIcd9Configuration());
+        modelBuilder.ApplyConfiguration(new CoreLkupIncidentTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupInfoSourceConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupIogradeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupIrilostatusConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupMedGroupConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupMedicalFacilityConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupMemberCategoryConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupMemberInfluenceConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupMemberStatusConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupMilitaryServiceConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupOperationTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupMissedWorkDayConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupNatureOfIncidentConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupOccurrenceDescriptionConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupPaConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupPeppcaseTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupPeppdispositionConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupPeppratingConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupPepptypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupPersonnelTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupPhyCancelReasonConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupProximateCauseConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupPwcategoryConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupRmuConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupRuleConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupRuleTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupRwoareasonConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupScsubTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupSpecialistsRequiredForManagementConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupSuddenIncapacitationRiskConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupTimeZoneConfiguration());
+        
+        // Earlier batches: Case types, key-value system, logging infrastructure
         modelBuilder.ApplyConfiguration(new CoreCaseTypeConfiguration());
         modelBuilder.ApplyConfiguration(new CoreSubCaseTypeConfiguration());
         modelBuilder.ApplyConfiguration(new CoreCertificationStampConfiguration());
@@ -476,12 +530,19 @@ public partial class ALODContext : DbContext
         modelBuilder.ApplyConfiguration(new CoreLogDebugMessageConfiguration());
         modelBuilder.ApplyConfiguration(new CoreLogEmailConfiguration());
         modelBuilder.ApplyConfiguration(new CoreLogErrorConfiguration());
+        
+        // Batch 20: Unit level, years of service, disposition, log archive, page generation, memo system (9 entities)
+        modelBuilder.ApplyConfiguration(new CoreLkupUnitLevelTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupYearsSatisfactoryServiceConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreLkupDispositionConfiguration());
         modelBuilder.ApplyConfiguration(new CoreLogErrorArchiveConfiguration());
         modelBuilder.ApplyConfiguration(new CoreLogPageGenerationTimeConfiguration());
         modelBuilder.ApplyConfiguration(new CoreMemoConfiguration());
         modelBuilder.ApplyConfiguration(new CoreMemoContentConfiguration());
         modelBuilder.ApplyConfiguration(new CoreMemoContents2Configuration());
         modelBuilder.ApplyConfiguration(new CoreMemoGroupConfiguration());
+        
+        // Batch 21: Memo letterhead/templates, messages, package import errors, test data, online users (9 entities)
         modelBuilder.ApplyConfiguration(new CoreMemoLetterheadConfiguration());
         modelBuilder.ApplyConfiguration(new CoreMemos2Configuration());
         modelBuilder.ApplyConfiguration(new CoreMemoTemplateConfiguration());
@@ -490,6 +551,101 @@ public partial class ALODContext : DbContext
         modelBuilder.ApplyConfiguration(new CoreMessagesReadConfiguration());
         modelBuilder.ApplyConfiguration(new CorePkgImportErrorConfiguration());
         modelBuilder.ApplyConfiguration(new CoreTestConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUsersOnlineConfiguration());
+        
+        // Batch 22: User management system - roles, permissions, groups, hierarchy (9 entities)
+        modelBuilder.ApplyConfiguration(new CoreUsersAltTitleConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUserRoleRequestConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUserRoleConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUserPermissionConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUserGroupsViewByConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUserGroupsManagedByConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUserGroupLevelConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUserGroupConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreUserConfiguration());
+        
+        // Batch 23: Workflow engine - statuses, tracking, locks, permissions, page access (10 entities)
+        modelBuilder.ApplyConfiguration(new CoreWorkStatusTrackingConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowLockConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreStatusCodeConfiguration());
+        modelBuilder.ApplyConfiguration(new CorePermissionConfiguration());
+        modelBuilder.ApplyConfiguration(new CorePageAccessConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreGroupPermissionConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkflowConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkStatusConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkStatusOptionConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreWorkStatusValidationConfiguration());
+        
+        // Batch 24: Reports, Form 348 SARC/SC/Finding (4 new entities - others were pre-existing from batches 1-16)
+        modelBuilder.ApplyConfiguration(new RptUserQueryConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348SarcConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348ScConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348FindingConfiguration());
+        
+        // Batch 25: Form 348 post-processing system - appeals, findings, unit data, query clauses (8 new entities - ReminderEmail was pre-existing)
+        modelBuilder.ApplyConfiguration(new Form348PostProcessingConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348PostProcessingAppealConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348SarcPostProcessingConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348SarcFindingConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348SarcIcdConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348UnitConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348PscdFindingConfiguration());
+        modelBuilder.ApplyConfiguration(new RptUserQueryClauseConfiguration());
+        
+        // Batch 26: System infrastructure - reporting params, conversions, mappings, metadata, dev tools, document categorization (9 entities)
+        modelBuilder.ApplyConfiguration(new RptUserQueryParamConfiguration());
+        modelBuilder.ApplyConfiguration(new ConversionRunConfiguration());
+        modelBuilder.ApplyConfiguration(new ConversionRunLogConfiguration());
+        modelBuilder.ApplyConfiguration(new CoreCaseTypeSubCaseTypeMapConfiguration());
+        modelBuilder.ApplyConfiguration(new DataElementDetailConfiguration());
+        modelBuilder.ApplyConfiguration(new DevLoginConfiguration());
+        modelBuilder.ApplyConfiguration(new DevUnitConfiguration());
+        modelBuilder.ApplyConfiguration(new DocCategoryViewConfiguration());
+        modelBuilder.ApplyConfiguration(new DocumentCategory2Configuration());
+        
+        // Batch 27: Form 348 appeals and audit - AP/SARC appeals, findings, approval authority, audit reviews, comments (9 entities)
+        modelBuilder.ApplyConfiguration(new DocumentViewConfiguration());
+        modelBuilder.ApplyConfiguration(new Form261Configuration());
+        modelBuilder.ApplyConfiguration(new Form348ApConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348ApFindingConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348ApprovalAuthorityConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348ApSarcConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348ApSarcFindingConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348AuditConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348CommentConfiguration());
+
+        // Batch 28: AFRC Oracle migration staging data - DBA users, LIR disposition/personnel, LOD disposition/RWOA, Manpower, Personnel (unit/non-unit/feed) (9 entities)
+        modelBuilder.ApplyConfiguration(new AfrcOracleDbaUsersDatumConfiguration());
+        modelBuilder.ApplyConfiguration(new AfrcOracleLirDispDatumConfiguration());
+        modelBuilder.ApplyConfiguration(new AfrcOracleLirPersonnelDatumConfiguration());
+        modelBuilder.ApplyConfiguration(new AfrcOracleLodDispDatumConfiguration());
+        modelBuilder.ApplyConfiguration(new AfrcOracleLodRwoaDatumConfiguration());
+        modelBuilder.ApplyConfiguration(new AfrcOracleManpowerAllDatumConfiguration());
+        modelBuilder.ApplyConfiguration(new AfrcOracleNonunitPersonnelDatumConfiguration());
+        modelBuilder.ApplyConfiguration(new AfrcOraclePersonnelDatumConfiguration());
+        modelBuilder.ApplyConfiguration(new AfrcOraclePersonnelFeedDatumConfiguration());
+
+        // Batch 29: Mixed development and command structure - Oracle person process, raw import data (ARCNET/PAS), warmup processes, ASP.NET session state, command structure backup/history (9 entities)
+        modelBuilder.ApplyConfiguration(new AfrcOraclePersonProcessDatumConfiguration());
+        modelBuilder.ApplyConfiguration(new AlodArcnetRawConfiguration());
+        modelBuilder.ApplyConfiguration(new AlodPasRawConfiguration());
+        modelBuilder.ApplyConfiguration(new ApplicationWarmupProcessConfiguration());
+        modelBuilder.ApplyConfiguration(new ApplicationWarmupProcessLogConfiguration());
+        modelBuilder.ApplyConfiguration(new AspstateTempApplicationConfiguration());
+        modelBuilder.ApplyConfiguration(new AspstateTempSessionConfiguration());
+        modelBuilder.ApplyConfiguration(new CommandStructChainBackupConfiguration());
+        modelBuilder.ApplyConfiguration(new CommandStructHistoryConfiguration());
+
+        // Batch 30: Command structure trees and Form 348 incapacitation/medical/lessons/appeals/reinvestigation - tree views, INCAP findings/appeals/extensions, medical data, lessons learned, SARC appeal post-processing, RR workflow (9 entities)
+        modelBuilder.ApplyConfiguration(new CommandStructTreeConfiguration());
+        modelBuilder.ApplyConfiguration(new CommandStructTreeTmpConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348IncapAppealConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348IncapExtConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348IncapFindingConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348LessonConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348MedicalConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348PostProcessingAppealSarcConfiguration());
+        modelBuilder.ApplyConfiguration(new Form348RrConfiguration());
     }
 
     /// <summary>

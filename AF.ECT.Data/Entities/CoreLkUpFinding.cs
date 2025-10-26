@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a medical finding classification for Form 261.
+/// </summary>
 public partial class CoreLkUpFinding
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the finding.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the type of finding.
+    /// </summary>
     public string? FindingType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the finding.
+    /// </summary>
     public string? Description { get; set; }
 
+    /// <summary>
+    /// Gets or sets the collection of Form 261 records using this finding.
+    /// </summary>
     public virtual ICollection<Form261> Form261s { get; set; } = new List<Form261>();
 }

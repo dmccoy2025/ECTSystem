@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a disposition type for PEPP (Physical Evaluation for Performance and Promotion) cases.
+/// </summary>
 public partial class CoreLkupPeppdisposition
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the PEPP disposition.
+    /// </summary>
     public int DispositionId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name of the PEPP disposition.
+    /// </summary>
     public string DispositionName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this PEPP disposition is currently active.
+    /// </summary>
     public bool Active { get; set; }
 }

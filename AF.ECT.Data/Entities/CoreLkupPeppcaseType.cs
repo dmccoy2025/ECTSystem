@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a PEPP (Physical Evaluation for Performance and Promotion) case type.
+/// </summary>
 public partial class CoreLkupPeppcaseType
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the PEPP case type.
+    /// </summary>
     public int CaseTypeId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name of the PEPP case type.
+    /// </summary>
     public string CaseTypeName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this PEPP case type is currently active.
+    /// </summary>
     public bool Active { get; set; }
 }

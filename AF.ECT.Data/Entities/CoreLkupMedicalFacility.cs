@@ -5,13 +5,28 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a medical facility in the system with type and sorting information.
+/// </summary>
 public partial class CoreLkupMedicalFacility
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the medical facility.
+    /// </summary>
     public int FacilityId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description or name of the medical facility.
+    /// </summary>
     public string FacilityDescription { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the sort order for displaying facilities in lists.
+    /// </summary>
     public int SortOrder { get; set; }
 
+    /// <summary>
+    /// Gets or sets the type or category of the medical facility.
+    /// </summary>
     public string? FacilityType { get; set; }
 }

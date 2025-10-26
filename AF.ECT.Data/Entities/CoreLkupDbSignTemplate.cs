@@ -5,15 +5,33 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a digital signature template configuration for database tables.
+/// </summary>
 public partial class CoreLkupDbSignTemplate
 {
+    /// <summary>
+    /// Gets or sets the template identifier.
+    /// </summary>
     public byte TId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the title of the signature template.
+    /// </summary>
     public string? Title { get; set; }
 
+    /// <summary>
+    /// Gets or sets the name of the table using this signature template.
+    /// </summary>
     public string? TemplateTableName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the primary key field name for the template.
+    /// </summary>
     public string PrimaryKey { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the secondary key field name for the template.
+    /// </summary>
     public string? SecondaryKey { get; set; }
 }

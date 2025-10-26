@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents the amount of medical specialists required per year for case management.
+/// </summary>
 public partial class CoreLkupSpecialistsRequiredForManagement
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the specialist requirement.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the amount or range of specialists required per year (e.g., "1-2", "3-5").
+    /// </summary>
     public string AmountPerYear { get; set; } = null!;
 }

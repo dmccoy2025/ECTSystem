@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents an influence factor that may affect a member's case or situation.
+/// </summary>
 public partial class CoreLkupMemberInfluence
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the influence factor.
+    /// </summary>
     public int InfluenceId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the influence factor.
+    /// </summary>
     public string InfluenceDescription { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the sort order for displaying influence factors in lists.
+    /// </summary>
     public int SortOrder { get; set; }
 }

@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a type or category of validation/business rules.
+/// </summary>
 public partial class CoreLkupRuleType
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the rule type.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the rule type.
+    /// </summary>
     public string Description { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the collection of rules of this type.
+    /// </summary>
     public virtual ICollection<CoreLkupRule> CoreLkupRules { get; set; } = new List<CoreLkupRule>();
 }

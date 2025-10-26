@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a PA (Personnel Action) lookup with priority ordering.
+/// </summary>
 public partial class CoreLkupPa
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the PA.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the PA code or description.
+    /// </summary>
     public string? Pas { get; set; }
 
+    /// <summary>
+    /// Gets or sets the priority level for the PA.
+    /// </summary>
     public int? Priority { get; set; }
 }

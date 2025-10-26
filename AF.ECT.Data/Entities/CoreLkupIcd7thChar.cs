@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents the 7th character extensions for ICD diagnosis codes.
+/// </summary>
 public partial class CoreLkupIcd7thChar
 {
+    /// <summary>
+    /// Gets or sets the character code.
+    /// </summary>
     public string? CharCode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the character extension value.
+    /// </summary>
     public string? CharExt { get; set; }
 
+    /// <summary>
+    /// Gets or sets the definition of the character extension.
+    /// </summary>
     public string? CharDef { get; set; }
 }

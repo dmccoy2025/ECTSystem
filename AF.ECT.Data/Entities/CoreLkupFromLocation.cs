@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a location from which personnel transfer or originate.
+/// </summary>
 public partial class CoreLkupFromLocation
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the location.
+    /// </summary>
     public int LocationId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the location.
+    /// </summary>
     public string LocationDescription { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the sort order for display purposes.
+    /// </summary>
     public int SortOrder { get; set; }
 }

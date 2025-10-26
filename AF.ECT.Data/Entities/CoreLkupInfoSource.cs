@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a source of information for case documentation.
+/// </summary>
 public partial class CoreLkupInfoSource
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the information source.
+    /// </summary>
     public int SourceId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the information source.
+    /// </summary>
     public string SourceDescription { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the sort order for display purposes.
+    /// </summary>
     public int SortOrder { get; set; }
 }

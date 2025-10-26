@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a reason for canceling a physical evaluation or examination.
+/// </summary>
 public partial class CoreLkupPhyCancelReason
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the physical cancellation reason.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the description of the cancellation reason.
+    /// </summary>
     public string Description { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the type or category of the cancellation reason.
+    /// </summary>
     public string Type { get; set; } = null!;
 }

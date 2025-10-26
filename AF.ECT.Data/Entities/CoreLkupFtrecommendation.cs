@@ -5,11 +5,23 @@ using System.Collections.Generic;
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Fitness for Duty (FT) recommendation for personnel evaluations.
+/// </summary>
 public partial class CoreLkupFtrecommendation
 {
+    /// <summary>
+    /// Gets or sets the unique identifier for the recommendation.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the abbreviation of the recommendation.
+    /// </summary>
     public string Abbrev { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the full description of the recommendation.
+    /// </summary>
     public string Description { get; set; } = null!;
 }
