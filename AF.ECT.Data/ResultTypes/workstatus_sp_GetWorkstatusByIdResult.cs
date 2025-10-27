@@ -2,12 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class workstatus_sp_GetWorkstatusByIdResult
     {
         public int? workstatusId { get; set; }
         [StringLength(50)]
         public string name { get; set; } = default!;
     }
-}

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class GetCompletedECTCases_dailyResult
     {
         [Column("Start Date")]
@@ -11,5 +10,3 @@ namespace AF.ECT.Data.ResultTypes
         [Column("End Date")]
         public DateTime? EndDate { get; set; }
     }
-}
-

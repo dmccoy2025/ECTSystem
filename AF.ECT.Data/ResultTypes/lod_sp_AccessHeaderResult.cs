@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class lod_sp_AccessHeaderResult
     {
         public int lodid { get; set; }
@@ -25,5 +24,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(4)]
         public string? pas_code { get; set; }
     }
-}
-

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_Signature_sp_GetResult
     {
         public int refId { get; set; }
@@ -15,5 +14,3 @@ namespace AF.ECT.Data.ResultTypes
         public int? user_id { get; set; }
         public int? ptype { get; set; }
     }
-}
-

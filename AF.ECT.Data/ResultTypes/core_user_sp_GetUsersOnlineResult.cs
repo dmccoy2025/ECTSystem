@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_user_sp_GetUsersOnlineResult
     {
         public int userId { get; set; }
@@ -15,5 +14,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? unitName { get; set; }
         public DateTime loginTime { get; set; }
     }
-}
-

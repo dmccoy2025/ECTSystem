@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class workstatus_sp_GetWorkstatusesByRefIdAndTypeResult
     {
         public int? refId { get; set; }
@@ -12,4 +11,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(50)]
         public string name { get; set; } = default!;
     }
-}

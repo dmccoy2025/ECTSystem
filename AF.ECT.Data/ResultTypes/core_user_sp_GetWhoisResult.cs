@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_user_sp_GetWhoisResult
     {
         public int UserId { get; set; }
@@ -32,5 +31,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(1)]
         public string Region { get; set; } = default!;
     }
-}
-

@@ -2,12 +2,9 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class utility_workflow_sp_InsertWorkflowViewByWorkflowIdResult
     {
         public byte workflowId { get; set; }
         public short pageId { get; set; }
     }
-}
-

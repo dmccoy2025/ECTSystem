@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class form348_sp_GetWingSARCResult
     {
         [StringLength(100)]
@@ -12,5 +11,3 @@ namespace AF.ECT.Data.ResultTypes
         public string LastName { get; set; } = default!;
         public int userID { get; set; }
     }
-}
-

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class dev_sp_GetDevLoginsResult
     {
         public int? userId { get; set; }
@@ -12,5 +11,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(102)]
         public string? name { get; set; }
     }
-}
-

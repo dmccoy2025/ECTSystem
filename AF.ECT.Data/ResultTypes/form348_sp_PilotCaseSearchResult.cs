@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class form348_sp_PilotCaseSearchResult
     {
         public int? RefId { get; set; }
@@ -40,5 +39,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(3)]
         public string PriorityRank { get; set; } = default!;
     }
-}
-

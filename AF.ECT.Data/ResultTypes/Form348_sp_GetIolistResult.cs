@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class Form348_sp_GetIolistResult
     {
         [StringLength(100)]
@@ -11,5 +10,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(111)]
         public string? Name { get; set; }
     }
-}
-

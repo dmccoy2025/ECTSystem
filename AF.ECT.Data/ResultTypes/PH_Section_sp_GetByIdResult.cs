@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class PH_Section_sp_GetByIdResult
     {
         public int Id { get; set; }
@@ -15,5 +14,3 @@ namespace AF.ECT.Data.ResultTypes
         public int DisplayOrder { get; set; }
         public bool PageBreak { get; set; }
     }
-}
-

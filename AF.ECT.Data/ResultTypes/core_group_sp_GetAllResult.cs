@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_group_sp_GetAllResult
     {
         public byte groupId { get; set; }
@@ -22,5 +21,3 @@ namespace AF.ECT.Data.ResultTypes
         public byte reportView { get; set; }
         public int groupLevel { get; set; }
     }
-}
-

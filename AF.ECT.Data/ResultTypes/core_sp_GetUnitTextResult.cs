@@ -2,12 +2,9 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_sp_GetUnitTextResult
     {
         [StringLength(106)]
         public string? text { get; set; }
     }
-}
-

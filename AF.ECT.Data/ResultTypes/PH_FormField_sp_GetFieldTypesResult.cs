@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class PH_FormField_sp_GetFieldTypesResult
     {
         public int SectionId { get; set; }
@@ -14,5 +13,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(100)]
         public string? ToolTip { get; set; }
     }
-}
-

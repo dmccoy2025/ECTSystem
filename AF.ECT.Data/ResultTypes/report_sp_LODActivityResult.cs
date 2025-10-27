@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_LODActivityResult
     {
         public int lodid { get; set; }
@@ -19,5 +18,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(50)]
         public string? description { get; set; }
     }
-}
-

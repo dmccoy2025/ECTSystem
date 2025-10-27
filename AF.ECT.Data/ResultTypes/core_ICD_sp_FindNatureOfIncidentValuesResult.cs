@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_ICD_sp_FindNatureOfIncidentValuesResult
     {
         public int Id { get; set; }
@@ -12,5 +11,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(50)]
         public string Text { get; set; } = default!;
     }
-}
-

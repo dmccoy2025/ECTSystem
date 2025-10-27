@@ -2,12 +2,9 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class cmdStruct_sp_GetUnitPasCodeResult
     {
         [StringLength(4)]
         public string? PAS_CODE { get; set; }
     }
-}
-

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_Workflow_sp_GetPermissionsByCompoResult
     {
         public byte groupId { get; set; }
@@ -12,5 +11,3 @@ namespace AF.ECT.Data.ResultTypes
         public bool? canView { get; set; }
         public bool? canCreate { get; set; }
     }
-}
-

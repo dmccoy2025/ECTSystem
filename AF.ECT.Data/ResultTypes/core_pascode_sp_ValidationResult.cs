@@ -2,10 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_pascode_sp_ValidationResult
     {
     }
-}
-

@@ -2,13 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class docs_GetCatsByViewResult
     {
         public int DocCatId { get; set; }
         [StringLength(150)]
         public string CategoryDescription { get; set; } = default!;
     }
-}
-

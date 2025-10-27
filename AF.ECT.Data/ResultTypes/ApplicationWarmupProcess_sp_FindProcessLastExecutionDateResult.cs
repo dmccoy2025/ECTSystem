@@ -2,11 +2,8 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class ApplicationWarmupProcess_sp_FindProcessLastExecutionDateResult
     {
         public DateTime? ExecutionDate { get; set; }
     }
-}
-

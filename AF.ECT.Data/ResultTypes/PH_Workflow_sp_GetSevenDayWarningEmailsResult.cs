@@ -2,12 +2,9 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class PH_Workflow_sp_GetSevenDayWarningEmailsResult
     {
         [StringLength(200)]
         public string? emailAddress { get; set; }
     }
-}
-

@@ -2,12 +2,9 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class RecentlyAddedDocs_sp_GetByIdsResult
     {
         public long? DocId { get; set; }
         public int? DocTypeId { get; set; }
     }
-}
-

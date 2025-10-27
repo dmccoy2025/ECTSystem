@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lod_sp_GetSpecialCaseNotHoldingResult
     {
         public int sc_id { get; set; }
@@ -29,5 +28,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(3)]
         public string PriorityRank { get; set; } = default!;
     }
-}
-

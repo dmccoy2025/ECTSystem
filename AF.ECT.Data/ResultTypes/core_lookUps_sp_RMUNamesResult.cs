@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lookUps_sp_RMUNamesResult
     {
         public int Value { get; set; }
@@ -13,5 +12,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? PAS { get; set; }
         public bool Collocated { get; set; }
     }
-}
-

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class form348_RR_sp_FullSearchResult
     {
         public int RefId { get; set; }
@@ -33,5 +32,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(62)]
         public string? PrintId { get; set; }
     }
-}
-

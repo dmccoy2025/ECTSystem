@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_KeyVal_sp_GetHelpKeysResult
     {
         public int KeyId { get; set; }
@@ -13,5 +12,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(100)]
         public string KeyTypeName { get; set; } = default!;
     }
-}
-

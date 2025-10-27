@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_GetParticipationWaiversResult
     {
         public int RefId { get; set; }
@@ -23,5 +22,3 @@ namespace AF.ECT.Data.ResultTypes
         public int? DaysUsed { get; set; }
         public int? MemberWaivers { get; set; }
     }
-}
-

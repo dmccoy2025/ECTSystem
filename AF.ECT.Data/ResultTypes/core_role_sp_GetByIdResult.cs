@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_role_sp_GetByIdResult
     {
         public int userRoleId { get; set; }
@@ -15,5 +14,3 @@ namespace AF.ECT.Data.ResultTypes
         public byte status { get; set; }
         public byte accessScope { get; set; }
     }
-}
-

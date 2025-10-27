@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_CertificationStamp_sp_GetSpecialCaseStampResult
     {
         public int Id { get; set; }
@@ -13,5 +12,3 @@ namespace AF.ECT.Data.ResultTypes
         public string Body { get; set; } = default!;
         public bool IsQualified { get; set; }
     }
-}
-

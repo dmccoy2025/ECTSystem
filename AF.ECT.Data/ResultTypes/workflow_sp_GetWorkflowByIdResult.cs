@@ -2,12 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class workflow_sp_GetWorkflowByIdResult
     {
         public byte workflowId { get; set; }
         [StringLength(50)]
         public string title { get; set; } = default!;
     }
-}

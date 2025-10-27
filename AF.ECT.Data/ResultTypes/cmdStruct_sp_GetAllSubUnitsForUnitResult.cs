@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class cmdStruct_sp_GetAllSubUnitsForUnitResult
     {
         public int? CS_ID { get; set; }
@@ -14,5 +13,3 @@ namespace AF.ECT.Data.ResultTypes
         public int? Parent_CS_ID { get; set; }
         public int? LevelDown { get; set; }
     }
-}
-

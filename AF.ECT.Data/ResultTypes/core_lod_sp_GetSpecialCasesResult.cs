@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lod_sp_GetSpecialCasesResult
     {
         public int sc_id { get; set; }
@@ -22,5 +21,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? Receive_Date { get; set; }
         public int? Days { get; set; }
     }
-}
-

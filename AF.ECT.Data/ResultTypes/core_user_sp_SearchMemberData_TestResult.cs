@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_user_sp_SearchMemberData_TestResult
     {
         [StringLength(4)]
@@ -27,5 +26,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(11)]
         public string SSAN { get; set; } = default!;
     }
-}
-

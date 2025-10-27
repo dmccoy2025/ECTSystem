@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_user_sp_GetManagedUsersResult
     {
         public int Id { get; set; }
@@ -31,5 +30,3 @@ namespace AF.ECT.Data.ResultTypes
         public byte GroupId { get; set; }
         public int? ViewOrManaged { get; set; }
     }
-}
-

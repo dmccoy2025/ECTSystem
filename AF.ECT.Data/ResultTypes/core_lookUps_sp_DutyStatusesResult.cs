@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lookUps_sp_DutyStatusesResult
     {
         [StringLength(50)]
@@ -13,5 +12,3 @@ namespace AF.ECT.Data.ResultTypes
         public int? sort_order { get; set; }
         public byte id { get; set; }
     }
-}
-

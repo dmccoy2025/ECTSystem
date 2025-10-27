@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_workstatus_sp_GetByWorkflowResult
     {
         public int ws_id { get; set; }
@@ -16,5 +15,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(100)]
         public string? name { get; set; }
     }
-}
-

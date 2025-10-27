@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_GetDisapprovedLodResult
     {
         public int? pTypeId { get; set; }
@@ -16,5 +15,3 @@ namespace AF.ECT.Data.ResultTypes
         public int? nIlodNotId { get; set; }
         public int? nIlodNotCount { get; set; }
     }
-}
-

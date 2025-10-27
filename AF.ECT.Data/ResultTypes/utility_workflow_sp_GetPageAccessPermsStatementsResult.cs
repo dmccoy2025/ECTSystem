@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class utility_workflow_sp_GetPageAccessPermsStatementsResult
     {
         public int? WorkflowId { get; set; }
@@ -15,5 +14,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? PageTitle { get; set; }
         public byte access { get; set; }
     }
-}
-

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class SearchDBForStringResult
     {
         [StringLength(128)]
@@ -13,5 +12,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(128)]
         public string ColumnName { get; set; } = default!;
     }
-}
-

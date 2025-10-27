@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_pascodes_GetChildUnits_AdminResult
     {
         public int cs_id { get; set; }
@@ -18,5 +17,3 @@ namespace AF.ECT.Data.ResultTypes
         public int? userUnit { get; set; }
         public bool Inactive { get; set; }
     }
-}
-

@@ -2,12 +2,9 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_memo_sp_GetDataSourcesResult
     {
         [StringLength(128)]
         public string name { get; set; } = default!;
     }
-}
-

@@ -2,13 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class Form348_SC_sp_GetPEPPTypesResult
     {
         public int Id { get; set; }
         [StringLength(50)]
         public string Name { get; set; } = default!;
     }
-}
-

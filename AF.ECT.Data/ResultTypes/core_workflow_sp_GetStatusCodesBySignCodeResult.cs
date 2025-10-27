@@ -2,13 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_workflow_sp_GetStatusCodesBySignCodeResult
     {
         public int statusId { get; set; }
         [StringLength(50)]
         public string description { get; set; } = default!;
     }
-}
-

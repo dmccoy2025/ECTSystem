@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_user_sp_SearchMamberDataResult
     {
         [StringLength(9)]
@@ -20,4 +19,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? Organization { get; set; }
         public DateTime? DateOfBirth { get; set; }
     }
-}

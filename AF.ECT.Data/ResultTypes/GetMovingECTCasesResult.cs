@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class GetMovingECTCasesResult
     {
         [StringLength(50)]
@@ -23,5 +22,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(50)]
         public string? Location { get; set; }
     }
-}
-

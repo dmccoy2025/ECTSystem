@@ -2,13 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lookups_sp_GetGradesResult
     {
         [StringLength(30)]
         public string? Title { get; set; }
         public int Code { get; set; }
     }
-}
-

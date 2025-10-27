@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class utility_rpt_sp_InsertUserQueryParamResult
     {
         public int id { get; set; }
@@ -23,5 +22,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? end_display { get; set; }
         public int? execute_order { get; set; }
     }
-}
-

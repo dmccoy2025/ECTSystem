@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_OpenStatusCountResult
     {
         public int? cs_id { get; set; }
@@ -24,5 +23,3 @@ namespace AF.ECT.Data.ResultTypes
         public int formalInvestigationDirected { get; set; }
         public int? Total { get; set; }
     }
-}
-

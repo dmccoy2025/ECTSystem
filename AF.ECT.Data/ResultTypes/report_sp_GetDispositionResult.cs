@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_GetDispositionResult
     {
         public int? lodid { get; set; }
@@ -29,5 +28,3 @@ namespace AF.ECT.Data.ResultTypes
         public int? caseUnitId { get; set; }
         public int? memberCurrentUnitId { get; set; }
     }
-}
-

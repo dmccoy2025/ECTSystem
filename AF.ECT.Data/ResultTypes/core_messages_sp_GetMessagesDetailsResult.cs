@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_messages_sp_GetMessagesDetailsResult
     {
         [StringLength(50)]
@@ -16,5 +15,3 @@ namespace AF.ECT.Data.ResultTypes
         public DateTime startTime { get; set; }
         public DateTime? endTime { get; set; }
     }
-}
-

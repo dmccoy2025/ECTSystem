@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class Form348_Audit_GetAuditInfoResult
     {
         public int LOD_ID { get; set; }
@@ -61,5 +60,3 @@ namespace AF.ECT.Data.ResultTypes
         public int? Determination { get; set; }
         public int? A1_DeterminationNotCorrect { get; set; }
     }
-}
-

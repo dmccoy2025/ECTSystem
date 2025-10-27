@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_pascode_sp_LoadResult
     {
         public int CS_ID { get; set; }
@@ -54,5 +53,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(40)]
         public string? E_MAIL { get; set; }
     }
-}
-

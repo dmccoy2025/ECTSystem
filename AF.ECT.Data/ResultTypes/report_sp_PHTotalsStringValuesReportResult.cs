@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_PHTotalsStringValuesReportResult
     {
         [Column("PH Wing RMU")]
@@ -25,5 +24,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(1000)]
         public string Value { get; set; } = default!;
     }
-}
-

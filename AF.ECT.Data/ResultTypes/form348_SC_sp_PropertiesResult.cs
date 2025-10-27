@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class form348_SC_sp_PropertiesResult
     {
         public DateTime? Suspense_Date { get; set; }
@@ -14,5 +13,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(1200)]
         public string? Case_Comments { get; set; }
     }
-}
-

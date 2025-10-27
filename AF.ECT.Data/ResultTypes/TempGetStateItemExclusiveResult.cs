@@ -2,11 +2,8 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class TempGetStateItemExclusiveResult
     {
         public byte[]? SessionItemLong { get; set; }
     }
-}
-

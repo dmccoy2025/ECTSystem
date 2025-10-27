@@ -2,11 +2,8 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class lod_sp_GetNumberOfLessonsLearnedResult
     {
         public int? LessonsLearnedCount { get; set; }
     }
-}
-

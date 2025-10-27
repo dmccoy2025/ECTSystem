@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class form348_sp_GetReinvestigationByInitLODResult
     {
         public int InitialLodId { get; set; }
@@ -11,5 +10,3 @@ namespace AF.ECT.Data.ResultTypes
         public int CreatedBy { get; set; }
         public DateOnly CreatedDate { get; set; }
     }
-}
-

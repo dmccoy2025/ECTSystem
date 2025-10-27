@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lookups_GetAllModulesResult
     {
         public byte moduleId { get; set; }
@@ -11,5 +10,3 @@ namespace AF.ECT.Data.ResultTypes
         public string moduleName { get; set; } = default!;
         public bool isSpecialCase { get; set; }
     }
-}
-

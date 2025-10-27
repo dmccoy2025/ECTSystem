@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_rule_sp_SelectOptionRuleResult
     {
         public int wsr_id { get; set; }
@@ -13,5 +12,3 @@ namespace AF.ECT.Data.ResultTypes
         public string ruleData { get; set; } = default!;
         public bool? checkAll { get; set; }
     }
-}
-

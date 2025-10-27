@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class GetOpenCases_ECTResult
     {
         [Column("Report Start Date")]
@@ -13,5 +12,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(20)]
         public string? ReportEndDate { get; set; }
     }
-}
-

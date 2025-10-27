@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_sarc_sp_GetPostCompletionResult
     {
         public int sarc_id { get; set; }
@@ -24,5 +23,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(200)]
         public string? email { get; set; }
     }
-}
-

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_pascode_sp_GetParentInfoResult
     {
         public int CS_ID { get; set; }
@@ -13,5 +12,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? PAS_CODE { get; set; }
         public bool Inactive { get; set; }
     }
-}
-

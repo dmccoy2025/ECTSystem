@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_AssociatedCases_GetAssociatedCasesLODResult
     {
         public byte workflowId { get; set; }
@@ -13,5 +12,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(100)]
         public string? associated_CaseId { get; set; }
     }
-}
-

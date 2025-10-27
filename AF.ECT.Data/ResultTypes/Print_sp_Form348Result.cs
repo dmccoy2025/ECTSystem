@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class Print_sp_Form348Result
     {
         [StringLength(100)]
@@ -18,5 +17,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(1460)]
         public string? cmdr_circ_details { get; set; }
     }
-}
-

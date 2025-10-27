@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_LODComplianceAccuracyResult
     {
         public int? UnitId { get; set; }
@@ -11,5 +10,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? MemberUnit { get; set; }
         public int? Accuracy { get; set; }
     }
-}
-

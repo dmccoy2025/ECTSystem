@@ -2,13 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lookUps_sp_GetMemberPSCDCategoryResult
     {
         public int serviceID { get; set; }
         [StringLength(100)]
         public string? service { get; set; }
     }
-}
-

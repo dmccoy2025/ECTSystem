@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_sc_sp_GetRWAssociableSpecialCasesResult
     {
         public int RefId { get; set; }
@@ -12,5 +11,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(50)]
         public string moduleName { get; set; } = default!;
     }
-}
-

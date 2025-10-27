@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_PHTotalsReportResult
     {
         public int? SectionId { get; set; }
@@ -11,5 +10,3 @@ namespace AF.ECT.Data.ResultTypes
         public int? FieldTypeId { get; set; }
         public long? Total { get; set; }
     }
-}
-

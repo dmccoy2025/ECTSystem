@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_ICD_sp_Find7thCharactersResult
     {
         [StringLength(7)]
@@ -11,5 +10,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(265)]
         public string? Definition { get; set; }
     }
-}
-

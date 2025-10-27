@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class form348_sp_PostAppealCompletionSearchResult
     {
         public int appealId { get; set; }
@@ -33,5 +32,3 @@ namespace AF.ECT.Data.ResultTypes
         public bool? member_notified { get; set; }
         public int lockId { get; set; }
     }
-}
-

@@ -2,13 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lookups_sp_GetIRILOStatusResult
     {
         public int id { get; set; }
         [StringLength(200)]
         public string description { get; set; } = default!;
     }
-}
-

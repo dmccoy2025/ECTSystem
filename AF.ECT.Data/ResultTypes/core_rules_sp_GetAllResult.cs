@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_rules_sp_GetAllResult
     {
         public int? Id { get; set; }
@@ -15,4 +14,3 @@ namespace AF.ECT.Data.ResultTypes
         public DateTime? CreatedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
     }
-}

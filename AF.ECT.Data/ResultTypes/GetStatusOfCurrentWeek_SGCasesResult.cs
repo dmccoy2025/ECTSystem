@@ -2,12 +2,9 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class GetStatusOfCurrentWeek_SGCasesResult
     {
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
     }
-}
-

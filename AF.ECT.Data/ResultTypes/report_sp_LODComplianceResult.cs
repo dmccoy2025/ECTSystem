@@ -2,11 +2,8 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_LODComplianceResult
     {
         public int? lodId { get; set; }
     }
-}
-

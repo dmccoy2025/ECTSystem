@@ -2,11 +2,8 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class cmdStruct_sp_GetUnitIdResult
     {
         public int CS_ID { get; set; }
     }
-}
-

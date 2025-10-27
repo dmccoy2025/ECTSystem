@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class GetECTCases_DailyResult
     {
         public byte? workflowId { get; set; }
@@ -20,5 +19,3 @@ namespace AF.ECT.Data.ResultTypes
         public DateTime startDate { get; set; }
         public DateTime? endDate { get; set; }
     }
-}
-

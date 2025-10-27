@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class OverrideCase_GetAvailableStatusesResult
     {
         [StringLength(50)]
@@ -12,5 +11,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(50)]
         public string NewStatusDesc { get; set; } = default!;
     }
-}
-

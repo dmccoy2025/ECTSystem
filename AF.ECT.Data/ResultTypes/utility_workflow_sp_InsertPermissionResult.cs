@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class utility_workflow_sp_InsertPermissionResult
     {
         public short permId { get; set; }
@@ -13,5 +12,3 @@ namespace AF.ECT.Data.ResultTypes
         public string permDesc { get; set; } = default!;
         public bool exclude { get; set; }
     }
-}
-

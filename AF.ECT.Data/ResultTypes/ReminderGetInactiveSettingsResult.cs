@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class ReminderGetInactiveSettingsResult
     {
         public int i_id { get; set; }
@@ -12,5 +11,3 @@ namespace AF.ECT.Data.ResultTypes
         public int templateId { get; set; }
         public bool? active { get; set; }
     }
-}
-

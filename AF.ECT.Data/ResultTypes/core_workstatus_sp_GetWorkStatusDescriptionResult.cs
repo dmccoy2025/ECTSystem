@@ -2,12 +2,9 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_workstatus_sp_GetWorkStatusDescriptionResult
     {
         [StringLength(50)]
         public string Description { get; set; } = default!;
     }
-}
-

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_GetDetailDisapprovedLodResult
     {
         public int lodid { get; set; }
@@ -17,5 +16,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(100)]
         public string? event_nature_type { get; set; }
     }
-}
-

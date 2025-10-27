@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_workflow_sp_GetAllLocksResult
     {
         public int lockId { get; set; }
@@ -20,5 +19,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(50)]
         public string case_id { get; set; } = default!;
     }
-}
-

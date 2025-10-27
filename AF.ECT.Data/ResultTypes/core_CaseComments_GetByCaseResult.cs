@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_CaseComments_GetByCaseResult
     {
         public int id { get; set; }
@@ -16,5 +15,3 @@ namespace AF.ECT.Data.ResultTypes
         public int ModuleID { get; set; }
         public int CommentType { get; set; }
     }
-}
-

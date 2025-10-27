@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class SuicideMethod_sp_GetAllResult
     {
         public int Id { get; set; }
@@ -11,5 +10,3 @@ namespace AF.ECT.Data.ResultTypes
         public string Name { get; set; } = default!;
         public bool Active { get; set; }
     }
-}
-

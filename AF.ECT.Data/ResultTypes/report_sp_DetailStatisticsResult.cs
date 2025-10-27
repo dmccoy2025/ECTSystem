@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_DetailStatisticsResult
     {
         public int lodid { get; set; }
@@ -16,5 +15,3 @@ namespace AF.ECT.Data.ResultTypes
         public DateTime created_date { get; set; }
         public string? ReceiveDate { get; set; }
     }
-}
-

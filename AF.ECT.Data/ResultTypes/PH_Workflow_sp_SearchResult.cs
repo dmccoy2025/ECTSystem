@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class PH_Workflow_sp_SearchResult
     {
         public int RefId { get; set; }
@@ -32,5 +31,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(61)]
         public string? Reporting_Period { get; set; }
     }
-}
-

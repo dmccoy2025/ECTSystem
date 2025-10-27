@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_email_sp_GetAllResult
     {
         public int TemplateID { get; set; }
@@ -17,5 +16,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? DataProc { get; set; }
         public bool active { get; set; }
     }
-}
-

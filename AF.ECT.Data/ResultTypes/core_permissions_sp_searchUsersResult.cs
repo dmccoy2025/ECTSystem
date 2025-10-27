@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_permissions_sp_searchUsersResult
     {
         public int Id { get; set; }
@@ -21,5 +20,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? CurrentUnitName { get; set; }
         public string? SSN { get; set; }
     }
-}
-

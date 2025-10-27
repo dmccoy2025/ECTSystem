@@ -2,11 +2,8 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_workflow_sp_GetWorkflowInitialStatusCodeResult
     {
         public int? statusId { get; set; }
     }
-}
-

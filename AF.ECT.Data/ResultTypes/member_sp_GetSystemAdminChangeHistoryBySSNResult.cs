@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class member_sp_GetSystemAdminChangeHistoryBySSNResult
     {
         public int LogId { get; set; }
@@ -20,5 +19,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(1000)]
         public string NewValue { get; set; } = default!;
     }
-}
-

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_group_sp_GetAllWithManagedResult
     {
         public byte GroupId { get; set; }
@@ -13,5 +12,3 @@ namespace AF.ECT.Data.ResultTypes
         public bool Notify { get; set; }
         public bool? ViewBy { get; set; }
     }
-}
-

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_RowaDetailResult
     {
         public int lodId { get; set; }
@@ -20,5 +19,3 @@ namespace AF.ECT.Data.ResultTypes
         public DateTime? rwoa_date { get; set; }
         public DateTime created_date { get; set; }
     }
-}
-

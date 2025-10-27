@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lod_sp_appealPostProcessingIdResult
     {
         public int appeal_id { get; set; }
@@ -20,5 +19,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? appeal_country { get; set; }
         public DateOnly? member_notification_date { get; set; }
     }
-}
-

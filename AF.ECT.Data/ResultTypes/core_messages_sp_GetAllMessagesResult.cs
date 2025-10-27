@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_messages_sp_GetAllMessagesResult
     {
         public short messageId { get; set; }
@@ -14,5 +13,3 @@ namespace AF.ECT.Data.ResultTypes
         public bool popup { get; set; }
         public bool isAdminMessage { get; set; }
     }
-}
-

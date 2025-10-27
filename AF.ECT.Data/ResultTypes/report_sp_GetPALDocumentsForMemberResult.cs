@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_GetPALDocumentsForMemberResult
     {
         [StringLength(50)]
@@ -17,5 +16,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? DocMonth { get; set; }
         public int PalDocID { get; set; }
     }
-}
-

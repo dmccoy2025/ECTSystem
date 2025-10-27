@@ -2,13 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class cmdStructChain_sp_GetChaninByUserIdResult
     {
         public int Value { get; set; }
         [StringLength(107)]
         public string? Name { get; set; }
     }
-}
-

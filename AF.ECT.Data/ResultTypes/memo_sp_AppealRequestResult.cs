@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class memo_sp_AppealRequestResult
     {
         [StringLength(100)]
@@ -11,5 +10,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(100)]
         public string? value { get; set; }
     }
-}
-

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lod_sp_GetLODPostCompletionResult
     {
         public int lodId { get; set; }
@@ -32,5 +31,3 @@ namespace AF.ECT.Data.ResultTypes
         public int? email_flag { get; set; }
         public int? phone_flag { get; set; }
     }
-}
-

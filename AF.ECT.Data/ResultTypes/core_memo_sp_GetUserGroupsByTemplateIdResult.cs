@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_memo_sp_GetUserGroupsByTemplateIdResult
     {
         public byte groupId { get; set; }
@@ -14,5 +13,3 @@ namespace AF.ECT.Data.ResultTypes
         public bool canView { get; set; }
         public bool canDelete { get; set; }
     }
-}
-

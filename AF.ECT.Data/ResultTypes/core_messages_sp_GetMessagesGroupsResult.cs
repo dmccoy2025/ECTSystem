@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_messages_sp_GetMessagesGroupsResult
     {
         public byte groupID { get; set; }
@@ -11,5 +10,3 @@ namespace AF.ECT.Data.ResultTypes
         public string name { get; set; } = default!;
         public int assigned { get; set; }
     }
-}
-

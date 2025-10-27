@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lod_sp_GetSpecialCasesByMemberSSNResult
     {
         public int RefId { get; set; }
@@ -26,5 +25,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(50)]
         public string? workflow_title { get; set; }
     }
-}
-

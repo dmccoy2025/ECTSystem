@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_messages_sp_GetMessagesResult
     {
         [StringLength(1024)]
@@ -15,5 +14,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? title { get; set; }
         public bool isAdminMessage { get; set; }
     }
-}
-

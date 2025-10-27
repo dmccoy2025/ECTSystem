@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class utility_workflow_sp_InsertWorkStatusByWorkflowIdResult
     {
         public int ws_id { get; set; }
@@ -22,5 +21,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(50)]
         public string WorkStatus { get; set; } = default!;
     }
-}
-

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class GetSignedECTCasesByUserGroupResult
     {
         [StringLength(50)]
@@ -22,5 +21,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(50)]
         public string actionName { get; set; } = default!;
     }
-}
-

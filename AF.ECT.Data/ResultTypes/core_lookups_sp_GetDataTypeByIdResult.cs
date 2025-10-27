@@ -2,12 +2,9 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lookups_sp_GetDataTypeByIdResult
     {
         [StringLength(100)]
         public string Name { get; set; } = default!;
     }
-}
-

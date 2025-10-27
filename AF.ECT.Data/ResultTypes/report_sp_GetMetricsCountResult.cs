@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_GetMetricsCountResult
     {
         [Column("MedicalUnit", TypeName = "decimal(8,1)")]
@@ -21,5 +20,3 @@ namespace AF.ECT.Data.ResultTypes
         [Column("FormalInv", TypeName = "decimal(8,1)")]
         public decimal? FormalInv { get; set; }
     }
-}
-

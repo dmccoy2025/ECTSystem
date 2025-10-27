@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class DBSign_sp_GetTemplateByIdResult
     {
         public byte t_id { get; set; }
@@ -16,5 +15,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(100)]
         public string? secondary_key { get; set; }
     }
-}
-

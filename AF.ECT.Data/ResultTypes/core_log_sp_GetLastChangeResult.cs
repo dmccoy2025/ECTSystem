@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_log_sp_GetLastChangeResult
     {
         public int logId { get; set; }
@@ -16,5 +15,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(15)]
         public string? rank { get; set; }
     }
-}
-

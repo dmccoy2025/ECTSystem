@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_group_sp_GetByCompoOnlyResult
     {
         public byte groupId { get; set; }
@@ -24,5 +23,3 @@ namespace AF.ECT.Data.ResultTypes
         public bool canRegister { get; set; }
         public byte sortOrder { get; set; }
     }
-}
-

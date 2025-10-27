@@ -2,12 +2,9 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_user_sp_GetMailingListBySystemParamsResult
     {
         [StringLength(200)]
         public string? EmailAddress { get; set; }
     }
-}
-

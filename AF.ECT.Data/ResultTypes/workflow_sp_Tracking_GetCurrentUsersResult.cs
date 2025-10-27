@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class workflow_sp_Tracking_GetCurrentUsersResult
     {
         public int UserId { get; set; }
@@ -32,5 +31,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(4)]
         public string? pas_code { get; set; }
     }
-}
-

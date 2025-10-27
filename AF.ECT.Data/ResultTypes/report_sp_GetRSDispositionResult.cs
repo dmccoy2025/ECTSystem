@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_GetRSDispositionResult
     {
         public int? refId { get; set; }
@@ -24,5 +23,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? birthMonth { get; set; }
         public int? birthMonthNum { get; set; }
     }
-}
-

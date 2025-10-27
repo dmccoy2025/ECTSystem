@@ -2,13 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class dev_sp_GetUnitsResult
     {
         public int id { get; set; }
         [StringLength(139)]
         public string? name { get; set; }
     }
-}
-

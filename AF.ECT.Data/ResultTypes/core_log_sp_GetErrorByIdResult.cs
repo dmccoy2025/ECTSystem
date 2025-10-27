@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_log_sp_GetErrorByIdResult
     {
         [StringLength(50)]
@@ -17,5 +16,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(100)]
         public string? caller { get; set; }
     }
-}
-

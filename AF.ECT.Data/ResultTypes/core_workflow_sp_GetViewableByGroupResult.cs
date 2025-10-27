@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_workflow_sp_GetViewableByGroupResult
     {
         public byte workFlowId { get; set; }
@@ -17,5 +16,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(50)]
         public string? description { get; set; }
     }
-}
-

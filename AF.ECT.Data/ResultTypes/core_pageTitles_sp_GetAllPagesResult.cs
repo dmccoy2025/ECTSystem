@@ -2,13 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_pageTitles_sp_GetAllPagesResult
     {
         public short pageId { get; set; }
         [StringLength(50)]
         public string title { get; set; } = default!;
     }
-}
-

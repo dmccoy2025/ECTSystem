@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_OpenStatusDetailResult
     {
         public int lodId { get; set; }
@@ -19,5 +18,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(4)]
         public string? SSN { get; set; }
     }
-}
-

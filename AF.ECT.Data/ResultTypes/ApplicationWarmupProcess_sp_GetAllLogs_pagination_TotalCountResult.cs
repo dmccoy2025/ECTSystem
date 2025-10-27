@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     /// <summary>
     /// Result type for the total count returned by the ApplicationWarmupProcess_sp_GetAllLogs_pagination stored procedure.
     /// </summary>
@@ -14,4 +13,3 @@ namespace AF.ECT.Data.ResultTypes
         /// </summary>
         public int TotalCount { get; set; }
     }
-}

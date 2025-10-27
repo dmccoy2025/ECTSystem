@@ -2,11 +2,8 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class PH_Workflow_sp_GetCaseIdForReportingPeriodResult
     {
         public int SC_Id { get; set; }
     }
-}
-

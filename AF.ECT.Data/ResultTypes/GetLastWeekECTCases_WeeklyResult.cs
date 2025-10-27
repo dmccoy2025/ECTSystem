@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class GetLastWeekECTCases_WeeklyResult
     {
         public byte? workflowId { get; set; }
@@ -22,5 +21,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(36)]
         public string? ReportEnd { get; set; }
     }
-}
-

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lod_sp_GetCaseCommentsResult
     {
         public int LodId { get; set; }
@@ -12,5 +11,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(2147483647)]
         public string comments { get; set; } = default!;
     }
-}
-

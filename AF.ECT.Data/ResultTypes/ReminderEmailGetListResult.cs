@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class ReminderEmailGetListResult
     {
         public int id { get; set; }
@@ -16,5 +15,3 @@ namespace AF.ECT.Data.ResultTypes
         public string moduleName { get; set; } = default!;
         public int templateId { get; set; }
     }
-}
-

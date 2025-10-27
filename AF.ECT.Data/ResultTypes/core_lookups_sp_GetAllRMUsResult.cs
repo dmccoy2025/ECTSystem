@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lookups_sp_GetAllRMUsResult
     {
         public int Id { get; set; }
@@ -11,5 +10,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? RMU { get; set; }
         public int? cs_id { get; set; }
     }
-}
-

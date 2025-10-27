@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class cmdStructChain_sp_GetChaninByPascodeResult
     {
         [StringLength(4)]
@@ -11,5 +10,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(107)]
         public string? Name { get; set; }
     }
-}
-

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_rwoa_GetRecentResult
     {
         public int rwoaId { get; set; }
@@ -25,5 +24,3 @@ namespace AF.ECT.Data.ResultTypes
         public DateTime? created_date { get; set; }
         public bool? rerouting { get; set; }
     }
-}
-

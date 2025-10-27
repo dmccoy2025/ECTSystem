@@ -2,13 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lookUps_sp_MedGroupNamesResult
     {
         public int Value { get; set; }
         [StringLength(255)]
         public string? Name { get; set; }
     }
-}
-

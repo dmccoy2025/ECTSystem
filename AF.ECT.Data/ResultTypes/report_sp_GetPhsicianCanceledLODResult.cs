@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_GetPhsicianCanceledLODResult
     {
         public int? lodid { get; set; }
@@ -23,5 +22,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(40)]
         public string? birthmonth { get; set; }
     }
-}
-

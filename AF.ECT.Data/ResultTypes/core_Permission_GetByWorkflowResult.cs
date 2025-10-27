@@ -2,12 +2,9 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_Permission_GetByWorkflowResult
     {
         [StringLength(50)]
         public string permName { get; set; } = default!;
     }
-}
-

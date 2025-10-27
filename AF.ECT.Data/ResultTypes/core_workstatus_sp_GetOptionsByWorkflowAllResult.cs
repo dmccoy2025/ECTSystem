@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_workstatus_sp_GetOptionsByWorkflowAllResult
     {
         public int wso_id { get; set; }
@@ -21,5 +20,3 @@ namespace AF.ECT.Data.ResultTypes
         public string statusOutText { get; set; } = default!;
         public int? compo { get; set; }
     }
-}
-

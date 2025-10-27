@@ -2,11 +2,8 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_ICD_sp_FindCodeResult
     {
         public int ICD9_ID { get; set; }
     }
-}
-

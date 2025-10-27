@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class form348_sp_PostCompletionSearch_TEMPResult
     {
         public int lodid { get; set; }
@@ -22,4 +21,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? Receive_Date { get; set; }
         public int? Days { get; set; }
     }
-}

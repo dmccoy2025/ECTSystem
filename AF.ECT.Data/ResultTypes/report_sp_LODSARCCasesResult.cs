@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_LODSARCCasesResult
     {
         public int? RefId { get; set; }
@@ -24,5 +23,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(9)]
         public string? MemberSSN { get; set; }
     }
-}
-

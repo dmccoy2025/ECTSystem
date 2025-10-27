@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class PH_FieldType_sp_GetAllResult
     {
         public int Id { get; set; }
@@ -18,5 +17,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? Color { get; set; }
         public int? Length { get; set; }
     }
-}
-

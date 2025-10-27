@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class form348_sp_GetLodsBySMResult
     {
         public int RefId { get; set; }
@@ -32,5 +31,3 @@ namespace AF.ECT.Data.ResultTypes
         public int? Days { get; set; }
         public bool sarc { get; set; }
     }
-}
-

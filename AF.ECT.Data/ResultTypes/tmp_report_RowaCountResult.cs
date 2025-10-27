@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class tmp_report_RowaCountResult
     {
         public byte ID { get; set; }
@@ -11,5 +10,3 @@ namespace AF.ECT.Data.ResultTypes
         public string Description { get; set; } = default!;
         public int? TotalCount { get; set; }
     }
-}
-

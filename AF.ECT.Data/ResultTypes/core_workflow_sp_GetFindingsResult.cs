@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_workflow_sp_GetFindingsResult
     {
         public byte? Id { get; set; }
@@ -12,5 +11,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(100)]
         public string? Description { get; set; }
     }
-}
-

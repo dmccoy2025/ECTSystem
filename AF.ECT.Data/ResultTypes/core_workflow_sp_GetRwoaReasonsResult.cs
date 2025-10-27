@@ -2,13 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_workflow_sp_GetRwoaReasonsResult
     {
         public byte Id { get; set; }
         [StringLength(150)]
         public string Description { get; set; } = default!;
     }
-}
-

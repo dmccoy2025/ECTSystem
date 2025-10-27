@@ -2,13 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_workflow_sp_GetPagesByWorkflowIdResult
     {
         public short pageId { get; set; }
         [StringLength(50)]
         public string title { get; set; } = default!;
     }
-}
-

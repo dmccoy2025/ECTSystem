@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_user_sp_GetMailingListByUserResult
     {
         public int UserId { get; set; }
@@ -16,5 +15,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(200)]
         public string? Email { get; set; }
     }
-}
-

@@ -2,13 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_LookUps_sp_RMUResult
     {
         public int Id { get; set; }
         [StringLength(255)]
         public string? description { get; set; }
     }
-}
-

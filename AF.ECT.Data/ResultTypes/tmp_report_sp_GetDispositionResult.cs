@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class tmp_report_sp_GetDispositionResult
     {
         public int? DispositionId { get; set; }
@@ -11,4 +10,3 @@ namespace AF.ECT.Data.ResultTypes
         public string? DispositionName { get; set; }
         public int? CaseCount { get; set; }
     }
-}

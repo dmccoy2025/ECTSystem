@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_permissions_sp_GetAllPendingRequestsResult
     {
         public int userID { get; set; }
@@ -26,5 +25,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(100)]
         public string GroupName { get; set; } = default!;
     }
-}
-

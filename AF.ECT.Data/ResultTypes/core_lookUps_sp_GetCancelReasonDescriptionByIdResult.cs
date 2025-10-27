@@ -2,12 +2,9 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lookUps_sp_GetCancelReasonDescriptionByIdResult
     {
         [StringLength(150)]
         public string Description { get; set; } = default!;
     }
-}
-

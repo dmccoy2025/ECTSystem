@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class form348_SC_sp_FullSearchResult
     {
         public int RefId { get; set; }
@@ -36,5 +35,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(50)]
         public string? workflow_title { get; set; }
     }
-}
-

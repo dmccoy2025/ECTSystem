@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class form348_SC_sp_GroupSearchResult
     {
         public int RefId { get; set; }
@@ -35,5 +34,3 @@ namespace AF.ECT.Data.ResultTypes
         public int? Sub_Type { get; set; }
         public int? pas_priority { get; set; }
     }
-}
-

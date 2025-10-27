@@ -2,11 +2,8 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_CompletedByGroup_sp_GetCompletedByGroupWorkflowsResult
     {
         public byte workflowId { get; set; }
     }
-}
-

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class form348_sp_GroupSearchForLODV3_rayResult
     {
         public int RefId { get; set; }
@@ -37,5 +36,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(7)]
         public string PriorityRank { get; set; } = default!;
     }
-}
-

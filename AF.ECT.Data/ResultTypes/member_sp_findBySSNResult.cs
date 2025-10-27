@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class member_sp_findBySSNResult
     {
         [StringLength(11)]
@@ -32,5 +31,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(30)]
         public string? RANK_TITLE { get; set; }
     }
-}
-

@@ -2,13 +2,10 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lod_sp_GetWWDListByMemberSSNResult
     {
         public int Value { get; set; }
         [StringLength(50)]
         public string Name { get; set; } = default!;
     }
-}
-

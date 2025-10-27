@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_memo_sp_GetKeyValuesResult
     {
         [StringLength(20)]
@@ -13,5 +12,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(2147483647)]
         public string? Value { get; set; }
     }
-}
-

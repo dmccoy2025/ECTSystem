@@ -2,11 +2,8 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class PH_Workflow_sp_GetPushReportUnitsResult
     {
         public int? unitId { get; set; }
     }
-}
-

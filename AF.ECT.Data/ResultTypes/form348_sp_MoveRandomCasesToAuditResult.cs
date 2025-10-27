@@ -2,12 +2,9 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class form348_sp_MoveRandomCasesToAuditResult
     {
         [Column("Total Amount of cases")]
         public int? TotalAmountofcases { get; set; }
     }
-}
-

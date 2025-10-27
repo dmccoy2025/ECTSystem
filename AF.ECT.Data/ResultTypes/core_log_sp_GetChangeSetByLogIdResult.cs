@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_log_sp_GetChangeSetByLogIdResult
     {
         public int logId { get; set; }
@@ -23,5 +22,3 @@ namespace AF.ECT.Data.ResultTypes
         public string username { get; set; } = default!;
         public DateTime actionDate { get; set; }
     }
-}
-

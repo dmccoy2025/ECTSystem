@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_user_sp_GetUserAltTitleByGroupCompoResult
     {
         public int userID { get; set; }
@@ -14,5 +13,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(100)]
         public string? Title { get; set; }
     }
-}
-

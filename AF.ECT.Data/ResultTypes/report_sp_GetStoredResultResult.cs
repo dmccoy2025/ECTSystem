@@ -2,12 +2,9 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_GetStoredResultResult
     {
         [StringLength(2147483647)]
         public string ResultData { get; set; } = default!;
     }
-}
-

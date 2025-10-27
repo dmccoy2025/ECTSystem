@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     /// <summary>
     /// Wrapper result type for the ApplicationWarmupProcess_sp_GetAllLogs_pagination stored procedure
     /// that includes both the total count and the paginated data.
@@ -20,4 +19,3 @@ namespace AF.ECT.Data.ResultTypes
         /// </summary>
         public List<ApplicationWarmupProcess_sp_GetAllLogsResult> Data { get; set; } = new List<ApplicationWarmupProcess_sp_GetAllLogsResult>();
     }
-}

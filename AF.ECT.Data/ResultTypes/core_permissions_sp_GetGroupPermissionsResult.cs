@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_permissions_sp_GetGroupPermissionsResult
     {
         public short permid { get; set; }
@@ -15,5 +14,3 @@ namespace AF.ECT.Data.ResultTypes
         public bool exclude { get; set; }
         public short? GroupId { get; set; }
     }
-}
-

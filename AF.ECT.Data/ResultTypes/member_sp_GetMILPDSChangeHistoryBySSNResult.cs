@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class member_sp_GetMILPDSChangeHistoryBySSNResult
     {
         [StringLength(11)]
@@ -54,5 +53,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(10)]
         public string? ADRS_MAIL_ZIP { get; set; }
     }
-}
-

@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class core_lookUps_sp_FromLocationResult
     {
         [StringLength(100)]
@@ -11,5 +10,3 @@ namespace AF.ECT.Data.ResultTypes
         public int Id { get; set; }
         public int sort_order { get; set; }
     }
-}
-

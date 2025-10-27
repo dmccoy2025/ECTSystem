@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_GetLODStatistics_oldResult
     {
         public DateTime? start { get; set; }
@@ -17,5 +16,3 @@ namespace AF.ECT.Data.ResultTypes
         public int? wcaa { get; set; }
         public int? rlbaa { get; set; }
     }
-}
-

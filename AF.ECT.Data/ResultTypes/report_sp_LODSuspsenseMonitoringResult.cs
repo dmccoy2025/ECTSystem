@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_LODSuspsenseMonitoringResult
     {
         public int? UnitId { get; set; }
@@ -35,5 +34,3 @@ namespace AF.ECT.Data.ResultTypes
         public int? FormalBoardMedOffDays { get; set; }
         public int? FormalApprAuthDays { get; set; }
     }
-}
-

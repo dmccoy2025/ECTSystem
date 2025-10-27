@@ -2,8 +2,7 @@
 
 #nullable enable
 
-namespace AF.ECT.Data.ResultTypes
-{
+namespace AF.ECT.Data.ResultTypes;
     public partial class report_sp_GetSpecialCasesRFAByGroupResult
     {
         [StringLength(100)]
@@ -18,5 +17,3 @@ namespace AF.ECT.Data.ResultTypes
         [StringLength(2147483647)]
         public string? ExplanationForSendingBack { get; set; }
     }
-}
-
