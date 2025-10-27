@@ -1,9 +1,10 @@
-using Grpc.Net.Client;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Testing;
 using AF.ECT.Data.Interfaces;
 using AF.ECT.Data.ResultTypes;
 using AF.ECT.Server;
+using AF.ECT.Shared.Extensions;
+using Grpc.Net.Client;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace AF.ECT.Tests.Infrastructure;
 
@@ -154,10 +155,6 @@ public class IntegrationTestBase : WebApplicationFactory<Program>
     protected GrpcChannel CreateGrpcChannel()
     {
         var client = base.CreateClient();
-        var channel = GrpcChannel.ForAddress(client.BaseAddress!, new GrpcChannelOptions
-        {
-            HttpClient = client
-        });
-        return channel;
+        return GrpcChannelFactory.CreateForTesting(client.BaseAddress!, client);
     }
 }

@@ -1,5 +1,5 @@
+using AF.ECT.Server.Utilities;
 using Grpc.Core.Interceptors;
-using System.Security.Claims;
 
 namespace AF.ECT.Server.Interceptors;
 
@@ -31,8 +31,8 @@ public class AuditInterceptor : Interceptor
     {
         var startTime = DateTime.UtcNow;
         var methodName = context.Method;
-        var userId = GetUserId(context);
-        var clientIp = GetClientIpAddress(context);
+        var userId = GrpcContextHelper.GetUserId(context);
+        var clientIp = GrpcContextHelper.GetClientIpAddress(context);
 
         try
         {
@@ -68,8 +68,8 @@ public class AuditInterceptor : Interceptor
     {
         var startTime = DateTime.UtcNow;
         var methodName = context.Method;
-        var userId = GetUserId(context);
-        var clientIp = GetClientIpAddress(context);
+        var userId = GrpcContextHelper.GetUserId(context);
+        var clientIp = GrpcContextHelper.GetClientIpAddress(context);
 
         try
         {
@@ -92,80 +92,4 @@ public class AuditInterceptor : Interceptor
         }
     }
 
-    /// <summary>
-    /// Extracts the user ID from the request context.
-    /// </summary>
-    private static string GetUserId(ServerCallContext context)
-    {
-        try
-        {
-            // Try to get user ID from claims
-            var user = context.GetHttpContext()?.User;
-            if (user?.Identity?.IsAuthenticated == true)
-            {
-                var userIdClaim = user.FindFirst(ClaimTypes.NameIdentifier) ??
-                                 user.FindFirst("sub") ??
-                                 user.FindFirst("user_id");
-                if (userIdClaim != null)
-                {
-                    return userIdClaim.Value;
-                }
-
-                // Fallback to name claim
-                var nameClaim = user.FindFirst(ClaimTypes.Name);
-                if (nameClaim != null)
-                {
-                    return nameClaim.Value;
-                }
-            }
-
-            // Try to get from custom headers
-            var userIdHeader = context.RequestHeaders.Get("x-user-id")?.Value;
-            if (!string.IsNullOrEmpty(userIdHeader))
-            {
-                return userIdHeader;
-            }
-
-            return "anonymous";
-        }
-        catch
-        {
-            return "unknown";
-        }
-    }
-
-    /// <summary>
-    /// Extracts the client IP address from the request context.
-    /// </summary>
-    private static string GetClientIpAddress(ServerCallContext context)
-    {
-        try
-        {
-            var httpContext = context.GetHttpContext();
-            if (httpContext != null)
-            {
-                // Check for forwarded headers (common in proxy/load balancer scenarios)
-                var forwardedFor = httpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault();
-                if (!string.IsNullOrEmpty(forwardedFor))
-                {
-                    return forwardedFor.Split(',').First().Trim();
-                }
-
-                var realIp = httpContext.Request.Headers["X-Real-IP"].FirstOrDefault();
-                if (!string.IsNullOrEmpty(realIp))
-                {
-                    return realIp;
-                }
-
-                // Fallback to connection remote IP
-                return httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown";
-            }
-
-            return "unknown";
-        }
-        catch
-        {
-            return "unknown";
-        }
-    }
 }

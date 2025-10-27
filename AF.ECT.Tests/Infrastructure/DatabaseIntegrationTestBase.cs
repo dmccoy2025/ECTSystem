@@ -1,11 +1,12 @@
 using System.Data.Common;
 using AF.ECT.Data.Interfaces;
 using AF.ECT.Data.Models;
+using AF.ECT.Server;
+using AF.ECT.Shared.Extensions;
 using Grpc.Net.Client;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using AF.ECT.Server;
 
 namespace AF.ECT.Tests.Infrastructure;
 
@@ -115,11 +116,7 @@ public class DatabaseIntegrationTestBase : WebApplicationFactory<Program>, IAsyn
     protected GrpcChannel CreateGrpcChannel()
     {
         var client = base.CreateClient();
-        var channel = GrpcChannel.ForAddress(client.BaseAddress!, new GrpcChannelOptions
-        {
-            HttpClient = client
-        });
-        return channel;
+        return GrpcChannelFactory.CreateForTesting(client.BaseAddress!, client);
     }
 
     /// <summary>

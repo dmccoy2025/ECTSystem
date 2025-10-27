@@ -1,3 +1,4 @@
+using AF.ECT.Server.Utilities;
 using Grpc.Core.Interceptors;
 
 namespace AF.ECT.Server.Interceptors;
@@ -32,7 +33,15 @@ public class ExceptionInterceptor : Interceptor
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "An error occurred while processing gRPC request");
+            // Extract context for enhanced error logging
+            var userId = GrpcContextHelper.GetUserId(context);
+            var clientIp = GrpcContextHelper.GetClientIpAddress(context);
+            var correlationId = GrpcContextHelper.GetCorrelationId(context);
+            
+            _logger.LogError(ex,
+                "gRPC Error: Method={Method}, UserId={UserId}, ClientIP={ClientIP}, CorrelationId={CorrelationId}",
+                context.Method, userId, clientIp, correlationId);
+            
             // Include exception details for debugging in test environment
             var errorMessage = context.GetHttpContext()?.RequestServices?
                 .GetService<IHostEnvironment>()?.IsDevelopment() == true

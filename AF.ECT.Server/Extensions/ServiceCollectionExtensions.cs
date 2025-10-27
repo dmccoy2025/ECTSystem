@@ -7,8 +7,6 @@ using AF.ECT.Server.Services.Interfaces;
 using AspNetCoreRateLimit;
 using Audit.Core;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Trace;
 using Radzen;
 
 namespace AF.ECT.Server.Extensions;
@@ -51,9 +49,11 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddDataAccess(this IServiceCollection services, IConfiguration configuration)
     {
         // Configure and validate database options
+        services.AddValidatedOptions<DatabaseOptions>(configuration);
+        
+        // Get database options for connection setup
         var databaseOptions = new DatabaseOptions();
         configuration.GetSection("DatabaseOptions").Bind(databaseOptions);
-        Validator.ValidateObject(databaseOptions, new ValidationContext(databaseOptions), validateAllProperties: true);
 
         var connectionString = configuration.GetConnectionString("ALODConnection");
 
@@ -119,9 +119,11 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddApplicationCors(this IServiceCollection services, IConfiguration configuration)
     {
         // Configure and validate CORS options
+        services.AddValidatedOptions<CorsOptions>(configuration);
+        
+        // Get CORS options for policy setup
         var corsOptions = new CorsOptions();
         configuration.GetSection("CorsOptions").Bind(corsOptions);
-        Validator.ValidateObject(corsOptions, new ValidationContext(corsOptions), validateAllProperties: true);
     
         services.AddCors(options =>
         {
@@ -228,7 +230,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddRateLimitingServices(this IServiceCollection services, IConfiguration configuration)
     {
         // Load rate limiting configuration from appsettings.json
-        services.AddOptions<IpRateLimitOptions>().Bind(configuration.GetSection("IpRateLimitOptions")).ValidateDataAnnotations().ValidateOnStart();
+        services.AddValidatedOptions<IpRateLimitOptions>(configuration);
 
         // Register rate limiting stores
         services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
@@ -278,20 +280,12 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services">The service collection to add services to.</param>
     /// <returns>The service collection with telemetry services configured.</returns>
+    /// <remarks>
+    /// Uses centralized OpenTelemetry configuration from AF.ECT.ServiceDefaults
+    /// with ASP.NET Core, Entity Framework Core, and runtime instrumentation.
+    /// </remarks>
     public static IServiceCollection AddTelemetry(this IServiceCollection services)
     {
-        services.AddOpenTelemetry()
-            .WithTracing(tracing => tracing
-                .AddAspNetCoreInstrumentation()
-                .AddEntityFrameworkCoreInstrumentation()
-                .AddOtlpExporter()
-            )
-            .WithMetrics(metrics => metrics
-                .AddAspNetCoreInstrumentation()
-                .AddRuntimeInstrumentation()
-                .AddOtlpExporter()
-            );
-
-        return services;
+        return services.AddServerTelemetry();
     }
 }

@@ -1,8 +1,8 @@
+using AF.ECT.Shared.Extensions;
 using Blazored.LocalStorage;
 using Grpc.Net.Client;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Radzen;
-using OpenTelemetry.Trace;
 
 namespace AF.ECT.WebClient.Extensions;
 
@@ -22,29 +22,27 @@ public static class ServiceCollectionExtensions
         services.AddBlazoredLocalStorage();
 
         // Configure and validate WorkflowClient options from appsettings.json
-        services.AddOptions<WorkflowClientOptions>().Bind(builder.Configuration.GetSection("WorkflowClientOptions")).ValidateDataAnnotations().ValidateOnStart();
+        services.AddValidatedOptions<WorkflowClientOptions>(builder.Configuration);
 
         // Configure and validate server options
-        services.AddOptions<ServerOptions>().Bind(builder.Configuration.GetSection("Server")).ValidateDataAnnotations().ValidateOnStart();
+        services.AddValidatedOptions<ServerOptions>(builder.Configuration, "Server");
 
         // Configure gRPC client for browser compatibility
         services.AddScoped(serviceProvider =>
         {
             var serverOptions = serviceProvider.GetRequiredService<IOptions<ServerOptions>>().Value;
-            return new WorkflowService.WorkflowServiceClient(GrpcChannel.ForAddress(serverOptions.ServerUrl, new GrpcChannelOptions
-            {
-                HttpClient = serviceProvider.GetRequiredService<HttpClient>(),
-                DisposeHttpClient = false
-            }));
+            var httpClient = serviceProvider.GetRequiredService<HttpClient>();
+            var channel = GrpcChannelFactory.CreateForBrowser(
+                serverOptions.ServerUrl,
+                httpClient,
+                disposeHttpClient: false);
+            return new WorkflowService.WorkflowServiceClient(channel);
         });
 
         services.AddScoped<IWorkflowClient, WorkflowClient>();
 
-        services.AddOpenTelemetry()
-            .WithTracing(tracing => tracing
-                .AddGrpcClientInstrumentation()
-                .AddOtlpExporter()
-            );
+        // Configure OpenTelemetry for client-side tracing
+        services.AddClientTelemetry();
 
         return services;
     }
