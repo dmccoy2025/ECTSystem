@@ -1,5 +1,6 @@
 using AF.ECT.Server.Services.Interfaces;
 using AF.ECT.Data.Interfaces;
+using Google.Protobuf.Collections;
 
 namespace AF.ECT.Server.Services;
 
@@ -60,6 +61,92 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
     private static RpcException CreateCancelledException(string message = "Operation was cancelled")
     {
         return new RpcException(new Status(StatusCode.Cancelled, message));
+    }
+
+    /// <summary>
+    /// Executes a data fetch operation and maps results to a gRPC response.
+    /// </summary>
+    private async Task<TResponse> ExecuteListOperationAsync<TData, TItem, TResponse>(
+        Func<Task<IList<TData>>> dataFetcher,
+        Func<TData, TItem> itemMapper,
+        Func<RepeatedField<TItem>, TResponse> responseFactory,
+        string operationName)
+        where TResponse : new()
+    {
+        return await ExecuteGrpcOperationAsync(async () =>
+        {
+            var results = await _resilienceService.ExecuteWithRetryAsync(dataFetcher);
+            var items = new RepeatedField<TItem>();
+            items.AddRange(results?.Select(itemMapper) ?? Enumerable.Empty<TItem>());
+            return responseFactory(items);
+        }, operationName);
+    }
+
+    /// <summary>
+    /// Executes a gRPC operation with standardized error handling.
+    /// </summary>
+    /// <typeparam name="TResponse">The response type.</typeparam>
+    /// <param name="operation">The operation to execute.</param>
+    /// <param name="operationName">The name of the operation for logging.</param>
+    /// <returns>The operation result.</returns>
+    private async Task<TResponse> ExecuteGrpcOperationAsync<TResponse>(
+        Func<Task<TResponse>> operation,
+        string operationName)
+    {
+        try
+        {
+            _logger.LogInformation(operationName);
+            return await operation();
+        }
+        catch (RpcException)
+        {
+            throw;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogWarning(ex, "Operation was cancelled");
+            throw CreateCancelledException();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, $"An error occurred while {operationName.ToLower()}");
+            throw CreateInternalErrorException();
+        }
+    }
+    
+    /// <summary>
+    /// Executes a streaming gRPC operation with standardized error handling and cancellation support.
+    /// </summary>
+    /// <typeparam name="TData">The source data type.</typeparam>
+    /// <typeparam name="TItem">The gRPC response item type.</typeparam>
+    /// <param name="responseStream">The response stream writer.</param>
+    /// <param name="context">The server call context.</param>
+    /// <param name="dataFetcher">Function to fetch data from the data service.</param>
+    /// <param name="itemMapper">Function to map data items to gRPC items.</param>
+    /// <param name="operationName">The name of the operation for logging.</param>
+    private async Task ExecuteStreamingOperationAsync<TData, TItem>(
+        IServerStreamWriter<TItem> responseStream,
+        ServerCallContext context,
+        Func<Task<IList<TData>>> dataFetcher,
+        Func<TData, TItem> itemMapper,
+        string operationName)
+    {
+        await ExecuteGrpcOperationAsync(async () =>
+        {
+            var results = await _resilienceService.ExecuteWithRetryAsync(dataFetcher);
+            
+            if (results != null)
+            {
+                foreach (var item in results)
+                {
+                    context.CancellationToken.ThrowIfCancellationRequested();
+                    await responseStream.WriteAsync(itemMapper(item));
+                }
+            }
+
+            return Task.CompletedTask;
+            
+        }, operationName);
     }
 
     #endregion
@@ -4166,13 +4253,15 @@ public class WorkflowServiceImpl : WorkflowService.WorkflowServiceBase
             _logger.LogError(ex, "Unexpected error in FindProcessLastExecutionDate: {Message}", ex.Message);
             throw CreateInternalErrorException();
         }
-    }    /// <summary>
-         /// Handles the FindProcessLastExecutionDateStream gRPC request (streaming version).
-         /// </summary>
-         /// <param name="request">The request containing process last execution date parameters.</param>
-         /// <param name="responseStream">The server stream writer for sending items.</param>
-         /// <param name="context">The server call context for the gRPC operation.</param>
-         /// <returns>A task representing the asynchronous operation.</returns>
+    }    
+
+    /// <summary>
+    /// Handles the FindProcessLastExecutionDateStream gRPC request (streaming version).
+    /// </summary>
+    /// <param name="request">The request containing process last execution date parameters.</param>
+    /// <param name="responseStream">The server stream writer for sending items.</param>
+    /// <param name="context">The server call context for the gRPC operation.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
     public async override Task FindProcessLastExecutionDateStream(FindProcessLastExecutionDateRequest request, IServerStreamWriter<ProcessLastExecutionDateItem> responseStream, ServerCallContext context)
     {
         try
