@@ -1,8 +1,6 @@
-global using System;
-global using System.Collections.Generic;
-global using System.Linq;
-global using System.Threading;
-global using System.Threading.Tasks;
+// Implicit usings from .NET 9.0 (System, System.Collections.Generic, System.Linq, System.Threading, System.Threading.Tasks)
+// are automatically included via <ImplicitUsings>enable</ImplicitUsings>
+
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;

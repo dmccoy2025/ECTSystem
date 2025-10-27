@@ -1,9 +1,6 @@
-global using System;
-global using System.Collections.Generic;
+// Implicit usings from .NET 9.0 (System, System.Collections.Generic, System.Linq, System.Threading, System.Threading.Tasks)\n// are automatically included via <ImplicitUsings>enable</ImplicitUsings>
+
 global using System.Diagnostics;
-global using System.Linq;
-global using System.Threading;
-global using System.Threading.Tasks;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Options;

@@ -1,4 +1,5 @@
 using AF.ECT.WebClient.Extensions;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 namespace AF.ECT.WebClient;

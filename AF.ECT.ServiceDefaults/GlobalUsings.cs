@@ -1,14 +1,9 @@
-global using System;
-global using System.Collections.Generic;
-global using System.Linq;
-global using System.Threading.Tasks;
-global using Microsoft.AspNetCore.Builder;
+// Implicit usings from .NET 9.0 Web SDK (System, System.Collections.Generic, System.Linq, System.Threading.Tasks,
+// Microsoft.AspNetCore.Builder, Microsoft.Extensions.Configuration, Microsoft.Extensions.DependencyInjection,
+// Microsoft.Extensions.Hosting, Microsoft.Extensions.Logging) are automatically included via <ImplicitUsings>enable</ImplicitUsings>
+
 global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-global using Microsoft.Extensions.Configuration;
-global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Diagnostics.HealthChecks;
-global using Microsoft.Extensions.Hosting;
-global using Microsoft.Extensions.Logging;
 global using OpenTelemetry.Logs;
 global using OpenTelemetry.Metrics;
 global using OpenTelemetry.Trace;

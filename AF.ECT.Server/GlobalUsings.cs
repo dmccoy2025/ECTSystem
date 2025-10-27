@@ -1,17 +1,10 @@
-global using System;
-global using System.Collections.Generic;
+// Implicit usings from .NET 9.0 Web SDK (System, System.Collections.Generic, System.Linq, System.Threading, System.Threading.Tasks,
+// Microsoft.AspNetCore.Builder, Microsoft.AspNetCore.Hosting, Microsoft.AspNetCore.Http, Microsoft.Extensions.Configuration,
+// Microsoft.Extensions.DependencyInjection, Microsoft.Extensions.Hosting, Microsoft.Extensions.Logging)
+// are automatically included via <ImplicitUsings>enable</ImplicitUsings>
+
 global using System.ComponentModel.DataAnnotations;
-global using System.Linq;
-global using System.Threading;
-global using System.Threading.Tasks;
-global using Microsoft.AspNetCore.Builder;
-global using Microsoft.AspNetCore.Hosting;
-global using Microsoft.AspNetCore.Http;
 global using Microsoft.EntityFrameworkCore;
-global using Microsoft.Extensions.Configuration;
-global using Microsoft.Extensions.DependencyInjection;
-global using Microsoft.Extensions.Hosting;
-global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Options;
 global using Grpc.Core;
 global using Polly;
