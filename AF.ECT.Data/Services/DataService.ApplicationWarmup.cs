@@ -72,7 +72,7 @@ public partial class DataService
         try
         {
             using var context = await _contextFactory.CreateDbContextAsync(cancellationToken);
-            var result = await ((ALODContextProcedures)context.Procedures).ApplicationWarmupProcess_sp_GetAllLogsAsync(cancellationToken: cancellationToken);
+            var result = await context.Procedures.ApplicationWarmupProcess_sp_GetAllLogsAsync(cancellationToken: cancellationToken);
             _logger.LogInformation("Retrieved {Count} log entries", result.Count);
             return result;
         }
