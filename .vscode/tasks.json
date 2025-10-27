@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/ElectronicCaseTracking.sln",
+                "${workspaceFolder}/ECTSystem.sln",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary", 
                 "/m:8"
@@ -30,12 +30,23 @@
             "group": "build"
         },
         {
-            "label": "cleanup-and-build",
+            "label": "cleanup-and-build ECTSystem solution",
             "type": "shell",
             "command": "powershell",
             "args": [
                 "-Command",
-                "Stop-Process -Name 'dotnet' -Force -ErrorAction SilentlyContinue; dotnet clean ElectronicCaseTracking.sln; dotnet build ElectronicCaseTracking.sln /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary /m:8"
+                "Stop-Process -Name 'dotnet' -Force -ErrorAction SilentlyContinue; dotnet clean ECTSystem.sln; dotnet build ECTSystem.sln /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary /m:8"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "cleanup-and-build ECTSystem.Database solution",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "Stop-Process -Name 'dotnet' -Force -ErrorAction SilentlyContinue; dotnet clean ECTSystem.Database.sln; dotnet build ECTSystem.Database.sln /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary /m:8"
             ],
             "problemMatcher": "$msCompile",
             "group": "build"
