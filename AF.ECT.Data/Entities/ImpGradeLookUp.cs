@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Grade Look Up data for system migration/integration.
+/// </summary>
 public partial class ImpGradeLookUp
 {
     public string? Grade { get; set; }

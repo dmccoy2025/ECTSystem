@@ -3,35 +3,83 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Incap Finding data.
+/// </summary>
 public partial class Form348IncapFinding
 {
+    /// <summary>
+    /// Gets or sets the Sc Id identifier.
+    /// </summary>
     public int ScId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Init Start Date date.
+    /// </summary>
     public DateTime? InitStartDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Init End Date date.
+    /// </summary>
     public DateTime? InitEndDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Init Ext Or Complete.
+    /// </summary>
     public bool? InitExtOrComplete { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Init Appeal Or Complete.
+    /// </summary>
     public bool? InitAppealOrComplete { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Report Type.
+    /// </summary>
     public string? MedReportType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Ability To Preform.
+    /// </summary>
     public bool? MedAbilityToPreform { get; set; }
 
+    /// <summary>
+    /// Gets or sets the I C Recommendation.
+    /// </summary>
     public bool? ICRecommendation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Wing Ja Concur.
+    /// </summary>
     public bool? WingJaConcur { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Fin Income Lost.
+    /// </summary>
     public bool? FinIncomeLost { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Wcc Init Approval.
+    /// </summary>
     public bool? WccInitApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Init Late Submission.
+    /// </summary>
     public bool? InitLateSubmission { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Fin Self Employed.
+    /// </summary>
     public bool? FinSelfEmployed { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Form348 Incap Appeals.
+    /// </summary>
     public virtual ICollection<Form348IncapAppeal> Form348IncapAppeals { get; set; } = new List<Form348IncapAppeal>();
 
+    /// <summary>
+    /// Gets or sets the Form348 Incap Exts.
+    /// </summary>
     public virtual ICollection<Form348IncapExt> Form348IncapExts { get; set; } = new List<Form348IncapExt>();
 }

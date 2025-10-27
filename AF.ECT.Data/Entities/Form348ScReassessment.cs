@@ -3,13 +3,28 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Sc Reassessment data.
+/// </summary>
 public partial class Form348ScReassessment
 {
+    /// <summary>
+    /// Gets or sets the Original Ref Id identifier.
+    /// </summary>
     public int OriginalRefId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Reassessment Ref Id identifier.
+    /// </summary>
     public int ReassessmentRefId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Original Ref.
+    /// </summary>
     public virtual Form348Sc OriginalRef { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Reassessment Ref.
+    /// </summary>
     public virtual Form348Sc ReassessmentRef { get; set; } = null!;
 }

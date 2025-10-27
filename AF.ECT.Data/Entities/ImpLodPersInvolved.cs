@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Lod Pers Involved data for system migration/integration.
+/// </summary>
 public partial class ImpLodPersInvolved
 {
     public string? LiId { get; set; }

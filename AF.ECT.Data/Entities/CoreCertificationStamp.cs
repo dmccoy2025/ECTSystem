@@ -20,11 +20,23 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreCertificationStamp
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Name.
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Body.
+    /// </summary>
     public string Body { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Is Qualified.
+    /// </summary>
     public bool IsQualified { get; set; }
 }

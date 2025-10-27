@@ -3,27 +3,63 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a placeholder/form Field Type.
+/// </summary>
 public partial class PhFieldType
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Name.
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Placeholder.
+    /// </summary>
     public string? Placeholder { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Data Type Id identifier.
+    /// </summary>
     public int DataTypeId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Datasource.
+    /// </summary>
     public string? Datasource { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Color.
+    /// </summary>
     public string? Color { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Length.
+    /// </summary>
     public int? Length { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Data Type.
+    /// </summary>
     public virtual CoreLkupDataType DataType { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Ph Form Fields.
+    /// </summary>
     public virtual ICollection<PhFormField> PhFormFields { get; set; } = new List<PhFormField>();
 
+    /// <summary>
+    /// Gets or sets the Ph Form Values.
+    /// </summary>
     public virtual ICollection<PhFormValue> PhFormValues { get; set; } = new List<PhFormValue>();
 
+    /// <summary>
+    /// Gets or sets the Rpt Ph User Query Output Fields.
+    /// </summary>
     public virtual ICollection<RptPhUserQueryOutputField> RptPhUserQueryOutputFields { get; set; } = new List<RptPhUserQueryOutputField>();
 }

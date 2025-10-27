@@ -20,13 +20,28 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreUserPermission
 {
+    /// <summary>
+    /// Gets or sets the User Id identifier.
+    /// </summary>
     public int UserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Perm Id identifier.
+    /// </summary>
     public short PermId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Status.
+    /// </summary>
     public string Status { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Perm.
+    /// </summary>
     public virtual CorePermission Perm { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the User.
+    /// </summary>
     public virtual CoreUser User { get; set; } = null!;
 }

@@ -3,28 +3,64 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Line of Duty Investigation Report disposition data imported from AFRC Oracle.
+/// </summary>
 public partial class AfrcOracleLirDispDatum
 {
+    /// <summary>
+    /// Gets or sets the Line of Duty Investigation Report identifier.
+    /// </summary>
     public string? LirId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Line of Duty case identifier.
+    /// </summary>
     public string? LodId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the report date.
+    /// </summary>
     public string? ReportDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the subject of the investigation.
+    /// </summary>
     public string? InvestigationOf { get; set; }
 
+    /// <summary>
+    /// Gets or sets the current status of the investigation.
+    /// </summary>
     public string? Status { get; set; }
 
+    /// <summary>
+    /// Gets or sets the type of inactive status.
+    /// </summary>
     public string? StatusInactiveType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the status duration start date.
+    /// </summary>
     public string? StatusDurationStart { get; set; }
 
+    /// <summary>
+    /// Gets or sets the status duration finish date.
+    /// </summary>
     public string? StatusDurationFinish { get; set; }
 
+    /// <summary>
+    /// Gets or sets the authority to whom the report is addressed.
+    /// </summary>
     public string? AddressedTo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the time of circumstances under investigation.
+    /// </summary>
     public string? CircumstancesTime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the place of circumstances under investigation.
+    /// </summary>
     public string? CircumstancesPlace { get; set; }
 
     public string? SustainedDesc { get; set; }

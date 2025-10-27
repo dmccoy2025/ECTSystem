@@ -3,23 +3,53 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Approval Authority data.
+/// </summary>
 public partial class Form348ApprovalAuthority
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Name.
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Sig Block.
+    /// </summary>
     public string SigBlock { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  title.
+    /// </summary>
     public string Title { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Effective Date date.
+    /// </summary>
     public DateTime EffectiveDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public int CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who last modified this record.
+    /// </summary>
     public int ModifiedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Modified Date date.
+    /// </summary>
     public DateTime ModifiedDate { get; set; }
 }

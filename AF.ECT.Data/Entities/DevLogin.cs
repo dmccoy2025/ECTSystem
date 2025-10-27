@@ -3,11 +3,23 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Dev Login entity.
+/// </summary>
 public partial class DevLogin
 {
+    /// <summary>
+    /// Gets or sets the User Id identifier.
+    /// </summary>
     public int UserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Compo.
+    /// </summary>
     public string Compo { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Role Id identifier.
+    /// </summary>
     public int? RoleId { get; set; }
 }

@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Non Unit Personnel data for system migration/integration.
+/// </summary>
 public partial class ImpNonUnitPersonnel
 {
     public string? PersId { get; set; }

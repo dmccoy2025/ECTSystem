@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Lkup Access Status data for system migration/integration.
+/// </summary>
 public partial class ImpLkupAccessStatus
 {
     public string? Accountstatus { get; set; }

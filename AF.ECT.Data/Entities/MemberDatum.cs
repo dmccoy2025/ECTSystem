@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Member Datum entity.
+/// </summary>
 public partial class MemberDatum
 {
     public string Ssan { get; set; } = null!;

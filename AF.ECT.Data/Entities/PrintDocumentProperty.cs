@@ -3,13 +3,28 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Print Document Property entity.
+/// </summary>
 public partial class PrintDocumentProperty
 {
+    /// <summary>
+    /// Gets or sets the Property Id identifier.
+    /// </summary>
     public int PropertyId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Doc Id identifier.
+    /// </summary>
     public short DocId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Property Name.
+    /// </summary>
     public string PropertyName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Property Value.
+    /// </summary>
     public string PropertyValue { get; set; } = null!;
 }

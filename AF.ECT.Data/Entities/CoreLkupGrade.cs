@@ -26,31 +26,73 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreLkupGrade
 {
+    /// <summary>
+    /// Gets or sets the Code.
+    /// </summary>
     public int Code { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  military grade/rank.
+    /// </summary>
     public string? Rank { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  military grade/rank.
+    /// </summary>
     public string? Grade { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  title.
+    /// </summary>
     public string? Title { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Displayorder.
+    /// </summary>
     public short? Displayorder { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Core Users.
+    /// </summary>
     public virtual ICollection<CoreUser> CoreUsers { get; set; } = new List<CoreUser>();
 
+    /// <summary>
+    /// Gets or sets the Core Work Status Trackings.
+    /// </summary>
     public virtual ICollection<CoreWorkStatusTracking> CoreWorkStatusTrackings { get; set; } = new List<CoreWorkStatusTracking>();
 
+    /// <summary>
+    /// Gets or sets the Form348 Ap Sarcs.
+    /// </summary>
     public virtual ICollection<Form348ApSarc> Form348ApSarcs { get; set; } = new List<Form348ApSarc>();
 
+    /// <summary>
+    /// Gets or sets the Form348 Aps.
+    /// </summary>
     public virtual ICollection<Form348Ap> Form348Aps { get; set; } = new List<Form348Ap>();
 
+    /// <summary>
+    /// Gets or sets the Form348 Rrs.
+    /// </summary>
     public virtual ICollection<Form348Rr> Form348Rrs { get; set; } = new List<Form348Rr>();
 
+    /// <summary>
+    /// Gets or sets the Form348 Sarcs.
+    /// </summary>
     public virtual ICollection<Form348Sarc> Form348Sarcs { get; set; } = new List<Form348Sarc>();
 
+    /// <summary>
+    /// Gets or sets the Form348s.
+    /// </summary>
     public virtual ICollection<Form348> Form348s { get; set; } = new List<Form348>();
 
+    /// <summary>
+    /// Gets or sets the Grade Abbreviations.
+    /// </summary>
     public virtual ICollection<GradeAbbreviation> GradeAbbreviations { get; set; } = new List<GradeAbbreviation>();
 
+    /// <summary>
+    /// Gets or sets the Member Data.
+    /// </summary>
     public virtual ICollection<MemberDatum> MemberData { get; set; } = new List<MemberDatum>();
 }

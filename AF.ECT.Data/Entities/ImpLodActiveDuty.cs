@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Lod Active Duty data for system migration/integration.
+/// </summary>
 public partial class ImpLodActiveDuty
 {
     public string? AdId { get; set; }

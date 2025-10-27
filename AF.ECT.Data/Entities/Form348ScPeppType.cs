@@ -3,13 +3,28 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Sc Pepp Type data.
+/// </summary>
 public partial class Form348ScPeppType
 {
+    /// <summary>
+    /// Gets or sets the Ref Id identifier.
+    /// </summary>
     public int RefId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Type Id identifier.
+    /// </summary>
     public int TypeId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ref.
+    /// </summary>
     public virtual Form348Sc Ref { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Type.
+    /// </summary>
     public virtual CoreLkupPepptype Type { get; set; } = null!;
 }

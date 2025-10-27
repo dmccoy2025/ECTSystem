@@ -3,11 +3,23 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Suicide Method entity.
+/// </summary>
 public partial class SuicideMethod
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Name.
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether this record is active.
+    /// </summary>
     public bool Active { get; set; }
 }

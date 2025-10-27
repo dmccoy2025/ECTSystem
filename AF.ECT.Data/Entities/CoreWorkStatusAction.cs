@@ -20,17 +20,38 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreWorkStatusAction
 {
+    /// <summary>
+    /// Gets or sets the Wsa Id identifier.
+    /// </summary>
     public int WsaId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Wso Id identifier.
+    /// </summary>
     public int WsoId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Action Type.
+    /// </summary>
     public byte ActionType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Target.
+    /// </summary>
     public int Target { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Data.
+    /// </summary>
     public int? Data { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Action Type Navigation.
+    /// </summary>
     public virtual CoreLkupWorkflowAction ActionTypeNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Wso.
+    /// </summary>
     public virtual CoreWorkStatusOption Wso { get; set; } = null!;
 }

@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Nonunit Personnel data imported from AFRC Oracle.
+/// </summary>
 public partial class AfrcOracleNonunitPersonnelDatum
 {
     public string? PersId { get; set; }

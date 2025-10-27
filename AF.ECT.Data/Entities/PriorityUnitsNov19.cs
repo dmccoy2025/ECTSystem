@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Priority Units Nov19 entity.
+/// </summary>
 public partial class PriorityUnitsNov19
 {
     public decimal? Id { get; set; }

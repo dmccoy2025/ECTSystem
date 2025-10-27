@@ -23,15 +23,33 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreLkupCompo
 {
+    /// <summary>
+    /// Gets or sets the Compo.
+    /// </summary>
     public string Compo { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Compo Descr.
+    /// </summary>
     public string CompoDescr { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Abbreviation.
+    /// </summary>
     public string? Abbreviation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Core Memo Letterheads.
+    /// </summary>
     public virtual ICollection<CoreMemoLetterhead> CoreMemoLetterheads { get; set; } = new List<CoreMemoLetterhead>();
 
+    /// <summary>
+    /// Gets or sets the Core User Groups.
+    /// </summary>
     public virtual ICollection<CoreUserGroup> CoreUserGroups { get; set; } = new List<CoreUserGroup>();
 
+    /// <summary>
+    /// Gets or sets the Core Users.
+    /// </summary>
     public virtual ICollection<CoreUser> CoreUsers { get; set; } = new List<CoreUser>();
 }

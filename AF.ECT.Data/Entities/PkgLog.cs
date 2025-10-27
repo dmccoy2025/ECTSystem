@@ -3,25 +3,58 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Pkg Log entity.
+/// </summary>
 public partial class PkgLog
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pkg Name.
+    /// </summary>
     public string? PkgName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Starttime.
+    /// </summary>
     public DateTime? Starttime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Endtime.
+    /// </summary>
     public DateTime? Endtime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the N Row Raw Inserted.
+    /// </summary>
     public int? NRowRawInserted { get; set; }
 
+    /// <summary>
+    /// Gets or sets the N Row Inserted.
+    /// </summary>
     public int? NRowInserted { get; set; }
 
+    /// <summary>
+    /// Gets or sets the N Row Updated.
+    /// </summary>
     public int? NRowUpdated { get; set; }
 
+    /// <summary>
+    /// Gets or sets the N Deleted Members.
+    /// </summary>
     public int? NDeletedMembers { get; set; }
 
+    /// <summary>
+    /// Gets or sets the N Modified Records.
+    /// </summary>
     public int? NModifiedRecords { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Source File Name.
+    /// </summary>
     public string? SourceFileName { get; set; }
 }

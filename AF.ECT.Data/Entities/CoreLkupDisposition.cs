@@ -3,9 +3,18 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a lookup table for Disposition.
+/// </summary>
 public partial class CoreLkupDisposition
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Name.
+    /// </summary>
     public string Name { get; set; } = null!;
 }

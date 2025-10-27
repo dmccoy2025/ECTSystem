@@ -3,61 +3,148 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Command Struct History entity.
+/// </summary>
 public partial class CommandStructHistory
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pkg Log Id identifier.
+    /// </summary>
     public int? PkgLogId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pascode.
+    /// </summary>
     public string Pascode { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Cs Id identifier.
+    /// </summary>
     public int CsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public int CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Address1.
+    /// </summary>
     public string? Address1 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Address2.
+    /// </summary>
     public string? Address2 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Base Code.
+    /// </summary>
     public string? BaseCode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  city.
+    /// </summary>
     public string? City { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Command Code.
+    /// </summary>
     public string? CommandCode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Command Struct Utc.
+    /// </summary>
     public string? CommandStructUtc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Component.
+    /// </summary>
     public string? Component { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  country.
+    /// </summary>
     public string? Country { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cs Id Parent.
+    /// </summary>
     public int? CsIdParent { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cs Level.
+    /// </summary>
     public string? CsLevel { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cs Oper Type.
+    /// </summary>
     public string? CsOperType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Geo Loc.
+    /// </summary>
     public string? GeoLoc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Long Name.
+    /// </summary>
     public string? LongName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  postal/ZIP code.
+    /// </summary>
     public string? PostalCode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  state.
+    /// </summary>
     public string? State { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Uic.
+    /// </summary>
     public string? Uic { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Unit Det.
+    /// </summary>
     public string? UnitDet { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Unit Kind.
+    /// </summary>
     public string? UnitKind { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Unit Nbr.
+    /// </summary>
     public string? UnitNbr { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Unit Type.
+    /// </summary>
     public string? UnitType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Change Type.
+    /// </summary>
     public string? ChangeType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Parent Pas Code.
+    /// </summary>
     public string? ParentPasCode { get; set; }
 }

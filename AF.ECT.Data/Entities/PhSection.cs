@@ -3,25 +3,58 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a placeholder/form Section.
+/// </summary>
 public partial class PhSection
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Name.
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Parent Id identifier.
+    /// </summary>
     public int? ParentId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Field Columns.
+    /// </summary>
     public int FieldColumns { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Is Top Level.
+    /// </summary>
     public bool IsTopLevel { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Display Order.
+    /// </summary>
     public int DisplayOrder { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Page Break.
+    /// </summary>
     public bool PageBreak { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ph Form Fields.
+    /// </summary>
     public virtual ICollection<PhFormField> PhFormFields { get; set; } = new List<PhFormField>();
 
+    /// <summary>
+    /// Gets or sets the Ph Form Values.
+    /// </summary>
     public virtual ICollection<PhFormValue> PhFormValues { get; set; } = new List<PhFormValue>();
 
+    /// <summary>
+    /// Gets or sets the Rpt Ph User Query Output Fields.
+    /// </summary>
     public virtual ICollection<RptPhUserQueryOutputField> RptPhUserQueryOutputFields { get; set; } = new List<RptPhUserQueryOutputField>();
 }

@@ -3,21 +3,48 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Report Unit Metric entity.
+/// </summary>
 public partial class ReportUnitMetric
 {
+    /// <summary>
+    /// Gets or sets the Cs Id identifier.
+    /// </summary>
     public int CsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Tech Count.
+    /// </summary>
     public int? MedTechCount { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Officer Count.
+    /// </summary>
     public int? MedOfficerCount { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Unit Count.
+    /// </summary>
     public int? UnitCount { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Wing Jacount.
+    /// </summary>
     public int? WingJacount { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Wind Cccount.
+    /// </summary>
     public int? WindCccount { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Inv Count.
+    /// </summary>
     public int? InvCount { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Board Count.
+    /// </summary>
     public int? BoardCount { get; set; }
 }

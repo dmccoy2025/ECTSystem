@@ -3,13 +3,28 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Recently Uploaded Document entity.
+/// </summary>
 public partial class RecentlyUploadedDocument
 {
+    /// <summary>
+    /// Gets or sets the Ref Id identifier.
+    /// </summary>
     public int RefId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Doc Group Id identifier.
+    /// </summary>
     public long DocGroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Doc Id identifier.
+    /// </summary>
     public long? DocId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Doc Type Id identifier.
+    /// </summary>
     public int? DocTypeId { get; set; }
 }

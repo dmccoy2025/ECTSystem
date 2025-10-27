@@ -3,11 +3,23 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Conversion Run Log entity.
+/// </summary>
 public partial class ConversionRunLog
 {
+    /// <summary>
+    /// Gets or sets the Run Id identifier.
+    /// </summary>
     public int RunId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Line Number.
+    /// </summary>
     public int LineNumber { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Message.
+    /// </summary>
     public string Message { get; set; } = null!;
 }

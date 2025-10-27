@@ -3,57 +3,138 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Form261 entity.
+/// </summary>
 public partial class Form261
 {
+    /// <summary>
+    /// Gets or sets the Lod Id identifier.
+    /// </summary>
     public int LodId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Report Date date.
+    /// </summary>
     public DateTime? ReportDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Investigation Of.
+    /// </summary>
     public byte? InvestigationOf { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Status.
+    /// </summary>
     public byte? Status { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Inactive Duty Training.
+    /// </summary>
     public string? InactiveDutyTraining { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Duration Start Date date.
+    /// </summary>
     public DateTime? DurationStartDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Duration Finish Date date.
+    /// </summary>
     public DateTime? DurationFinishDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Io User Id identifier.
+    /// </summary>
     public int? IoUserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Other Personnels.
+    /// </summary>
     public string? OtherPersonnels { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  findings.
+    /// </summary>
     public byte? FinalApprovalFindings { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Findings Date date.
+    /// </summary>
     public DateTime? FindingsDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Place.
+    /// </summary>
     public string? Place { get; set; }
 
+    /// <summary>
+    /// Gets or sets the How Sustained.
+    /// </summary>
     public string? HowSustained { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Medical Diagnosis.
+    /// </summary>
     public string? MedicalDiagnosis { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Present For Duty.
+    /// </summary>
     public bool? PresentForDuty { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Absent With Authority.
+    /// </summary>
     public bool? AbsentWithAuthority { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Intentional Misconduct.
+    /// </summary>
     public bool? IntentionalMisconduct { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Mentally Sound.
+    /// </summary>
     public bool? MentallySound { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? Remarks { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who last modified this record.
+    /// </summary>
     public int? ModifiedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Modified Date date.
+    /// </summary>
     public DateTime? ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Date Io.
+    /// </summary>
     public DateTime? SigDateIo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Info Io.
+    /// </summary>
     public string? SigInfoIo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Date Appointing.
+    /// </summary>
     public DateTime? SigDateAppointing { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Info Appointing.
+    /// </summary>
     public string? SigInfoAppointing { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Final Approval Findings Navigation.
+    /// </summary>
     public virtual CoreLkUpFinding? FinalApprovalFindingsNavigation { get; set; }
 }

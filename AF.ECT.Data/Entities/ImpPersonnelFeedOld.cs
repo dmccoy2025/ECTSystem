@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Personnel Feed Old data for system migration/integration.
+/// </summary>
 public partial class ImpPersonnelFeedOld
 {
     public string? Cafsc { get; set; }

@@ -3,25 +3,58 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a reporting Ph User Query Param.
+/// </summary>
 public partial class RptPhUserQueryParam
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Phclause Id identifier.
+    /// </summary>
     public int PhclauseId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Where Type.
+    /// </summary>
     public string WhereType { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Operator Type.
+    /// </summary>
     public string OperatorType { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Start Value.
+    /// </summary>
     public string StartValue { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Start Display.
+    /// </summary>
     public string StartDisplay { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the End Value.
+    /// </summary>
     public string? EndValue { get; set; }
 
+    /// <summary>
+    /// Gets or sets the End Display.
+    /// </summary>
     public string? EndDisplay { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Execute Order.
+    /// </summary>
     public int ExecuteOrder { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Phclause.
+    /// </summary>
     public virtual RptPhUserQueryClause Phclause { get; set; } = null!;
 }

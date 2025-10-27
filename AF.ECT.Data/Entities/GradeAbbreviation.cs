@@ -3,15 +3,33 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Grade Abbreviation entity.
+/// </summary>
 public partial class GradeAbbreviation
 {
+    /// <summary>
+    /// Gets or sets the Abbreviation Type Id identifier.
+    /// </summary>
     public int AbbreviationTypeId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Grade Code.
+    /// </summary>
     public int GradeCode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Abbreviation.
+    /// </summary>
     public string Abbreviation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Abbreviation Type.
+    /// </summary>
     public virtual CoreLkupGradeAbbreviationType AbbreviationType { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Grade Code Navigation.
+    /// </summary>
     public virtual CoreLkupGrade GradeCodeNavigation { get; set; } = null!;
 }

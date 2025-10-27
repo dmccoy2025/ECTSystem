@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Process Instance data for system migration/integration.
+/// </summary>
 public partial class ImpProcessInstance
 {
     public string? PiId { get; set; }

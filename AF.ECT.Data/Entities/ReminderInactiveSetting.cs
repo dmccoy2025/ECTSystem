@@ -3,15 +3,33 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Reminder Inactive Setting entity.
+/// </summary>
 public partial class ReminderInactiveSetting
 {
+    /// <summary>
+    /// Gets or sets the I Id identifier.
+    /// </summary>
     public int IId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Interval.
+    /// </summary>
     public int Interval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Notification Interval.
+    /// </summary>
     public int NotificationInterval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Template Id identifier.
+    /// </summary>
     public int TemplateId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether this record is active.
+    /// </summary>
     public bool? Active { get; set; }
 }

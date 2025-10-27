@@ -17,17 +17,38 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CorePageAccess
 {
+    /// <summary>
+    /// Gets or sets the Map Id identifier.
+    /// </summary>
     public int MapId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Status Id identifier.
+    /// </summary>
     public int StatusId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Group Id identifier.
+    /// </summary>
     public byte GroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Workflow Id identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Access.
+    /// </summary>
     public byte Access { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Page Id identifier.
+    /// </summary>
     public int PageId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Group.
+    /// </summary>
     public virtual CoreUserGroup Group { get; set; } = null!;
 }

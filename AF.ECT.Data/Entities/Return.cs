@@ -3,37 +3,88 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Return entity.
+/// </summary>
 public partial class Return
 {
+    /// <summary>
+    /// Gets or sets the Return Id identifier.
+    /// </summary>
     public int ReturnId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ref Id identifier.
+    /// </summary>
     public int RefId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Workstatus To.
+    /// </summary>
     public int WorkstatusTo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Workstatus From.
+    /// </summary>
     public int WorkstatusFrom { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Workflow.
+    /// </summary>
     public byte Workflow { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sent To.
+    /// </summary>
     public int? SentTo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  reason(s).
+    /// </summary>
     public byte? ReasonSentBack { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Explanation For Sending Back.
+    /// </summary>
     public string? ExplanationForSendingBack { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sender.
+    /// </summary>
     public int? Sender { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Date Sent.
+    /// </summary>
     public DateTime? DateSent { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? CommentsBackToSender { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Date Sent Back.
+    /// </summary>
     public DateTime? DateSentBack { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public int? CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime? CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rerouting.
+    /// </summary>
     public bool? Rerouting { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Board Return.
+    /// </summary>
     public bool BoardReturn { get; set; }
 }

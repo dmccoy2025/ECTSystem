@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Edipin data for system migration/integration.
+/// </summary>
 public partial class ImpEdipin
 {
     public string? Username { get; set; }

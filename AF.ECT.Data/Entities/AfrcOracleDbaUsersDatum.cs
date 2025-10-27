@@ -3,25 +3,58 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a database user record imported from AFRC Oracle DBA_USERS view.
+/// </summary>
 public partial class AfrcOracleDbaUsersDatum
 {
+    /// <summary>
+    /// Gets or sets the database username.
+    /// </summary>
     public string? Username { get; set; }
 
+    /// <summary>
+    /// Gets or sets the database user identifier.
+    /// </summary>
     public string? UserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the encrypted password value.
+    /// </summary>
     public string? Password { get; set; }
 
+    /// <summary>
+    /// Gets or sets the account status (e.g., OPEN, LOCKED, EXPIRED).
+    /// </summary>
     public string? AccountStatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date when the account was locked.
+    /// </summary>
     public string? LockDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the account expiration date.
+    /// </summary>
     public string? ExpiryDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the default tablespace for the user.
+    /// </summary>
     public string? DefaultTablespace { get; set; }
 
+    /// <summary>
+    /// Gets or sets the temporary tablespace for the user.
+    /// </summary>
     public string? TemporaryTablespace { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date when the user account was created.
+    /// </summary>
     public string? Created { get; set; }
 
+    /// <summary>
+    /// Gets or sets the database profile assigned to the user.
+    /// </summary>
     public string? Profile { get; set; }
 }

@@ -3,29 +3,68 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a reporting User Query Param.
+/// </summary>
 public partial class RptUserQueryParam
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Clause Id identifier.
+    /// </summary>
     public int ClauseId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Source Id identifier.
+    /// </summary>
     public int SourceId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Operator Type.
+    /// </summary>
     public string OperatorType { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Where Type.
+    /// </summary>
     public string WhereType { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Start Value.
+    /// </summary>
     public string StartValue { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Start Display.
+    /// </summary>
     public string StartDisplay { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the End Value.
+    /// </summary>
     public string? EndValue { get; set; }
 
+    /// <summary>
+    /// Gets or sets the End Display.
+    /// </summary>
     public string? EndDisplay { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Execute Order.
+    /// </summary>
     public int? ExecuteOrder { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Clause.
+    /// </summary>
     public virtual RptUserQueryClause Clause { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Source.
+    /// </summary>
     public virtual RptQuerySource Source { get; set; } = null!;
 }

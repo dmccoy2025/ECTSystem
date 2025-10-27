@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Lod Investigation Rpt data for system migration/integration.
+/// </summary>
 public partial class ImpLodInvestigationRpt
 {
     public string? LirId { get; set; }

@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Person Process data imported from AFRC Oracle.
+/// </summary>
 public partial class AfrcOraclePersonProcessDatum
 {
     public string? PpId { get; set; }

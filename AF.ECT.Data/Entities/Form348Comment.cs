@@ -3,17 +3,38 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Comment data.
+/// </summary>
 public partial class Form348Comment
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Lodid identifier.
+    /// </summary>
     public int Lodid { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string Comments { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public int CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether this record is deleted.
+    /// </summary>
     public bool Deleted { get; set; }
 }

@@ -3,29 +3,68 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Incap Appeal data.
+/// </summary>
 public partial class Form348IncapAppeal
 {
+    /// <summary>
+    /// Gets or sets the Ap Id identifier.
+    /// </summary>
     public int ApId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sc Id identifier.
+    /// </summary>
     public int ScId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ext Id identifier.
+    /// </summary>
     public int? ExtId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Wcc Appeal Approval.
+    /// </summary>
     public bool? WccAppealApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Opr Appeal Approval.
+    /// </summary>
     public bool? OprAppealApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ocr Appeal Approval.
+    /// </summary>
     public bool? OcrAppealApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dos Appeal Approval.
+    /// </summary>
     public bool? DosAppealApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ccr Appeal Approval.
+    /// </summary>
     public bool? CcrAppealApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Vcr Appeal Approval.
+    /// </summary>
     public bool? VcrAppealApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dop Appeal Approval.
+    /// </summary>
     public bool? DopAppealApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cafr Appeal Approval.
+    /// </summary>
     public bool? CafrAppealApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sc.
+    /// </summary>
     public virtual Form348IncapFinding Sc { get; set; } = null!;
 }

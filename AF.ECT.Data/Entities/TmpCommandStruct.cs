@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Tmp Command Struct entity.
+/// </summary>
 public partial class TmpCommandStruct
 {
     public int? CsId { get; set; }

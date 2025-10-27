@@ -3,69 +3,168 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Finding data.
+/// </summary>
 public partial class Form348Finding
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Lodid identifier.
+    /// </summary>
     public int Lodid { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ptype.
+    /// </summary>
     public short Ptype { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  Social Security Number.
+    /// </summary>
     public string? Ssn { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Name.
+    /// </summary>
     public string? Name { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  military grade/rank.
+    /// </summary>
     public string? Grade { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Compo.
+    /// </summary>
     public string? Compo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  military grade/rank.
+    /// </summary>
     public string? Rank { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pascode.
+    /// </summary>
     public string? Pascode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  findings.
+    /// </summary>
     public byte? Finding { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether Decision (Y/N).
+    /// </summary>
     public string? DecisionYn { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  explanation.
+    /// </summary>
     public string? Explanation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who last modified this record.
+    /// </summary>
     public int ModifiedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Modified Date date.
+    /// </summary>
     public DateTime ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public int CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Findings Text.
+    /// </summary>
     public string? FindingsText { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Refer Des.
+    /// </summary>
     public bool? ReferDes { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Lodinitiation.
+    /// </summary>
     public bool? Lodinitiation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Written Diagnosis.
+    /// </summary>
     public bool? WrittenDiagnosis { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Request.
+    /// </summary>
     public bool? MemberRequest { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Correctly Identified.
+    /// </summary>
     public string? CorrectlyIdentified { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Verified And Attached.
+    /// </summary>
     public string? VerifiedAndAttached { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Idtstatus.
+    /// </summary>
     public string? Idtstatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ipcarsattached.
+    /// </summary>
     public bool? Ipcarsattached { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Eight Year Rule.
+    /// </summary>
     public bool? EightYearRule { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Prior To Dutytatus.
+    /// </summary>
     public bool? PriorToDutytatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Status Worsened.
+    /// </summary>
     public string? StatusWorsened { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created By Navigation.
+    /// </summary>
     public virtual CoreUser CreatedByNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Lod.
+    /// </summary>
     public virtual Form348 Lod { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Modified By Navigation.
+    /// </summary>
     public virtual CoreUser ModifiedByNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Ptype Navigation.
+    /// </summary>
     public virtual CoreLkupPersonnelType PtypeNavigation { get; set; } = null!;
 }

@@ -3,23 +3,53 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a placeholder/form Form Value.
+/// </summary>
 public partial class PhFormValue
 {
+    /// <summary>
+    /// Gets or sets the Ref Id identifier.
+    /// </summary>
     public int RefId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Section Id identifier.
+    /// </summary>
     public int SectionId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Field Id identifier.
+    /// </summary>
     public int FieldId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Field Type Id identifier.
+    /// </summary>
     public int FieldTypeId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Value.
+    /// </summary>
     public string Value { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Field.
+    /// </summary>
     public virtual PhField Field { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Field Type.
+    /// </summary>
     public virtual PhFieldType FieldType { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Ref.
+    /// </summary>
     public virtual Form348Sc Ref { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Section.
+    /// </summary>
     public virtual PhSection Section { get; set; } = null!;
 }

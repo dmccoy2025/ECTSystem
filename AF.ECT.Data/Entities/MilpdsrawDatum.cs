@@ -3,119 +3,293 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Milpdsraw Datum entity.
+/// </summary>
 public partial class MilpdsrawDatum
 {
+    /// <summary>
+    /// Gets or sets the  Social Security Number.
+    /// </summary>
     public string Ssan { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the First Name.
+    /// </summary>
     public string? FirstName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Middle Names.
+    /// </summary>
     public string? MiddleNames { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Last Name.
+    /// </summary>
     public string? LastName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Suffix.
+    /// </summary>
     public string? Suffix { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pas Gaining.
+    /// </summary>
     public string? PasGaining { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Asg Rept Nlt Date date.
+    /// </summary>
     public string? AsgReptNltDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rcd Id identifier.
+    /// </summary>
     public string? RcdId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rec Stat Curr.
+    /// </summary>
     public string? RecStatCurr { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pas.
+    /// </summary>
     public string? Pas { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  phone number.
+    /// </summary>
     public string? CommDutyPhone { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Office Symbol.
+    /// </summary>
     public string? OfficeSymbol { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  city.
+    /// </summary>
     public string? LocalAddrCity { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  state.
+    /// </summary>
     public string? LocalAddrState { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  phone number.
+    /// </summary>
     public string? HomePhone { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  city.
+    /// </summary>
     public string? AdrsMailDomCity { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  state.
+    /// </summary>
     public string? DrsMailDomState { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  postal/ZIP code.
+    /// </summary>
     public string? AdrsMailZip { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Gr Curr.
+    /// </summary>
     public string? GrCurr { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dy Posn Nr.
+    /// </summary>
     public string? DyPosnNr { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dafsc.
+    /// </summary>
     public string? Dafsc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Duty Status.
+    /// </summary>
     public string? DutyStatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Duty Status Eff Date date.
+    /// </summary>
     public string? DutyStatusEffDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Duty Status Exp Date date.
+    /// </summary>
     public string? DutyStatusExpDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status Admin.
+    /// </summary>
     public string? DeplAvailStatusAdmin { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status A Ex D.
+    /// </summary>
     public string? DeplAvailStatusAExD { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status Phys.
+    /// </summary>
     public string? DeplAvailStatusPhys { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status P Ex D.
+    /// </summary>
     public string? DeplAvailStatusPExD { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status Legal.
+    /// </summary>
     public string? DeplAvailStatusLegal { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status L Ex D.
+    /// </summary>
     public string? DeplAvailStatusLExD { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status Time.
+    /// </summary>
     public string? DeplAvailStatusTime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status T Ex D.
+    /// </summary>
     public string? DeplAvailStatusTExD { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pafsc.
+    /// </summary>
     public string? Pafsc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Afsc2.
+    /// </summary>
     public string? Afsc2 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Afsc3.
+    /// </summary>
     public string? Afsc3 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sex Svc Mbr.
+    /// </summary>
     public string? SexSvcMbr { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dob date.
+    /// </summary>
     public string? Dob { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ret Sep Eff Date Proj.
+    /// </summary>
     public string? RetSepEffDateProj { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dos.
+    /// </summary>
     public string? Dos { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Svc Comp.
+    /// </summary>
     public string? SvcComp { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Tafcsd.
+    /// </summary>
     public string? Tafcsd { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Tafmsd.
+    /// </summary>
     public string? Tafmsd { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ets date.
+    /// </summary>
     public string? Ets { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  postal/ZIP code.
+    /// </summary>
     public string? LocalAddrZip { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Local Addr Street1st.
+    /// </summary>
     public string? LocalAddrStreet1st { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Local Addr Street2nd.
+    /// </summary>
     public string? LocalAddrStreet2nd { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Curr Street Addr1st.
+    /// </summary>
     public string? CurrStreetAddr1st { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Curr Street Addr2nd.
+    /// </summary>
     public string? CurrStreetAddr2nd { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dor date.
+    /// </summary>
     public string? Dor { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dy Eff Date date.
+    /// </summary>
     public string? DyEffDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Eto.
+    /// </summary>
     public string? Eto { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Curr Aero Rating.
+    /// </summary>
     public string? CurrAeroRating { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Avn Svc Code.
+    /// </summary>
     public string? AvnSvcCode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Avn Svc Code Date date.
+    /// </summary>
     public string? AvnSvcCodeDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Gr Code.
+    /// </summary>
     public int? GrCode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pas Number.
+    /// </summary>
     public string? PasNumber { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Attach Pas.
+    /// </summary>
     public string? AttachPas { get; set; }
 }

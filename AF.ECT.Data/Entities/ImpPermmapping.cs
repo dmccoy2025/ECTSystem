@@ -3,9 +3,18 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Permmapping data for system migration/integration.
+/// </summary>
 public partial class ImpPermmapping
 {
+    /// <summary>
+    /// Gets or sets the Perm Name.
+    /// </summary>
     public string PermName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Group Id identifier.
+    /// </summary>
     public int? GroupId { get; set; }
 }

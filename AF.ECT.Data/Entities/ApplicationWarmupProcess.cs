@@ -3,13 +3,28 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Application Warmup Process entity.
+/// </summary>
 public partial class ApplicationWarmupProcess
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Name.
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether this record is active.
+    /// </summary>
     public bool Active { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Application Warmup Process Logs.
+    /// </summary>
     public virtual ICollection<ApplicationWarmupProcessLog> ApplicationWarmupProcessLogs { get; set; } = new List<ApplicationWarmupProcessLog>();
 }

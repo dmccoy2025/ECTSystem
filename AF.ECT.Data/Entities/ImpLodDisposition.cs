@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Lod Disposition data for system migration/integration.
+/// </summary>
 public partial class ImpLodDisposition
 {
     public int? LodId { get; set; }

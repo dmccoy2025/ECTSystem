@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents ALOD Arcnet Raw data.
+/// </summary>
 public partial class AlodArcnetRaw
 {
     public string? Ssn { get; set; }

@@ -3,21 +3,48 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a lookup table for Unit Level Type.
+/// </summary>
 public partial class CoreLkupUnitLevelType
 {
+    /// <summary>
+    /// Gets or sets the Level Id identifier.
+    /// </summary>
     public string LevelId { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  description.
+    /// </summary>
     public string Description { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether this record is active.
+    /// </summary>
     public bool Active { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public string CreatedBy { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Modified Date date.
+    /// </summary>
     public DateTime ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who last modified this record.
+    /// </summary>
     public string ModifiedBy { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Test Command Structs.
+    /// </summary>
     public virtual ICollection<TestCommandStruct> TestCommandStructs { get; set; } = new List<TestCommandStruct>();
 }

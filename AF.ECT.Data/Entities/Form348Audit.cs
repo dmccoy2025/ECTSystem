@@ -3,101 +3,248 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Audit data.
+/// </summary>
 public partial class Form348Audit
 {
+    /// <summary>
+    /// Gets or sets the Audit Id identifier.
+    /// </summary>
     public int AuditId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Lod Id identifier.
+    /// </summary>
     public int LodId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Case Id identifier.
+    /// </summary>
     public string CaseId { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Workflow.
+    /// </summary>
     public int Workflow { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Medically Appropriate.
+    /// </summary>
     public short? MedicallyAppropriate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sg Dx.
+    /// </summary>
     public bool? SgDx { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sg Isupport.
+    /// </summary>
     public bool? SgIsupport { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sg Epts.
+    /// </summary>
     public bool? SgEpts { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sg Aggravation.
+    /// </summary>
     public bool? SgAggravation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sg Principles.
+    /// </summary>
     public bool? SgPrinciples { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sg Other.
+    /// </summary>
     public string? SgOther { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sg Proof Applied.
+    /// </summary>
     public short? SgProofApplied { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sg Correct Standard.
+    /// </summary>
     public short? SgCorrectStandard { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sg Proof Met.
+    /// </summary>
     public short? SgProofMet { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sg Evidence.
+    /// </summary>
     public short? SgEvidence { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sg Misconduct.
+    /// </summary>
     public short? SgMisconduct { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sg Formal Investigation.
+    /// </summary>
     public short? SgFormalInvestigation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Legally Sufficient.
+    /// </summary>
     public short? LegallySufficient { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ja Standard Of Proof.
+    /// </summary>
     public bool? JaStandardOfProof { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ja Death And Mva.
+    /// </summary>
     public bool? JaDeathAndMva { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ja Formal Policy.
+    /// </summary>
     public bool? JaFormalPolicy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ja Afi.
+    /// </summary>
     public bool? JaAfi { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ja Other.
+    /// </summary>
     public string? JaOther { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ja Proof Applied.
+    /// </summary>
     public short? JaProofApplied { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ja Correct Standard.
+    /// </summary>
     public short? JaCorrectStandard { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ja Proof Met.
+    /// </summary>
     public short? JaProofMet { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ja Evidence.
+    /// </summary>
     public short? JaEvidence { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ja Misconduct.
+    /// </summary>
     public short? JaMisconduct { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ja Formal Investigation.
+    /// </summary>
     public short? JaFormalInvestigation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Status Validated.
+    /// </summary>
     public short? StatusValidated { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Status Of Member.
+    /// </summary>
     public bool? StatusOfMember { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Orders.
+    /// </summary>
     public bool? Orders { get; set; }
 
+    /// <summary>
+    /// Gets or sets the A1 Epts.
+    /// </summary>
     public bool? A1Epts { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Idt.
+    /// </summary>
     public bool? Idt { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pcars.
+    /// </summary>
     public bool? Pcars { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Eight Year Rule.
+    /// </summary>
     public bool? EightYearRule { get; set; }
 
+    /// <summary>
+    /// Gets or sets the A1 Other.
+    /// </summary>
     public string? A1Other { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Lodinitiation.
+    /// </summary>
     public short? Lodinitiation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Written Diagnosis.
+    /// </summary>
     public short? WrittenDiagnosis { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Request.
+    /// </summary>
     public short? MemberRequest { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Incurred Or Aggravated.
+    /// </summary>
     public short? IncurredOrAggravated { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Illness Or Disease.
+    /// </summary>
     public short? IllnessOrDisease { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Activites.
+    /// </summary>
     public int? Activites { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? A1Comment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? JaComment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? SgComment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Determination.
+    /// </summary>
     public int? Determination { get; set; }
 
+    /// <summary>
+    /// Gets or sets the A1 Determination Not Correct.
+    /// </summary>
     public int? A1DeterminationNotCorrect { get; set; }
 }

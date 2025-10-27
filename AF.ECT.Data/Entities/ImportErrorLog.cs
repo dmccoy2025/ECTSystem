@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported ort Error Log data for system migration/integration.
+/// </summary>
 public partial class ImportErrorLog
 {
     public string? UpdatingData { get; set; }

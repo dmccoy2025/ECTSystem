@@ -20,25 +20,58 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreMemo
 {
+    /// <summary>
+    /// Gets or sets the Memo Id identifier.
+    /// </summary>
     public int MemoId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ref Id identifier.
+    /// </summary>
     public int RefId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Template Id identifier.
+    /// </summary>
     public byte TemplateId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether this record is deleted.
+    /// </summary>
     public bool Deleted { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Letter Head.
+    /// </summary>
     public byte LetterHead { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public int CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Core Memo Contents.
+    /// </summary>
     public virtual ICollection<CoreMemoContent> CoreMemoContents { get; set; } = new List<CoreMemoContent>();
 
+    /// <summary>
+    /// Gets or sets the Created By Navigation.
+    /// </summary>
     public virtual CoreUser CreatedByNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Letter Head Navigation.
+    /// </summary>
     public virtual CoreMemoLetterhead LetterHeadNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Template.
+    /// </summary>
     public virtual CoreMemoTemplate Template { get; set; } = null!;
 }

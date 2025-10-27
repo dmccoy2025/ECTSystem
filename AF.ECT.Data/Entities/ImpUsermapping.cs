@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Usermapping data for system migration/integration.
+/// </summary>
 public partial class ImpUsermapping
 {
     public int? UserId { get; set; }

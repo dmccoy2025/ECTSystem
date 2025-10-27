@@ -3,85 +3,208 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Test Command Struct entity.
+/// </summary>
 public partial class TestCommandStruct
 {
+    /// <summary>
+    /// Gets or sets the Cs Id identifier.
+    /// </summary>
     public int CsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Address1.
+    /// </summary>
     public string? Address1 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Address2.
+    /// </summary>
     public string? Address2 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Base Code.
+    /// </summary>
     public string? BaseCode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  city.
+    /// </summary>
     public string? City { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Command Code.
+    /// </summary>
     public string? CommandCode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Command Struct Utc.
+    /// </summary>
     public string? CommandStructUtc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Component.
+    /// </summary>
     public string? Component { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  country.
+    /// </summary>
     public string? Country { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public string? CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime? CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cs Id Parent.
+    /// </summary>
     public int? CsIdParent { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cs Level.
+    /// </summary>
     public string? CsLevel { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cs Oper Type.
+    /// </summary>
     public string? CsOperType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  email address.
+    /// </summary>
     public string? EMail { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Gaining Command Cs Id identifier.
+    /// </summary>
     public int? GainingCommandCsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Geo Loc.
+    /// </summary>
     public string? GeoLoc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Long Name.
+    /// </summary>
     public string? LongName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Medical Service.
+    /// </summary>
     public string? MedicalService { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who last modified this record.
+    /// </summary>
     public string? ModifiedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Modified Date date.
+    /// </summary>
     public DateTime? ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Mrdss Doc Date date.
+    /// </summary>
     public DateTime? MrdssDocDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Mrdss Doc Id identifier.
+    /// </summary>
     public string? MrdssDocId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Mrdss Doc Review.
+    /// </summary>
     public string? MrdssDocReview { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Mrdss Kind.
+    /// </summary>
     public string? MrdssKind { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pas Code.
+    /// </summary>
     public string? PasCode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether Phys Exam (Y/N).
+    /// </summary>
     public string? PhysExamYn { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  postal/ZIP code.
+    /// </summary>
     public string? PostalCode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether Scheduling (Y/N).
+    /// </summary>
     public string? SchedulingYn { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  state.
+    /// </summary>
     public string? State { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Time Zone.
+    /// </summary>
     public string? TimeZone { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Uic.
+    /// </summary>
     public string? Uic { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Unit Det.
+    /// </summary>
     public string? UnitDet { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Unit Kind.
+    /// </summary>
     public string? UnitKind { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Unit Nbr.
+    /// </summary>
     public string? UnitNbr { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Unit Type.
+    /// </summary>
     public string? UnitType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cs Level Navigation.
+    /// </summary>
     public virtual CoreLkupUnitLevelType? CsLevelNavigation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cs Oper Type Navigation.
+    /// </summary>
     public virtual CoreLkupOperationType? CsOperTypeNavigation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Test Command Struct Chains.
+    /// </summary>
     public virtual ICollection<TestCommandStructChain> TestCommandStructChains { get; set; } = new List<TestCommandStructChain>();
 
+    /// <summary>
+    /// Gets or sets the Time Zone Navigation.
+    /// </summary>
     public virtual CoreLkupTimeZone? TimeZoneNavigation { get; set; }
 }

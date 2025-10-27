@@ -3,17 +3,38 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Paldocument Lookup entity.
+/// </summary>
 public partial class PaldocumentLookup
 {
+    /// <summary>
+    /// Gets or sets the Pal Doc Id identifier.
+    /// </summary>
     public int PalDocId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Url.
+    /// </summary>
     public string Url { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Last Name.
+    /// </summary>
     public string LastName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  Social Security Number.
+    /// </summary>
     public string Last4Ssn { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Doc Year.
+    /// </summary>
     public int DocYear { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Doc Month.
+    /// </summary>
     public int DocMonth { get; set; }
 }

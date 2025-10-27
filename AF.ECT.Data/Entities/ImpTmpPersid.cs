@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Tmp Persid data for system migration/integration.
+/// </summary>
 public partial class ImpTmpPersid
 {
     public string? PersId { get; set; }

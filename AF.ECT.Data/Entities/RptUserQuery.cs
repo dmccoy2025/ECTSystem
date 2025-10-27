@@ -3,29 +3,68 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a reporting User Query.
+/// </summary>
 public partial class RptUserQuery
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the User Id identifier.
+    /// </summary>
     public int UserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  title.
+    /// </summary>
     public string Title { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Modified Date date.
+    /// </summary>
     public DateTime ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Transient.
+    /// </summary>
     public bool Transient { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Output Fields.
+    /// </summary>
     public string? OutputFields { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sort Fields.
+    /// </summary>
     public string? SortFields { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Shared.
+    /// </summary>
     public bool Shared { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rpt Ph User Queries.
+    /// </summary>
     public virtual ICollection<RptPhUserQuery> RptPhUserQueries { get; set; } = new List<RptPhUserQuery>();
 
+    /// <summary>
+    /// Gets or sets the Rpt User Query Clauses.
+    /// </summary>
     public virtual ICollection<RptUserQueryClause> RptUserQueryClauses { get; set; } = new List<RptUserQueryClause>();
 
+    /// <summary>
+    /// Gets or sets the User.
+    /// </summary>
     public virtual CoreUser User { get; set; } = null!;
 }

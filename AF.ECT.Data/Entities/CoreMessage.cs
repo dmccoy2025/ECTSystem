@@ -22,21 +22,48 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreMessage
 {
+    /// <summary>
+    /// Gets or sets the Message Id identifier.
+    /// </summary>
     public short MessageId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Message.
+    /// </summary>
     public string Message { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  title.
+    /// </summary>
     public string? Title { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Name.
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public int CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Popup.
+    /// </summary>
     public bool Popup { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Start Time.
+    /// </summary>
     public DateTime StartTime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the End Time.
+    /// </summary>
     public DateTime? EndTime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Is Admin Message.
+    /// </summary>
     public bool IsAdminMessage { get; set; }
 }

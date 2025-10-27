@@ -24,9 +24,18 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreLkupAccessScope
 {
+    /// <summary>
+    /// Gets or sets the Scope Id identifier.
+    /// </summary>
     public byte ScopeId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  description.
+    /// </summary>
     public string Description { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Core User Groups.
+    /// </summary>
     public virtual ICollection<CoreUserGroup> CoreUserGroups { get; set; } = new List<CoreUserGroup>();
 }

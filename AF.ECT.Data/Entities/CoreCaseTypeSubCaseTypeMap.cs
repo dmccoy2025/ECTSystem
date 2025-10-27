@@ -3,13 +3,28 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Case Type Sub Case Type Map in the Electronic Case Tracking (ECT) system.
+/// </summary>
 public partial class CoreCaseTypeSubCaseTypeMap
 {
+    /// <summary>
+    /// Gets or sets the Case Type Id identifier.
+    /// </summary>
     public int CaseTypeId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sub Case Type Id identifier.
+    /// </summary>
     public int SubCaseTypeId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Case Type.
+    /// </summary>
     public virtual CoreCaseType CaseType { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Sub Case Type.
+    /// </summary>
     public virtual CoreSubCaseType SubCaseType { get; set; } = null!;
 }

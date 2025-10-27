@@ -3,101 +3,248 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Memberdata Backup entity.
+/// </summary>
 public partial class MemberdataBackup
 {
+    /// <summary>
+    /// Gets or sets the  Social Security Number.
+    /// </summary>
     public string Ssan { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the First Name.
+    /// </summary>
     public string? FirstName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Middle Names.
+    /// </summary>
     public string? MiddleNames { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Last Name.
+    /// </summary>
     public string? LastName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Suffix.
+    /// </summary>
     public string? Suffix { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pas Gaining.
+    /// </summary>
     public string? PasGaining { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Asg Rept Nlt Date date.
+    /// </summary>
     public DateTime? AsgReptNltDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rcd Id identifier.
+    /// </summary>
     public string? RcdId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rec Stat Curr.
+    /// </summary>
     public string? RecStatCurr { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pas.
+    /// </summary>
     public string? Pas { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  phone number.
+    /// </summary>
     public string? CommDutyPhone { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Office Symbol.
+    /// </summary>
     public string? OfficeSymbol { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Local Addr Street.
+    /// </summary>
     public string? LocalAddrStreet { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  city.
+    /// </summary>
     public string? LocalAddrCity { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  state.
+    /// </summary>
     public string? LocalAddrState { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  phone number.
+    /// </summary>
     public string? HomePhone { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  city.
+    /// </summary>
     public string? AdrsMailDomCity { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  state.
+    /// </summary>
     public string? AdrsMailDomState { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  postal/ZIP code.
+    /// </summary>
     public string? AdrsMailZip { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Gr Curr.
+    /// </summary>
     public int GrCurr { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dy Posn Nr.
+    /// </summary>
     public string? DyPosnNr { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dafsc.
+    /// </summary>
     public string? Dafsc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Duty Status.
+    /// </summary>
     public string? DutyStatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Duty Status Eff Date date.
+    /// </summary>
     public DateTime? DutyStatusEffDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Duty Status Exp Date date.
+    /// </summary>
     public DateTime? DutyStatusExpDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status Admin.
+    /// </summary>
     public string? DeplAvailStatusAdmin { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status A Ex D.
+    /// </summary>
     public DateTime? DeplAvailStatusAExD { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status Phys.
+    /// </summary>
     public string? DeplAvailStatusPhys { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status P Ex D.
+    /// </summary>
     public DateTime? DeplAvailStatusPExD { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status Legal.
+    /// </summary>
     public string? DeplAvailStatusLegal { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status L Ex D.
+    /// </summary>
     public DateTime? DeplAvailStatusLExD { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status Time.
+    /// </summary>
     public string? DeplAvailStatusTime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Depl Avail Status T Ex D.
+    /// </summary>
     public DateTime? DeplAvailStatusTExD { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pafsc.
+    /// </summary>
     public string? Pafsc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Afsc2.
+    /// </summary>
     public string? Afsc2 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Afsc3.
+    /// </summary>
     public string? Afsc3 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sex Svc Mbr.
+    /// </summary>
     public string? SexSvcMbr { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dob date.
+    /// </summary>
     public DateTime? Dob { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ret Sep Eff Date Proj.
+    /// </summary>
     public DateTime? RetSepEffDateProj { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dos.
+    /// </summary>
     public DateTime? Dos { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Svc Comp.
+    /// </summary>
     public string? SvcComp { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Tafcsd.
+    /// </summary>
     public DateTime? Tafcsd { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Tafmsd.
+    /// </summary>
     public DateTime? Tafmsd { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ets date.
+    /// </summary>
     public DateTime? Ets { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pas Number.
+    /// </summary>
     public string? PasNumber { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  postal/ZIP code.
+    /// </summary>
     public string? Zip { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether this record is deleted.
+    /// </summary>
     public bool? Deleted { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Deleted Date date.
+    /// </summary>
     public DateTime? DeletedDate { get; set; }
 }

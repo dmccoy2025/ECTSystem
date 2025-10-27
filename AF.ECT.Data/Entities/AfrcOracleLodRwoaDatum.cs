@@ -3,27 +3,63 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Returned Without Action (RWOA) record for a Line of Duty case imported from AFRC Oracle.
+/// </summary>
 public partial class AfrcOracleLodRwoaDatum
 {
+    /// <summary>
+    /// Gets or sets the Returned Without Action identifier.
+    /// </summary>
     public string? RwoaId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Line of Duty case identifier.
+    /// </summary>
     public string? LodId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the recipient to whom the case was sent.
+    /// </summary>
     public string? SentTo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the reason for returning the case without action.
+    /// </summary>
     public string? ReasonSentBack { get; set; }
 
+    /// <summary>
+    /// Gets or sets the detailed explanation for sending the case back.
+    /// </summary>
     public string? ExplanationForSendingBack { get; set; }
 
+    /// <summary>
+    /// Gets or sets the person who sent the case.
+    /// </summary>
     public string? Sender { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date when the case was sent.
+    /// </summary>
     public string? DateSent { get; set; }
 
+    /// <summary>
+    /// Gets or sets the comments provided back to the sender.
+    /// </summary>
     public string? CommentsBackToSender { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date when the case was sent back.
+    /// </summary>
     public string? DateSentBack { get; set; }
 
+    /// <summary>
+    /// Gets or sets the user identifier who created this record.
+    /// </summary>
     public string? CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date when this record was created.
+    /// </summary>
     public string? CreatedDate { get; set; }
 }

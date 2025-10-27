@@ -3,81 +3,198 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Unit data.
+/// </summary>
 public partial class Form348Unit
 {
+    /// <summary>
+    /// Gets or sets the Lodid identifier.
+    /// </summary>
     public int Lodid { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cmdr Circ Details.
+    /// </summary>
     public string? CmdrCircDetails { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cmdr Duty Determination.
+    /// </summary>
     public string? CmdrDutyDetermination { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cmdr Duty From.
+    /// </summary>
     public DateTime? CmdrDutyFrom { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cmdr Duty Others.
+    /// </summary>
     public string? CmdrDutyOthers { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cmdr Duty To.
+    /// </summary>
     public DateTime? CmdrDutyTo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether Cmdr Activated (Y/N).
+    /// </summary>
     public string? CmdrActivatedYn { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Modified Date date.
+    /// </summary>
     public DateTime ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who last modified this record.
+    /// </summary>
     public int ModifiedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Source Information.
+    /// </summary>
     public int? SourceInformation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Witnesses.
+    /// </summary>
     public string? Witnesses { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Source Information Specify.
+    /// </summary>
     public string? SourceInformationSpecify { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Occurrence.
+    /// </summary>
     public int? MemberOccurrence { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Absent From.
+    /// </summary>
     public DateTime? AbsentFrom { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Absent To.
+    /// </summary>
     public DateTime? AbsentTo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member On Orders.
+    /// </summary>
     public string? MemberOnOrders { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Credible.
+    /// </summary>
     public string? MemberCredible { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Proximate Cause.
+    /// </summary>
     public int? ProximateCause { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Proximate Cause Specify.
+    /// </summary>
     public string? ProximateCauseSpecify { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Workflow.
+    /// </summary>
     public int? Workflow { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Travel Occurrence.
+    /// </summary>
     public int? TravelOccurrence { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Verified Status.
+    /// </summary>
     public bool? VerifiedStatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Proof Of Status.
+    /// </summary>
     public bool? ProofOfStatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the L Odinitiation.
+    /// </summary>
     public bool? LOdinitiation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Written Diagnosis.
+    /// </summary>
     public bool? WrittenDiagnosis { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Request.
+    /// </summary>
     public bool? MemberRequest { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Prior To Dutytatus.
+    /// </summary>
     public bool? PriorToDutytatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Status Worsened.
+    /// </summary>
     public string? StatusWorsened { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Incurred Or Aggravated.
+    /// </summary>
     public bool? IncurredOrAggravated { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Status When Injuryed.
+    /// </summary>
     public string? StatusWhenInjuryed { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  explanation.
+    /// </summary>
     public string? StatusWhenInjuryedExplanation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Orders Attached.
+    /// </summary>
     public string? OrdersAttached { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Idtstatus.
+    /// </summary>
     public string? Idtstatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Utapsattached.
+    /// </summary>
     public string? Utapsattached { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pcarsattached.
+    /// </summary>
     public bool? Pcarsattached { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pcarshistory.
+    /// </summary>
     public bool? Pcarshistory { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Eight Year Rule.
+    /// </summary>
     public bool? EightYearRule { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Lod.
+    /// </summary>
     public virtual Form348 Lod { get; set; } = null!;
 }

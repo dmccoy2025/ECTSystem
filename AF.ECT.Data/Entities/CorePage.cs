@@ -17,7 +17,13 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CorePage
 {
+    /// <summary>
+    /// Gets or sets the Page Id identifier.
+    /// </summary>
     public short PageId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  title.
+    /// </summary>
     public string Title { get; set; } = null!;
 }

@@ -3,29 +3,68 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a reporting Query Source.
+/// </summary>
 public partial class RptQuerySource
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Display Name.
+    /// </summary>
     public string DisplayName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Field Name.
+    /// </summary>
     public string FieldName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Table Name.
+    /// </summary>
     public string TableName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Data Type.
+    /// </summary>
     public string DataType { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Lookup Source.
+    /// </summary>
     public string? LookupSource { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Lookup Value.
+    /// </summary>
     public string? LookupValue { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Lookup Text.
+    /// </summary>
     public string? LookupText { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Lookup Sort.
+    /// </summary>
     public string? LookupSort { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Lookup Where.
+    /// </summary>
     public string? LookupWhere { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Lookup Where Value.
+    /// </summary>
     public string? LookupWhereValue { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rpt User Query Params.
+    /// </summary>
     public virtual ICollection<RptUserQueryParam> RptUserQueryParams { get; set; } = new List<RptUserQueryParam>();
 }

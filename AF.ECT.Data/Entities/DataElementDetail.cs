@@ -3,47 +3,113 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Data Element Detail entity.
+/// </summary>
 public partial class DataElementDetail
 {
+    /// <summary>
+    /// Gets or sets the Data Element Id identifier.
+    /// </summary>
     public int DataElementId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Data Element Name.
+    /// </summary>
     public string DataElementName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Data Element Type.
+    /// </summary>
     public string DataElementType { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Data Type.
+    /// </summary>
     public string DataType { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Data Purpose.
+    /// </summary>
     public string DataPurpose { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Entity Purpose.
+    /// </summary>
     public string EntityPurpose { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Database Server.
+    /// </summary>
     public string DatabaseServer { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Database Name.
+    /// </summary>
     public string DatabaseName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Schema Name.
+    /// </summary>
     public string SchemaName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Table Name.
+    /// </summary>
     public string TableName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Column Name.
+    /// </summary>
     public string ColumnName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Original Data Source.
+    /// </summary>
     public string OriginalDataSource { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Notes.
+    /// </summary>
     public string Notes { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Foreign Key To.
+    /// </summary>
     public string? ForeignKeyTo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Row Count.
+    /// </summary>
     public long RowCount { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Data Start Time.
+    /// </summary>
     public DateTime? DataStartTime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Data End Time.
+    /// </summary>
     public DateTime? DataEndTime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Create Time.
+    /// </summary>
     public DateTime? CreateTime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Last Update Time.
+    /// </summary>
     public DateTime LastUpdateTime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Is Deleted.
+    /// </summary>
     public bool IsDeleted { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Is Nullable.
+    /// </summary>
     public bool IsNullable { get; set; }
 }

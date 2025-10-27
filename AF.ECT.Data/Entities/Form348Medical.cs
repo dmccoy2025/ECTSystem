@@ -3,91 +3,223 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Medical data.
+/// </summary>
 public partial class Form348Medical
 {
+    /// <summary>
+    /// Gets or sets the Lodid identifier.
+    /// </summary>
     public int Lodid { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Status.
+    /// </summary>
     public string? MemberStatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Event Nature Type.
+    /// </summary>
     public string? EventNatureType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Event Nature Details.
+    /// </summary>
     public string? EventNatureDetails { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Medical Facility.
+    /// </summary>
     public string? MedicalFacility { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Medical Facility Type.
+    /// </summary>
     public string? MedicalFacilityType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Treatment Date date.
+    /// </summary>
     public DateTime? TreatmentDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether Death Involved (Y/N).
+    /// </summary>
     public string? DeathInvolvedYn { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether Mva Involved (Y/N).
+    /// </summary>
     public string? MvaInvolvedYn { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Icd9 Id identifier.
+    /// </summary>
     public int? Icd9Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether Epts (Y/N).
+    /// </summary>
     public byte? EptsYn { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? PhysicianApprovalComments { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who last modified this record.
+    /// </summary>
     public int ModifiedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Modified Date date.
+    /// </summary>
     public DateTime ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  reason(s).
+    /// </summary>
     public byte? PhysicianCancelReason { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  explanation.
+    /// </summary>
     public string? PhysicianCancelExplanation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Diagnosis Text.
+    /// </summary>
     public string? DiagnosisText { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Icd7th Char.
+    /// </summary>
     public string? Icd7thChar { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member From.
+    /// </summary>
     public int? MemberFrom { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Component.
+    /// </summary>
     public int? MemberComponent { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Category.
+    /// </summary>
     public int? MemberCategory { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Influence.
+    /// </summary>
     public int? Influence { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Responsible.
+    /// </summary>
     public string? MemberResponsible { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Psych Eval.
+    /// </summary>
     public string? PsychEval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Psych Date date.
+    /// </summary>
     public DateTime? PsychDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Relevant Condition.
+    /// </summary>
     public string? RelevantCondition { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Other Test.
+    /// </summary>
     public string? OtherTest { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Other Test Date date.
+    /// </summary>
     public DateTime? OtherTestDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Deployed Location.
+    /// </summary>
     public string? DeployedLocation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Condition Epts.
+    /// </summary>
     public bool? ConditionEpts { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Service Aggravated.
+    /// </summary>
     public bool? ServiceAggravated { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Mobility Standards.
+    /// </summary>
     public string? MobilityStandards { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Condition.
+    /// </summary>
     public string? MemberCondition { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alcohol Test Done.
+    /// </summary>
     public string? AlcoholTestDone { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Drug Test Done.
+    /// </summary>
     public string? DrugTestDone { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Board Finalization.
+    /// </summary>
     public string? BoardFinalization { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Workflow.
+    /// </summary>
     public int? Workflow { get; set; }
 
+    /// <summary>
+    /// Gets or sets the L Odinitiation.
+    /// </summary>
     public bool? LOdinitiation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Written Diagnosis.
+    /// </summary>
     public bool? WrittenDiagnosis { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Request.
+    /// </summary>
     public bool? MemberRequest { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Prior To Dutytatus.
+    /// </summary>
     public bool? PriorToDutytatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Status Worsened.
+    /// </summary>
     public string? StatusWorsened { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Icd9.
+    /// </summary>
     public virtual CoreLkupIcd9? Icd9 { get; set; }
 }

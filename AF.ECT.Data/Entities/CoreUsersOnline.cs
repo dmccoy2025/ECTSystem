@@ -22,15 +22,33 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreUsersOnline
 {
+    /// <summary>
+    /// Gets or sets the User Id identifier.
+    /// </summary>
     public int UserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Group Id identifier.
+    /// </summary>
     public int GroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Login Time.
+    /// </summary>
     public DateTime LoginTime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Last Access.
+    /// </summary>
     public DateTime LastAccess { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Session Id identifier.
+    /// </summary>
     public string? SessionId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Remote Address.
+    /// </summary>
     public string? RemoteAddress { get; set; }
 }

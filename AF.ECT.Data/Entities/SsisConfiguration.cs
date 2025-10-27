@@ -3,13 +3,28 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Ssis Configuration entity.
+/// </summary>
 public partial class SsisConfiguration
 {
+    /// <summary>
+    /// Gets or sets the Configuration Filter.
+    /// </summary>
     public string ConfigurationFilter { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Configured Value.
+    /// </summary>
     public string? ConfiguredValue { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Package Path.
+    /// </summary>
     public string PackagePath { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Configured Value Type.
+    /// </summary>
     public string ConfiguredValueType { get; set; } = null!;
 }

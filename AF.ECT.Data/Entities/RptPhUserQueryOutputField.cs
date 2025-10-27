@@ -3,23 +3,53 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a reporting Ph User Query Output Field.
+/// </summary>
 public partial class RptPhUserQueryOutputField
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Phquery Id identifier.
+    /// </summary>
     public int PhqueryId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Section Id identifier.
+    /// </summary>
     public int SectionId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Field Id identifier.
+    /// </summary>
     public int FieldId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Field Type Id identifier.
+    /// </summary>
     public int FieldTypeId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Field.
+    /// </summary>
     public virtual PhField Field { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Field Type.
+    /// </summary>
     public virtual PhFieldType FieldType { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Phquery.
+    /// </summary>
     public virtual RptPhUserQuery Phquery { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Section.
+    /// </summary>
     public virtual PhSection Section { get; set; } = null!;
 }

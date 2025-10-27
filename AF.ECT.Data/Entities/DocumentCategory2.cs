@@ -3,11 +3,23 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Document Category2 entity.
+/// </summary>
 public partial class DocumentCategory2
 {
+    /// <summary>
+    /// Gets or sets the Doc Cat Id identifier.
+    /// </summary>
     public int DocCatId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  description.
+    /// </summary>
     public string CategoryDescription { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Doc Category Views.
+    /// </summary>
     public virtual ICollection<DocCategoryView> DocCategoryViews { get; set; } = new List<DocCategoryView>();
 }

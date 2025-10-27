@@ -3,19 +3,43 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Doc Category View entity.
+/// </summary>
 public partial class DocCategoryView
 {
+    /// <summary>
+    /// Gets or sets the Doc Cat View Id identifier.
+    /// </summary>
     public int DocCatViewId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Doc View Id identifier.
+    /// </summary>
     public int DocViewId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Doc Cat Id identifier.
+    /// </summary>
     public int DocCatId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the View Order.
+    /// </summary>
     public int? ViewOrder { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Is Redacted.
+    /// </summary>
     public bool IsRedacted { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Doc Cat.
+    /// </summary>
     public virtual DocumentCategory2 DocCat { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Doc View.
+    /// </summary>
     public virtual DocumentView DocView { get; set; } = null!;
 }

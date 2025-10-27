@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Lodmapping entity.
+/// </summary>
 public partial class Lodmapping
 {
     public int? AlodLodId { get; set; }

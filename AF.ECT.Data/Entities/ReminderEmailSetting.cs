@@ -18,27 +18,63 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class ReminderEmailSetting
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Workflow Id identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ws Id identifier.
+    /// </summary>
     public int WsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Compo.
+    /// </summary>
     public long Compo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Group Id identifier.
+    /// </summary>
     public byte GroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Template Id identifier.
+    /// </summary>
     public int TemplateId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Interval Time.
+    /// </summary>
     public int IntervalTime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Group.
+    /// </summary>
     public virtual CoreUserGroup Group { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  email address.
+    /// </summary>
     public virtual ICollection<ReminderEmail> ReminderEmails { get; set; } = new List<ReminderEmail>();
 
+    /// <summary>
+    /// Gets or sets the Template.
+    /// </summary>
     public virtual CoreEmailTemplate Template { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Workflow.
+    /// </summary>
     public virtual CoreWorkflow Workflow { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Ws.
+    /// </summary>
     public virtual CoreWorkStatus Ws { get; set; } = null!;
 }

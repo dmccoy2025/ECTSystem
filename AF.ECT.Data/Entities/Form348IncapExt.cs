@@ -3,53 +3,128 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Incap Ext data.
+/// </summary>
 public partial class Form348IncapExt
 {
+    /// <summary>
+    /// Gets or sets the Ext Id identifier.
+    /// </summary>
     public int ExtId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sc Id identifier.
+    /// </summary>
     public int ScId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ext Number.
+    /// </summary>
     public short? ExtNumber { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ext Start Date date.
+    /// </summary>
     public DateTime? ExtStartDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ext End Date date.
+    /// </summary>
     public DateTime? ExtEndDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Ext Recommendation.
+    /// </summary>
     public bool? MedExtRecommendation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the I C Ext Recommendation.
+    /// </summary>
     public bool? ICExtRecommendation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the W Ja Concur With Ic.
+    /// </summary>
     public bool? WJaConcurWithIc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Fin Income Lost.
+    /// </summary>
     public bool? FinIncomeLost { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Wcc Ext Approval.
+    /// </summary>
     public bool? WccExtApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Opr Ext Approval.
+    /// </summary>
     public bool? OprExtApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ocr Ext Approval.
+    /// </summary>
     public bool? OcrExtApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dos Ext Approval.
+    /// </summary>
     public bool? DosExtApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ccr Ext Approval.
+    /// </summary>
     public bool? CcrExtApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Vcr Ext Approval.
+    /// </summary>
     public bool? VcrExtApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dop Ext Approval.
+    /// </summary>
     public bool? DopExtApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cafr Ext Approval.
+    /// </summary>
     public bool? CafrExtApproval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Amrostart Date date.
+    /// </summary>
     public DateTime? MedAmrostartDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Amroend Date date.
+    /// </summary>
     public DateTime? MedAmroendDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Amrodisposition.
+    /// </summary>
     public string? MedAmrodisposition { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Next Amrostart Date date.
+    /// </summary>
     public DateTime? MedNextAmrostartDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Next Amroend Date date.
+    /// </summary>
     public DateTime? MedNextAmroendDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Irilostatus.
+    /// </summary>
     public string? MedIrilostatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sc.
+    /// </summary>
     public virtual Form348IncapFinding Sc { get; set; } = null!;
 }

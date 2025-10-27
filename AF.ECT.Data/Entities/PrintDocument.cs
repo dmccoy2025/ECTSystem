@@ -3,21 +3,48 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Print Document entity.
+/// </summary>
 public partial class PrintDocument
 {
+    /// <summary>
+    /// Gets or sets the Docid identifier.
+    /// </summary>
     public short Docid { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Doc Name.
+    /// </summary>
     public string DocName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Filename.
+    /// </summary>
     public string Filename { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Filetype.
+    /// </summary>
     public string Filetype { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Compo.
+    /// </summary>
     public short? Compo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sp Getdata.
+    /// </summary>
     public string? SpGetdata { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Form Field Parser Id identifier.
+    /// </summary>
     public int? FormFieldParserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Form Field Parser.
+    /// </summary>
     public virtual PrintDocumentFormFieldParser? FormFieldParser { get; set; }
 }

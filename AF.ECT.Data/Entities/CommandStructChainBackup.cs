@@ -3,23 +3,53 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Command Struct Chain Backup entity.
+/// </summary>
 public partial class CommandStructChainBackup
 {
+    /// <summary>
+    /// Gets or sets the Csc Id identifier.
+    /// </summary>
     public int CscId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cs Id identifier.
+    /// </summary>
     public int? CsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Chain Type.
+    /// </summary>
     public string? ChainType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Csc Id Parent.
+    /// </summary>
     public int? CscIdParent { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public string? CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime? CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who last modified this record.
+    /// </summary>
     public string? ModifiedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Modified Date date.
+    /// </summary>
     public DateTime? ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the View Type.
+    /// </summary>
     public byte? ViewType { get; set; }
 }

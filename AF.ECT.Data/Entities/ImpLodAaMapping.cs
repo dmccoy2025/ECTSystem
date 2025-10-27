@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Lod Aa Mapping data for system migration/integration.
+/// </summary>
 public partial class ImpLodAaMapping
 {
     public string? ImportName { get; set; }

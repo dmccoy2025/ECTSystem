@@ -3,25 +3,58 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents personnel involved in a Line of Duty Investigation Report imported from AFRC Oracle.
+/// </summary>
 public partial class AfrcOracleLirPersonnelDatum
 {
+    /// <summary>
+    /// Gets or sets the line item identifier.
+    /// </summary>
     public string? LiId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Line of Duty Investigation Report identifier.
+    /// </summary>
     public string? LirId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the full name of the person.
+    /// </summary>
     public string? Name { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Social Security Number.
+    /// </summary>
     public string? Ssn { get; set; }
 
+    /// <summary>
+    /// Gets or sets the military grade/rank.
+    /// </summary>
     public string? Grade { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this person is subject to LOD investigation (Y/N).
+    /// </summary>
     public string? LodInvestigationYn { get; set; }
 
+    /// <summary>
+    /// Gets or sets the user identifier who created this record.
+    /// </summary>
     public string? CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date when this record was created.
+    /// </summary>
     public string? CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the user identifier who last modified this record.
+    /// </summary>
     public string? ModifiedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the date when this record was last modified.
+    /// </summary>
     public string? ModifiedDate { get; set; }
 }

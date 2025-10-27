@@ -3,49 +3,118 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Ap Finding data.
+/// </summary>
 public partial class Form348ApFinding
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Appeal Id identifier.
+    /// </summary>
     public int AppealId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ptype.
+    /// </summary>
     public short Ptype { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Last Name.
+    /// </summary>
     public string? LastName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the First Name.
+    /// </summary>
     public string? FirstName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Middle Name.
+    /// </summary>
     public string? MiddleName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  military grade/rank.
+    /// </summary>
     public string? Grade { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  military grade/rank.
+    /// </summary>
     public string? Rank { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Compo.
+    /// </summary>
     public string? Compo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pascode.
+    /// </summary>
     public string? Pascode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  findings.
+    /// </summary>
     public byte? Finding { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  explanation.
+    /// </summary>
     public string? Explanation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  findings.
+    /// </summary>
     public bool IsLegacyFinding { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public int CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who last modified this record.
+    /// </summary>
     public int ModifiedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Modified Date date.
+    /// </summary>
     public DateTime ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Concur.
+    /// </summary>
     public string? Concur { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Appeal.
+    /// </summary>
     public virtual Form348Ap Appeal { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Created By Navigation.
+    /// </summary>
     public virtual CoreUser CreatedByNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Modified By Navigation.
+    /// </summary>
     public virtual CoreUser ModifiedByNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Ptype Navigation.
+    /// </summary>
     public virtual CoreLkupPersonnelType PtypeNavigation { get; set; } = null!;
 }

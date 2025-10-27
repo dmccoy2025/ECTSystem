@@ -3,19 +3,43 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a reporting Ph User Query.
+/// </summary>
 public partial class RptPhUserQuery
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the User Query Id identifier.
+    /// </summary>
     public int UserQueryId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Report Type.
+    /// </summary>
     public int ReportType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sort Field.
+    /// </summary>
     public string? SortField { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rpt Ph User Query Clauses.
+    /// </summary>
     public virtual ICollection<RptPhUserQueryClause> RptPhUserQueryClauses { get; set; } = new List<RptPhUserQueryClause>();
 
+    /// <summary>
+    /// Gets or sets the Rpt Ph User Query Output Fields.
+    /// </summary>
     public virtual ICollection<RptPhUserQueryOutputField> RptPhUserQueryOutputFields { get; set; } = new List<RptPhUserQueryOutputField>();
 
+    /// <summary>
+    /// Gets or sets the User Query.
+    /// </summary>
     public virtual RptUserQuery UserQuery { get; set; } = null!;
 }

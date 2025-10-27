@@ -3,37 +3,88 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Post Processing data.
+/// </summary>
 public partial class Form348PostProcessing
 {
+    /// <summary>
+    /// Gets or sets the Lod Id identifier.
+    /// </summary>
     public int LodId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Help Extension Number.
+    /// </summary>
     public string? HelpExtensionNumber { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Appeal Street.
+    /// </summary>
     public string? AppealStreet { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  city.
+    /// </summary>
     public string? AppealCity { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  state.
+    /// </summary>
     public string? AppealState { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  postal/ZIP code.
+    /// </summary>
     public string? AppealZip { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  country.
+    /// </summary>
     public string? AppealCountry { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Nok First Name.
+    /// </summary>
     public string? NokFirstName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Nok Last Name.
+    /// </summary>
     public string? NokLastName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Nok Middle Name.
+    /// </summary>
     public string? NokMiddleName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Notification Date date.
+    /// </summary>
     public DateTime? NotificationDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  email address.
+    /// </summary>
     public string? Email { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Address Flag.
+    /// </summary>
     public int? AddressFlag { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  email address.
+    /// </summary>
     public int? EmailFlag { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Phone Flag.
+    /// </summary>
     public int? PhoneFlag { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Lod.
+    /// </summary>
     public virtual Form348 Lod { get; set; } = null!;
 }

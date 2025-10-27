@@ -17,7 +17,13 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreCompletedByGroup
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Name.
+    /// </summary>
     public string Name { get; set; } = null!;
 }

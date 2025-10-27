@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Special Cases Lod Case entity.
+/// </summary>
 public partial class SpecialCasesLodCase
 {
     public string? Status { get; set; }

@@ -3,9 +3,18 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Print Document Form Field Parser entity.
+/// </summary>
 public partial class PrintDocumentFormFieldParser
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Name.
+    /// </summary>
     public string Name { get; set; } = null!;
 }

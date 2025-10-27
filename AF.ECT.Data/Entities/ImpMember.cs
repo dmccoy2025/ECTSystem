@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Member data for system migration/integration.
+/// </summary>
 public partial class ImpMember
 {
     public string? Ssan { get; set; }

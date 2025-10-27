@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Lod Disp data imported from AFRC Oracle.
+/// </summary>
 public partial class AfrcOracleLodDispDatum
 {
     public string? LodId { get; set; }

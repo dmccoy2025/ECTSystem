@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Manpower All data imported from AFRC Oracle.
+/// </summary>
 public partial class AfrcOracleManpowerAllDatum
 {
     public string? MpId { get; set; }

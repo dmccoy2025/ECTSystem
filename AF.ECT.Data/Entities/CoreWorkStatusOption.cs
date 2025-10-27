@@ -21,27 +21,63 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreWorkStatusOption
 {
+    /// <summary>
+    /// Gets or sets the Wso Id identifier.
+    /// </summary>
     public int WsoId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ws Id identifier.
+    /// </summary>
     public int WsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Display Text.
+    /// </summary>
     public string DisplayText { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether this record is active.
+    /// </summary>
     public bool Active { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sort Order.
+    /// </summary>
     public byte SortOrder { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Template.
+    /// </summary>
     public byte Template { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ws Id Out.
+    /// </summary>
     public int WsIdOut { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Compo.
+    /// </summary>
     public int? Compo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Core Work Status Actions.
+    /// </summary>
     public virtual ICollection<CoreWorkStatusAction> CoreWorkStatusActions { get; set; } = new List<CoreWorkStatusAction>();
 
+    /// <summary>
+    /// Gets or sets the Core Work Status Rules.
+    /// </summary>
     public virtual ICollection<CoreWorkStatusRule> CoreWorkStatusRules { get; set; } = new List<CoreWorkStatusRule>();
 
+    /// <summary>
+    /// Gets or sets the Ws.
+    /// </summary>
     public virtual CoreWorkStatus Ws { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Ws Id Out Navigation.
+    /// </summary>
     public virtual CoreWorkStatus WsIdOutNavigation { get; set; } = null!;
 }

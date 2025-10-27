@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Dba Role Priv data for system migration/integration.
+/// </summary>
 public partial class ImpDbaRolePriv
 {
     public string? Grantee { get; set; }

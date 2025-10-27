@@ -26,17 +26,38 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreLkupCountry
 {
+    /// <summary>
+    /// Gets or sets the Country Id identifier.
+    /// </summary>
     public int CountryId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  country.
+    /// </summary>
     public string Country { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Abbr.
+    /// </summary>
     public string? Abbr { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public string CreatedBy { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Modified Date date.
+    /// </summary>
     public DateTime ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who last modified this record.
+    /// </summary>
     public string ModifiedBy { get; set; } = null!;
 }

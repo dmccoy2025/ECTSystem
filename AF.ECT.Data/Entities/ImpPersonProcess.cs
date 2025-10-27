@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Person Process data for system migration/integration.
+/// </summary>
 public partial class ImpPersonProcess
 {
     public string? PpId { get; set; }

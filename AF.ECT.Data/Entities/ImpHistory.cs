@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported History data for system migration/integration.
+/// </summary>
 public partial class ImpHistory
 {
     public int? AlodUserid { get; set; }

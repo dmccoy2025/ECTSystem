@@ -23,7 +23,13 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreLkupProcess
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  title.
+    /// </summary>
     public string Title { get; set; } = null!;
 }

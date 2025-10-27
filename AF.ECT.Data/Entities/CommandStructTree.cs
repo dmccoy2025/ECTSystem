@@ -3,15 +3,33 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Command Struct Tree entity.
+/// </summary>
 public partial class CommandStructTree
 {
+    /// <summary>
+    /// Gets or sets the View Type.
+    /// </summary>
     public byte ViewType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Parent Pas.
+    /// </summary>
     public string ParentPas { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Child Pas.
+    /// </summary>
     public string ChildPas { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Parent Id identifier.
+    /// </summary>
     public int? ParentId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Child Id identifier.
+    /// </summary>
     public int? ChildId { get; set; }
 }

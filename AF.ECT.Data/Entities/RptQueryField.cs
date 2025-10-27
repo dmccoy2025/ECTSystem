@@ -3,15 +3,33 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a reporting Query Field.
+/// </summary>
 public partial class RptQueryField
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Field Name.
+    /// </summary>
     public string? FieldName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Query Type.
+    /// </summary>
     public string? QueryType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sort Order.
+    /// </summary>
     public int? SortOrder { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Table Name.
+    /// </summary>
     public string? TableName { get; set; }
 }

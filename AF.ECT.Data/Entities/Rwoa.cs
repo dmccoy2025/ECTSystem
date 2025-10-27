@@ -3,33 +3,78 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Rwoa entity.
+/// </summary>
 public partial class Rwoa
 {
+    /// <summary>
+    /// Gets or sets the Rwoa Id identifier.
+    /// </summary>
     public int RwoaId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ref Id identifier.
+    /// </summary>
     public int RefId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Workstatus.
+    /// </summary>
     public int Workstatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Workflow.
+    /// </summary>
     public byte Workflow { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sent To.
+    /// </summary>
     public string? SentTo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  reason(s).
+    /// </summary>
     public byte? ReasonSentBack { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Explanation For Sending Back.
+    /// </summary>
     public string? ExplanationForSendingBack { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sender.
+    /// </summary>
     public string? Sender { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Date Sent.
+    /// </summary>
     public DateTime? DateSent { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? CommentsBackToSender { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Date Sent Back.
+    /// </summary>
     public DateTime? DateSentBack { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public int? CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime? CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rerouting.
+    /// </summary>
     public bool? Rerouting { get; set; }
 }

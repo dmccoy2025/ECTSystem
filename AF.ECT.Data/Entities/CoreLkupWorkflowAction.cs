@@ -25,9 +25,18 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreLkupWorkflowAction
 {
+    /// <summary>
+    /// Gets or sets the Type.
+    /// </summary>
     public byte Type { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Text.
+    /// </summary>
     public string Text { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Core Work Status Actions.
+    /// </summary>
     public virtual ICollection<CoreWorkStatusAction> CoreWorkStatusActions { get; set; } = new List<CoreWorkStatusAction>();
 }

@@ -3,241 +3,598 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Pal Data Temp entity.
+/// </summary>
 public partial class PalDataTemp
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Last Name.
+    /// </summary>
     public string? LastName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the First Name.
+    /// </summary>
     public string? FirstName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  Social Security Number.
+    /// </summary>
     public string? Ssan { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  military grade/rank.
+    /// </summary>
     public string? Rank { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Birth Date date.
+    /// </summary>
     public DateTime? BirthDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Type.
+    /// </summary>
     public string? Type { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rating.
+    /// </summary>
     public string? Rating { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Asc Code.
+    /// </summary>
     public string? AscCode { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Baseassign.
+    /// </summary>
     public string? Baseassign { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Completeby.
+    /// </summary>
     public string? Completeby { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Disposition.
+    /// </summary>
     public string? Disposition { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sent To.
+    /// </summary>
     public string? SentTo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Date Out.
+    /// </summary>
     public DateTime? DateOut { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Date Rec.
+    /// </summary>
     public DateTime? DateRec { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Fiche.
+    /// </summary>
     public string? Fiche { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Expiredate date.
+    /// </summary>
     public DateTime? Expiredate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Indefinite Waiver.
+    /// </summary>
     public bool? IndefiniteWaiver { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Wnlr.
+    /// </summary>
     public bool? Wnlr { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Diagnosis.
+    /// </summary>
     public string? Diagnosis { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? Remarks { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rwoa.
+    /// </summary>
     public bool? Rwoa { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  reason(s).
+    /// </summary>
     public string? RwoaReason { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Trwoa.
+    /// </summary>
     public bool? Trwoa { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Received From.
+    /// </summary>
     public string? ReceivedFrom { get; set; }
 
+    /// <summary>
+    /// Gets or sets the He She.
+    /// </summary>
     public string? HeShe { get; set; }
 
+    /// <summary>
+    /// Gets or sets the His Her.
+    /// </summary>
     public string? HisHer { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Him Her.
+    /// </summary>
     public string? HimHer { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ret To Duty By.
+    /// </summary>
     public string? RetToDutyBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alc C.
+    /// </summary>
     public bool? AlcC { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Af Form422 Feb93 Format.
+    /// </summary>
     public bool? AfForm422Feb93Format { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Narrative Summary.
+    /// </summary>
     public bool? NarrativeSummary { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Questionnaire.
+    /// </summary>
     public bool? Questionnaire { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Unit Commander S Memo.
+    /// </summary>
     public bool? UnitCommanderSMemo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ipeb Election Included.
+    /// </summary>
     public bool? IpebElectionIncluded { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ipebelected Yes.
+    /// </summary>
     public bool? IpebelectedYes { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ipebelected No.
+    /// </summary>
     public bool? IpebelectedNo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the No Home.
+    /// </summary>
     public bool? NoHome { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Asthma Gen12.
+    /// </summary>
     public bool? AsthmaGen12 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cad121.
+    /// </summary>
     public bool? Cad121 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dm122.
+    /// </summary>
     public bool? Dm122 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Hiv123.
+    /// </summary>
     public bool? Hiv123 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Psych124.
+    /// </summary>
     public bool? Psych124 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Home Station No Mandays.
+    /// </summary>
     public bool? HomeStationNoMandays { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Conus.
+    /// </summary>
     public bool? Conus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Conus If Checked First.
+    /// </summary>
     public bool? ConusIfCheckedFirst { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _1.
+    /// </summary>
     public bool? _1 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _3.
+    /// </summary>
     public bool? _3 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _31.
+    /// </summary>
     public bool? _31 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _4.
+    /// </summary>
     public bool? _4 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _41.
+    /// </summary>
     public bool? _41 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _411.
+    /// </summary>
     public bool? _411 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _42.
+    /// </summary>
     public bool? _42 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _43.
+    /// </summary>
     public bool? _43 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _44.
+    /// </summary>
     public bool? _44 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _45.
+    /// </summary>
     public bool? _45 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _5.
+    /// </summary>
     public bool? _5 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _6.
+    /// </summary>
     public bool? _6 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _61.
+    /// </summary>
     public bool? _61 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _7.
+    /// </summary>
     public bool? _7 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _8.
+    /// </summary>
     public bool? _8 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _9.
+    /// </summary>
     public bool? _9 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _91.
+    /// </summary>
     public bool? _91 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _10.
+    /// </summary>
     public bool? _10 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _101.
+    /// </summary>
     public bool? _101 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _102.
+    /// </summary>
     public bool? _102 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _103.
+    /// </summary>
     public bool? _103 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _11.
+    /// </summary>
     public bool? _11 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _13.
+    /// </summary>
     public bool? _13 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _15.
+    /// </summary>
     public bool? _15 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _16.
+    /// </summary>
     public bool? _16 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _161.
+    /// </summary>
     public bool? _161 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _162.
+    /// </summary>
     public bool? _162 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _1621.
+    /// </summary>
     public bool? _1621 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _163.
+    /// </summary>
     public bool? _163 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _164.
+    /// </summary>
     public bool? _164 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _165.
+    /// </summary>
     public bool? _165 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _165a.
+    /// </summary>
     public bool? _165a { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _166.
+    /// </summary>
     public bool? _166 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _167.
+    /// </summary>
     public bool? _167 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _167a.
+    /// </summary>
     public bool? _167a { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _167b.
+    /// </summary>
     public bool? _167b { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _18.
+    /// </summary>
     public bool? _18 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _20.
+    /// </summary>
     public bool? _20 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _21.
+    /// </summary>
     public bool? _21 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _211.
+    /// </summary>
     public bool? _211 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the _22.
+    /// </summary>
     public bool? _22 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dq Para Number.
+    /// </summary>
     public string? DqParaNumber { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dq Diagnosis.
+    /// </summary>
     public string? DqDiagnosis { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? AdditionalComments { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Signature.
+    /// </summary>
     public string? Signature { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Medical Evaluation Fact Sheet.
+    /// </summary>
     public bool? MedicalEvaluationFactSheet { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Art And Dsn.
+    /// </summary>
     public string? ArtAndDsn { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Discharged.
+    /// </summary>
     public bool? Discharged { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Retired.
+    /// </summary>
     public bool? Retired { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cancer.
+    /// </summary>
     public bool? Cancer { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Coronary.
+    /// </summary>
     public bool? Coronary { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dm.
+    /// </summary>
     public bool? Dm { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Hiv.
+    /// </summary>
     public bool? Hiv { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Musculoskeletal.
+    /// </summary>
     public bool? Musculoskeletal { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Psych.
+    /// </summary>
     public bool? Psych { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pulmonary.
+    /// </summary>
     public bool? Pulmonary { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rk.
+    /// </summary>
     public bool? Rk { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Neuro.
+    /// </summary>
     public bool? Neuro { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Other.
+    /// </summary>
     public bool? Other { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dental.
+    /// </summary>
     public bool? Dental { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Gi.
+    /// </summary>
     public bool? Gi { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Eent.
+    /// </summary>
     public bool? Eent { get; set; }
 
+    /// <summary>
+    /// Gets or sets the He She Not Capped.
+    /// </summary>
     public string? HeSheNotCapped { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Date Sent To Fiche.
+    /// </summary>
     public DateTime? DateSentToFiche { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Renewal.
+    /// </summary>
     public bool? Renewal { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Archive.
+    /// </summary>
     public bool? Archive { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Re Activate.
+    /// </summary>
     public bool? ReActivate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Input By.
+    /// </summary>
     public string? InputBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rcd Id identifier.
+    /// </summary>
     public int? RcdId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  description.
+    /// </summary>
     public string? RetiredDesc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  description.
+    /// </summary>
     public string? DischargedDesc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Imported.
+    /// </summary>
     public bool? Imported { get; set; }
 }

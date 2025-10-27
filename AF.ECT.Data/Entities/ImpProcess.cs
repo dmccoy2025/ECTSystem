@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Process data for system migration/integration.
+/// </summary>
 public partial class ImpProcess
 {
     public string? ProcId { get; set; }

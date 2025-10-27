@@ -3,15 +3,33 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a placeholder/form Field.
+/// </summary>
 public partial class PhField
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Name.
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Ph Form Fields.
+    /// </summary>
     public virtual ICollection<PhFormField> PhFormFields { get; set; } = new List<PhFormField>();
 
+    /// <summary>
+    /// Gets or sets the Ph Form Values.
+    /// </summary>
     public virtual ICollection<PhFormValue> PhFormValues { get; set; } = new List<PhFormValue>();
 
+    /// <summary>
+    /// Gets or sets the Rpt Ph User Query Output Fields.
+    /// </summary>
     public virtual ICollection<RptPhUserQueryOutputField> RptPhUserQueryOutputFields { get; set; } = new List<RptPhUserQueryOutputField>();
 }

@@ -25,9 +25,18 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreLkupMajcom
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Majcom Name.
+    /// </summary>
     public string MajcomName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether this record is active.
+    /// </summary>
     public bool Active { get; set; }
 }

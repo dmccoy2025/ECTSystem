@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Command Struct data for system migration/integration.
+/// </summary>
 public partial class ImpCommandStruct
 {
     public int? CsId { get; set; }

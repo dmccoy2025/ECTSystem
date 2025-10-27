@@ -3,17 +3,38 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Sarc Icd data.
+/// </summary>
 public partial class Form348SarcIcd
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sarcid identifier.
+    /// </summary>
     public int Sarcid { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Icdcode Id identifier.
+    /// </summary>
     public int IcdcodeId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Icd7th Char.
+    /// </summary>
     public string? Icd7thChar { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Icdcode.
+    /// </summary>
     public virtual CoreLkupIcd9 Icdcode { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Sarc.
+    /// </summary>
     public virtual Form348Sarc Sarc { get; set; } = null!;
 }

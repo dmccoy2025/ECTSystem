@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Personnel entity.
+/// </summary>
 public partial class Personnel
 {
     public string? PersId { get; set; }

@@ -3,23 +3,53 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Lodmapping data for system migration/integration.
+/// </summary>
 public partial class ImpLodmapping
 {
+    /// <summary>
+    /// Gets or sets the Alod Lod Id identifier.
+    /// </summary>
     public int? AlodLodId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rcpha Lodid identifier.
+    /// </summary>
     public int RcphaLodid { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime? CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rc Pha Org Lodid identifier.
+    /// </summary>
     public int? RcPhaOrgLodid { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Case Id identifier.
+    /// </summary>
     public string? CaseId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alod Status.
+    /// </summary>
     public int? AlodStatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rcpha Valid Status.
+    /// </summary>
     public int? RcphaValidStatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rcpha Valid Status Meaning.
+    /// </summary>
     public string? RcphaValidStatusMeaning { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rcpha Proc Name.
+    /// </summary>
     public string? RcphaProcName { get; set; }
 }

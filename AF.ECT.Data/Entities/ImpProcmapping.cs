@@ -3,11 +3,23 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Procmapping data for system migration/integration.
+/// </summary>
 public partial class ImpProcmapping
 {
+    /// <summary>
+    /// Gets or sets the Pvs Id identifier.
+    /// </summary>
     public int PvsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Proc Id identifier.
+    /// </summary>
     public int ProcId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alod Workstatus.
+    /// </summary>
     public int? AlodWorkstatus { get; set; }
 }

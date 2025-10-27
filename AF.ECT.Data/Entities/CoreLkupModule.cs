@@ -24,23 +24,53 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreLkupModule
 {
+    /// <summary>
+    /// Gets or sets the Module Id identifier.
+    /// </summary>
     public byte ModuleId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Module Name.
+    /// </summary>
     public string ModuleName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Is Special Case.
+    /// </summary>
     public bool IsSpecialCase { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Core Log Actions.
+    /// </summary>
     public virtual ICollection<CoreLogAction> CoreLogActions { get; set; } = new List<CoreLogAction>();
 
+    /// <summary>
+    /// Gets or sets the Core Memo Templates.
+    /// </summary>
     public virtual ICollection<CoreMemoTemplate> CoreMemoTemplates { get; set; } = new List<CoreMemoTemplate>();
 
+    /// <summary>
+    /// Gets or sets the Core Status Codes.
+    /// </summary>
     public virtual ICollection<CoreStatusCode> CoreStatusCodes { get; set; } = new List<CoreStatusCode>();
 
+    /// <summary>
+    /// Gets or sets the Core Work Status Trackings.
+    /// </summary>
     public virtual ICollection<CoreWorkStatusTracking> CoreWorkStatusTrackings { get; set; } = new List<CoreWorkStatusTracking>();
 
+    /// <summary>
+    /// Gets or sets the Core Workflow Locks.
+    /// </summary>
     public virtual ICollection<CoreWorkflowLock> CoreWorkflowLocks { get; set; } = new List<CoreWorkflowLock>();
 
+    /// <summary>
+    /// Gets or sets the Core Workflows.
+    /// </summary>
     public virtual ICollection<CoreWorkflow> CoreWorkflows { get; set; } = new List<CoreWorkflow>();
 
+    /// <summary>
+    /// Gets or sets the Form348 Scs.
+    /// </summary>
     public virtual ICollection<Form348Sc> Form348Scs { get; set; } = new List<Form348Sc>();
 }

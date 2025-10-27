@@ -3,23 +3,53 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Conversion Run entity.
+/// </summary>
 public partial class ConversionRun
 {
+    /// <summary>
+    /// Gets or sets the Run Id identifier.
+    /// </summary>
     public int RunId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Start Datestamp.
+    /// </summary>
     public DateTime StartDatestamp { get; set; }
 
+    /// <summary>
+    /// Gets or sets the End Datestamp.
+    /// </summary>
     public DateTime? EndDatestamp { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Status.
+    /// </summary>
     public string? Status { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Records Processed.
+    /// </summary>
     public int? RecordsProcessed { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Erros Found.
+    /// </summary>
     public int? ErrosFound { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Last User Id identifier.
+    /// </summary>
     public string? LastUserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Last Patient Id identifier.
+    /// </summary>
     public string? LastPatientId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Last Lod Case Id identifier.
+    /// </summary>
     public string? LastLodCaseId { get; set; }
 }

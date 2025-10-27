@@ -3,11 +3,23 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Dev Unit entity.
+/// </summary>
 public partial class DevUnit
 {
+    /// <summary>
+    /// Gets or sets the Cs Id identifier.
+    /// </summary>
     public int CsId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Unit Type.
+    /// </summary>
     public string UnitType { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Order Num.
+    /// </summary>
     public int? OrderNum { get; set; }
 }

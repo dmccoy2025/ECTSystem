@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents ALOD Pas Raw data.
+/// </summary>
 public partial class AlodPasRaw
 {
     public string? Aav3 { get; set; }

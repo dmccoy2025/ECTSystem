@@ -3,9 +3,18 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Aspstate Temp Application entity.
+/// </summary>
 public partial class AspstateTempApplication
 {
+    /// <summary>
+    /// Gets or sets the App Id identifier.
+    /// </summary>
     public int AppId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the App Name.
+    /// </summary>
     public string AppName { get; set; } = null!;
 }

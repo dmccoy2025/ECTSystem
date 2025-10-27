@@ -3,33 +3,78 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Pscd Finding data.
+/// </summary>
 public partial class Form348PscdFinding
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pscd Id identifier.
+    /// </summary>
     public int PscdId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Name.
+    /// </summary>
     public string? Name { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ptype.
+    /// </summary>
     public short? Ptype { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? Remarks { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  findings.
+    /// </summary>
     public byte? Finding { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Finding Text.
+    /// </summary>
     public string? FindingText { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public int? CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime? CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who last modified this record.
+    /// </summary>
     public int? ModifiedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Modified Date date.
+    /// </summary>
     public DateTime? ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? AdditionalRemarks { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Refer To Des.
+    /// </summary>
     public bool? ReferToDes { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pscd.
+    /// </summary>
     public virtual Form348Sc Pscd { get; set; } = null!;
 }

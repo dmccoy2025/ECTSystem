@@ -3,23 +3,53 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Previous Weeks Ectcase entity.
+/// </summary>
 public partial class PreviousWeeksEctcase
 {
+    /// <summary>
+    /// Gets or sets the Work Flow Id identifier.
+    /// </summary>
     public byte WorkFlowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Name.
+    /// </summary>
     public string MemberName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Case Id identifier.
+    /// </summary>
     public string CaseId { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Member Unit.
+    /// </summary>
     public string MemberUnit { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  description.
+    /// </summary>
     public string Description { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Start Date date.
+    /// </summary>
     public DateTime StartDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the End Date date.
+    /// </summary>
     public DateTime? EndDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Report Start.
+    /// </summary>
     public string ReportStart { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Report End.
+    /// </summary>
     public string ReportEnd { get; set; } = null!;
 }

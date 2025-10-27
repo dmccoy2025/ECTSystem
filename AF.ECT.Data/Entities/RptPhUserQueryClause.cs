@@ -3,15 +3,33 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a reporting Ph User Query Clause.
+/// </summary>
 public partial class RptPhUserQueryClause
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Phquery Id identifier.
+    /// </summary>
     public int PhqueryId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Where Type.
+    /// </summary>
     public string WhereType { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Phquery.
+    /// </summary>
     public virtual RptPhUserQuery Phquery { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Rpt Ph User Query Params.
+    /// </summary>
     public virtual ICollection<RptPhUserQueryParam> RptPhUserQueryParams { get; set; } = new List<RptPhUserQueryParam>();
 }

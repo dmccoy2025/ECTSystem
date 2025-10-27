@@ -3,25 +3,58 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Post Processing Appeal Sarc data.
+/// </summary>
 public partial class Form348PostProcessingAppealSarc
 {
+    /// <summary>
+    /// Gets or sets the Appeal Id identifier.
+    /// </summary>
     public int AppealId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Appeal Street.
+    /// </summary>
     public string? AppealStreet { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  city.
+    /// </summary>
     public string? AppealCity { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  state.
+    /// </summary>
     public string? AppealState { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  postal/ZIP code.
+    /// </summary>
     public string? AppealZip { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  country.
+    /// </summary>
     public string? AppealCountry { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Notification Date date.
+    /// </summary>
     public DateOnly? MemberNotificationDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Help Extension Number.
+    /// </summary>
     public string? HelpExtensionNumber { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  email address.
+    /// </summary>
     public string? Email { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Appeal.
+    /// </summary>
     public virtual Form348ApSarc Appeal { get; set; } = null!;
 }

@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Process Valid Status data for system migration/integration.
+/// </summary>
 public partial class ImpProcessValidStatus
 {
     public string? PvsId { get; set; }

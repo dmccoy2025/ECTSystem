@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Personnel Feed data imported from AFRC Oracle.
+/// </summary>
 public partial class AfrcOraclePersonnelFeedDatum
 {
     public string? PersId { get; set; }

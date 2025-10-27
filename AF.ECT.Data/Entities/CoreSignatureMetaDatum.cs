@@ -18,29 +18,68 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreSignatureMetaDatum
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ref Id identifier.
+    /// </summary>
     public int RefId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Workflow Id identifier.
+    /// </summary>
     public byte WorkflowId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Work Status.
+    /// </summary>
     public int WorkStatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the User Group.
+    /// </summary>
     public byte UserGroup { get; set; }
 
+    /// <summary>
+    /// Gets or sets the User Id identifier.
+    /// </summary>
     public int UserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Date date.
+    /// </summary>
     public DateTime Date { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  military grade/rank.
+    /// </summary>
     public string NameAndRank { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  title.
+    /// </summary>
     public string? Title { get; set; }
 
+    /// <summary>
+    /// Gets or sets the User.
+    /// </summary>
     public virtual CoreUser User { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the User Group Navigation.
+    /// </summary>
     public virtual CoreUserGroup UserGroupNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Work Status Navigation.
+    /// </summary>
     public virtual CoreWorkStatus WorkStatusNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Workflow.
+    /// </summary>
     public virtual CoreWorkflow Workflow { get; set; } = null!;
 }

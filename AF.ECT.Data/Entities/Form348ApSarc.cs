@@ -3,109 +3,268 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Ap Sarc data.
+/// </summary>
 public partial class Form348ApSarc
 {
+    /// <summary>
+    /// Gets or sets the Appeal Sarc Id identifier.
+    /// </summary>
     public int AppealSarcId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Initial Id identifier.
+    /// </summary>
     public int InitialId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Initial Workflow.
+    /// </summary>
     public int InitialWorkflow { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Case Id identifier.
+    /// </summary>
     public string CaseId { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public int CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who last modified this record.
+    /// </summary>
     public int? ModifiedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Modified Date date.
+    /// </summary>
     public DateTime? ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Status.
+    /// </summary>
     public int Status { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Workflow.
+    /// </summary>
     public byte? Workflow { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  reason(s).
+    /// </summary>
     public int? CancelReason { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  explanation.
+    /// </summary>
     public string? CancelExplanation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cancel Date date.
+    /// </summary>
     public DateTime? CancelDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  reason(s).
+    /// </summary>
     public byte? RwoaReason { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  explanation.
+    /// </summary>
     public string? RwoaExplanation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rwoa Date date.
+    /// </summary>
     public DateTime? RwoaDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rwoa Reply.
+    /// </summary>
     public string? RwoaReply { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Return To Group.
+    /// </summary>
     public int? ReturnToGroup { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Return By Group.
+    /// </summary>
     public int? ReturnByGroup { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Name.
+    /// </summary>
     public string MemberName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  Social Security Number.
+    /// </summary>
     public string MemberSsn { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Sig Date Wing Sarc.
+    /// </summary>
     public DateTime? SigDateWingSarc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Name Wing Sarc.
+    /// </summary>
     public string? SigNameWingSarc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Title Wing Sarc.
+    /// </summary>
     public string? SigTitleWingSarc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Date Sarc Admin.
+    /// </summary>
     public DateTime? SigDateSarcAdmin { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Name Sarc Admin.
+    /// </summary>
     public string? SigNameSarcAdmin { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Title Sarc Admin.
+    /// </summary>
     public string? SigTitleSarcAdmin { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Date Appellate Auth.
+    /// </summary>
     public DateTime? SigDateAppellateAuth { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Name Appellate Auth.
+    /// </summary>
     public string? SigNameAppellateAuth { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Title Appellate Auth.
+    /// </summary>
     public string? SigTitleAppellateAuth { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Date Board Medical.
+    /// </summary>
     public DateTime? SigDateBoardMedical { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Name Board Medical.
+    /// </summary>
     public string? SigNameBoardMedical { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Title Board Medical.
+    /// </summary>
     public string? SigTitleBoardMedical { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Date Board Legal.
+    /// </summary>
     public DateTime? SigDateBoardLegal { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Name Board Legal.
+    /// </summary>
     public string? SigNameBoardLegal { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Title Board Legal.
+    /// </summary>
     public string? SigTitleBoardLegal { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Date Board Admin.
+    /// </summary>
     public DateTime? SigDateBoardAdmin { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Name Board Admin.
+    /// </summary>
     public string? SigNameBoardAdmin { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Title Board Admin.
+    /// </summary>
     public string? SigTitleBoardAdmin { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? ReturnComment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Doc Group Id identifier.
+    /// </summary>
     public int? DocGroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Notified.
+    /// </summary>
     public bool? MemberNotified { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Consultation From Usergroup Id identifier.
+    /// </summary>
     public byte? ConsultationFromUsergroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Is Post Processing Complete.
+    /// </summary>
     public bool IsPostProcessingComplete { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Unit.
+    /// </summary>
     public string MemberUnit { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Member Unit Id identifier.
+    /// </summary>
     public int MemberUnitId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Compo.
+    /// </summary>
     public string MemberCompo { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  military grade/rank.
+    /// </summary>
     public int MemberGrade { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Is Non Dbsign Case.
+    /// </summary>
     public bool IsNonDbsignCase { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  findings.
+    /// </summary>
     public virtual ICollection<Form348ApSarcFinding> Form348ApSarcFindings { get; set; } = new List<Form348ApSarcFinding>();
 
+    /// <summary>
+    /// Gets or sets the Form348 Post Processing Appeal Sarc.
+    /// </summary>
     public virtual Form348PostProcessingAppealSarc? Form348PostProcessingAppealSarc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Grade Navigation.
+    /// </summary>
     public virtual CoreLkupGrade MemberGradeNavigation { get; set; } = null!;
 }

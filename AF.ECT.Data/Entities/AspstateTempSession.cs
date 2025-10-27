@@ -3,27 +3,63 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Aspstate Temp Session entity.
+/// </summary>
 public partial class AspstateTempSession
 {
+    /// <summary>
+    /// Gets or sets the Session Id identifier.
+    /// </summary>
     public string SessionId { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Created.
+    /// </summary>
     public DateTime Created { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Expires.
+    /// </summary>
     public DateTime Expires { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Lock Date date.
+    /// </summary>
     public DateTime LockDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Lock Date Local.
+    /// </summary>
     public DateTime LockDateLocal { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Lock Cookie.
+    /// </summary>
     public int LockCookie { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Timeout.
+    /// </summary>
     public int Timeout { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Locked.
+    /// </summary>
     public bool Locked { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Session Item Short.
+    /// </summary>
     public byte[]? SessionItemShort { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Session Item Long.
+    /// </summary>
     public byte[]? SessionItemLong { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Flags.
+    /// </summary>
     public int Flags { get; set; }
 }

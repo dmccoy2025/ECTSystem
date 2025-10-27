@@ -23,27 +23,63 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreLkupChainType
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Name.
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  value indicating whether this record is active.
+    /// </summary>
     public bool Active { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public string CreatedBy { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Modified Date date.
+    /// </summary>
     public DateTime ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who last modified this record.
+    /// </summary>
     public string ModifiedBy { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  description.
+    /// </summary>
     public string? Description { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Command Struct Chains.
+    /// </summary>
     public virtual ICollection<CommandStructChain> CommandStructChains { get; set; } = new List<CommandStructChain>();
 
+    /// <summary>
+    /// Gets or sets the Core User Groups.
+    /// </summary>
     public virtual ICollection<CoreUserGroup> CoreUserGroups { get; set; } = new List<CoreUserGroup>();
 
+    /// <summary>
+    /// Gets or sets the Core Users.
+    /// </summary>
     public virtual ICollection<CoreUser> CoreUsers { get; set; } = new List<CoreUser>();
 
+    /// <summary>
+    /// Gets or sets the Test Command Struct Chains.
+    /// </summary>
     public virtual ICollection<TestCommandStructChain> TestCommandStructChains { get; set; } = new List<TestCommandStructChain>();
 }

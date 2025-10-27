@@ -3,9 +3,18 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a lookup table for Years Satisfactory Service.
+/// </summary>
 public partial class CoreLkupYearsSatisfactoryService
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public byte Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Range Category.
+    /// </summary>
     public string RangeCategory { get; set; } = null!;
 }

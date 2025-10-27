@@ -3,15 +3,33 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Application Warmup Process Log entity.
+/// </summary>
 public partial class ApplicationWarmupProcessLog
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Process Id identifier.
+    /// </summary>
     public int ProcessId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Execution Date date.
+    /// </summary>
     public DateTime ExecutionDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Message.
+    /// </summary>
     public string? Message { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Process.
+    /// </summary>
     public virtual ApplicationWarmupProcess Process { get; set; } = null!;
 }

@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Personnel Feed data for system migration/integration.
+/// </summary>
 public partial class ImpPersonnelFeed
 {
     public string? PersId { get; set; }

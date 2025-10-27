@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Memo Group entity.
+/// </summary>
 public partial class MemoGroup
 {
     public string? Id { get; set; }

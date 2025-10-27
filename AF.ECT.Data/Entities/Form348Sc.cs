@@ -3,531 +3,1323 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents Form 348 Sc data.
+/// </summary>
 public partial class Form348Sc
 {
+    /// <summary>
+    /// Gets or sets the Sc Id identifier.
+    /// </summary>
     public int ScId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Module Id identifier.
+    /// </summary>
     public byte ModuleId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Associated Lod.
+    /// </summary>
     public int? AssociatedLod { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Case Id identifier.
+    /// </summary>
     public string CaseId { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  user identifier who created this record.
+    /// </summary>
     public int CreatedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created Date date.
+    /// </summary>
     public DateTime CreatedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  user identifier who last modified this record.
+    /// </summary>
     public int ModifiedBy { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Modified Date date.
+    /// </summary>
     public DateTime ModifiedDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Workflow.
+    /// </summary>
     public byte Workflow { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Status.
+    /// </summary>
     public int Status { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  reason(s).
+    /// </summary>
     public byte? RwoaReason { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rwoa Explantion.
+    /// </summary>
     public string? RwoaExplantion { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rwoa Date date.
+    /// </summary>
     public DateTime? RwoaDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Date Med Tech.
+    /// </summary>
     public DateTime? SigDateMedTech { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Name Med Tech.
+    /// </summary>
     public string? SigNameMedTech { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Title Med Tech.
+    /// </summary>
     public string? SigTitleMedTech { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Date Hqt.
+    /// </summary>
     public DateTime? SigDateHqt { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Name Hqt.
+    /// </summary>
     public string? SigNameHqt { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Title Hqt.
+    /// </summary>
     public string? SigTitleHqt { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Date Med Off.
+    /// </summary>
     public DateTime? SigDateMedOff { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Name Med Off.
+    /// </summary>
     public string? SigNameMedOff { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Title Med Off.
+    /// </summary>
     public string? SigTitleMedOff { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Date Hqt Final.
+    /// </summary>
     public DateTime? SigDateHqtFinal { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Name Hqt Final.
+    /// </summary>
     public string? SigNameHqtFinal { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Title Hqt Final.
+    /// </summary>
     public string? SigTitleHqtFinal { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Tech Approved.
+    /// </summary>
     public int? MedTechApproved { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Hqt Approval1.
+    /// </summary>
     public int? HqtApproval1 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Off Approved.
+    /// </summary>
     public int? MedOffApproved { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Hqt Approval2.
+    /// </summary>
     public int? HqtApproval2 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? MedTechApprovalComment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? HqtApproval1Comment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? MedOffApprovalComment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? HqtApproval2Comment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? ReturnComment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  Social Security Number.
+    /// </summary>
     public string MemberSsn { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Member Name.
+    /// </summary>
     public string MemberName { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Member Unit.
+    /// </summary>
     public string MemberUnit { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Doc Group Id identifier.
+    /// </summary>
     public int? DocGroupId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Approval Date date.
+    /// </summary>
     public DateTime? ApprovalDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Expiration Date date.
+    /// </summary>
     public DateTime? ExpirationDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Initial Sc.
+    /// </summary>
     public int? InitialSc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alc Letter Type.
+    /// </summary>
     public int? AlcLetterType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Compo.
+    /// </summary>
     public int MemberCompo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Unit Id identifier.
+    /// </summary>
     public int MemberUnitId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Tmt Number.
+    /// </summary>
     public string? TmtNumber { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Tmt Receive Date date.
+    /// </summary>
     public DateTime? TmtReceiveDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Suspense Date date.
+    /// </summary>
     public DateTime? SuspenseDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Date In.
+    /// </summary>
     public DateTime? DateIn { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Date Out.
+    /// </summary>
     public DateTime? DateOut { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? CaseComments { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  military grade/rank.
+    /// </summary>
     public int? MemberGrade { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Dob date.
+    /// </summary>
     public DateTime? MemberDob { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Poc Unit.
+    /// </summary>
     public string? PocUnit { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Poc Phone Dsn.
+    /// </summary>
     public string? PocPhoneDsn { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  email address.
+    /// </summary>
     public string? PocEmail { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ipeb Election.
+    /// </summary>
     public int? IpebElection { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Muq Request Date date.
+    /// </summary>
     public DateTime? MuqRequestDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ipeb Signature Date date.
+    /// </summary>
     public DateTime? IpebSignatureDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cover Ltr Inc Member Statement.
+    /// </summary>
     public int? CoverLtrIncMemberStatement { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cover Ltr Inc Contact Attempt Details.
+    /// </summary>
     public int? CoverLtrIncContactAttemptDetails { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Eval Fact Sheet Sign Date date.
+    /// </summary>
     public DateTime? MedEvalFactSheetSignDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Eval Fs Waiver Sign Date date.
+    /// </summary>
     public DateTime? MedEvalFsWaiverSignDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ps3811 Sign Date date.
+    /// </summary>
     public DateTime? Ps3811SignDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the First Class Mail Date date.
+    /// </summary>
     public DateTime? FirstClassMailDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Hqtech Disposition.
+    /// </summary>
     public int? HqtechDisposition { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Date Poc.
+    /// </summary>
     public DateTime? SigDatePoc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Name Poc.
+    /// </summary>
     public string? SigNamePoc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Title Poc.
+    /// </summary>
     public string? SigTitlePoc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pwaiver Category.
+    /// </summary>
     public int? PwaiverCategory { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pwaiver Category Text.
+    /// </summary>
     public string? PwaiverCategoryText { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pwaiver Length.
+    /// </summary>
     public int? PwaiverLength { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Fast Track Type.
+    /// </summary>
     public int? FastTrackType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Requires Specialist For Mgmt.
+    /// </summary>
     public int? RequiresSpecialistForMgmt { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Missed Work Days.
+    /// </summary>
     public int? MissedWorkDays { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Had Er Urgent Care Visits.
+    /// </summary>
     public int? HadErUrgentCareVisits { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Hospitalization List.
+    /// </summary>
     public string? HospitalizationList { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Risk For Sudden Incapacitation.
+    /// </summary>
     public int? RiskForSuddenIncapacitation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Date Dawg.
+    /// </summary>
     public DateTime? SigDateDawg { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Name Dawg.
+    /// </summary>
     public string? SigNameDawg { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Title Dawg.
+    /// </summary>
     public string? SigTitleDawg { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dawg Recommendation.
+    /// </summary>
     public int? DawgRecommendation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Years Satisfactory Service.
+    /// </summary>
     public int? YearsSatisfactoryService { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ft Diagnosis.
+    /// </summary>
     public string? FtDiagnosis { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dx Interferes With Duties.
+    /// </summary>
     public int? DxInterferesWithDuties { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ft Prognosis.
+    /// </summary>
     public string? FtPrognosis { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ft Treatment.
+    /// </summary>
     public string? FtTreatment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ft Medications And Dosages.
+    /// </summary>
     public string? FtMedicationsAndDosages { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Recommended Follow Up Interval.
+    /// </summary>
     public int? RecommendedFollowUpInterval { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Daytime Somnolence.
+    /// </summary>
     public int? DaytimeSomnolence { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  description.
+    /// </summary>
     public string? DaySleepDescription { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Has Apnea Episodes.
+    /// </summary>
     public int? HasApneaEpisodes { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  description.
+    /// </summary>
     public string? ApneaEpisodeDescription { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sleep Study Results.
+    /// </summary>
     public int? SleepStudyResults { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Body Mass Index.
+    /// </summary>
     public decimal? BodyMassIndex { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Oral Devices Used.
+    /// </summary>
     public int? OralDevicesUsed { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cpap Required.
+    /// </summary>
     public int? CpapRequired { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Bipap Required.
+    /// </summary>
     public int? BipapRequired { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Response To Devices.
+    /// </summary>
     public int? ResponseToDevices { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Fasting Blood Sugar.
+    /// </summary>
     public decimal? FastingBloodSugar { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Hgb A1c.
+    /// </summary>
     public decimal? HgbA1c { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Current Optometry Exam.
+    /// </summary>
     public int? CurrentOptometryExam { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Has Significant Conditions.
+    /// </summary>
     public int? HasSignificantConditions { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Other Significant Conditions List.
+    /// </summary>
     public string? OtherSignificantConditionsList { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Controlled With Oral Agents.
+    /// </summary>
     public int? ControlledWithOralAgents { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Oral Agents List.
+    /// </summary>
     public string? OralAgentsList { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Requires Insulin.
+    /// </summary>
     public int? RequiresInsulin { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Insulin Dosage Regime.
+    /// </summary>
     public string? InsulinDosageRegime { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Requires Non Insulin Med.
+    /// </summary>
     public int? RequiresNonInsulinMed { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pulmonary Function Test.
+    /// </summary>
     public int? PulmonaryFunctionTest { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Methacholine Challenge.
+    /// </summary>
     public int? MethacholineChallenge { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Requires Daily Steroids.
+    /// </summary>
     public int? RequiresDailySteroids { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rescue Inhaler Usage Frequency.
+    /// </summary>
     public int? RescueInhalerUsageFrequency { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Symptoms Exacerbated By Cold Or Exercise.
+    /// </summary>
     public int? SymptomsExacerbatedByColdOrExercise { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  description.
+    /// </summary>
     public string? ExerciseOrColdExacerbatedSymptomDescription { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Normal Pft With Treatment.
+    /// </summary>
     public int? NormalPftWithTreatment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ho Intubation.
+    /// </summary>
     public int? HoIntubation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Daily Steroids Dosage.
+    /// </summary>
     public decimal? DailySteroidsDosage { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dafsc.
+    /// </summary>
     public string? Dafsc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dafsc Is Suitable.
+    /// </summary>
     public int? DafscIsSuitable { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Er Urgent Care Visit Details.
+    /// </summary>
     public string? ErUrgentCareVisitDetails { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Had Hospitalizations.
+    /// </summary>
     public int? HadHospitalizations { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rmu Initials.
+    /// </summary>
     public string? RmuInitials { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ipeb Refusal.
+    /// </summary>
     public int? IpebRefusal { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Wwd Docs Attached.
+    /// </summary>
     public int? WwdDocsAttached { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Cover Letter Uploaded.
+    /// </summary>
     public int? CoverLetterUploaded { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Af Form469 Uploaded.
+    /// </summary>
     public int? AfForm469Uploaded { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Muq Upload Date date.
+    /// </summary>
     public DateTime? MuqUploadDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Unit Cmdr Memo Uploaded.
+    /// </summary>
     public int? UnitCmdrMemoUploaded { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Private Physician Docs Uploaded.
+    /// </summary>
     public int? PrivatePhysicianDocsUploaded { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ps3811 Request Date date.
+    /// </summary>
     public DateTime? Ps3811RequestDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ps3811 Uploaded.
+    /// </summary>
     public int? Ps3811Uploaded { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Letter Uploaded.
+    /// </summary>
     public int? MemberLetterUploaded { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Narrative Summary Uploaded.
+    /// </summary>
     public int? NarrativeSummaryUploaded { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Muq Valid identifier.
+    /// </summary>
     public int? MuqValid { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Exacerbated Symptoms Req Oral Steroids.
+    /// </summary>
     public int? ExacerbatedSymptomsReqOralSteroids { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Exacerbated Symptoms Oral Steroids Dosage.
+    /// </summary>
     public string? ExacerbatedSymptomsOralSteroidsDosage { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Icd9 Id identifier.
+    /// </summary>
     public int? Icd9Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  description.
+    /// </summary>
     public string? Icd9Description { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Return To Duty Date date.
+    /// </summary>
     public DateTime? ReturnToDutyDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Group Name.
+    /// </summary>
     public int? MedGroupName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rmu Name.
+    /// </summary>
     public int? RmuName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Status Id identifier.
+    /// </summary>
     public int? MemberStatusId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Has Admin Lod.
+    /// </summary>
     public int? HasAdminLod { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dq Paragraph.
+    /// </summary>
     public string? DqParagraph { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Dq Completion Date date.
+    /// </summary>
     public DateTime? DqCompletionDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  reason(s).
+    /// </summary>
     public int? CaseCancelReason { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  explanation.
+    /// </summary>
     public string? CaseCancelExplanation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Saf Letter Upload Date date.
+    /// </summary>
     public DateTime? SafLetterUploadDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Approving Authority Type.
+    /// </summary>
     public int? ApprovingAuthorityType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Forward Date date.
+    /// </summary>
     public DateTime? ForwardDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Notification Date date.
+    /// </summary>
     public DateTime? NotificationDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Case Cancel Date date.
+    /// </summary>
     public DateTime? CaseCancelDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Return To Group.
+    /// </summary>
     public int? ReturnToGroup { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Return By Group.
+    /// </summary>
     public int? ReturnByGroup { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Off Concur.
+    /// </summary>
     public int? MedOffConcur { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Address Street.
+    /// </summary>
     public string? MemberAddressStreet { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Address City.
+    /// </summary>
     public string? MemberAddressCity { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Address State.
+    /// </summary>
     public string? MemberAddressState { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Address Zip.
+    /// </summary>
     public string? MemberAddressZip { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  phone number.
+    /// </summary>
     public string? MemberHomePhone { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Tricare Region.
+    /// </summary>
     public int? MemberTricareRegion { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Follow Up Care.
+    /// </summary>
     public string? FollowUpCare { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Medical Provider.
+    /// </summary>
     public string? MedicalProvider { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Mtf Suggested.
+    /// </summary>
     public string? MtfSuggested { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Military Treatment Facility Initial.
+    /// </summary>
     public string? MilitaryTreatmentFacilityInitial { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Mtf Initial Treatment Date date.
+    /// </summary>
     public DateTime? MtfInitialTreatmentDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Mtf Suggested Distance.
+    /// </summary>
     public int? MtfSuggestedDistance { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Mtf Suggested Choice.
+    /// </summary>
     public int? MtfSuggestedChoice { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Unit Poc Name.
+    /// </summary>
     public string? UnitPocName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  military grade/rank.
+    /// </summary>
     public int? UnitPocRank { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Unit Poc Title.
+    /// </summary>
     public string? UnitPocTitle { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  phone number.
+    /// </summary>
     public string? UnitPocPhone { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Medical Profile Info.
+    /// </summary>
     public string? MedicalProfileInfo { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Injury Illness Date date.
+    /// </summary>
     public DateTime? InjuryIllnessDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Deci Expl.
+    /// </summary>
     public string? DeciExpl { get; set; }
 
+    /// <summary>
+    /// Gets or sets the High Tenure Date date.
+    /// </summary>
     public DateTime? HighTenureDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Memo Template Id identifier.
+    /// </summary>
     public int? MemoTemplateId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Majcom.
+    /// </summary>
     public int? Majcom { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sim Deployment.
+    /// </summary>
     public int? SimDeployment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Deploy Start Date date.
+    /// </summary>
     public DateTime? DeployStartDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Deploy End Date date.
+    /// </summary>
     public DateTime? DeployEndDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Deploy Location.
+    /// </summary>
     public string? DeployLocation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Line Number.
+    /// </summary>
     public string? LineNumber { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? LineRemarks { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Code37 Init Date date.
+    /// </summary>
     public DateTime? Code37InitDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Surgery Date date.
+    /// </summary>
     public DateTime? SurgeryDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Associated Sc.
+    /// </summary>
     public int? AssociatedSc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Case Type.
+    /// </summary>
     public int? CaseType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Justification.
+    /// </summary>
     public string? Justification { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pepp Type.
+    /// </summary>
     public int? PeppType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rating.
+    /// </summary>
     public int? Rating { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Renewal.
+    /// </summary>
     public int? Renewal { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Base Assign.
+    /// </summary>
     public int? BaseAssign { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Completed By Unit.
+    /// </summary>
     public int? CompletedByUnit { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Type Name.
+    /// </summary>
     public string? TypeName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Rating Name.
+    /// </summary>
     public string? RatingName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Date Received.
+    /// </summary>
     public DateTime? DateReceived { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sub Workflow Type.
+    /// </summary>
     public int SubWorkflowType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Icd7th Char.
+    /// </summary>
     public string? Icd7thChar { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Waiver Required.
+    /// </summary>
     public bool? WaiverRequired { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Waiver Expiration Date date.
+    /// </summary>
     public DateTime? WaiverExpirationDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Certification Date date.
+    /// </summary>
     public DateTime? CertificationDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sub Case Type.
+    /// </summary>
     public int? SubCaseType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Certification Stamp.
+    /// </summary>
     public int? CertificationStamp { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Free Text.
+    /// </summary>
     public string? FreeText { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Completed By Unit Name.
+    /// </summary>
     public string? CompletedByUnitName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Case Type Name.
+    /// </summary>
     public string? CaseTypeName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sub Case Type Name.
+    /// </summary>
     public string? SubCaseTypeName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Stamped Doc Id identifier.
+    /// </summary>
     public long? StampedDocId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Med Off Prev Disposition.
+    /// </summary>
     public int? MedOffPrevDisposition { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alt Alc Letter Type.
+    /// </summary>
     public int? AltAlcLetterType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Date Unit Ph.
+    /// </summary>
     public DateTime? SigDateUnitPh { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Name Unit Ph.
+    /// </summary>
     public string? SigNameUnitPh { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Title Unit Ph.
+    /// </summary>
     public string? SigTitleUnitPh { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Date Hq Dph.
+    /// </summary>
     public DateTime? SigDateHqDph { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Name Hq Dph.
+    /// </summary>
     public string? SigNameHqDph { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Sig Title Hq Dph.
+    /// </summary>
     public string? SigTitleHqDph { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ph Wing Rmu Id identifier.
+    /// </summary>
     public int? PhWingRmuId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ph User Id identifier.
+    /// </summary>
     public int? PhUserId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Is Delinquent.
+    /// </summary>
     public bool? IsDelinquent { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ph Reporting Period.
+    /// </summary>
     public DateTime? PhReportingPeriod { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Ph Last Modified.
+    /// </summary>
     public DateTime? PhLastModified { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Secondary Certification Stamp.
+    /// </summary>
     public int? SecondaryCertificationStamp { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Secondary Free Text.
+    /// </summary>
     public string? SecondaryFreeText { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Process.
+    /// </summary>
     public int? Process { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Renewal Date date.
+    /// </summary>
     public DateTime? RenewalDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Has Admin Sc.
+    /// </summary>
     public int? HasAdminSc { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Senior Medical Reviewer Concur.
+    /// </summary>
     public string? SeniorMedicalReviewerConcur { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Senior Medical Reviewer Approved.
+    /// </summary>
     public int? SeniorMedicalReviewerApproved { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  comments/remarks.
+    /// </summary>
     public string? SeniorMedicalReviewerComment { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alternate Alc Letter Type.
+    /// </summary>
     public int? AlternateAlcLetterType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alternate Alt Alc Letter Type.
+    /// </summary>
     public int? AlternateAltAlcLetterType { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alternate Approval Date date.
+    /// </summary>
     public DateTime? AlternateApprovalDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alternate Certification Date date.
+    /// </summary>
     public DateTime? AlternateCertificationDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alternate Dq Completion Date date.
+    /// </summary>
     public DateTime? AlternateDqCompletionDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alternate Dq Paragraph.
+    /// </summary>
     public string? AlternateDqParagraph { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alternate Expiration Date date.
+    /// </summary>
     public DateTime? AlternateExpirationDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alternate Med Off Concur.
+    /// </summary>
     public int? AlternateMedOffConcur { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alternate Memo Template Id identifier.
+    /// </summary>
     public int? AlternateMemoTemplateId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alternate Process.
+    /// </summary>
     public int? AlternateProcess { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alternate Pwaiver Length.
+    /// </summary>
     public int? AlternatePwaiverLength { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Alternate Return To Duty Date date.
+    /// </summary>
     public DateTime? AlternateReturnToDutyDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Pha Date date.
+    /// </summary>
     public DateTime? PhaDate { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Initial Tour.
+    /// </summary>
     public int? InitialTour { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Follow On Tour.
+    /// </summary>
     public int? FollowOnTour { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Poc Rank And Name.
+    /// </summary>
     public string? PocRankAndName { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  postal/ZIP code.
+    /// </summary>
     public string? MilitaryTreatmentFacilityCityStateZip { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Status.
+    /// </summary>
     public string? MemberStatus { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Member Category.
+    /// </summary>
     public string? MemberCategory { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Iaw Afi.
+    /// </summary>
     public bool? IawAfi { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Accident Or History Details.
+    /// </summary>
     public string? AccidentOrHistoryDetails { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Associated Lod Navigation.
+    /// </summary>
     public virtual Form348? AssociatedLodNavigation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Created By Navigation.
+    /// </summary>
     public virtual CoreUser CreatedByNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the  findings.
+    /// </summary>
     public virtual ICollection<Form348PscdFinding> Form348PscdFindings { get; set; } = new List<Form348PscdFinding>();
 
+    /// <summary>
+    /// Gets or sets the Icd9.
+    /// </summary>
     public virtual CoreLkupIcd9? Icd9 { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Initial Sc Navigation.
+    /// </summary>
     public virtual Form348Sc? InitialScNavigation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Inverse Initial Sc Navigation.
+    /// </summary>
     public virtual ICollection<Form348Sc> InverseInitialScNavigation { get; set; } = new List<Form348Sc>();
 
+    /// <summary>
+    /// Gets or sets the Modified By Navigation.
+    /// </summary>
     public virtual CoreUser ModifiedByNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Module.
+    /// </summary>
     public virtual CoreLkupModule Module { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Ph Form Values.
+    /// </summary>
     public virtual ICollection<PhFormValue> PhFormValues { get; set; } = new List<PhFormValue>();
 
+    /// <summary>
+    /// Gets or sets the  reason(s).
+    /// </summary>
     public virtual CoreLkupRwoareason? RwoaReasonNavigation { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Status Navigation.
+    /// </summary>
     public virtual CoreWorkStatus StatusNavigation { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Workflow Navigation.
+    /// </summary>
     public virtual CoreWorkflow WorkflowNavigation { get; set; } = null!;
 }

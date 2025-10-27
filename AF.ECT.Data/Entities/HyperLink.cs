@@ -3,17 +3,38 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents a Hyper Link entity.
+/// </summary>
 public partial class HyperLink
 {
+    /// <summary>
+    /// Gets or sets the Id identifier.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Name.
+    /// </summary>
     public string Name { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Type Id identifier.
+    /// </summary>
     public int TypeId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the Display Text.
+    /// </summary>
     public string DisplayText { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Value.
+    /// </summary>
     public string Value { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Type.
+    /// </summary>
     public virtual HyperLinkType Type { get; set; } = null!;
 }

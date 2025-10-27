@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Manpower data for system migration/integration.
+/// </summary>
 public partial class ImpManpower
 {
     public string? PosNbr { get; set; }

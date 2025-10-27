@@ -3,6 +3,9 @@
 
 namespace AF.ECT.Data.Entities;
 
+/// <summary>
+/// Represents imported Lod Rwoa data for system migration/integration.
+/// </summary>
 public partial class ImpLodRwoa
 {
     public string? RwoaId { get; set; }

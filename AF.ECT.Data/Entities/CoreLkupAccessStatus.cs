@@ -26,11 +26,23 @@ namespace AF.ECT.Data.Entities;
 /// </remarks>
 public partial class CoreLkupAccessStatus
 {
+    /// <summary>
+    /// Gets or sets the Status Id identifier.
+    /// </summary>
     public byte StatusId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the  description.
+    /// </summary>
     public string Description { get; set; } = null!;
 
+    /// <summary>
+    /// Gets or sets the Core User Roles.
+    /// </summary>
     public virtual ICollection<CoreUserRole> CoreUserRoles { get; set; } = new List<CoreUserRole>();
 
+    /// <summary>
+    /// Gets or sets the Core Users.
+    /// </summary>
     public virtual ICollection<CoreUser> CoreUsers { get; set; } = new List<CoreUser>();
 }
