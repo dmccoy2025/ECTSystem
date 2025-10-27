@@ -46,7 +46,7 @@
             "command": "powershell",
             "args": [
                 "-Command",
-                "Stop-Process -Name 'dotnet' -Force -ErrorAction SilentlyContinue; dotnet clean ECTSystem.Database.sln; dotnet build ECTSystem.Database.sln /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary /m:8"
+                "Stop-Process -Name 'dotnet' -Force -ErrorAction SilentlyContinue; dotnet clean ECTSystem.Database.sln; dotnet build ECTSystem.Database.sln --no-restore /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary /m:8"
             ],
             "problemMatcher": "$msCompile",
             "group": "build"
