@@ -53,5 +53,7 @@ public class PhFormValueConfiguration : IEntityTypeConfiguration<PhFormValue>
 
         builder.HasIndex(e => e.RefId, "IX_PH_FORM_VALUE_REF");
         builder.HasIndex(e => e.SectionId, "IX_PH_FORM_VALUE_SECTION");
+        builder.HasIndex(e => e.FieldId, "IX_PH_FORM_VALUE_FIELD");
+        builder.HasIndex(e => e.FieldTypeId, "IX_PH_FORM_VALUE_FIELD_TYPE");
     }
 }

@@ -55,5 +55,11 @@ public class Form261Configuration : IEntityTypeConfiguration<Form261>
         builder.HasIndex(e => e.Status, "IX_Form261_Status");
         builder.HasIndex(e => e.ReportDate, "IX_Form261_ReportDate");
         builder.HasIndex(e => e.IoUserId, "IX_Form261_IOUserID");
+        builder.HasIndex(e => e.ModifiedBy, "IX_Form261_ModifiedBy");
+        builder.HasIndex(e => e.ModifiedDate, "IX_Form261_ModifiedDate");
+        builder.HasIndex(e => e.DurationStartDate, "IX_Form261_DurationStartDate");
+        builder.HasIndex(e => e.DurationFinishDate, "IX_Form261_DurationFinishDate");
+        builder.HasIndex(e => e.FindingsDate, "IX_Form261_FindingsDate");
+        builder.HasIndex(e => new { e.Status, e.ReportDate }, "IX_Form261_Status_ReportDate");
     }
 }

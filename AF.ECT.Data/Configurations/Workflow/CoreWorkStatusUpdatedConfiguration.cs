@@ -26,5 +26,8 @@ public class CoreWorkStatusUpdatedConfiguration : IEntityTypeConfiguration<CoreW
 
         builder.HasIndex(e => e.WsId, "IX_Core_WorkStatusUpdated_wsID");
         builder.HasIndex(e => e.WorkflowId, "IX_Core_WorkStatusUpdated_WorkflowID");
+        builder.HasIndex(e => e.StatusId, "IX_Core_WorkStatusUpdated_StatusID");
+        builder.HasIndex(e => e.SortOrder, "IX_Core_WorkStatusUpdated_SortOrder");
+        builder.HasIndex(e => new { e.WorkflowId, e.StatusId }, "IX_Core_WorkStatusUpdated_Workflow_Status");
     }
 }

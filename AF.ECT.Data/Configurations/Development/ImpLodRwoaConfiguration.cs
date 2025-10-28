@@ -94,5 +94,18 @@ public class ImpLodRwoaConfiguration : IEntityTypeConfiguration<ImpLodRwoa>
             .HasMaxLength(50)
             .IsUnicode(false)
             .HasColumnName("CREATED_DATE");
+        
+        // Indexes for common queries
+        builder.HasIndex(e => e.RwoaId)
+            .HasDatabaseName("IX_imp_lod_rwoa_rwoa_id");
+        
+        builder.HasIndex(e => e.LodId)
+            .HasDatabaseName("IX_imp_lod_rwoa_lod_id");
+        
+        builder.HasIndex(e => e.DateSent)
+            .HasDatabaseName("IX_imp_lod_rwoa_date_sent");
+        
+        builder.HasIndex(e => e.SentTo)
+            .HasDatabaseName("IX_imp_lod_rwoa_sent_to");
     }
 }

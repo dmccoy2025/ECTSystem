@@ -45,5 +45,12 @@ public class ImpEdipinConfiguration : IEntityTypeConfiguration<ImpEdipin>
             .HasMaxLength(10)
             .IsUnicode(false)
             .HasColumnName("EDIPIN");
+        
+        // Indexes for common queries
+        builder.HasIndex(e => e.Username)
+            .HasDatabaseName("IX_imp_edipin_username");
+        
+        builder.HasIndex(e => e.Edipin)
+            .HasDatabaseName("IX_imp_edipin_edipin");
     }
 }

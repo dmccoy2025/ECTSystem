@@ -42,5 +42,9 @@ public class ImpTmpUsernameConfiguration : IEntityTypeConfiguration<ImpTmpUserna
             .HasMaxLength(50)
             .IsUnicode(false)
             .HasColumnName("USERNAME");
+        
+        // Index for common queries
+        builder.HasIndex(e => e.Username)
+            .HasDatabaseName("IX_imp_tmp_username_username");
     }
 }

@@ -38,5 +38,9 @@ public class Form348ApprovalAuthorityConfiguration : IEntityTypeConfiguration<Fo
         // Indexes for query performance
         builder.HasIndex(e => e.EffectiveDate, "IX_Form348ApprovalAuthority_EffectiveDate");
         builder.HasIndex(e => e.Name, "IX_Form348ApprovalAuthority_Name");
+        builder.HasIndex(e => e.CreatedBy, "IX_Form348ApprovalAuthority_CreatedBy");
+        builder.HasIndex(e => e.CreatedDate, "IX_Form348ApprovalAuthority_CreatedDate");
+        builder.HasIndex(e => e.ModifiedBy, "IX_Form348ApprovalAuthority_ModifiedBy");
+        builder.HasIndex(e => e.ModifiedDate, "IX_Form348ApprovalAuthority_ModifiedDate");
     }
 }

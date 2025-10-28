@@ -35,5 +35,23 @@ public class CoreWorkStatusTrackingConfiguration : IEntityTypeConfiguration<Core
         builder.HasIndex(e => e.WsId, "IX_Core_WorkStatusTracking_wsID");
         builder.HasIndex(e => e.RefId, "IX_Core_WorkStatusTracking_RefID");
         builder.HasIndex(e => e.StartDate, "IX_Core_WorkStatusTracking_StartDate");
+
+        builder.HasIndex(e => e.EndDate)
+            .HasDatabaseName("IX_Core_WorkStatusTracking_EndDate");
+
+        builder.HasIndex(e => new { e.RefId, e.Module, e.WsId })
+            .HasDatabaseName("IX_Core_WorkStatusTracking_Ref_Module_Ws");
+
+        builder.HasIndex(e => new { e.StartDate, e.EndDate })
+            .HasDatabaseName("IX_Core_WorkStatusTracking_StartDate_EndDate");
+
+        builder.HasIndex(e => e.WorkflowId)
+            .HasDatabaseName("IX_Core_WorkStatusTracking_WorkflowID");
+
+        builder.HasIndex(e => e.CompletedBy)
+            .HasDatabaseName("IX_Core_WorkStatusTracking_CompletedBy");
+
+        builder.HasIndex(e => e.Module)
+            .HasDatabaseName("IX_Core_WorkStatusTracking_Module");
     }
 }

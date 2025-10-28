@@ -143,5 +143,24 @@ public class ImpProcessInstanceConfiguration : IEntityTypeConfiguration<ImpProce
             .HasMaxLength(50)
             .IsUnicode(false)
             .HasColumnName("MODIFIED_DATE");
+        
+        // Indexes for common queries
+        builder.HasIndex(e => e.PiId)
+            .HasDatabaseName("IX_imp_process_instance_pi_id");
+        
+        builder.HasIndex(e => e.ProcId)
+            .HasDatabaseName("IX_imp_process_instance_proc_id");
+        
+        builder.HasIndex(e => e.LodId)
+            .HasDatabaseName("IX_imp_process_instance_lod_id");
+        
+        builder.HasIndex(e => e.PersId)
+            .HasDatabaseName("IX_imp_process_instance_pers_id");
+        
+        builder.HasIndex(e => e.CompletedYn)
+            .HasDatabaseName("IX_imp_process_instance_completed_yn");
+        
+        builder.HasIndex(e => e.StartDate)
+            .HasDatabaseName("IX_imp_process_instance_start_date");
     }
 }

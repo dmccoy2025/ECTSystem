@@ -121,5 +121,21 @@ public class ImpMemberConfiguration : IEntityTypeConfiguration<ImpMember>
         builder.Property(e => e.CurrAeroRating).HasMaxLength(10).IsUnicode(false).HasColumnName("CURR_AERO_RATING");
         builder.Property(e => e.AvnSvcCode).HasMaxLength(10).IsUnicode(false).HasColumnName("AVN_SVC_CODE");
         builder.Property(e => e.AvnSvcCodeDate).HasMaxLength(10).IsUnicode(false).HasColumnName("AVN_SVC_CODE_DATE");
+        
+        // Indexes for common queries
+        builder.HasIndex(e => e.Ssan)
+            .HasDatabaseName("IX_imp_member_ssan");
+        
+        builder.HasIndex(e => e.LastName)
+            .HasDatabaseName("IX_imp_member_last_name");
+        
+        builder.HasIndex(e => e.Pas)
+            .HasDatabaseName("IX_imp_member_pas");
+        
+        builder.HasIndex(e => e.GrCurr)
+            .HasDatabaseName("IX_imp_member_gr_curr");
+        
+        builder.HasIndex(e => e.DutyStatus)
+            .HasDatabaseName("IX_imp_member_duty_status");
     }
 }

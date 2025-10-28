@@ -44,5 +44,12 @@ public class ImpManpowerConfiguration : IEntityTypeConfiguration<ImpManpower>
             .HasMaxLength(10)
             .IsUnicode(false)
             .HasColumnName("PAS_CODE");
+        
+        // Indexes for common queries
+        builder.HasIndex(e => e.PosNbr)
+            .HasDatabaseName("IX_imp_manpower_pos_nbr");
+        
+        builder.HasIndex(e => e.PasCode)
+            .HasDatabaseName("IX_imp_manpower_pas_code");
     }
 }

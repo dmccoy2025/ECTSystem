@@ -89,5 +89,17 @@ public class AfrcOraclePersonnelFeedDatumConfiguration : IEntityTypeConfiguratio
 
         builder.HasIndex(e => e.Rank)
             .HasDatabaseName("IX_afrc_oracle_personnel_feed_rank");
+        
+        builder.HasIndex(e => e.CreatedDate)
+            .HasDatabaseName("IX_afrc_oracle_personnel_feed_created_date");
+        
+        builder.HasIndex(e => e.ModifiedDate)
+            .HasDatabaseName("IX_afrc_oracle_personnel_feed_modified_date");
+        
+        builder.HasIndex(e => e.DutyLoc)
+            .HasDatabaseName("IX_afrc_oracle_personnel_feed_duty_loc");
+        
+        builder.HasIndex(e => e.Pafsc)
+            .HasDatabaseName("IX_afrc_oracle_personnel_feed_pafsc");
     }
 }

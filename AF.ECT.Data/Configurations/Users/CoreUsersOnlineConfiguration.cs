@@ -55,5 +55,14 @@ public class CoreUsersOnlineConfiguration : IEntityTypeConfiguration<CoreUsersOn
 
         builder.HasIndex(e => e.SessionId)
             .HasDatabaseName("IX_core_users_online_session_id");
+        
+        builder.HasIndex(e => e.GroupId)
+            .HasDatabaseName("IX_core_users_online_group_id");
+        
+        builder.HasIndex(e => e.LoginTime)
+            .HasDatabaseName("IX_core_users_online_login_time");
+        
+        builder.HasIndex(e => new { e.UserId, e.LastAccess })
+            .HasDatabaseName("IX_core_users_online_user_last_access");
     }
 }

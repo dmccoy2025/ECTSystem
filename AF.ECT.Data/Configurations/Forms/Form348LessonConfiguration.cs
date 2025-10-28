@@ -66,5 +66,8 @@ public class Form348LessonConfiguration : IEntityTypeConfiguration<Form348Lesson
 
         builder.HasIndex(e => e.CreatedDate)
             .HasDatabaseName("IX_form_348_lesson_created_date");
+        
+        builder.HasIndex(e => e.CreatedBy)
+            .HasDatabaseName("IX_form_348_lesson_created_by");
     }
 }

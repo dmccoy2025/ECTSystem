@@ -59,5 +59,8 @@ public class ApplicationWarmupProcessLogConfiguration : IEntityTypeConfiguration
 
         builder.HasIndex(e => e.ExecutionDate)
             .HasDatabaseName("IX_application_warmup_process_log_execution_date");
+        
+        builder.HasIndex(e => new { e.ProcessId, e.ExecutionDate })
+            .HasDatabaseName("IX_application_warmup_process_log_process_date");
     }
 }

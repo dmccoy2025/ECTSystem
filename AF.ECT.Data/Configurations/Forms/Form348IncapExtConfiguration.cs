@@ -126,5 +126,14 @@ public class Form348IncapExtConfiguration : IEntityTypeConfiguration<Form348Inca
 
         builder.HasIndex(e => e.ExtEndDate)
             .HasDatabaseName("IX_form_348_incap_ext_end_date");
+        
+        builder.HasIndex(e => e.ExtNumber)
+            .HasDatabaseName("IX_form_348_incap_ext_number");
+        
+        builder.HasIndex(e => e.MedExtRecommendation)
+            .HasDatabaseName("IX_form_348_incap_ext_med_recommendation");
+        
+        builder.HasIndex(e => e.ICExtRecommendation)
+            .HasDatabaseName("IX_form_348_incap_ext_ic_recommendation");
     }
 }

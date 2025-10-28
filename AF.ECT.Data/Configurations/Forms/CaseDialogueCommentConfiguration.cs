@@ -68,5 +68,14 @@ public class CaseDialogueCommentConfiguration : IEntityTypeConfiguration<CaseDia
         builder.HasIndex(e => e.Deleted)
             .HasDatabaseName("IX_case_dialogue_comment_deleted")
             .HasFilter("deleted = 0");
+        
+        builder.HasIndex(e => e.CreatedBy)
+            .HasDatabaseName("IX_case_dialogue_comment_created_by");
+        
+        builder.HasIndex(e => e.ModuleId)
+            .HasDatabaseName("IX_case_dialogue_comment_module_id");
+        
+        builder.HasIndex(e => e.CommentType)
+            .HasDatabaseName("IX_case_dialogue_comment_comment_type");
     }
 }

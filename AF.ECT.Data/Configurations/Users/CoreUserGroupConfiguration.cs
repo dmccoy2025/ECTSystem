@@ -121,5 +121,19 @@ public class CoreUserGroupConfiguration : IEntityTypeConfiguration<CoreUserGroup
 
         builder.HasIndex(e => e.SortOrder)
             .HasDatabaseName("IX_core_user_group_sort_order");
+        
+        builder.HasIndex(e => e.AccessScope)
+            .HasDatabaseName("IX_core_user_group_access_scope");
+        
+        builder.HasIndex(e => e.GroupLevel)
+            .HasDatabaseName("IX_core_user_group_group_level");
+        
+        builder.HasIndex(e => e.HipaaRequired)
+            .HasDatabaseName("IX_core_user_group_hipaa_required")
+            .HasFilter("hipaa_required = 1");
+        
+        builder.HasIndex(e => e.CanRegister)
+            .HasDatabaseName("IX_core_user_group_can_register")
+            .HasFilter("can_register = 1");
     }
 }

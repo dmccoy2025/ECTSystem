@@ -77,5 +77,18 @@ public class ImpCommandStructChainConfiguration : IEntityTypeConfiguration<ImpCo
             .HasMaxLength(50)
             .IsUnicode(false)
             .HasColumnName("MODIFIED_DATE");
+        
+        // Indexes for common queries
+        builder.HasIndex(e => e.CscId)
+            .HasDatabaseName("IX_imp_command_struct_chain_csc_id");
+        
+        builder.HasIndex(e => e.CsId)
+            .HasDatabaseName("IX_imp_command_struct_chain_cs_id");
+        
+        builder.HasIndex(e => e.ChainType)
+            .HasDatabaseName("IX_imp_command_struct_chain_chain_type");
+        
+        builder.HasIndex(e => e.CscIdParent)
+            .HasDatabaseName("IX_imp_command_struct_chain_csc_id_parent");
     }
 }

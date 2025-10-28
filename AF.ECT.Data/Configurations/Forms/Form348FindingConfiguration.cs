@@ -59,5 +59,11 @@ public class Form348FindingConfiguration : IEntityTypeConfiguration<Form348Findi
         builder.HasIndex(e => e.Lodid, "IX_Form348Finding_LODID");
         builder.HasIndex(e => e.Ssn, "IX_Form348Finding_SSN");
         builder.HasIndex(e => new { e.Lodid, e.Ptype }, "IX_Form348Finding_LODID_PTYPE");
+        builder.HasIndex(e => e.CreatedBy, "IX_Form348Finding_CreatedBy");
+        builder.HasIndex(e => e.CreatedDate, "IX_Form348Finding_CreatedDate");
+        builder.HasIndex(e => e.ModifiedBy, "IX_Form348Finding_ModifiedBy");
+        builder.HasIndex(e => e.ModifiedDate, "IX_Form348Finding_ModifiedDate");
+        builder.HasIndex(e => e.Finding, "IX_Form348Finding_Finding");
+        builder.HasIndex(e => e.Grade, "IX_Form348Finding_Grade");
     }
 }

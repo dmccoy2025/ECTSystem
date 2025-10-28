@@ -30,5 +30,8 @@ public class CoreSignOnlySignatureConfiguration : IEntityTypeConfiguration<CoreS
 
         builder.HasIndex(e => e.RefId, "IX_Core_SignOnlySignature_RefID");
         builder.HasIndex(e => e.Workflow, "IX_Core_SignOnlySignature_Workflow");
+        builder.HasIndex(e => e.UserId, "IX_Core_SignOnlySignature_UserID");
+        builder.HasIndex(e => e.Ptype, "IX_Core_SignOnlySignature_PType");
+        builder.HasIndex(e => new { e.RefId, e.Workflow, e.UserId }, "IX_Core_SignOnlySignature_Ref_Workflow_User");
     }
 }

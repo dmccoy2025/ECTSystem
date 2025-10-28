@@ -78,5 +78,15 @@ public class CoreWorkStatusOptionConfiguration : IEntityTypeConfiguration<CoreWo
 
         builder.HasIndex(e => new { e.WsId, e.SortOrder })
             .HasDatabaseName("IX_core_work_status_option_ws_sort");
+        
+        builder.HasIndex(e => e.Active)
+            .HasDatabaseName("IX_core_work_status_option_active")
+            .HasFilter("active = 1");
+        
+        builder.HasIndex(e => e.SortOrder)
+            .HasDatabaseName("IX_core_work_status_option_sort_order");
+        
+        builder.HasIndex(e => e.Template)
+            .HasDatabaseName("IX_core_work_status_option_template");
     }
 }

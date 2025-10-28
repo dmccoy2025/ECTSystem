@@ -65,5 +65,11 @@ public class Form348UnitConfiguration : IEntityTypeConfiguration<Form348Unit>
 
         // Indexes for query performance
         builder.HasIndex(e => e.ModifiedDate, "IX_Form348Unit_ModifiedDate");
+        builder.HasIndex(e => e.ModifiedBy, "IX_Form348Unit_ModifiedBy");
+        builder.HasIndex(e => e.Workflow, "IX_Form348Unit_Workflow");
+        builder.HasIndex(e => e.CmdrDutyDetermination, "IX_Form348Unit_CmdrDutyDetermination");
+        builder.HasIndex(e => e.CmdrDutyFrom, "IX_Form348Unit_CmdrDutyFrom");
+        builder.HasIndex(e => e.CmdrDutyTo, "IX_Form348Unit_CmdrDutyTo");
+        builder.HasIndex(e => e.Idtstatus, "IX_Form348Unit_IDTStatus");
     }
 }

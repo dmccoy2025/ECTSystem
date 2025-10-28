@@ -148,5 +148,10 @@ public class Form348RrFindingConfiguration : IEntityTypeConfiguration<Form348RrF
         builder.HasIndex(e => e.Ptype, "IX_Form348_RR_Finding_PTYPE");
         builder.HasIndex(e => e.CreatedBy, "IX_Form348_RR_Finding_CreatedBy");
         builder.HasIndex(e => e.ModifiedBy, "IX_Form348_RR_Finding_ModifiedBy");
+        builder.HasIndex(e => e.CreatedDate, "IX_Form348_RR_Finding_CreatedDate");
+        builder.HasIndex(e => e.ModifiedDate, "IX_Form348_RR_Finding_ModifiedDate");
+        builder.HasIndex(e => e.Finding, "IX_Form348_RR_Finding_Finding");
+        builder.HasIndex(e => e.Grade, "IX_Form348_RR_Finding_Grade");
+        builder.HasIndex(e => e.Concur, "IX_Form348_RR_Finding_Concur");
     }
 }

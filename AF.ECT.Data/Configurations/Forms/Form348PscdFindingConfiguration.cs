@@ -42,5 +42,10 @@ public class Form348PscdFindingConfiguration : IEntityTypeConfiguration<Form348P
         // Indexes for query performance
         builder.HasIndex(e => e.PscdId, "IX_Form348PSCDFinding_PSCDID");
         builder.HasIndex(e => new { e.PscdId, e.Ptype }, "IX_Form348PSCDFinding_PSCDID_PTYPE");
+        builder.HasIndex(e => e.CreatedBy, "IX_Form348PSCDFinding_CreatedBy");
+        builder.HasIndex(e => e.CreatedDate, "IX_Form348PSCDFinding_CreatedDate");
+        builder.HasIndex(e => e.ModifiedBy, "IX_Form348PSCDFinding_ModifiedBy");
+        builder.HasIndex(e => e.ModifiedDate, "IX_Form348PSCDFinding_ModifiedDate");
+        builder.HasIndex(e => e.Finding, "IX_Form348PSCDFinding_Finding");
     }
 }

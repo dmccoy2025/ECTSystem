@@ -83,5 +83,11 @@ public class CoreUserRoleConfiguration : IEntityTypeConfiguration<CoreUserRole>
 
         builder.HasIndex(e => new { e.UserId, e.Active })
             .HasDatabaseName("IX_core_user_role_user_active");
+        
+        builder.HasIndex(e => e.Status)
+            .HasDatabaseName("IX_core_user_role_status");
+        
+        builder.HasIndex(e => new { e.GroupId, e.Active })
+            .HasDatabaseName("IX_core_user_role_group_active");
     }
 }

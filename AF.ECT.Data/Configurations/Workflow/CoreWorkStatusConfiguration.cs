@@ -86,5 +86,8 @@ public class CoreWorkStatusConfiguration : IEntityTypeConfiguration<CoreWorkStat
 
         builder.HasIndex(e => e.IsHolding)
             .HasDatabaseName("IX_core_work_status_is_holding");
+        
+        builder.HasIndex(e => e.IsConsult)
+            .HasDatabaseName("IX_core_work_status_is_consult");
     }
 }

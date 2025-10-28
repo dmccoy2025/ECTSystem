@@ -101,5 +101,21 @@ public class ImpDbaUserConfiguration : IEntityTypeConfiguration<ImpDbaUser>
             .HasMaxLength(4000)
             .IsUnicode(false)
             .HasColumnName("EXTERNAL_NAME");
+        
+        // Indexes for common queries
+        builder.HasIndex(e => e.Username)
+            .HasDatabaseName("IX_imp_dba_user_username");
+        
+        builder.HasIndex(e => e.UserId)
+            .HasDatabaseName("IX_imp_dba_user_user_id");
+        
+        builder.HasIndex(e => e.AccountStatus)
+            .HasDatabaseName("IX_imp_dba_user_account_status");
+        
+        builder.HasIndex(e => e.Created)
+            .HasDatabaseName("IX_imp_dba_user_created");
+        
+        builder.HasIndex(e => e.ExpiryDate)
+            .HasDatabaseName("IX_imp_dba_user_expiry_date");
     }
 }

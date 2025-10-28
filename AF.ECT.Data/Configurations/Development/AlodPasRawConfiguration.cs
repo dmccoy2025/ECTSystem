@@ -113,5 +113,17 @@ public class AlodPasRawConfiguration : IEntityTypeConfiguration<AlodPasRaw>
 
         builder.HasIndex(e => e.ParentCsId)
             .HasDatabaseName("IX_alod_pas_raw_parent_cs_id");
+        
+        builder.HasIndex(e => e.LocationId)
+            .HasDatabaseName("IX_alod_pas_raw_location_id");
+        
+        builder.HasIndex(e => e.DateFrom)
+            .HasDatabaseName("IX_alod_pas_raw_date_from");
+        
+        builder.HasIndex(e => e.DateTo)
+            .HasDatabaseName("IX_alod_pas_raw_date_to");
+        
+        builder.HasIndex(e => e.Unit)
+            .HasDatabaseName("IX_alod_pas_raw_unit");
     }
 }

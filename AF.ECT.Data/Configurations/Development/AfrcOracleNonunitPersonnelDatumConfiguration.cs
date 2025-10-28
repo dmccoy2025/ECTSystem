@@ -58,10 +58,19 @@ public class AfrcOracleNonunitPersonnelDatumConfiguration : IEntityTypeConfigura
         builder.HasIndex(e => e.PersId)
             .HasDatabaseName("IX_afrc_oracle_nonunit_personnel_pers_id");
 
-        builder.Property(e => e.Username)
-            .HasColumnName("username");
+        builder.HasIndex(e => e.Username)
+            .HasDatabaseName("IX_afrc_oracle_nonunit_personnel_username");
 
         builder.HasIndex(e => e.LastName)
             .HasDatabaseName("IX_afrc_oracle_nonunit_personnel_last_name");
+        
+        builder.HasIndex(e => e.CreatedDate)
+            .HasDatabaseName("IX_afrc_oracle_nonunit_personnel_created_date");
+        
+        builder.HasIndex(e => e.ModifiedDate)
+            .HasDatabaseName("IX_afrc_oracle_nonunit_personnel_modified_date");
+        
+        builder.HasIndex(e => e.CsId)
+            .HasDatabaseName("IX_afrc_oracle_nonunit_personnel_cs_id");
     }
 }

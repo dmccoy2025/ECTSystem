@@ -350,5 +350,32 @@ public class Form348RrConfiguration : IEntityTypeConfiguration<Form348Rr>
 
         builder.HasIndex(e => e.MemberGrade)
             .HasDatabaseName("IX_form_348_rr_member_grade");
+        
+        builder.HasIndex(e => e.ModifiedBy)
+            .HasDatabaseName("IX_form_348_rr_modified_by");
+        
+        builder.HasIndex(e => e.ModifiedDate)
+            .HasDatabaseName("IX_form_348_rr_modified_date");
+        
+        builder.HasIndex(e => e.CreatedBy)
+            .HasDatabaseName("IX_form_348_rr_created_by");
+        
+        builder.HasIndex(e => e.ReturnToGroup)
+            .HasDatabaseName("IX_form_348_rr_return_to_group");
+        
+        builder.HasIndex(e => e.ReturnByGroup)
+            .HasDatabaseName("IX_form_348_rr_return_by_group");
+        
+        builder.HasIndex(e => e.DocGroupId)
+            .HasDatabaseName("IX_form_348_rr_doc_group_id");
+        
+        builder.HasIndex(e => e.CancelDate)
+            .HasDatabaseName("IX_form_348_rr_cancel_date");
+        
+        builder.HasIndex(e => e.CancelReason)
+            .HasDatabaseName("IX_form_348_rr_cancel_reason");
+        
+        builder.HasIndex(e => new { e.Workflow, e.Status })
+            .HasDatabaseName("IX_form_348_rr_workflow_status");
     }
 }

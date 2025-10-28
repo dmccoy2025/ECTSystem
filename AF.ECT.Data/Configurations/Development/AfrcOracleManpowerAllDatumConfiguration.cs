@@ -91,5 +91,14 @@ public class AfrcOracleManpowerAllDatumConfiguration : IEntityTypeConfiguration<
 
         builder.HasIndex(e => e.CommandCode)
             .HasDatabaseName("IX_afrc_oracle_manpower_command_code");
+        
+        builder.HasIndex(e => e.AuthAfsc)
+            .HasDatabaseName("IX_afrc_oracle_manpower_auth_afsc");
+        
+        builder.HasIndex(e => e.AuthGrade)
+            .HasDatabaseName("IX_afrc_oracle_manpower_auth_grade");
+        
+        builder.HasIndex(e => e.DutyTitle)
+            .HasDatabaseName("IX_afrc_oracle_manpower_duty_title");
     }
 }

@@ -153,5 +153,21 @@ public class ImpLodInvestigationRptConfiguration : IEntityTypeConfiguration<ImpL
         builder.Property(e => e.CreatedDate).HasMaxLength(50).IsUnicode(false).HasColumnName("CREATED_DATE");
         builder.Property(e => e.ModifiedBy).HasMaxLength(50).IsUnicode(false).HasColumnName("MODIFIED_BY");
         builder.Property(e => e.ModifiedDate).HasMaxLength(50).IsUnicode(false).HasColumnName("MODIFIED_DATE");
+        
+        // Indexes for common queries
+        builder.HasIndex(e => e.LirId)
+            .HasDatabaseName("IX_imp_lod_investigation_rpt_lir_id");
+        
+        builder.HasIndex(e => e.LodId)
+            .HasDatabaseName("IX_imp_lod_investigation_rpt_lod_id");
+        
+        builder.HasIndex(e => e.Status)
+            .HasDatabaseName("IX_imp_lod_investigation_rpt_status");
+        
+        builder.HasIndex(e => e.Findings)
+            .HasDatabaseName("IX_imp_lod_investigation_rpt_findings");
+        
+        builder.HasIndex(e => e.InvOfficerPersId)
+            .HasDatabaseName("IX_imp_lod_investigation_rpt_inv_officer_pers_id");
     }
 }

@@ -83,5 +83,17 @@ public class RwoaConfiguration : IEntityTypeConfiguration<Rwoa>
 
         builder.HasIndex(e => e.CreatedBy)
             .HasDatabaseName("IX_RWOA_CreatedBy");
+        
+        builder.HasIndex(e => e.CreatedDate)
+            .HasDatabaseName("IX_RWOA_CreatedDate");
+        
+        builder.HasIndex(e => e.Workstatus)
+            .HasDatabaseName("IX_RWOA_Workstatus");
+        
+        builder.HasIndex(e => e.DateSentBack)
+            .HasDatabaseName("IX_RWOA_DateSentBack");
+        
+        builder.HasIndex(e => new { e.RefId, e.Workflow })
+            .HasDatabaseName("IX_RWOA_RefID_Workflow");
     }
 }

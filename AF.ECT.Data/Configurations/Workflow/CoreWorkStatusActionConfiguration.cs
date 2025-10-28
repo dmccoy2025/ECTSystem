@@ -64,5 +64,8 @@ public class CoreWorkStatusActionConfiguration : IEntityTypeConfiguration<CoreWo
 
         builder.HasIndex(e => new { e.WsoId, e.ActionType })
             .HasDatabaseName("IX_core_work_status_action_wso_action");
+        
+        builder.HasIndex(e => e.Target)
+            .HasDatabaseName("IX_core_work_status_action_target");
     }
 }

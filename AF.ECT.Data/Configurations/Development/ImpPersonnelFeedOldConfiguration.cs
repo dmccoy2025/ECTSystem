@@ -125,5 +125,21 @@ public class ImpPersonnelFeedOldConfiguration : IEntityTypeConfiguration<ImpPers
 
         // Legacy compatibility column (unknown purpose from old schema)
         builder.Property(e => e.Column46).HasMaxLength(50).IsUnicode(false).HasColumnName("Column46");
+        
+        // Indexes for common queries
+        builder.HasIndex(e => e.PersId)
+            .HasDatabaseName("IX_imp_personnel_feed_old_pers_id");
+        
+        builder.HasIndex(e => e.LastName)
+            .HasDatabaseName("IX_imp_personnel_feed_old_last_name");
+        
+        builder.HasIndex(e => e.Rank)
+            .HasDatabaseName("IX_imp_personnel_feed_old_rank");
+        
+        builder.HasIndex(e => e.Pafsc)
+            .HasDatabaseName("IX_imp_personnel_feed_old_pafsc");
+        
+        builder.HasIndex(e => e.CreatedDate)
+            .HasDatabaseName("IX_imp_personnel_feed_old_created_date");
     }
 }

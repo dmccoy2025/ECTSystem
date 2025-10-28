@@ -47,5 +47,11 @@ public class Form348ApFindingConfiguration : IEntityTypeConfiguration<Form348ApF
         // Indexes for query performance
         builder.HasIndex(e => e.AppealId, "IX_Form348APFinding_AppealID");
         builder.HasIndex(e => new { e.AppealId, e.Ptype }, "IX_Form348APFinding_AppealID_PTYPE");
+        builder.HasIndex(e => e.CreatedBy, "IX_Form348APFinding_CreatedBy");
+        builder.HasIndex(e => e.CreatedDate, "IX_Form348APFinding_CreatedDate");
+        builder.HasIndex(e => e.ModifiedBy, "IX_Form348APFinding_ModifiedBy");
+        builder.HasIndex(e => e.ModifiedDate, "IX_Form348APFinding_ModifiedDate");
+        builder.HasIndex(e => e.Finding, "IX_Form348APFinding_Finding");
+        builder.HasIndex(e => e.Grade, "IX_Form348APFinding_Grade");
     }
 }

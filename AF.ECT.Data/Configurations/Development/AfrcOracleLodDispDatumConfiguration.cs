@@ -162,5 +162,20 @@ public class AfrcOracleLodDispDatumConfiguration : IEntityTypeConfiguration<Afrc
 
         builder.HasIndex(e => e.CreatedDate)
             .HasDatabaseName("IX_afrc_oracle_lod_disp_created_date");
+        
+        builder.HasIndex(e => e.ModifiedDate)
+            .HasDatabaseName("IX_afrc_oracle_lod_disp_modified_date");
+        
+        builder.HasIndex(e => e.MemberStatus)
+            .HasDatabaseName("IX_afrc_oracle_lod_disp_member_status");
+        
+        builder.HasIndex(e => e.FinalDecision)
+            .HasDatabaseName("IX_afrc_oracle_lod_disp_final_decision");
+        
+        builder.HasIndex(e => e.PiId)
+            .HasDatabaseName("IX_afrc_oracle_lod_disp_pi_id");
+        
+        builder.HasIndex(e => e.MemberCsId)
+            .HasDatabaseName("IX_afrc_oracle_lod_disp_member_cs_id");
     }
 }

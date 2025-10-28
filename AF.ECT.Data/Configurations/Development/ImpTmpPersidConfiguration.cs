@@ -41,5 +41,9 @@ public class ImpTmpPersidConfiguration : IEntityTypeConfiguration<ImpTmpPersid>
             .HasMaxLength(50)
             .IsUnicode(false)
             .HasColumnName("PERS_ID");
+        
+        // Index for common queries
+        builder.HasIndex(e => e.PersId)
+            .HasDatabaseName("IX_imp_tmp_persid_pers_id");
     }
 }

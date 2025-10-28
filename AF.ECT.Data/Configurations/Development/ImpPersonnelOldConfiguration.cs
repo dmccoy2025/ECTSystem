@@ -82,5 +82,21 @@ public class ImpPersonnelOldConfiguration : IEntityTypeConfiguration<ImpPersonne
         builder.Property(e => e.CreatedDate).HasMaxLength(50).IsUnicode(false).HasColumnName("CREATED_DATE");
         builder.Property(e => e.ModifiedBy).HasMaxLength(50).IsUnicode(false).HasColumnName("MODIFIED_BY");
         builder.Property(e => e.ModifiedDate).HasMaxLength(50).IsUnicode(false).HasColumnName("MODIFIED_DATE");
+        
+        // Indexes for common queries
+        builder.HasIndex(e => e.PersId)
+            .HasDatabaseName("IX_imp_personnel_old_pers_id");
+        
+        builder.HasIndex(e => e.Ssn)
+            .HasDatabaseName("IX_imp_personnel_old_ssn");
+        
+        builder.HasIndex(e => e.Username)
+            .HasDatabaseName("IX_imp_personnel_old_username");
+        
+        builder.HasIndex(e => e.DutySection)
+            .HasDatabaseName("IX_imp_personnel_old_duty_section");
+        
+        builder.HasIndex(e => e.CreatedDate)
+            .HasDatabaseName("IX_imp_personnel_old_created_date");
     }
 }

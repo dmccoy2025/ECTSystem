@@ -48,5 +48,11 @@ public class Form348ApSarcFindingConfiguration : IEntityTypeConfiguration<Form34
         builder.HasIndex(e => e.AppealId, "IX_Form348APSARCFinding_AppealID");
         builder.HasIndex(e => e.Ssn, "IX_Form348APSARCFinding_SSN");
         builder.HasIndex(e => new { e.AppealId, e.Ptype }, "IX_Form348APSARCFinding_AppealID_PTYPE");
+        builder.HasIndex(e => e.CreatedBy, "IX_Form348APSARCFinding_CreatedBy");
+        builder.HasIndex(e => e.CreatedDate, "IX_Form348APSARCFinding_CreatedDate");
+        builder.HasIndex(e => e.ModifiedBy, "IX_Form348APSARCFinding_ModifiedBy");
+        builder.HasIndex(e => e.ModifiedDate, "IX_Form348APSARCFinding_ModifiedDate");
+        builder.HasIndex(e => e.Finding, "IX_Form348APSARCFinding_Finding");
+        builder.HasIndex(e => e.Grade, "IX_Form348APSARCFinding_Grade");
     }
 }

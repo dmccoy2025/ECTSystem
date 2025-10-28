@@ -130,5 +130,21 @@ public class ImpLodActiveDutyConfiguration : IEntityTypeConfiguration<ImpLodActi
             .HasMaxLength(50)
             .IsUnicode(false)
             .HasColumnName("MODIFIED_BY");
+        
+        // Indexes for common queries
+        builder.HasIndex(e => e.AdId)
+            .HasDatabaseName("IX_imp_lod_active_duty_ad_id");
+        
+        builder.HasIndex(e => e.Ssn)
+            .HasDatabaseName("IX_imp_lod_active_duty_ssn");
+        
+        builder.HasIndex(e => e.LastName)
+            .HasDatabaseName("IX_imp_lod_active_duty_last_name");
+        
+        builder.HasIndex(e => e.Unit)
+            .HasDatabaseName("IX_imp_lod_active_duty_unit");
+        
+        builder.HasIndex(e => e.CreatedDate)
+            .HasDatabaseName("IX_imp_lod_active_duty_created_date");
     }
 }

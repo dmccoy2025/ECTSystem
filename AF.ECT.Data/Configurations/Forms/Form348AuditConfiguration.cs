@@ -85,5 +85,8 @@ public class Form348AuditConfiguration : IEntityTypeConfiguration<Form348Audit>
         builder.HasIndex(e => e.LodId, "IX_Form348Audit_LodID");
         builder.HasIndex(e => e.CaseId, "IX_Form348Audit_CaseID");
         builder.HasIndex(e => e.Workflow, "IX_Form348Audit_Workflow");
+        builder.HasIndex(e => e.MedicallyAppropriate, "IX_Form348Audit_MedicallyAppropriate");
+        builder.HasIndex(e => e.LegallySufficient, "IX_Form348Audit_LegallySufficient");
+        builder.HasIndex(e => e.StatusValidated, "IX_Form348Audit_StatusValidated");
     }
 }

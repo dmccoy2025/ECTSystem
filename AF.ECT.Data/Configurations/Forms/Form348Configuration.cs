@@ -541,5 +541,38 @@ public class Form348Configuration : IEntityTypeConfiguration<Form348>
 
         builder.HasIndex(e => new { e.Status, e.Deleted })
             .HasDatabaseName("IX_form348_status_deleted");
+
+        builder.HasIndex(e => e.FormalInv)
+            .HasDatabaseName("IX_form348_formal_inv");
+
+        builder.HasIndex(e => e.IoCompletionDate)
+            .HasDatabaseName("IX_form348_io_completion_date");
+
+        builder.HasIndex(e => e.ModifiedDate)
+            .HasDatabaseName("IX_form348_modified_date");
+
+        builder.HasIndex(e => new { e.Workflow, e.Status, e.Deleted })
+            .HasDatabaseName("IX_form348_workflow_status_deleted");
+
+        builder.HasIndex(e => e.MemberAttachedUnitId)
+            .HasDatabaseName("IX_form348_member_attached_unit_id");
+
+        builder.HasIndex(e => e.IoUid)
+            .HasDatabaseName("IX_form348_io_uid");
+
+        builder.HasIndex(e => e.ApprovingAuthorityUserId)
+            .HasDatabaseName("IX_form348_approving_authority_user_id");
+
+        builder.HasIndex(e => e.ReturnToGroup)
+            .HasDatabaseName("IX_form348_return_to_group");
+
+        builder.HasIndex(e => e.ReturnByGroup)
+            .HasDatabaseName("IX_form348_return_by_group");
+
+        builder.HasIndex(e => e.DocGroupId)
+            .HasDatabaseName("IX_form348_doc_group_id");
+
+        builder.HasIndex(e => e.ParentId)
+            .HasDatabaseName("IX_form348_parent_id");
     }
 }

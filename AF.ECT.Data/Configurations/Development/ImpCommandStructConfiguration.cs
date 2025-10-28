@@ -223,5 +223,24 @@ public class ImpCommandStructConfiguration : IEntityTypeConfiguration<ImpCommand
             .HasMaxLength(50)
             .IsUnicode(false)
             .HasColumnName("TIME_ZONE");
+        
+        // Indexes for common queries
+        builder.HasIndex(e => e.CsId)
+            .HasDatabaseName("IX_imp_command_struct_cs_id");
+        
+        builder.HasIndex(e => e.Uic)
+            .HasDatabaseName("IX_imp_command_struct_uic");
+        
+        builder.HasIndex(e => e.PasCode)
+            .HasDatabaseName("IX_imp_command_struct_pas_code");
+        
+        builder.HasIndex(e => e.CsIdParent)
+            .HasDatabaseName("IX_imp_command_struct_cs_id_parent");
+        
+        builder.HasIndex(e => e.CreatedDate)
+            .HasDatabaseName("IX_imp_command_struct_created_date");
+        
+        builder.HasIndex(e => e.ModifiedDate)
+            .HasDatabaseName("IX_imp_command_struct_modified_date");
     }
 }

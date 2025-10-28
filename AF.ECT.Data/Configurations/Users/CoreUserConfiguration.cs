@@ -233,5 +233,35 @@ public class CoreUserConfiguration : IEntityTypeConfiguration<CoreUser>
 
         builder.HasIndex(e => e.AccessStatus)
             .HasDatabaseName("IX_core_user_access_status");
+        
+        builder.HasIndex(e => e.Email)
+            .HasDatabaseName("IX_core_user_email");
+        
+        builder.HasIndex(e => e.LastAccessDate)
+            .HasDatabaseName("IX_core_user_last_access_date");
+        
+        builder.HasIndex(e => e.ExpirationDate)
+            .HasDatabaseName("IX_core_user_expiration_date");
+        
+        builder.HasIndex(e => e.CreatedDate)
+            .HasDatabaseName("IX_core_user_created_date");
+        
+        builder.HasIndex(e => e.ModifiedDate)
+            .HasDatabaseName("IX_core_user_modified_date");
+        
+        builder.HasIndex(e => e.ModifiedBy)
+            .HasDatabaseName("IX_core_user_modified_by");
+        
+        builder.HasIndex(e => e.CurrentRole)
+            .HasDatabaseName("IX_core_user_current_role");
+        
+        builder.HasIndex(e => e.WorkCompo)
+            .HasDatabaseName("IX_core_user_work_compo");
+        
+        builder.HasIndex(e => new { e.LastName, e.FirstName })
+            .HasDatabaseName("IX_core_user_name");
+        
+        builder.HasIndex(e => new { e.AccessStatus, e.ExpirationDate })
+            .HasDatabaseName("IX_core_user_access_expiration");
     }
 }

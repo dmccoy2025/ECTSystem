@@ -43,5 +43,12 @@ public class ImpPermmappingConfiguration : IEntityTypeConfiguration<ImpPermmappi
 
         builder.Property(e => e.GroupId)
             .HasColumnName("GROUP_ID");
+        
+        // Indexes for common queries
+        builder.HasIndex(e => e.PermName)
+            .HasDatabaseName("IX_imp_perm_mapping_perm_name");
+        
+        builder.HasIndex(e => e.GroupId)
+            .HasDatabaseName("IX_imp_perm_mapping_group_id");
     }
 }

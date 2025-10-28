@@ -106,5 +106,17 @@ public class AfrcOracleLirDispDatumConfiguration : IEntityTypeConfiguration<Afrc
 
         builder.HasIndex(e => e.Status)
             .HasDatabaseName("IX_afrc_oracle_lir_disp_status");
+        
+        builder.HasIndex(e => e.CreatedDate)
+            .HasDatabaseName("IX_afrc_oracle_lir_disp_created_date");
+        
+        builder.HasIndex(e => e.ModifiedDate)
+            .HasDatabaseName("IX_afrc_oracle_lir_disp_modified_date");
+        
+        builder.HasIndex(e => e.InvOfficerPersId)
+            .HasDatabaseName("IX_afrc_oracle_lir_disp_inv_officer_pers_id");
+        
+        builder.HasIndex(e => e.RaPersId)
+            .HasDatabaseName("IX_afrc_oracle_lir_disp_ra_pers_id");
     }
 }

@@ -73,5 +73,11 @@ public class CoreWorkflowConfiguration : IEntityTypeConfiguration<CoreWorkflow>
 
         builder.HasIndex(e => e.Active)
             .HasDatabaseName("IX_core_workflow_active");
+        
+        builder.HasIndex(e => e.InitialStatus)
+            .HasDatabaseName("IX_core_workflow_initial_status");
+        
+        builder.HasIndex(e => e.Title)
+            .HasDatabaseName("IX_core_workflow_title");
     }
 }

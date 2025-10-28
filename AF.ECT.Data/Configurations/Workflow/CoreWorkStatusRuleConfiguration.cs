@@ -27,5 +27,7 @@ public class CoreWorkStatusRuleConfiguration : IEntityTypeConfiguration<CoreWork
 
         builder.HasIndex(e => e.WsoId, "IX_Core_WorkStatusRule_wsoID");
         builder.HasIndex(e => e.RuleId, "IX_Core_WorkStatusRule_RuleID");
+        builder.HasIndex(e => e.CheckAll, "IX_Core_WorkStatusRule_CheckAll");
+        builder.HasIndex(e => new { e.WsoId, e.RuleId }, "IX_Core_WorkStatusRule_wsoID_RuleID");
     }
 }

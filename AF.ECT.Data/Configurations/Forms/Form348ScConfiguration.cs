@@ -61,5 +61,13 @@ public class Form348ScConfiguration : IEntityTypeConfiguration<Form348Sc>
         builder.HasIndex(e => e.MemberSsn, "IX_Form348SC_MemberSSN");
         builder.HasIndex(e => new { e.ModuleId, e.SubWorkflowType }, "IX_Form348SC_ModuleID_SubWorkflowType");
         builder.HasIndex(e => e.AssociatedLod, "IX_Form348SC_AssociatedLOD");
+        builder.HasIndex(e => e.CreatedBy, "IX_Form348SC_CreatedBy");
+        builder.HasIndex(e => e.CreatedDate, "IX_Form348SC_CreatedDate");
+        builder.HasIndex(e => e.ModifiedBy, "IX_Form348SC_ModifiedBy");
+        builder.HasIndex(e => e.ModifiedDate, "IX_Form348SC_ModifiedDate");
+        builder.HasIndex(e => e.MemberGrade, "IX_Form348SC_MemberGrade");
+        builder.HasIndex(e => e.MemberUnitId, "IX_Form348SC_MemberUnitID");
+        builder.HasIndex(e => e.ReturnToGroup, "IX_Form348SC_ReturnToGroup");
+        builder.HasIndex(e => e.ReturnByGroup, "IX_Form348SC_ReturnByGroup");
     }
 }

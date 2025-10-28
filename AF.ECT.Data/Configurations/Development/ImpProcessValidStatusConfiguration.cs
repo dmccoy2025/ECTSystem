@@ -115,5 +115,24 @@ public class ImpProcessValidStatusConfiguration : IEntityTypeConfiguration<ImpPr
             .HasMaxLength(50)
             .IsUnicode(false)
             .HasColumnName("MODIFIED_DATE");
+        
+        // Indexes for common queries
+        builder.HasIndex(e => e.PvsId)
+            .HasDatabaseName("IX_imp_process_valid_status_pvs_id");
+        
+        builder.HasIndex(e => e.ProcId)
+            .HasDatabaseName("IX_imp_process_valid_status_proc_id");
+        
+        builder.HasIndex(e => e.ProcStatus)
+            .HasDatabaseName("IX_imp_process_valid_status_proc_status");
+        
+        builder.HasIndex(e => e.StatusSeq)
+            .HasDatabaseName("IX_imp_process_valid_status_status_seq");
+        
+        builder.HasIndex(e => e.RequiredYn)
+            .HasDatabaseName("IX_imp_process_valid_status_required_yn");
+        
+        builder.HasIndex(e => e.ClosesProcessYn)
+            .HasDatabaseName("IX_imp_process_valid_status_closes_process_yn");
     }
 }

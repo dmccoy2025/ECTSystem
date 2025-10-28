@@ -87,5 +87,11 @@ public class AspstateTempSessionConfiguration : IEntityTypeConfiguration<Aspstat
 
         builder.HasIndex(e => e.Locked)
             .HasDatabaseName("IX_aspstate_temp_session_locked");
+        
+        builder.HasIndex(e => e.Created)
+            .HasDatabaseName("IX_aspstate_temp_session_created");
+        
+        builder.HasIndex(e => new { e.Expires, e.Locked })
+            .HasDatabaseName("IX_aspstate_temp_session_expires_locked");
     }
 }

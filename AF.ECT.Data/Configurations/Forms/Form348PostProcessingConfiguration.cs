@@ -44,5 +44,8 @@ public class Form348PostProcessingConfiguration : IEntityTypeConfiguration<Form3
 
         // Indexes for query performance
         builder.HasIndex(e => e.NotificationDate, "IX_Form348PostProcessing_NotificationDate");
+        builder.HasIndex(e => e.AddressFlag, "IX_Form348PostProcessing_AddressFlag");
+        builder.HasIndex(e => e.EmailFlag, "IX_Form348PostProcessing_EmailFlag");
+        builder.HasIndex(e => e.PhoneFlag, "IX_Form348PostProcessing_PhoneFlag");
     }
 }

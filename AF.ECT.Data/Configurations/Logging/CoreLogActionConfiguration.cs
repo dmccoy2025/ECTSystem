@@ -35,5 +35,26 @@ public class CoreLogActionConfiguration : IEntityTypeConfiguration<CoreLogAction
         builder.HasIndex(e => e.ActionDate, "IX_Core_LogAction_ActionDate");
         builder.HasIndex(e => e.UserId, "IX_Core_LogAction_UserID");
         builder.HasIndex(e => e.ReferenceId, "IX_Core_LogAction_ReferenceID");
+
+        builder.HasIndex(e => e.ModuleId)
+            .HasDatabaseName("IX_Core_LogAction_ModuleID");
+
+        builder.HasIndex(e => e.ActionId)
+            .HasDatabaseName("IX_Core_LogAction_ActionID");
+
+        builder.HasIndex(e => new { e.ModuleId, e.ActionId })
+            .HasDatabaseName("IX_Core_LogAction_Module_Action");
+
+        builder.HasIndex(e => new { e.UserId, e.ActionDate })
+            .HasDatabaseName("IX_Core_LogAction_User_Date");
+
+        builder.HasIndex(e => new { e.ReferenceId, e.ModuleId })
+            .HasDatabaseName("IX_Core_LogAction_Ref_Module");
+
+        builder.HasIndex(e => e.Status)
+            .HasDatabaseName("IX_Core_LogAction_Status");
+
+        builder.HasIndex(e => e.NewStatus)
+            .HasDatabaseName("IX_Core_LogAction_NewStatus");
     }
 }

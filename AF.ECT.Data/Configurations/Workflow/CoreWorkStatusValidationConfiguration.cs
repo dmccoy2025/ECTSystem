@@ -27,5 +27,8 @@ public class CoreWorkStatusValidationConfiguration : IEntityTypeConfiguration<Co
 
         builder.HasIndex(e => e.WsId, "IX_Core_WorkStatusValidation_wsID");
         builder.HasIndex(e => e.ValidationType, "IX_Core_WorkStatusValidation_ValidationType");
+        builder.HasIndex(e => e.Active, "IX_Core_WorkStatusValidation_Active")
+            .HasFilter("Active = 1");
+        builder.HasIndex(e => new { e.WsId, e.Active }, "IX_Core_WorkStatusValidation_wsID_Active");
     }
 }

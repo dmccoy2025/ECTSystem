@@ -65,5 +65,14 @@ public class AfrcOraclePersonnelDatumConfiguration : IEntityTypeConfiguration<Af
 
         builder.HasIndex(e => e.Username)
             .HasDatabaseName("IX_afrc_oracle_personnel_username");
+        
+        builder.HasIndex(e => e.CreatedDate)
+            .HasDatabaseName("IX_afrc_oracle_personnel_created_date");
+        
+        builder.HasIndex(e => e.ModifiedDate)
+            .HasDatabaseName("IX_afrc_oracle_personnel_modified_date");
+        
+        builder.HasIndex(e => e.DutySection)
+            .HasDatabaseName("IX_afrc_oracle_personnel_duty_section");
     }
 }

@@ -77,5 +77,14 @@ public class Form348IncapAppealConfiguration : IEntityTypeConfiguration<Form348I
 
         builder.HasIndex(e => e.ExtId)
             .HasDatabaseName("IX_form_348_incap_appeal_ext_id");
+        
+        builder.HasIndex(e => e.WccAppealApproval)
+            .HasDatabaseName("IX_form_348_incap_appeal_wcc");
+        
+        builder.HasIndex(e => e.OprAppealApproval)
+            .HasDatabaseName("IX_form_348_incap_appeal_opr");
+        
+        builder.HasIndex(e => e.CafrAppealApproval)
+            .HasDatabaseName("IX_form_348_incap_appeal_cafr");
     }
 }

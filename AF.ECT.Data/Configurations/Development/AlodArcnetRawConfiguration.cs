@@ -46,5 +46,11 @@ public class AlodArcnetRawConfiguration : IEntityTypeConfiguration<AlodArcnetRaw
 
         builder.HasIndex(e => e.Edipi)
             .HasDatabaseName("IX_alod_arcnet_raw_edipi");
+        
+        builder.HasIndex(e => e.CompletionDate)
+            .HasDatabaseName("IX_alod_arcnet_raw_completion_date");
+        
+        builder.HasIndex(e => e.DueDate)
+            .HasDatabaseName("IX_alod_arcnet_raw_due_date");
     }
 }

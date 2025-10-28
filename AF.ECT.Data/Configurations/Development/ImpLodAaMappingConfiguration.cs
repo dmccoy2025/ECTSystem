@@ -57,5 +57,15 @@ public class ImpLodAaMappingConfiguration : IEntityTypeConfiguration<ImpLodAaMap
             .HasMaxLength(50)
             .IsUnicode(false)
             .HasColumnName("BRANCH");
+        
+        // Indexes for common queries
+        builder.HasIndex(e => e.ImportName)
+            .HasDatabaseName("IX_imp_lod_aa_mapping_import_name");
+        
+        builder.HasIndex(e => e.Name)
+            .HasDatabaseName("IX_imp_lod_aa_mapping_name");
+        
+        builder.HasIndex(e => e.Rank)
+            .HasDatabaseName("IX_imp_lod_aa_mapping_rank");
     }
 }

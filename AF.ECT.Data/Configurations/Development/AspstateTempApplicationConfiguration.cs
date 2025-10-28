@@ -42,5 +42,8 @@ public class AspstateTempApplicationConfiguration : IEntityTypeConfiguration<Asp
         builder.HasIndex(e => e.AppName)
             .IsUnique()
             .HasDatabaseName("IX_aspstate_temp_application_app_name");
+        
+        builder.HasIndex(e => new { e.AppId, e.AppName })
+            .HasDatabaseName("IX_aspstate_temp_application_id_name");
     }
 }

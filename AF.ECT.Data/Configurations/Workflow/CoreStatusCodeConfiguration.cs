@@ -99,5 +99,17 @@ public class CoreStatusCodeConfiguration : IEntityTypeConfiguration<CoreStatusCo
 
         builder.HasIndex(e => e.DisplayOrder)
             .HasDatabaseName("IX_core_status_code_display_order");
+        
+        builder.HasIndex(e => e.IsApproved)
+            .HasDatabaseName("IX_core_status_code_is_approved")
+            .HasFilter("is_approved = 1");
+        
+        builder.HasIndex(e => e.IsCancel)
+            .HasDatabaseName("IX_core_status_code_is_cancel")
+            .HasFilter("is_cancel = 1");
+        
+        builder.HasIndex(e => e.IsDisposition)
+            .HasDatabaseName("IX_core_status_code_is_disposition")
+            .HasFilter("is_disposition = 1");
     }
 }

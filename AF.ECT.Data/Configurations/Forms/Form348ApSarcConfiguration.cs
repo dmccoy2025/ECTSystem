@@ -93,5 +93,15 @@ public class Form348ApSarcConfiguration : IEntityTypeConfiguration<Form348ApSarc
         builder.HasIndex(e => new { e.Status, e.Workflow }, "IX_Form348APSARC_Status_Workflow");
         builder.HasIndex(e => e.MemberSsn, "IX_Form348APSARC_MemberSSN");
         builder.HasIndex(e => e.MemberUnitId, "IX_Form348APSARC_MemberUnitID");
+        builder.HasIndex(e => e.CreatedBy, "IX_Form348APSARC_CreatedBy");
+        builder.HasIndex(e => e.CreatedDate, "IX_Form348APSARC_CreatedDate");
+        builder.HasIndex(e => e.ModifiedBy, "IX_Form348APSARC_ModifiedBy");
+        builder.HasIndex(e => e.ModifiedDate, "IX_Form348APSARC_ModifiedDate");
+        builder.HasIndex(e => e.MemberGrade, "IX_Form348APSARC_MemberGrade");
+        builder.HasIndex(e => e.ReturnToGroup, "IX_Form348APSARC_ReturnToGroup");
+        builder.HasIndex(e => e.ReturnByGroup, "IX_Form348APSARC_ReturnByGroup");
+        builder.HasIndex(e => e.DocGroupId, "IX_Form348APSARC_DocGroupID");
+        builder.HasIndex(e => e.CancelDate, "IX_Form348APSARC_CancelDate");
+        builder.HasIndex(e => e.CancelReason, "IX_Form348APSARC_CancelReason");
     }
 }

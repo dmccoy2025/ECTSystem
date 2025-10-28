@@ -157,5 +157,17 @@ public class CommandStructHistoryConfiguration : IEntityTypeConfiguration<Comman
 
         builder.HasIndex(e => e.PkgLogId)
             .HasDatabaseName("IX_command_struct_history_pkg_log_id");
+
+        builder.HasIndex(e => e.Component)
+            .HasDatabaseName("IX_command_struct_history_component");
+
+        builder.HasIndex(e => new { e.CreatedDate, e.ChangeType })
+            .HasDatabaseName("IX_command_struct_history_date_change_type");
+
+        builder.HasIndex(e => e.CsIdParent)
+            .HasDatabaseName("IX_command_struct_history_cs_id_parent");
+
+        builder.HasIndex(e => e.CreatedBy)
+            .HasDatabaseName("IX_command_struct_history_created_by");
     }
 }

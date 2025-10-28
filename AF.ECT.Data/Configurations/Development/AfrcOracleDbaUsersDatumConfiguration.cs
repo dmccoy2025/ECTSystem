@@ -63,5 +63,14 @@ public class AfrcOracleDbaUsersDatumConfiguration : IEntityTypeConfiguration<Afr
 
         builder.HasIndex(e => e.AccountStatus)
             .HasDatabaseName("IX_afrc_oracle_dba_users_account_status");
+        
+        builder.HasIndex(e => e.Created)
+            .HasDatabaseName("IX_afrc_oracle_dba_users_created");
+        
+        builder.HasIndex(e => e.ExpiryDate)
+            .HasDatabaseName("IX_afrc_oracle_dba_users_expiry_date");
+        
+        builder.HasIndex(e => e.UserId)
+            .HasDatabaseName("IX_afrc_oracle_dba_users_user_id");
     }
 }
