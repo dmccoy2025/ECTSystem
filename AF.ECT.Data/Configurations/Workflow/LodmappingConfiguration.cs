@@ -77,16 +77,12 @@ public class LodmappingConfiguration : IEntityTypeConfiguration<Lodmapping>
             .HasColumnName("CREATED_DATE");
         
         // Indexes for LOD ID lookups
-        builder.HasIndex(e => e.AlodLodId)
-            .HasDatabaseName("IX_LODMapping_ALOD_LODID");
+        builder.HasIndex(e => e.AlodLodId, "IX_LODMapping_ALOD_LODID");
         
-        builder.HasIndex(e => e.RcphaLodid)
-            .HasDatabaseName("IX_LODMapping_RCPHA_LODID");
+        builder.HasIndex(e => e.RcphaLodid, "IX_LODMapping_RCPHA_LODID");
         
-        builder.HasIndex(e => e.CaseId)
-            .HasDatabaseName("IX_LODMapping_CASE_ID");
+        builder.HasIndex(e => e.CaseId, "IX_LODMapping_CASE_ID");
         
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_LODMapping_CREATED_DATE");
+        builder.HasIndex(e => e.CreatedDate, "IX_LODMapping_CREATED_DATE");
     }
 }

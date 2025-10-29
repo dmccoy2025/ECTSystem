@@ -154,28 +154,20 @@ public class AfrcOracleLodDispDatumConfiguration : IEntityTypeConfiguration<Afrc
         builder.Property(e => e.BoardForGeneralYn).HasColumnName("board_for_general_yn");
 
         // Indexes for common queries
-        builder.HasIndex(e => e.LodId)
-            .HasDatabaseName("IX_afrc_oracle_lod_disp_lod_id");
+        builder.HasIndex(e => e.LodId, "IX_afrc_oracle_lod_disp_lod_id");
 
-        builder.HasIndex(e => e.MemberSsn)
-            .HasDatabaseName("IX_afrc_oracle_lod_disp_member_ssn");
+        builder.HasIndex(e => e.MemberSsn, "IX_afrc_oracle_lod_disp_member_ssn");
 
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_afrc_oracle_lod_disp_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_afrc_oracle_lod_disp_created_date");
         
-        builder.HasIndex(e => e.ModifiedDate)
-            .HasDatabaseName("IX_afrc_oracle_lod_disp_modified_date");
+        builder.HasIndex(e => e.ModifiedDate, "IX_afrc_oracle_lod_disp_modified_date");
         
-        builder.HasIndex(e => e.MemberStatus)
-            .HasDatabaseName("IX_afrc_oracle_lod_disp_member_status");
+        builder.HasIndex(e => e.MemberStatus, "IX_afrc_oracle_lod_disp_member_status");
         
-        builder.HasIndex(e => e.FinalDecision)
-            .HasDatabaseName("IX_afrc_oracle_lod_disp_final_decision");
+        builder.HasIndex(e => e.FinalDecision, "IX_afrc_oracle_lod_disp_final_decision");
         
-        builder.HasIndex(e => e.PiId)
-            .HasDatabaseName("IX_afrc_oracle_lod_disp_pi_id");
+        builder.HasIndex(e => e.PiId, "IX_afrc_oracle_lod_disp_pi_id");
         
-        builder.HasIndex(e => e.MemberCsId)
-            .HasDatabaseName("IX_afrc_oracle_lod_disp_member_cs_id");
+        builder.HasIndex(e => e.MemberCsId, "IX_afrc_oracle_lod_disp_member_cs_id");
     }
 }

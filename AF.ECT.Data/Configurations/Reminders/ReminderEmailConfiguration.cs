@@ -62,10 +62,8 @@ public class ReminderEmailConfiguration : IEntityTypeConfiguration<ReminderEmail
             .IsUnique()
             .HasDatabaseName("UQ_reminder_email_setting_case");
 
-        builder.HasIndex(e => e.LastSentDate)
-            .HasDatabaseName("IX_reminder_email_last_sent_date");
+        builder.HasIndex(e => e.LastSentDate, "IX_reminder_email_last_sent_date");
 
-        builder.HasIndex(e => e.CaseId)
-            .HasDatabaseName("IX_reminder_email_case_id");
+        builder.HasIndex(e => e.CaseId, "IX_reminder_email_case_id");
     }
 }

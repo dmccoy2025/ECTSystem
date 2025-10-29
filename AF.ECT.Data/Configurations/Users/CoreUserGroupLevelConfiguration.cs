@@ -27,7 +27,6 @@ public class CoreUserGroupLevelConfiguration : IEntityTypeConfiguration<CoreUser
             .HasColumnName("name");
 
         // Indexes
-        builder.HasIndex(e => e.Name)
-            .HasDatabaseName("IX_core_user_group_level_name");
+        builder.HasIndex(e => e.Name, "IX_core_user_group_level_name");
     }
 }

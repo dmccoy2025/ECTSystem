@@ -43,7 +43,6 @@ public class CoreLkupMajcomConfiguration : IEntityTypeConfiguration<CoreLkupMajc
             .IsUnique()
             .HasDatabaseName("UQ_core_lkup_majcom_name");
 
-        builder.HasIndex(e => e.Active)
-            .HasDatabaseName("IX_core_lkup_majcom_active");
+        builder.HasIndex(e => e.Active, "IX_core_lkup_majcom_active");
     }
 }

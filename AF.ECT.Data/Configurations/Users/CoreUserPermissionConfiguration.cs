@@ -38,13 +38,10 @@ public class CoreUserPermissionConfiguration : IEntityTypeConfiguration<CoreUser
             .HasColumnName("status");
 
         // Indexes
-        builder.HasIndex(e => e.UserId)
-            .HasDatabaseName("IX_core_user_permission_user_id");
+        builder.HasIndex(e => e.UserId, "IX_core_user_permission_user_id");
 
-        builder.HasIndex(e => e.PermId)
-            .HasDatabaseName("IX_core_user_permission_perm_id");
+        builder.HasIndex(e => e.PermId, "IX_core_user_permission_perm_id");
 
-        builder.HasIndex(e => e.Status)
-            .HasDatabaseName("IX_core_user_permission_status");
+        builder.HasIndex(e => e.Status, "IX_core_user_permission_status");
     }
 }

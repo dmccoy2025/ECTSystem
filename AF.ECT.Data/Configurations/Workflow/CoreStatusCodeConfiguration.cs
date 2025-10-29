@@ -84,21 +84,17 @@ public class CoreStatusCodeConfiguration : IEntityTypeConfiguration<CoreStatusCo
             .HasConstraintName("FK_core_status_code_core_user_group");
 
         // Indexes
-        builder.HasIndex(e => e.ModuleId)
-            .HasDatabaseName("IX_core_status_code_module_id");
+        builder.HasIndex(e => e.ModuleId, "IX_core_status_code_module_id");
 
-        builder.HasIndex(e => e.GroupId)
-            .HasDatabaseName("IX_core_status_code_group_id");
+        builder.HasIndex(e => e.GroupId, "IX_core_status_code_group_id");
 
-        builder.HasIndex(e => new { e.Compo, e.ModuleId })
-            .HasDatabaseName("IX_core_status_code_compo_module");
+        builder.HasIndex(e => new { e.Compo, e.ModuleId }, "IX_core_status_code_compo_module");
 
         builder.HasIndex(e => e.IsFinal)
             .HasDatabaseName("IX_core_status_code_is_final")
             .HasFilter("is_final = 1");
 
-        builder.HasIndex(e => e.DisplayOrder)
-            .HasDatabaseName("IX_core_status_code_display_order");
+        builder.HasIndex(e => e.DisplayOrder, "IX_core_status_code_display_order");
         
         builder.HasIndex(e => e.IsApproved)
             .HasDatabaseName("IX_core_status_code_is_approved")

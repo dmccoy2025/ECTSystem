@@ -35,13 +35,10 @@ public class CoreWorkflowLockConfiguration : IEntityTypeConfiguration<CoreWorkfl
             .HasColumnName("lock_time");
 
         // Indexes
-        builder.HasIndex(e => new { e.RefId, e.Module })
-            .HasDatabaseName("IX_core_workflow_lock_ref_module");
+        builder.HasIndex(e => new { e.RefId, e.Module }, "IX_core_workflow_lock_ref_module");
 
-        builder.HasIndex(e => e.UserId)
-            .HasDatabaseName("IX_core_workflow_lock_user_id");
+        builder.HasIndex(e => e.UserId, "IX_core_workflow_lock_user_id");
 
-        builder.HasIndex(e => e.LockTime)
-            .HasDatabaseName("IX_core_workflow_lock_lock_time");
+        builder.HasIndex(e => e.LockTime, "IX_core_workflow_lock_lock_time");
     }
 }

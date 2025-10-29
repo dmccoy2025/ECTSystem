@@ -49,7 +49,6 @@ public class CoreWitnessConfiguration : IEntityTypeConfiguration<CoreWitness>
             .HasColumnName("modified_date");
 
         // Indexes
-        builder.HasIndex(e => e.LodId)
-            .HasDatabaseName("IX_core_witness_lod_id");
+        builder.HasIndex(e => e.LodId, "IX_core_witness_lod_id");
     }
 }

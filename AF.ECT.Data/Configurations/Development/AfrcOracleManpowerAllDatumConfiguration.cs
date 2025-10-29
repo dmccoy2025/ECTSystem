@@ -83,22 +83,16 @@ public class AfrcOracleManpowerAllDatumConfiguration : IEntityTypeConfiguration<
         builder.Property(e => e.PosNbrActual).HasColumnName("pos_nbr_actual");
 
         // Indexes for common queries
-        builder.HasIndex(e => e.PasCode)
-            .HasDatabaseName("IX_afrc_oracle_manpower_pas_code");
+        builder.HasIndex(e => e.PasCode, "IX_afrc_oracle_manpower_pas_code");
 
-        builder.HasIndex(e => e.PosNbr)
-            .HasDatabaseName("IX_afrc_oracle_manpower_pos_nbr");
+        builder.HasIndex(e => e.PosNbr, "IX_afrc_oracle_manpower_pos_nbr");
 
-        builder.HasIndex(e => e.CommandCode)
-            .HasDatabaseName("IX_afrc_oracle_manpower_command_code");
+        builder.HasIndex(e => e.CommandCode, "IX_afrc_oracle_manpower_command_code");
         
-        builder.HasIndex(e => e.AuthAfsc)
-            .HasDatabaseName("IX_afrc_oracle_manpower_auth_afsc");
+        builder.HasIndex(e => e.AuthAfsc, "IX_afrc_oracle_manpower_auth_afsc");
         
-        builder.HasIndex(e => e.AuthGrade)
-            .HasDatabaseName("IX_afrc_oracle_manpower_auth_grade");
+        builder.HasIndex(e => e.AuthGrade, "IX_afrc_oracle_manpower_auth_grade");
         
-        builder.HasIndex(e => e.DutyTitle)
-            .HasDatabaseName("IX_afrc_oracle_manpower_duty_title");
+        builder.HasIndex(e => e.DutyTitle, "IX_afrc_oracle_manpower_duty_title");
     }
 }

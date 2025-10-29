@@ -25,10 +25,8 @@ public class CoreWorkflowRwoaReasonConfiguration : IEntityTypeConfiguration<Core
             .HasColumnName("rwoa_id");
 
         // Indexes
-        builder.HasIndex(e => e.WorkflowId)
-            .HasDatabaseName("IX_core_workflow_rwoa_reason_workflow_id");
+        builder.HasIndex(e => e.WorkflowId, "IX_core_workflow_rwoa_reason_workflow_id");
 
-        builder.HasIndex(e => e.RwoaId)
-            .HasDatabaseName("IX_core_workflow_rwoa_reason_rwoa_id");
+        builder.HasIndex(e => e.RwoaId, "IX_core_workflow_rwoa_reason_rwoa_id");
     }
 }

@@ -68,17 +68,14 @@ public class CoreMemoConfiguration : IEntityTypeConfiguration<CoreMemo>
             .HasConstraintName("FK_core_memo_template");
 
         // Indexes
-        builder.HasIndex(e => e.RefId)
-            .HasDatabaseName("IX_core_memo_ref_id");
+        builder.HasIndex(e => e.RefId, "IX_core_memo_ref_id");
 
         builder.HasIndex(e => new { e.RefId, e.Deleted })
             .HasDatabaseName("IX_core_memo_ref_deleted")
             .HasFilter("[deleted] = 0");
 
-        builder.HasIndex(e => e.CreatedBy)
-            .HasDatabaseName("IX_core_memo_created_by");
+        builder.HasIndex(e => e.CreatedBy, "IX_core_memo_created_by");
 
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_core_memo_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_core_memo_created_date");
     }
 }

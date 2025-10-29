@@ -87,10 +87,8 @@ public class CoreMemoLetterheadConfiguration : IEntityTypeConfiguration<CoreMemo
             .HasColumnName("effective_date");
 
         // Indexes
-        builder.HasIndex(e => e.Compo)
-            .HasDatabaseName("IX_core_memo_letterhead_compo");
+        builder.HasIndex(e => e.Compo, "IX_core_memo_letterhead_compo");
 
-        builder.HasIndex(e => e.EffectiveDate)
-            .HasDatabaseName("IX_core_memo_letterhead_effective_date");
+        builder.HasIndex(e => e.EffectiveDate, "IX_core_memo_letterhead_effective_date");
     }
 }

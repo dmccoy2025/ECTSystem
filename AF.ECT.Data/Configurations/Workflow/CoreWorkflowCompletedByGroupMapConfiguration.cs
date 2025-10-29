@@ -24,11 +24,22 @@ public class CoreWorkflowCompletedByGroupMapConfiguration : IEntityTypeConfigura
         builder.Property(e => e.CompletedById)
             .HasColumnName("completed_by_id");
 
-        // Indexes
-        builder.HasIndex(e => e.WorkflowId)
-            .HasDatabaseName("IX_core_workflow_completed_by_group_map_workflow_id");
+        // Relationships
+        builder.HasOne(d => d.CompletedBy)
+            .WithMany()
+            .HasForeignKey(d => d.CompletedById)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_completed_by_group_map_core_completed_by_group");
 
-        builder.HasIndex(e => e.CompletedById)
-            .HasDatabaseName("IX_core_workflow_completed_by_group_map_completed_by_id");
+        builder.HasOne(d => d.Workflow)
+            .WithMany()
+            .HasForeignKey(d => d.WorkflowId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_completed_by_group_map_core_workflow");
+
+        // Indexes
+        builder.HasIndex(e => e.WorkflowId, "IX_core_workflow_completed_by_group_map_workflow_id");
+
+        builder.HasIndex(e => e.CompletedById, "IX_core_workflow_completed_by_group_map_completed_by_id");
     }
 }

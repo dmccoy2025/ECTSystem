@@ -27,14 +27,24 @@ public class CoreWorkflowFindingConfiguration : IEntityTypeConfiguration<CoreWor
         builder.Property(e => e.SortOrder)
             .HasColumnName("sort_order");
 
+        // Relationships
+        builder.HasOne(d => d.Finding)
+            .WithMany()
+            .HasForeignKey(d => d.FindingId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_finding_core_lkup_finding");
+
+        builder.HasOne(d => d.Workflow)
+            .WithMany()
+            .HasForeignKey(d => d.WorkflowId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_finding_core_workflow");
+
         // Indexes
-        builder.HasIndex(e => e.WorkflowId)
-            .HasDatabaseName("IX_core_workflow_finding_workflow_id");
+        builder.HasIndex(e => e.WorkflowId, "IX_core_workflow_finding_workflow_id");
 
-        builder.HasIndex(e => e.FindingId)
-            .HasDatabaseName("IX_core_workflow_finding_finding_id");
+        builder.HasIndex(e => e.FindingId, "IX_core_workflow_finding_finding_id");
 
-        builder.HasIndex(e => e.SortOrder)
-            .HasDatabaseName("IX_core_workflow_finding_sort_order");
+        builder.HasIndex(e => e.SortOrder, "IX_core_workflow_finding_sort_order");
     }
 }

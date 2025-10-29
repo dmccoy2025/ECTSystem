@@ -72,28 +72,20 @@ public class RwoaConfiguration : IEntityTypeConfiguration<Rwoa>
             .HasColumnName("rerouting");
 
         // Indexes
-        builder.HasIndex(e => e.RefId)
-            .HasDatabaseName("IX_RWOA_RefID");
+        builder.HasIndex(e => e.RefId, "IX_RWOA_RefID");
 
-        builder.HasIndex(e => e.Workflow)
-            .HasDatabaseName("IX_RWOA_Workflow");
+        builder.HasIndex(e => e.Workflow, "IX_RWOA_Workflow");
 
-        builder.HasIndex(e => e.DateSent)
-            .HasDatabaseName("IX_RWOA_DateSent");
+        builder.HasIndex(e => e.DateSent, "IX_RWOA_DateSent");
 
-        builder.HasIndex(e => e.CreatedBy)
-            .HasDatabaseName("IX_RWOA_CreatedBy");
+        builder.HasIndex(e => e.CreatedBy, "IX_RWOA_CreatedBy");
         
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_RWOA_CreatedDate");
+        builder.HasIndex(e => e.CreatedDate, "IX_RWOA_CreatedDate");
         
-        builder.HasIndex(e => e.Workstatus)
-            .HasDatabaseName("IX_RWOA_Workstatus");
+        builder.HasIndex(e => e.Workstatus, "IX_RWOA_Workstatus");
         
-        builder.HasIndex(e => e.DateSentBack)
-            .HasDatabaseName("IX_RWOA_DateSentBack");
+        builder.HasIndex(e => e.DateSentBack, "IX_RWOA_DateSentBack");
         
-        builder.HasIndex(e => new { e.RefId, e.Workflow })
-            .HasDatabaseName("IX_RWOA_RefID_Workflow");
+        builder.HasIndex(e => new { e.RefId, e.Workflow }, "IX_RWOA_RefID_Workflow");
     }
 }

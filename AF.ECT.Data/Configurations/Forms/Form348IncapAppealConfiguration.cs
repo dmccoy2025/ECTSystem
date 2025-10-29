@@ -72,19 +72,14 @@ public class Form348IncapAppealConfiguration : IEntityTypeConfiguration<Form348I
             .HasConstraintName("FK_Form_348_Incap_Appeal_Finding");
 
         // Indexes
-        builder.HasIndex(e => e.ScId)
-            .HasDatabaseName("IX_form_348_incap_appeal_sc_id");
+        builder.HasIndex(e => e.ScId, "IX_form_348_incap_appeal_sc_id");
 
-        builder.HasIndex(e => e.ExtId)
-            .HasDatabaseName("IX_form_348_incap_appeal_ext_id");
+        builder.HasIndex(e => e.ExtId, "IX_form_348_incap_appeal_ext_id");
         
-        builder.HasIndex(e => e.WccAppealApproval)
-            .HasDatabaseName("IX_form_348_incap_appeal_wcc");
+        builder.HasIndex(e => e.WccAppealApproval, "IX_form_348_incap_appeal_wcc");
         
-        builder.HasIndex(e => e.OprAppealApproval)
-            .HasDatabaseName("IX_form_348_incap_appeal_opr");
+        builder.HasIndex(e => e.OprAppealApproval, "IX_form_348_incap_appeal_opr");
         
-        builder.HasIndex(e => e.CafrAppealApproval)
-            .HasDatabaseName("IX_form_348_incap_appeal_cafr");
+        builder.HasIndex(e => e.CafrAppealApproval, "IX_form_348_incap_appeal_cafr");
     }
 }

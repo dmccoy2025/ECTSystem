@@ -88,22 +88,16 @@ public class Form348IncapFindingConfiguration : IEntityTypeConfiguration<Form348
             .HasConstraintName("FK_Form_348_Incap_Ext_Finding");
 
         // Indexes
-        builder.HasIndex(e => e.InitStartDate)
-            .HasDatabaseName("IX_form_348_incap_finding_init_start_date");
+        builder.HasIndex(e => e.InitStartDate, "IX_form_348_incap_finding_init_start_date");
 
-        builder.HasIndex(e => e.InitEndDate)
-            .HasDatabaseName("IX_form_348_incap_finding_init_end_date");
+        builder.HasIndex(e => e.InitEndDate, "IX_form_348_incap_finding_init_end_date");
 
-        builder.HasIndex(e => e.WccInitApproval)
-            .HasDatabaseName("IX_form_348_incap_finding_wcc_init_approval");
+        builder.HasIndex(e => e.WccInitApproval, "IX_form_348_incap_finding_wcc_init_approval");
         
-        builder.HasIndex(e => e.ICRecommendation)
-            .HasDatabaseName("IX_form_348_incap_finding_ic_recommendation");
+        builder.HasIndex(e => e.ICRecommendation, "IX_form_348_incap_finding_ic_recommendation");
         
-        builder.HasIndex(e => e.WingJaConcur)
-            .HasDatabaseName("IX_form_348_incap_finding_wing_ja_concur");
+        builder.HasIndex(e => e.WingJaConcur, "IX_form_348_incap_finding_wing_ja_concur");
         
-        builder.HasIndex(e => e.MedAbilityToPreform)
-            .HasDatabaseName("IX_form_348_incap_finding_med_ability");
+        builder.HasIndex(e => e.MedAbilityToPreform, "IX_form_348_incap_finding_med_ability");
     }
 }

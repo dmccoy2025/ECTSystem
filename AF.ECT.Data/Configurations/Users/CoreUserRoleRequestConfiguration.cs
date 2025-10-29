@@ -55,14 +55,40 @@ public class CoreUserRoleRequestConfiguration : IEntityTypeConfiguration<CoreUse
             .HasMaxLength(2000)
             .HasColumnName("completed_comment");
 
+        // Relationships
+        builder.HasOne(d => d.CompletedByNavigation)
+            .WithMany()
+            .HasForeignKey(d => d.CompletedBy)
+            .HasConstraintName("FK_core_user_role_request_core_user_completed_by");
+
+        builder.HasOne(d => d.ExistingGroup)
+            .WithMany()
+            .HasForeignKey(d => d.ExistingGroupId)
+            .HasConstraintName("FK_core_user_role_request_core_user_group_existing");
+
+        builder.HasOne(d => d.RequestedGroup)
+            .WithMany()
+            .HasForeignKey(d => d.RequestedGroupId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_user_role_request_core_user_group_requested");
+
+        builder.HasOne(d => d.StatusNavigation)
+            .WithMany()
+            .HasForeignKey(d => d.Status)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_user_role_request_core_lkup_access_status");
+
+        builder.HasOne(d => d.User)
+            .WithMany()
+            .HasForeignKey(d => d.UserId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_user_role_request_core_user");
+
         // Indexes
-        builder.HasIndex(e => e.UserId)
-            .HasDatabaseName("IX_core_user_role_request_user_id");
+        builder.HasIndex(e => e.UserId, "IX_core_user_role_request_user_id");
 
-        builder.HasIndex(e => e.Status)
-            .HasDatabaseName("IX_core_user_role_request_status");
+        builder.HasIndex(e => e.Status, "IX_core_user_role_request_status");
 
-        builder.HasIndex(e => e.RequestedDate)
-            .HasDatabaseName("IX_core_user_role_request_requested_date");
+        builder.HasIndex(e => e.RequestedDate, "IX_core_user_role_request_requested_date");
     }
 }

@@ -44,10 +44,8 @@ public class ImpGradeLookUpConfiguration : IEntityTypeConfiguration<ImpGradeLook
             .HasColumnName("GRADECODE");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.Grade)
-            .HasDatabaseName("IX_imp_grade_lookup_grade");
+        builder.HasIndex(e => e.Grade, "IX_imp_grade_lookup_grade");
         
-        builder.HasIndex(e => e.Gradecode)
-            .HasDatabaseName("IX_imp_grade_lookup_gradecode");
+        builder.HasIndex(e => e.Gradecode, "IX_imp_grade_lookup_gradecode");
     }
 }

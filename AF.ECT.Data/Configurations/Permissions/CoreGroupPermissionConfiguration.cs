@@ -45,10 +45,8 @@ public class CoreGroupPermissionConfiguration : IEntityTypeConfiguration<CoreGro
             .HasConstraintName("FK_core_group_permission_core_permission");
 
         // Indexes
-        builder.HasIndex(e => e.GroupId)
-            .HasDatabaseName("IX_core_group_permission_group_id");
+        builder.HasIndex(e => e.GroupId, "IX_core_group_permission_group_id");
 
-        builder.HasIndex(e => e.PermId)
-            .HasDatabaseName("IX_core_group_permission_perm_id");
+        builder.HasIndex(e => e.PermId, "IX_core_group_permission_perm_id");
     }
 }

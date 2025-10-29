@@ -110,23 +110,17 @@ public class CoreUserGroupConfiguration : IEntityTypeConfiguration<CoreUserGroup
             .HasDatabaseName("IX_core_user_group_abbr")
             .IsUnique();
 
-        builder.HasIndex(e => e.Compo)
-            .HasDatabaseName("IX_core_user_group_compo");
+        builder.HasIndex(e => e.Compo, "IX_core_user_group_compo");
 
-        builder.HasIndex(e => e.Active)
-            .HasDatabaseName("IX_core_user_group_active");
+        builder.HasIndex(e => e.Active, "IX_core_user_group_active");
 
-        builder.HasIndex(e => new { e.Compo, e.Active })
-            .HasDatabaseName("IX_core_user_group_compo_active");
+        builder.HasIndex(e => new { e.Compo, e.Active }, "IX_core_user_group_compo_active");
 
-        builder.HasIndex(e => e.SortOrder)
-            .HasDatabaseName("IX_core_user_group_sort_order");
+        builder.HasIndex(e => e.SortOrder, "IX_core_user_group_sort_order");
         
-        builder.HasIndex(e => e.AccessScope)
-            .HasDatabaseName("IX_core_user_group_access_scope");
+        builder.HasIndex(e => e.AccessScope, "IX_core_user_group_access_scope");
         
-        builder.HasIndex(e => e.GroupLevel)
-            .HasDatabaseName("IX_core_user_group_group_level");
+        builder.HasIndex(e => e.GroupLevel, "IX_core_user_group_group_level");
         
         builder.HasIndex(e => e.HipaaRequired)
             .HasDatabaseName("IX_core_user_group_hipaa_required")

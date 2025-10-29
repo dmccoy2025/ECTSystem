@@ -71,13 +71,10 @@ public class CoreWorkflowConfiguration : IEntityTypeConfiguration<CoreWorkflow>
             .HasDatabaseName("IX_core_workflow_module_compo_formal")
             .IsUnique();
 
-        builder.HasIndex(e => e.Active)
-            .HasDatabaseName("IX_core_workflow_active");
+        builder.HasIndex(e => e.Active, "IX_core_workflow_active");
         
-        builder.HasIndex(e => e.InitialStatus)
-            .HasDatabaseName("IX_core_workflow_initial_status");
+        builder.HasIndex(e => e.InitialStatus, "IX_core_workflow_initial_status");
         
-        builder.HasIndex(e => e.Title)
-            .HasDatabaseName("IX_core_workflow_title");
+        builder.HasIndex(e => e.Title, "IX_core_workflow_title");
     }
 }

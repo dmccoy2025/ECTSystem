@@ -47,22 +47,16 @@ public class CoreUsersOnlineConfiguration : IEntityTypeConfiguration<CoreUsersOn
             .HasColumnName("remote_address");
 
         // Indexes
-        builder.HasIndex(e => e.UserId)
-            .HasDatabaseName("IX_core_users_online_user_id");
+        builder.HasIndex(e => e.UserId, "IX_core_users_online_user_id");
 
-        builder.HasIndex(e => e.LastAccess)
-            .HasDatabaseName("IX_core_users_online_last_access");
+        builder.HasIndex(e => e.LastAccess, "IX_core_users_online_last_access");
 
-        builder.HasIndex(e => e.SessionId)
-            .HasDatabaseName("IX_core_users_online_session_id");
+        builder.HasIndex(e => e.SessionId, "IX_core_users_online_session_id");
         
-        builder.HasIndex(e => e.GroupId)
-            .HasDatabaseName("IX_core_users_online_group_id");
+        builder.HasIndex(e => e.GroupId, "IX_core_users_online_group_id");
         
-        builder.HasIndex(e => e.LoginTime)
-            .HasDatabaseName("IX_core_users_online_login_time");
+        builder.HasIndex(e => e.LoginTime, "IX_core_users_online_login_time");
         
-        builder.HasIndex(e => new { e.UserId, e.LastAccess })
-            .HasDatabaseName("IX_core_users_online_user_last_access");
+        builder.HasIndex(e => new { e.UserId, e.LastAccess }, "IX_core_users_online_user_last_access");
     }
 }

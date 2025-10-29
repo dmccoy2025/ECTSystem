@@ -40,10 +40,8 @@ public class CoreLkupStateConfiguration : IEntityTypeConfiguration<CoreLkupState
             .HasColumnName("country");
 
         // Indexes
-        builder.HasIndex(e => e.StateName)
-            .HasDatabaseName("IX_core_lkup_state_state_name");
+        builder.HasIndex(e => e.StateName, "IX_core_lkup_state_state_name");
 
-        builder.HasIndex(e => e.Country)
-            .HasDatabaseName("IX_core_lkup_state_country");
+        builder.HasIndex(e => e.Country, "IX_core_lkup_state_country");
     }
 }

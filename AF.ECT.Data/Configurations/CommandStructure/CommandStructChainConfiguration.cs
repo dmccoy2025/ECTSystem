@@ -71,16 +71,12 @@ public class CommandStructChainConfiguration : IEntityTypeConfiguration<CommandS
             .HasConstraintName("FK_command_struct_chain_core_lkup_chain_type");
 
         // Indexes
-        builder.HasIndex(e => e.CsId)
-            .HasDatabaseName("IX_command_struct_chain_cs_id");
+        builder.HasIndex(e => e.CsId, "IX_command_struct_chain_cs_id");
 
-        builder.HasIndex(e => e.CscIdParent)
-            .HasDatabaseName("IX_command_struct_chain_parent");
+        builder.HasIndex(e => e.CscIdParent, "IX_command_struct_chain_parent");
 
-        builder.HasIndex(e => new { e.CsId, e.ViewType })
-            .HasDatabaseName("IX_command_struct_chain_cs_view");
+        builder.HasIndex(e => new { e.CsId, e.ViewType }, "IX_command_struct_chain_cs_view");
 
-        builder.HasIndex(e => e.ViewType)
-            .HasDatabaseName("IX_command_struct_chain_view_type");
+        builder.HasIndex(e => e.ViewType, "IX_command_struct_chain_view_type");
     }
 }

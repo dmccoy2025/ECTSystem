@@ -52,10 +52,8 @@ public class CorePageAccessConfiguration : IEntityTypeConfiguration<CorePageAcce
             .HasConstraintName("FK_core_page_access_group");
 
         // Indexes
-        builder.HasIndex(e => new { e.GroupId, e.WorkflowId, e.StatusId, e.PageId })
-            .HasDatabaseName("IX_core_page_access_composite");
+        builder.HasIndex(e => new { e.GroupId, e.WorkflowId, e.StatusId, e.PageId }, "IX_core_page_access_composite");
 
-        builder.HasIndex(e => e.PageId)
-            .HasDatabaseName("IX_core_page_access_page_id");
+        builder.HasIndex(e => e.PageId, "IX_core_page_access_page_id");
     }
 }

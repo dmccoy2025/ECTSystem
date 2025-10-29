@@ -118,22 +118,16 @@ public class Form348IncapExtConfiguration : IEntityTypeConfiguration<Form348Inca
             .HasConstraintName("FK_Form_348_Incap_Ext_Finding");
 
         // Indexes
-        builder.HasIndex(e => e.ScId)
-            .HasDatabaseName("IX_form_348_incap_ext_sc_id");
+        builder.HasIndex(e => e.ScId, "IX_form_348_incap_ext_sc_id");
 
-        builder.HasIndex(e => e.ExtStartDate)
-            .HasDatabaseName("IX_form_348_incap_ext_start_date");
+        builder.HasIndex(e => e.ExtStartDate, "IX_form_348_incap_ext_start_date");
 
-        builder.HasIndex(e => e.ExtEndDate)
-            .HasDatabaseName("IX_form_348_incap_ext_end_date");
+        builder.HasIndex(e => e.ExtEndDate, "IX_form_348_incap_ext_end_date");
         
-        builder.HasIndex(e => e.ExtNumber)
-            .HasDatabaseName("IX_form_348_incap_ext_number");
+        builder.HasIndex(e => e.ExtNumber, "IX_form_348_incap_ext_number");
         
-        builder.HasIndex(e => e.MedExtRecommendation)
-            .HasDatabaseName("IX_form_348_incap_ext_med_recommendation");
+        builder.HasIndex(e => e.MedExtRecommendation, "IX_form_348_incap_ext_med_recommendation");
         
-        builder.HasIndex(e => e.ICExtRecommendation)
-            .HasDatabaseName("IX_form_348_incap_ext_ic_recommendation");
+        builder.HasIndex(e => e.ICExtRecommendation, "IX_form_348_incap_ext_ic_recommendation");
     }
 }

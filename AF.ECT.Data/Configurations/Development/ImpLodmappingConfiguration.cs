@@ -76,19 +76,14 @@ public class ImpLodmappingConfiguration : IEntityTypeConfiguration<ImpLodmapping
             .HasColumnName("CREATED_DATE");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.AlodLodId)
-            .HasDatabaseName("IX_imp_lod_mapping_alod_lod_id");
+        builder.HasIndex(e => e.AlodLodId, "IX_imp_lod_mapping_alod_lod_id");
         
-        builder.HasIndex(e => e.RcphaLodid)
-            .HasDatabaseName("IX_imp_lod_mapping_rcpha_lodid");
+        builder.HasIndex(e => e.RcphaLodid, "IX_imp_lod_mapping_rcpha_lodid");
         
-        builder.HasIndex(e => e.CaseId)
-            .HasDatabaseName("IX_imp_lod_mapping_case_id");
+        builder.HasIndex(e => e.CaseId, "IX_imp_lod_mapping_case_id");
         
-        builder.HasIndex(e => e.RcphaValidStatus)
-            .HasDatabaseName("IX_imp_lod_mapping_rcpha_valid_status");
+        builder.HasIndex(e => e.RcphaValidStatus, "IX_imp_lod_mapping_rcpha_valid_status");
         
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_imp_lod_mapping_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_imp_lod_mapping_created_date");
     }
 }

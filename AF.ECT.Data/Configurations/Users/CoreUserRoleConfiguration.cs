@@ -72,22 +72,16 @@ public class CoreUserRoleConfiguration : IEntityTypeConfiguration<CoreUserRole>
             .HasDatabaseName("IX_core_user_role_user_group")
             .IsUnique();
 
-        builder.HasIndex(e => e.UserId)
-            .HasDatabaseName("IX_core_user_role_user_id");
+        builder.HasIndex(e => e.UserId, "IX_core_user_role_user_id");
 
-        builder.HasIndex(e => e.GroupId)
-            .HasDatabaseName("IX_core_user_role_group_id");
+        builder.HasIndex(e => e.GroupId, "IX_core_user_role_group_id");
 
-        builder.HasIndex(e => e.Active)
-            .HasDatabaseName("IX_core_user_role_active");
+        builder.HasIndex(e => e.Active, "IX_core_user_role_active");
 
-        builder.HasIndex(e => new { e.UserId, e.Active })
-            .HasDatabaseName("IX_core_user_role_user_active");
+        builder.HasIndex(e => new { e.UserId, e.Active }, "IX_core_user_role_user_active");
         
-        builder.HasIndex(e => e.Status)
-            .HasDatabaseName("IX_core_user_role_status");
+        builder.HasIndex(e => e.Status, "IX_core_user_role_status");
         
-        builder.HasIndex(e => new { e.GroupId, e.Active })
-            .HasDatabaseName("IX_core_user_role_group_active");
+        builder.HasIndex(e => new { e.GroupId, e.Active }, "IX_core_user_role_group_active");
     }
 }

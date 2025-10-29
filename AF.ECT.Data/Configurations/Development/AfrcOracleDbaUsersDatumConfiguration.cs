@@ -58,19 +58,14 @@ public class AfrcOracleDbaUsersDatumConfiguration : IEntityTypeConfiguration<Afr
             .HasColumnName("profile");
 
         // Indexes for common queries
-        builder.HasIndex(e => e.Username)
-            .HasDatabaseName("IX_afrc_oracle_dba_users_username");
+        builder.HasIndex(e => e.Username, "IX_afrc_oracle_dba_users_username");
 
-        builder.HasIndex(e => e.AccountStatus)
-            .HasDatabaseName("IX_afrc_oracle_dba_users_account_status");
+        builder.HasIndex(e => e.AccountStatus, "IX_afrc_oracle_dba_users_account_status");
         
-        builder.HasIndex(e => e.Created)
-            .HasDatabaseName("IX_afrc_oracle_dba_users_created");
+        builder.HasIndex(e => e.Created, "IX_afrc_oracle_dba_users_created");
         
-        builder.HasIndex(e => e.ExpiryDate)
-            .HasDatabaseName("IX_afrc_oracle_dba_users_expiry_date");
+        builder.HasIndex(e => e.ExpiryDate, "IX_afrc_oracle_dba_users_expiry_date");
         
-        builder.HasIndex(e => e.UserId)
-            .HasDatabaseName("IX_afrc_oracle_dba_users_user_id");
+        builder.HasIndex(e => e.UserId, "IX_afrc_oracle_dba_users_user_id");
     }
 }

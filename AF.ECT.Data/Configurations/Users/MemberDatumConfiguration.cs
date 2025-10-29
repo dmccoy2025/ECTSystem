@@ -208,37 +208,26 @@ public class MemberDatumConfiguration : IEntityTypeConfiguration<MemberDatum>
         builder.HasIndex(e => e.Pas, "IX_MEMBER_DATA_PAS");
         builder.HasIndex(e => new { e.LastName, e.FirstName }, "IX_MEMBER_DATA_NAME");
 
-        builder.HasIndex(e => e.RcdId)
-            .HasDatabaseName("IX_MEMBER_DATA_RCD_ID");
+        builder.HasIndex(e => e.RcdId, "IX_MEMBER_DATA_RCD_ID");
 
-        builder.HasIndex(e => e.DutyStatus)
-            .HasDatabaseName("IX_MEMBER_DATA_DUTY_STATUS");
+        builder.HasIndex(e => e.DutyStatus, "IX_MEMBER_DATA_DUTY_STATUS");
 
-        builder.HasIndex(e => new { e.SvcComp, e.RecStatCurr })
-            .HasDatabaseName("IX_MEMBER_DATA_COMP_REC_STAT");
+        builder.HasIndex(e => new { e.SvcComp, e.RecStatCurr }, "IX_MEMBER_DATA_COMP_REC_STAT");
 
-        builder.HasIndex(e => e.Dos)
-            .HasDatabaseName("IX_MEMBER_DATA_DOS");
+        builder.HasIndex(e => e.Dos, "IX_MEMBER_DATA_DOS");
 
-        builder.HasIndex(e => e.Ets)
-            .HasDatabaseName("IX_MEMBER_DATA_ETS");
+        builder.HasIndex(e => e.Ets, "IX_MEMBER_DATA_ETS");
 
-        builder.HasIndex(e => e.DeplAvailStatusAdmin)
-            .HasDatabaseName("IX_MEMBER_DATA_DEPL_ADMIN");
+        builder.HasIndex(e => e.DeplAvailStatusAdmin, "IX_MEMBER_DATA_DEPL_ADMIN");
 
-        builder.HasIndex(e => e.DeplAvailStatusLegal)
-            .HasDatabaseName("IX_MEMBER_DATA_DEPL_LEGAL");
+        builder.HasIndex(e => e.DeplAvailStatusLegal, "IX_MEMBER_DATA_DEPL_LEGAL");
 
-        builder.HasIndex(e => e.DeplAvailStatusPhys)
-            .HasDatabaseName("IX_MEMBER_DATA_DEPL_PHYS");
+        builder.HasIndex(e => e.DeplAvailStatusPhys, "IX_MEMBER_DATA_DEPL_PHYS");
 
-        builder.HasIndex(e => e.DeplAvailStatusTime)
-            .HasDatabaseName("IX_MEMBER_DATA_DEPL_TIME");
+        builder.HasIndex(e => e.DeplAvailStatusTime, "IX_MEMBER_DATA_DEPL_TIME");
 
-        builder.HasIndex(e => e.Deleted)
-            .HasDatabaseName("IX_MEMBER_DATA_DELETED");
+        builder.HasIndex(e => e.Deleted, "IX_MEMBER_DATA_DELETED");
 
-        builder.HasIndex(e => e.DeletedDate)
-            .HasDatabaseName("IX_MEMBER_DATA_DELETED_DATE");
+        builder.HasIndex(e => e.DeletedDate, "IX_MEMBER_DATA_DELETED_DATE");
     }
 }

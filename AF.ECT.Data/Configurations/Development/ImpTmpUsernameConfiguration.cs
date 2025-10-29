@@ -44,7 +44,6 @@ public class ImpTmpUsernameConfiguration : IEntityTypeConfiguration<ImpTmpUserna
             .HasColumnName("USERNAME");
         
         // Index for common queries
-        builder.HasIndex(e => e.Username)
-            .HasDatabaseName("IX_imp_tmp_username_username");
+        builder.HasIndex(e => e.Username, "IX_imp_tmp_username_username");
     }
 }

@@ -24,11 +24,22 @@ public class CoreWorkflowDispositionMapConfiguration : IEntityTypeConfiguration<
         builder.Property(e => e.DispositionId)
             .HasColumnName("disposition_id");
 
-        // Indexes
-        builder.HasIndex(e => e.WorkflowId)
-            .HasDatabaseName("IX_core_workflow_disposition_map_workflow_id");
+        // Relationships
+        builder.HasOne(d => d.Disposition)
+            .WithMany()
+            .HasForeignKey(d => d.DispositionId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_disposition_map_core_lkup_disposition");
 
-        builder.HasIndex(e => e.DispositionId)
-            .HasDatabaseName("IX_core_workflow_disposition_map_disposition_id");
+        builder.HasOne(d => d.Workflow)
+            .WithMany()
+            .HasForeignKey(d => d.WorkflowId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_disposition_map_core_workflow");
+
+        // Indexes
+        builder.HasIndex(e => e.WorkflowId, "IX_core_workflow_disposition_map_workflow_id");
+
+        builder.HasIndex(e => e.DispositionId, "IX_core_workflow_disposition_map_disposition_id");
     }
 }

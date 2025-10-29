@@ -24,11 +24,22 @@ public class CoreWorkflowCaseTypeMapConfiguration : IEntityTypeConfiguration<Cor
         builder.Property(e => e.CaseTypeId)
             .HasColumnName("case_type_id");
 
-        // Indexes
-        builder.HasIndex(e => e.WorkflowId)
-            .HasDatabaseName("IX_core_workflow_case_type_map_workflow_id");
+        // Relationships
+        builder.HasOne(d => d.CaseType)
+            .WithMany()
+            .HasForeignKey(d => d.CaseTypeId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_case_type_map_core_case_type");
 
-        builder.HasIndex(e => e.CaseTypeId)
-            .HasDatabaseName("IX_core_workflow_case_type_map_case_type_id");
+        builder.HasOne(d => d.Workflow)
+            .WithMany()
+            .HasForeignKey(d => d.WorkflowId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_case_type_map_core_workflow");
+
+        // Indexes
+        builder.HasIndex(e => e.WorkflowId, "IX_core_workflow_case_type_map_workflow_id");
+
+        builder.HasIndex(e => e.CaseTypeId, "IX_core_workflow_case_type_map_case_type_id");
     }
 }

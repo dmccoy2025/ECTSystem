@@ -78,28 +78,20 @@ public class AfrcOraclePersonnelFeedDatumConfiguration : IEntityTypeConfiguratio
         builder.Property(e => e.ModifiedDate).HasColumnName("modified_date");
 
         // Indexes for common queries
-        builder.HasIndex(e => e.PersId)
-            .HasDatabaseName("IX_afrc_oracle_personnel_feed_pers_id");
+        builder.HasIndex(e => e.PersId, "IX_afrc_oracle_personnel_feed_pers_id");
 
-        builder.HasIndex(e => e.PosNbr)
-            .HasDatabaseName("IX_afrc_oracle_personnel_feed_pos_nbr");
+        builder.HasIndex(e => e.PosNbr, "IX_afrc_oracle_personnel_feed_pos_nbr");
 
-        builder.HasIndex(e => e.LastName)
-            .HasDatabaseName("IX_afrc_oracle_personnel_feed_last_name");
+        builder.HasIndex(e => e.LastName, "IX_afrc_oracle_personnel_feed_last_name");
 
-        builder.HasIndex(e => e.Rank)
-            .HasDatabaseName("IX_afrc_oracle_personnel_feed_rank");
+        builder.HasIndex(e => e.Rank, "IX_afrc_oracle_personnel_feed_rank");
         
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_afrc_oracle_personnel_feed_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_afrc_oracle_personnel_feed_created_date");
         
-        builder.HasIndex(e => e.ModifiedDate)
-            .HasDatabaseName("IX_afrc_oracle_personnel_feed_modified_date");
+        builder.HasIndex(e => e.ModifiedDate, "IX_afrc_oracle_personnel_feed_modified_date");
         
-        builder.HasIndex(e => e.DutyLoc)
-            .HasDatabaseName("IX_afrc_oracle_personnel_feed_duty_loc");
+        builder.HasIndex(e => e.DutyLoc, "IX_afrc_oracle_personnel_feed_duty_loc");
         
-        builder.HasIndex(e => e.Pafsc)
-            .HasDatabaseName("IX_afrc_oracle_personnel_feed_pafsc");
+        builder.HasIndex(e => e.Pafsc, "IX_afrc_oracle_personnel_feed_pafsc");
     }
 }

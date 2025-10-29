@@ -58,10 +58,8 @@ public class AfrcOracleLirPersonnelDatumConfiguration : IEntityTypeConfiguration
             .HasColumnName("modified_date");
 
         // Indexes for common queries
-        builder.HasIndex(e => e.LirId)
-            .HasDatabaseName("IX_afrc_oracle_lir_personnel_lir_id");
+        builder.HasIndex(e => e.LirId, "IX_afrc_oracle_lir_personnel_lir_id");
 
-        builder.HasIndex(e => e.Ssn)
-            .HasDatabaseName("IX_afrc_oracle_lir_personnel_ssn");
+        builder.HasIndex(e => e.Ssn, "IX_afrc_oracle_lir_personnel_ssn");
     }
 }

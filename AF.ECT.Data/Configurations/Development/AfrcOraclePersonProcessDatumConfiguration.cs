@@ -81,25 +81,18 @@ public class AfrcOraclePersonProcessDatumConfiguration : IEntityTypeConfiguratio
             .HasColumnName("calling_pp_id");
 
         // Indexes for common queries
-        builder.HasIndex(e => e.PpId)
-            .HasDatabaseName("IX_afrc_oracle_person_process_pp_id");
+        builder.HasIndex(e => e.PpId, "IX_afrc_oracle_person_process_pp_id");
 
-        builder.HasIndex(e => e.LodId)
-            .HasDatabaseName("IX_afrc_oracle_person_process_lod_id");
+        builder.HasIndex(e => e.LodId, "IX_afrc_oracle_person_process_lod_id");
 
-        builder.HasIndex(e => e.ProcessName)
-            .HasDatabaseName("IX_afrc_oracle_person_process_process_name");
+        builder.HasIndex(e => e.ProcessName, "IX_afrc_oracle_person_process_process_name");
         
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_afrc_oracle_person_process_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_afrc_oracle_person_process_created_date");
         
-        builder.HasIndex(e => e.ModifiedDate)
-            .HasDatabaseName("IX_afrc_oracle_person_process_modified_date");
+        builder.HasIndex(e => e.ModifiedDate, "IX_afrc_oracle_person_process_modified_date");
         
-        builder.HasIndex(e => e.CompletedYn)
-            .HasDatabaseName("IX_afrc_oracle_person_process_completed_yn");
+        builder.HasIndex(e => e.CompletedYn, "IX_afrc_oracle_person_process_completed_yn");
         
-        builder.HasIndex(e => e.StartDate)
-            .HasDatabaseName("IX_afrc_oracle_person_process_start_date");
+        builder.HasIndex(e => e.StartDate, "IX_afrc_oracle_person_process_start_date");
     }
 }

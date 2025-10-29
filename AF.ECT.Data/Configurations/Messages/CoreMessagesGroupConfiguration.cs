@@ -22,6 +22,13 @@ public class CoreMessagesGroupConfiguration : IEntityTypeConfiguration<CoreMessa
         builder.Property(e => e.MessageId).HasColumnName("MessageID");
         builder.Property(e => e.GroupId).HasColumnName("GroupID");
 
+        // Relationships
+        builder.HasOne(d => d.Group)
+            .WithMany()
+            .HasForeignKey(d => d.GroupId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_Core_MessagesGroup_core_user_group");
+
         builder.HasIndex(e => e.MessageId, "IX_Core_MessagesGroup_MessageID");
         builder.HasIndex(e => e.GroupId, "IX_Core_MessagesGroup_GroupID");
     }

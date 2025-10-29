@@ -78,10 +78,8 @@ public class ReminderEmailSettingConfiguration : IEntityTypeConfiguration<Remind
             .IsUnique()
             .HasDatabaseName("UQ_reminder_email_setting_workflow_status_compo");
 
-        builder.HasIndex(e => e.TemplateId)
-            .HasDatabaseName("IX_reminder_email_setting_template_id");
+        builder.HasIndex(e => e.TemplateId, "IX_reminder_email_setting_template_id");
 
-        builder.HasIndex(e => e.GroupId)
-            .HasDatabaseName("IX_reminder_email_setting_group_id");
+        builder.HasIndex(e => e.GroupId, "IX_reminder_email_setting_group_id");
     }
 }

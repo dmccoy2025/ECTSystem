@@ -46,10 +46,8 @@ public class CoreLkupGradeConfiguration : IEntityTypeConfiguration<CoreLkupGrade
             .HasColumnName("displayorder");
 
         // Indexes
-        builder.HasIndex(e => e.Grade)
-            .HasDatabaseName("IX_core_lkup_grade_grade");
+        builder.HasIndex(e => e.Grade, "IX_core_lkup_grade_grade");
 
-        builder.HasIndex(e => e.Displayorder)
-            .HasDatabaseName("IX_core_lkup_grade_displayorder");
+        builder.HasIndex(e => e.Displayorder, "IX_core_lkup_grade_displayorder");
     }
 }

@@ -50,16 +50,12 @@ public class TmpCommandStructChainConfiguration : IEntityTypeConfiguration<TmpCo
             .HasMaxLength(50);
         
         // Indexes for common queries
-        builder.HasIndex(e => e.CscId)
-            .HasDatabaseName("IX_tmp_command_struct_chain_csc_id");
+        builder.HasIndex(e => e.CscId, "IX_tmp_command_struct_chain_csc_id");
         
-        builder.HasIndex(e => e.CsId)
-            .HasDatabaseName("IX_tmp_command_struct_chain_cs_id");
+        builder.HasIndex(e => e.CsId, "IX_tmp_command_struct_chain_cs_id");
         
-        builder.HasIndex(e => e.CscIdParent)
-            .HasDatabaseName("IX_tmp_command_struct_chain_csc_id_parent");
+        builder.HasIndex(e => e.CscIdParent, "IX_tmp_command_struct_chain_csc_id_parent");
         
-        builder.HasIndex(e => e.ChainType)
-            .HasDatabaseName("IX_tmp_command_struct_chain_chain_type");
+        builder.HasIndex(e => e.ChainType, "IX_tmp_command_struct_chain_chain_type");
     }
 }

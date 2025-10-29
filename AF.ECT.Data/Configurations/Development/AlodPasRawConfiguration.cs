@@ -105,25 +105,18 @@ public class AlodPasRawConfiguration : IEntityTypeConfiguration<AlodPasRaw>
         builder.Property(e => e.UnitDerived).HasColumnName("UnitDerived");
 
         // Indexes for common queries
-        builder.HasIndex(e => e.OrganizationId)
-            .HasDatabaseName("IX_alod_pas_raw_organization_id");
+        builder.HasIndex(e => e.OrganizationId, "IX_alod_pas_raw_organization_id");
 
-        builder.HasIndex(e => e.Uic)
-            .HasDatabaseName("IX_alod_pas_raw_uic");
+        builder.HasIndex(e => e.Uic, "IX_alod_pas_raw_uic");
 
-        builder.HasIndex(e => e.ParentCsId)
-            .HasDatabaseName("IX_alod_pas_raw_parent_cs_id");
+        builder.HasIndex(e => e.ParentCsId, "IX_alod_pas_raw_parent_cs_id");
         
-        builder.HasIndex(e => e.LocationId)
-            .HasDatabaseName("IX_alod_pas_raw_location_id");
+        builder.HasIndex(e => e.LocationId, "IX_alod_pas_raw_location_id");
         
-        builder.HasIndex(e => e.DateFrom)
-            .HasDatabaseName("IX_alod_pas_raw_date_from");
+        builder.HasIndex(e => e.DateFrom, "IX_alod_pas_raw_date_from");
         
-        builder.HasIndex(e => e.DateTo)
-            .HasDatabaseName("IX_alod_pas_raw_date_to");
+        builder.HasIndex(e => e.DateTo, "IX_alod_pas_raw_date_to");
         
-        builder.HasIndex(e => e.Unit)
-            .HasDatabaseName("IX_alod_pas_raw_unit");
+        builder.HasIndex(e => e.Unit, "IX_alod_pas_raw_unit");
     }
 }

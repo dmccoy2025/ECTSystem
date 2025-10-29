@@ -31,10 +31,8 @@ public class CoreUserGroupsManagedByConfiguration : IEntityTypeConfiguration<Cor
             .HasColumnName("view_by");
 
         // Indexes
-        builder.HasIndex(e => e.GroupId)
-            .HasDatabaseName("IX_core_user_groups_managed_by_group_id");
+        builder.HasIndex(e => e.GroupId, "IX_core_user_groups_managed_by_group_id");
 
-        builder.HasIndex(e => e.ManagedBy)
-            .HasDatabaseName("IX_core_user_groups_managed_by_managed_by");
+        builder.HasIndex(e => e.ManagedBy, "IX_core_user_groups_managed_by_managed_by");
     }
 }

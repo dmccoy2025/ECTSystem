@@ -225,43 +225,30 @@ public class CoreUserConfiguration : IEntityTypeConfiguration<CoreUser>
             .HasDatabaseName("IX_core_user_username")
             .IsUnique();
 
-        builder.HasIndex(e => e.Edipin)
-            .HasDatabaseName("IX_core_user_edipin");
+        builder.HasIndex(e => e.Edipin, "IX_core_user_edipin");
 
-        builder.HasIndex(e => e.CsId)
-            .HasDatabaseName("IX_core_user_cs_id");
+        builder.HasIndex(e => e.CsId, "IX_core_user_cs_id");
 
-        builder.HasIndex(e => e.AccessStatus)
-            .HasDatabaseName("IX_core_user_access_status");
+        builder.HasIndex(e => e.AccessStatus, "IX_core_user_access_status");
         
-        builder.HasIndex(e => e.Email)
-            .HasDatabaseName("IX_core_user_email");
+        builder.HasIndex(e => e.Email, "IX_core_user_email");
         
-        builder.HasIndex(e => e.LastAccessDate)
-            .HasDatabaseName("IX_core_user_last_access_date");
+        builder.HasIndex(e => e.LastAccessDate, "IX_core_user_last_access_date");
         
-        builder.HasIndex(e => e.ExpirationDate)
-            .HasDatabaseName("IX_core_user_expiration_date");
+        builder.HasIndex(e => e.ExpirationDate, "IX_core_user_expiration_date");
         
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_core_user_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_core_user_created_date");
         
-        builder.HasIndex(e => e.ModifiedDate)
-            .HasDatabaseName("IX_core_user_modified_date");
+        builder.HasIndex(e => e.ModifiedDate, "IX_core_user_modified_date");
         
-        builder.HasIndex(e => e.ModifiedBy)
-            .HasDatabaseName("IX_core_user_modified_by");
+        builder.HasIndex(e => e.ModifiedBy, "IX_core_user_modified_by");
         
-        builder.HasIndex(e => e.CurrentRole)
-            .HasDatabaseName("IX_core_user_current_role");
+        builder.HasIndex(e => e.CurrentRole, "IX_core_user_current_role");
         
-        builder.HasIndex(e => e.WorkCompo)
-            .HasDatabaseName("IX_core_user_work_compo");
+        builder.HasIndex(e => e.WorkCompo, "IX_core_user_work_compo");
         
-        builder.HasIndex(e => new { e.LastName, e.FirstName })
-            .HasDatabaseName("IX_core_user_name");
+        builder.HasIndex(e => new { e.LastName, e.FirstName }, "IX_core_user_name");
         
-        builder.HasIndex(e => new { e.AccessStatus, e.ExpirationDate })
-            .HasDatabaseName("IX_core_user_access_expiration");
+        builder.HasIndex(e => new { e.AccessStatus, e.ExpirationDate }, "IX_core_user_access_expiration");
     }
 }

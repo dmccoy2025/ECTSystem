@@ -49,13 +49,10 @@ public class ImpProcmappingConfiguration : IEntityTypeConfiguration<ImpProcmappi
             .HasColumnName("ALOD_WORKSTATUS");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.PvsId)
-            .HasDatabaseName("IX_imp_proc_mapping_pvs_id");
+        builder.HasIndex(e => e.PvsId, "IX_imp_proc_mapping_pvs_id");
         
-        builder.HasIndex(e => e.ProcId)
-            .HasDatabaseName("IX_imp_proc_mapping_proc_id");
+        builder.HasIndex(e => e.ProcId, "IX_imp_proc_mapping_proc_id");
         
-        builder.HasIndex(e => e.AlodWorkstatus)
-            .HasDatabaseName("IX_imp_proc_mapping_alod_workstatus");
+        builder.HasIndex(e => e.AlodWorkstatus, "IX_imp_proc_mapping_alod_workstatus");
     }
 }

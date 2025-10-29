@@ -41,10 +41,8 @@ public class CoreLkupCompoConfiguration : IEntityTypeConfiguration<CoreLkupCompo
             .HasColumnName("abbreviation");
 
         // Indexes
-        builder.HasIndex(e => e.CompoDescr)
-            .HasDatabaseName("IX_core_lkup_compo_descr");
+        builder.HasIndex(e => e.CompoDescr, "IX_core_lkup_compo_descr");
 
-        builder.HasIndex(e => e.Abbreviation)
-            .HasDatabaseName("IX_core_lkup_compo_abbr");
+        builder.HasIndex(e => e.Abbreviation, "IX_core_lkup_compo_abbr");
     }
 }

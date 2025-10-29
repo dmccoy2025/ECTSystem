@@ -59,23 +59,18 @@ public class CaseDialogueCommentConfiguration : IEntityTypeConfiguration<CaseDia
             .HasColumnName("role");
 
         // Indexes
-        builder.HasIndex(e => e.Lodid)
-            .HasDatabaseName("IX_case_dialogue_comment_lodid");
+        builder.HasIndex(e => e.Lodid, "IX_case_dialogue_comment_lodid");
 
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_case_dialogue_comment_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_case_dialogue_comment_created_date");
 
         builder.HasIndex(e => e.Deleted)
             .HasDatabaseName("IX_case_dialogue_comment_deleted")
             .HasFilter("deleted = 0");
         
-        builder.HasIndex(e => e.CreatedBy)
-            .HasDatabaseName("IX_case_dialogue_comment_created_by");
+        builder.HasIndex(e => e.CreatedBy, "IX_case_dialogue_comment_created_by");
         
-        builder.HasIndex(e => e.ModuleId)
-            .HasDatabaseName("IX_case_dialogue_comment_module_id");
+        builder.HasIndex(e => e.ModuleId, "IX_case_dialogue_comment_module_id");
         
-        builder.HasIndex(e => e.CommentType)
-            .HasDatabaseName("IX_case_dialogue_comment_comment_type");
+        builder.HasIndex(e => e.CommentType, "IX_case_dialogue_comment_comment_type");
     }
 }

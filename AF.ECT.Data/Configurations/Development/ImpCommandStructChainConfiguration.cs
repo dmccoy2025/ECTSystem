@@ -79,16 +79,12 @@ public class ImpCommandStructChainConfiguration : IEntityTypeConfiguration<ImpCo
             .HasColumnName("MODIFIED_DATE");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.CscId)
-            .HasDatabaseName("IX_imp_command_struct_chain_csc_id");
+        builder.HasIndex(e => e.CscId, "IX_imp_command_struct_chain_csc_id");
         
-        builder.HasIndex(e => e.CsId)
-            .HasDatabaseName("IX_imp_command_struct_chain_cs_id");
+        builder.HasIndex(e => e.CsId, "IX_imp_command_struct_chain_cs_id");
         
-        builder.HasIndex(e => e.ChainType)
-            .HasDatabaseName("IX_imp_command_struct_chain_chain_type");
+        builder.HasIndex(e => e.ChainType, "IX_imp_command_struct_chain_chain_type");
         
-        builder.HasIndex(e => e.CscIdParent)
-            .HasDatabaseName("IX_imp_command_struct_chain_csc_id_parent");
+        builder.HasIndex(e => e.CscIdParent, "IX_imp_command_struct_chain_csc_id_parent");
     }
 }

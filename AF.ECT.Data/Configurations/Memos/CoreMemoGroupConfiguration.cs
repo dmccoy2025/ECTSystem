@@ -40,11 +40,9 @@ public class CoreMemoGroupConfiguration : IEntityTypeConfiguration<CoreMemoGroup
             .HasColumnName("can_view");
 
         // Indexes
-        builder.HasIndex(e => e.TemplateId)
-            .HasDatabaseName("IX_core_memo_group_template_id");
+        builder.HasIndex(e => e.TemplateId, "IX_core_memo_group_template_id");
 
-        builder.HasIndex(e => e.GroupId)
-            .HasDatabaseName("IX_core_memo_group_group_id");
+        builder.HasIndex(e => e.GroupId, "IX_core_memo_group_group_id");
 
         builder.HasIndex(e => new { e.TemplateId, e.GroupId })
             .IsUnique()

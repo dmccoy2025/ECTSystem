@@ -94,16 +94,12 @@ public class ImpLodPersInvolvedConfiguration : IEntityTypeConfiguration<ImpLodPe
             .HasColumnName("MODIFIED_DATE");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.LiId)
-            .HasDatabaseName("IX_imp_lod_pers_involved_li_id");
+        builder.HasIndex(e => e.LiId, "IX_imp_lod_pers_involved_li_id");
         
-        builder.HasIndex(e => e.LirId)
-            .HasDatabaseName("IX_imp_lod_pers_involved_lir_id");
+        builder.HasIndex(e => e.LirId, "IX_imp_lod_pers_involved_lir_id");
         
-        builder.HasIndex(e => e.Ssn)
-            .HasDatabaseName("IX_imp_lod_pers_involved_ssn");
+        builder.HasIndex(e => e.Ssn, "IX_imp_lod_pers_involved_ssn");
         
-        builder.HasIndex(e => e.Name)
-            .HasDatabaseName("IX_imp_lod_pers_involved_name");
+        builder.HasIndex(e => e.Name, "IX_imp_lod_pers_involved_name");
     }
 }

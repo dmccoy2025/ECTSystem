@@ -58,16 +58,12 @@ public class Form348LessonConfiguration : IEntityTypeConfiguration<Form348Lesson
             .HasDefaultValue(false);
 
         // Indexes
-        builder.HasIndex(e => e.Lodid)
-            .HasDatabaseName("IX_form_348_lesson_lodid");
+        builder.HasIndex(e => e.Lodid, "IX_form_348_lesson_lodid");
 
-        builder.HasIndex(e => e.Deleted)
-            .HasDatabaseName("IX_form_348_lesson_deleted");
+        builder.HasIndex(e => e.Deleted, "IX_form_348_lesson_deleted");
 
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_form_348_lesson_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_form_348_lesson_created_date");
         
-        builder.HasIndex(e => e.CreatedBy)
-            .HasDatabaseName("IX_form_348_lesson_created_by");
+        builder.HasIndex(e => e.CreatedBy, "IX_form_348_lesson_created_by");
     }
 }

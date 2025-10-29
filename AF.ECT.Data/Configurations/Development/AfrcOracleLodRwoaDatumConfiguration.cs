@@ -62,13 +62,10 @@ public class AfrcOracleLodRwoaDatumConfiguration : IEntityTypeConfiguration<Afrc
             .HasColumnName("created_date");
 
         // Indexes for common queries
-        builder.HasIndex(e => e.LodId)
-            .HasDatabaseName("IX_afrc_oracle_lod_rwoa_lod_id");
+        builder.HasIndex(e => e.LodId, "IX_afrc_oracle_lod_rwoa_lod_id");
 
-        builder.HasIndex(e => e.RwoaId)
-            .HasDatabaseName("IX_afrc_oracle_lod_rwoa_rwoa_id");
+        builder.HasIndex(e => e.RwoaId, "IX_afrc_oracle_lod_rwoa_rwoa_id");
 
-        builder.HasIndex(e => e.DateSent)
-            .HasDatabaseName("IX_afrc_oracle_lod_rwoa_date_sent");
+        builder.HasIndex(e => e.DateSent, "IX_afrc_oracle_lod_rwoa_date_sent");
     }
 }

@@ -248,19 +248,14 @@ public class MilpdsrawDatumConfiguration : IEntityTypeConfiguration<MilpdsrawDat
             .HasColumnName("TAFMSD");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.Ssan)
-            .HasDatabaseName("IX_milpdsraw_datum_ssan");
+        builder.HasIndex(e => e.Ssan, "IX_milpdsraw_datum_ssan");
         
-        builder.HasIndex(e => e.LastName)
-            .HasDatabaseName("IX_milpdsraw_datum_last_name");
+        builder.HasIndex(e => e.LastName, "IX_milpdsraw_datum_last_name");
         
-        builder.HasIndex(e => e.Pas)
-            .HasDatabaseName("IX_milpdsraw_datum_pas");
+        builder.HasIndex(e => e.Pas, "IX_milpdsraw_datum_pas");
         
-        builder.HasIndex(e => e.GrCurr)
-            .HasDatabaseName("IX_milpdsraw_datum_gr_curr");
+        builder.HasIndex(e => e.GrCurr, "IX_milpdsraw_datum_gr_curr");
         
-        builder.HasIndex(e => e.DutyStatus)
-            .HasDatabaseName("IX_milpdsraw_datum_duty_status");
+        builder.HasIndex(e => e.DutyStatus, "IX_milpdsraw_datum_duty_status");
     }
 }

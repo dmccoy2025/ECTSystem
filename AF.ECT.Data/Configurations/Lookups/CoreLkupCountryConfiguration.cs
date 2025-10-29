@@ -61,7 +61,6 @@ public class CoreLkupCountryConfiguration : IEntityTypeConfiguration<CoreLkupCou
             .IsUnique()
             .HasDatabaseName("UQ_core_lkup_country_country");
 
-        builder.HasIndex(e => e.Abbr)
-            .HasDatabaseName("IX_core_lkup_country_abbr");
+        builder.HasIndex(e => e.Abbr, "IX_core_lkup_country_abbr");
     }
 }

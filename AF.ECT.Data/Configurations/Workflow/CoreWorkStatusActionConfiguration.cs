@@ -56,16 +56,12 @@ public class CoreWorkStatusActionConfiguration : IEntityTypeConfiguration<CoreWo
             .HasConstraintName("FK_core_work_status_action_wso");
 
         // Indexes
-        builder.HasIndex(e => e.WsoId)
-            .HasDatabaseName("IX_core_work_status_action_wso_id");
+        builder.HasIndex(e => e.WsoId, "IX_core_work_status_action_wso_id");
 
-        builder.HasIndex(e => e.ActionType)
-            .HasDatabaseName("IX_core_work_status_action_action_type");
+        builder.HasIndex(e => e.ActionType, "IX_core_work_status_action_action_type");
 
-        builder.HasIndex(e => new { e.WsoId, e.ActionType })
-            .HasDatabaseName("IX_core_work_status_action_wso_action");
+        builder.HasIndex(e => new { e.WsoId, e.ActionType }, "IX_core_work_status_action_wso_action");
         
-        builder.HasIndex(e => e.Target)
-            .HasDatabaseName("IX_core_work_status_action_target");
+        builder.HasIndex(e => e.Target, "IX_core_work_status_action_target");
     }
 }

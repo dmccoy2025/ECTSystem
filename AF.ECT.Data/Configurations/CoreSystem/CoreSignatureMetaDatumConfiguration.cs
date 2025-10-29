@@ -85,14 +85,11 @@ public class CoreSignatureMetaDatumConfiguration : IEntityTypeConfiguration<Core
             .HasConstraintName("FK_core_signature_meta_data_core_work_status");
 
         // Indexes
-        builder.HasIndex(e => new { e.WorkflowId, e.RefId })
-            .HasDatabaseName("IX_core_signature_meta_data_workflow_ref");
+        builder.HasIndex(e => new { e.WorkflowId, e.RefId }, "IX_core_signature_meta_data_workflow_ref");
 
-        builder.HasIndex(e => e.UserId)
-            .HasDatabaseName("IX_core_signature_meta_data_user_id");
+        builder.HasIndex(e => e.UserId, "IX_core_signature_meta_data_user_id");
 
-        builder.HasIndex(e => e.Date)
-            .HasDatabaseName("IX_core_signature_meta_data_date");
+        builder.HasIndex(e => e.Date, "IX_core_signature_meta_data_date");
 
         builder.HasIndex(e => new { e.WorkflowId, e.RefId, e.WorkStatus, e.UserGroup })
             .IsUnique()

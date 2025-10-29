@@ -46,10 +46,8 @@ public class ImpManpowerConfiguration : IEntityTypeConfiguration<ImpManpower>
             .HasColumnName("PAS_CODE");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.PosNbr)
-            .HasDatabaseName("IX_imp_manpower_pos_nbr");
+        builder.HasIndex(e => e.PosNbr, "IX_imp_manpower_pos_nbr");
         
-        builder.HasIndex(e => e.PasCode)
-            .HasDatabaseName("IX_imp_manpower_pas_code");
+        builder.HasIndex(e => e.PasCode, "IX_imp_manpower_pas_code");
     }
 }

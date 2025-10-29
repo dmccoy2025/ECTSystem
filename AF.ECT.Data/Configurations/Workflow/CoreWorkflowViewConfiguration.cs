@@ -24,11 +24,22 @@ public class CoreWorkflowViewConfiguration : IEntityTypeConfiguration<CoreWorkfl
         builder.Property(e => e.PageId)
             .HasColumnName("page_id");
 
-        // Indexes
-        builder.HasIndex(e => e.WorkflowId)
-            .HasDatabaseName("IX_core_workflow_view_workflow_id");
+        // Relationships
+        builder.HasOne(d => d.Page)
+            .WithMany()
+            .HasForeignKey(d => d.PageId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_view_core_page");
 
-        builder.HasIndex(e => e.PageId)
-            .HasDatabaseName("IX_core_workflow_view_page_id");
+        builder.HasOne(d => d.Workflow)
+            .WithMany()
+            .HasForeignKey(d => d.WorkflowId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_view_core_workflow");
+
+        // Indexes
+        builder.HasIndex(e => e.WorkflowId, "IX_core_workflow_view_workflow_id");
+
+        builder.HasIndex(e => e.PageId, "IX_core_workflow_view_page_id");
     }
 }

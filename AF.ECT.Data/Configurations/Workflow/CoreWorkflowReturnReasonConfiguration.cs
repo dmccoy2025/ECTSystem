@@ -24,11 +24,22 @@ public class CoreWorkflowReturnReasonConfiguration : IEntityTypeConfiguration<Co
         builder.Property(e => e.ReturnId)
             .HasColumnName("return_id");
 
-        // Indexes
-        builder.HasIndex(e => e.WorkflowId)
-            .HasDatabaseName("IX_core_workflow_return_reason_workflow_id");
+        // Relationships
+        builder.HasOne(d => d.Return)
+            .WithMany()
+            .HasForeignKey(d => d.ReturnId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_return_reason_return");
 
-        builder.HasIndex(e => e.ReturnId)
-            .HasDatabaseName("IX_core_workflow_return_reason_return_id");
+        builder.HasOne(d => d.Workflow)
+            .WithMany()
+            .HasForeignKey(d => d.WorkflowId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_return_reason_core_workflow");
+
+        // Indexes
+        builder.HasIndex(e => e.WorkflowId, "IX_core_workflow_return_reason_workflow_id");
+
+        builder.HasIndex(e => e.ReturnId, "IX_core_workflow_return_reason_return_id");
     }
 }

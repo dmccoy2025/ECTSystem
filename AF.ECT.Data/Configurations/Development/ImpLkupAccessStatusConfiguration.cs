@@ -45,10 +45,8 @@ public class ImpLkupAccessStatusConfiguration : IEntityTypeConfiguration<ImpLkup
             .HasColumnName("STATUS_ID");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.Accountstatus)
-            .HasDatabaseName("IX_imp_lkup_access_status_accountstatus");
+        builder.HasIndex(e => e.Accountstatus, "IX_imp_lkup_access_status_accountstatus");
         
-        builder.HasIndex(e => e.StatusId)
-            .HasDatabaseName("IX_imp_lkup_access_status_status_id");
+        builder.HasIndex(e => e.StatusId, "IX_imp_lkup_access_status_status_id");
     }
 }

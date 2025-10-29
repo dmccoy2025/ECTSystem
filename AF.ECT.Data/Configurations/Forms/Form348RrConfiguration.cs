@@ -327,55 +327,38 @@ public class Form348RrConfiguration : IEntityTypeConfiguration<Form348Rr>
             .HasConstraintName("FK_Form_348_RR_Grade");
 
         // Indexes
-        builder.HasIndex(e => e.InitialLodId)
-            .HasDatabaseName("IX_form_348_rr_initial_lod_id");
+        builder.HasIndex(e => e.InitialLodId, "IX_form_348_rr_initial_lod_id");
 
-        builder.HasIndex(e => e.ReinvestigationLodId)
-            .HasDatabaseName("IX_form_348_rr_reinvestigation_lod_id");
+        builder.HasIndex(e => e.ReinvestigationLodId, "IX_form_348_rr_reinvestigation_lod_id");
 
-        builder.HasIndex(e => e.CaseId)
-            .HasDatabaseName("IX_form_348_rr_case_id");
+        builder.HasIndex(e => e.CaseId, "IX_form_348_rr_case_id");
 
-        builder.HasIndex(e => e.MemberSsn)
-            .HasDatabaseName("IX_form_348_rr_member_ssn");
+        builder.HasIndex(e => e.MemberSsn, "IX_form_348_rr_member_ssn");
 
-        builder.HasIndex(e => e.Workflow)
-            .HasDatabaseName("IX_form_348_rr_workflow");
+        builder.HasIndex(e => e.Workflow, "IX_form_348_rr_workflow");
 
-        builder.HasIndex(e => e.Status)
-            .HasDatabaseName("IX_form_348_rr_status");
+        builder.HasIndex(e => e.Status, "IX_form_348_rr_status");
 
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_form_348_rr_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_form_348_rr_created_date");
 
-        builder.HasIndex(e => e.MemberGrade)
-            .HasDatabaseName("IX_form_348_rr_member_grade");
+        builder.HasIndex(e => e.MemberGrade, "IX_form_348_rr_member_grade");
         
-        builder.HasIndex(e => e.ModifiedBy)
-            .HasDatabaseName("IX_form_348_rr_modified_by");
+        builder.HasIndex(e => e.ModifiedBy, "IX_form_348_rr_modified_by");
         
-        builder.HasIndex(e => e.ModifiedDate)
-            .HasDatabaseName("IX_form_348_rr_modified_date");
+        builder.HasIndex(e => e.ModifiedDate, "IX_form_348_rr_modified_date");
         
-        builder.HasIndex(e => e.CreatedBy)
-            .HasDatabaseName("IX_form_348_rr_created_by");
+        builder.HasIndex(e => e.CreatedBy, "IX_form_348_rr_created_by");
         
-        builder.HasIndex(e => e.ReturnToGroup)
-            .HasDatabaseName("IX_form_348_rr_return_to_group");
+        builder.HasIndex(e => e.ReturnToGroup, "IX_form_348_rr_return_to_group");
         
-        builder.HasIndex(e => e.ReturnByGroup)
-            .HasDatabaseName("IX_form_348_rr_return_by_group");
+        builder.HasIndex(e => e.ReturnByGroup, "IX_form_348_rr_return_by_group");
         
-        builder.HasIndex(e => e.DocGroupId)
-            .HasDatabaseName("IX_form_348_rr_doc_group_id");
+        builder.HasIndex(e => e.DocGroupId, "IX_form_348_rr_doc_group_id");
         
-        builder.HasIndex(e => e.CancelDate)
-            .HasDatabaseName("IX_form_348_rr_cancel_date");
+        builder.HasIndex(e => e.CancelDate, "IX_form_348_rr_cancel_date");
         
-        builder.HasIndex(e => e.CancelReason)
-            .HasDatabaseName("IX_form_348_rr_cancel_reason");
+        builder.HasIndex(e => e.CancelReason, "IX_form_348_rr_cancel_reason");
         
-        builder.HasIndex(e => new { e.Workflow, e.Status })
-            .HasDatabaseName("IX_form_348_rr_workflow_status");
+        builder.HasIndex(e => new { e.Workflow, e.Status }, "IX_form_348_rr_workflow_status");
     }
 }

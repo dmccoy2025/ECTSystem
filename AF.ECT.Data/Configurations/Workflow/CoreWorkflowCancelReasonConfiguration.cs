@@ -25,10 +25,8 @@ public class CoreWorkflowCancelReasonConfiguration : IEntityTypeConfiguration<Co
             .HasColumnName("cancel_reason_id");
 
         // Indexes
-        builder.HasIndex(e => e.WorkflowId)
-            .HasDatabaseName("IX_core_workflow_cancel_reason_workflow_id");
+        builder.HasIndex(e => e.WorkflowId, "IX_core_workflow_cancel_reason_workflow_id");
 
-        builder.HasIndex(e => e.CancelReasonId)
-            .HasDatabaseName("IX_core_workflow_cancel_reason_cancel_reason_id");
+        builder.HasIndex(e => e.CancelReasonId, "IX_core_workflow_cancel_reason_cancel_reason_id");
     }
 }

@@ -163,16 +163,12 @@ public class TestCommandStructConfiguration : IEntityTypeConfiguration<TestComma
             .HasConstraintName("FK_Test_CommandStruct_CoreLkupTimeZone");
 
         // Indexes
-        builder.HasIndex(e => e.Uic)
-            .HasDatabaseName("IX_Test_CommandStruct_UIC");
+        builder.HasIndex(e => e.Uic, "IX_Test_CommandStruct_UIC");
 
-        builder.HasIndex(e => e.CsIdParent)
-            .HasDatabaseName("IX_Test_CommandStruct_CS_ID_PARENT");
+        builder.HasIndex(e => e.CsIdParent, "IX_Test_CommandStruct_CS_ID_PARENT");
 
-        builder.HasIndex(e => e.CsLevel)
-            .HasDatabaseName("IX_Test_CommandStruct_CS_LEVEL");
+        builder.HasIndex(e => e.CsLevel, "IX_Test_CommandStruct_CS_LEVEL");
 
-        builder.HasIndex(e => e.BaseCode)
-            .HasDatabaseName("IX_Test_CommandStruct_BaseCode");
+        builder.HasIndex(e => e.BaseCode, "IX_Test_CommandStruct_BaseCode");
     }
 }

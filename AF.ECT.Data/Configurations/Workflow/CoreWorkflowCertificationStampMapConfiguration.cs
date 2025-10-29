@@ -24,11 +24,22 @@ public class CoreWorkflowCertificationStampMapConfiguration : IEntityTypeConfigu
         builder.Property(e => e.CertStampId)
             .HasColumnName("cert_stamp_id");
 
-        // Indexes
-        builder.HasIndex(e => e.WorkflowId)
-            .HasDatabaseName("IX_core_workflow_certification_stamp_map_workflow_id");
+        // Relationships
+        builder.HasOne(d => d.CertStamp)
+            .WithMany()
+            .HasForeignKey(d => d.CertStampId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_certification_stamp_map_core_certification_stamp");
 
-        builder.HasIndex(e => e.CertStampId)
-            .HasDatabaseName("IX_core_workflow_certification_stamp_map_cert_stamp_id");
+        builder.HasOne(d => d.Workflow)
+            .WithMany()
+            .HasForeignKey(d => d.WorkflowId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_certification_stamp_map_core_workflow");
+
+        // Indexes
+        builder.HasIndex(e => e.WorkflowId, "IX_core_workflow_certification_stamp_map_workflow_id");
+
+        builder.HasIndex(e => e.CertStampId, "IX_core_workflow_certification_stamp_map_cert_stamp_id");
     }
 }

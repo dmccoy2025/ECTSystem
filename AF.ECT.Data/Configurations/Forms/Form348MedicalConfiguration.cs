@@ -196,58 +196,40 @@ public class Form348MedicalConfiguration : IEntityTypeConfiguration<Form348Medic
             .HasConstraintName("FK_Form_348_Medical_ICD9");
 
         // Indexes
-        builder.HasIndex(e => e.Icd9Id)
-            .HasDatabaseName("IX_form_348_medical_icd9_id");
+        builder.HasIndex(e => e.Icd9Id, "IX_form_348_medical_icd9_id");
 
-        builder.HasIndex(e => e.TreatmentDate)
-            .HasDatabaseName("IX_form_348_medical_treatment_date");
+        builder.HasIndex(e => e.TreatmentDate, "IX_form_348_medical_treatment_date");
 
-        builder.HasIndex(e => e.Workflow)
-            .HasDatabaseName("IX_form_348_medical_workflow");
+        builder.HasIndex(e => e.Workflow, "IX_form_348_medical_workflow");
 
-        builder.HasIndex(e => e.ModifiedDate)
-            .HasDatabaseName("IX_form_348_medical_modified_date");
+        builder.HasIndex(e => e.ModifiedDate, "IX_form_348_medical_modified_date");
 
-        builder.HasIndex(e => e.ModifiedBy)
-            .HasDatabaseName("IX_form_348_medical_modified_by");
+        builder.HasIndex(e => e.ModifiedBy, "IX_form_348_medical_modified_by");
 
-        builder.HasIndex(e => e.MemberStatus)
-            .HasDatabaseName("IX_form_348_medical_member_status");
+        builder.HasIndex(e => e.MemberStatus, "IX_form_348_medical_member_status");
 
-        builder.HasIndex(e => e.EventNatureType)
-            .HasDatabaseName("IX_form_348_medical_event_nature_type");
+        builder.HasIndex(e => e.EventNatureType, "IX_form_348_medical_event_nature_type");
 
-        builder.HasIndex(e => e.MedicalFacility)
-            .HasDatabaseName("IX_form_348_medical_facility");
+        builder.HasIndex(e => e.MedicalFacility, "IX_form_348_medical_facility");
 
-        builder.HasIndex(e => e.MedicalFacilityType)
-            .HasDatabaseName("IX_form_348_medical_facility_type");
+        builder.HasIndex(e => e.MedicalFacilityType, "IX_form_348_medical_facility_type");
 
-        builder.HasIndex(e => e.DeathInvolvedYn)
-            .HasDatabaseName("IX_form_348_medical_death_involved");
+        builder.HasIndex(e => e.DeathInvolvedYn, "IX_form_348_medical_death_involved");
 
-        builder.HasIndex(e => e.MvaInvolvedYn)
-            .HasDatabaseName("IX_form_348_medical_mva_involved");
+        builder.HasIndex(e => e.MvaInvolvedYn, "IX_form_348_medical_mva_involved");
 
-        builder.HasIndex(e => e.EptsYn)
-            .HasDatabaseName("IX_form_348_medical_epts");
+        builder.HasIndex(e => e.EptsYn, "IX_form_348_medical_epts");
 
-        builder.HasIndex(e => e.MemberFrom)
-            .HasDatabaseName("IX_form_348_medical_member_from");
+        builder.HasIndex(e => e.MemberFrom, "IX_form_348_medical_member_from");
 
-        builder.HasIndex(e => e.MemberComponent)
-            .HasDatabaseName("IX_form_348_medical_member_component");
+        builder.HasIndex(e => e.MemberComponent, "IX_form_348_medical_member_component");
 
-        builder.HasIndex(e => e.MemberCategory)
-            .HasDatabaseName("IX_form_348_medical_member_category");
+        builder.HasIndex(e => e.MemberCategory, "IX_form_348_medical_member_category");
 
-        builder.HasIndex(e => e.Influence)
-            .HasDatabaseName("IX_form_348_medical_influence");
+        builder.HasIndex(e => e.Influence, "IX_form_348_medical_influence");
 
-        builder.HasIndex(e => e.PhysicianCancelReason)
-            .HasDatabaseName("IX_form_348_medical_physician_cancel_reason");
+        builder.HasIndex(e => e.PhysicianCancelReason, "IX_form_348_medical_physician_cancel_reason");
 
-        builder.HasIndex(e => new { e.Workflow, e.ModifiedDate })
-            .HasDatabaseName("IX_form_348_medical_workflow_modified");
+        builder.HasIndex(e => new { e.Workflow, e.ModifiedDate }, "IX_form_348_medical_workflow_modified");
     }
 }

@@ -54,13 +54,10 @@ public class ApplicationWarmupProcessLogConfiguration : IEntityTypeConfiguration
             .HasConstraintName("FK_Application_Warmup_Process_Log_Process");
 
         // Indexes
-        builder.HasIndex(e => e.ProcessId)
-            .HasDatabaseName("IX_application_warmup_process_log_process_id");
+        builder.HasIndex(e => e.ProcessId, "IX_application_warmup_process_log_process_id");
 
-        builder.HasIndex(e => e.ExecutionDate)
-            .HasDatabaseName("IX_application_warmup_process_log_execution_date");
+        builder.HasIndex(e => e.ExecutionDate, "IX_application_warmup_process_log_execution_date");
         
-        builder.HasIndex(e => new { e.ProcessId, e.ExecutionDate })
-            .HasDatabaseName("IX_application_warmup_process_log_process_date");
+        builder.HasIndex(e => new { e.ProcessId, e.ExecutionDate }, "IX_application_warmup_process_log_process_date");
     }
 }

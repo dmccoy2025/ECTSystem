@@ -24,11 +24,20 @@ public class CoreWorkflowPermissionConfiguration : IEntityTypeConfiguration<Core
         builder.Property(e => e.PermId)
             .HasColumnName("perm_id");
 
-        // Indexes
-        builder.HasIndex(e => e.WorkflowId)
-            .HasDatabaseName("IX_core_workflow_permission_workflow_id");
+        // Relationships
+        builder.HasOne(d => d.Perm)
+            .WithMany()
+            .HasForeignKey(d => d.PermId)
+            .HasConstraintName("FK_core_workflow_permission_core_permission");
 
-        builder.HasIndex(e => e.PermId)
-            .HasDatabaseName("IX_core_workflow_permission_perm_id");
+        builder.HasOne(d => d.Workflow)
+            .WithMany()
+            .HasForeignKey(d => d.WorkflowId)
+            .HasConstraintName("FK_core_workflow_permission_core_workflow");
+
+        // Indexes
+        builder.HasIndex(e => e.WorkflowId, "IX_core_workflow_permission_workflow_id");
+
+        builder.HasIndex(e => e.PermId, "IX_core_workflow_permission_perm_id");
     }
 }

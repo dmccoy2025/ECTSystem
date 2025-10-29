@@ -30,11 +30,22 @@ public class CoreWorkflowPermConfiguration : IEntityTypeConfiguration<CoreWorkfl
         builder.Property(e => e.CanCreate)
             .HasColumnName("can_create");
 
-        // Indexes
-        builder.HasIndex(e => e.WorkflowId)
-            .HasDatabaseName("IX_core_workflow_perm_workflow_id");
+        // Relationships
+        builder.HasOne(d => d.Group)
+            .WithMany()
+            .HasForeignKey(d => d.GroupId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_perm_core_user_group");
 
-        builder.HasIndex(e => e.GroupId)
-            .HasDatabaseName("IX_core_workflow_perm_group_id");
+        builder.HasOne(d => d.Workflow)
+            .WithMany()
+            .HasForeignKey(d => d.WorkflowId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_perm_core_workflow");
+
+        // Indexes
+        builder.HasIndex(e => e.WorkflowId, "IX_core_workflow_perm_workflow_id");
+
+        builder.HasIndex(e => e.GroupId, "IX_core_workflow_perm_group_id");
     }
 }

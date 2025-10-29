@@ -123,19 +123,14 @@ public class ImpMemberConfiguration : IEntityTypeConfiguration<ImpMember>
         builder.Property(e => e.AvnSvcCodeDate).HasMaxLength(10).IsUnicode(false).HasColumnName("AVN_SVC_CODE_DATE");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.Ssan)
-            .HasDatabaseName("IX_imp_member_ssan");
+        builder.HasIndex(e => e.Ssan, "IX_imp_member_ssan");
         
-        builder.HasIndex(e => e.LastName)
-            .HasDatabaseName("IX_imp_member_last_name");
+        builder.HasIndex(e => e.LastName, "IX_imp_member_last_name");
         
-        builder.HasIndex(e => e.Pas)
-            .HasDatabaseName("IX_imp_member_pas");
+        builder.HasIndex(e => e.Pas, "IX_imp_member_pas");
         
-        builder.HasIndex(e => e.GrCurr)
-            .HasDatabaseName("IX_imp_member_gr_curr");
+        builder.HasIndex(e => e.GrCurr, "IX_imp_member_gr_curr");
         
-        builder.HasIndex(e => e.DutyStatus)
-            .HasDatabaseName("IX_imp_member_duty_status");
+        builder.HasIndex(e => e.DutyStatus, "IX_imp_member_duty_status");
     }
 }

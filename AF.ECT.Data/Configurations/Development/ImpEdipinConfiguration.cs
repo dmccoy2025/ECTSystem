@@ -47,10 +47,8 @@ public class ImpEdipinConfiguration : IEntityTypeConfiguration<ImpEdipin>
             .HasColumnName("EDIPIN");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.Username)
-            .HasDatabaseName("IX_imp_edipin_username");
+        builder.HasIndex(e => e.Username, "IX_imp_edipin_username");
         
-        builder.HasIndex(e => e.Edipin)
-            .HasDatabaseName("IX_imp_edipin_edipin");
+        builder.HasIndex(e => e.Edipin, "IX_imp_edipin_edipin");
     }
 }

@@ -127,19 +127,14 @@ public class PersonnelConfiguration : IEntityTypeConfiguration<Personnel>
             .HasColumnName("USERNAME");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.PersId)
-            .HasDatabaseName("IX_personnel_pers_id");
+        builder.HasIndex(e => e.PersId, "IX_personnel_pers_id");
         
-        builder.HasIndex(e => e.Ssn)
-            .HasDatabaseName("IX_personnel_ssn");
+        builder.HasIndex(e => e.Ssn, "IX_personnel_ssn");
         
-        builder.HasIndex(e => e.Username)
-            .HasDatabaseName("IX_personnel_username");
+        builder.HasIndex(e => e.Username, "IX_personnel_username");
         
-        builder.HasIndex(e => e.DutySection)
-            .HasDatabaseName("IX_personnel_duty_section");
+        builder.HasIndex(e => e.DutySection, "IX_personnel_duty_section");
         
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_personnel_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_personnel_created_date");
     }
 }

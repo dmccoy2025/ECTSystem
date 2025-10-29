@@ -63,13 +63,10 @@ public class TestCommandStructChainConfiguration : IEntityTypeConfiguration<Test
             .HasConstraintName("FK_Test_CommandStructChain_CoreLkupChainType");
 
         // Indexes
-        builder.HasIndex(e => e.CsId)
-            .HasDatabaseName("IX_Test_CommandStructChain_CS_ID");
+        builder.HasIndex(e => e.CsId, "IX_Test_CommandStructChain_CS_ID");
 
-        builder.HasIndex(e => e.CscIdParent)
-            .HasDatabaseName("IX_Test_CommandStructChain_CSC_ID_PARENT");
+        builder.HasIndex(e => e.CscIdParent, "IX_Test_CommandStructChain_CSC_ID_PARENT");
 
-        builder.HasIndex(e => e.ViewType)
-            .HasDatabaseName("IX_Test_CommandStructChain_viewType");
+        builder.HasIndex(e => e.ViewType, "IX_Test_CommandStructChain_viewType");
     }
 }

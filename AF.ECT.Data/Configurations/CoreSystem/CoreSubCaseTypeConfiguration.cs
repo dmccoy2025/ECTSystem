@@ -35,7 +35,6 @@ public class CoreSubCaseTypeConfiguration : IEntityTypeConfiguration<CoreSubCase
             .HasColumnName("name");
 
         // Indexes
-        builder.HasIndex(e => e.Name)
-            .HasDatabaseName("IX_core_sub_case_type_name");
+        builder.HasIndex(e => e.Name, "IX_core_sub_case_type_name");
     }
 }

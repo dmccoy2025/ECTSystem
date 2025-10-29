@@ -25,10 +25,8 @@ public class CoreUserGroupsViewByConfiguration : IEntityTypeConfiguration<CoreUs
             .HasColumnName("member_id");
 
         // Indexes
-        builder.HasIndex(e => e.ViewerId)
-            .HasDatabaseName("IX_core_user_groups_view_by_viewer_id");
+        builder.HasIndex(e => e.ViewerId, "IX_core_user_groups_view_by_viewer_id");
 
-        builder.HasIndex(e => e.MemberId)
-            .HasDatabaseName("IX_core_user_groups_view_by_member_id");
+        builder.HasIndex(e => e.MemberId, "IX_core_user_groups_view_by_member_id");
     }
 }

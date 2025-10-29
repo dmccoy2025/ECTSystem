@@ -43,7 +43,6 @@ public class CoreLkupModuleConfiguration : IEntityTypeConfiguration<CoreLkupModu
             .IsUnique()
             .HasDatabaseName("UQ_core_lkup_module_name");
 
-        builder.HasIndex(e => e.IsSpecialCase)
-            .HasDatabaseName("IX_core_lkup_module_is_special_case");
+        builder.HasIndex(e => e.IsSpecialCase, "IX_core_lkup_module_is_special_case");
     }
 }

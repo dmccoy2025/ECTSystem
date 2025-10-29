@@ -6,11 +6,25 @@ This document establishes consistent indexing standards for Entity Framework Cor
 ## Index Naming Conventions
 
 ### Standard Index Naming Pattern
-All indexes should use explicit naming with the `.HasDatabaseName()` method following this pattern:
+Following **Microsoft's recommended best practice**, all indexes should use the **inline string parameter** for naming:
 
 ```csharp
-builder.HasIndex(e => e.ColumnName)
-    .HasDatabaseName("IX_TableName_ColumnName");
+builder.HasIndex(e => e.ColumnName, "IX_TableName_ColumnName");
+```
+
+**When to use `.HasDatabaseName()` method chaining:**
+Only use `.HasDatabaseName()` when you need to chain additional configuration methods like `.IsUnique()` or `.HasFilter()`:
+
+```csharp
+// For filtered indexes
+builder.HasIndex(e => e.Active)
+    .HasDatabaseName("IX_TableName_Active")
+    .HasFilter("[active] = 1");
+
+// For unique constraints
+builder.HasIndex(e => e.Name)
+    .IsUnique()
+    .HasDatabaseName("UQ_TableName_Name");
 ```
 
 ### Naming Rules
@@ -23,26 +37,25 @@ builder.HasIndex(e => e.ColumnName)
 
 **Examples:**
 ```csharp
-// Single column index
-builder.HasIndex(e => e.Active)
-    .HasDatabaseName("IX_core_user_Active");
+// Single column index - use inline string parameter
+builder.HasIndex(e => e.Active, "IX_core_user_Active");
 
-// Composite index
-builder.HasIndex(e => new { e.RefId, e.Deleted })
-    .HasDatabaseName("IX_core_memo_RefId_Deleted");
+// Composite index - use inline string parameter
+builder.HasIndex(e => new { e.RefId, e.Deleted }, "IX_core_memo_RefId_Deleted");
 
-// Foreign key index
-builder.HasIndex(e => e.UserId)
-    .HasDatabaseName("IX_core_workflow_UserId");
+// Foreign key index - use inline string parameter
+builder.HasIndex(e => e.UserId, "IX_core_workflow_UserId");
 ```
 
 #### 2. Unique Indexes
 - **Prefix:** `UQ_`
 - **Format:** `UQ_TableName_Column1_Column2_...`
 - **Include:** `.IsUnique()` fluent API call
+- **Note:** Use `.HasDatabaseName()` method chaining for unique indexes since they require `.IsUnique()`
 
 **Examples:**
 ```csharp
+// Unique constraint requires method chaining
 builder.HasIndex(e => e.Name)
     .IsUnique()
     .HasDatabaseName("UQ_core_case_type_Name");
@@ -82,59 +95,46 @@ builder.HasOne(d => d.CreatedByNavigation)
 **Always index foreign key columns** to optimize JOIN operations.
 
 ```csharp
-builder.HasIndex(e => e.UserId)
-    .HasDatabaseName("IX_TableName_UserId");
+builder.HasIndex(e => e.UserId, "IX_TableName_UserId");
 
-builder.HasIndex(e => e.GroupId)
-    .HasDatabaseName("IX_TableName_GroupId");
+builder.HasIndex(e => e.GroupId, "IX_TableName_GroupId");
 
-builder.HasIndex(e => e.WorkflowId)
-    .HasDatabaseName("IX_TableName_WorkflowId");
+builder.HasIndex(e => e.WorkflowId, "IX_TableName_WorkflowId");
 ```
 
 #### 2. Audit Tracking Fields
 Index audit fields for reporting and compliance queries:
 
 ```csharp
-builder.HasIndex(e => e.CreatedDate)
-    .HasDatabaseName("IX_TableName_CreatedDate");
+builder.HasIndex(e => e.CreatedDate, "IX_TableName_CreatedDate");
 
-builder.HasIndex(e => e.CreatedBy)
-    .HasDatabaseName("IX_TableName_CreatedBy");
+builder.HasIndex(e => e.CreatedBy, "IX_TableName_CreatedBy");
 
-builder.HasIndex(e => e.ModifiedDate)
-    .HasDatabaseName("IX_TableName_ModifiedDate");
+builder.HasIndex(e => e.ModifiedDate, "IX_TableName_ModifiedDate");
 
-builder.HasIndex(e => e.ModifiedBy)
-    .HasDatabaseName("IX_TableName_ModifiedBy");
+builder.HasIndex(e => e.ModifiedBy, "IX_TableName_ModifiedBy");
 ```
 
 #### 3. Status and Flag Columns
 Index boolean flags and status columns frequently used in WHERE clauses:
 
 ```csharp
-builder.HasIndex(e => e.Active)
-    .HasDatabaseName("IX_TableName_Active");
+builder.HasIndex(e => e.Active, "IX_TableName_Active");
 
-builder.HasIndex(e => e.Deleted)
-    .HasDatabaseName("IX_TableName_Deleted");
+builder.HasIndex(e => e.Deleted, "IX_TableName_Deleted");
 
-builder.HasIndex(e => e.IsEnabled)
-    .HasDatabaseName("IX_TableName_IsEnabled");
+builder.HasIndex(e => e.IsEnabled, "IX_TableName_IsEnabled");
 ```
 
 #### 4. Natural Key Columns
 Index columns used for business key lookups:
 
 ```csharp
-builder.HasIndex(e => e.Name)
-    .HasDatabaseName("IX_TableName_Name");
+builder.HasIndex(e => e.Name, "IX_TableName_Name");
 
-builder.HasIndex(e => e.Code)
-    .HasDatabaseName("IX_TableName_Code");
+builder.HasIndex(e => e.Code, "IX_TableName_Code");
 
-builder.HasIndex(e => e.Email)
-    .HasDatabaseName("IX_TableName_Email");
+builder.HasIndex(e => e.Email, "IX_TableName_Email");
 ```
 
 ### Composite Indexes
@@ -143,16 +143,13 @@ Create composite indexes for common multi-column queries:
 
 ```csharp
 // Optimize queries filtering by RefId and Workflow
-builder.HasIndex(e => new { e.RefId, e.Workflow })
-    .HasDatabaseName("IX_TableName_RefId_Workflow");
+builder.HasIndex(e => new { e.RefId, e.Workflow }, "IX_TableName_RefId_Workflow");
 
 // Optimize date range queries with status filter
-builder.HasIndex(e => new { e.StartDate, e.EndDate, e.Status })
-    .HasDatabaseName("IX_TableName_StartDate_EndDate_Status");
+builder.HasIndex(e => new { e.StartDate, e.EndDate, e.Status }, "IX_TableName_StartDate_EndDate_Status");
 
 // Optimize foreign key with sort order
-builder.HasIndex(e => new { e.WorkflowId, e.SortOrder })
-    .HasDatabaseName("IX_TableName_WorkflowId_SortOrder");
+builder.HasIndex(e => new { e.WorkflowId, e.SortOrder }, "IX_TableName_WorkflowId_SortOrder");
 ```
 
 #### Column Order in Composite Indexes
@@ -165,26 +162,25 @@ Order columns by **selectivity** (most selective first) and **query patterns**:
 **Example:**
 ```csharp
 // Good: UserId is selective, Status has few values
-builder.HasIndex(e => new { e.UserId, e.Status, e.CreatedDate })
-    .HasDatabaseName("IX_TableName_UserId_Status_CreatedDate");
+builder.HasIndex(e => new { e.UserId, e.Status, e.CreatedDate }, "IX_TableName_UserId_Status_CreatedDate");
 ```
 
 ### Filtered Indexes
 
-Use filtered indexes to optimize queries on subsets of data:
+Use filtered indexes to optimize queries on subsets of data. **Note:** Filtered indexes require `.HasDatabaseName()` method chaining because of `.HasFilter()`:
 
 ```csharp
-// Index only active records
+// Index only active records - requires method chaining
 builder.HasIndex(e => e.RefId)
     .HasDatabaseName("IX_core_memo_RefId_Active")
     .HasFilter("[active] = 1");
 
-// Index only non-deleted records
+// Index only non-deleted records - requires method chaining
 builder.HasIndex(e => new { e.RefId, e.Deleted })
     .HasDatabaseName("IX_TableName_RefId_Deleted")
     .HasFilter("[deleted] = 0");
 
-// Index only pending records
+// Index only pending records - requires method chaining
 builder.HasIndex(e => e.CreatedDate)
     .HasDatabaseName("IX_TableName_CreatedDate_Pending")
     .HasFilter("[status] = 'Pending'");
@@ -222,8 +218,7 @@ builder.HasKey(e => e.Id)
 // No additional indexes for temporary data
 
 // Option 2: Index import status for processing queries
-builder.HasIndex(e => e.Imported)
-    .HasDatabaseName("IX_TempTable_Imported");
+builder.HasIndex(e => e.Imported, "IX_TempTable_Imported");
 ```
 
 ### 3. Small Lookup Tables
@@ -277,35 +272,29 @@ public void Configure(EntityTypeBuilder<MyEntity> builder)
 
     // 5. Indexes (grouped by type)
     
-    // Foreign key indexes
-    builder.HasIndex(e => e.ParentId)
-        .HasDatabaseName("IX_table_name_ParentId");
+    // Foreign key indexes - use inline string parameter
+    builder.HasIndex(e => e.ParentId, "IX_table_name_ParentId");
 
-    // Audit field indexes
-    builder.HasIndex(e => e.CreatedDate)
-        .HasDatabaseName("IX_table_name_CreatedDate");
+    // Audit field indexes - use inline string parameter
+    builder.HasIndex(e => e.CreatedDate, "IX_table_name_CreatedDate");
 
-    builder.HasIndex(e => e.CreatedBy)
-        .HasDatabaseName("IX_table_name_CreatedBy");
+    builder.HasIndex(e => e.CreatedBy, "IX_table_name_CreatedBy");
 
-    // Business key indexes
-    builder.HasIndex(e => e.Name)
-        .HasDatabaseName("IX_table_name_Name");
+    // Business key indexes - use inline string parameter
+    builder.HasIndex(e => e.Name, "IX_table_name_Name");
 
-    // Status/flag indexes
-    builder.HasIndex(e => e.Active)
-        .HasDatabaseName("IX_table_name_Active");
+    // Status/flag indexes - use inline string parameter
+    builder.HasIndex(e => e.Active, "IX_table_name_Active");
 
-    // Composite indexes
-    builder.HasIndex(e => new { e.ParentId, e.SortOrder })
-        .HasDatabaseName("IX_table_name_ParentId_SortOrder");
+    // Composite indexes - use inline string parameter
+    builder.HasIndex(e => new { e.ParentId, e.SortOrder }, "IX_table_name_ParentId_SortOrder");
 
-    // Unique constraints
+    // Unique constraints - requires method chaining for .IsUnique()
     builder.HasIndex(e => new { e.Name, e.ParentId })
         .IsUnique()
         .HasDatabaseName("UQ_table_name_Name_ParentId");
 
-    // Filtered indexes
+    // Filtered indexes - requires method chaining for .HasFilter()
     builder.HasIndex(e => e.RefId)
         .HasDatabaseName("IX_table_name_RefId_Active")
         .HasFilter("[active] = 1");
@@ -370,37 +359,30 @@ public class CoreUserConfiguration : IEntityTypeConfiguration<CoreUser>
 
         // Properties...
 
-        // Foreign key indexes
-        builder.HasIndex(e => e.RankId)
-            .HasDatabaseName("IX_core_user_RankId");
+        // Foreign key indexes - use inline string parameter
+        builder.HasIndex(e => e.RankId, "IX_core_user_RankId");
 
-        builder.HasIndex(e => e.UnitId)
-            .HasDatabaseName("IX_core_user_UnitId");
+        builder.HasIndex(e => e.UnitId, "IX_core_user_UnitId");
 
-        // Business key indexes
-        builder.HasIndex(e => e.Edipi)
-            .HasDatabaseName("IX_core_user_Edipi");
+        // Business key indexes - use inline string parameter
+        builder.HasIndex(e => e.Edipi, "IX_core_user_Edipi");
 
-        builder.HasIndex(e => e.Email)
-            .HasDatabaseName("IX_core_user_Email");
+        builder.HasIndex(e => e.Email, "IX_core_user_Email");
 
-        // Status indexes
-        builder.HasIndex(e => e.Active)
-            .HasDatabaseName("IX_core_user_Active");
+        // Status indexes - use inline string parameter
+        builder.HasIndex(e => e.Active, "IX_core_user_Active");
 
-        builder.HasIndex(e => e.Deleted)
-            .HasDatabaseName("IX_core_user_Deleted");
+        builder.HasIndex(e => e.Deleted, "IX_core_user_Deleted");
 
-        // Audit indexes
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_core_user_CreatedDate");
+        // Audit indexes - use inline string parameter
+        builder.HasIndex(e => e.CreatedDate, "IX_core_user_CreatedDate");
 
-        // Composite indexes for common queries
+        // Composite indexes with filter - requires method chaining
         builder.HasIndex(e => new { e.Active, e.Deleted })
             .HasDatabaseName("IX_core_user_Active_Deleted")
             .HasFilter("[active] = 1 AND [deleted] = 0");
 
-        // Unique constraints
+        // Unique constraints - requires method chaining
         builder.HasIndex(e => e.Edipi)
             .IsUnique()
             .HasDatabaseName("UQ_core_user_Edipi");
@@ -421,25 +403,20 @@ public class CoreWorkflowConfiguration : IEntityTypeConfiguration<CoreWorkflow>
 
         // Properties...
 
-        // Foreign key indexes
-        builder.HasIndex(e => e.CaseTypeId)
-            .HasDatabaseName("IX_core_workflow_CaseTypeId");
+        // Foreign key indexes - use inline string parameter
+        builder.HasIndex(e => e.CaseTypeId, "IX_core_workflow_CaseTypeId");
 
-        builder.HasIndex(e => e.CreatedBy)
-            .HasDatabaseName("IX_core_workflow_CreatedBy");
+        builder.HasIndex(e => e.CreatedBy, "IX_core_workflow_CreatedBy");
 
-        // Status indexes
-        builder.HasIndex(e => e.Active)
-            .HasDatabaseName("IX_core_workflow_Active");
+        // Status indexes - use inline string parameter
+        builder.HasIndex(e => e.Active, "IX_core_workflow_Active");
 
-        // Audit indexes
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_core_workflow_CreatedDate");
+        // Audit indexes - use inline string parameter
+        builder.HasIndex(e => e.CreatedDate, "IX_core_workflow_CreatedDate");
 
-        builder.HasIndex(e => e.ModifiedDate)
-            .HasDatabaseName("IX_core_workflow_ModifiedDate");
+        builder.HasIndex(e => e.ModifiedDate, "IX_core_workflow_ModifiedDate");
 
-        // Composite indexes
+        // Composite indexes with filter - requires method chaining
         builder.HasIndex(e => new { e.CaseTypeId, e.Active })
             .HasDatabaseName("IX_core_workflow_CaseTypeId_Active")
             .HasFilter("[active] = 1");
@@ -466,25 +443,21 @@ public class CoreMemoConfiguration : IEntityTypeConfiguration<CoreMemo>
             .HasForeignKey(d => d.CreatedBy)
             .HasConstraintName("FK_core_memo_created_by");
 
-        // Foreign key indexes
-        builder.HasIndex(e => e.TemplateId)
-            .HasDatabaseName("IX_core_memo_TemplateId");
+        // Foreign key indexes - use inline string parameter
+        builder.HasIndex(e => e.TemplateId, "IX_core_memo_TemplateId");
 
-        builder.HasIndex(e => e.CreatedBy)
-            .HasDatabaseName("IX_core_memo_CreatedBy");
+        builder.HasIndex(e => e.CreatedBy, "IX_core_memo_CreatedBy");
 
-        // Reference ID index
-        builder.HasIndex(e => e.RefId)
-            .HasDatabaseName("IX_core_memo_RefId");
+        // Reference ID index - use inline string parameter
+        builder.HasIndex(e => e.RefId, "IX_core_memo_RefId");
 
-        // Filtered composite index for active memos
+        // Filtered composite index - requires method chaining
         builder.HasIndex(e => new { e.RefId, e.Deleted })
             .HasDatabaseName("IX_core_memo_RefId_Deleted")
             .HasFilter("[deleted] = 0");
 
-        // Audit indexes
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_core_memo_CreatedDate");
+        // Audit indexes - use inline string parameter
+        builder.HasIndex(e => e.CreatedDate, "IX_core_memo_CreatedDate");
     }
 }
 ```
@@ -516,12 +489,16 @@ When adding indexes to existing tables:
 
 ## References
 
-- [EF Core Indexes Documentation](https://learn.microsoft.com/en-us/ef/core/modeling/indexes)
+- [EF Core Indexes Documentation](https://learn.microsoft.com/en-us/ef/core/modeling/indexes) - Official Microsoft documentation
 - [SQL Server Index Design Guidelines](https://learn.microsoft.com/en-us/sql/relational-databases/sql-server-index-design-guide)
 - [Microsoft Best Practices for Indexing](https://learn.microsoft.com/en-us/sql/relational-databases/indexes/indexes)
 
+## Migration Notes
+
+**October 28, 2025:** Updated all configuration files (133 files, 549 conversions) to use Microsoft's recommended inline string parameter pattern `builder.HasIndex(e => e.Column, "IX_Name")` instead of the chained `.HasDatabaseName()` method, except where method chaining is required for `.IsUnique()` or `.HasFilter()`.
+
 ---
 
-**Document Version:** 1.0  
-**Last Updated:** October 27, 2025  
+**Document Version:** 2.0  
+**Last Updated:** October 28, 2025  
 **Maintained By:** ECTSystem Development Team

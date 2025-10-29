@@ -58,7 +58,7 @@ public class CoreWorkStatusOptionConfiguration : IEntityTypeConfiguration<CoreWo
             .WithMany(p => p.CoreWorkStatusOptionWs)
             .HasForeignKey(d => d.WsId)
             .OnDelete(DeleteBehavior.ClientSetNull)
-            .HasConstraintName("FK_core_work_status_option_ws_id");
+            .HasConstraintName("FK_core_work_status_option_core_work_status");
 
         builder.HasOne(d => d.WsIdOutNavigation)
             .WithMany(p => p.CoreWorkStatusOptionWsIdOutNavigations)
@@ -67,26 +67,20 @@ public class CoreWorkStatusOptionConfiguration : IEntityTypeConfiguration<CoreWo
             .HasConstraintName("FK_core_work_status_option_ws_id_out");
 
         // Indexes
-        builder.HasIndex(e => e.WsId)
-            .HasDatabaseName("IX_core_work_status_option_ws_id");
+        builder.HasIndex(e => e.WsId, "IX_core_work_status_option_ws_id");
 
-        builder.HasIndex(e => e.WsIdOut)
-            .HasDatabaseName("IX_core_work_status_option_ws_id_out");
+        builder.HasIndex(e => e.WsIdOut, "IX_core_work_status_option_ws_id_out");
 
-        builder.HasIndex(e => new { e.WsId, e.Active })
-            .HasDatabaseName("IX_core_work_status_option_ws_active");
+        builder.HasIndex(e => new { e.WsId, e.Active }, "IX_core_work_status_option_ws_active");
 
-        builder.HasIndex(e => new { e.WsId, e.SortOrder })
-            .HasDatabaseName("IX_core_work_status_option_ws_sort");
+        builder.HasIndex(e => new { e.WsId, e.SortOrder }, "IX_core_work_status_option_ws_sort");
         
         builder.HasIndex(e => e.Active)
             .HasDatabaseName("IX_core_work_status_option_active")
             .HasFilter("active = 1");
         
-        builder.HasIndex(e => e.SortOrder)
-            .HasDatabaseName("IX_core_work_status_option_sort_order");
+        builder.HasIndex(e => e.SortOrder, "IX_core_work_status_option_sort_order");
         
-        builder.HasIndex(e => e.Template)
-            .HasDatabaseName("IX_core_work_status_option_template");
+        builder.HasIndex(e => e.Template, "IX_core_work_status_option_template");
     }
 }

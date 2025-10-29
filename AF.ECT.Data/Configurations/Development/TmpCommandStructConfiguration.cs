@@ -146,19 +146,14 @@ public class TmpCommandStructConfiguration : IEntityTypeConfiguration<TmpCommand
             .HasMaxLength(50);
         
         // Indexes for common queries
-        builder.HasIndex(e => e.CsId)
-            .HasDatabaseName("IX_tmp_command_struct_cs_id");
+        builder.HasIndex(e => e.CsId, "IX_tmp_command_struct_cs_id");
         
-        builder.HasIndex(e => e.Uic)
-            .HasDatabaseName("IX_tmp_command_struct_uic");
+        builder.HasIndex(e => e.Uic, "IX_tmp_command_struct_uic");
         
-        builder.HasIndex(e => e.PasCode)
-            .HasDatabaseName("IX_tmp_command_struct_pas_code");
+        builder.HasIndex(e => e.PasCode, "IX_tmp_command_struct_pas_code");
         
-        builder.HasIndex(e => e.CsIdParent)
-            .HasDatabaseName("IX_tmp_command_struct_cs_id_parent");
+        builder.HasIndex(e => e.CsIdParent, "IX_tmp_command_struct_cs_id_parent");
         
-        builder.HasIndex(e => e.CsLevel)
-            .HasDatabaseName("IX_tmp_command_struct_cs_level");
+        builder.HasIndex(e => e.CsLevel, "IX_tmp_command_struct_cs_level");
     }
 }

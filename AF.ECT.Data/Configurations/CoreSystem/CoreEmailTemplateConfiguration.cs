@@ -65,8 +65,7 @@ public class CoreEmailTemplateConfiguration : IEntityTypeConfiguration<CoreEmail
             .HasDatabaseName("IX_core_email_template_active")
             .HasFilter("active = 1");
 
-        builder.HasIndex(e => e.Compo)
-            .HasDatabaseName("IX_core_email_template_compo");
+        builder.HasIndex(e => e.Compo, "IX_core_email_template_compo");
 
         builder.HasIndex(e => new { e.Title, e.Compo })
             .IsUnique()

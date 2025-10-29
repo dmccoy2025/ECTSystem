@@ -124,22 +124,16 @@ public class ImpPersonnelFeedConfiguration : IEntityTypeConfiguration<ImpPersonn
         builder.Property(e => e.ModifiedDate).HasMaxLength(50).IsUnicode(false).HasColumnName("MODIFIED_DATE");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.PersId)
-            .HasDatabaseName("IX_imp_personnel_feed_pers_id");
+        builder.HasIndex(e => e.PersId, "IX_imp_personnel_feed_pers_id");
         
-        builder.HasIndex(e => e.LastName)
-            .HasDatabaseName("IX_imp_personnel_feed_last_name");
+        builder.HasIndex(e => e.LastName, "IX_imp_personnel_feed_last_name");
         
-        builder.HasIndex(e => e.Rank)
-            .HasDatabaseName("IX_imp_personnel_feed_rank");
+        builder.HasIndex(e => e.Rank, "IX_imp_personnel_feed_rank");
         
-        builder.HasIndex(e => e.Pafsc)
-            .HasDatabaseName("IX_imp_personnel_feed_pafsc");
+        builder.HasIndex(e => e.Pafsc, "IX_imp_personnel_feed_pafsc");
         
-        builder.HasIndex(e => e.DutyLoc)
-            .HasDatabaseName("IX_imp_personnel_feed_duty_loc");
+        builder.HasIndex(e => e.DutyLoc, "IX_imp_personnel_feed_duty_loc");
         
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_imp_personnel_feed_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_imp_personnel_feed_created_date");
     }
 }

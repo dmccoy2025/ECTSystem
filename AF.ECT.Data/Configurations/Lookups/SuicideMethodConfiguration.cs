@@ -32,10 +32,8 @@ public class SuicideMethodConfiguration : IEntityTypeConfiguration<SuicideMethod
         builder.Property(e => e.Active);
 
         // Indexes
-        builder.HasIndex(e => e.Active)
-            .HasDatabaseName("IX_SuicideMethod_Active");
+        builder.HasIndex(e => e.Active, "IX_SuicideMethod_Active");
 
-        builder.HasIndex(e => e.Name)
-            .HasDatabaseName("IX_SuicideMethod_Name");
+        builder.HasIndex(e => e.Name, "IX_SuicideMethod_Name");
     }
 }

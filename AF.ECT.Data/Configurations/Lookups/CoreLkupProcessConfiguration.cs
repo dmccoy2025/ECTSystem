@@ -35,7 +35,6 @@ public class CoreLkupProcessConfiguration : IEntityTypeConfiguration<CoreLkupPro
             .HasColumnName("title");
 
         // Indexes
-        builder.HasIndex(e => e.Title)
-            .HasDatabaseName("IX_core_lkup_process_title");
+        builder.HasIndex(e => e.Title, "IX_core_lkup_process_title");
     }
 }

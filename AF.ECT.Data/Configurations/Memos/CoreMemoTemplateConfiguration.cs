@@ -82,13 +82,10 @@ public class CoreMemoTemplateConfiguration : IEntityTypeConfiguration<CoreMemoTe
             .HasColumnName("font_size");
 
         // Indexes
-        builder.HasIndex(e => e.Active)
-            .HasDatabaseName("IX_core_memo_template_active");
+        builder.HasIndex(e => e.Active, "IX_core_memo_template_active");
 
-        builder.HasIndex(e => e.Module)
-            .HasDatabaseName("IX_core_memo_template_module");
+        builder.HasIndex(e => e.Module, "IX_core_memo_template_module");
 
-        builder.HasIndex(e => e.Compo)
-            .HasDatabaseName("IX_core_memo_template_compo");
+        builder.HasIndex(e => e.Compo, "IX_core_memo_template_compo");
     }
 }

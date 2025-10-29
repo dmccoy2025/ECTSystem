@@ -68,14 +68,11 @@ public class ChildCaseCommentConfiguration : IEntityTypeConfiguration<ChildCaseC
             .HasConstraintName("FK_child_case_comment_case_dialogue_comment");
 
         // Indexes
-        builder.HasIndex(e => e.ParentCommentId)
-            .HasDatabaseName("IX_child_case_comment_parent_comment_id");
+        builder.HasIndex(e => e.ParentCommentId, "IX_child_case_comment_parent_comment_id");
 
-        builder.HasIndex(e => e.Lodid)
-            .HasDatabaseName("IX_child_case_comment_lodid");
+        builder.HasIndex(e => e.Lodid, "IX_child_case_comment_lodid");
 
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_child_case_comment_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_child_case_comment_created_date");
 
         builder.HasIndex(e => e.Deleted)
             .HasDatabaseName("IX_child_case_comment_deleted")

@@ -55,20 +55,16 @@ public class CaseCommentConfiguration : IEntityTypeConfiguration<CaseComment>
             .HasColumnName("comment_type");
 
         // Indexes
-        builder.HasIndex(e => e.Lodid)
-            .HasDatabaseName("IX_case_comment_lodid");
+        builder.HasIndex(e => e.Lodid, "IX_case_comment_lodid");
 
-        builder.HasIndex(e => e.CreatedBy)
-            .HasDatabaseName("IX_case_comment_created_by");
+        builder.HasIndex(e => e.CreatedBy, "IX_case_comment_created_by");
 
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_case_comment_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_case_comment_created_date");
 
         builder.HasIndex(e => e.Deleted)
             .HasDatabaseName("IX_case_comment_deleted")
             .HasFilter("deleted = 0");
 
-        builder.HasIndex(e => new { e.ModuleId, e.Lodid })
-            .HasDatabaseName("IX_case_comment_module_lodid");
+        builder.HasIndex(e => new { e.ModuleId, e.Lodid }, "IX_case_comment_module_lodid");
     }
 }

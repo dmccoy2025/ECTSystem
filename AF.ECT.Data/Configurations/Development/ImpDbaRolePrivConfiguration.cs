@@ -61,13 +61,10 @@ public class ImpDbaRolePrivConfiguration : IEntityTypeConfiguration<ImpDbaRolePr
             .HasColumnName("DEF");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.Grantee)
-            .HasDatabaseName("IX_imp_dba_role_priv_grantee");
+        builder.HasIndex(e => e.Grantee, "IX_imp_dba_role_priv_grantee");
         
-        builder.HasIndex(e => e.GrantedRole)
-            .HasDatabaseName("IX_imp_dba_role_priv_granted_role");
+        builder.HasIndex(e => e.GrantedRole, "IX_imp_dba_role_priv_granted_role");
         
-        builder.HasIndex(e => new { e.Grantee, e.GrantedRole })
-            .HasDatabaseName("IX_imp_dba_role_priv_grantee_role");
+        builder.HasIndex(e => new { e.Grantee, e.GrantedRole }, "IX_imp_dba_role_priv_grantee_role");
     }
 }

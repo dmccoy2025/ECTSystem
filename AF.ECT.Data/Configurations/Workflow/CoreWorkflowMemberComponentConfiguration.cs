@@ -24,11 +24,22 @@ public class CoreWorkflowMemberComponentConfiguration : IEntityTypeConfiguration
         builder.Property(e => e.ComponentId)
             .HasColumnName("component_id");
 
-        // Indexes
-        builder.HasIndex(e => e.WorkflowId)
-            .HasDatabaseName("IX_core_workflow_member_component_workflow_id");
+        // Relationships
+        builder.HasOne(d => d.Component)
+            .WithMany()
+            .HasForeignKey(d => d.ComponentId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_member_component_core_lkup_component");
 
-        builder.HasIndex(e => e.ComponentId)
-            .HasDatabaseName("IX_core_workflow_member_component_component_id");
+        builder.HasOne(d => d.Workflow)
+            .WithMany()
+            .HasForeignKey(d => d.WorkflowId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_member_component_core_workflow");
+
+        // Indexes
+        builder.HasIndex(e => e.WorkflowId, "IX_core_workflow_member_component_workflow_id");
+
+        builder.HasIndex(e => e.ComponentId, "IX_core_workflow_member_component_component_id");
     }
 }

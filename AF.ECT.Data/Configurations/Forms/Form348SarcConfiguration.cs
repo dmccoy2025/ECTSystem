@@ -87,46 +87,32 @@ public class Form348SarcConfiguration : IEntityTypeConfiguration<Form348Sarc>
         builder.HasIndex(e => e.MemberSsn, "IX_Form348SARC_MemberSSN");
         builder.HasIndex(e => e.IncidentDate, "IX_Form348SARC_IncidentDate");
 
-        builder.HasIndex(e => e.CreatedBy)
-            .HasDatabaseName("IX_Form348SARC_CreatedBy");
+        builder.HasIndex(e => e.CreatedBy, "IX_Form348SARC_CreatedBy");
 
-        builder.HasIndex(e => e.ModifiedBy)
-            .HasDatabaseName("IX_Form348SARC_ModifiedBy");
+        builder.HasIndex(e => e.ModifiedBy, "IX_Form348SARC_ModifiedBy");
 
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_Form348SARC_CreatedDate");
+        builder.HasIndex(e => e.CreatedDate, "IX_Form348SARC_CreatedDate");
 
-        builder.HasIndex(e => e.ModifiedDate)
-            .HasDatabaseName("IX_Form348SARC_ModifiedDate");
+        builder.HasIndex(e => e.ModifiedDate, "IX_Form348SARC_ModifiedDate");
 
-        builder.HasIndex(e => e.DutyStatus)
-            .HasDatabaseName("IX_Form348SARC_DutyStatus");
+        builder.HasIndex(e => e.DutyStatus, "IX_Form348SARC_DutyStatus");
 
-        builder.HasIndex(e => e.DurationStartDate)
-            .HasDatabaseName("IX_Form348SARC_DurationStartDate");
+        builder.HasIndex(e => e.DurationStartDate, "IX_Form348SARC_DurationStartDate");
 
-        builder.HasIndex(e => e.DurationEndDate)
-            .HasDatabaseName("IX_Form348SARC_DurationEndDate");
+        builder.HasIndex(e => e.DurationEndDate, "IX_Form348SARC_DurationEndDate");
 
-        builder.HasIndex(e => e.CancelDate)
-            .HasDatabaseName("IX_Form348SARC_CancelDate");
+        builder.HasIndex(e => e.CancelDate, "IX_Form348SARC_CancelDate");
 
-        builder.HasIndex(e => e.CancelReason)
-            .HasDatabaseName("IX_Form348SARC_CancelReason");
+        builder.HasIndex(e => e.CancelReason, "IX_Form348SARC_CancelReason");
 
-        builder.HasIndex(e => e.MemberGrade)
-            .HasDatabaseName("IX_Form348SARC_MemberGrade");
+        builder.HasIndex(e => e.MemberGrade, "IX_Form348SARC_MemberGrade");
 
-        builder.HasIndex(e => e.MemberUnitId)
-            .HasDatabaseName("IX_Form348SARC_MemberUnitId");
+        builder.HasIndex(e => e.MemberUnitId, "IX_Form348SARC_MemberUnitId");
 
-        builder.HasIndex(e => e.ReturnToGroup)
-            .HasDatabaseName("IX_Form348SARC_ReturnToGroup");
+        builder.HasIndex(e => e.ReturnToGroup, "IX_Form348SARC_ReturnToGroup");
 
-        builder.HasIndex(e => e.ReturnByGroup)
-            .HasDatabaseName("IX_Form348SARC_ReturnByGroup");
+        builder.HasIndex(e => e.ReturnByGroup, "IX_Form348SARC_ReturnByGroup");
 
-        builder.HasIndex(e => e.DocGroupId)
-            .HasDatabaseName("IX_Form348SARC_DocGroupId");
+        builder.HasIndex(e => e.DocGroupId, "IX_Form348SARC_DocGroupId");
     }
 }

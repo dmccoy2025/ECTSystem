@@ -58,16 +58,12 @@ public class CoreMessageConfiguration : IEntityTypeConfiguration<CoreMessage>
             .HasColumnName("is_admin_message");
 
         // Indexes
-        builder.HasIndex(e => e.StartTime)
-            .HasDatabaseName("IX_core_message_start_time");
+        builder.HasIndex(e => e.StartTime, "IX_core_message_start_time");
 
-        builder.HasIndex(e => e.EndTime)
-            .HasDatabaseName("IX_core_message_end_time");
+        builder.HasIndex(e => e.EndTime, "IX_core_message_end_time");
 
-        builder.HasIndex(e => new { e.StartTime, e.EndTime, e.IsAdminMessage })
-            .HasDatabaseName("IX_core_message_active");
+        builder.HasIndex(e => new { e.StartTime, e.EndTime, e.IsAdminMessage }, "IX_core_message_active");
 
-        builder.HasIndex(e => e.Popup)
-            .HasDatabaseName("IX_core_message_popup");
+        builder.HasIndex(e => e.Popup, "IX_core_message_popup");
     }
 }

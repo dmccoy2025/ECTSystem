@@ -139,22 +139,16 @@ public class ImpPersonProcessConfiguration : IEntityTypeConfiguration<ImpPersonP
             .HasColumnName("MODIFIED_DATE");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.PpId)
-            .HasDatabaseName("IX_imp_person_process_pp_id");
+        builder.HasIndex(e => e.PpId, "IX_imp_person_process_pp_id");
         
-        builder.HasIndex(e => e.PiId)
-            .HasDatabaseName("IX_imp_person_process_pi_id");
+        builder.HasIndex(e => e.PiId, "IX_imp_person_process_pi_id");
         
-        builder.HasIndex(e => e.LodId)
-            .HasDatabaseName("IX_imp_person_process_lod_id");
+        builder.HasIndex(e => e.LodId, "IX_imp_person_process_lod_id");
         
-        builder.HasIndex(e => e.ProcessedBy)
-            .HasDatabaseName("IX_imp_person_process_processed_by");
+        builder.HasIndex(e => e.ProcessedBy, "IX_imp_person_process_processed_by");
         
-        builder.HasIndex(e => e.CompletedYn)
-            .HasDatabaseName("IX_imp_person_process_completed_yn");
+        builder.HasIndex(e => e.CompletedYn, "IX_imp_person_process_completed_yn");
         
-        builder.HasIndex(e => e.StartDate)
-            .HasDatabaseName("IX_imp_person_process_start_date");
+        builder.HasIndex(e => e.StartDate, "IX_imp_person_process_start_date");
     }
 }

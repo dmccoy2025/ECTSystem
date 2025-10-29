@@ -43,14 +43,14 @@ public class CoreAssociatedCaseConfiguration : IEntityTypeConfiguration<CoreAsso
             .HasMaxLength(100)
             .HasColumnName("associated_case_id");
 
+        // Relationships - Note: No navigation properties exist on entity for workflow relationships
+        // This is intentional as CoreAssociatedCase is a pure mapping table without navigation back to workflows
+
         // Indexes
-        builder.HasIndex(e => new { e.WorkflowId, e.RefId })
-            .HasDatabaseName("IX_core_associated_case_workflow_ref");
+        builder.HasIndex(e => new { e.WorkflowId, e.RefId }, "IX_core_associated_case_workflow_ref");
 
-        builder.HasIndex(e => new { e.AssociatedWorkflow, e.AssociatedRefId })
-            .HasDatabaseName("IX_core_associated_case_associated");
+        builder.HasIndex(e => new { e.AssociatedWorkflow, e.AssociatedRefId }, "IX_core_associated_case_associated");
 
-        builder.HasIndex(e => e.AssociatedCaseId)
-            .HasDatabaseName("IX_core_associated_case_case_id");
+        builder.HasIndex(e => e.AssociatedCaseId, "IX_core_associated_case_case_id");
     }
 }

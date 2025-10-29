@@ -55,22 +55,16 @@ public class AfrcOracleNonunitPersonnelDatumConfiguration : IEntityTypeConfigura
         builder.Property(e => e.ResState).HasColumnName("res_state");
 
         // Indexes for common queries
-        builder.HasIndex(e => e.PersId)
-            .HasDatabaseName("IX_afrc_oracle_nonunit_personnel_pers_id");
+        builder.HasIndex(e => e.PersId, "IX_afrc_oracle_nonunit_personnel_pers_id");
 
-        builder.HasIndex(e => e.Username)
-            .HasDatabaseName("IX_afrc_oracle_nonunit_personnel_username");
+        builder.HasIndex(e => e.Username, "IX_afrc_oracle_nonunit_personnel_username");
 
-        builder.HasIndex(e => e.LastName)
-            .HasDatabaseName("IX_afrc_oracle_nonunit_personnel_last_name");
+        builder.HasIndex(e => e.LastName, "IX_afrc_oracle_nonunit_personnel_last_name");
         
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_afrc_oracle_nonunit_personnel_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_afrc_oracle_nonunit_personnel_created_date");
         
-        builder.HasIndex(e => e.ModifiedDate)
-            .HasDatabaseName("IX_afrc_oracle_nonunit_personnel_modified_date");
+        builder.HasIndex(e => e.ModifiedDate, "IX_afrc_oracle_nonunit_personnel_modified_date");
         
-        builder.HasIndex(e => e.CsId)
-            .HasDatabaseName("IX_afrc_oracle_nonunit_personnel_cs_id");
+        builder.HasIndex(e => e.CsId, "IX_afrc_oracle_nonunit_personnel_cs_id");
     }
 }

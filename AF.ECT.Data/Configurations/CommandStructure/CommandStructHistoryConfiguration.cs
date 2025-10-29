@@ -143,31 +143,22 @@ public class CommandStructHistoryConfiguration : IEntityTypeConfiguration<Comman
             .HasColumnName("Parent_PAS_Code");
 
         // Indexes
-        builder.HasIndex(e => e.CsId)
-            .HasDatabaseName("IX_command_struct_history_cs_id");
+        builder.HasIndex(e => e.CsId, "IX_command_struct_history_cs_id");
 
-        builder.HasIndex(e => e.Pascode)
-            .HasDatabaseName("IX_command_struct_history_pascode");
+        builder.HasIndex(e => e.Pascode, "IX_command_struct_history_pascode");
 
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_command_struct_history_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_command_struct_history_created_date");
 
-        builder.HasIndex(e => e.ChangeType)
-            .HasDatabaseName("IX_command_struct_history_change_type");
+        builder.HasIndex(e => e.ChangeType, "IX_command_struct_history_change_type");
 
-        builder.HasIndex(e => e.PkgLogId)
-            .HasDatabaseName("IX_command_struct_history_pkg_log_id");
+        builder.HasIndex(e => e.PkgLogId, "IX_command_struct_history_pkg_log_id");
 
-        builder.HasIndex(e => e.Component)
-            .HasDatabaseName("IX_command_struct_history_component");
+        builder.HasIndex(e => e.Component, "IX_command_struct_history_component");
 
-        builder.HasIndex(e => new { e.CreatedDate, e.ChangeType })
-            .HasDatabaseName("IX_command_struct_history_date_change_type");
+        builder.HasIndex(e => new { e.CreatedDate, e.ChangeType }, "IX_command_struct_history_date_change_type");
 
-        builder.HasIndex(e => e.CsIdParent)
-            .HasDatabaseName("IX_command_struct_history_cs_id_parent");
+        builder.HasIndex(e => e.CsIdParent, "IX_command_struct_history_cs_id_parent");
 
-        builder.HasIndex(e => e.CreatedBy)
-            .HasDatabaseName("IX_command_struct_history_created_by");
+        builder.HasIndex(e => e.CreatedBy, "IX_command_struct_history_created_by");
     }
 }

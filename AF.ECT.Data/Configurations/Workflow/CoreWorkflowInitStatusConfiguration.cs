@@ -27,14 +27,30 @@ public class CoreWorkflowInitStatusConfiguration : IEntityTypeConfiguration<Core
         builder.Property(e => e.StatusId)
             .HasColumnName("status_id");
 
+        // Relationships
+        builder.HasOne(d => d.Group)
+            .WithMany()
+            .HasForeignKey(d => d.GroupId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_init_status_core_user_group");
+
+        builder.HasOne(d => d.Status)
+            .WithMany()
+            .HasForeignKey(d => d.StatusId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_init_status_core_status_code");
+
+        builder.HasOne(d => d.Workflow)
+            .WithMany()
+            .HasForeignKey(d => d.WorkflowId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_core_workflow_init_status_core_workflow");
+
         // Indexes
-        builder.HasIndex(e => e.WorkflowId)
-            .HasDatabaseName("IX_core_workflow_init_status_workflow_id");
+        builder.HasIndex(e => e.WorkflowId, "IX_core_workflow_init_status_workflow_id");
 
-        builder.HasIndex(e => e.GroupId)
-            .HasDatabaseName("IX_core_workflow_init_status_group_id");
+        builder.HasIndex(e => e.GroupId, "IX_core_workflow_init_status_group_id");
 
-        builder.HasIndex(e => e.StatusId)
-            .HasDatabaseName("IX_core_workflow_init_status_status_id");
+        builder.HasIndex(e => e.StatusId, "IX_core_workflow_init_status_status_id");
     }
 }

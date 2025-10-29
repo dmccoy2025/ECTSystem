@@ -42,10 +42,8 @@ public class CoreCertificationStampConfiguration : IEntityTypeConfiguration<Core
             .HasColumnName("is_qualified");
 
         // Indexes
-        builder.HasIndex(e => e.Name)
-            .HasDatabaseName("IX_core_certification_stamp_name");
+        builder.HasIndex(e => e.Name, "IX_core_certification_stamp_name");
 
-        builder.HasIndex(e => e.IsQualified)
-            .HasDatabaseName("IX_core_certification_stamp_is_qualified");
+        builder.HasIndex(e => e.IsQualified, "IX_core_certification_stamp_is_qualified");
     }
 }

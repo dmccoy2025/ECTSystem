@@ -29,10 +29,8 @@ public class CoreUsersAltTitleConfiguration : IEntityTypeConfiguration<CoreUsers
             .HasColumnName("title");
 
         // Indexes
-        builder.HasIndex(e => e.UserId)
-            .HasDatabaseName("IX_core_users_alt_title_user_id");
+        builder.HasIndex(e => e.UserId, "IX_core_users_alt_title_user_id");
 
-        builder.HasIndex(e => e.GroupId)
-            .HasDatabaseName("IX_core_users_alt_title_group_id");
+        builder.HasIndex(e => e.GroupId, "IX_core_users_alt_title_group_id");
     }
 }

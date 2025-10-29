@@ -60,13 +60,10 @@ public class ImpUserroleConfiguration : IEntityTypeConfiguration<ImpUserrole>
             .HasColumnName("IS_DEFAULT");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.Username)
-            .HasDatabaseName("IX_imp_user_role_username");
+        builder.HasIndex(e => e.Username, "IX_imp_user_role_username");
         
-        builder.HasIndex(e => e.Permission)
-            .HasDatabaseName("IX_imp_user_role_permission");
+        builder.HasIndex(e => e.Permission, "IX_imp_user_role_permission");
         
-        builder.HasIndex(e => e.Groupid)
-            .HasDatabaseName("IX_imp_user_role_groupid");
+        builder.HasIndex(e => e.Groupid, "IX_imp_user_role_groupid");
     }
 }

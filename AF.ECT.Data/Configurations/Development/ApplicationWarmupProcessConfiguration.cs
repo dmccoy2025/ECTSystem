@@ -54,10 +54,8 @@ public class ApplicationWarmupProcessConfiguration : IEntityTypeConfiguration<Ap
             .IsUnique()
             .HasDatabaseName("IX_application_warmup_process_name");
 
-        builder.HasIndex(e => e.Active)
-            .HasDatabaseName("IX_application_warmup_process_active");
+        builder.HasIndex(e => e.Active, "IX_application_warmup_process_active");
         
-        builder.HasIndex(e => new { e.Active, e.Name })
-            .HasDatabaseName("IX_application_warmup_process_active_name");
+        builder.HasIndex(e => new { e.Active, e.Name }, "IX_application_warmup_process_active_name");
     }
 }

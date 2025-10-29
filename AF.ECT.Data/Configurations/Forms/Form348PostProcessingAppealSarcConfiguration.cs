@@ -74,10 +74,8 @@ public class Form348PostProcessingAppealSarcConfiguration : IEntityTypeConfigura
             .HasConstraintName("FK_Form_348_Post_Processing_Appeal_SARC");
 
         // Indexes
-        builder.HasIndex(e => e.MemberNotificationDate)
-            .HasDatabaseName("IX_form_348_post_processing_appeal_sarc_notification_date");
+        builder.HasIndex(e => e.MemberNotificationDate, "IX_form_348_post_processing_appeal_sarc_notification_date");
 
-        builder.HasIndex(e => e.Email)
-            .HasDatabaseName("IX_form_348_post_processing_appeal_sarc_email");
+        builder.HasIndex(e => e.Email, "IX_form_348_post_processing_appeal_sarc_email");
     }
 }

@@ -50,13 +50,10 @@ public class ImpUsermappingConfiguration : IEntityTypeConfiguration<ImpUsermappi
             .HasColumnName("USERNAME");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.UserId)
-            .HasDatabaseName("IX_imp_user_mapping_user_id");
+        builder.HasIndex(e => e.UserId, "IX_imp_user_mapping_user_id");
         
-        builder.HasIndex(e => e.PersonId)
-            .HasDatabaseName("IX_imp_user_mapping_person_id");
+        builder.HasIndex(e => e.PersonId, "IX_imp_user_mapping_person_id");
         
-        builder.HasIndex(e => e.Username)
-            .HasDatabaseName("IX_imp_user_mapping_username");
+        builder.HasIndex(e => e.Username, "IX_imp_user_mapping_username");
     }
 }

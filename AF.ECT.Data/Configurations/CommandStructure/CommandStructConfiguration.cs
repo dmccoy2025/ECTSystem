@@ -193,25 +193,18 @@ public class CommandStructConfiguration : IEntityTypeConfiguration<CommandStruct
             .HasConstraintName("FK_command_struct_command_struct");
 
         // Indexes
-        builder.HasIndex(e => e.CommandCode)
-            .HasDatabaseName("IX_command_struct_command_code");
+        builder.HasIndex(e => e.CommandCode, "IX_command_struct_command_code");
 
-        builder.HasIndex(e => e.Uic)
-            .HasDatabaseName("IX_command_struct_uic");
+        builder.HasIndex(e => e.Uic, "IX_command_struct_uic");
 
-        builder.HasIndex(e => e.PasCode)
-            .HasDatabaseName("IX_command_struct_pas_code");
+        builder.HasIndex(e => e.PasCode, "IX_command_struct_pas_code");
 
-        builder.HasIndex(e => e.CsIdParent)
-            .HasDatabaseName("IX_command_struct_cs_id_parent");
+        builder.HasIndex(e => e.CsIdParent, "IX_command_struct_cs_id_parent");
 
-        builder.HasIndex(e => e.Component)
-            .HasDatabaseName("IX_command_struct_component");
+        builder.HasIndex(e => e.Component, "IX_command_struct_component");
 
-        builder.HasIndex(e => e.Inactive)
-            .HasDatabaseName("IX_command_struct_inactive");
+        builder.HasIndex(e => e.Inactive, "IX_command_struct_inactive");
 
-        builder.HasIndex(e => new { e.Component, e.Inactive })
-            .HasDatabaseName("IX_command_struct_component_inactive");
+        builder.HasIndex(e => new { e.Component, e.Inactive }, "IX_command_struct_component_inactive");
     }
 }

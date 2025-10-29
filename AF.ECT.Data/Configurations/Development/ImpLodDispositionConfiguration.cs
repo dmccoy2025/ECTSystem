@@ -227,25 +227,18 @@ public class ImpLodDispositionConfiguration : IEntityTypeConfiguration<ImpLodDis
         builder.Property(e => e.BoardForGeneralYn).HasMaxLength(1).IsUnicode(false).IsFixedLength().HasColumnName("BOARD_FOR_GENERAL_YN");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.LodId)
-            .HasDatabaseName("IX_imp_lod_disposition_lod_id");
+        builder.HasIndex(e => e.LodId, "IX_imp_lod_disposition_lod_id");
         
-        builder.HasIndex(e => e.PiId)
-            .HasDatabaseName("IX_imp_lod_disposition_pi_id");
+        builder.HasIndex(e => e.PiId, "IX_imp_lod_disposition_pi_id");
         
-        builder.HasIndex(e => e.MemberSsn)
-            .HasDatabaseName("IX_imp_lod_disposition_member_ssn");
+        builder.HasIndex(e => e.MemberSsn, "IX_imp_lod_disposition_member_ssn");
         
-        builder.HasIndex(e => e.MemberStatus)
-            .HasDatabaseName("IX_imp_lod_disposition_member_status");
+        builder.HasIndex(e => e.MemberStatus, "IX_imp_lod_disposition_member_status");
         
-        builder.HasIndex(e => e.FinalDecision)
-            .HasDatabaseName("IX_imp_lod_disposition_final_decision");
+        builder.HasIndex(e => e.FinalDecision, "IX_imp_lod_disposition_final_decision");
         
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_imp_lod_disposition_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_imp_lod_disposition_created_date");
         
-        builder.HasIndex(e => e.MemberCsId)
-            .HasDatabaseName("IX_imp_lod_disposition_member_cs_id");
+        builder.HasIndex(e => e.MemberCsId, "IX_imp_lod_disposition_member_cs_id");
     }
 }

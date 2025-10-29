@@ -50,10 +50,8 @@ public class CoreMemoContentConfiguration : IEntityTypeConfiguration<CoreMemoCon
             .HasColumnName("attachments");
 
         // Indexes
-        builder.HasIndex(e => e.MemoId)
-            .HasDatabaseName("IX_core_memo_content_memo_id");
+        builder.HasIndex(e => e.MemoId, "IX_core_memo_content_memo_id");
 
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_core_memo_content_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_core_memo_content_created_date");
     }
 }

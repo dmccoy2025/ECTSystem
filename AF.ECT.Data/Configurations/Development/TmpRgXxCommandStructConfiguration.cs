@@ -147,13 +147,10 @@ public class TmpRgXxCommandStructConfiguration : IEntityTypeConfiguration<TmpRgX
             .HasColumnName("UNIT_TYPE");
 
         // Indexes
-        builder.HasIndex(e => e.Uic)
-            .HasDatabaseName("IX_tmp_RG_XX_CommandStruct_UIC");
+        builder.HasIndex(e => e.Uic, "IX_tmp_RG_XX_CommandStruct_UIC");
 
-        builder.HasIndex(e => e.CsIdParent)
-            .HasDatabaseName("IX_tmp_RG_XX_CommandStruct_CS_ID_PARENT");
+        builder.HasIndex(e => e.CsIdParent, "IX_tmp_RG_XX_CommandStruct_CS_ID_PARENT");
 
-        builder.HasIndex(e => e.BaseCode)
-            .HasDatabaseName("IX_tmp_RG_XX_CommandStruct_BaseCode");
+        builder.HasIndex(e => e.BaseCode, "IX_tmp_RG_XX_CommandStruct_BaseCode");
     }
 }

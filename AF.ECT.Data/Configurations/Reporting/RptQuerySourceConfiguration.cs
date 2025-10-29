@@ -60,13 +60,10 @@ public class RptQuerySourceConfiguration : IEntityTypeConfiguration<RptQuerySour
             .HasMaxLength(100);
 
         // Indexes
-        builder.HasIndex(e => e.TableName)
-            .HasDatabaseName("IX_rptQuerySource_TableName");
+        builder.HasIndex(e => e.TableName, "IX_rptQuerySource_TableName");
 
-        builder.HasIndex(e => e.FieldName)
-            .HasDatabaseName("IX_rptQuerySource_FieldName");
+        builder.HasIndex(e => e.FieldName, "IX_rptQuerySource_FieldName");
 
-        builder.HasIndex(e => e.DataType)
-            .HasDatabaseName("IX_rptQuerySource_DataType");
+        builder.HasIndex(e => e.DataType, "IX_rptQuerySource_DataType");
     }
 }

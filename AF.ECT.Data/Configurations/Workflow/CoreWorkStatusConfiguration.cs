@@ -78,16 +78,12 @@ public class CoreWorkStatusConfiguration : IEntityTypeConfiguration<CoreWorkStat
             .HasDatabaseName("IX_core_work_status_workflow_status")
             .IsUnique();
 
-        builder.HasIndex(e => new { e.WorkflowId, e.SortOrder })
-            .HasDatabaseName("IX_core_work_status_workflow_sort");
+        builder.HasIndex(e => new { e.WorkflowId, e.SortOrder }, "IX_core_work_status_workflow_sort");
 
-        builder.HasIndex(e => e.IsBoardStatus)
-            .HasDatabaseName("IX_core_work_status_is_board");
+        builder.HasIndex(e => e.IsBoardStatus, "IX_core_work_status_is_board");
 
-        builder.HasIndex(e => e.IsHolding)
-            .HasDatabaseName("IX_core_work_status_is_holding");
+        builder.HasIndex(e => e.IsHolding, "IX_core_work_status_is_holding");
         
-        builder.HasIndex(e => e.IsConsult)
-            .HasDatabaseName("IX_core_work_status_is_consult");
+        builder.HasIndex(e => e.IsConsult, "IX_core_work_status_is_consult");
     }
 }

@@ -49,13 +49,10 @@ public class CommandStructTreeConfiguration : IEntityTypeConfiguration<CommandSt
             .HasColumnName("ChildID");
 
         // Indexes for common queries
-        builder.HasIndex(e => e.ParentPas)
-            .HasDatabaseName("IX_command_struct_tree_parent_pas");
+        builder.HasIndex(e => e.ParentPas, "IX_command_struct_tree_parent_pas");
 
-        builder.HasIndex(e => e.ChildPas)
-            .HasDatabaseName("IX_command_struct_tree_child_pas");
+        builder.HasIndex(e => e.ChildPas, "IX_command_struct_tree_child_pas");
 
-        builder.HasIndex(e => e.ViewType)
-            .HasDatabaseName("IX_command_struct_tree_view_type");
+        builder.HasIndex(e => e.ViewType, "IX_command_struct_tree_view_type");
     }
 }

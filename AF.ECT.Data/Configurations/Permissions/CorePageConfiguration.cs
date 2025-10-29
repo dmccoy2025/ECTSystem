@@ -35,7 +35,6 @@ public class CorePageConfiguration : IEntityTypeConfiguration<CorePage>
             .HasColumnName("title");
 
         // Indexes
-        builder.HasIndex(e => e.Title)
-            .HasDatabaseName("IX_core_page_title");
+        builder.HasIndex(e => e.Title, "IX_core_page_title");
     }
 }

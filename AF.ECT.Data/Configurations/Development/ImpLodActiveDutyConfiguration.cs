@@ -132,19 +132,14 @@ public class ImpLodActiveDutyConfiguration : IEntityTypeConfiguration<ImpLodActi
             .HasColumnName("MODIFIED_BY");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.AdId)
-            .HasDatabaseName("IX_imp_lod_active_duty_ad_id");
+        builder.HasIndex(e => e.AdId, "IX_imp_lod_active_duty_ad_id");
         
-        builder.HasIndex(e => e.Ssn)
-            .HasDatabaseName("IX_imp_lod_active_duty_ssn");
+        builder.HasIndex(e => e.Ssn, "IX_imp_lod_active_duty_ssn");
         
-        builder.HasIndex(e => e.LastName)
-            .HasDatabaseName("IX_imp_lod_active_duty_last_name");
+        builder.HasIndex(e => e.LastName, "IX_imp_lod_active_duty_last_name");
         
-        builder.HasIndex(e => e.Unit)
-            .HasDatabaseName("IX_imp_lod_active_duty_unit");
+        builder.HasIndex(e => e.Unit, "IX_imp_lod_active_duty_unit");
         
-        builder.HasIndex(e => e.CreatedDate)
-            .HasDatabaseName("IX_imp_lod_active_duty_created_date");
+        builder.HasIndex(e => e.CreatedDate, "IX_imp_lod_active_duty_created_date");
     }
 }

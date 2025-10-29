@@ -92,19 +92,14 @@ public class ImpProcessConfiguration : IEntityTypeConfiguration<ImpProcess>
         builder.Property(e => e.ModifiedDate).HasMaxLength(50).IsUnicode(false).HasColumnName("MODIFIED_DATE");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.ProcId)
-            .HasDatabaseName("IX_imp_process_proc_id");
+        builder.HasIndex(e => e.ProcId, "IX_imp_process_proc_id");
         
-        builder.HasIndex(e => e.ProcessName)
-            .HasDatabaseName("IX_imp_process_process_name");
+        builder.HasIndex(e => e.ProcessName, "IX_imp_process_process_name");
         
-        builder.HasIndex(e => e.ActiveYn)
-            .HasDatabaseName("IX_imp_process_active_yn");
+        builder.HasIndex(e => e.ActiveYn, "IX_imp_process_active_yn");
         
-        builder.HasIndex(e => e.ProcType)
-            .HasDatabaseName("IX_imp_process_proc_type");
+        builder.HasIndex(e => e.ProcType, "IX_imp_process_proc_type");
         
-        builder.HasIndex(e => e.ParentProcId)
-            .HasDatabaseName("IX_imp_process_parent_proc_id");
+        builder.HasIndex(e => e.ParentProcId, "IX_imp_process_parent_proc_id");
     }
 }

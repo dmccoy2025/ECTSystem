@@ -41,16 +41,12 @@ public class AlodArcnetRawConfiguration : IEntityTypeConfiguration<AlodArcnetRaw
             .HasColumnName("DueDate");
 
         // Indexes for common queries
-        builder.HasIndex(e => e.Ssn)
-            .HasDatabaseName("IX_alod_arcnet_raw_ssn");
+        builder.HasIndex(e => e.Ssn, "IX_alod_arcnet_raw_ssn");
 
-        builder.HasIndex(e => e.Edipi)
-            .HasDatabaseName("IX_alod_arcnet_raw_edipi");
+        builder.HasIndex(e => e.Edipi, "IX_alod_arcnet_raw_edipi");
         
-        builder.HasIndex(e => e.CompletionDate)
-            .HasDatabaseName("IX_alod_arcnet_raw_completion_date");
+        builder.HasIndex(e => e.CompletionDate, "IX_alod_arcnet_raw_completion_date");
         
-        builder.HasIndex(e => e.DueDate)
-            .HasDatabaseName("IX_alod_arcnet_raw_due_date");
+        builder.HasIndex(e => e.DueDate, "IX_alod_arcnet_raw_due_date");
     }
 }

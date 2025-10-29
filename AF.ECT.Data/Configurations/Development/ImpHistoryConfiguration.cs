@@ -60,19 +60,14 @@ public class ImpHistoryConfiguration : IEntityTypeConfiguration<ImpHistory>
             .HasColumnName("ALOD_LODID");
         
         // Indexes for common queries
-        builder.HasIndex(e => e.AlodUserid)
-            .HasDatabaseName("IX_imp_history_alod_userid");
+        builder.HasIndex(e => e.AlodUserid, "IX_imp_history_alod_userid");
         
-        builder.HasIndex(e => e.Username)
-            .HasDatabaseName("IX_imp_history_username");
+        builder.HasIndex(e => e.Username, "IX_imp_history_username");
         
-        builder.HasIndex(e => e.StartDate)
-            .HasDatabaseName("IX_imp_history_start_date");
+        builder.HasIndex(e => e.StartDate, "IX_imp_history_start_date");
         
-        builder.HasIndex(e => e.WsId)
-            .HasDatabaseName("IX_imp_history_ws_id");
+        builder.HasIndex(e => e.WsId, "IX_imp_history_ws_id");
         
-        builder.HasIndex(e => e.AlodLodid)
-            .HasDatabaseName("IX_imp_history_alod_lodid");
+        builder.HasIndex(e => e.AlodLodid, "IX_imp_history_alod_lodid");
     }
 }

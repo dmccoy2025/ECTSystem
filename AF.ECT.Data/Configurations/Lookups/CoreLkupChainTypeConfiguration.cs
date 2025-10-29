@@ -66,7 +66,6 @@ public class CoreLkupChainTypeConfiguration : IEntityTypeConfiguration<CoreLkupC
             .IsUnique()
             .HasDatabaseName("UQ_core_lkup_chain_type_name");
 
-        builder.HasIndex(e => e.Active)
-            .HasDatabaseName("IX_core_lkup_chain_type_active");
+        builder.HasIndex(e => e.Active, "IX_core_lkup_chain_type_active");
     }
 }

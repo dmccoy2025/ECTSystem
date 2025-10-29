@@ -43,7 +43,6 @@ public class ImpTmpPersidConfiguration : IEntityTypeConfiguration<ImpTmpPersid>
             .HasColumnName("PERS_ID");
         
         // Index for common queries
-        builder.HasIndex(e => e.PersId)
-            .HasDatabaseName("IX_imp_tmp_persid_pers_id");
+        builder.HasIndex(e => e.PersId, "IX_imp_tmp_persid_pers_id");
     }
 }
